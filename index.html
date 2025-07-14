@@ -15,9 +15,26 @@
     <!-- ✅ Add this line below -->
     <meta name="google-site-verification" content="google65c7dfceb62067d3.html">
 
-    <!-- Tailwind CSS and Fonts -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Tailwind CSS with Custom Theme -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Poppins', 'Inter', 'sans-serif'],
+        },
+        colors: {
+          primary: '#6366F1',   // Indigo
+          secondary: '#06B6D4', // Cyan
+        },
+      },
+    },
+  };
+</script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 
 <body class="bg-gray-50">
@@ -54,15 +71,17 @@
         </div>
         
         <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
-            <div class="flex flex-col space-y-3">
-                <a href="#home" class="text-gray-800 hover:text-indigo-600">Home</a>
-                <a href="#courses" class="text-gray-800 hover:text-indigo-600">Courses</a>
-                <a href="#features" class="text-gray-800 hover:text-indigo-600">Why Us</a>
-                <a href="#testimonials" class="text-gray-800 hover:text-indigo-600">Testimonials</a>
-                <a href="#contact" class="text-gray-800 hover:text-indigo-600">Contact</a>
-            </div>
-        </div>
+<div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
+    <div class="flex flex-col space-y-3">
+        <a href="#home" class="text-gray-800 hover:text-indigo-600">Home</a>
+        <a href="#courses" class="text-gray-800 hover:text-indigo-600">Courses</a>
+        <a href="#features" class="text-gray-800 hover:text-indigo-600">Why Us</a>
+        <a href="#testimonials" class="text-gray-800 hover:text-indigo-600">Testimonials</a>
+        <a href="#notes" class="text-gray-800 hover:text-indigo-600">Notes</a> <!-- ✅ Added Notes link -->
+        <a href="#contact" class="text-gray-800 hover:text-indigo-600">Contact</a>
+    </div>
+</div>
+
     </nav>
 
     <!-- Hero Section -->
@@ -85,9 +104,14 @@
                         </a>
                     </div>
                 </div>
+
+
                 <div class="md:w-1/2 md:pl-12">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9c57469b-07b7-4361-9dfe-67d13639b7f6.png" alt="Diverse group of students engaged in learning in a modern classroom with interactive screens" class="rounded-lg shadow-xl">
-                </div>
+    <img src="images/classroom.jpg" alt="Students actively learning in class" class="rounded-lg shadow-xl">
+</div>
+
+
+
             </div>
         </div>
     </section>
@@ -105,9 +129,11 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Course 1 -->
                 <div class="course-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shadow-xl">
-                    <div class="overflow-hidden">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ae412059-0966-490a-9f7b-fa9054312036.png" alt="Students studying mathematics and science subjects" class="w-full h-48 object-cover transition duration-500">
-                    </div>
+                    
+<div class="overflow-hidden">
+    <img src="images/students-banner.jpg" alt="Students at Hira Science Academy learning science and mathematics" class="w-full h-48 object-cover transition duration-500">
+</div>
+
                     <div class="p-6">
                         <span class="inline-block px-3 py-1 text-xs font-semibold bg-indigo-100 text-indigo-600 rounded-full mb-2">ACADEMIC</span>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">Matric (9th-10th)</h3>
@@ -124,9 +150,10 @@
                 
                 <!-- Course 2 -->
                 <div class="course-card bg-white rounded-lg shadow-md overflow-hidden transition duration-300 hover:shift-500">
-                    <div class="overflow-hidden">
-                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/94ade07a-4483-42e6-9fd8-cdc42b30dc99.png" alt="Engineering students solving physics problems" class="w-full h-48 object-cover transition duration-500">
-                    </div>
+                   
+<div class="overflow-hidden">
+    <img src="images/engineering-physics.jpg" alt="Engineering students solving physics problems" class="w-full h-48 object-cover transition duration-500">
+</div>
                     <div class="p-6">
                         <span class="inline-block px-3 py-1 text-xs font-semibold bg-green-100 text-green-600 rounded-full mb-2">ACADEMIC</span>
                         <h3 class="text-xl font-semibold text-gray-800 mb-2">FSc Pre-Engineering</h3>
@@ -384,12 +411,14 @@
                 <div class="bg-gray-50 p-8 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold text-indigo-600 mb-6 text-center">9th Class</h3>
                     <div class="space-y-4">
-                        <a href="#" class="block bg-white hover:bg-gray-100 px-4 py-3 rounded-lg shadow-sm transition duration-300">
-                            <div class="flex justify-between items-center">
-                                <span class="font-medium">Mathematics</span>
-                                <span class="text-sm bg-indigo-100 text-indigo-600 px-2 py-1 rounded">Download PDF</span>
-                            </div>
-                        </a>
+
+                        <a href="Mathematics 9th.html" title="Download Mathematics Class 9 Notes PDF – Punjab Board" class="block bg-white hover:bg-gray-100 px-4 py-3 rounded-lg shadow-sm transition duration-300">
+  <div class="flex justify-between items-center">
+    <span class="font-medium">Mathematics</span>
+    <span class="text-sm bg-indigo-100 text-indigo-600 px-2 py-1 rounded">Download PDF</span>
+  </div>
+</a>
+
    <a href="Physics 9th.html" title="Download Physics Class 9 Notes PDF – Punjab Board" class="block bg-white hover:bg-gray-100 px-4 py-3 rounded-lg shadow-sm transition duration-300">
   <div class="flex justify-between items-center">
     <span class="font-medium">Physics</span>
@@ -415,12 +444,12 @@
                 <div class="bg-gray-50 p-8 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold text-indigo-600 mb-6 text-center">10th Class</h3>
                     <div class="space-y-4">
-                        <a href="#" class="block bg-white hover:bg-gray-100 px-4 py-3 rounded-lg shadow-sm transition duration-300">
-                            <div class="flex justify-between items-center">
-                                <span class="font-medium">Mathematics</span>
-                                <span class="text-sm bg-indigo-100 text-indigo-600 px-2 py-1 rounded">Download PDF</span>
-                            </div>
-                        </a>
+                        <a href="Mathematics 10th.html" title="Download Mathematics Class 10 Notes PDF – Punjab Board" class="block bg-white hover:bg-gray-100 px-4 py-3 rounded-lg shadow-sm transition duration-300">
+  <div class="flex justify-between items-center">
+    <span class="font-medium">Mathematics</span>
+    <span class="text-sm bg-indigo-100 text-indigo-600 px-2 py-1 rounded">Download PDF</span>
+  </div>
+</a>
                         
 <a href="Physics 10th.html" class="block bg-white hover:bg-gray-100 px-4 py-3 rounded-lg shadow-sm transition duration-300">
     <div class="flex justify-between items-center">
