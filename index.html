@@ -33,56 +33,107 @@
   };
 </script>
 
+<style>
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-scroll {
+    animation: scroll-left 30s linear infinite;
+  }
+</style>
+
+
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 
 <body class="bg-gray-50">
 
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-3">
-            <div class="flex justify-between items-center">
-                <!-- Logo -->
-                <div class="flex items-center">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/93d0f60d-3497-4f0d-857e-86424f5bcc7e.png" alt="Hira Science Academy logo" class="h-10">
-                    <span class="ml-2 text-xl font-semibold text-gray-800">Hira Science Academy</span>
-                </div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-gray-800 hover:text-indigo-600">Home</a>
-                    <a href="#courses" class="text-gray-800 hover:text-indigo-600">Courses</a>
-                    <a href="#features" class="text-gray-800 hover:text-indigo-600">Why Us</a>
-                    <a href="#testimonials" class="text-gray-800 hover:text-indigo-600">Testimonials</a>
-                    <a href="#notes" class="text-gray-800 hover:text-indigo-600">Notes</a>
-                <a href="#contact" class="text-gray-800 hover:text-indigo-600">Contact</a>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="menu-btn" class="text-gray-800 focus:outline-none">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Navigation -->
-<div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
-    <div class="flex flex-col space-y-3">
+
+   <!-- Announcement Ticker (Sticky at Top) -->
+<div class="sticky top-0 z-50">
+  <div class="relative bg-red-100 border border-red-300 py-2 overflow-hidden">
+    <!-- Label -->
+    <div class="absolute left-0 top-0 h-full flex items-center bg-red-500 text-white font-semibold px-4 z-10">
+      📢 Announcements
+    </div>
+
+    <!-- Scrolling Announcements -->
+    <div class="pl-40">
+      <div class="whitespace-nowrap animate-scroll text-red-900 font-medium flex space-x-16 items-center">
+<span>📅 Matric Result 2025 (BISE Gujranwala) will be announced on 24th July 📅 For result assistance or queries, 📞 contact us at <strong>0333-8114798</strong></span>
+        <span>🎓 Admissions for Class 9th and 10th are now open</span>
+        <span>📘 New 2025 Syllabus Physics Notes Uploaded</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEO Version of Announcements (hidden from users, visible to Google) -->
+<div style="position: absolute; left: -9999px;">
+  <h2>Important Announcements - Hira Science Academy</h2>
+  <ul>
+<li>Matric Result 2025 (BISE Gujranwala) will be announced on 24th July For result assistance or queries – Contact: 0333-8114798</li>
+    <li>Admissions for Class 9th and 10th are now open</li>
+    <li>New 2025 Syllabus Physics Notes Uploaded</li>
+  </ul>
+</div>
+
+
+<!-- Navigation (Sticky Below Announcement) -->
+<nav class="bg-white shadow-md sticky top-[48px] z-40">
+  <div class="container mx-auto px-6 py-3">
+    <div class="flex justify-between items-center">
+      <!-- Logo -->
+<a href="#home">
+  <div class="flex items-center cursor-pointer">
+    <img src="images/logo.png" alt="Hira Science Academy logo" class="h-10">
+    <span class="ml-2 text-xl font-semibold text-gray-800">Hira Science Academy</span>
+  </div>
+</a>
+
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex space-x-8">
         <a href="#home" class="text-gray-800 hover:text-indigo-600">Home</a>
         <a href="#courses" class="text-gray-800 hover:text-indigo-600">Courses</a>
         <a href="#features" class="text-gray-800 hover:text-indigo-600">Why Us</a>
         <a href="#testimonials" class="text-gray-800 hover:text-indigo-600">Testimonials</a>
-        <a href="#notes" class="text-gray-800 hover:text-indigo-600">Notes</a> <!-- ✅ Added Notes link -->
+        <a href="#notes" class="text-gray-800 hover:text-indigo-600">Notes</a>
         <a href="#contact" class="text-gray-800 hover:text-indigo-600">Contact</a>
-    </div>
-</div>
+      </div>
 
-    </nav>
+      <!-- Mobile menu button -->
+      <div class="md:hidden">
+        <button id="menu-btn" class="text-gray-800 focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Navigation -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pb-4">
+    <div class="flex flex-col space-y-3">
+      <a href="#home" class="text-gray-800 hover:text-indigo-600">Home</a>
+      <a href="#courses" class="text-gray-800 hover:text-indigo-600">Courses</a>
+      <a href="#features" class="text-gray-800 hover:text-indigo-600">Why Us</a>
+      <a href="#testimonials" class="text-gray-800 hover:text-indigo-600">Testimonials</a>
+      <a href="#notes" class="text-gray-800 hover:text-indigo-600">Notes</a>
+      <a href="#contact" class="text-gray-800 hover:text-indigo-600">Contact</a>
+    </div>
+  </div>
+</nav>
+
 
     <!-- Hero Section -->
 <section id="home" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-20 lg:py-32">
@@ -587,26 +638,27 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                    <div class="flex items-center mb-4">
-    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/93d0f60d-3497-4f0d-857e-86424f5bcc7e.png" alt="Hira Science Academy logo" class="h-10">
-    <span class="text-white font-semibold">Hira Science Academy</span>
-</div>
-                    <p class="mb-4">
+   <a href="index.html#home">
+  <div class="flex items-center mb-4 cursor-pointer">
+    <img src="images/logo.png" alt="Hira Science Academy logo" class="h-10">
+    <span class="text-white font-semibold ml-2">Hira Science Academy</span>
+  </div>
+</a>
+
+
                         Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).
                     </p>
                     <div class="flex space-x-4">
-                        <a href="https://web.facebook.com/HiraScienceAcademy.Daska" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                       <a href="https://web.facebook.com/HiraScienceAcademy.Daska" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
     </svg>
 </a>
-
-                     <a href="https://www.instagram.com/hira.scienceacademy/" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
+                      <a href="https://www.instagram.com/hira.scienceacademy/" target="_blank" class="text-gray-400 hover:text-white transition duration-300">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
     </svg>
 </a>
-
 
                         <a href="#" class="text-gray-400 hover:text-white transition duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
@@ -621,7 +673,14 @@
                     </div>
                 </div>
                 
-                
+                <div>
+                    <h3 class="text-white font-semibold text-lg mb-4">Programs</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white transition duration-300">9th</a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">10th </a></li>
+                        <li><a href="#" class="hover:text-white transition duration-300">FSC</a></li>
+                    </ul>
+                </div>
                 
                 <div>
                     <h3 class="text-white font-semibold text-lg mb-4">Resources</h3>
