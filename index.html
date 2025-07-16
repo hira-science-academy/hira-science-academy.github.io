@@ -65,48 +65,17 @@
 <body class="bg-gray-50">
 
 
-   <!-- Announcement Ticker (Sticky at Top) -->
-<div class="sticky top-0 z-50">
-  <div class="relative bg-red-100 border border-red-300 py-2 overflow-hidden">
-    <!-- Label -->
-    <div class="absolute left-0 top-0 h-full flex items-center bg-red-500 text-white font-semibold px-4 z-10">
-      📢 Announcements
-    </div>
-
-    <!-- Scrolling Announcements -->
-    <div class="pl-40">
-      <div class="whitespace-nowrap animate-scroll text-red-900 font-medium flex space-x-16 items-center">
-<span>📅 Matric Result 2025 (BISE Gujranwala) will be announced on 24th July 📅 For result assistance or queries, 📞 contact us at <strong>0333-8114798</strong></span>
-        <span>🎓 Admissions for Class 9th and 10th are now open</span>
-        <span>📘 New 2025 Syllabus Physics Notes Uploaded</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SEO Version of Announcements (hidden from users, visible to Google) -->
-<div style="position: absolute; left: -9999px;">
-  <h2>Important Announcements - Hira Science Academy</h2>
-  <ul>
-<li>Matric Result 2025 (BISE Gujranwala) will be announced on 24th July For result assistance or queries – Contact: 0333-8114798</li>
-    <li>Admissions for Class 9th and 10th are now open</li>
-    <li>New 2025 Syllabus Physics Notes Uploaded</li>
-  </ul>
-</div>
-
-
-<!-- Navigation (Sticky Below Announcement) -->
-<nav class="bg-white shadow-md sticky top-[48px] z-40">
+   <!-- ✅ NAVIGATION FIRST (Stick to Top) -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
   <div class="container mx-auto px-6 py-3">
     <div class="flex justify-between items-center">
       <!-- Logo -->
-<a href="#home">
-  <div class="flex items-center cursor-pointer">
-    <img src="images/logo.png" alt="Hira Science Academy logo" class="h-10">
-    <span class="ml-2 text-xl font-semibold text-gray-800">Hira Science Academy</span>
-  </div>
-</a>
-
+      <a href="#home">
+        <div class="flex items-center cursor-pointer">
+          <img src="images/logo.png" alt="Hira Science Academy logo" class="h-10">
+          <span class="ml-2 text-xl font-semibold text-gray-800">Hira Science Academy</span>
+        </div>
+      </a>
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex space-x-8">
@@ -142,6 +111,50 @@
     </div>
   </div>
 </nav>
+
+<!-- ✅ SCROLLING ANNOUNCEMENT BAR BELOW NAVBAR -->
+<div class="w-full bg-red-600 text-white text-sm sm:text-base font-medium overflow-hidden shadow-inner relative z-40">
+  <div class="relative py-2 pl-40 pr-4">
+
+    <!-- 📢 Fixed Label on Left -->
+    <div class="absolute left-0 top-0 bottom-0 flex items-center bg-black bg-opacity-70 px-4 font-bold uppercase tracking-wide text-xs sm:text-sm z-10">
+      📢 Announcements
+    </div>
+
+    <!-- 🔁 Scrolling Text -->
+    <div class="whitespace-nowrap animate-strip-scroll hover:pause-scroll">
+      <span class="mr-16">📅 Matric Result 2025 (BISE Gujranwala) will be announced on <strong>24th July</strong>. Contact: <strong>0333-8114798</strong></span>
+      <span class="mr-16">🎓 Admissions for Class 9th and 10th are now <strong>open</strong></span>
+      <span>📘 New <strong>2025 Syllabus Physics Notes</strong> uploaded</span>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ SEO (Hidden for Bots) -->
+<div style="position: absolute; left: -9999px;">
+  <h2>Important Announcements - Hira Science Academy</h2>
+  <ul>
+    <li>Matric Result 2025 (BISE Gujranwala) will be announced on 24th July. Contact: 0333-8114798</li>
+    <li>Admissions for Class 9th and 10th are now open</li>
+    <li>New 2025 Syllabus Physics Notes Uploaded</li>
+  </ul>
+</div>
+
+<!-- ✅ Scrolling CSS -->
+<style>
+  @keyframes strip-scroll {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+  }
+
+  .animate-strip-scroll {
+    animation: strip-scroll 25s linear infinite;
+  }
+
+  .hover\:pause-scroll:hover {
+    animation-play-state: paused !important;
+  }
+</style>
 
 
     <!-- Hero Section -->
