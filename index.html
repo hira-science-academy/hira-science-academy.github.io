@@ -112,49 +112,62 @@
   </div>
 </nav>
 
-<!-- ✅ SCROLLING ANNOUNCEMENT BAR BELOW NAVBAR -->
-<div class="w-full bg-red-600 text-white text-sm sm:text-base font-medium overflow-hidden shadow-inner relative z-40">
+<!-- 📢 Announcements Bar (Pauses on Hover) -->
+<div class="w-full bg-gradient-to-r from-red-600 via-red-500 to-red-600 text-white text-sm sm:text-base font-medium overflow-hidden shadow-inner relative z-40">
   <div class="relative py-2 pl-40 pr-4">
 
-    <!-- 📢 Fixed Label on Left -->
+    <!-- Label -->
     <div class="absolute left-0 top-0 bottom-0 flex items-center bg-black bg-opacity-70 px-4 font-bold uppercase tracking-wide text-xs sm:text-sm z-10">
       📢 Announcements
     </div>
 
-    <!-- 🔁 Scrolling Text -->
-    <div class="whitespace-nowrap animate-strip-scroll hover:pause-scroll">
-      <span class="mr-16">📅 Matric Result 2025 (BISE Gujranwala) will be announced on <strong>24th July</strong>. Contact: <strong>0333-8114798</strong></span>
-      <span class="mr-16">🎓 Admissions for Class 9th and 10th are now <strong>open</strong></span>
-      <span>📘 New <strong>2025 Syllabus Physics Notes</strong> uploaded</span>
+    <!-- Scrolling Area -->
+    <div class="overflow-hidden whitespace-nowrap">
+      <div class="scrolling-text">
+        <!-- Duplicated Announcements for Loop -->
+        <span class="mx-8">📅 Matric Result 2025 (BISE Gujranwala) on <strong>24th July</strong>. 
+          <a href="https://www.bisegrw.edu.pk/" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">View Result</a> or contact <strong>0333-8114798</strong>
+        </span>
+
+        <span class="mx-8">📘 <a href="Physics 9th.html" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">Physics 9th: Chapter-wise Notes, Numerical Problems, MCQs & Definitions – View Now</a></span>
+
+        <span class="mx-8">✅ <a href="Mathematics 9th.html" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">Math 9th: Complete Definitions & Solved MCQs – Download Here</a></span>
+
+        <!-- Repeat for loop effect -->
+        <span class="mx-8">📅 Matric Result 2025 (BISE Gujranwala) on <strong>24th July</strong>. 
+          <a href="https://www.bisegrw.edu.pk/" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">View Result</a> or contact <strong>0333-8114798</strong>
+        </span>
+
+        <span class="mx-8">📘 <a href="Physics 9th.html" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">Physics 9th: Chapter-wise Notes, Numerical Problems, MCQs & Definitions – View Now</a></span>
+
+        <span class="mx-8">✅ <a href="Mathematics 9th.html" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">Math 9th: Complete Definitions & Solved MCQs – Download Here</a></span>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ✅ SEO (Hidden for Bots) -->
-<div style="position: absolute; left: -9999px;">
-  <h2>Important Announcements - Hira Science Academy</h2>
-  <ul>
-    <li>Matric Result 2025 (BISE Gujranwala) will be announced on 24th July. Contact: 0333-8114798</li>
-    <li>Admissions for Class 9th and 10th are now open</li>
-    <li>New 2025 Syllabus Physics Notes Uploaded</li>
-  </ul>
-</div>
-
-<!-- ✅ Scrolling CSS -->
+<!-- 🖼️ Style for Scroll Animation with Pause on Hover -->
 <style>
-  @keyframes strip-scroll {
-    0%   { transform: translateX(100%); }
-    100% { transform: translateX(-100%); }
+  @keyframes scroll-x {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
-  .animate-strip-scroll {
-    animation: strip-scroll 25s linear infinite;
+  .scrolling-text {
+    display: inline-flex;
+    animation: scroll-x 20s linear infinite;
+    white-space: nowrap;
   }
 
-  .hover\:pause-scroll:hover {
-    animation-play-state: paused !important;
+  .scrolling-text:hover {
+    animation-play-state: paused;
   }
 </style>
+
+
+
+
+
 
 
     <!-- Hero Section -->
