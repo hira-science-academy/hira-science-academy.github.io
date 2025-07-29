@@ -109,17 +109,18 @@
     </div>
   </div>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Home</a>
-      <a href="#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Notes</a>
-      <a href="#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Courses</a>
-      <a href="#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Why Us</a>
-      <a href="#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Testimonials</a>
-      <a href="#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Contact</a>
-    </div>
+ <!-- Mobile menu (no hidden class initially) -->
+<div id="mobile-menu" class="md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 hidden transition-all duration-300 ease-in-out">
+  <div class="px-2 pt-2 pb-3 space-y-1">
+    <a href="#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Home</a>
+    <a href="#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Notes</a>
+    <a href="#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Courses</a>
+    <a href="#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Why Us</a>
+    <a href="#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Testimonials</a>
+    <a href="#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Contact</a>
   </div>
+</div>
+
 </nav>
 
 <script>
@@ -233,15 +234,7 @@ mobileMenuButton.addEventListener('click', function() {
   }
   
   /* Mobile menu animation */
-  #mobile-menu {
-    transition: all 0.3s ease-in-out;
-    max-height: 0;
-    overflow: hidden;
-  }
   
-  #mobile-menu:not(.hidden) {
-    max-height: 500px;
-  }
 </style>
 
 <!-- 📢 Announcements Bar (Auto-Hide on Scroll + Pauses on Hover) -->
@@ -1068,27 +1061,37 @@ mobileMenuButton.addEventListener('click', function() {
       });
     });
   </script>
-<!-- ✨ Script: Hide on Scroll Down, Show on Scroll Up -->
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const bar = document.getElementById("announcement-bar");
-    let lastScrollTop = 0;
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIconOpen = document.getElementById('menu-icon-open');
+  const menuIconClose = document.getElementById('menu-icon-close');
 
-    window.addEventListener("scroll", function () {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  mobileMenuButton.addEventListener('click', function () {
+    const isHidden = mobileMenu.classList.contains('hidden');
 
-      if (scrollTop > lastScrollTop) {
-        // Scrolling Down → Hide bar
-        bar.style.transform = "translateY(-200%)";
-      } else {
-        // Scrolling Up → Show bar
-        bar.style.transform = "translateY(0)";
-      }
+    // Toggle menu visibility
+    if (isHidden) {
+      mobileMenu.classList.remove('hidden');
+    } else {
+      mobileMenu.classList.add('hidden');
+    }
 
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    // Toggle icons
+    menuIconOpen.classList.toggle('hidden');
+    menuIconClose.classList.toggle('hidden');
+  });
+
+  // Optional: close menu when a nav link is clicked
+  document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.add('hidden');
+      menuIconOpen.classList.remove('hidden');
+      menuIconClose.classList.add('hidden');
     });
   });
 </script>
+
 <script src="your-script.js"></script>
 </body>
 </html>
