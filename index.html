@@ -123,7 +123,21 @@
 </nav>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  // No DOMContentLoaded wrapper needed if script is at the bottom
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuIconOpen = document.getElementById('menu-icon-open');
+const menuIconClose = document.getElementById('menu-icon-close');
+
+mobileMenuButton.addEventListener('click', function() {
+  const isExpanded = mobileMenu.classList.toggle('hidden');
+  menuIconOpen.classList.toggle('hidden');
+  menuIconClose.classList.toggle('hidden');
+  this.setAttribute('aria-expanded', !isExpanded);
+});
+
+// rest of your code...
+
     // Mobile Menu Toggle Elements
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -279,27 +293,7 @@
   }
 </style>
 
-<!-- ✨ Script: Hide on Scroll Down, Show on Scroll Up -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const bar = document.getElementById("announcement-bar");
-    let lastScrollTop = 0;
 
-    window.addEventListener("scroll", function () {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      if (scrollTop > lastScrollTop) {
-        // Scrolling Down → Hide bar
-        bar.style.transform = "translateY(-200%)";
-      } else {
-        // Scrolling Up → Show bar
-        bar.style.transform = "translateY(0)";
-      }
-
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-  });
-</script>
 
 
 
@@ -1074,5 +1068,27 @@
       });
     });
   </script>
+<!-- ✨ Script: Hide on Scroll Down, Show on Scroll Up -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const bar = document.getElementById("announcement-bar");
+    let lastScrollTop = 0;
+
+    window.addEventListener("scroll", function () {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > lastScrollTop) {
+        // Scrolling Down → Hide bar
+        bar.style.transform = "translateY(-200%)";
+      } else {
+        // Scrolling Up → Show bar
+        bar.style.transform = "translateY(0)";
+      }
+
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
+  });
+</script>
+<script src="your-script.js"></script>
 </body>
 </html>
