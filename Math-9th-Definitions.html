@@ -705,21 +705,34 @@
   </button>
 
   <script>
-    // Mobile Menu Toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu elements
     const mobileMenuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     const menuIconOpen = document.getElementById('menu-icon-open');
     const menuIconClose = document.getElementById('menu-icon-close');
     
-    mobileMenuButton.addEventListener('click', () => {
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+
+    // Mobile menu toggle function
+    function toggleMobileMenu() {
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
       mobileMenu.classList.toggle('hidden');
       menuIconOpen.classList.toggle('hidden');
       menuIconClose.classList.toggle('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+    }
+
+    // Event listeners
+    mobileMenuButton.addEventListener('click', toggleMobileMenu);
+    
+    // Close menu when clicking on links
+    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+      link.addEventListener('click', toggleMobileMenu);
     });
-    
-    // Back to Top Button
-    const backToTopBtn = document.getElementById('backToTop');
-    
+
+    // Back to top button functionality
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
         backToTopBtn.classList.remove('opacity-0', 'invisible');
@@ -734,34 +747,6 @@
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
-      });
-    });
-  </script>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIconOpen = document.getElementById('menu-icon-open');
-    const menuIconClose = document.getElementById('menu-icon-close');
-
-    mobileMenuButton.addEventListener('click', function () {
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-        menuIconOpen.classList.add('hidden');
-        menuIconClose.classList.remove('hidden');
-      } else {
-        mobileMenu.classList.add('hidden');
-        menuIconOpen.classList.remove('hidden');
-        menuIconClose.classList.add('hidden');
-      }
-    });
-
-    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
-      link.addEventListener('click', function () {
-        mobileMenu.classList.add('hidden');
-        menuIconOpen.classList.remove('hidden');
-        menuIconClose.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
       });
     });
   });
