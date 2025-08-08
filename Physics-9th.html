@@ -1246,5 +1246,50 @@ Whether used for self-study or classroom support, these notes help students gras
     });
   });
 </script>
+<script>
+  // Save scroll position before page unload
+  window.addEventListener('beforeunload', function() {
+    localStorage.setItem('scrollPosition', window.scrollY);
+  });
+
+  // Restore scroll position on page load
+  window.addEventListener('load', function() {
+    // Check if there's a hash in the URL first (let the native behavior handle anchor links)
+    if (!window.location.hash) {
+      const savedPosition = localStorage.getItem('scrollPosition');
+      if (savedPosition) {
+        window.scrollTo(0, parseInt(savedPosition));
+        localStorage.removeItem('scrollPosition'); // Clear after restoring
+      }
+    }
+    
+    // Additional code to handle chapter expansion based on hash
+    if (window.location.hash) {
+      const targetElement = document.querySelector(window.location.hash);
+      if (targetElement) {
+        // Find the closest chapter and expand it
+        const chapterHeader = targetElement.closest('[id^="chapter"]');
+        if (chapterHeader) {
+          const detailsId = chapterHeader.id + '-details';
+          const toggleIconId = 'toggle-icon' + chapterHeader.id.replace('chapter', '');
+          toggleChapter(detailsId, toggleIconId);
+        }
+      }
+    }
+  });
+
+  // Modified toggleChapter function to ensure it's globally available
+  function toggleChapter(contentId, iconId) {
+    const content = document.getElementById(contentId);
+    const icon = document.getElementById(iconId);
+    if (content.classList.contains('hidden')) {
+      content.classList.remove('hidden');
+      icon.textContent = '➖';
+    } else {
+      content.classList.add('hidden');
+      icon.textContent = '➕';
+    }
+  }
+</script>
 </body>
 </html>
