@@ -28,6 +28,24 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
+<!-- MathJax for LaTeX -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+ <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+      ignoreHtmlClass: 'tex2jax_ignore',
+      processHtmlClass: 'tex2jax_process'
+    }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
   <!-- Custom Styles -->
   <style>
     body {
@@ -239,7 +257,7 @@
         <!-- Introduction -->
         <div class="bg-white rounded-xl shadow-md p-6 mb-8">
           <h2 class="text-2xl font-bold text-gray-800 mb-4">Mathematics Class 9 Definitions</h2>
-          <p class="text-gray-600 mb-4">
+          <p style="text-align: justify;" class="text-gray-800 mb-4">
             This comprehensive collection contains all key definitions, terms, formulas, and concepts from the Class 9 Mathematics syllabus according to the Punjab Textbook Board. Each chapter is organized systematically with clear explanations and examples.
           </p>
           <div class="bg-blue-50 p-4 rounded-lg">
@@ -260,28 +278,40 @@
             <a href="Math-9th-Definitions-Chapter1.html" class="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full hover:bg-blue-200">View Full Chapter</a>
           </div>
           
-          <div class="space-y-4">
-            <div class="definition-card bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-800">Real Numbers</h3>
-              <p class="text-gray-600">The set of all rational and irrational numbers. Represented by <span class="term-highlight">ℝ</span>.</p>
-            </div>
+         <div class="space-y-4">
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Real Numbers</h3>
+    <p class="text-gray-800">
+      The set of all rational and irrational numbers. Represented by 
+      <span class="term-highlight">\(\mathbb{R}\)</span>.
+    </p>
+  </div>
+  
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Rational Numbers</h3>
+    <p style="text-align: justify;" class="text-gray-800">
+      Numbers that can be expressed as a fraction 
+      <span class="term-highlight">\(\frac{p}{q}\)</span> 
+      where \(p\) and \(q\) are integers and \(q \neq 0\). 
+      They have terminating or repeating decimal expansions.
+    </p>
+  </div>
+  
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Irrational Numbers</h3>
+    <p style="text-align: justify;" class="text-gray-800">
+      Numbers that cannot be expressed as simple fractions. Their decimal expansions are 
+      non-terminating and non-repeating (e.g., \(\sqrt{2}\), \(\pi\)).
+    </p>
+  </div>
+
             
-            <div class="definition-card bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-800">Rational Numbers</h3>
-              <p class="text-gray-600">Numbers that can be expressed as a fraction <span class="term-highlight">p/q</span> where p and q are integers and q ≠ 0. They have terminating or repeating decimal expansions.</p>
-            </div>
-            
-            <div class="definition-card bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-800">Irrational Numbers</h3>
-              <p class="text-gray-600">Numbers that cannot be expressed as simple fractions. Their decimal expansions are non-terminating and non-repeating (e.g., √2, π).</p>
-            </div>
-            
-            <div class="formula-box">
-              <strong>Radical Properties:</strong><br>
-              • √(ab) = √a × √b<br>
-              • √(a/b) = √a/√b<br>
-              • (√a)² = a
-            </div>
+           <div class="formula-box">
+  <strong>Radical Properties:</strong><br>
+  • \(\displaystyle \sqrt{ab} = \sqrt{a} \times \sqrt{b}\)<br>
+  • \(\displaystyle \sqrt{\frac{a}{b}} = \frac{\sqrt{a}}{\sqrt{b}}\)<br>
+  • \(\displaystyle (\sqrt{a})^2 = a\)
+</div>
           </div>
         </div>
 
@@ -293,24 +323,33 @@
           </div>
           
           <div class="space-y-4">
-            <div class="definition-card bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-800">Logarithm</h3>
-              <p class="text-gray-600">The exponent to which a base must be raised to produce a given number. If <span class="term-highlight">aˣ = N</span>, then <span class="term-highlight">logₐN = x</span>.</p>
-            </div>
-            
-            <div class="formula-box">
-              <strong>Laws of Logarithms:</strong><br>
-              • logₐ(mn) = logₐm + logₐn<br>
-              • logₐ(m/n) = logₐm - logₐn<br>
-              • logₐ(mⁿ) = n logₐm<br>
-              • logₐa = 1<br>
-              • logₐ1 = 0
-            </div>
-            
-            <div class="definition-card bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-800">Common Logarithm</h3>
-              <p class="text-gray-600">A logarithm with base 10, written as <span class="term-highlight">log N</span> (base 10 is implied).</p>
-            </div>
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Logarithm</h3>
+    <p class="text-gray-800">
+      The exponent to which a base must be raised to produce a given number. If 
+      <span class="term-highlight">\(a^x = n\)</span>, then 
+      <span class="term-highlight">\(\log_a n = x\)</span>.
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold">Laws of Logarithms:</strong><br>
+    <div class="space-y-2 mt-2">
+      <div>\(\log_a(mn) = \log_a m + \log_a n\)</div>
+      <div>\(\log_a\left(\frac{m}{n}\right) = \log_a m - \log_a n\)</div>
+      <div>\(\log_a(m^n) = n \log_a m\)</div>
+      <div>\(\log_a a = 1\)</div>
+      <div>\(\log_a 1 = 0\)</div>
+    </div>
+  </div>
+  
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Common Logarithm</h3>
+    <p class="text-gray-800">
+      A logarithm with base 10, written as 
+      <span class="term-highlight">\(\log N\)</span> (base 10 is implied).
+    </p>
+  </div>
           </div>
         </div>
 
@@ -322,51 +361,63 @@
           </div>
           
           <div class="space-y-4">
-            <div class="definition-card bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-800">Set</h3>
-              <p class="text-gray-600">A well-defined collection of distinct objects, called elements.</p>
-            </div>
-            
-            <div class="definition-card bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-800">Function</h3>
-              <p class="text-gray-600">A relation between two sets where each element of the first set (domain) is paired with exactly one element of the second set (codomain).</p>
-            </div>
-            
-            <div class="formula-box">
-              <strong>Set Operations:</strong><br>
-              • Union (A ∪ B): All elements in A or B<br>
-              • Intersection (A ∩ B): Elements common to A and B<br>
-              • Complement (A'): Elements not in A<br>
-              • Difference (A - B): Elements in A but not in B
-            </div>
-          </div>
-        </div>
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Set</h3>
+    <p class="text-gray-800">
+      A well-defined collection of distinct objects, called <span class="term-highlight">elements</span>.
+    </p>
+  </div>
+  
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Function</h3>
+    <p style="text-align: justify;" class="text-gray-800">
+      A relation between two sets where each element of the first set 
+      (<span class="term-highlight">domain</span>) is paired with exactly one element 
+      of the second set (<span class="term-highlight">codomain</span>).
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800">Set Operations:</strong>
+    <div class="mt-3 space-y-2">
+      <div>• <span class="term-highlight">Union</span> (\(A \cup B\)): All elements in \(A\) or \(B\)</div>
+      <div>• <span class="term-highlight">Intersection</span> (\(A \cap B\)): Elements common to \(A\) and \(B\)</div>
+      <div>• <span class="term-highlight">Complement</span> (\(A^\complement\) or \(A'\)): Elements not in \(A\)</div>
+      <div>• <span class="term-highlight">Difference</span> (\(A \setminus B\)): Elements in \(A\) but not in \(B\)</div>
+    </div>
+  </div>
+</div>
+</div>
 <div id="chapter4" class="bg-white rounded-xl shadow-md p-6 mb-8 scroll-mt-24">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-xl font-bold text-pink-800">Chapter 4: Factorization</h2>
     <a href="Math-9th-Definitions-Chapter4.html" class="text-sm bg-pink-100 text-pink-800 px-3 py-1 rounded-full hover:bg-pink-200">View Full Chapter</a>
   </div>
   
-  <div class="space-y-4">
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Factorization</h3>
-      <p class="text-gray-600">The process of breaking down an expression into a product of simpler expressions (factors).</p>
-    </div>
-    
-    <div class="formula-box">
-      <strong>Factorization Formulas:</strong><br>
-      • a² - b² = (a - b)(a + b)<br>
-      • a² ± 2ab + b² = (a ± b)²<br>
-      • a³ ± b³ = (a ± b)(a² ∓ ab + b²)<br>
-      • x² + (a+b)x + ab = (x + a)(x + b)
-    </div>
-    
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Common Factor</h3>
-      <p class="text-gray-600">A factor that appears in all terms of an expression.</p>
+ <div class="space-y-4">
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Factorization</h3>
+    <p class="text-gray-800" style="text-align: justify;">
+  The process of breaking down an expression into a product of simpler expressions (<span class="term-highlight">factors</span>).
+</p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800">Factorization Formulas:</strong>
+    <div class="mt-3 space-y-2">
+      <div>• \(a^2 - b^2 = (a - b)(a + b)\) <span class="text-sm text-gray-500">(Difference of squares)</span></div>
+      <div>• \(a^2 \pm 2ab + b^2 = (a \pm b)^2\) <span class="text-sm text-gray-500">(Perfect square)</span></div>
+      <div>• \(a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)\) <span class="text-sm text-gray-500">(Sum/Difference of cubes)</span></div>
+      <div>• \(x^2 + (a+b)x + ab = (x + a)(x + b)\) <span class="text-sm text-gray-500">(Trinomial factorization)</span></div>
     </div>
   </div>
 </div>
+    
+    <div class="definition-card bg-gray-50 p-4 rounded-lg">
+      <h3 class="font-semibold text-gray-800">Common Factor</h3>
+      <p class="text-gray-800">A factor that appears in all terms of an expression.</p>
+    </div>
+  </div>
 <div id="chapter5" class="bg-white rounded-xl shadow-md p-6 mb-8 scroll-mt-24">
   <div class="flex items-center justify-between mb-4">
     <h2 class="text-xl font-bold text-yellow-800">Chapter 5: Linear Equations</h2>
@@ -376,20 +427,36 @@
   <div class="space-y-4">
     <div class="definition-card bg-gray-50 p-4 rounded-lg">
       <h3 class="font-semibold text-gray-800">Linear Equation</h3>
-      <p class="text-gray-600">An equation of degree 1 that can be written in the form <span class="term-highlight">ax + b = 0</span> where a ≠ 0.</p>
+      <p class="text-gray-800">An equation of degree 1 that can be written in the form <span class="term-highlight">ax + b = 0</span> where a ≠ 0.</p>
     </div>
     
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Inequality</h3>
-      <p class="text-gray-600">A mathematical statement that compares two expressions using >, <, ≥, or ≤.</p>
+    <div class="space-y-4">
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Inequality</h3>
+    <p class="text-gray-800">
+      A mathematical statement that compares two expressions using 
+      <span class="term-highlight">\( > \), \( < \), \( \geq \), or \( \leq \)</span>.
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800">Solution Rules:</strong>
+    <div class="mt-3 space-y-2 pl-2">
+      <div class="flex items-start">
+        <span class="mr-2">•</span>
+        <span>Add/subtract same value to both sides: <span class="term-highlight">\( a > b \implies a \pm c > b \pm c \)</span></span>
+      </div>
+      <div class="flex items-start">
+        <span class="mr-2">•</span>
+        <span>Multiply/divide both sides by positive number: <span class="term-highlight">\( a > b \) and \( c > 0 \implies ac > bc \)</span></span>
+      </div>
+      <div class="flex items-start">
+        <span class="mr-2">•</span>
+        <span>Reverse inequality when multiplying/dividing by negative: <span class="term-highlight">\( a > b \) and \( c < 0 \implies ac < bc \)</span></span>
+      </div>
     </div>
-    
-    <div class="formula-box">
-      <strong>Solution Rules:</strong><br>
-      • Add/subtract same value to both sides<br>
-      • Multiply/divide both sides by positive number<br>
-      • Reverse inequality when multiplying/dividing by negative
-    </div>
+  </div>
+</div>
   </div>
 </div>
 <div id="chapter6" class="bg-white rounded-xl shadow-md p-6 mb-8 scroll-mt-24">
@@ -399,24 +466,46 @@
   </div>
   
   <div class="space-y-4">
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Trigonometric Ratios</h3>
-      <p class="text-gray-600">Ratios of sides in a right-angled triangle relative to an acute angle.</p>
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Trigonometric Ratios</h3>
+    <p class="text-gray-800">
+      Ratios of sides in a right-angled triangle relative to an acute angle θ.
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800 mb-3 block">Basic Trigonometric Ratios:</strong>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div class="flex items-center">
+        <span class="w-20 font-medium">\(\sin \theta\)</span>
+        <span class="flex-1">= \(\frac{\text{Opposite}}{\text{Hypotenuse}}\)</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-20 font-medium">\(\cos \theta\)</span>
+        <span class="flex-1">= \(\frac{\text{Adjacent}}{\text{Hypotenuse}}\)</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-20 font-medium">\(\tan \theta\)</span>
+        <span class="flex-1">= \(\frac{\text{Opposite}}{\text{Adjacent}}\)</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-20 font-medium">\(\csc \theta\)</span>
+        <span class="flex-1">= \(\frac{1}{\sin \theta}\)</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-20 font-medium">\(\sec \theta\)</span>
+        <span class="flex-1">= \(\frac{1}{\cos \theta}\)</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-20 font-medium">\(\cot \theta\)</span>
+        <span class="flex-1">= \(\frac{1}{\tan \theta}\)</span>
+      </div>
     </div>
-    
-    <div class="formula-box">
-      <strong>Basic Ratios:</strong><br>
-      • sin θ = Opposite/Hypotenuse<br>
-      • cos θ = Adjacent/Hypotenuse<br>
-      • tan θ = Opposite/Adjacent<br>
-      • cosec θ = 1/sin θ<br>
-      • sec θ = 1/cos θ<br>
-      • cot θ = 1/tan θ
-    </div>
+  </div>
     
     <div class="definition-card bg-gray-50 p-4 rounded-lg">
       <h3 class="font-semibold text-gray-800">Pythagorean Identity</h3>
-      <p class="text-gray-600">sin²θ + cos²θ = 1</p>
+      <p class="text-gray-800 text-center text-lg">\(\sin^2 \theta + \cos^2 \theta = 1\)</p>
     </div>
   </div>
 </div>
@@ -427,22 +516,62 @@
   </div>
   
   <div class="space-y-4">
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Cartesian Plane</h3>
-      <p class="text-gray-600">A two-dimensional plane with perpendicular x and y axes intersecting at the origin (0,0).</p>
+    <div class="space-y-4">
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Cartesian Plane</h3>
+    <p style="text-align: justify;" class="text-gray-800">
+      A two-dimensional plane with perpendicular 
+      <span class="term-highlight">\(x\)</span> and 
+      <span class="term-highlight">\(y\)</span> axes 
+      intersecting at the origin <span class="term-highlight">\((0,0)\)</span>.
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800 mb-3 block">Key Formulas:</strong>
+    <div class="space-y-2">
+      <div class="flex items-baseline">
+        <span class="mr-2">•</span>
+        <div>
+          <span class="font-medium">Distance:</span> 
+          \(d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\)
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2">•</span>
+        <div>
+          <span class="font-medium">Midpoint:</span> 
+          \(\left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right)\)
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2">•</span>
+        <div>
+          <span class="font-medium">Slope:</span> 
+          \(m = \frac{y_2-y_1}{x_2-x_1}\)
+        </div>
+      </div>
     </div>
-    
-    <div class="formula-box">
-      <strong>Key Formulas:</strong><br>
-      • Distance: √[(x₂-x₁)² + (y₂-y₁)²]<br>
-      • Midpoint: ((x₁+x₂)/2, (y₁+y₂)/2)<br>
-      • Slope: (y₂-y₁)/(x₂-x₁)
+  </div>
+  
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Linear Equation Forms</h3>
+    <div class="text-gray-800 space-y-2">
+      <div>
+        <span class="font-medium">Slope-intercept:</span> 
+        <span class="term-highlight">\(y = mx + c\)</span>
+      </div>
+      <div>
+        <span class="font-medium">General form:</span> 
+        <span class="term-highlight">\(ax + by + c = 0\)</span>
+      </div>
+      <div>
+        <span class="font-medium">Point-slope:</span> 
+        <span class="term-highlight">\(y - y_1 = m(x - x_1)\)</span>
+      </div>
     </div>
-    
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Linear Equation Forms</h3>
-      <p class="text-gray-600">Slope-intercept: y = mx + c<br>General form: Ax + By + C = 0</p>
-    </div>
+  </div>
+</div>
   </div>
 </div>
 <div id="chapter8" class="bg-white rounded-xl shadow-md p-6 mb-8 scroll-mt-24">
@@ -452,23 +581,45 @@
   </div>
   
   <div class="space-y-4">
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Proposition</h3>
-      <p class="text-gray-600">A declarative statement that is either true or false but not both.</p>
+<div class="space-y-4">
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Proposition</h3>
+    <p class="text-gray-800">
+      A declarative statement that is either <span class="term-highlight">true</span> or 
+      <span class="term-highlight">false</span> but not both.
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800 mb-3 block">Logical Connectives:</strong>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div class="flex items-center">
+        <span class="w-24 font-medium">Conjunction (AND):</span>
+        <span class="term-highlight">\(p \land q\)</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-24 font-medium">Disjunction (OR):</span>
+        <span class="term-highlight">\(p \lor q\)</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-24 font-medium">Negation (NOT):</span>
+        <span class="term-highlight">\(\neg p\)</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-24 font-medium">Conditional:</span>
+        <span class="term-highlight">\(p \to q\)</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-24 font-medium">Biconditional:</span>
+        <span class="term-highlight">\(p \leftrightarrow q\)</span>
+      </div>
     </div>
-    
-    <div class="formula-box">
-      <strong>Logical Connectives:</strong><br>
-      • Conjunction (AND): p ∧ q<br>
-      • Disjunction (OR): p ∨ q<br>
-      • Negation (NOT): ¬p<br>
-      • Conditional: p → q<br>
-      • Biconditional: p ↔ q
-    </div>
+  </div>
+</div>
     
     <div class="definition-card bg-gray-50 p-4 rounded-lg">
       <h3 class="font-semibold text-gray-800">Truth Table</h3>
-      <p class="text-gray-600">A table showing all possible truth values of a compound statement.</p>
+      <p class="text-gray-800">A table showing all possible truth values of a compound statement.</p>
     </div>
   </div>
 </div>
@@ -479,18 +630,38 @@
   </div>
   
   <div class="space-y-4">
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Similar Figures</h3>
-      <p class="text-gray-600">Figures with the same shape but not necessarily the same size, having corresponding angles equal and sides proportional.</p>
+   <div class="space-y-4">
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Similar Figures</h3>
+    <p style="text-align: justify;" class="text-gray-600">
+      Figures with the same shape but not necessarily the same size, having 
+      <span class="term-highlight">corresponding angles equal</span> and 
+      <span class="term-highlight">sides proportional</span>.
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800 mb-3 block">Similarity Criteria:</strong>
+    <div class="space-y-2">
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-600">•</span>
+        <span><span class="font-medium">AA</span> (Angle-Angle)</span>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-600">•</span>
+        <span><span class="font-medium">SAS</span> (Side-Angle-Side)</span>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-600">•</span>
+        <span><span class="font-medium">SSS</span> (Side-Side-Side)</span>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-600">•</span>
+        <span>Ratio of areas = <span class="term-highlight">\(\left(\frac{a}{b}\right)^2\)</span></span>
+      </div>
     </div>
-    
-    <div class="formula-box">
-      <strong>Similarity Criteria:</strong><br>
-      • AA (Angle-Angle)<br>
-      • SAS (Side-Angle-Side)<br>
-      • SSS (Side-Side-Side)<br>
-      • Ratio of areas = (Ratio of sides)²
-    </div>
+  </div>
+</div>
     
     <div class="definition-card bg-gray-50 p-4 rounded-lg">
       <h3 class="font-semibold text-gray-800">Scale Factor</h3>
@@ -504,23 +675,51 @@
     <a href="Math-9th-Definitions-Chapter10.html" class="text-sm bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full hover:bg-cyan-200">View Full Chapter</a>
   </div>
   
-  <div class="space-y-4">
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Linear Graph</h3>
-      <p class="text-gray-600">A straight line graph representing a linear function y = mx + c.</p>
+ <div class="space-y-4">
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Linear Graph</h3>
+    <p class="text-gray-600">
+      A straight line graph representing a linear function 
+      <span class="term-highlight">\(y = mx + c\)</span>.
+    </p>
+  </div>
+  
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Quadratic Graph</h3>
+    <p class="text-gray-800">
+      A parabola-shaped graph representing a quadratic function 
+      <span class="term-highlight">\(y = ax^2 + bx + c\)</span>.
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800 mb-3 block">Graph Features:</strong>
+    <div class="space-y-2">
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Slope (\(m\)):</span> 
+          Steepness of linear graph
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Vertex:</span> 
+          Turning point of parabola at 
+          <span class="term-highlight">\(\left(-\frac{b}{2a}, f\left(-\frac{b}{2a}\right)\right)\)</span>
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Roots:</span> 
+          x-intercepts found using 
+          <span class="term-highlight">\(x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}\)</span>
+        </div>
+      </div>
     </div>
-    
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Quadratic Graph</h3>
-      <p class="text-gray-600">A parabola-shaped graph representing a quadratic function y = ax² + bx + c.</p>
-    </div>
-    
-    <div class="formula-box">
-      <strong>Graph Features:</strong><br>
-      • Slope (m): Steepness of linear graph<br>
-      • Vertex: Turning point of parabola<br>
-      • Roots: x-intercepts of the graph
-    </div>
+</div>
   </div>
 </div>
 <div id="chapter11" class="bg-white rounded-xl shadow-md p-6 mb-8 scroll-mt-24">
@@ -532,7 +731,7 @@
   <div class="space-y-4">
     <div class="definition-card bg-gray-50 p-4 rounded-lg">
       <h3 class="font-semibold text-gray-800">Locus</h3>
-      <p class="text-gray-600">The set of all points that satisfy a given condition or set of conditions.</p>
+      <p class="text-gray-800">The set of all points that satisfy a given condition or set of conditions.</p>
     </div>
     
     <div class="formula-box">
@@ -544,7 +743,7 @@
     
     <div class="definition-card bg-gray-50 p-4 rounded-lg">
       <h3 class="font-semibold text-gray-800">Geometric Construction</h3>
-      <p class="text-gray-600">Creating geometric figures using only compass and straightedge.</p>
+      <p class="text-gray-800">Creating geometric figures using only compass and straightedge.</p>
     </div>
   </div>
 </div>
@@ -555,23 +754,60 @@
   </div>
   
   <div class="space-y-4">
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Frequency Distribution</h3>
-      <p class="text-gray-600">A table showing how often each value or range of values occurs in a data set.</p>
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Frequency Distribution</h3>
+    <p class="text-gray-800">
+      A table showing how often each value or range of values occurs in a data set,
+      organized into <span class="term-highlight">classes</span> with their 
+      <span class="term-highlight">frequencies</span>.
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800 mb-3 block">Measures of Central Tendency:</strong>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Mean:</span> 
+          <span class="term-highlight">\(\bar{x} = \frac{\sum{x_i}}{n}\)</span>
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Median:</span> 
+          Middle value of ordered data
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Mode:</span> 
+          Most frequent value(s)
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Range:</span> 
+          <span class="term-highlight">\(x_{max} - x_{min}\)</span>
+        </div>
+      </div>
     </div>
-    
-    <div class="formula-box">
-      <strong>Measures of Central Tendency:</strong><br>
-      • Mean = Σx/n<br>
-      • Median = Middle value<br>
-      • Mode = Most frequent value<br>
-      • Range = Max - Min
-    </div>
-    
-    <div class="definition-card bg-gray-50 p-4 rounded-lg">
-      <h3 class="font-semibold text-gray-800">Histogram</h3>
-      <p class="text-gray-600">A bar graph representing frequency distribution of numerical data.</p>
-    </div>
+  </div>
+  
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Histogram</h3>
+    <p class="text-gray-800">
+      A bar graph representing frequency distribution of numerical data, where:
+      <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-800">
+        <li>Bars touch each other (continuous data)</li>
+        <li>Area represents frequency</li>
+        <li>X-axis shows class intervals</li>
+      </ul>
+    </p>
+  </div>
   </div>
 </div>
         <!-- Continue with remaining chapters in similar format -->
@@ -586,22 +822,61 @@
           </div>
           
           <div class="space-y-4">
-            <div class="definition-card bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-800">Probability</h3>
-              <p class="text-gray-600">A measure of the likelihood that an event will occur, calculated as the ratio of favorable outcomes to total possible outcomes.</p>
-            </div>
-            
-            <div class="formula-box">
-              <strong>Probability Formulas:</strong><br>
-              • P(E) = n(E)/n(S)<br>
-              • 0 ≤ P(E) ≤ 1<br>
-              • P(E') = 1 - P(E)
-            </div>
-            
-            <div class="definition-card bg-gray-50 p-4 rounded-lg">
-              <h3 class="font-semibold text-gray-800">Sample Space</h3>
-              <p class="text-gray-600">The set of all possible outcomes of an experiment, denoted by <span class="term-highlight">S</span>.</p>
-            </div>
+            <div class="space-y-4">
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Probability</h3>
+    <p class="text-gray-800">
+      A measure of the likelihood that an event will occur, calculated as:
+      <span class="term-highlight">\( P(E) = \frac{\text{Favorable outcomes}}{\text{Total possible outcomes}} \)</span>
+    </p>
+  </div>
+  
+  <div class="formula-box bg-gray-50 p-4 rounded-lg">
+    <strong class="font-semibold text-gray-800 mb-3 block">Probability Formulas:</strong>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Probability of Event:</span> 
+          <span class="term-highlight">\( P(E) = \frac{n(E)}{n(S)} \)</span>
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Probability Range:</span> 
+          <span class="term-highlight">\( 0 \leq P(E) \leq 1 \)</span>
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-800">•</span>
+        <div>
+          <span class="font-medium">Complement Rule:</span> 
+          <span class="term-highlight">\( P(E') = 1 - P(E) \)</span>
+        </div>
+      </div>
+      <div class="flex items-baseline">
+        <span class="mr-2 text-primary-600">•</span>
+        <div>
+          <span class="font-medium">Independent Events:</span> 
+          <span class="term-highlight">\( P(A \cap B) = P(A) \times P(B) \)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="definition-card bg-gray-50 p-4 rounded-lg">
+    <h3 class="font-semibold text-gray-800">Sample Space</h3>
+    <p class="text-gray-600">
+      The set of all possible outcomes of an experiment, denoted by 
+      <span class="term-highlight">\( S \)</span>.
+      <ul class="list-disc pl-5 mt-2 space-y-1 text-gray-600">
+        <li>For a coin toss: \( S = \{H, T\} \)</li>
+        <li>For a die: \( S = \{1, 2, 3, 4, 5, 6\} \)</li>
+      </ul>
+    </p>
+  </div>
+</div>
           </div>
         </div>
 
