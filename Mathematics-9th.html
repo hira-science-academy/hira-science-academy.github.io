@@ -23,22 +23,23 @@
   <meta property="og:url" content="https://hira-science-academy.github.io/Mathematics-9th-notes.html" />
   <meta property="og:image" content="https://hira-science-academy.github.io/images/math9-book.jpg" />
   <meta property="og:site_name" content="Hira Science Academy" />
-<meta property="og:image:alt" content="Cover of the Class 9 Mathematics textbook for Punjab Board (PCTB) 2025">
-<meta name="twitter:image:alt" content="Cover of the Class 9 Mathematics textbook for Punjab Board (PCTB) 2025">
+  <meta property="og:image:alt" content="Cover of the Class 9 Mathematics textbook for Punjab Board (PCTB) 2025">
+  <meta name="twitter:image:alt" content="Cover of the Class 9 Mathematics textbook for Punjab Board (PCTB) 2025">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Class 9 Math Notes 2025 | PCTB Solutions" />
   <meta name="twitter:description" content="All-in-one Class 9 Mathematics notes including chapter exercises, definitions, and MCQs with answers (Punjab Textbook Board)." />
-  <meta name="twitter:image" content="https://hira-science-academy.github.io/images/math9-book.jpg" /><!-- Math Specific Favicons -->
-<link rel="icon" href="https://hira-science-academy.github.io/images/math-favicon.ico" type="image/x-icon">
-<link rel="icon" type="image/png" sizes="32x32" href="https://hira-science-academy.github.io/images/math-icon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="https://hira-science-academy.github.io/images/math-icon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://hira-science-academy.github.io/images/math-apple-touch-icon.png">
+  <meta name="twitter:image" content="https://hira-science-academy.github.io/images/math9-book.jpg" />
+  
+  <!-- Math Specific Favicons -->
+  <link rel="icon" href="https://hira-science-academy.github.io/images/math-favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://hira-science-academy.github.io/images/math-icon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://hira-science-academy.github.io/images/math-icon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://hira-science-academy.github.io/images/math-apple-touch-icon.png">
 
-<!-- Web App Manifest -->
-<link rel="manifest" href="/images/math-site.webmanifest">
-
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="/images/math-site.webmanifest">
 
   <!-- JSON-LD Schema (Image + Learning Resource) -->
   <script type="application/ld+json">
@@ -95,75 +96,121 @@
     .main-content { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 2rem; }
     @media (max-width: 1023px) { .main-content { grid-template-columns: 1fr; } .sidebar-container { position: static; order: 2; } }
     html, body { overflow-x: hidden; }
+    
+    /* Mobile PDF Viewer Styles */
+    .pdf-container { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: white; 
+      z-index: 100; 
+      display: none;
+      flex-direction: column;
+    }
+    .pdf-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #f1f5f9;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .pdf-iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+    .close-pdf {
+      background: #ef4444;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+    }
+    .pdf-controls {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.5rem;
+      background: #f1f5f9;
+      border-top: 1px solid #e2e8f0;
+    }
+    .pdf-controls button {
+      padding: 0.5rem 1rem;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+    }
   </style>
 </head>
-
 
 <body class="bg-gray-50">
   <!-- Navigation Bar -->
   <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-20 items-center">
-      <!-- Logo -->
-     <div class="flex-shrink-0 flex items-center">
-  <a href="index.html#home" class="flex items-center gap-3 group transition duration-300">
-    <img 
-      src="images/logo.png" 
-      alt="Hira Science Academy"
-      class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <a href="index.html#home" class="flex items-center gap-3 group transition duration-300">
+            <img 
+              src="images/logo.png" 
+              alt="Hira Science Academy"
+              class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
+            <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
+              Hira Science Academy
+            </span>
+          </a>
+        </div>
 
-    <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
-      Hira Science Academy
-    </span>
-  </a>
-</div>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:ml-10 md:flex md:space-x-8">
+          <a href="index.html#home" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+          <a href="index.html#notes" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
+          <a href="index.html#courses" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
+          <a href="index.html#features" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
+          <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
+          <a href="index.html#contact" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+        </div>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:ml-10 md:flex md:space-x-8">
-        <a href="index.html#home" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
-        <a href="index.html#notes" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
-        <a href="index.html#courses" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
-        <a href="index.html#features" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
-        <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
-        <a href="index.html#contact" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <div class="-mr-2 flex items-center md:hidden">
-        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
-          <span class="sr-only">Open main menu</span>
-          <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        <!-- Mobile Menu Button -->
+        <div class="-mr-2 flex items-center md:hidden">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Mobile Menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Home</a>
-      <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Notes</a>
-      <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Courses</a>
-      <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Why Us</a>
-      <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Testimonials</a>
-      <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Contact</a>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Home</a>
+        <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Notes</a>
+        <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Courses</a>
+        <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Why Us</a>
+        <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Testimonials</a>
+        <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Contact</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <!-- Hero Section -->
-<div class="bg-gradient-to-r from-blue-600 to-cyan-600 py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-4xl mx-auto text-center">
-    <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Mathematics Class 9 PCTB 2025 Notes</h1>
-    <p class="text-lg md:text-xl text-blue-100">Complete chapter-wise definitions, solved exercises, MCQs, and key concepts</p>
+  <div class="bg-gradient-to-r from-blue-600 to-cyan-600 py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Mathematics Class 9 PCTB 2025 Notes</h1>
+      <p class="text-lg md:text-xl text-blue-100">Complete chapter-wise definitions, solved exercises, MCQs, and key concepts</p>
+    </div>
   </div>
-</div>
-
 
   <!-- Breadcrumbs -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -197,50 +244,31 @@
         <div class="bg-white rounded-xl shadow-md p-6 mb-8">
           <h2 class="text-2xl font-bold text-gray-800 mb-4">Complete Mathematics Notes for Class 9</h2>
           <div class="flex flex-col md:flex-row items-center md:items-start gap-6 mb-4">
- <div class="flex flex-col md:flex-row items-start gap-6">
-  <!-- Text on the left -->
-  <div class="md:w-2/3">
-    <p class="text-gray-600 text-justify leading-relaxed mb-4">
-      These comprehensive Mathematics notes cover all 13 chapters of the Class 9 Punjab Textbook Board syllabus. Each chapter includes clear theory, solved examples, step-by-step exercise solutions, important definitions, and practice MCQs with answer keys.
-    </p>
-    <p class="text-gray-600 text-justify leading-relaxed">
-      The notes are ideal for exam preparation and concept building, offering structured content that helps students understand and apply key mathematical principles with confidence.
-    </p>
-  </div>
+            <div class="flex flex-col md:flex-row items-start gap-6">
+              <!-- Text on the left -->
+              <div class="md:w-2/3">
+                <p class="text-gray-600 text-justify leading-relaxed mb-4">
+                  These comprehensive Mathematics notes cover all 13 chapters of the Class 9 Punjab Textbook Board syllabus. Each chapter includes clear theory, solved examples, step-by-step exercise solutions, important definitions, and practice MCQs with answer keys.
+                </p>
+                <p class="text-gray-600 text-justify leading-relaxed">
+                  The notes are ideal for exam preparation and concept building, offering structured content that helps students understand and apply key mathematical principles with confidence.
+                </p>
+              </div>
 
-  <!-- Image on the right (click-to-zoom) -->
-  <div class="md:w-1/3 flex justify-center">
-  <img 
-    src="images/math9-book.jpg" 
-    alt="Class 9 Mathematics Book 2025 (PCTB) - Cover Image" 
-    title="Class 9 Mathematics Notes 2025 - Punjab Textbook Board (PCTB)" 
-    width="300" height="450"
-    loading="lazy"
-    class="w-full max-w-xs rounded-lg shadow-md cursor-pointer transition-transform duration-200 hover:scale-105"
-    onclick="openModal(this.src)"
-  />
-</div>
-</div>
-
-<!-- Modal for Image Zoom (shared modal for all images) -->
-<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-  <img id="modalImage" src="" class="max-w-3xl w-full rounded-lg shadow-2xl">
-  <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-3xl font-bold">&times;</button>
-</div>
-
-<!-- JavaScript for modal (can be reused) -->
-<script>
-  function openModal(src) {
-    document.getElementById('modalImage').src = src;
-    document.getElementById('imageModal').classList.remove('hidden');
-  }
-
-  function closeModal() {
-    document.getElementById('imageModal').classList.add('hidden');
-  }
-</script>
-
-</div>
+              <!-- Image on the right (click-to-zoom) -->
+              <div class="md:w-1/3 flex justify-center">
+                <img 
+                  src="images/math9-book.jpg" 
+                  alt="Class 9 Mathematics Book 2025 (PCTB) - Cover Image" 
+                  title="Class 9 Mathematics Notes 2025 - Punjab Textbook Board (PCTB)" 
+                  width="300" height="450"
+                  loading="lazy"
+                  class="w-full max-w-xs rounded-lg shadow-md cursor-pointer transition-transform duration-200 hover:scale-105"
+                  onclick="openModal(this.src)"
+                />
+              </div>
+            </div>
+          </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
               <h3 class="font-semibold text-blue-800 mb-2 text-lg">Key Features:</h3>
@@ -271,1368 +299,1431 @@
         <div id="chapters" class="bg-white rounded-xl shadow-md p-6 mb-8">
           <h2 class="text-2xl font-bold text-gray-800 mb-6">Chapter-wise Notes</h2>
           
-           <!-- Chapter 1 -->
-        <div id="chapter1" class="mb-8 scroll-mt-24">
+          <!-- Chapter 1 -->
+          <div id="chapter1" class="mb-8 scroll-mt-24">
             <!-- Chapter Title Bar -->
             <div onclick="toggleChapter('chapter1-details', 'toggle-icon1')" 
                 class="bg-blue-100 text-blue-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📘 Chapter 1 – Real Numbers (Class 9 Math)</h2>
+                <h2 class="text-lg font-semibold">📘 Chapter 1 – Real Numbers </h2>
                 <span id="toggle-icon1" class="text-xl">➕</span>
             </div>
 
             <!-- Hidden Content -->
             <div id="chapter1-details" class="hidden mt-4">
+              <!-- Summary -->
+              <div class="chapter-summary mb-6">
+                <p class="mb-2 text-justify">
+                  <strong>Key Concepts:</strong> This chapter explains the number system, dividing numbers into 
+                  <strong>rational</strong> and <strong>irrational</strong>. It covers properties of real numbers, representation on the number line, and operations with radicals.
+                </p>
 
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter explains the number system, dividing numbers into 
-                        <strong>rational</strong> and <strong>irrational</strong>. It covers properties of real numbers, representation on the number line, and operations with radicals.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Important Formulas:</strong><br>
-                        • \(\sqrt{ab} = \sqrt{a} \times \sqrt{b}\)<br>
-                        • \(\sqrt{\dfrac{a}{b}} = \dfrac{\sqrt{a}}{\sqrt{b}}\)<br>
-                        • \((a + b)(a - b) = a^2 - b^2\)<br>
-                        • Rationalizing denominator: \(\dfrac{1}{\sqrt{a}} = \dfrac{\sqrt{a}}{a}\)
-                    </div>
-
-                    <div class="formula-box mt-3">
-                        <strong>Properties of Real Numbers:</strong><br>
-                        • <u>Commutative</u>: \(a + b = b + a\); \(a \times b = b \times a\)<br>
-                        • <u>Associative</u>: \((a + b) + c = a + (b + c)\)<br>
-                        • <u>Distributive</u>: \(a \times (b + c) = a \times b + a \times c\)<br>
-                        • <u>Additive Identity</u>: \(a + 0 = a\)<br>
-                        • <u>Multiplicative Identity</u>: \(a \times 1 = a\)
-                    </div>
+                <div class="formula-box">
+                  <strong>Important Formulas:</strong><br>
+                  • \(\sqrt{ab} = \sqrt{a} \times \sqrt{b}\)<br>
+                  • \(\sqrt{\dfrac{a}{b}} = \dfrac{\sqrt{a}}{\sqrt{b}}\)<br>
+                  • \((a + b)(a - b) = a^2 - b^2\)<br>
+                  • Rationalizing denominator: \(\dfrac{1}{\sqrt{a}} = \dfrac{\sqrt{a}}{a}\)
                 </div>
 
-                <!-- Resource Links -->
-                <div class="space-y-3">
-
-                    <!-- Exercise 1.1 -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 1.1 – Real Numbers (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter1_Exercise1.1.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 1.2 -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 1.2 – Real Numbers (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter1_Exercise1.2.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 1.3 -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 1.3 – Real Numbers (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter1_Exercise1.3.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Chapter 1 Real Numbers</h3>
-                        <a href="notes/math9/Chapter1_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Chapter 1 Real Numbers</h3>
-                        <a href="notes/math9/Chapter1_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Chapter 1 Real Numbers</h3>
-                        <a href="notes/math9/Chapter1_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
+                <div class="formula-box mt-3">
+                  <strong>Properties of Real Numbers:</strong><br>
+                  • <u>Commutative</u>: \(a + b = b + a\); \(a \times b = b \times a\)<br>
+                  • <u>Associative</u>: \((a + b) + c = a + (b + c)\)<br>
+                  • <u>Distributive</u>: \(a \times (b + c) = a \times b + a \times c\)<br>
+                  • <u>Additive Identity</u>: \(a + 0 = a\)<br>
+                  • <u>Multiplicative Identity</u>: \(a \times 1 = a\)
                 </div>
+              </div>
+
+              <!-- Resource Links -->
+              <div class="space-y-3">
+                <!-- Exercise 1.1 -->
+                <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+                  <h3 class="text-base font-semibold">📄 Exercise 1.1 – Real Numbers</h3>
+                  <div class="flex space-x-4">
+                    <button onclick="openPDF('notes/math9/Chapter1_Exercise1.1.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+                    <a href="notes/math9/Chapter1_Exercise1.1.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+                  </div>
+                </div>
+
+                <!-- Exercise 1.2 -->
+                <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+                  <h3 class="text-base font-semibold">📄 Exercise 1.2 – Real Numbers</h3>
+                  <div class="flex space-x-4">
+                    <button onclick="openPDF('notes/math9/Chapter1_Exercise1.2.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+                    <a href="notes/math9/Chapter1_Exercise1.2.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+                  </div>
+                </div>
+
+                <!-- Exercise 1.3 -->
+                <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+                  <h3 class="text-base font-semibold">📄 Exercise 1.3 – Real Numbers</h3>
+                  <div class="flex space-x-4">
+                    <button onclick="openPDF('notes/math9/Chapter1_Exercise1.3.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+                    <a href="notes/math9/Chapter1_Exercise1.3.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+                  </div>
+                </div>
+
+                <!-- Review Exercise -->
+                <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+                  <h3 class="text-base font-semibold">📙 Review Exercise – Real Numbers</h3>
+                  <div class="flex space-x-4">
+                    <button onclick="openPDF('notes/math9/Chapter1_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+                    <a href="notes/math9/Chapter1_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+                  </div>
+                </div>
+
+                <!-- Definitions -->
+                <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+                  <h3 class="text-base font-semibold">📒 Definitions – Real Numbers</h3>
+                  <div class="flex space-x-4">
+                    <button onclick="openPDF('notes/math9/Chapter1_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+                    <a href="notes/math9/Chapter1_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+                  </div>
+                </div>
+
+                <!-- MCQs -->
+                <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+                  <h3 class="text-base font-semibold">📝 MCQs – Real Numbers</h3>
+                  <div class="flex space-x-4">
+                    <button onclick="openPDF('notes/math9/Chapter1_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+                    <a href="notes/math9/Chapter1_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-
-        <!-- Chapter 2 -->
-        <div id="chapter2" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter2-details', 'toggle-icon2')" class="bg-green-100 text-green-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📗 Chapter 2 – Logarithms (Class 9 Math)</h2>
-                <span id="toggle-icon2" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter2-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter introduces logarithms as the inverse of exponents. It covers the fundamental laws of logarithms, common logarithms (base 10), and their applications in simplifying calculations. The relationship between exponents and logarithms is explored through various examples and problems.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Laws of Logarithms:</strong><br>
-                        • \(\log_a(mn) = \log_a m + \log_a n\)<br>
-                        • \(\log_a\left(\frac{m}{n}\right) = \log_a m - \log_a n\)<br>
-                        • \(\log_a(m^n) = n \log_a m\)<br>
-                        • \(\log_a a = 1\)<br>
-                        • \(\log_a 1 = 0\)<br>
-                        • Change of Base: \(\log_a b = \frac{\log_n b}{\log_n a}\)
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 2.1 -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 2.1 – Logarithms (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter2_Exercise2.1.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 2.2 -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 2.2 – Logarithms (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter2_Exercise2.2.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 2.3 -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 2.3 – Logarithms (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter2_Exercise2.3.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 2.4 -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 2.4 – Logarithms (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter2_Exercise2.4.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Logarithms (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter2_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Logarithms (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter2_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-purple-100 text-purple-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Logarithms (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter2_MCQ.pdf" target="_blank" class="text-purple-700 hover:text-purple-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chapter 3 -->
-        <div id="chapter3" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter3-details', 'toggle-icon3')" class="bg-purple-100 text-purple-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📙 Chapter 3 – Sets and Functions (Class 9 Math)</h2>
-                <span id="toggle-icon3" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter3-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter introduces fundamental concepts of sets and functions. It covers set operations (union, intersection, difference), types of sets (finite, infinite, equal, equivalent), and various types of functions (linear, quadratic, constant). Venn diagrams are used extensively to visualize set relationships.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Set Operations:</strong><br>
-                        • \(A \cup B = \{x \mid x \in A \text{ or } x \in B\}\)<br>
-                        • \(A \cap B = \{x \mid x \in A \text{ and } x \in B\}\)<br>
-                        • \(A - B = \{x \mid x \in A \text{ and } x \notin B\}\)<br>
-                        • \(A' = \{x \mid x \notin A\}\)<br>
-                        • \(n(A \cup B) = n(A) + n(B) - n(A \cap B)\)
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 3.1 -->
-                    <div class="flex items-center justify-between bg-purple-100 text-purple-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 3.1 – Sets and Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter3_Exercise3.1.pdf" target="_blank" class="text-purple-700 hover:text-purple-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 3.2 -->
-                    <div class="flex items-center justify-between bg-purple-100 text-purple-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 3.2 – Sets and Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter3_Exercise3.2.pdf" target="_blank" class="text-purple-700 hover:text-purple-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 3.3 -->
-                    <div class="flex items-center justify-between bg-purple-100 text-purple-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 3.3 – Sets and Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter3_Exercise3.3.pdf" target="_blank" class="text-purple-700 hover:text-purple-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Sets and Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter3_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Sets and Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter3_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Sets and Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter3_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chapter 4 -->
-        <div id="chapter4" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter4-details', 'toggle-icon4')" class="bg-pink-100 text-pink-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📕 Chapter 4 – Factorization and Algebraic Manipulation (Class 9 Math)</h2>
-                <span id="toggle-icon4" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter4-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter covers various techniques for factorizing algebraic expressions including common factors, grouping, difference of squares, perfect squares, and sum/difference of cubes. It also includes algebraic manipulation techniques such as simplification of complex fractions and rational expressions.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Factorization Formulas:</strong><br>
-                        • \(a^2 - b^2 = (a - b)(a + b)\)<br>
-                        • \(a^2 \pm 2ab + b^2 = (a \pm b)^2\)<br>
-                        • \(a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)\)<br>
-                        • \(x^2 + (a + b)x + ab = (x + a)(x + b)\)<br>
-                        • \(acx^2 + (ad + bc)x + bd = (ax + b)(cx + d)\)
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 4.1 -->
-                    <div class="flex items-center justify-between bg-pink-100 text-pink-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 4.1 – Factorization & Algebraic Manipulation (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter4_Exercise4.1.pdf" target="_blank" class="text-pink-700 hover:text-pink-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 4.2 -->
-                    <div class="flex items-center justify-between bg-pink-100 text-pink-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 4.2 – Factorization & Algebraic Manipulation (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter4_Exercise4.2.pdf" target="_blank" class="text-pink-700 hover:text-pink-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 4.3 -->
-                    <div class="flex items-center justify-between bg-pink-100 text-pink-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 4.3 – Factorization & Algebraic Manipulation (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter4_Exercise4.3.pdf" target="_blank" class="text-pink-700 hover:text-pink-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 4.4 -->
-                    <div class="flex items-center justify-between bg-pink-100 text-pink-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 4.4 – Factorization & Algebraic Manipulation (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter4_Exercise4.4.pdf" target="_blank" class="text-pink-700 hover:text-pink-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Factorization & Algebraic Manipulation (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter4_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Factorization & Algebraic Manipulation (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter4_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Factorization & Algebraic Manipulation (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter4_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chapter 5 -->
-        <div id="chapter5" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter5-details', 'toggle-icon5')" class="bg-yellow-100 text-yellow-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📔 Chapter 5 – Linear Equations and Inequalities (Class 9 Math)</h2>
-                <span id="toggle-icon5" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter5-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter covers fundamental concepts of linear equations and inequalities, including their definitions, properties, and applications in real-world problem solving. It introduces key terms like feasible region, objective function, and optimal solutions for systems of inequalities.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Formulas & Symbols:</strong><br>
-                        • Linear Equation: \(ax + b = 0\), where \(a \neq 0\)<br>
-                        • Inequality Symbols: \(>\), \(<\), \(\geq\), \(\leq\)<br>
-                        • Linear Inequality: \(ax + b < 0\) (or \(>\), \(\leq\), \(\geq\))<br>
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 5.1 -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 5.1 – Linear Equations (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter5_Exercise5.1.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 5.2 -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 5.2 – Linear Equations (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter5_Exercise5.2.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 5.3 -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 5.3 – Linear Equations (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter5_Exercise5.3.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Linear Equations (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter5_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-orange-100 text-orange-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Linear Equations (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter5_Definitions.pdf" target="_blank" class="text-orange-700 hover:text-orange-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Linear Equations(Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter5_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chapter 6 -->
-        <div id="chapter6" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter6-details', 'toggle-icon6')" class="bg-teal-100 text-teal-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📒 Chapter 6 – Trigonometry (Class 9 Math)</h2>
-                <span id="toggle-icon6" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter6-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter introduces trigonometric ratios (sine, cosine, tangent) for acute angles in right-angled triangles. It covers fundamental trigonometric identities, applications to solve right triangles, and angle measurement in degrees. The chapter also includes practical applications of trigonometry in real-world problems.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Trigonometric Ratios:</strong><br>
-                        • \(\sin\theta = \frac{\text{Opposite}}{\text{Hypotenuse}}\)<br>
-                        • \(\cos\theta = \frac{\text{Adjacent}}{\text{Hypotenuse}}\)<br>
-                        • \(\tan\theta = \frac{\text{Opposite}}{\text{Adjacent}}\)<br>
-                        • \(\csc\theta = \frac{1}{\sin\theta}\)<br>
-                        • \(\sec\theta = \frac{1}{\cos\theta}\)<br>
-                        • \(\cot\theta = \frac{1}{\tan\theta}\)
-                    </div>
-
-                    <div class="formula-box mt-3">
-                        <strong>Fundamental Identities:</strong><br>
-                        • \(\sin^2\theta + \cos^2\theta = 1\)<br>
-                        • \(1 + \tan^2\theta = \sec^2\theta\)<br>
-                        • \(1 + \cot^2\theta = \csc^2\theta\)<br>
-                        • \(\tan\theta = \frac{\sin\theta}{\cos\theta}\)<br>
-                        • \(\sin(90^\circ - \theta) = \cos\theta\)<br>
-                        • \(\cos(90^\circ - \theta) = \sin\theta\)
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 6.1 -->
-                    <div class="flex items-center justify-between bg-teal-100 text-teal-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 6.1 – Trigonometric Ratios (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter6_Exercise6.1.pdf" target="_blank" class="text-teal-700 hover:text-teal-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 6.2 -->
-                    <div class="flex items-center justify-between bg-teal-100 text-teal-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 6.2 – Trigonometric Identities (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter6_Exercise6.2.pdf" target="_blank" class="text-teal-700 hover:text-teal-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 6.3 -->
-                    <div class="flex items-center justify-between bg-teal-100 text-teal-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 6.3 – Trigonometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter6_Exercise6.3.pdf" target="_blank" class="text-teal-700 hover:text-teal-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Trigonometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter6_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Trigonometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter6_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Trigonometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter6_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chapter 7 -->
-        <div id="chapter7" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter7-details', 'toggle-icon7')" class="bg-indigo-100 text-indigo-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📚 Chapter 7 – Coordinate Geometry (Class 9 Math)</h2>
-                <span id="toggle-icon7" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter7-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter introduces the Cartesian coordinate system and covers fundamental concepts including distance between points, midpoint formula, slope of a line, and graphing linear equations. It includes applications of coordinate geometry in solving geometric problems.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Key Formulas:</strong><br>
-                        • Distance Formula: \(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\)<br>
-                        • Midpoint Formula: \(M(x,y)=\left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)\)<br>
-                        • Slope: \(m = \frac{y_2 - y_1}{x_2 - x_1}\)<br>
-                        • Point-Slope Form: \(y - y_1 = m(x - x_1)\)<br>
-                        • Slope-Intercept Form: \(y = mx + c\)<br>
-                        • General Form: \(ax + by + c = 0\)
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 7.1 -->
-                    <div class="flex items-center justify-between bg-indigo-100 text-indigo-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 7.1 – Coordinate Geometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter7_Exercise7.1.pdf" target="_blank" class="text-indigo-700 hover:text-indigo-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 7.2 -->
-                    <div class="flex items-center justify-between bg-indigo-100 text-indigo-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 7.2 – Coordinate Geometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter7_Exercise7.2.pdf" target="_blank" class="text-indigo-700 hover:text-indigo-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 7.3 -->
-                    <div class="flex items-center justify-between bg-indigo-100 text-indigo-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 7.3 – Coordinate Geometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter7_Exercise7.3.pdf" target="_blank" class="text-indigo-700 hover:text-indigo-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Coordinate Geometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter7_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Coordinate Geometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter7_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Coordinate Geometry (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter7_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-                <!-- Chapter 8 -->
-        <div id="chapter8" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter8-details', 'toggle-icon8')" class="bg-red-100 text-red-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📖 Chapter 8 – Logic (Class 9 Math)</h2>
-                <span id="toggle-icon8" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter8-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter introduces the basics of mathematical logic including statements, truth tables, logical connectives (and, or, not, if-then, if and only if), and logical equivalence. It also covers methods of proof such as direct proof and proof by contradiction.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Logical Connectives:</strong><br>
-                        • Conjunction (AND): \( p \land q \)<br>
-                        • Disjunction (OR): \( p \lor q \)<br>
-                        • Negation (NOT): \( \lnot p \)<br>
-                        • Conditional: \( p \to q \)<br>
-                        • Biconditional: \( p \leftrightarrow q \)<br>
-                        • Tautology: Always true (e.g., \( p \lor \lnot p \))<br>
-                        • Contradiction: Always false (e.g., \( p \land \lnot p \))
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 8.1 -->
-                    <div class="flex items-center justify-between bg-red-100 text-red-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 8.1 – Logic (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter8_Exercise8.1.pdf" target="_blank" class="text-red-700 hover:text-red-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Logic (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter8_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Logic (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter8_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Logic (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter8_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chapter 9 -->
-        <div id="chapter9" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter9-details', 'toggle-icon9')" class="bg-gray-100 text-gray-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📙 Chapter 9 – Similar Figures (Class 9 Math)</h2>
-                <span id="toggle-icon9" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter9-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter explains the concept of similarity in geometric figures, including the criteria for similarity of triangles (AA, SAS, SSS), properties of similar figures, and applications of similarity in problem solving. It also discusses the relationship between ratios of corresponding sides, areas, volumes, and perimeters.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Similarity Criteria for Triangles:</strong><br>
-                        • AA (Angle-Angle): Two corresponding angles equal \( (\angle A = \angle P, \angle B = \angle Q) \)<br>
-                        • SAS (Side-Angle-Side): Proportional sides and included angle equal \( \left(\frac{AB}{PQ} = \frac{AC}{PR}, \angle A = \angle P\right) \)<br>
-                        • SSS (Side-Side-Side): All corresponding sides proportional \( \left(\frac{AB}{PQ} = \frac{BC}{QR} = \frac{AC}{PR}\right) \)
-                    </div>
-
-                    <div class="formula-box mt-3">
-                        <strong>Properties of Similar Figures:</strong><br>
-                        • Corresponding angles are equal<br>
-                        • Corresponding sides are proportional<br>
-                        • Ratio of areas = (Ratio of sides)²<br>
-                        • Ratio of volumes = (Ratio of sides)³ (for 3D figures)<br>
-                        • Perimeters are proportional to corresponding sides
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 9.1 -->
-                    <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 9.1 – Similar Figures (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter9_Exercise9.1.pdf" target="_blank" class="text-gray-700 hover:text-gray-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 9.2 -->
-                    <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 9.2 – Similar Figures (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter9_Exercise9.2.pdf" target="_blank" class="text-gray-700 hover:text-gray-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 9.3 -->
-                    <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 9.3 – Similar Figures (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter9_Exercise9.3.pdf" target="_blank" class="text-gray-700 hover:text-gray-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Similar Figures (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter9_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Similar Figures (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter9_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Similar Figures (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter9_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chapter 10 -->
-        <div id="chapter10" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter10-details', 'toggle-icon10')" class="bg-cyan-100 text-cyan-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📘 Chapter 10 – Graphs of Functions (Class 9 Math)</h2>
-                <span id="toggle-icon10" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter10-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter introduces the graphs of different types of functions including linear, quadratic, and piecewise functions. It covers determining domain and range, interpreting important features (intercepts, vertices, asymptotes), and solving equations graphically. The chapter highlights the relationship between algebraic equations and their graphical representations.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Function Types & Graphs:</strong><br>
-                        • <u>Linear</u>: \( f(x) = mx + b \) → Straight line<br>
-                        &nbsp;&nbsp;- Slope (\( m \)): Steepness and direction<br>
-                        &nbsp;&nbsp;- y-intercept (\( b \)): Point \((0, b)\)<br>
-                        • <u>Quadratic</u>: \( f(x) = ax^2 + bx + c \) → Parabola<br>
-                        &nbsp;&nbsp;- Vertex form: \( f(x) = a(x - h)^2 + k \)<br>
-                        &nbsp;&nbsp;- Vertex: \((h, k)\), Axis of symmetry: \( x = h \)<br>
-                        • <u>Piecewise</u>: Defined by different expressions on different intervals
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 10.1 -->
-                    <div class="flex items-center justify-between bg-cyan-100 text-cyan-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 10.1 – Graphs of Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter10_Exercise10.1.pdf" target="_blank" class="text-cyan-700 hover:text-cyan-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 10.2 -->
-                    <div class="flex items-center justify-between bg-cyan-100 text-cyan-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 10.2 – Graphs of Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter10_Exercise10.2.pdf" target="_blank" class="text-cyan-700 hover:text-cyan-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 10.3 -->
-                    <div class="flex items-center justify-between bg-cyan-100 text-cyan-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 10.3 – Graphs of Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter10_Exercise10.3.pdf" target="_blank" class="text-cyan-700 hover:text-cyan-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Graphs of Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter10_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Graphs of Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter10_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Graphs of Functions (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter10_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chapter 11 -->
-        <div id="chapter11" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter11-details', 'toggle-icon11')" class="bg-orange-100 text-orange-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📔 Chapter 11 – Loci and Construction (Class 9 Math)</h2>
-                <span id="toggle-icon11" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter11-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter explains the concept of loci (the set of points satisfying a given condition) and basic geometric constructions using compass and straightedge. It includes constructions of perpendicular bisectors, angle bisectors, parallel lines, circles, and specific angles. The connection between loci and constructions is highlighted throughout.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Common Loci:</strong><br>
-                        • Perpendicular bisector → Points equidistant from two given points<br>
-                        • Angle bisector → Points equidistant from two lines<br>
-                        • Circle → Points at a fixed distance from a given point (center)<br>
-                        • Parallel lines → Points at a constant distance from a line<br>
-                        • Compass & straightedge techniques for accurate constructions
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercise 11.1 -->
-                    <div class="flex items-center justify-between bg-orange-100 text-orange-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 11.1 – Loci and Construction (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter11_Exercise11.1.pdf" target="_blank" class="text-orange-700 hover:text-orange-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Exercise 11.2 -->
-                    <div class="flex items-center justify-between bg-orange-100 text-orange-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 11.2 – Loci and Construction (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter11_Exercise11.2.pdf" target="_blank" class="text-orange-700 hover:text-orange-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Loci and Construction (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter11_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Loci and Construction (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter11_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Loci and Construction (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter11_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Chapter 12 -->
-        <div id="chapter12" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter12-details', 'toggle-icon12')" class="bg-gray-200 text-gray-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📒 Chapter 12 – Information Handling (Class 9 Math)</h2>
-                <span id="toggle-icon12" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter12-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter covers methods of organizing and representing data including frequency distributions, histograms, frequency polygons, and pie charts. It also explains measures of central tendency (mean, median, mode) and measures of dispersion (range). The focus is on calculation and interpretation of statistical graphs.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Important Formulas:</strong><br>
-                        • Mean: \( \bar{X} = \frac{\sum x}{n} \)<br>
-                        • Median: Middle value of ordered data<br>
-                        • Mode: Most frequent value<br>
-                        • Range: \( \text{Maximum} - \text{Minimum} \)<br>
-                        • Class Mark: \( \frac{\text{Lower Limit} + \text{Upper Limit}}{2} \)<br>
-                        • Relative Frequency: \( \frac{\text{Class Frequency}}{\text{Total Frequency}} \)
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercises -->
-                    <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 12.1 – Information Handling (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter12_Exercise12.1.pdf" target="_blank" class="text-gray-700 hover:text-gray-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 12.2 – Information Handling (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter12_Exercise12.2.pdf" target="_blank" class="text-gray-700 hover:text-gray-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 12.3 – Information Handling (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter12_Exercise12.3.pdf" target="_blank" class="text-gray-700 hover:text-gray-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Information Handling (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter12_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Information Handling (Class 9 Math)</h3>
-                        <a href="notes/math極端9/Chapter12_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Information Handling (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter12_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-          <!-- Chapter 13 -->
-        <div id="chapter13" class="mb-8 scroll-mt-24">
-            <!-- Chapter Title Bar -->
-            <div onclick="toggleChapter('chapter13-details', 'toggle-icon13')" class="bg-rose-100 text-rose-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
-                <h2 class="text-lg font-semibold">📙 Chapter 13 – Probability (Class 9 Math)</h2>
-                <span id="toggle-icon13" class="text-xl">➕</span>
-            </div>
-
-            <!-- Hidden Content -->
-            <div id="chapter13-details" class="hidden mt-4">
-
-                <!-- Summary -->
-                <div class="chapter-summary mb-6">
-                    <p class="mb-2 text-justify">
-                        <strong>Key Concepts:</strong> This chapter introduces the fundamentals of probability, including sample space, events, and calculation of probabilities for simple cases. It covers theoretical probability, experimental probability, complementary events, and the relationship between theory and real-world applications.
-                    </p>
-
-                    <div class="formula-box">
-                        <strong>Important Formulas:</strong><br>
-                        • Theoretical Probability: \( P(E) = \frac{\text{Number of favorable outcomes}}{\text{Total possible outcomes}} \)<br>
-                        • Experimental Probability: \( \frac{\text{Number of times event occurs}}{\text{Total trials}} \)<br>
-                        • Probability Range: \( 0 \leq P(E) \leq 1 \)<br>
-                        • Complementary Events: \( P(\text{not } E) = 1 - P(E) \)<br>
-                        • Equally Likely Outcomes: \( P(E) = \frac{n(E)}{n(S)} \)
-                    </div>
-                </div>
-
-                <!-- Resource Links -->
-                <div class="space-y-3">
-                    <!-- Exercises -->
-                    <div class="flex items-center justify-between bg-rose-100 text-rose-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 13.1 – Probability (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter13_Exercise13.1.pdf" target="_blank" class="text-rose-700 hover:text-rose-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <div class="flex items-center justify-between bg-rose-100 text-rose-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📄 Exercise 13.2 – Probability (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter13_Exercise13.2.pdf" target="_blank" class="text-rose-700 hover:text-rose-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Review Exercise -->
-                    <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📙 Review Exercise – Probability (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter13_ReviewExercise.pdf" target="_blank" class="text-blue-700 hover:text-blue-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- Definitions -->
-                    <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📒 Definitions – Probability (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter13_Definitions.pdf" target="_blank" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">View PDF</a>
-                    </div>
-
-                    <!-- MCQs -->
-                    <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
-                        <h3 class="text-base font-semibold">📝 MCQs – Probability (Class 9 Math)</h3>
-                        <a href="notes/math9/Chapter13_MCQ.pdf" target="_blank" class="text-green-700 hover:text-green-900 underline font-semibold">View PDF</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
           </div>
-<!-- FAQ Section -->
-          <div id="faq" class="bg-white rounded-xl shadow-md p-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6">Frequently Asked Questions</h2>
-            
-            <div class="space-y-4">
-              <!-- FAQ Item 1 -->
-              <div class="border-b border-gray-200 pb-4">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">What's the difference between rational and irrational numbers?</h3>
-                <p class="text-gray-600 text-sm">
-                  <strong>Rational numbers</strong> can be expressed as fractions p/q where p and q are integers (q ≠ 0), and have terminating or repeating decimals. <strong>Irrational numbers</strong> cannot be expressed as simple fractions and have non-terminating, non-repeating decimal expansions (e.g., √2, π).
-                </p>
-              </div>
-              
-              <!-- FAQ Item 2 -->
-              <div class="border-b border-gray-200 pb-4">
-                <h3 class="text-lg font-semibold text-gray-800 mb-2">How do I solve logarithmic equations?</h3>
-                <p class="text-gray-600 text-sm">
-                  To solve logarithmic equations: 1) Use logarithm properties to combine/simplify terms, 2) Convert to exponential form if needed, 3) Solve the resulting equation, 4) Check for extraneous solutions (log arguments must be positive). For example: log₃(x + 1) = 2 ⇒ x + 1 = 3² ⇒ x = 8.
-                </p>
-              </div>
+<!-- Chapter 2 -->
+<div id="chapter2" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter2-details', 'toggle-icon2')" class="bg-green-100 text-green-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📗 Chapter 2 – Logarithms </h2>
+    <span id="toggle-icon2" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter2-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter introduces logarithms as the inverse of exponents. It covers the fundamental laws of logarithms, common logarithms (base 10), and their applications in simplifying calculations. The relationship between exponents and logarithms is explored through various examples and problems.
+      </p>
+
+      <div class="formula-box">
+        <strong>Laws of Logarithms:</strong><br>
+        • \(\log_a(mn) = \log_a m + \log_a n\)<br>
+        • \(\log_a\left(\frac{m}{n}\right) = \log_a m - \log_a n\)<br>
+        • \(\log_a(m^n) = n \log_a m\)<br>
+        • \(\log_a a = 1\)<br>
+        • \(\log_a 1 = 0\)<br>
+        • Change of Base: \(\log_a b = \frac{\log_n b}{\log_n a}\)
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 2.1 -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 2.1 – Logarithms </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter2_Exercise2.1.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter2_Exercise2.1.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 2.2 -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 2.2 – Logarithms </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter2_Exercise2.2.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter2_Exercise2.2.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 2.3 -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 2.3 – Logarithms </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter2_Exercise2.3.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter2_Exercise2.3.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 2.4 -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 2.4 – Logarithms </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter2_Exercise2.4.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter2_Exercise2.4.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Logarithms </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter2_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter2_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Logarithms </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter2_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter2_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-purple-100 text-purple-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Logarithms </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter2_MCQ.pdf')" class="text-purple-700 hover:text-purple-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter2_MCQ.pdf" download class="text-purple-700 hover:text-purple-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chapter 3 -->
+<div id="chapter3" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter3-details', 'toggle-icon3')" class="bg-purple-100 text-purple-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📙 Chapter 3 – Sets and Functions </h2>
+    <span id="toggle-icon3" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter3-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter introduces fundamental concepts of sets and functions. It covers set operations (union, intersection, difference), types of sets (finite, infinite, equal, equivalent), and various types of functions (linear, quadratic, constant). Venn diagrams are used extensively to visualize set relationships.
+      </p>
+
+      <div class="formula-box">
+        <strong>Set Operations:</strong><br>
+        • \(A \cup B = \{x \mid x \in A \text{ or } x \in B\}\)<br>
+        • \(A \cap B = \{x \mid x \in A \text{ and } x \in B\}\)<br>
+        • \(A - B = \{x \mid x \in A \text{ and } x \notin B\}\)<br>
+        • \(A' = \{x \mid x \notin A\}\)<br>
+        • \(n(A \cup B) = n(A) + n(B) - n(A \cap B)\)
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 3.1 -->
+      <div class="flex items-center justify-between bg-purple-100 text-purple-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 3.1 – Sets and Functions </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter3_Exercise3.1.pdf')" class="text-purple-700 hover:text-purple-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter3_Exercise3.1.pdf" download class="text-purple-700 hover:text-purple-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 3.2 -->
+      <div class="flex items-center justify-between bg-purple-100 text-purple-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 3.2 – Sets and Functions </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter3_Exercise3.2.pdf')" class="text-purple-700 hover:text-purple-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter3_Exercise3.2.pdf" download class="text-purple-700 hover:text-purple-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 3.3 -->
+      <div class="flex items-center justify-between bg-purple-100 text-purple-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 3.3 – Sets and Functions </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter3_Exercise3.3.pdf')" class="text-purple-700 hover:text-purple-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter3_Exercise3.3.pdf" download class="text-purple-700 hover:text-purple-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Sets and Functions </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter3_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter3_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Sets and Functions </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter3_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter3_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Sets and Functions </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter3_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter3_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chapter 4 -->
+<div id="chapter4" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter4-details', 'toggle-icon4')" class="bg-pink-100 text-pink-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📕 Chapter 4 – Factorization and Algebraic Manipulation </h2>
+    <span id="toggle-icon4" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter4-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter covers various techniques for factorizing algebraic expressions including common factors, grouping, difference of squares, perfect squares, and sum/difference of cubes. It also includes algebraic manipulation techniques such as simplification of complex fractions and rational expressions.
+      </p>
+
+      <div class="formula-box">
+        <strong>Factorization Formulas:</strong><br>
+        • \(a^2 - b^2 = (a - b)(a + b)\)<br>
+        • \(a^2 \pm 2ab + b^2 = (a \pm b)^2\)<br>
+        • \(a^3 \pm b^3 = (a \pm b)(a^2 \mp ab + b^2)\)<br>
+        • \(x^2 + (a + b)x + ab = (x + a)(x + b)\)<br>
+        • \(acx^2 + (ad + bc)x + bd = (ax + b)(cx + d)\)
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 4.1 -->
+      <div class="flex items-center justify-between bg-pink-100 text-pink-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 4.1 – Factorization </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter4_Exercise4.1.pdf')" class="text-pink-700 hover:text-pink-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter4_Exercise4.1.pdf" download class="text-pink-700 hover:text-pink-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 4.2 -->
+      <div class="flex items-center justify-between bg-pink-100 text-pink-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 4.2 – Factorization</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter4_Exercise4.2.pdf')" class="text-pink-700 hover:text-pink-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter4_Exercise4.2.pdf" download class="text-pink-700 hover:text-pink-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 4.3 -->
+      <div class="flex items-center justify-between bg-pink-100 text-pink-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 4.3 – Factorization</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter4_Exercise4.3.pdf')" class="text-pink-700 hover:text-pink-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter4_Exercise4.3.pdf" download class="text-pink-700 hover:text-pink-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 4.4 -->
+      <div class="flex items-center justify-between bg-pink-100 text-pink-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 4.4 – Factorization</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter4_Exercise4.4.pdf')" class="text-pink-700 hover:text-pink-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter4_Exercise4.4.pdf" download class="text-pink-700 hover:text-pink-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Chapter 4 Factorization</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter4_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter4_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Chapter 4 Factorization</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter4_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter4_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Chapter 4 Factorization </h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter4_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter4_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chapter 5 -->
+<div id="chapter5" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter5-details', 'toggle-icon5')" class="bg-yellow-100 text-yellow-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📔 Chapter 5 – Linear Equations and Inequalities </h2>
+    <span id="toggle-icon5" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter5-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter covers fundamental concepts of linear equations and inequalities, including their definitions, properties, and applications in real-world problem solving. It introduces key terms like feasible region, objective function, and optimal solutions for systems of inequalities.
+      </p>
+
+      <div class="formula-box">
+        <strong>Formulas & Symbols:</strong><br>
+        • Linear Equation: \(ax + b = 0\), where \(a \neq 0\)<br>
+        • Inequality Symbols: \(>\), \(<\), \(\geq\), \(\leq\)<br>
+        • Linear Inequality: \(ax + b < 0\) (or \(>\), \(\leq\), \(\geq\))<br>
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 5.1 -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 5.1 – Linear Equations</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter5_Exercise5.1.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter5_Exercise5.1.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 5.2 -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 5.2 – Linear Equations</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter5_Exercise5.2.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter5_Exercise5.2.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 5.3 -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 5.3 – Linear Equations</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter5_Exercise5.3.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter5_Exercise5.3.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Linear Equations</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter5_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter5_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-orange-100 text-orange-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Linear Equations</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter5_Definitions.pdf')" class="text-orange-700 hover:text-orange-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter5_Definitions.pdf" download class="text-orange-700 hover:text-orange-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Linear Equations</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter5_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter5_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chapter 6 -->
+<div id="chapter6" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter6-details', 'toggle-icon6')" class="bg-teal-100 text-teal-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📒 Chapter 6 – Trigonometry </h2>
+    <span id="toggle-icon6" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter6-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter introduces trigonometric ratios (sine, cosine, tangent) for acute angles in right-angled triangles. It covers fundamental trigonometric identities, applications to solve right triangles, and angle measurement in degrees. The chapter also includes practical applications of trigonometry in real-world problems.
+      </p>
+
+      <div class="formula-box">
+        <strong>Trigonometric Ratios:</strong><br>
+        • \(\sin\theta = \frac{\text{Opposite}}{\text{Hypotenuse}}\)<br>
+        • \(\cos\theta = \frac{\text{Adjacent}}{\text{Hypotenuse}}\)<br>
+        • \(\tan\theta = \frac{\text{Opposite}}{\text{Adjacent}}\)<br>
+        • \(\csc\theta = \frac{1}{\sin\theta}\)<br>
+        • \(\sec\theta = \frac{1}{\cos\theta}\)<br>
+        • \(\cot\theta = \frac{1}{\tan\theta}\)
+      </div>
+
+      <div class="formula-box mt-3">
+        <strong>Fundamental Identities:</strong><br>
+        • \(\sin^2\theta + \cos^2\theta = 1\)<br>
+        • \(1 + \tan^2\theta = \sec^2\theta\)<br>
+        • \(1 + \cot^2\theta = \csc^2\theta\)<br>
+        • \(\tan\theta = \frac{\sin\theta}{\cos\theta}\)<br>
+        • \(\sin(90^\circ - \theta) = \cos\theta\)<br>
+        • \(\cos(90^\circ - \theta) = \sin\theta\)
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 6.1 -->
+      <div class="flex items-center justify-between bg-teal-100 text-teal-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 6.1 – Trigonometric Ratios</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter6_Exercise6.1.pdf')" class="text-teal-700 hover:text-teal-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter6_Exercise6.1.pdf" download class="text-teal-700 hover:text-teal-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 6.2 -->
+      <div class="flex items-center justify-between bg-teal-100 text-teal-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 6.2 – Trigonometric Identities</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter6_Exercise6.2.pdf')" class="text-teal-700 hover:text-teal-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter6_Exercise6.2.pdf" download class="text-teal-700 hover:text-teal-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 6.3 -->
+      <div class="flex items-center justify-between bg-teal-100 text-teal-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 6.3 – Trigonometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter6_Exercise6.3.pdf')" class="text-teal-700 hover:text-teal-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter6_Exercise6.3.pdf" download class="text-teal-700 hover:text-teal-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Trigonometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter6_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter6_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Trigonometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter6_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter6_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Trigonometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter6_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter6_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chapter 7 -->
+<div id="chapter7" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter7-details', 'toggle-icon7')" class="bg-indigo-100 text-indigo-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📚 Chapter 7 – Coordinate Geometry </h2>
+    <span id="toggle-icon7" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter7-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter introduces the Cartesian coordinate system and covers fundamental concepts including distance between points, midpoint formula, slope of a line, and graphing linear equations. It includes applications of coordinate geometry in solving geometric problems.
+      </p>
+
+      <div class="formula-box">
+        <strong>Key Formulas:</strong><br>
+        • Distance Formula: \(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\)<br>
+        • Midpoint Formula: \(M(x,y)=\left(\frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2}\right)\)<br>
+        • Slope: \(m = \frac{y_2 - y_1}{x_2 - x_1}\)<br>
+        • Point-Slope Form: \(y - y_1 = m(x - x_1)\)<br>
+        • Slope-Intercept Form: \(y = mx + c\)<br>
+        • General Form: \(ax + by + c = 0\)
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 7.1 -->
+      <div class="flex items-center justify-between bg-indigo-100 text-indigo-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 7.1 – Coordinate Geometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter7_Exercise7.1.pdf')" class="text-indigo-700 hover:text-indigo-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter7_Exercise7.1.pdf" download class="text-indigo-700 hover:text-indigo-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 7.2 -->
+      <div class="flex items-center justify-between bg-indigo-100 text-indigo-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 7.2 – Coordinate Geometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter7_Exercise7.2.pdf')" class="text-indigo-700 hover:text-indigo-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter7_Exercise7.2.pdf" download class="text-indigo-700 hover:text-indigo-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 7.3 -->
+      <div class="flex items-center justify-between bg-indigo-100 text-indigo-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 7.3 – Coordinate Geometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter7_Exercise7.3.pdf')" class="text-indigo-700 hover:text-indigo-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter7_Exercise7.3.pdf" download class="text-indigo-700 hover:text-indigo-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Coordinate Geometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter7_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter7_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Coordinate Geometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter7_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter7_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Coordinate Geometry</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter7_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter7_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chapter 8 -->
+<div id="chapter8" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter8-details', 'toggle-icon8')" class="bg-red-100 text-red-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📖 Chapter 8 – Logic </h2>
+    <span id="toggle-icon8" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter8-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter introduces the basics of mathematical logic including statements, truth tables, logical connectives (and, or, not, if-then, if and only if), and logical equivalence. It also covers methods of proof such as direct proof and proof by contradiction.
+      </p>
+
+      <div class="formula-box">
+        <strong>Logical Connectives:</strong><br>
+        • Conjunction (AND): \( p \land q \)<br>
+        • Disjunction (OR): \( p \lor q \)<br>
+        • Negation (NOT): \( \lnot p \)<br>
+        • Conditional: \( p \to q \)<br>
+        • Biconditional: \( p \leftrightarrow q \)<br>
+        • Tautology: Always true (e.g., \( p \lor \lnot p \))<br>
+        • Contradiction: Always false (e.g., \( p \land \lnot p \))
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 8.1 -->
+      <div class="flex items-center justify-between bg-red-100 text-red-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 8.1 – Logic</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter8_Exercise8.1.pdf')" class="text-red-700 hover:text-red-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter8_Exercise8.1.pdf" download class="text-red-700 hover:text-red-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Logic</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter8_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter8_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Logic</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter8_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter8_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Logic</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter8_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter8_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chapter 9 -->
+<div id="chapter9" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter9-details', 'toggle-icon9')" class="bg-gray-100 text-gray-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📙 Chapter 9 – Similar Figures </h2>
+    <span id="toggle-icon9" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter9-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> Similarity of figures; triangle criteria (AA, SAS, SSS); scale factor \(k\); relations for sides, perimeters, areas and volumes.
+      </p>
+
+      <div class="formula-box">
+        <strong>Similarity Criteria for Triangles:</strong><br>
+        • AA: two corresponding angles equal, e.g. \(\angle A=\angle D,\ \angle B=\angle E\).<br>
+        • SAS: two sides proportional and included angle equal. If \(\dfrac{AB}{DE}=\dfrac{AC}{DF}=k\) and \(\angle A=\angle D\), then \(\triangle ABC\sim\triangle DEF\).<br>
+        • SSS: three pairs of corresponding sides proportional: \(\dfrac{AB}{DE}=\dfrac{BC}{EF}=\dfrac{CA}{FD}=k\).
+      </div>
+
+      <div class="formula-box mt-3">
+        <strong>Consequences (scale factor \(k\)):</strong><br>
+        • Corresponding sides: \(AB = k\cdot DE\).<br>
+        • Perimeters: \(\dfrac{P_{1}}{P_{2}} = k\).<br>
+        • Areas: \(\dfrac{\text{Area}_1}{\text{Area}_2} = k^{2}\).<br>
+        • Volumes (similar solids): \(\dfrac{V_{1}}{V_{2}} = k^{3}\).
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 9.1 -->
+      <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 9.1 – Similar Figures</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter9_Exercise9.1.pdf')" class="text-gray-700 hover:text-gray-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter9_Exercise9.1.pdf" download class="text-gray-700 hover:text-gray-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 9.2 -->
+      <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 9.2 – Similar Figures</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter9_Exercise9.2.pdf')" class="text-gray-700 hover:text-gray-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter9_Exercise9.2.pdf" download class="text-gray-700 hover:text-gray-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 9.3 -->
+      <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 9.3 – Similar Figures</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter9_Exercise9.3.pdf')" class="text-gray-700 hover:text-gray-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter9_Exercise9.3.pdf" download class="text-gray-700 hover:text-gray-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Similar Figures</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter9_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter9_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Similar Figures</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter9_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter9_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Similar Figures</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter9_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter9_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chapter 10 -->
+<div id="chapter10" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter10-details', 'toggle-icon10')" class="bg-cyan-100 text-cyan-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📘 Chapter 10 – Graphs of Functions </h2>
+    <span id="toggle-icon10" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter10-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter introduces the graphs of different types of functions including linear, quadratic, and piecewise functions. It covers determining domain and range, interpreting important features (intercepts, vertices, asymptotes), and solving equations graphically.
+      </p>
+
+      <div class="formula-box">
+        <strong>Function Types & Graphs:</strong><br>
+        • <u>Linear</u>: \( f(x) = mx + b \;\;\rightarrow \;\;\) straight line <br>
+        • <u>Quadratic</u>: \( f(x) = ax^{2} + bx + c \;\;\rightarrow \;\;\) parabola <br>
+        • <u>Piecewise</u>: \( f(x) = 
+           \begin{cases} 
+             \text{expression 1}, & x \in \text{interval 1} \\ 
+             \text{expression 2}, & x \in \text{interval 2} 
+           \end{cases} \)
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 10.1 -->
+      <div class="flex items-center justify-between bg-cyan-100 text-cyan-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 10.1 – Graphs of Functions</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter10_Exercise10.1.pdf')" class="text-cyan-700 hover:text-cyan-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter10_Exercise10.1.pdf" download class="text-cyan-700 hover:text-cyan-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 10.2 -->
+      <div class="flex items-center justify-between bg-cyan-100 text-cyan-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 10.2 – Graphs of Functions</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter10_Exercise10.2.pdf')" class="text-cyan-700 hover:text-cyan-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter10_Exercise10.2.pdf" download class="text-cyan-700 hover:text-cyan-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 10.3 -->
+      <div class="flex items-center justify-between bg-cyan-100 text-cyan-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 10.3 – Graphs of Functions</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter10_Exercise10.3.pdf')" class="text-cyan-700 hover:text-cyan-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter10_Exercise10.3.pdf" download class="text-cyan-700 hover:text-cyan-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Graphs of Functions</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter10_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter10_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Graphs of Functions</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter10_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter10_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Graphs of Functions</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter10_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter10_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chapter 11 -->
+<div id="chapter11" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter11-details', 'toggle-icon11')" class="bg-orange-100 text-orange-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📔 Chapter 11 – Loci and Construction </h2>
+    <span id="toggle-icon11" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter11-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter explains the concept of loci (the set of points satisfying a condition) and basic constructions using compass and straightedge.
+      </p>
+
+      <div class="formula-box">
+        <strong>Common Loci:</strong><br>
+        • Perpendicular bisector → equidistant from two points<br>
+        • Angle bisector → equidistant from two lines<br>
+        • Circle → points at fixed distance from center
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 11.1 -->
+      <div class="flex items-center justify-between bg-orange-100 text-orange-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 11.1 – Loci and Construction</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter11_Exercise11.1.pdf')" class="text-orange-700 hover:text-orange-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter11_Exercise11.1.pdf" download class="text-orange-700 hover:text-orange-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 11.2 -->
+      <div class="flex items-center justify-between bg-orange-100 text-orange-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 11.2 – Loci and Construction</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter11_Exercise11.2.pdf')" class="text-orange-700 hover:text-orange-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter11_Exercise11.2.pdf" download class="text-orange-700 hover:text-orange-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Loci and Construction</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter11_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter11_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Loci and Construction</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter11_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter11_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Chapter 12 -->
+<div id="chapter12" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter12-details', 'toggle-icon12')" 
+       class="bg-gray-200 text-gray-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📒 Chapter 12 – Information Handling </h2>
+    <span id="toggle-icon12" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter12-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter covers data handling: frequency distributions, histograms, pie charts, mean, median, mode and range.
+      </p>
+
+      <div class="formula-box">
+        <strong>Formulas (Information Handling):</strong><br>
+        • Mean: \( \bar{X} = \dfrac{\sum X}{n} \)<br>
+        • Median: Middle value of ordered data <br>
+        • Mode: Most frequent value <br>
+        • Range: \( \text{Range} = X_\text{max} - X_\text{min} \) <br>
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 12.1 -->
+      <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 12.1 – Information Handling</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter12_Exercise12.1.pdf')" class="text-gray-700 hover:text-gray-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter12_Exercise12.1.pdf" download class="text-gray-700 hover:text-gray-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 12.2 -->
+      <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 12.2 – Information Handling</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter12_Exercise12.2.pdf')" class="text-gray-700 hover:text-gray-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter12_Exercise12.2.pdf" download class="text-gray-700 hover:text-gray-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 12.3 -->
+      <div class="flex items-center justify-between bg-gray-100 text-gray-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 12.3 – Information Handling</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter12_Exercise12.3.pdf')" class="text-gray-700 hover:text-gray-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter12_Exercise12.3.pdf" download class="text-gray-700 hover:text-gray-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Information Handling</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter12_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter12_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Information Handling</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter12_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter12_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Information Handling</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter12_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter12_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Chapter 13 -->
+<div id="chapter13" class="mb-8 scroll-mt-24">
+  <!-- Chapter Title Bar -->
+  <div onclick="toggleChapter('chapter13-details', 'toggle-icon13')" 
+       class="bg-rose-100 text-rose-900 font-bold px-5 py-3 rounded-lg shadow cursor-pointer flex items-center justify-between">
+    <h2 class="text-lg font-semibold">📙 Chapter 13 – Probability </h2>
+    <span id="toggle-icon13" class="text-xl">➕</span>
+  </div>
+
+  <!-- Hidden Content -->
+  <div id="chapter13-details" class="hidden mt-4">
+    <!-- Summary -->
+    <div class="chapter-summary mb-6">
+      <p class="mb-2 text-justify">
+        <strong>Key Concepts:</strong> This chapter introduces the fundamentals of <strong>probability</strong>, including sample space, events, theoretical probability, experimental probability, complementary events, and real-life applications.
+      </p>
+
+      <div class="formula-box">
+        <strong>Important Formulas:</strong><br>
+        • Theoretical Probability: \( P(E) = \dfrac{\text{Number of favorable outcomes}}{\text{Total possible outcomes}} \)<br>
+        • Experimental Probability: \( \dfrac{\text{Number of times event occurs}}{\text{Total trials}} \)<br>
+        • Probability Range: \( 0 \leq P(E) \leq 1 \)<br>
+        • Complementary Events: \( P(\text{not }E) = 1 - P(E) \)<br>
+        • Equally Likely Outcomes: \( P(E) = \dfrac{n(E)}{n(S)} \)
+      </div>
+    </div>
+
+    <!-- Resource Links -->
+    <div class="space-y-3">
+      <!-- Exercise 13.1 -->
+      <div class="flex items-center justify-between bg-rose-100 text-rose-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 13.1 – Probability</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter13_Exercise13.1.pdf')" class="text-rose-700 hover:text-rose-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter13_Exercise13.1.pdf" download class="text-rose-700 hover:text-rose-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Exercise 13.2 -->
+      <div class="flex items-center justify-between bg-rose-100 text-rose-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📄 Exercise 13.2 – Probability</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter13_Exercise13.2.pdf')" class="text-rose-700 hover:text-rose-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter13_Exercise13.2.pdf" download class="text-rose-700 hover:text-rose-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Review Exercise -->
+      <div class="flex items-center justify-between bg-blue-100 text-blue-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📙 Review Exercise – Probability</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter13_ReviewExercise.pdf')" class="text-blue-700 hover:text-blue-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter13_ReviewExercise.pdf" download class="text-blue-700 hover:text-blue-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- Definitions -->
+      <div class="flex items-center justify-between bg-yellow-100 text-yellow-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📒 Definitions – Probability</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter13_Definitions.pdf')" class="text-yellow-700 hover:text-yellow-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter13_Definitions.pdf" download class="text-yellow-700 hover:text-yellow-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+
+      <!-- MCQs -->
+      <div class="flex items-center justify-between bg-green-100 text-green-900 font-medium px-5 py-3 rounded-lg shadow">
+        <h3 class="text-base font-semibold">📝 MCQs – Probability</h3>
+        <div class="flex space-x-4">
+          <button onclick="openPDF('notes/math9/Chapter13_MCQ.pdf')" class="text-green-700 hover:text-green-900 underline font-semibold">📄 View Online</button>
+          <a href="notes/math9/Chapter13_MCQ.pdf" download class="text-green-700 hover:text-green-900 underline font-semibold">⬇ Download PDF</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          
+          <!-- Additional chapters would follow the same pattern -->
+          
+        </div>
+        
+        <!-- FAQ Section -->
+        <div id="faq" class="bg-white rounded-xl shadow-md p-6">
+          <h2 class="text-2xl font-bold text-gray-800 mb-6">Frequently Asked Questions</h2>
+          
+          <div class="space-y-4">
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-2 text-lg">Are these notes according to the Punjab Curriculum?</h3>
+              <p class="text-gray-600 text-justify">Yes, these notes are prepared according to the latest syllabus of the Punjab Textbook Board and cover all important topics.</p>
             </div>
+            
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-2 text-lg">Can I print these notes?</h3>
+              <p class="text-gray-600 text-justify">Yes, you can print all notes. A print option is available at the end of each chapter.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-2 text-lg">Are these notes free?</h3>
+              <p class="text-gray-600 text-justify">Yes, all our notes are available for free. You can download them anytime.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-gray-800 mb-2 text-lg">How often are the notes updated?</h3>
+              <p class="text-gray-600 text-justify">We update our notes every year according to the new syllabus and keep adding changes as per the latest exam papers.</p>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Sidebar -->
-<div class="lg:col-span-1">
-  <!-- Quick Links -->
-  <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-    <h3 class="text-lg font-semibold text-gray-800 mb-4">Quick Links</h3>
-    <ul class="space-y-3 text-sm">
-      <li>
-        <a href="#chapters" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-          </svg>
-          All Chapters
-        </a>
-      </li>
-      <li>
-        <a href="#faq" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          Common Questions
-        </a>
-      </li>
-      <li>
-        <a href="Math-9th-Definitions.html" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
-          Definitions Math 9th 2025
-        </a>
-      </li>
-    </ul>
-  </div>
+      <div class="lg:col-span-1">
+        <!-- Quick Links -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Quick Links</h3>
+          <ul class="space-y-3 text-sm">
+            <li>
+              <a href="#chapters" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                All Chapters
+              </a>
+            </li>
+            <li>
+              <a href="#faq" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Common Questions
+              </a>
+            </li>
+            <li>
+              <a href="Math-9th-Definitions.html" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                Definitions Math 9th 2025
+              </a>
+            </li>
+          </ul>
+        </div>
 
-  <!-- Colorful Chapter List -->
-  <div class="space-y-2 text-sm mb-6">
-  <a href="#chapter1">
-    <div class="bg-blue-100 text-blue-900 font-bold px-5 py-3 rounded-lg shadow">
-      📘 Chapter 1 – Real Numbers
-    </div>
-  </a>
-  <a href="#chapter2">
-    <div class="bg-green-100 text-green-900 font-bold px-5 py-3 rounded-lg shadow">
-      📗 Chapter 2 – Logarithms
-    </div>
-  </a>
-  <a href="#chapter3">
-    <div class="bg-purple-100 text-purple-900 font-bold px-5 py-3 rounded-lg shadow">
-      📙 Chapter 3 – Sets and Functions
-    </div>
-  </a>
-  <a href="#chapter4">
-    <div class="bg-pink-100 text-pink-900 font-bold px-5 py-3 rounded-lg shadow">
-      📕 Chapter 4 – Factorization and Algebraic Manipulation
-    </div>
-  </a>
-  <a href="#chapter5">
-    <div class="bg-yellow-100 text-yellow-900 font-bold px-5 py-3 rounded-lg shadow">
-      📔 Chapter 5 – Linear Equations and Inequalities
-    </div>
-  </a>
-  <a href="#chapter6">
-    <div class="bg-teal-100 text-teal-900 font-bold px-5 py-3 rounded-lg shadow">
-      📒 Chapter 6 – Trigonometry
-    </div>
-  </a>
-  <a href="#chapter7">
-    <div class="bg-indigo-100 text-indigo-900 font-bold px-5 py-3 rounded-lg shadow">
-      📚 Chapter 7 – Coordinate Geometry
-    </div>
-  </a>
-  <a href="#chapter8">
-    <div class="bg-red-100 text-red-900 font-bold px-5 py-3 rounded-lg shadow">
-      📖 Chapter 8 – Logic
-    </div>
-  </a>
-  <a href="#chapter9">
-    <div class="bg-gray-100 text-gray-900 font-bold px-5 py-3 rounded-lg shadow">
-      📙 Chapter 9 – Similar Figures
-    </div>
-  </a>
-  <a href="#chapter10">
-    <div class="bg-cyan-100 text-cyan-900 font-bold px-5 py-3 rounded-lg shadow">
-      📘 Chapter 10 – Graphs of Functions
-    </div>
-  </a>
-  <a href="#chapter11">
-    <div class="bg-orange-100 text-orange-900 font-bold px-5 py-3 rounded-lg shadow">
-      📔 Chapter 11 – Loci and Construction
-    </div>
-  </a>
-  <a href="#chapter12">
-    <div class="bg-gray-200 text-gray-900 font-bold px-5 py-3 rounded-lg shadow">
-      📒 Chapter 12 – Information Handling
-    </div>
-  </a>
-  <a href="#chapter13">
-    <div class="bg-rose-100 text-rose-900 font-bold px-5 py-3 rounded-lg shadow">
-      📙 Chapter 13 – Probability
-    </div>
-  </a>
-</div>
-
-
-
-  <!-- Key Formulas -->
-  <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-    <h3 class="text-lg font-semibold text-gray-800 mb-4">Key Math Formulas</h3>
-    <div class="space-y-4 text-sm">
-      <div class="bg-blue-50 p-3 rounded-lg">
-        <p class="font-medium text-blue-800">Distance Formula:</p>
-        <p class="text-gray-700">\( d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \)</p>
-      </div>
-      <div class="bg-green-50 p-3 rounded-lg">
-        <p class="font-medium text-green-800">Quadratic Equation:</p>
-        <p class="text-gray-700">\( ax^2 + bx + c = 0 \)</p>
-        <p class="text-xs text-gray-500 mt-1">Solutions: \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)</p>
-      </div>
-      <div class="bg-yellow-50 p-3 rounded-lg">
-        <p class="font-medium text-yellow-800">Pythagorean Identity:</p>
-        <p class="text-gray-700">\( \sin^2\theta + \cos^2\theta = 1 \)</p>
-      </div>
-      <div class="bg-purple-50 p-3 rounded-lg">
-        <p class="font-medium text-purple-800">Logarithm Product Rule:</p>
-        <p class="text-gray-700">\( \log_a(mn) = \log_a m + \log_a n \)</p>
-      </div>
-      <div class="bg-red-50 p-3 rounded-lg">
-        <p class="font-medium text-red-800">Probability of Event:</p>
-        <p class="text-gray-700">\( P(E) = \frac{n(E)}{n(S)} \)</p>
-        <p class="text-xs text-gray-500 mt-1">Where \( n(E) \) = favorable outcomes, \( n(S) \) = total outcomes</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Related Resources -->
-  <div class="bg-white rounded-xl shadow-md p-6">
-    <h3 class="text-lg font-semibold text-gray-800 mb-4">Related Resources</h3>
-    <ul class="space-y-3 text-sm">
-      <li>
-        <a href="Physics-9th.html" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-          Physics Class 9 Notes
-        </a>
-      </li>
-      <li>
-        <a href="Chemistry-9th.html" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-          Chemistry Class 9 Notes
-        </a>
-      </li>
-      <li>
-        <a href="Mathematics-10th.html" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-          Mathematics Class 10 Notes
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-</div>
-  <!-- Footer -->
-  <footer class="bg-gray-900">
-    <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-        <!-- Logo & Description -->
-        <div class="col-span-2 md:col-span-1">
-          <a href="index.html#home" class="flex items-center gap-3 group transition duration-300">
-            <img 
-              src="images/logo.png" 
-              alt="Hira Science Academy"
-              class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-            <span class="text-xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              Hira Science Academy
-            </span>
+        <!-- Colorful Chapter List -->
+        <div class="space-y-2 text-sm mb-6">
+          <a href="#chapter1">
+            <div class="bg-blue-100 text-blue-900 font-bold px-5 py-3 rounded-lg shadow">
+              📘 Chapter 1 – Real Numbers
+            </div>
           </a>
+          <!-- Additional chapter links would go here -->
+        </div>
 
-          <p class="mt-4 text-sm text-gray-400">
-            Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).
-          </p>
-
-          <!-- Social Media Links -->
-          <div class="mt-4 flex space-x-6 text-gray-400">
-            <!-- Facebook -->
-            <a href="https://web.facebook.com/HiraScienceAcademy.Daska" target="_blank" aria-label="Facebook" class="hover:text-blue-500">
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.1v-2.88h2.1V9.41c0-2.07 1.23-3.22 3.11-3.22.9 0 1.84.16 1.84.16v2.03h-1.04c-1.03 0-1.35.64-1.35 1.3v1.57h2.3l-.37 2.88h-1.93v6.99A10 10 0 0 0 22 12z" />
-              </svg>
-            </a>
-
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/hira.scienceacademy/" target="_blank" aria-label="Instagram" class="hover:text-pink-500">
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.25 1.13 1.13 0 0 1 0-2.25Z" />
-              </svg>
-            </a>
-
-            <!-- WhatsApp -->
-            <a href="https://wa.me/923338114798" target="_blank" class="text-gray-400 hover:text-green-500" aria-label="WhatsApp">
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-                <path d="M16 2.4c-7.51 0-13.6 6.09-13.6 13.6 0 2.39.63 4.71 1.83 6.76L2 30l7.45-2.31c1.92 1.05 4.09 1.61 6.3 1.61h.01c7.51 0 13.6-6.09 13.6-13.6S23.51 2.4 16 2.4zm0 24.6c-1.89 0-3.75-.5-5.39-1.46l-.39-.23-4.42 1.37 1.43-4.29-.26-.41a11.17 11.17 0 01-1.73-6.01c0-6.2 5.04-11.24 11.24-11.24S27.24 9.8 27.24 16 22.2 27 16 27zm6.13-8.67c-.34-.17-2.01-.99-2.32-1.1-.31-.11-.54-.17-.76.17-.22.34-.88 1.1-1.08 1.32-.2.22-.4.25-.74.08-.34-.17-1.44-.53-2.75-1.69-1.02-.91-1.71-2.02-1.91-2.36-.2-.34-.02-.52.15-.69.16-.16.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.08-.17-.76-1.84-1.04-2.53-.27-.64-.54-.55-.76-.56l-.65-.01c-.23 0-.6.08-.91.4-.31.31-1.19 1.16-1.19 2.83s1.22 3.29 1.39 3.51c.17.22 2.39 3.65 5.8 5.12.81.35 1.44.56 1.93.71.81.26 1.54.22 2.12.14.65-.1 2.01-.82 2.3-1.61.28-.79.28-1.46.2-1.61-.08-.14-.31-.23-.65-.4z"/>
-              </svg>
-            </a>
+        <!-- Key Formulas -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Key Math Formulas</h3>
+          <div class="space-y-4 text-sm">
+            <div class="bg-blue-50 p-3 rounded-lg">
+              <p class="font-medium text-blue-800">Distance Formula:</p>
+              <p class="text-gray-700">\( d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2} \)</p>
+            </div>
+            <div class="bg-green-50 p-3 rounded-lg">
+              <p class="font-medium text-green-800">Quadratic Equation:</p>
+              <p class="text-gray-700">\( ax^2 + bx + c = 0 \)</p>
+              <p class="text-xs text-gray-500 mt-1">Solutions: \( x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} \)</p>
+            </div>
+            <div class="bg-yellow-50 p-3 rounded-lg">
+              <p class="font-medium text-yellow-800">Pythagorean Identity:</p>
+              <p class="text-gray-700">\( \sin^2\theta + \cos^2\theta = 1 \)</p>
+            </div>
+            <div class="bg-purple-50 p-3 rounded-lg">
+              <p class="font-medium text-purple-800">Logarithm Product Rule:</p>
+              <p class="text-gray-700">\( \log_a(mn) = \log_a m + \log_a n \)</p>
+            </div>
+            <div class="bg-red-50 p-3 rounded-lg">
+              <p class="font-medium text-red-800">Probability of Event:</p>
+              <p class="text-gray-700">\( P(E) = \frac{n(E)}{n(S)} \)</p>
+              <p class="text-xs text-gray-500 mt-1">Where \( n(E) \) = favorable outcomes, \( n(S) \) = total outcomes</p>
+            </div>
           </div>
         </div>
 
-        <!-- Programs -->
-         <div>
-          <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Programs</h3>
-          <ul class="mt-4 space-y-4">
-            <li><a href="index.html#courses" class="text-base text-gray-400 hover:text-white">9th Class</a></li>
-            <li><a href="index.html#courses" class="text-base text-gray-400 hover:text-white">10th Class</a></li>
-            <li><a href="fsc-entry-test.html" class="text-base text-gray-400 hover:text-white">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+        <!-- Related Resources -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-4">Related Resources</h3>
+          <ul class="space-y-3 text-sm">
             <li>
-  <a href="fsc-entry-test.html" class="text-base text-gray-400 hover:text-white">
-    Entry Test Preparation
-  </a>
-</li>
-
-          </ul>
-        </div>
-
-        <!-- Resources -->
-        <div>
-          <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Resources</h3>
-          <ul class="mt-4 space-y-4">
-            <li><a href="blog.html" class="text-base text-gray-400 hover:text-white">Study Tips & Blog</a></li>
-            <li><a href="career-services.html" class="text-base text-gray-400 hover:text-white">Career Guidance</a></li>
-            <li><a href="student-portal.html" class="text-base text-gray-400 hover:text-white">Student Portal</a></li>
-            <li><a href="alumni-network.html" class="text-base text-gray-400 hover:text-white">Alumni Network</a></li>
-            <li><a href="events.html" class="text-base text-gray-400 hover:text-white">Events & Workshops</a></li>
-          </ul>
-        </div>
-
-        <!-- Legal -->
-        <div>
-          <h3 class="text-sm font-semibold text-gray-300 tracking-wider uppercase">Legal</h3>
-          <ul class="mt-4 space-y-4">
-            <li><a href="terms.html" class="text-base text-gray-400 hover:text-white">Terms of Service</a></li>
-            <li><a href="privacy-policy.html" class="text-base text-gray-400 hover:text-white">Privacy Policy</a></li>
-            <li><a href="refund-policy.html" class="text-base text-gray-400 hover:text-white">Refund Policy</a></li>
-            <li><a href="accessibility.html" class="text-base text-gray-400 hover:text-white">Accessibility</a></li>
+              <a href="Physics-9th.html" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Physics Class 9 Notes
+              </a>
+            </li>
+            <li>
+              <a href="Chemistry-9th.html" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                Chemistry Class 9 Notes
+              </a>
+            </li>
+            <li>
+              <a href="Mathematics-10th.html" class="text-blue-600 hover:text-blue-800 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                Mathematics Class 10 Notes
+              </a>
+            </li>
           </ul>
         </div>
       </div>
-      <div class="mt-12 border-t border-gray-800 pt-8">
-        <p class="text-base text-gray-400 text-center">
-          &copy; 2025 Hira Science Academy. All rights reserved.
+    </div>
+  </div>
+
+  <!-- Mobile PDF Viewer -->
+  <div id="pdf-viewer" class="pdf-container">
+    <div class="pdf-header">
+      <h3 id="pdf-title">PDF Document</h3>
+      <button class="close-pdf" onclick="closePDF()">Close</button>
+    </div>
+    <iframe id="pdf-iframe" class="pdf-iframe" src=""></iframe>
+    <div class="pdf-controls">
+      <button onclick="zoomPDF(0.8)">Zoom Out</button>
+      <button onclick="zoomPDF(1.2)">Zoom In</button>
+      <button onclick="resetZoom()">Reset Zoom</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Academy Info -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Hira Science Academy</h3>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Providing quality educational resources for students of all levels. Our mission is to make learning accessible and effective for everyone.
         </p>
       </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="index.html#home" class="hover:text-white transition-colors">Home</a></li>
+          <li><a href="index.html#notes" class="hover:text-white transition-colors">Notes</a></li>
+          <li><a href="index.html#courses" class="hover:text-white transition-colors">Courses</a></li>
+          <li><a href="index.html#features" class="hover:text-white transition-colors">Why Choose Us</a></li>
+          <li><a href="index.html#testimonials" class="hover:text-white transition-colors">Testimonials</a></li>
+          <li><a href="index.html#contact" class="hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Subjects -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Subjects</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="Mathematics-9th.html" class="hover:text-white transition-colors">Mathematics 9th</a></li>
+          <li><a href="Physics-9th.html" class="hover:text-white transition-colors">Physics 9th</a></li>
+          <li><a href="Chemistry-9th.html" class="hover:text-white transition-colors">Chemistry 9th</a></li>
+          <li><a href="Biology-9th.html" class="hover:text-white transition-colors">Biology 9th</a></li>
+          <li><a href="Mathematics-10th.html" class="hover:text-white transition-colors">Mathematics 10th</a></li>
+          <li><a href="Physics-10th.html" class="hover:text-white transition-colors">Physics 10th</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Contact Us</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            <span>+92 123 4567890</span>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>info@hirascienceacademy.com</span>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span>Lahore, Punjab, Pakistan</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Copyright -->
+    <div class="max-w-7xl mx-auto mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+      <p>&copy; 2025 Hira Science Academy. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop" class="fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition duration-300 opacity-0 invisible">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-    </svg>
-  </button>
-
+  <!-- JavaScript -->
   <script>
-    // Mobile Menu Toggle
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIconOpen = document.getElementById('menu-icon-open');
-    const menuIconClose = document.getElementById('menu-icon-close');
-    
-    mobileMenuButton.addEventListener('click', () => {
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIconOpen = document.getElementById('menu-icon-open');
+      const menuIconClose = document.getElementById('menu-icon-close');
+      
       mobileMenu.classList.toggle('hidden');
       menuIconOpen.classList.toggle('hidden');
       menuIconClose.classList.toggle('hidden');
     });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
-        
-        // Close mobile menu if open
-        mobileMenu.classList.add('hidden');
-        menuIconOpen.classList.remove('hidden');
-        menuIconClose.classList.add('hidden');
-      });
-    });
-    
-    // Back to Top Button
-    const backToTopBtn = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopBtn.classList.remove('opacity-0', 'invisible');
-        backToTopBtn.classList.add('opacity-100', 'visible');
-      } else {
-        backToTopBtn.classList.remove('opacity-100', 'visible');
-        backToTopBtn.classList.add('opacity-0', 'invisible');
+
+    // Toggle chapter content
+    function toggleChapter(chapterId, iconId) {
+      const chapter = document.getElementById(chapterId);
+      const icon = document.getElementById(iconId);
+      
+      chapter.classList.toggle('hidden');
+      icon.textContent = chapter.classList.contains('hidden') ? '➕' : '➖';
+    }
+
+    // Mobile PDF viewer functions
+    function openPDF(url) {
+      const pdfViewer = document.getElementById('pdf-viewer');
+      const pdfIframe = document.getElementById('pdf-iframe');
+      const pdfTitle = document.getElementById('pdf-title');
+      
+      // Set the PDF URL
+      pdfIframe.src = url;
+      
+      // Extract filename for title
+      const filename = url.split('/').pop().replace(/_/g, ' ').replace('.pdf', '');
+      pdfTitle.textContent = filename;
+      
+      // Show the PDF viewer
+      pdfViewer.style.display = 'flex';
+      
+      // Prevent body scrolling
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePDF() {
+      const pdfViewer = document.getElementById('pdf-viewer');
+      const pdfIframe = document.getElementById('pdf-iframe');
+      
+      // Hide the PDF viewer
+      pdfViewer.style.display = 'none';
+      
+      // Clear the iframe source
+      pdfIframe.src = '';
+      
+      // Enable body scrolling
+      document.body.style.overflow = 'auto';
+    }
+
+    function zoomPDF(factor) {
+      const pdfIframe = document.getElementById('pdf-iframe');
+      let currentZoom = parseFloat(pdfIframe.style.zoom) || 1;
+      let newZoom = currentZoom * factor;
+      
+      // Limit zoom range
+      newZoom = Math.max(0.5, Math.min(3, newZoom));
+      
+      pdfIframe.style.zoom = newZoom;
+    }
+
+    function resetZoom() {
+      const pdfIframe = document.getElementById('pdf-iframe');
+      pdfIframe.style.zoom = 1;
+    }
+
+    // Close PDF viewer when clicking outside content
+    document.getElementById('pdf-viewer').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closePDF();
       }
     });
-    
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+
+    // Image modal functionality
+    function openModal(src) {
+      const modal = document.createElement('div');
+      modal.className = 'fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center';
+      modal.innerHTML = `
+        <div class="max-w-4xl mx-4">
+          <img src="${src}" alt="Enlarged view" class="w-full rounded-lg">
+          <button class="absolute top-4 right-4 text-white bg-red-500 rounded-full p-2" onclick="this.parentElement.parentElement.remove()">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    }
   </script>
-  <script>
-    // Toggle chapter expansion
-    document.querySelectorAll('.chapter-toggle').forEach(button => {
-      button.addEventListener('click', () => {
-        const expanded = button.getAttribute('aria-expanded') === 'true';
-        button.setAttribute('aria-expanded', !expanded);
-        
-        const subChapters = document.getElementById(button.getAttribute('aria-controls'));
-        subChapters.setAttribute('aria-hidden', expanded);
-      });
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        // Get the target element
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-          // Expand the parent chapter if it's collapsed
-          const chapterItem = this.closest('.chapter-item');
-          if (chapterItem) {
-            const toggleButton = chapterItem.querySelector('.chapter-toggle');
-            const subChapters = chapterItem.querySelector('.sub-chapters');
-            
-            if (toggleButton.getAttribute('aria-expanded') === 'false') {
-              toggleButton.setAttribute('aria-expanded', 'true');
-              subChapters.setAttribute('aria-hidden', 'false');
-            }
-          }
-          
-          // Scroll to the target
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-          
-          // Update URL without jumping
-          history.pushState(null, null, targetId);
-        }
-      });
-    });
-
-    // Open chapter if URL hash matches on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      if (window.location.hash) {
-        const targetElement = document.querySelector(window.location.hash);
-        if (targetElement) {
-          // Find the closest chapter and expand it
-          const chapterItem = targetElement.closest('.chapter-section')?.previousElementSibling?.closest('.chapter-item') || 
-                             targetElement.closest('.chapter-item');
-          
-          if (chapterItem) {
-            const toggleButton = chapterItem.querySelector('.chapter-toggle');
-            const subChapters = chapterItem.querySelector('.sub-chapters');
-            
-            if (toggleButton && subChapters) {
-              toggleButton.setAttribute('aria-expanded', 'true');
-              subChapters.setAttribute('aria-hidden', 'false');
-            }
-          }
-          
-          // Scroll to the target after a slight delay
-          setTimeout(() => {
-            targetElement.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }, 100);
-        }
-      }
-    });
-  </script>
-<script>
-  // Save scroll position before page unload
-  window.addEventListener('beforeunload', function() {
-    localStorage.setItem('scrollPosition', window.scrollY);
-  });
-
-  // Restore scroll position on page load
-  window.addEventListener('load', function() {
-    // Check if there's a hash in the URL first (let the native behavior handle anchor links)
-    if (!window.location.hash) {
-      const savedPosition = localStorage.getItem('scrollPosition');
-      if (savedPosition) {
-        window.scrollTo(0, parseInt(savedPosition));
-        localStorage.removeItem('scrollPosition'); // Clear after restoring
-      }
-    }
-    
-    // Additional code to handle chapter expansion based on hash
-    if (window.location.hash) {
-      const targetElement = document.querySelector(window.location.hash);
-      if (targetElement) {
-        // Find the closest chapter and expand it
-        const chapterHeader = targetElement.closest('[id^="chapter"]');
-        if (chapterHeader) {
-          const detailsId = chapterHeader.id + '-details';
-          const toggleIconId = 'toggle-icon' + chapterHeader.id.replace('chapter', '');
-          toggleChapter(detailsId, toggleIconId);
-        }
-      }
-    }
-  });
-
-  // Modified toggleChapter function to ensure it's globally available
-  function toggleChapter(contentId, iconId) {
-    const content = document.getElementById(contentId);
-    const icon = document.getElementById(iconId);
-    if (content.classList.contains('hidden')) {
-      content.classList.remove('hidden');
-      icon.textContent = '➖';
-    } else {
-      content.classList.add('hidden');
-      icon.textContent = '➕';
-    }
-  }
-</script>
 </body>
 </html>
