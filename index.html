@@ -275,52 +275,65 @@
   }
 </style>
 
-<!-- 📢 Announcements Bar (Auto-Hide on Scroll + Pauses on Hover) -->
-<div id="announcement-bar" class="w-full bg-gradient-to-r from-primary-600 to-secondary-600 text-white text-sm sm:text-base font-medium overflow-hidden shadow-md fixed top-20 left-0 right-0 z-40 transition-transform duration-300">
-  <div class="relative py-2 pl-40 pr-4">
+<!-- 📢 Stylish Announcements Bar -->
+<div id="announcement-bar" class="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white text-sm sm:text-base font-medium overflow-hidden shadow-lg fixed top-20 left-0 right-0 z-40 transition-transform duration-300 rounded-b-2xl backdrop-blur-md">
+  <div class="relative py-3 pl-44 pr-6">
 
     <!-- Label -->
-    <div class="absolute left-0 top-0 bottom-0 flex items-center bg-black bg-opacity-70 px-4 font-bold uppercase tracking-wide text-xs sm:text-sm z-10">
+    <div class="absolute left-0 top-0 bottom-0 flex items-center bg-white/20 backdrop-blur-md px-5 font-bold uppercase tracking-wide text-xs sm:text-sm z-10 rounded-r-xl shadow-md border-r border-white/30">
       📢 Announcements
     </div>
 
     <!-- Scrolling Area -->
     <div class="overflow-hidden whitespace-nowrap">
-      <div class="scrolling-text">
+      <div class="scrolling-text text-white/90">
+
         <!-- Looping Announcements -->
+        <span class="mx-10">📘 <a href="Physics-9th.html" target="_blank" class="announcement-link">Physics 9th Class: Complete chapter-wise notes, solved numerical problems, MCQs, and definitions are now available – View Online</a></span>
 
-        <span class="mx-8">📘 <a href="Physics-9th.html" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">Physics 9th Class: Complete chapter-wise notes, solved numerical problems, MCQs, and definitions are now available – View Online</a></span>
+        <span class="mx-10">🎉 <a href="Mathematics-9th.html" target="_blank" class="announcement-link">Mathematics 9th Class: Chapter 1, 2, 3, 4 and 13 complete notes are now available – Click Here</a></span>
 
-        <span class="mx-8">✅ <a href="Mathematics-9th.html" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">Mathematics 9th Class: Chapter 1, 2, 3, 4, and 13 complete notes are now available – Click Here</a></span>
-
-        <span class="mx-8">✅ <a href="Mathematics-9th.html" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">Mathematics 9th Class: Definitions and solved MCQs for all chapters are now available for download – Click Here</a></span>
+        <span class="mx-10">✅ <a href="Mathematics-9th.html" target="_blank" class="announcement-link">Mathematics 9th Class: Definitions and solved MCQs for all chapters are now available – Download Now</a></span>
 
         <!-- Repeat for seamless loop -->
-        <span class="mx-8">📘 <a href="Physics-9th.html" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">Physics 9th Class: Complete chapter-wise notes, solved numerical problems, MCQs, and definitions are now available – View Online</a></span>
+        <span class="mx-10">📘 <a href="Physics-9th.html" target="_blank" class="announcement-link">Physics 9th Class: Complete chapter-wise notes, solved numerical problems, MCQs, and definitions are now available – View Online</a></span>
 
-        <span class="mx-8">✅ <a href="Mathematics-9th.html" target="_blank" class="underline text-yellow-300 hover:text-yellow-400 font-semibold">Mathematics 9th Class: Chapter 1, 2, 3, 4, and 13 complete notes are now available – Click Here</a></span>
+        <span class="mx-10">🎉 <a href="Mathematics-9th.html" target="_blank" class="announcement-link">Mathematics 9th Class: Chapter 1, 2, 3, 4 and 13 complete notes are now available – Click Here</a></span>
 
       </div>
     </div>
   </div>
 </div>
 
-<!-- 🖼️ Styles: Scroll Animation + Pause on Hover -->
+<!-- 🖼️ Styles: Scroll Animation + Glow + Hover -->
 <style>
   @keyframes scroll-x {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { transform: translateX(0); opacity: 0; }
+    5% { opacity: 1; }
+    100% { transform: translateX(-50%); opacity: 1; }
   }
 
   .scrolling-text {
     display: inline-flex;
-    animation: scroll-x 25s linear infinite;
+    animation: scroll-x 30s linear infinite;
     white-space: nowrap;
     will-change: transform;
   }
 
   .scrolling-text:hover {
     animation-play-state: paused;
+  }
+
+  .announcement-link {
+    color: #ffeb99;
+    font-weight: 600;
+    text-decoration: underline;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .announcement-link:hover {
+    color: #fff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
   }
 </style>
 
@@ -345,6 +358,7 @@
     });
   });
 </script>
+
 
 
 
