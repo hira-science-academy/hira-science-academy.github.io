@@ -1774,5 +1774,18 @@
     }
   }
 </script>
+<script>
+(function(){
+  const sb = document.querySelector('.sidebar-container') || document.querySelector('.sidebar');
+  if (!sb) return;
+  function update() {
+    if (window.innerWidth <= 1023) sb.style.display = 'none';
+    else sb.style.display = '';
+  }
+  window.addEventListener('resize', update);
+  window.addEventListener('DOMContentLoaded', update);
+})();
+</script>
+
 </body>
 </html>
