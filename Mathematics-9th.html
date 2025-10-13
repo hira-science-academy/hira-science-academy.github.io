@@ -113,6 +113,7 @@
 <body class="text-gray-800">
 
   <!-- Navigation -->
+   <!-- Navigation Bar -->
   <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
@@ -120,17 +121,42 @@
           <img src="images/logo.png" alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
           <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Hira Science Academy</span>
         </a>
-        <div class="hidden md:flex md:space-x-8">
-          <a href="index.html#home" class="px-3 py-2 font-medium hover:text-blue-600">Home</a>
-          <a href="index.html#notes" class="px-3 py-2 font-medium hover:text-blue-600">Notes</a>
-          <a href="index.html#courses" class="px-3 py-2 font-medium hover:text-blue-600">Courses</a>
-          <a href="index.html#features" class="px-3 py-2 font-medium hover:text-blue-600">Why Us</a>
-          <a href="index.html#testimonials" class="px-3 py-2 font-medium hover:text-blue-600">Testimonials</a>
-          <a href="index.html#contact" class="px-3 py-2 font-medium hover:text-blue-600">Contact</a>
-        </div>
+        <!-- Desktop Navigation -->
+<div class="hidden md:ml-10 md:flex md:space-x-8">
+  <a href="index.html#home" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+  <a href="index.html#notes" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
+  <a href="index.html#courses" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
+  <a href="index.html#features" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
+  <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
+  <a href="index.html#contact" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+</div>
+
+<!-- Mobile menu button -->
+<div class="-mr-2 flex items-center md:hidden">
+  <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+    <span class="sr-only">Open main menu</span>
+    <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+    </svg>
+    <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
+</div>
       </div>
     </div>
   </nav>
+<!-- Mobile menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
+  <div class="px-2 pt-2 pb-3 space-y-1">
+    <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Home</a>
+    <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Notes</a>
+    <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Courses</a>
+    <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Why Us</a>
+    <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Testimonials</a>
+    <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Contact</a>
+  </div>
+</div>
 
   <!-- Header -->
   <header class="bg-gradient-to-r from-blue-900 to-cyan-700 text-white py-12 text-center shadow-lg">
@@ -625,15 +651,35 @@
   </script>
 <!-- Mobile Nav Script -->
   <script>
-    const menuButton=document.getElementById('mobile-menu-button');
-    const mobileMenu=document.getElementById('mobile-menu');
-    const openIcon=document.getElementById('menu-icon-open');
-    const closeIcon=document.getElementById('menu-icon-close');
-    menuButton.addEventListener('click',()=>{
-      mobileMenu.classList.toggle('hidden');
-      openIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
+  document.addEventListener('DOMContentLoaded', function() {
+  // Mobile Menu Toggle Elements
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIconOpen = document.getElementById('menu-icon-open');
+  const menuIconClose = document.getElementById('menu-icon-close');
+  
+  // Toggle mobile menu
+  mobileMenuButton.addEventListener('click', function() {
+    const isExpanded = mobileMenu.classList.toggle('hidden');
+    
+    // Toggle menu icons
+    menuIconOpen.classList.toggle('hidden');
+    menuIconClose.classList.toggle('hidden');
+    
+    // Update aria-expanded attribute
+    this.setAttribute('aria-expanded', !isExpanded);
+  });
+  
+  // Close mobile menu when clicking on links
+  document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.add('hidden');
+      menuIconOpen.classList.remove('hidden');
+      menuIconClose.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
     });
+  });
+});
   </script>
 </body>
 </html>
