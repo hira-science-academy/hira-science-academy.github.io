@@ -436,14 +436,14 @@
 
 
 
-<!-- Notes Section -->
+<!-- Notes Section (stable auto-scroll + pause on interaction) -->
 <section id="notes" class="py-16 bg-gradient-to-b from-blue-50 to-white">
   <div class="max-w-7xl mx-auto px-4">
     <h2 class="text-3xl md:text-4xl font-extrabold text-center text-blue-800 mb-12">
       📚 Class Notes (PCTB Syllabus)
     </h2>
 
-    <!-- Class 9 Notes -->
+    <!-- Class 9 -->
     <h3 class="text-xl font-semibold text-center text-blue-700 mb-6">Class 9 Notes</h3>
     <div class="notes-scroll flex overflow-x-auto md:flex-wrap gap-6 pb-4 md:justify-center scroll-smooth">
       <a href="Mathematics-9th.html" class="note-card text-indigo-600"><i data-lucide="calculator" class="w-8 h-8 mb-2"></i>Math</a>
@@ -453,7 +453,7 @@
       <a href="Chemistry-9th.html" class="note-card text-red-600"><i data-lucide="flask-conical" class="w-8 h-8 mb-2"></i>Chemistry</a>
     </div>
 
-    <!-- Class 10 Notes -->
+    <!-- Class 10 -->
     <h3 class="text-xl font-semibold text-center text-blue-700 mt-10 mb-6">Class 10 Notes</h3>
     <div class="notes-scroll flex overflow-x-auto md:flex-wrap gap-6 pb-4 md:justify-center scroll-smooth">
       <a href="Mathematics-10th.html" class="note-card text-indigo-600"><i data-lucide="calculator" class="w-8 h-8 mb-2"></i>Math</a>
@@ -465,68 +465,123 @@
   </div>
 </section>
 
-<!-- Lucide Icons -->
+<!-- Lucide (icons) -->
 <script src="https://unpkg.com/lucide@latest"></script>
+<script>lucide.createIcons();</script>
+
+<!-- Auto-scroll script: smooth, pauses on interaction, resumes after idle -->
 <script>
-  lucide.createIcons();
+(function () {
+  const SPEED = 0.25;            // pixels per frame (reduce to go slower)
+  const IDLE_RESUME_MS = 1200;   // resume auto-scroll after this much idle time
 
-  // Auto-scroll with pause on hover or touch
-  document.querySelectorAll('.notes-scroll').forEach(scrollContainer => {
-    let scrollAmount = 0;
+  function makeAutoScroll(container) {
+    let rafId = null;
     let paused = false;
+    let lastUserInteraction = 0;
+    let userIsInteracting = false;
+    let direction = 1; // 1 = forward, -1 = backward
 
-    function autoScroll() {
-      if (!paused && scrollContainer.scrollWidth > scrollContainer.clientWidth) {
-        scrollAmount += 1;
-        scrollContainer.scrollLeft = scrollAmount;
-        if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-          scrollAmount = 0; // loop
-        }
-      }
-      requestAnimationFrame(autoScroll);
+    // Detect manual scroll (user touch/drag/wheel)
+    function onUserInteraction() {
+      userIsInteracting = true;
+      paused = true;
+      lastUserInteraction = performance.now();
+      cancelAnimation();
+      // schedule resume check
+      window.setTimeout(() => {
+        userIsInteracting = false;
+      }, IDLE_RESUME_MS);
     }
 
-    // Pause on hover (desktop)
-    scrollContainer.addEventListener('mouseenter', () => paused = true);
-    scrollContainer.addEventListener('mouseleave', () => paused = false);
+    function resumeIfIdle() {
+      if (userIsInteracting) return;
+      const elapsed = performance.now() - lastUserInteraction;
+      if (elapsed >= IDLE_RESUME_MS) paused = false;
+    }
 
-    // Pause on touch (mobile)
-    scrollContainer.addEventListener('touchstart', () => paused = true);
-    scrollContainer.addEventListener('touchend', () => paused = false);
+    // Pause on pointer down, hover, touch
+    container.addEventListener('pointerdown', () => { onUserInteraction(); }, {passive:true});
+    container.addEventListener('touchstart', () => { onUserInteraction(); }, {passive:true});
+    container.addEventListener('wheel', () => { onUserInteraction(); }, {passive:true});
+    container.addEventListener('mouseenter', () => { paused = true; }, {passive:true});
+    container.addEventListener('mouseleave', () => { lastUserInteraction = performance.now(); paused = false; }, {passive:true});
 
-    autoScroll();
+    // If user manually scrolls via touch/mouse, treat as interaction
+    let lastScrollLeft = container.scrollLeft;
+    container.addEventListener('scroll', () => {
+      const delta = Math.abs(container.scrollLeft - lastScrollLeft);
+      lastScrollLeft = container.scrollLeft;
+      if (delta > 0) onUserInteraction();
+    }, {passive:true});
+
+    function step() {
+      if (!paused && container.scrollWidth > container.clientWidth) {
+        // move, but keep within bounds; flip direction at edges for natural loop
+        let next = container.scrollLeft + SPEED * direction;
+        // When reaching near end or start, wrap smoothly by reversing direction briefly
+        if (next >= container.scrollWidth - container.clientWidth - 1) {
+          // jump back a bit to create continuous loop feel
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft = next;
+        }
+      } else {
+        resumeIfIdle();
+      }
+      rafId = requestAnimationFrame(step);
+    }
+
+    function cancelAnimation() {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = null;
+    }
+
+    // Start loop
+    lastUserInteraction = performance.now() - IDLE_RESUME_MS; // allow immediate start
+    rafId = requestAnimationFrame(step);
+
+    // Expose a way to stop if needed
+    return () => {
+      cancelAnimation();
+      container.removeEventListener('pointerdown', onUserInteraction);
+    };
+  }
+
+  // Initialize for all rows with class .notes-scroll
+  document.querySelectorAll('.notes-scroll').forEach((el) => {
+    // Ensure horizontal layout for auto-scroll: don't auto-scroll if wrapped into multiple rows (desktop)
+    // We'll auto-scroll regardless; container only scrolls when scrollWidth > clientWidth
+    makeAutoScroll(el);
   });
+})();
 </script>
 
 <!-- Styles -->
 <style>
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
+
   .note-card {
     min-width: 160px;
     height: 160px;
     background: white;
     border-radius: 1rem;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 20px rgba(16,24,40,0.06);
     font-weight: 600;
-    font-size: 1.125rem;
+    font-size: 1.05rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: transform .25s ease, background .25s ease;
+    text-decoration: none;
+    color: inherit;
   }
-  .note-card:hover {
-    transform: scale(1.05);
-    background: #eef2ff;
-  }
-  .notes-scroll::-webkit-scrollbar {
-    display: none;
-  }
-  .notes-scroll {
-    scrollbar-width: none;
-  }
+  .note-card:hover { transform: translateY(-6px) scale(1.03); }
+
+  /* hide scrollbar for clean mobile look */
+  .notes-scroll::-webkit-scrollbar { display: none; }
+  .notes-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 </style>
 
 
