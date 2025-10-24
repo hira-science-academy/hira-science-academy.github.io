@@ -76,6 +76,15 @@
     .excluded-item { background-color: #fff7ed; border-left: 4px solid #f59e0b; padding: 10px 14px; border-radius: 6px; margin-bottom: 8px; word-break: break-word;}
     .unit-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; }
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+    
+    /* New styles for improved UI */
+    .chapter-title { 
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .exercise-highlight { font-weight: 700; color: #dc2626; }
   </style>
 </head>
 <body class="antialiased text-slate-900">
@@ -242,8 +251,8 @@
       </div>
 
       <div class="flex gap-2 mt-2 sm:mt-0">
-        <button id="expandAll" class="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-cyan-600 hover:to-blue-700 transition-all">Expand all</button>
-        <button id="collapseAll" class="px-4 py-2 rounded-lg border border-gray-200 bg-white text-sm hover:bg-gray-50 transition-colors">Collapse all</button>
+        <button id="showAll" class="px-4 py-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-medium shadow-sm hover:from-cyan-600 hover:to-blue-700 transition-all">Show All</button>
+        <button id="hideAll" class="px-4 py-2 rounded-lg border border-gray-200 bg-white text-sm hover:bg-gray-50 transition-colors">Hide All</button>
       </div>
     </div>
 
@@ -255,15 +264,14 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-blue-100 text-blue-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">1</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Real Numbers</h3>
+              <h3 class="text-lg font-semibold chapter-title">Real Numbers</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3 flex items-center gap-2">
-            <!-- icon omitted for brevity -->
             Excluded Content:
           </h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
@@ -271,8 +279,8 @@
             <div>• 1.3 Application of Real Numbers in Daily Life (Pages 14–15)</div>
             <div>• 1.3.1 Temperature Conversion (Example 10, Pages 15–16)</div>
             <div>• 1.3.2 Profit and Loss (Examples 11–14, Pages 16–18)</div>
-            <div>• Complete Exercise 1.3 (Pages 18–19)</div>
-            <div>• Review Exercise 1: Questions 3, 5, 8, 9, 10 (Pages 19–20)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 1.3 (Pages 18–19)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 1: Questions 3, 5, 8, 9, 10 (Pages 19–20)</span></div>
           </div>
         </div>
       </article>
@@ -283,18 +291,18 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-green-100 text-green-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">2</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Logarithms</h3>
+              <h3 class="text-lg font-semibold chapter-title">Logarithms</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
             <div>• 2.4 Laws of Logarithm (Examples 12–15, Pages 30–34)</div>
-            <div>• Complete Exercise 2.4 (Pages 34–35)</div>
-            <div>• Review Exercise 2: Q1 (ix, x), Q7, 8, 9, 10 (Pages 35–36)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 2.4 (Pages 34–35)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 2: Q1 (ix, x), Q7, 8, 9, 10 (Pages 35–36)</span></div>
           </div>
         </div>
       </article>
@@ -305,26 +313,26 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-purple-100 text-purple-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">3</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Sets and Functions</h3>
+              <h3 class="text-lg font-semibold chapter-title">Sets and Functions</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
             <div>• Introduction (Page 37)</div>
             <div>• 3.1 Mathematics as the Study of Patterns... (Pages 37–39, before set definition)</div>
             <div>• Example 5 (Page 51)</div>
-            <div>• Exercise 3.2: Q9, Q11, Q12, Q13 (Pages 54–55)</div>
+            <div>• <span class="exercise-highlight">Exercise 3.2: Q9, Q11, Q12, Q13 (Pages 54–55)</span></div>
             <div>• 3.3 Binary Relations (Examples 7, 8; Pages 55–56)</div>
             <div>• 3.3.1 Relation as Table, Ordered Pair and Graphs (Pages 56–57)</div>
             <div>• 3.3.2 Functions and its Domain and Range (Example 9; Pages 57–59)</div>
             <div>• 3.3.3 Notation of Function (Page 59)</div>
             <div>• 3.3.4 Linear and Quadratic Functions (Examples 10, 11; Pages 59–60)</div>
-            <div>• Complete Exercise 3.3 (Page 61)</div>
-            <div>• Review Exercise 3: Q1 (vii–x), Q10 to 16 (Pages 62–64)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 3.3 (Page 61)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 3: Q1 (vii–x), Q10 to 16 (Pages 62–64)</span></div>
           </div>
         </div>
       </article>
@@ -335,19 +343,19 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-red-100 text-red-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">4</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Factorization and Algebraic Manipulation</h3>
+              <h3 class="text-lg font-semibold chapter-title">Factorization and Algebraic Manipulation</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
             <div>• 4.4 Square Root of an Algebraic Expression (Examples 26, 27; Pages 77–78)</div>
             <div>• 4.4.1 Real World Problems of Factorization (Examples 28, 29, 30; Pages 78–79)</div>
-            <div>• Complete Exercise 4.4 (Pages 79–80)</div>
-            <div>• Review Exercise 4: Q1 (vi), Q4, Q5 (Page 81)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 4.4 (Pages 79–80)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 4: Q1 (vi), Q4, Q5 (Page 81)</span></div>
           </div>
         </div>
       </article>
@@ -358,19 +366,19 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-orange-100 text-orange-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">5</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Linear Equations and Inequalities</h3>
+              <h3 class="text-lg font-semibold chapter-title">Linear Equations and Inequalities</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
             <div>• 5.3 Feasible Solution (Example 6; Pages 91–92)</div>
             <div>• 5.3.2 Maximum and Minimum Values... (Example 7; Pages 93–94)</div>
-            <div>• Complete Exercise 5.2 (Pages 94–95)</div>
-            <div>• Review Exercise 5: Q1 (ix, x), Q3, Q4, Q5 (Pages 95–96)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 5.2 (Pages 94–95)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 5: Q1 (ix, x), Q3, Q4, Q5 (Pages 95–96)</span></div>
           </div>
         </div>
       </article>
@@ -381,22 +389,22 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-teal-100 text-teal-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">6</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Trigonometry</h3>
+              <h3 class="text-lg font-semibold chapter-title">Trigonometry</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
             <div>• Example 12 (Page 109)</div>
-            <div>• Exercise 6.3: Q10, Q11, Q12 (Page 111)</div>
-            <div>• Exercise 6.4: Q2 (vii, viii), Q3 (iii) (Page 113)</div>
-            <div>• Exercise 6.5: Q5, Q6, Q9 (Pages 117–118)</div>
+            <div>• <span class="exercise-highlight">Exercise 6.3: Q10, Q11, Q12 (Page 111)</span></div>
+            <div>• <span class="exercise-highlight">Exercise 6.4: Q2 (vii, viii), Q3 (iii) (Page 113)</span></div>
+            <div>• <span class="exercise-highlight">Exercise 6.5: Q5, Q6, Q9 (Pages 117–118)</span></div>
             <div>• 6.6 The Angle of Elevation and Depression (Examples 19, 20; Pages 118–119)</div>
-            <div>• Complete Exercise 6.6 (Page 120)</div>
-            <div>• Review Exercise 6: Q3 (iii–vi), Q5, Q6 (Page 122)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 6.6 (Page 120)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 6: Q3 (iii–vi), Q5, Q6 (Page 122)</span></div>
           </div>
         </div>
       </article>
@@ -407,20 +415,20 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-indigo-100 text-indigo-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">7</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Coordinate Geometry</h3>
+              <h3 class="text-lg font-semibold chapter-title">Coordinate Geometry</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
-            <div>• Exercise 7.1: Q6, Q9, Q10 (Page 128)</div>
-            <div>• Exercise 7.2: Q2 (iii, iv), Q12, Q13 (Pages 140–141)</div>
+            <div>• <span class="exercise-highlight">Exercise 7.1: Q6, Q9, Q10 (Page 128)</span></div>
+            <div>• <span class="exercise-highlight">Exercise 7.2: Q2 (iii, iv), Q12, Q13 (Pages 140–141)</span></div>
             <div>• 7.3 Applications of Coordinate Geometry... (Examples 14–20; Pages 141–144)</div>
-            <div>• Complete Exercise 7.3 (Pages 144–145)</div>
-            <div>• Review Exercise 7: Q4 to 10 (Page 146)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 7.3 (Pages 144–145)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 7: Q4 to 10 (Page 146)</span></div>
           </div>
         </div>
       </article>
@@ -431,13 +439,13 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-pink-100 text-pink-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">8</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Logic</h3>
+              <h3 class="text-lg font-semibold chapter-title">Logic</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
             <div>• The entire Chapter 8 is excluded.</div>
@@ -451,20 +459,20 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-amber-100 text-amber-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">9</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Similar Figures</h3>
+              <h3 class="text-lg font-semibold chapter-title">Similar Figures</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
-            <div>• Exercise 9.1: Q8, Q9 (Page 166)</div>
-            <div>• Exercise 9.2: Q5, Q8 (Page 172)</div>
+            <div>• <span class="exercise-highlight">Exercise 9.1: Q8, Q9 (Page 166)</span></div>
+            <div>• <span class="exercise-highlight">Exercise 9.2: Q5, Q8 (Page 172)</span></div>
             <div>• 9.4 Geometrical Properties of Polygon and Applications (Pages 177–181)</div>
-            <div>• Complete Exercise 9.4 (Page 182)</div>
-            <div>• Review Exercise 9: Q1 (vii–x), Q4, Q7, Q8, Q9 (Pages 183–184)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 9.4 (Page 182)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 9: Q1 (vii–x), Q4, Q7, Q8, Q9 (Pages 183–184)</span></div>
           </div>
         </div>
       </article>
@@ -475,20 +483,20 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-lime-100 text-lime-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">10</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Graphs of Functions</h3>
+              <h3 class="text-lg font-semibold chapter-title">Graphs of Functions</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
             <div>• 10.2 Exponential Growth/Decay... (Example 12; Pages 193–194)</div>
             <div>• 10.2.1 Gradients of Curves... (Example 13; Page 194)</div>
             <div>• 10.2.2 Application of Graph in Real Life (Examples 14, 15; Pages 195–196)</div>
-            <div>• Complete Exercise 10.2 (Page 197)</div>
-            <div>• Review Exercise 10: Q3, Q5, Q6, Q7 (Page 199)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 10.2 (Page 197)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 10: Q3, Q5, Q6, Q7 (Page 199)</span></div>
           </div>
         </div>
       </article>
@@ -499,19 +507,19 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-emerald-100 text-emerald-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">11</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Loci and Construction</h3>
+              <h3 class="text-lg font-semibold chapter-title">Loci and Construction</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
             <div>• 11.5.2 Intersection of Loci (Examples 10, 11, 12; Pages 209–211)</div>
             <div>• 11.6 Real Life Application of Loci (Page 211)</div>
-            <div>• Complete Exercise 11.2 (Pages 212–213)</div>
-            <div>• Review Exercise 11: Q1 (v–x), Q2 to 8 (Pages 213–214)</div>
+            <div>• <span class="exercise-highlight">Complete Exercise 11.2 (Pages 212–213)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 11: Q1 (v–x), Q2 to 8 (Pages 213–214)</span></div>
           </div>
         </div>
       </article>
@@ -522,19 +530,19 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-cyan-100 text-cyan-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">12</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Information Handling</h3>
+              <h3 class="text-lg font-semibold chapter-title">Information Handling</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
-            <div>• Exercise 12.1: Q8 (Page 224)</div>
+            <div>• <span class="exercise-highlight">Exercise 12.1: Q8 (Page 224)</span></div>
             <div>• 12.2.4 Weighted Mean (Examples 19, 20; Pages 234–235)</div>
-            <div>• Exercise 12.2: Q13 to 20 (Pages 238–239)</div>
-            <div>• Review Exercise 12: Q7, Q12 (Pages 241–242)</div>
+            <div>• <span class="exercise-highlight">Exercise 12.2: Q13 to 20 (Pages 238–239)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 12: Q7, Q12 (Pages 241–242)</span></div>
           </div>
         </div>
       </article>
@@ -545,19 +553,19 @@
           <div class="flex items-start gap-4">
             <div class="unit-icon bg-violet-100 text-violet-600 flex items-center justify-center w-10 h-10 rounded-full font-bold">13</div>
             <div>
-              <h3 class="text-lg font-semibold text-blue-800">Probability</h3>
+              <h3 class="text-lg font-semibold chapter-title">Probability</h3>
               <p class="mt-1 text-sm text-slate-500">Excluded Content (detailed)</p>
             </div>
           </div>
-          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="true">Hide</button>
+          <button class="toggle-btn px-3 py-2 rounded-md bg-blue-50 text-blue-700 border border-blue-100 hover:bg-blue-100 transition-colors" aria-expanded="false">Show</button>
         </header>
-        <div class="mt-4 collapse-content open">
+        <div class="mt-4 collapse-content">
           <h4 class="font-semibold text-red-600 mb-3">Excluded Content:</h4>
           <div class="space-y-2 text-justify text-slate-1000 leading-relaxed">
             <div>• 13.6 Expected Frequency (Example 11; Page 255)</div>
             <div>• 13.7 Real Life Application on Expected Frequency (Examples 12, 13; Pages 255–256)</div>
-            <div>• Exercise 13.2: Q5 to 8 (Page 257)</div>
-            <div>• Review Exercise 13: Q1 (v), Q2 to 7 (Pages 258–259)</div>
+            <div>• <span class="exercise-highlight">Exercise 13.2: Q5 to 8 (Page 257)</span></div>
+            <div>• <span class="exercise-highlight">Review Exercise 13: Q1 (v), Q2 to 7 (Pages 258–259)</span></div>
           </div>
         </div>
       </article>
@@ -646,6 +654,7 @@
     </div>
   </div>
 </section>
+
 <!-- Footer -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-0">
   <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
@@ -789,10 +798,10 @@
       });
     });
 
-    // ====== EXPAND ALL ======
-    const expandAllBtn = document.getElementById("expandAll");
-    if (expandAllBtn) {
-      expandAllBtn.addEventListener("click", () => {
+    // ====== SHOW ALL ======
+    const showAllBtn = document.getElementById("showAll");
+    if (showAllBtn) {
+      showAllBtn.addEventListener("click", () => {
         document.querySelectorAll(".collapse-content").forEach(content => {
           content.classList.add("open");
           content.style.maxHeight = content.scrollHeight + "px";
@@ -804,10 +813,10 @@
       });
     }
 
-    // ====== COLLAPSE ALL ======
-    const collapseAllBtn = document.getElementById("collapseAll");
-    if (collapseAllBtn) {
-      collapseAllBtn.addEventListener("click", () => {
+    // ====== HIDE ALL ======
+    const hideAllBtn = document.getElementById("hideAll");
+    if (hideAllBtn) {
+      hideAllBtn.addEventListener("click", () => {
         document.querySelectorAll(".collapse-content").forEach(content => {
           content.classList.remove("open");
           content.style.maxHeight = "0px";
