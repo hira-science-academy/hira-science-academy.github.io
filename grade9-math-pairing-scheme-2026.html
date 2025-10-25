@@ -81,36 +81,47 @@
   <!-- AdSense Global Script -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443" crossorigin="anonymous"></script>
 
-  <!-- MathJax & Tailwind -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Tailwind CSS & Font -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cambria+Math&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
- <style>
-    body { 
-      font-family: 'Poppins', sans-serif; 
-      scroll-behavior: smooth; 
-      background-color: #f3f4f6; 
-      overflow-x: hidden;
+  <!-- Small custom styles -->
+  <style>
+    :root{
+      --accent-from: #0ea5e9;
+      --accent-to: #6366f1;
     }
-    
-    .gradient-bg {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    html,body{ font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:#f8fafc; color:#0f172a; }
+    .unit-card { transition: transform .16s ease, box-shadow .16s ease; border-radius: 12px; }
+    .unit-card:focus-within, .unit-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(2,6,23,0.06); }
+    .accent-gradient { background: linear-gradient(90deg,var(--accent-from),var(--accent-to)); }
+    .collapse-content { max-height: 0; overflow: hidden; transition: max-height .32s ease; }
+    .collapse-content.open { max-height: 2000px; }
+    .syllabus-badge { background: linear-gradient(135deg,#ec4899 0%,#8b5cf6 100%); color: white; padding: 6px 12px; border-radius: 999px; font-weight: 600; display:inline-block; }
+    .chapter-title { 
+      background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-    
-    .section-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .toggle-btn { 
+      background: linear-gradient(135deg, #0ea5e9 0%, #6366f1 100%);
+      color: white;
+      border: none;
+      transition: all 0.3s ease;
     }
-    
-    .section-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    .toggle-btn:hover {
+      background: linear-gradient(135deg, #0284c7 0%, #4f46e5 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
     }
-    
+    .marking-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+    .marking-table th, .marking-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+    .marking-table th { background-color: #f1f5f9; font-weight: 600; color: #334155; }
+    .marking-table tr:hover { background-color: #f8fafc; }
+    .section-card { background: white; border-radius: 12px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+    .section-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #1e293b; }
+    .highlight-box { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); border-left: 4px solid #0ea5e9; padding: 1rem; border-radius: 8px; margin: 1rem 0; }
     .chapter-badge {
       display: inline-flex;
       align-items: center;
@@ -121,623 +132,911 @@
       font-weight: 600;
       margin-right: 8px;
     }
-    
-    .print-button {
-      transition: all 0.3s ease;
-    }
-    
-    .print-button:hover {
-      transform: scale(1.05);
-    }
-    
-    /* Mobile navigation improvements */
-    .mobile-menu-container {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-    
-    .mobile-menu-container.open {
-      max-height: 500px;
-    }
-    
-    /* Touch-friendly button sizing */
-    .touch-target {
-      min-height: 44px;
-      min-width: 44px;
-    }
-    
-    /* Prevent horizontal scrolling */
-    .no-overflow {
-      max-width: 100%;
-      overflow-x: hidden;
-    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
 
-    /* ===== ADD THE MOBILE OPTIMIZATIONS RIGHT HERE ===== */
-    /* Improve mobile table readability */
-    @media (max-width: 640px) {
-      .table-responsive {
-        font-size: 0.875rem;
-      }
-      
-      /* Adjust header sizes for mobile */
-      h1 { font-size: 1.75rem; }
-      h2 { font-size: 1.5rem; }
-      
-      /* Increase touch targets */
-      .chapter-badge {
-        width: 36px;
-        height: 36px;
-        font-size: 0.9rem;
-      }
-    }
+.back-to-top:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+}
 
-    /* Better padding on mobile */
-    @media (max-width: 768px) {
-      .container-mobile {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-    }
-    /* ===== END OF MOBILE OPTIMIZATIONS ===== */
-
-    @media print {
-      .no-print {
-        display: none !important;
-      }
-      
-      body {
-        font-size: 12pt;
-        line-height: 1.4;
-      }
-      
-      .section-card {
-        box-shadow: none !important;
-        border: 1px solid #ddd !important;
-        page-break-inside: avoid;
-      }
-      
-      .gradient-bg {
-        background: #1e3a8a !important;
-        -webkit-print-color-adjust: exact;
-      }
-    }
-</style>
+.back-to-top.show {
+  display: flex;
+}
+  </style>
 </head>
+<body class="antialiased text-slate-900">
 
-<body class="bg-gray-50 no-overflow">
-  <!-- Navigation Bar -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm no-print">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-20 items-center">
-        <!-- Logo -->
-        <div class="flex-shrink-0 flex items-center">
-          <a href="index.html#home" class="flex items-center gap-3 group transition duration-300">
-            <img 
-              src="images/logo.png" 
-              alt="Hira Science Academy"
-              class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
-              Hira Science Academy
-            </span>
-          </a>
-        </div>
+<!-- Navigation Bar -->
+<nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-20 items-center">
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="index.html#home" class="flex items-center gap-3 group transition duration-300">
+          <img 
+            src="images/logo.png" 
+            alt="Hira Science Academy"
+            class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
 
-        <!-- Desktop Navigation -->
-        <div class="hidden md:ml-10 md:flex md:space-x-8">
-          <a href="index.html#home" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
-          <a href="index.html#notes" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
-          <a href="index.html#courses" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
-          <a href="index.html#features" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
-          <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
-          <a href="index.html#contact" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden flex items-center">
-          <button type="button" id="mobile-menu-button" class="touch-target inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
-            <span class="sr-only">Open main menu</span>
-            <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+          <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
+            Hira Science Academy
+          </span>
+        </a>
       </div>
-    </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="mobile-menu-container md:hidden bg-white shadow-lg mx-4 transition-all duration-300 ease-in-out">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <a href="index.html#home" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors touch-target">Home</a>
-        <a href="index.html#notes" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors touch-target">Notes</a>
-        <a href="index.html#courses" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors touch-target">Courses</a>
-        <a href="index.html#features" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors touch-target">Why Us</a>
-        <a href="index.html#testimonials" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors touch-target">Testimonials</a>
-        <a href="index.html#contact" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors touch-target">Contact</a>
+      <!-- Desktop Navigation -->
+      <div class="hidden md:ml-10 md:flex md:space-x-8">
+        <a href="index.html#home" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+        <a href="index.html#notes" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
+        <a href="index.html#courses" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
+        <a href="index.html#features" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
+        <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
+        <a href="index.html#contact" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
       </div>
-    </div>
-  </nav>
 
-  <!-- Header Section -->
-  <header class="gradient-bg text-white py-6 shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <h1 class="text-3xl font-bold">Grade 9 Mathematics</h1>
-          <h2 class="text-xl font-semibold mt-2">Pairing Scheme 2026</h2>
-          <p class="text-blue-100 mt-1">Smart/Reduced Syllabus - Annual Examination</p>
-        </div>
-        <div class="text-center md:text-right">
-          <p class="text-lg font-medium">Hira Science Academy</p>
-          <p class="text-blue-100">Excellence in Education</p>
-        </div>
+      <!-- Mobile Menu Button -->
+      <div class="-mr-2 flex items-center md:hidden">
+        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
+          <span class="sr-only">Open main menu</span>
+          <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
-    </div>
-  </header>
-
-  <!-- Breadcrumbs -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 no-print">
-    <nav class="flex overflow-x-auto" aria-label="Breadcrumb">
-      <ol class="flex items-center space-x-2 text-sm whitespace-nowrap">
-        <li>
-          <a href="index.html" class="text-blue-600 hover:text-blue-800">Home</a>
-        </li>
-        <li>
-          <span class="text-gray-400">/</span>
-        </li>
-        <li>
-          <a href="index.html#notes" class="text-blue-600 hover:text-blue-800">Notes</a>
-        </li>
-        <li>
-          <span class="text-gray-400">/</span>
-        </li>
-        <li>
-          <a href="Mathematics-9th.html" class="text-blue-600 hover:text-blue-800">Mathematics Class 9</a>
-        </li>
-        <li>
-          <span class="text-gray-400">/</span>
-        </li>
-        <li class="text-gray-600">
-          Pairing Scheme 2026
-        </li>
-      </ol>
-    </nav>
-  </div>
-
-  <!-- Print Button -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 no-print">
-    <div class="flex justify-end">
-      <button onclick="window.print()" class="print-button bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg shadow-md flex items-center touch-target">
-        <i class="fas fa-print mr-2"></i> Print Scheme
-      </button>
     </div>
   </div>
 
-  <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <!-- Exam Overview -->
-    <section class="mb-12">
-      <div class="bg-white rounded-xl shadow-md p-6 section-card">
-        <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b pb-2">Examination Overview</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-blue-50 p-4 rounded-lg">
-            <h3 class="text-lg font-semibold text-blue-700 mb-2">Total Marks & Timing</h3>
-            <ul class="space-y-2">
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                <span><strong>Total Marks:</strong> 75</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                <span><strong>Objective Type:</strong> 15 marks</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-check-circle text-blue-500 mt-1 mr-2"></i>
-                <span><strong>Subjective Type:</strong> 60 marks</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-clock text-blue-500 mt-1 mr-2"></i>
-                <span><strong>Total Time:</strong> 2 hours 30 minutes</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-clock text-blue-500 mt-1 mr-2"></i>
-                <span><strong>Objective Time:</strong> 20 minutes</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-clock text-blue-500 mt-1 mr-2"></i>
-                <span><strong>Subjective Time:</strong> 2 hours 10 minutes</span>
-              </li>
-            </ul>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Home</a>
+      <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Notes</a>
+      <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Courses</a>
+      <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Why Us</a>
+      <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Testimonials</a>
+      <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- 🌟 HERO + OVERVIEW -->
+<section class="relative mt-6 overflow-hidden rounded-3xl shadow-xl mx-4">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-purple-800 via-purple-700 to-indigo-600"></div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 md:px-10 lg:px-16 py-12 gap-10 text-white">
+    
+    <!-- Left: Text -->
+    <div class="w-full md:w-1/2 text-center md:text-left animate-fade-up">
+      <p class="text-sm uppercase tracking-wider text-purple-200 mb-3 font-medium">
+        Punjab Examination Commission of Textbook and Assessment (PECTA) 2026
+      </p>
+
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight">
+        Grade 9 Mathematics <br class="hidden sm:block">
+        <span class="text-yellow-300">Pairing Scheme 2026</span>
+      </h1>
+
+      <p class="mt-4 text-purple-100 text-sm md:text-base leading-relaxed text-justify">
+        Complete paper structure and chapter-wise question distribution for the <strong>Annual Examination 2026</strong>.
+        Plan your preparation with this detailed pairing scheme.
+      </p>
+
+      <div class="mt-6 flex flex-wrap justify-center md:justify-start gap-4">
+        <a href="smart-reduced-syllabus-grade9-mathematics-2026.html"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-purple-900 font-semibold shadow hover:bg-purple-50 transition">
+          📘 View SMART Syllabus
+        </a>
+        <a href="#paper-structure"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/30 text-white hover:bg-white/10 transition">
+          🔍 View Paper Structure
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: Image -->
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
+      <img src="https://hiraacademy.online/images/math-9th-pairing-scheme-2026.jpg"
+        alt="Grade 9 Mathematics Pairing Scheme 2026"
+        class="w-72 md:w-80 lg:w-96 rounded-2xl shadow-2xl ring-1 ring-white/20 hover:scale-105 transition-transform duration-300" />
+    </div>
+  </div>
+
+  <!-- Overview Box -->
+  <div class="relative z-20 -mt-6 md:-mt-10 px-4 pb-10">
+    <div class="max-w-7xl mx-auto">
+      <div class="bg-gradient-to-br from-purple-50 to-white border border-purple-100 rounded-2xl shadow-sm p-8">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+
+          <!-- Icon -->
+          <div class="flex-shrink-0">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-purple-600 to-indigo-500 flex items-center justify-center shadow-md">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
           </div>
-          <div class="bg-green-50 p-4 rounded-lg">
-            <h3 class="text-lg font-semibold text-green-700 mb-2">Paper Structure</h3>
-            <ul class="space-y-2">
-              <li class="flex items-start">
-                <i class="fas fa-list-alt text-green-500 mt-1 mr-2"></i>
-                <span><strong>Question 1:</strong> 15 MCQs (1 mark each)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-list-alt text-green-500 mt-1 mr-2"></i>
-                <span><strong>Part-I (Q2-Q4):</strong> Short Questions (12 marks each)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-list-alt text-green-500 mt-1 mr-2"></i>
-                <span><strong>Part-II (Q5-Q7):</strong> Long Questions (8 marks each)</span>
-              </li>
-              <li class="flex items-start">
-                <i class="fas fa-list-alt text-green-500 mt-1 mr-2"></i>
-                <span><strong>Part-III (Q8-Q9):</strong> Long Questions (8 marks each)</span>
-              </li>
-            </ul>
+
+          <!-- Overview Text -->
+          <div class="flex-1">
+            <h2 class="text-2xl font-bold text-purple-900 mb-2">
+              Grade 9 Mathematics <span class="text-indigo-600">Pairing Scheme 2026</span>
+            </h2>
+            <p class="text-slate-800 text-[15px] leading-relaxed text-justify">
+              This official pairing scheme outlines the complete structure of the Grade 9 Mathematics paper for the 
+              <strong>Annual Examination 2026</strong>, including chapter-wise distribution of questions, marks allocation, 
+              and paper timing details.
+            </p>
+
+            <!-- Important Note -->
+            <div class="mt-5 flex items-start gap-3 bg-purple-100 border-l-4 border-purple-500 rounded-md p-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-purple-600 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M12 9v2m0 8a9 9 0 110-18 9 9 0 010 18z" />
+              </svg>
+              <p class="text-slate-800 text-sm leading-relaxed text-justify">
+                <strong>Note:</strong> This pairing scheme applies only to the <strong>Annual Examination 2026</strong>.
+                All questions will be asked from the textbook exercises as per the SMART syllabus.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- Objective Section -->
-    <section class="mb-12">
-      <div class="bg-white rounded-xl shadow-md p-6 section-card">
-        <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b pb-2">Objective Type (MCQs)</h2>
-        <div class="mb-4">
-          <h3 class="text-xl font-semibold text-gray-700 mb-2">Question 1: 15 Multiple Choice Questions (1 × 15 = 15 marks)</h3>
-          <p class="text-gray-600 mb-4">Questions will be selected from the entire textbook with the following distribution:</p>
-          
-          <div class="overflow-x-auto">
-            <table class="w-full border-collapse border border-gray-300">
-              <thead class="bg-blue-100">
-                <tr>
-                  <th class="border border-gray-300 px-4 py-2 text-left">Chapters</th>
-                  <th class="border border-gray-300 px-4 py-2 text-center">Number of MCQs</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-blue-500 text-white">1</span>
-                    Real Numbers
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-green-500 text-white">2</span>
-                    Logarithms
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-purple-500 text-white">3</span>
-                    Sets and Functions
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">2</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-pink-500 text-white">4</span>
-                    Factorization
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">2</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-yellow-500 text-white">5</span>
-                    Linear Equations
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-teal-500 text-white">6</span>
-                    Trigonometry
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">2</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-indigo-500 text-white">7</span>
-                    Coordinate Geometry
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-gray-500 text-white">9</span>
-                    Similar Figures
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-cyan-500 text-white">10</span>
-                    Graphs of Functions
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-orange-500 text-white">11</span>
-                    Loci and Construction
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-gray-700 text-white">12</span>
-                    Information Handling
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                </tr>
-                <tr class="hover:bg-blue-50">
-                  <td class="border border-gray-300 px-4 py-2">
-                    <span class="chapter-badge bg-rose-500 text-white">13</span>
-                    Probability
-                  </td>
-                  <td class="border border-gray-300 px-4 py-2 text-center">1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+<!-- PAPER STRUCTURE -->
+<section id="paper-structure" class="mt-10 px-4">
+  <div class="max-w-5xl mx-auto">
+    <!-- Section Title -->
+    <h2 class="text-center text-2xl font-semibold text-slate-800 mb-6">Paper Structure & Timing</h2>
+
+    <!-- Paper Overview -->
+    <div class="section-card">
+      <h3 class="section-title">Overall Paper Details</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-blue-50 p-4 rounded-lg text-center">
+          <div class="text-2xl font-bold text-blue-700">75</div>
+          <div class="text-sm text-blue-600">Total Marks</div>
+        </div>
+        <div class="bg-purple-50 p-4 rounded-lg text-center">
+          <div class="text-2xl font-bold text-purple-700">2.5 Hours</div>
+          <div class="text-sm text-purple-600">Total Time</div>
+        </div>
+        <div class="bg-indigo-50 p-4 rounded-lg text-center">
+          <div class="text-2xl font-bold text-indigo-700">13</div>
+          <div class="text-sm text-indigo-600">Total Chapters</div>
         </div>
       </div>
-    </section>
 
-    <!-- Part-I: Subjective -->
-    <section class="mb-12">
-      <div class="bg-white rounded-xl shadow-md p-6 section-card">
-        <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b pb-2">Part-I: Subjective Type (Short Questions)</h2>
-        
-        <div class="mb-6">
-          <h3 class="text-xl font-semibold text-gray-700 mb-2">Question 2: Attempt any 6 out of 9 questions (2 × 6 = 12 marks)</h3>
-          <p class="text-gray-600 mb-4">Questions will be selected from the following chapters:</p>
-          
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-blue-50 p-4 rounded-lg">
-              <h4 class="font-semibold text-blue-700 mb-2">Chapters with 2 questions each:</h4>
-              <ul class="space-y-2">
-                <li class="flex items-center">
-                  <span class="chapter-badge bg-blue-500 text-white">1</span>
-                  Real Numbers
-                </li>
-                <li class="flex items-center">
-                  <span class="chapter-badge bg-green-500 text-white">2</span>
-                  Logarithms
-                </li>
-                <li class="flex items-center">
-                  <span class="chapter-badge bg-purple-500 text-white">3</span>
-                  Sets and Functions
-                </li>
-                <li class="flex items-center">
-                  <span class="chapter-badge bg-pink-500 text-white">4</span>
-                  Factorization
-                </li>
-              </ul>
-            </div>
-            <div class="bg-green-50 p-4 rounded-lg">
-              <h4 class="font-semibold text-green-700 mb-2">Chapter with 1 question:</h4>
-              <ul>
-                <li class="flex items-center">
-                  <span class="chapter-badge bg-yellow-500 text-white">5</span>
-                  Linear Equations
-                </li>
-              </ul>
-            </div>
+      <div class="highlight-box">
+        <h4 class="font-semibold text-blue-800 mb-2">Paper Timing Breakdown</h4>
+        <ul class="list-disc pl-5 text-slate-700 space-y-1">
+          <li><strong>Objective Part (MCQs):</strong> 20 minutes</li>
+          <li><strong>Subjective Part:</strong> 2 hours 10 minutes</li>
+          <li><strong>Total Duration:</strong> 2 hours 30 minutes</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Part I: Objective -->
+    <div class="section-card">
+      <h3 class="section-title">Part I: Objective (Multiple Choice Questions)</h3>
+      <div class="bg-blue-50 p-4 rounded-lg mb-4">
+        <div class="flex justify-between items-center">
+          <span class="font-semibold text-blue-800">15 MCQs × 1 mark each</span>
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">15 Marks</span>
+        </div>
+      </div>
+      
+      <h4 class="font-semibold text-slate-700 mb-3">Chapter-wise Distribution:</h4>
+      <table class="marking-table">
+        <thead>
+          <tr>
+            <th>Chapter</th>
+            <th>Title</th>
+            <th>MCQs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-medium">Chapter 1</td>
+            <td>Real Numbers</td>
+            <td>1 MCQ</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 2</td>
+            <td>Logarithms</td>
+            <td>1 MCQ</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 3</td>
+            <td>Sets and Functions</td>
+            <td>2 MCQs</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 4</td>
+            <td>Factorization</td>
+            <td>2 MCQs</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 5</td>
+            <td>Linear Equations</td>
+            <td>1 MCQ</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 6</td>
+            <td>Trigonometry</td>
+            <td>2 MCQs</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 7</td>
+            <td>Coordinate Geometry</td>
+            <td>1 MCQ</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 9</td>
+            <td>Similar Figures</td>
+            <td>1 MCQ</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 10</td>
+            <td>Graphs of Functions</td>
+            <td>1 MCQ</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 11</td>
+            <td>Loci and Construction</td>
+            <td>1 MCQ</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 12</td>
+            <td>Information Handling</td>
+            <td>1 MCQ</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Chapter 13</td>
+            <td>Probability</td>
+            <td>1 MCQ</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Part II: Subjective (Short Answer) -->
+    <div class="section-card">
+      <h3 class="section-title">Part II: Subjective (Short Answer Questions)</h3>
+      
+      <!-- Question 2 -->
+      <div class="mb-6">
+        <div class="bg-purple-50 p-4 rounded-lg mb-4">
+          <div class="flex justify-between items-center">
+            <span class="font-semibold text-purple-800">Question 2: 6 out of 9 questions (2 marks each)</span>
+            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">12 Marks</span>
           </div>
         </div>
         
-        <div class="mb-6">
-          <h3 class="text-xl font-semibold text-gray-700 mb-2">Question 3: Attempt any 6 out of 9 questions (2 × 6 = 12 marks)</h3>
-          <p class="text-gray-600 mb-4">Questions will be selected from the following chapters:</p>
-          
-          <div class="bg-purple-50 p-4 rounded-lg">
-            <h4 class="font-semibold text-purple-700 mb-2">Chapters with 3 questions each:</h4>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div class="flex items-center">
-                <span class="chapter-badge bg-teal-500 text-white">6</span>
-                Trigonometry
-              </div>
-              <div class="flex items-center">
-                <span class="chapter-badge bg-indigo-500 text-white">7</span>
-                Coordinate Geometry
-              </div>
-              <div class="flex items-center">
-                <span class="chapter-badge bg-gray-500 text-white">9</span>
-                Similar Figures
-              </div>
-            </div>
+        <h4 class="font-semibold text-slate-700 mb-3">Chapter-wise Distribution:</h4>
+        <table class="marking-table">
+          <thead>
+            <tr>
+              <th>Chapter</th>
+              <th>Title</th>
+              <th>Questions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">Chapter 1</td>
+              <td>Real Numbers</td>
+              <td>2 short answer questions</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Chapter 2</td>
+              <td>Logarithms</td>
+              <td>2 short answer questions</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Chapter 3</td>
+              <td>Sets and Functions</td>
+              <td>2 short answer questions</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Chapter 4</td>
+              <td>Factorization</td>
+              <td>2 short answer questions</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Chapter 5</td>
+              <td>Linear Equations</td>
+              <td>1 short answer question</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Question 3 -->
+      <div class="mb-6">
+        <div class="bg-purple-50 p-4 rounded-lg mb-4">
+          <div class="flex justify-between items-center">
+            <span class="font-semibold text-purple-800">Question 3: 6 out of 9 questions (2 marks each)</span>
+            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">12 Marks</span>
           </div>
         </div>
         
+        <h4 class="font-semibold text-slate-700 mb-3">Chapter-wise Distribution:</h4>
+        <table class="marking-table">
+          <thead>
+            <tr>
+              <th>Chapter</th>
+              <th>Title</th>
+              <th>Questions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">Chapter 6</td>
+              <td>Trigonometry</td>
+              <td>3 short answer questions</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Chapter 7</td>
+              <td>Coordinate Geometry</td>
+              <td>3 short answer questions</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Chapter 9</td>
+              <td>Similar Figures</td>
+              <td>3 short answer questions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <!-- Question 4 -->
+      <div>
+        <div class="bg-purple-50 p-4 rounded-lg mb-4">
+          <div class="flex justify-between items-center">
+            <span class="font-semibold text-purple-800">Question 4: 6 out of 9 questions (2 marks each)</span>
+            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">12 Marks</span>
+          </div>
+        </div>
+        
+        <h4 class="font-semibold text-slate-700 mb-3">Chapter-wise Distribution:</h4>
+        <table class="marking-table">
+          <thead>
+            <tr>
+              <th>Chapter</th>
+              <th>Title</th>
+              <th>Questions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">Chapter 10</td>
+              <td>Graphs of Functions</td>
+              <td>2 short answer questions</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Chapter 11</td>
+              <td>Loci and Construction</td>
+              <td>2 short answer questions</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Chapter 12</td>
+              <td>Information Handling</td>
+              <td>3 short answer questions</td>
+            </tr>
+            <tr>
+              <td class="font-medium">Chapter 13</td>
+              <td>Probability</td>
+              <td>2 short answer questions</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Part III: Subjective (Long Questions) -->
+    <div class="section-card">
+      <h3 class="section-title">Part III: Subjective (Long Questions)</h3>
+      
+      <div class="bg-indigo-50 p-4 rounded-lg mb-4">
+        <div class="flex justify-between items-center">
+          <span class="font-semibold text-indigo-800">2 out of 3 questions (8 marks each)</span>
+          <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-medium">16 Marks</span>
+        </div>
+      </div>
+      
+      <h4 class="font-semibold text-slate-700 mb-3">Chapter Grouping:</h4>
+      <table class="marking-table">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Chapters Covered</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-medium">Question 5</td>
+            <td>One long question from Chapters 1 and 2</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Question 6</td>
+            <td>One long question from Chapters 3 and 4</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Question 7</td>
+            <td>One long question from Chapters 5 and 6</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Part IV: Subjective (Long Questions) -->
+    <div class="section-card">
+      <h3 class="section-title">Part IV: Subjective (Long Questions)</h3>
+      
+      <div class="bg-indigo-50 p-4 rounded-lg mb-4">
+        <div class="flex justify-between items-center">
+          <span class="font-semibold text-indigo-800">1 out of 2 questions (8 marks each)</span>
+          <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-sm font-medium">8 Marks</span>
+        </div>
+      </div>
+      
+      <h4 class="font-semibold text-slate-700 mb-3">Chapter Grouping:</h4>
+      <table class="marking-table">
+        <thead>
+          <tr>
+            <th>Question</th>
+            <th>Chapters Covered</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-medium">Question 8</td>
+            <td>One long question from Chapters 7, 9 and 10</td>
+          </tr>
+          <tr>
+            <td class="font-medium">Question 9</td>
+            <td>One long question from Chapters 11, 12 and 13</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Summary Table -->
+    <div class="section-card">
+      <h3 class="section-title">Summary - Marks Distribution</h3>
+      <table class="marking-table">
+        <thead>
+          <tr>
+            <th>Part</th>
+            <th>Question Type</th>
+            <th>Marks</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="1" class="font-medium">Part I</td>
+            <td>15 MCQs</td>
+            <td>15</td>
+            <td rowspan="1" class="font-bold">15</td>
+          </tr>
+          <tr>
+            <td rowspan="3" class="font-medium">Part II</td>
+            <td>Q2: 6 short answers</td>
+            <td>12</td>
+            <td rowspan="3" class="font-bold">36</td>
+          </tr>
+          <tr>
+            <td>Q3: 6 short answers</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td>Q4: 6 short answers</td>
+            <td>12</td>
+          </tr>
+          <tr>
+            <td rowspan="1" class="font-medium">Part III</td>
+            <td>2 long questions</td>
+            <td>16</td>
+            <td rowspan="1" class="font-bold">16</td>
+          </tr>
+          <tr>
+            <td rowspan="1" class="font-medium">Part IV</td>
+            <td>1 long question</td>
+            <td>8</td>
+            <td rowspan="1" class="font-bold">8</td>
+          </tr>
+          <tr class="bg-slate-50 font-bold">
+            <td colspan="2">Grand Total</td>
+            <td colspan="2">75 Marks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER-WISE BREAKDOWN -->
+<section class="mt-10 px-4">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-center text-2xl font-semibold text-slate-800 mb-6">Chapter-wise Breakdown</h2>
+    
+    <!-- Chapter 1 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-blue-500 text-white">1</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 1: Real Numbers</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <h3 class="text-xl font-semibold text-gray-700 mb-2">Question 4: Attempt any 6 out of 9 questions (2 × 6 = 12 marks)</h3>
-          <p class="text-gray-600 mb-4">Questions will be selected from the following chapters:</p>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>1 MCQ (1 mark)</li>
+            <li>2 short answer questions in Q2 (4 marks)</li>
+            <li>Part of long question in Q5 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 9</h4>
+          <p class="text-sm text-slate-600">Focus on rational and irrational numbers, properties of real numbers, and number line representation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 2 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-green-500 text-white">2</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 2: Logarithms</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>1 MCQ (1 mark)</li>
+            <li>2 short answer questions in Q2 (4 marks)</li>
+            <li>Part of long question in Q5 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 9</h4>
+          <p class="text-sm text-slate-600">Focus on laws of logarithms, common logarithms, and applications of logarithms.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 3 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-purple-500 text-white">3</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 3: Sets and Functions</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>2 MCQs (2 marks)</li>
+            <li>2 short answer questions in Q2 (4 marks)</li>
+            <li>Part of long question in Q6 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 10</h4>
+          <p class="text-sm text-slate-600">Focus on set operations, Venn diagrams, types of functions, and function notation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 4 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-red-500 text-white">4</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 4: Factorization</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>2 MCQs (2 marks)</li>
+            <li>2 short answer questions in Q2 (4 marks)</li>
+            <li>Part of long question in Q6 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 10</h4>
+          <p class="text-sm text-slate-600">Focus on factorization techniques, remainder theorem, factor theorem, and algebraic manipulation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 5 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-yellow-500 text-white">5</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 5: Linear Equations</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>1 MCQ (1 mark)</li>
+            <li>1 short answer question in Q2 (2 marks)</li>
+            <li>Part of long question in Q7 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 7</h4>
+          <p class="text-sm text-slate-600">Focus on solving linear equations, word problems, and applications of linear equations.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 6 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-indigo-500 text-white">6</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 6: Trigonometry</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>2 MCQs (2 marks)</li>
+            <li>3 short answer questions in Q3 (6 marks)</li>
+            <li>Part of long question in Q7 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 12</h4>
+          <p class="text-sm text-slate-600">Focus on trigonometric ratios, identities, solution of triangles, and applications.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 7 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-pink-500 text-white">7</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 7: Coordinate Geometry</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>1 MCQ (1 mark)</li>
+            <li>3 short answer questions in Q3 (6 marks)</li>
+            <li>Part of long question in Q8 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 11</h4>
+          <p class="text-sm text-slate-600">Focus on distance formula, section formula, mid-point, and coordinate geometry applications.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 9 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-teal-500 text-white">9</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 9: Similar Figures</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>1 MCQ (1 mark)</li>
+            <li>3 short answer questions in Q3 (6 marks)</li>
+            <li>Part of long question in Q8 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 11</h4>
+          <p class="text-sm text-slate-600">Focus on similarity of triangles, basic proportionality theorem, and applications of similarity.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 10 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-orange-500 text-white">10</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 10: Graphs of Functions</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>1 MCQ (1 mark)</li>
+            <li>2 short answer questions in Q4 (4 marks)</li>
+            <li>Part of long question in Q8 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 9</h4>
+          <p class="text-sm text-slate-600">Focus on linear graphs, quadratic graphs, and interpretation of graphs.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 11 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-cyan-500 text-white">11</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 11: Loci and Construction</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>1 MCQ (1 mark)</li>
+            <li>2 short answer questions in Q4 (4 marks)</li>
+            <li>Part of long question in Q9 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 9</h4>
+          <p class="text-sm text-slate-600">Focus on basic constructions, loci, and geometric constructions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 12 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-lime-500 text-white">12</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 12: Information Handling</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>1 MCQ (1 mark)</li>
+            <li>3 short answer questions in Q4 (6 marks)</li>
+            <li>Part of long question in Q9 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 11</h4>
+          <p class="text-sm text-slate-600">Focus on data representation, frequency distribution, and statistical graphs.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 13 -->
+    <div class="section-card">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="chapter-badge bg-rose-500 text-white">13</span>
+        <h3 class="chapter-title text-xl font-bold">Chapter 13: Probability</h3>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Marks Distribution:</h4>
+          <ul class="list-disc pl-5 text-slate-600 space-y-1">
+            <li>1 MCQ (1 mark)</li>
+            <li>2 short answer questions in Q4 (4 marks)</li>
+            <li>Part of long question in Q9 (4 marks)</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold text-slate-700 mb-2">Total Marks: 9</h4>
+          <p class="text-sm text-slate-600">Focus on basic probability concepts, sample space, and probability calculations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREPARATION TIPS -->
+<section class="mt-10 px-4">
+  <div class="max-w-5xl mx-auto">
+    <h2 class="text-center text-2xl font-semibold text-slate-800 mb-6">Preparation Tips & Strategies</h2>
+    
+    <div class="section-card">
+      <h3 class="section-title">Smart Preparation Strategy</h3>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Left Column -->
+        <div class="space-y-4">
+          <div class="bg-blue-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-blue-800 mb-2">📚 Focus on High-Weightage Chapters</h4>
+            <p class="text-sm text-slate-700">Prioritize chapters with higher marks distribution:</p>
+            <ul class="list-disc pl-5 text-sm text-slate-600 mt-2 space-y-1">
+              <li>Chapter 6: Trigonometry (12 marks)</li>
+              <li>Chapter 3: Sets and Functions (10 marks)</li>
+              <li>Chapter 4: Factorization (10 marks)</li>
+              <li>Chapter 7: Coordinate Geometry (11 marks)</li>
+              <li>Chapter 9: Similar Figures (11 marks)</li>
+              <li>Chapter 12: Information Handling (11 marks)</li>
+            </ul>
+          </div>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="bg-yellow-50 p-4 rounded-lg">
-              <h4 class="font-semibold text-yellow-700 mb-2">Chapters with 2 questions each:</h4>
-              <ul class="space-y-2">
-                <li class="flex items-center">
-                  <span class="chapter-badge bg-cyan-500 text-white">10</span>
-                  Graphs of Functions
-                </li>
-                <li class="flex items-center">
-                  <span class="chapter-badge bg-orange-500 text-white">11</span>
-                  Loci and Construction
-                </li>
-                <li class="flex items-center">
-                  <span class="chapter-badge bg-rose-500 text-white">13</span>
-                  Probability
-                </li>
-              </ul>
-            </div>
-            <div class="bg-red-50 p-4 rounded-lg">
-              <h4 class="font-semibold text-red-700 mb-2">Chapter with 3 questions:</h4>
-              <ul>
-                <li class="flex items-center">
-                  <span class="chapter-badge bg-gray-700 text-white">12</span>
-                  Information Handling
-                </li>
-              </ul>
-            </div>
+          <div class="bg-green-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-green-800 mb-2">⏱️ Time Management</h4>
+            <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+              <li><strong>MCQs:</strong> Complete within 20 minutes</li>
+              <li><strong>Short Questions:</strong> Allocate 1.5 hours</li>
+              <li><strong>Long Questions:</strong> Allocate 40 minutes</li>
+              <li><strong>Revision:</strong> Keep 10 minutes for review</li>
+            </ul>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Part-II: Subjective -->
-    <section class="mb-12">
-      <div class="bg-white rounded-xl shadow-md p-6 section-card">
-        <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b pb-2">Part-II: Subjective Type (Long Questions)</h2>
-        <p class="text-gray-600 mb-4">This section contains three long questions, each containing 8 marks. Students must attempt any two questions.</p>
         
-        <div class="overflow-x-auto">
-          <table class="w-full border-collapse border border-gray-300">
-            <thead class="bg-blue-100">
-              <tr>
-                <th class="border border-gray-300 px-4 py-2 text-left">Question</th>
-                <th class="border border-gray-300 px-4 py-2 text-left">Chapter Distribution</th>
-                <th class="border border-gray-300 px-4 py-2 text-center">Marks</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-blue-50">
-                <td class="border border-gray-300 px-4 py-2 font-semibold">Question 5</td>
-                <td class="border border-gray-300 px-4 py-2">
-                  <div class="mb-2">
-                    <span class="chapter-badge bg-blue-500 text-white">1</span>
-                    (a) One long question from Real Numbers
-                  </div>
-                  <div>
-                    <span class="chapter-badge bg-green-500 text-white">2</span>
-                    (b) One long question from Logarithms
-                  </div>
-                </td>
-                <td class="border border-gray-300 px-4 py-2 text-center">8</td>
-              </tr>
-              <tr class="hover:bg-blue-50">
-                <td class="border border-gray-300 px-4 py-2 font-semibold">Question 6</td>
-                <td class="border border-gray-300 px-4 py-2">
-                  <div class="mb-2">
-                    <span class="chapter-badge bg-purple-500 text-white">3</span>
-                    (a) One long question from Sets and Functions
-                  </div>
-                  <div>
-                    <span class="chapter-badge bg-pink-500 text-white">4</span>
-                    (b) One long question from Factorization
-                  </div>
-                </td>
-                <td class="border border-gray-300 px-4 py-2 text-center">8</td>
-              </tr>
-              <tr class="hover:bg-blue-50">
-                <td class="border border-gray-300 px-4 py-2 font-semibold">Question 7</td>
-                <td class="border border-gray-300 px-4 py-2">
-                  <div class="mb-2">
-                    <span class="chapter-badge bg-yellow-500 text-white">5</span>
-                    (a) One long question from Linear Equations
-                  </div>
-                  <div>
-                    <span class="chapter-badge bg-teal-500 text-white">6</span>
-                    (b) One long question from Trigonometry
-                  </div>
-                </td>
-                <td class="border border-gray-300 px-4 py-2 text-center">8</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Part-III: Subjective -->
-    <section class="mb-12">
-      <div class="bg-white rounded-xl shadow-md p-6 section-card">
-        <h2 class="text-2xl font-bold text-blue-800 mb-4 border-b pb-2">Part-III: Subjective Type (Long Questions)</h2>
-        <p class="text-gray-600 mb-4">This section contains two long questions, each worth 8 marks. Students must attempt one question.</p>
-        
-        <div class="overflow-x-auto">
-          <table class="w-full border-collapse border border-gray-300">
-            <thead class="bg-blue-100">
-              <tr>
-                <th class="border border-gray-300 px-4 py-2 text-left">Question</th>
-                <th class="border border-gray-300 px-4 py-2 text-left">Chapter Distribution</th>
-                <th class="border border-gray-300 px-4 py-2 text-center">Marks</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="hover:bg-blue-50">
-                <td class="border border-gray-300 px-4 py-2 font-semibold">Question 8</td>
-                <td class="border border-gray-300 px-4 py-2">
-                  <div class="mb-2">
-                    <span class="chapter-badge bg-indigo-500 text-white">7</span>
-                    <span class="chapter-badge bg-cyan-500 text-white">10</span>
-                    (a) One long question from either Coordinate Geometry or Graphs of Functions
-                  </div>
-                  <div>
-                    <span class="chapter-badge bg-gray-500 text-white">9</span>
-                    (b) One long question from Similar Figures
-                  </div>
-                </td>
-                <td class="border border-gray-300 px-4 py-2 text-center">8</td>
-              </tr>
-              <tr class="hover:bg-blue-50">
-                <td class="border border-gray-300 px-4 py-2 font-semibold">Question 9</td>
-                <td class="border border-gray-300 px-4 py-2">
-                  <div class="mb-2">
-                    <span class="chapter-badge bg-gray-700 text-white">12</span>
-                    (a) One long question from Information Handling
-                  </div>
-                  <div>
-                    <span class="chapter-badge bg-orange-500 text-white">11</span>
-                    <span class="chapter-badge bg-rose-500 text-white">13</span>
-                    (b) One long question from either Loci and Construction or Probability
-                  </div>
-                </td>
-                <td class="border border-gray-300 px-4 py-2 text-center">8</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Summary Section -->
-    <section class="mb-12">
-      <div class="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl shadow-md p-6 section-card">
-        <h2 class="text-2xl font-bold mb-4 border-b pb-2 border-white/30">Summary</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="text-center">
-            <div class="text-4xl font-bold mb-2">75</div>
-            <div class="text-lg">Total Marks</div>
+        <!-- Right Column -->
+        <div class="space-y-4">
+          <div class="bg-purple-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-purple-800 mb-2">🎯 Question Selection Strategy</h4>
+            <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+              <li>Attempt all MCQs first</li>
+              <li>Choose easier short questions from each part</li>
+              <li>Select long questions from your strongest chapters</li>
+              <li>Attempt all parts of selected long questions</li>
+            </ul>
           </div>
-          <div class="text-center">
-            <div class="text-4xl font-bold mb-2">15</div>
-            <div class="text-lg">MCQ Questions</div>
-          </div>
-          <div class="text-center">
-            <div class="text-4xl font-bold mb-2">9</div>
-            <div class="text-lg">Subjective Questions</div>
+          
+          <div class="bg-orange-50 p-4 rounded-lg">
+            <h4 class="font-semibold text-orange-800 mb-2">📝 Practice Tips</h4>
+            <ul class="list-disc pl-5 text-sm text-slate-600 space-y-1">
+              <li>Practice previous year papers</li>
+              <li>Focus on textbook exercises</li>
+              <li>Time yourself during practice</li>
+              <li>Revise formulas regularly</li>
+              <li>Practice diagram-based questions</li>
+            </ul>
           </div>
         </div>
-        <div class="mt-6 text-center">
-          <p class="text-lg">Smart/Reduced Syllabus - Annual Examination 2026</p>
-        </div>
       </div>
-    </section>
-  </main>
+      
+      <!-- Important Note -->
+      <div class="mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
+        <h4 class="font-semibold text-yellow-800 mb-2">⚠️ Important Note</h4>
+        <p class="text-sm text-slate-700">
+          This pairing scheme is based on the SMART syllabus for the Annual Examination 2026. 
+          All questions will be asked from the textbook exercises. Make sure to practice all 
+          examples and exercises from your textbook thoroughly.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <!-- Footer -->
-<footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 -mt-12">
+<!-- Footer -->
+<footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 ">
   <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
       <!-- Logo & Description -->
       <div class="md:col-span-1 text-center md:text-left">
-        <a href="https://hiraacademy.online/index.html#home" class="flex flex-col md:flex-row items-center md:items-start gap-3 group transition duration-300">
+        <a href="index.html#home" class="flex flex-col md:flex-row items-center md:items-start gap-3 group transition duration-300">
           <img 
-            src="https://hiraacademy.online/images/logo.png" 
+            src="images/logo.png" 
             alt="Hira Science Academy"
             class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
           <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mt-2 md:mt-0">
@@ -773,10 +1072,10 @@
       <div class="text-center md:text-left">
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
         <ul class="space-y-2">
-          <li><a href="https://hiraacademy.online/index.html#courses" class="hover:text-cyan-400 transition-colors">9th Class</a></li>
-          <li><a href="https://hiraacademy.online/index.html#courses" class="hover:text-cyan-400 transition-colors">10th Class</a></li>
-          <li><a href="https://hiraacademy.online/fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
-          <li><a href="https://hiraacademy.online/fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">Entry Test Preparation</a></li>
+          <li><a href="index.html#courses" class="hover:text-cyan-400 transition-colors">9th Class</a></li>
+          <li><a href="index.html#courses" class="hover:text-cyan-400 transition-colors">10th Class</a></li>
+          <li><a href="fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+          <li><a href="fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">Entry Test Preparation</a></li>
         </ul>
       </div>
 
@@ -784,11 +1083,11 @@
       <div class="text-center md:text-left">
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
         <ul class="space-y-2">
-          <li><a href="https://hiraacademy.online/blog.html" class="hover:text-cyan-400 transition-colors">Study Tips & Blog</a></li>
-          <li><a href="https://hiraacademy.online/career-services.html" class="hover:text-cyan-400 transition-colors">Career Guidance</a></li>
-          <li><a href="https://hiraacademy.online/student-portal.html" class="hover:text-cyan-400 transition-colors">Student Portal</a></li>
-          <li><a href="https://hiraacademy.online/alumni-network.html" class="hover:text-cyan-400 transition-colors">Alumni Network</a></li>
-          <li><a href="https://hiraacademy.online/events.html" class="hover:text-cyan-400 transition-colors">Events & Workshops</a></li>
+          <li><a href="blog.html" class="hover:text-cyan-400 transition-colors">Study Tips & Blog</a></li>
+          <li><a href="career-services.html" class="hover:text-cyan-400 transition-colors">Career Guidance</a></li>
+          <li><a href="student-portal.html" class="hover:text-cyan-400 transition-colors">Student Portal</a></li>
+          <li><a href="alumni-network.html" class="hover:text-cyan-400 transition-colors">Alumni Network</a></li>
+          <li><a href="events.html" class="hover:text-cyan-400 transition-colors">Events & Workshops</a></li>
         </ul>
       </div>
 
@@ -796,10 +1095,10 @@
       <div class="text-center md:text-left">
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
         <ul class="space-y-2">
-          <li><a href="https://hiraacademy.online/terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
-          <li><a href="https://hiraacademy.online/privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
-          <li><a href="https://hiraacademy.online/refund-policy.html" class="hover:text-cyan-400 transition-colors">Refund Policy</a></li>
-          <li><a href="https://hiraacademy.online/accessibility.html" class="hover:text-cyan-400 transition-colors">Accessibility</a></li>
+          <li><a href="terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+          <li><a href="privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+          <li><a href="refund-policy.html" class="hover:text-cyan-400 transition-colors">Refund Policy</a></li>
+          <li><a href="accessibility.html" class="hover:text-cyan-400 transition-colors">Accessibility</a></li>
         </ul>
       </div>
 
@@ -807,9 +1106,9 @@
       <div class="text-center md:text-left">
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
         <ul class="space-y-2">
-          <li><a href="https://hiraacademy.online/about.html" class="hover:text-cyan-400 transition-colors">About Hira Academy</a></li>
-          <li><a href="https://hiraacademy.online/mission.html" class="hover:text-cyan-400 transition-colors">Our Mission</a></li>
-          <li><a href="https://hiraacademy.online/contact.html" class="hover:text-cyan-400 transition-colors">Contact Us</a></li>
+          <li><a href="about.html" class="hover:text-cyan-400 transition-colors">About Hira Academy</a></li>
+          <li><a href="mission.html" class="hover:text-cyan-400 transition-colors">Our Mission</a></li>
+          <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact Us</a></li>
         </ul>
       </div>
     </div>
@@ -821,41 +1120,53 @@
     </div>
   </div>
 </footer>
+<!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    ↑
+  </button>
+<!-- Mobile Menu Script -->
+<script>
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIconOpen = document.getElementById('menu-icon-open');
+  const menuIconClose = document.getElementById('menu-icon-close');
 
-  <!-- Mobile Navigation Script -->
+  mobileMenuButton.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('hidden');
+    menuIconOpen.classList.toggle('hidden', !isOpen);
+    menuIconClose.classList.toggle('hidden', isOpen);
+  });
+
+  // Close mobile menu when clicking on a link
+  document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuIconOpen.classList.remove('hidden');
+      menuIconClose.classList.add('hidden');
+    });
+  });
+</script>
+
+  <!-- Back to Top Script -->
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const menuIconOpen = document.getElementById('menu-icon-open');
-      const menuIconClose = document.getElementById('menu-icon-close');
-
-      mobileMenuButton.addEventListener('click', function() {
-        const isOpen = mobileMenu.classList.contains('open');
-        
-        if (isOpen) {
-          mobileMenu.classList.remove('open');
-          menuIconOpen.classList.remove('hidden');
-          menuIconClose.classList.add('hidden');
-        } else {
-          mobileMenu.classList.add('open');
-          menuIconOpen.classList.add('hidden');
-          menuIconClose.classList.remove('hidden');
-        }
+    // Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // Show button when scrolling down
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+    
+    // Scroll to top when clicked
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
       });
-
-      // Close mobile menu when clicking on a link
-      const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
-      mobileMenuLinks.forEach(link => {
-        link.addEventListener('click', function() {
-          mobileMenu.classList.remove('open');
-          menuIconOpen.classList.remove('hidden');
-          menuIconClose.classList.add('hidden');
-        });
-      });
-
-      // Print functionality
-      console.log('Grade 9 Mathematics Pairing Scheme 2026 loaded successfully');
     });
   </script>
 </body>
