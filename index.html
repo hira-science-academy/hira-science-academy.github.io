@@ -127,6 +127,50 @@
 
 
 <body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
+<!-- Temporary Notice Board -->
+<div id="noticeBoard" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30 transition-opacity duration-300 opacity-0 hidden">
+  <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95 border border-gray-200">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-t-2xl p-6 text-white">
+      <div class="flex justify-between items-center">
+        <h3 class="text-xl font-bold">📢 Important Notice</h3>
+        <button id="closeNotice" class="text-white hover:text-gray-200 text-2xl font-bold transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white hover:bg-opacity-20">
+          &times;
+        </button>
+      </div>
+    </div>
+    
+    <!-- Content -->
+    <div class="p-6">
+      <p class="text-gray-700 mb-4 text-justify">
+        Welcome to Hira Science Academy! Check out our latest academic updates and resources:
+      </p>
+      
+      <div class="space-y-3 mb-6">
+        <a href="https://hiraacademy.online/smart-reduced-syllabus-grade9-mathematics-2026.html" target="_blank" class="flex items-center p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors group border border-blue-100">
+          <span class="text-blue-600 mr-3 text-lg">🧮</span>
+          <span class="text-blue-700 font-medium group-hover:text-blue-800">
+            SMART / Reduced Syllabus — Grade 9 <br>
+            <span class="text-sm text-gray-600">Mathematics 2026 (Punjab Board)</span>
+          </span>
+        </a>
+
+        <a href="https://hiraacademy.online/smart-reduced-syllabus-grade9-physics-2026.html" target="_blank" class="flex items-center p-3 bg-cyan-50 rounded-lg hover:bg-cyan-100 transition-colors group border border-cyan-100">
+          <span class="text-cyan-600 mr-3 text-lg">⚛️</span>
+          <span class="text-cyan-700 font-medium group-hover:text-cyan-800">
+            SMART / Reduced Syllabus — Grade 9 <br>
+            <span class="text-sm text-gray-600">Physics 2026 (Punjab Board)</span>
+          </span>
+        </a>
+      </div>
+      
+      <p class="text-sm text-gray-500 text-center">
+        Click anywhere outside or the close button to dismiss
+      </p>
+    </div>
+  </div>
+</div>
+
   <!-- Improved Navigation Bar -->
 <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1099,6 +1143,49 @@
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
     </svg>
   </button>
-
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const noticeBoard = document.getElementById('noticeBoard');
+  const closeButton = document.getElementById('closeNotice');
+  
+  // Show notice board after page loads
+  setTimeout(() => {
+    noticeBoard.classList.remove('hidden');
+    setTimeout(() => {
+      noticeBoard.classList.remove('opacity-0');
+      noticeBoard.classList.add('opacity-100');
+      noticeBoard.querySelector('.transform').classList.remove('scale-95');
+      noticeBoard.querySelector('.transform').classList.add('scale-100');
+    }, 50);
+  }, 1000);
+  
+  // Close notice when close button is clicked
+  closeButton.addEventListener('click', function() {
+    closeNotice();
+  });
+  
+  // Close notice when clicking outside the notice board
+  noticeBoard.addEventListener('click', function(event) {
+    if (event.target === noticeBoard) {
+      closeNotice();
+    }
+  });
+  
+  // Close notice when pressing Escape key
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && !noticeBoard.classList.contains('hidden')) {
+      closeNotice();
+    }
+  });
+  
+  function closeNotice() {
+    noticeBoard.classList.remove('opacity-100');
+    noticeBoard.classList.add('opacity-0');
+    setTimeout(() => {
+      noticeBoard.classList.add('hidden');
+    }, 300);
+  }
+});
+</script>
 </body>
 </html>
