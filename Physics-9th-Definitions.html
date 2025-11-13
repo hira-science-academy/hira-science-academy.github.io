@@ -35,37 +35,25 @@
   <meta name="twitter:image" content="https://hiraacademy.online/images/physics-definitions-twitter.jpg" />
   <meta name="twitter:site" content="@HiraScienceAcademy" />
 
-  <!-- Preconnect & Preload Critical Resources -->
+  <!-- Preconnect Critical Resources -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
-  <link rel="preload" href="https://polyfill.io/v3/polyfill.min.js?features=es6" as="script">
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" as="script">
-
-  <!-- DNS Prefetch -->
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
   <link rel="dns-prefetch" href="https://polyfill.io">
   <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-  <!-- Favicon & App Icons (Physics Definitions Page) -->
-<link rel="icon" type="image/x-icon" href="https://hiraacademy.online/images/physics-definitions-favicon.ico" />
-<link rel="icon" type="image/png" sizes="16x16" href="https://hiraacademy.online/images/physics-definitions-favicon-16x16.png" />
-<link rel="icon" type="image/png" sizes="32x32" href="https://hiraacademy.online/images/physics-definitions-favicon-32x32.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.online/images/physics-definitions-apple-touch-icon.png" />
-<link rel="icon" type="image/png" sizes="192x192" href="https://hiraacademy.online/images/physics-definitions-icon-192x192.png" />
-<link rel="icon" type="image/png" sizes="512x512" href="https://hiraacademy.online/images/physics-definitions-icon-512x512.png" />
-<link rel="manifest" href="https://hiraacademy.online/images/physics-definitions-site.webmanifest" />
-<meta name="theme-color" content="#3B82F6" />
-
-
+  <!-- Fonts Preload -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </noscript>
 
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
+  <script src="https://cdn.tailwindcss.com" defer></script>
+  <script defer>
     tailwind.config = {
       theme: {
         extend: {
@@ -82,14 +70,11 @@
     }
   </script>
 
-  <!-- Google Fonts (Fallback for No-JS) -->
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </noscript>
+  <!-- Polyfill (ES6) -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
 
   <!-- MathJax (LaTeX Support) -->
-<script src="https://polyfill-fastly.io/v3/polyfill.min.js?features=es6"></script>
-  <script>
+  <script defer>
     window.MathJax = {
       tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
       options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
@@ -97,17 +82,27 @@
   </script>
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+  <!-- Favicon & App Icons -->
+  <link rel="icon" type="image/x-icon" href="https://hiraacademy.online/images/physics-definitions-favicon.ico" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://hiraacademy.online/images/physics-definitions-favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://hiraacademy.online/images/physics-definitions-favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.online/images/physics-definitions-apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="https://hiraacademy.online/images/physics-definitions-icon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="https://hiraacademy.online/images/physics-definitions-icon-512x512.png" />
+  <link rel="manifest" href="https://hiraacademy.online/images/physics-definitions-site.webmanifest" />
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
-  <script>
+  <script defer>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-9CK25HVFYZ', { anonymize_ip: true, cookie_expires: 63072000 });
   </script>
- <!-- AdSense Global Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-     crossorigin="anonymous"></script>
+
+  <!-- AdSense Global Script -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443" crossorigin="anonymous"></script>
+
   <!-- Custom Styles -->
   <style>
     body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
@@ -130,6 +125,7 @@
     }
   </style>
 </head>
+
 
 <body class="bg-gray-50">
 
