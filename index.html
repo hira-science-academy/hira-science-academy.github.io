@@ -88,7 +88,37 @@
   <meta name="theme-color" content="#0d6efd" />
   <meta name="msapplication-TileColor" content="#0d6efd" />
 
+
   <!-- ✅ Tailwind CSS Custom Theme -->
+
+<script>
+// Nuclear option - add this right after <body> tag
+window.addEventListener('load', function() {
+    // Remove any hash
+    history.replaceState(null, null, window.location.pathname);
+    
+    // Force scroll to top repeatedly
+    function scrollTop() {
+        window.scrollTo(0, 0);
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+    
+    scrollTop();
+    setTimeout(scrollTop, 10);
+    setTimeout(scrollTop, 50);
+    setTimeout(scrollTop, 100);
+    setTimeout(scrollTop, 500);
+});
+
+// Also prevent hash change events
+window.addEventListener('hashchange', function(e) {
+    e.preventDefault();
+    history.replaceState(null, null, window.location.pathname);
+    window.scrollTo(0, 0);
+});
+</script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
