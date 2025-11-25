@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,26 +51,10 @@
   </noscript>
 
   <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com" defer></script>
-  <script defer>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: {
-              50: '#eff6ff',100: '#dbeafe',200: '#bfdbfe',300: '#93c5fd',
-              400: '#60a5fa',500: '#3b82f6',600: '#2563eb',
-              700: '#1d4ed8',800: '#1e40af',900: '#1e3a8a'
-            }
-          },
-          fontFamily: { poppins: ['Poppins', 'sans-serif'] }
-        }
-      }
-    }
-  </script>
+  <script src="https://cdn.tailwindcss.com" async defer></script>
 
   <!-- Polyfill (ES6) -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6" defer></script>
+  <script src="https://polyfill-fastly.io/v3/polyfill.min.js?features=es6"></script>
 
   <!-- MathJax (LaTeX Support) -->
   <script defer>
@@ -95,25 +78,51 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
   <script defer>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-9CK25HVFYZ', { anonymize_ip: true, cookie_expires: 63072000 });
+    gtag('config', 'G-9CK25HVFYZ');
   </script>
 
-  <!-- AdSense Global Script -->
+  <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443" crossorigin="anonymous"></script>
 
   <!-- Custom Styles -->
   <style>
-    body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+    body { 
+      font-family: 'Poppins', 'Cambria Math', sans-serif; 
+      background-color: #f9fafb; 
+      scroll-behavior: smooth; 
+      overflow-x: hidden;
+    }
+    .chapter-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .chapter-header { cursor: pointer; padding: 1rem; margin-bottom: 0.5rem; }
+    .chapter-card.open .chapter-content { display: block; }
+    .chapter-content { display: none; border-top: 1px solid #e5e7eb; padding: 1rem 1.5rem; }
+    .btn-view {
+      background-color: #0d6efd;
+      color: white;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-weight: 500;
+      transition: background 0.3s;
+      white-space: nowrap;
+    }
+    .btn-view:hover { background-color: #0b5ed7; }
+    img { max-width: 100%; height: auto; }
+    .formula-box { font-size: 0.9rem; padding: 1rem; overflow-x: auto; }
+    .MathJax, mjx-container { max-width: 100% !important; overflow-x: auto !important; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+    .animate-blink { animation: blink 1.5s infinite; }
     .definition-card { transition: all 0.3s ease; }
     .definition-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,.1); }
     .unit-header { background-color: #3B82F6; color: #fff; }
     .term-highlight { font-weight: 700; color: rgb(29,78,216); }
-    .formula-box {
-      background-color: rgb(239,246,255); border-left: 4px solid rgb(59,130,246);
-      padding: .75rem; margin: .75rem 0; font-size: .875rem; border-radius: .375rem;
-    }
     :target { scroll-margin-top: 100px; }
     @media print {
       .no-print { display: none !important; }
@@ -126,39 +135,29 @@
   </style>
 </head>
 
+<body class="text-gray-800">
 
-<body class="bg-gray-50">
-
-  <!-- Navigation Bar -->
+  <!-- Navigation -->
   <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
-        <!-- Logo -->
-        <div class="flex-shrink-0 flex items-center">
-          <a href="index.html#home" class="flex items-center gap-3 group transition duration-300">
-            <img 
-              src="images/logo.png" 
-              alt="Hira Science Academy"
-              class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-            <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
-              Hira Science Academy
-            </span>
-          </a>
-        </div>
-
+        <a href="index.html#home" class="flex items-center gap-3 group transition duration-300">
+          <img src="images/logo.png" alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
+          <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Hira Science Academy</span>
+        </a>
         <!-- Desktop Navigation -->
         <div class="hidden md:ml-10 md:flex md:space-x-8">
-          <a href="index.html#home" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
-          <a href="index.html#notes" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
-          <a href="index.html#courses" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
-          <a href="index.html#features" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
-          <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
-          <a href="index.html#contact" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+          <a href="index.html#home" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+          <a href="index.html#notes" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
+          <a href="index.html#courses" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
+          <a href="index.html#features" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
+          <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
+          <a href="index.html#contact" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
         </div>
 
-        <!-- Mobile Menu Button -->
+        <!-- Mobile menu button -->
         <div class="-mr-2 flex items-center md:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
             <span class="sr-only">Open main menu</span>
             <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -170,477 +169,462 @@
         </div>
       </div>
     </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2">
-      <div class="px-2 pt-2 pb-3 space-y-1">
-        <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Home</a>
-        <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Notes</a>
-        <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Courses</a>
-        <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Why Us</a>
-        <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Testimonials</a>
-        <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Contact</a>
-      </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <div class="bg-gradient-to-r from-blue-600 to-cyan-600 py-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">Physics Class 9 Definitions</h1>
-      <p class="text-lg text-blue-100">Complete collection of key terms, concepts, formulas, and laws from all 9 chapters</p>
+<!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
+    <div class="px-2 pt-2 pb-3 space-y-1">
+      <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Home</a>
+      <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Notes</a>
+      <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Courses</a>
+      <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Why Us</a>
+      <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Testimonials</a>
+      <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Contact</a>
     </div>
   </div>
+  </nav>
+  
+  <!-- Header -->
+<header class="bg-gradient-to-r from-blue-900 to-cyan-700 text-white py-12 text-center shadow-lg">
+  <h1 class="text-3xl font-bold">Physics Class 9 Definitions</h1>
+  <p class="mt-2 text-blue-100">Complete collection of key terms, concepts, formulas, and laws from all 9 chapters</p>
+  
+  <!-- Button Container -->
+  <div class="mt-4 flex flex-wrap justify-center gap-4">
+    <a href="Physics-9th.html" class="bg-white text-blue-700 px-6 py-2 rounded-full font-semibold hover:bg-blue-50 transition duration-300 inline-block">
+      📘 View Physics Notes
+    </a>
+    <a href="Physics-9th-Definitions.html" class="bg-white text-blue-700 px-6 py-2 rounded-full font-semibold hover:bg-blue-50 transition duration-300 inline-block">
+      📚 View All Definitions
+    </a>
+  </div>  
+</header>
 
-  <!-- Breadcrumbs -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-    <nav class="flex" aria-label="Breadcrumb">
-      <ol class="flex items-center space-x-2 text-sm">
-        <li>
-          <a href="index.html" class="text-blue-600 hover:text-blue-800">Home</a>
-        </li>
-        <li>
-          <span class="text-gray-400">/</span>
-        </li>
-        <li>
-          <a href="index.html#notes" class="text-blue-600 hover:text-blue-800">Notes</a>
-        </li>
-        <li>
-          <span class="text-gray-400">/</span>
-        </li>
-        <li>
-          <a href="Physics-9th.html" class="text-blue-600 hover:text-blue-800">Physics 9th</a>
-        </li>
-        <li>
-          <span class="text-gray-400">/</span>
-        </li>
-        <li class="text-gray-600">
-          Definitions
-        </li>
-      </ol>
-    </nav>
+  <!-- Search -->
+  <div class="max-w-4xl mx-auto px-6 mt-10 mb-8 text-center">
+    <input id="searchInput" type="text" placeholder="🔍 Search definitions or formulas..."
+           class="w-full md:w-2/3 px-4 py-3 border rounded-full shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none text-center">
   </div>
 
   <!-- Main Content -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      <!-- Chapters List -->
-      <div class="lg:col-span-1">
-        <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
-          <div class="mb-6 w-full">
-            <div class="flex items-center bg-gray-100 border border-gray-200 rounded-md px-4 py-2 w-full">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-              </svg>
-              <h2 class="text-xl font-bold text-gray-800">Chapters</h2>
-            </div>
-          </div>
-          <div class="space-y-2">
-            <a href="#chapter1" class="chapter-link flex items-center gap-2">
-              <span class="bg-blue-100 text-blue-800 rounded-md w-8 h-8 flex items-center justify-center font-medium border border-blue-200">1</span>
-              <span class="bg-blue-50 text-blue-800 px-4 py-2 rounded-md border border-blue-100 flex-1">Physical Quantities and Measurements</span>
-            </a>
-            
-            <a href="#chapter2" class="chapter-link flex items-center gap-2">
-              <span class="bg-green-100 text-green-800 rounded-md w-8 h-8 flex items-center justify-center font-medium border border-green-200">2</span>
-              <span class="bg-green-50 text-green-800 px-4 py-2 rounded-md border border-green-100 flex-1">Kinematics</span>
-            </a>
-            
-            <a href="#chapter3" class="chapter-link flex items-center gap-2">
-              <span class="bg-purple-100 text-purple-800 rounded-md w-8 h-8 flex items-center justify-center font-medium border border-purple-200">3</span>
-              <span class="bg-purple-50 text-purple-800 px-4 py-2 rounded-md border border-purple-100 flex-1">Dynamics</span>
-            </a>
-            
-            <a href="#chapter4" class="chapter-link flex items-center gap-2">
-              <span class="bg-pink-100 text-pink-800 rounded-md w-8 h-8 flex items-center justify-center font-medium border border-pink-200">4</span>
-              <span class="bg-pink-50 text-pink-800 px-4 py-2 rounded-md border border-pink-100 flex-1">Turning Effect of Forces</span>
-            </a>
-            
-            <a href="#chapter5" class="chapter-link flex items-center gap-2">
-              <span class="bg-yellow-100 text-yellow-800 rounded-md w-8 h-8 flex items-center justify-center font-medium border border-yellow-200">5</span>
-              <span class="bg-yellow-50 text-yellow-800 px-4 py-2 rounded-md border border-yellow-100 flex-1">Work and Energy</span>
-            </a>
-            
-            <a href="#chapter6" class="chapter-link flex items-center gap-2">
-              <span class="bg-teal-100 text-teal-800 rounded-md w-8 h-8 flex items-center justify-center font-medium border border-teal-200">6</span>
-              <span class="bg-teal-50 text-teal-800 px-4 py-2 rounded-md border border-teal-100 flex-1">Properties of Matter</span>
-            </a>
-            
-            <a href="#chapter7" class="chapter-link flex items-center gap-2">
-              <span class="bg-indigo-100 text-indigo-800 rounded-md w-8 h-8 flex items-center justify-center font-medium border border-indigo-200">7</span>
-              <span class="bg-indigo-50 text-indigo-800 px-4 py-2 rounded-md border border-indigo-100 flex-1">Thermal Properties of Matter</span>
-            </a>
-            
-            <a href="#chapter8" class="chapter-link flex items-center gap-2">
-              <span class="bg-red-100 text-red-800 rounded-md w-8 h-8 flex items-center justify-center font-medium border border-red-200">8</span>
-              <span class="bg-red-50 text-red-800 px-4 py-2 rounded-md border border-red-100 flex-1">Magnetism</span>
-            </a>
-            
-            <a href="#chapter9" class="chapter-link flex items-center gap-2">
-              <span class="bg-gray-100 text-gray-800 rounded-md w-8 h-8 flex items-center justify-center font-medium border border-gray-200">9</span>
-              <span class="bg-gray-50 text-gray-800 px-4 py-2 rounded-md border border-gray-100 flex-1">Nature of Science</span>
-            </a>
-          </div>
+  <main class="max-w-5xl mx-auto px-6 pb-16 space-y-6">
+    
+    <!-- Introduction -->
+    <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-md p-6 mb-8 border-l-4 border-blue-500">
+      <h2 class="text-2xl font-bold text-blue-800 mb-4">Physics Class 9 Definitions</h2>
+      <p class="text-gray-700 mb-4 text-justify leading-relaxed">
+        This comprehensive collection contains all key definitions, terms, formulas, and laws from the Class 9 Physics syllabus according to the Punjab Textbook Board. Each chapter is organized systematically with clear explanations and examples.
+      </p>
+      <div class="bg-blue-100/50 p-4 rounded-lg border border-blue-200">
+        <h3 class="font-semibold text-blue-800 mb-2">How to Use This Resource:</h3>
+        <ul class="list-disc pl-5 text-gray-700 space-y-1">
+          <li>Click on any chapter to expand and view its definitions</li>
+          <li>Each term is highlighted for easy reference</li>
+          <li>Important formulas are boxed for quick identification</li>
+          <li>For detailed explanations, visit the individual chapter pages</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Chapter 1 Definitions -->
+    <div class="chapter-card open">
+      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
+        <h2 class="text-base md:text-lg font-semibold text-blue-800">📘 Chapter 1 – Physical Quantities and Measurements</h2>
+        <div class="flex items-center gap-2">
+          <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
         </div>
       </div>
+      <div class="chapter-content">
+        <div class="space-y-4">
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-blue-800">Physics</h3>
+            <p class="text-gray-700">
+              The branch of science that deals with the study of matter, energy, and their interactions.
+            </p>
+          </div>
+          
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-blue-800">Physical Quantity</h3>
+            <p class="text-gray-700 text-justify leading-relaxed">
+              A property of a material or system that can be quantified by measurement (e.g., length, mass, time).
+            </p>
+          </div>
+          
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-blue-800">Base Quantities</h3>
+            <p class="text-gray-700 text-justify leading-relaxed">
+              Fundamental quantities that cannot be defined in terms of other physical quantities (length, mass, time, electric current, temperature, amount of substance, luminous intensity).
+            </p>
+          </div>
 
-      <!-- Definitions Content -->
-      <div class="lg:col-span-2">
-        <!-- Introduction -->
-        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-md p-6 mb-8 border-l-4 border-blue-500">
-          <h2 class="text-2xl font-bold text-blue-800 mb-4">Physics Class 9 Definitions</h2>
-          <p class="text-gray-700 mb-4 text-justify leading-relaxed">
-            This comprehensive collection contains all key definitions, terms, formulas, and laws from the Class 9 Physics syllabus according to the Punjab Textbook Board. Each chapter is organized systematically with clear explanations and examples.
-          </p>
           <div class="bg-blue-100/50 p-4 rounded-lg border border-blue-200">
-            <h3 class="font-semibold text-blue-800 mb-2">How to Use This Resource:</h3>
-            <ul class="list-disc pl-5 text-gray-700 space-y-1">
-              <li>Click on any chapter in the sidebar to jump directly to its definitions</li>
-              <li>Each term is highlighted for easy reference</li>
-              <li>Important formulas are boxed for quick identification</li>
-              <li>For detailed explanations, visit the individual chapter pages</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Chapter 1 Definitions -->
-        <div id="chapter1" class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-md p-6 mb-8 scroll-mt-24 border-l-4 border-blue-500">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-blue-800">Chapter 1: Physical Quantities and Measurements</h2>
-            <a href="Physics-9th-Definitions-Chapter1.html" class="text-sm bg-blue-600 text-white px-3 py-1 rounded-full hover:bg-blue-700 transition-colors">View Full Chapter</a>
+            <strong class="font-semibold text-blue-800">SI Units:</strong>
+            <div class="mt-3 space-y-2 text-gray-700">
+              <div>• Length: meter (m)</div>
+              <div>• Mass: kilogram (kg)</div>
+              <div>• Time: second (s)</div>
+              <div>• Electric current: ampere (A)</div>
+              <div>• Temperature: kelvin (K)</div>
+            </div>
           </div>
           
-          <div class="space-y-4">
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-blue-800">Physics</h3>
-              <p class="text-gray-700">
-                The branch of science that deals with the study of matter, energy, and their interactions.
-              </p>
-            </div>
-            
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-blue-800">Physical Quantity</h3>
-              <p class="text-gray-700 text-justify leading-relaxed">
-                A property of a material or system that can be quantified by measurement (e.g., length, mass, time).
-              </p>
-            </div>
-            
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-blue-800">Base Quantities</h3>
-              <p class="text-gray-700 text-justify leading-relaxed">
-                Fundamental quantities that cannot be defined in terms of other physical quantities (length, mass, time, electric current, temperature, amount of substance, luminous intensity).
-              </p>
-            </div>
-
-            <div class="bg-blue-100/50 p-4 rounded-lg border border-blue-200">
-              <strong class="font-semibold text-blue-800">SI Units:</strong>
-              <div class="mt-3 space-y-2 text-gray-700">
-                <div>• Length: meter (m)</div>
-                <div>• Mass: kilogram (kg)</div>
-                <div>• Time: second (s)</div>
-                <div>• Electric current: ampere (A)</div>
-                <div>• Temperature: kelvin (K)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 2 Definitions -->
-        <div id="chapter2" class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl shadow-md p-6 mb-8 scroll-mt-24 border-l-4 border-green-500">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-green-800">Chapter 2: Kinematics</h2>
-            <a href="Physics-9th-Definitions-Chapter2.html" class="text-sm bg-green-600 text-white px-3 py-1 rounded-full hover:bg-green-700 transition-colors">View Full Chapter</a>
-          </div>
-          
-          <div class="space-y-4">
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-green-800">Kinematics</h3>
-              <p class="text-gray-700">
-                The study of motion of objects without considering the forces that cause the motion.
-              </p>
-            </div>
-            
-            <div class="bg-green-100/50 p-4 rounded-lg border border-green-200">
-              <strong class="font-semibold text-green-800">Equations of Motion:</strong><br>
-              <div class="space-y-2 mt-2 text-gray-700">
-                <div>\( v = u + at \)</div>
-                <div>\( s = ut + \frac{1}{2}at^2 \)</div>
-                <div>\( 2as = v^2 - u^2 \)</div>
-              </div>
-            </div>
-            
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-green-800">Acceleration</h3>
-              <p class="text-gray-700">
-                The rate of change of velocity with time. Unit: m/s²
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 3 Definitions -->
-        <div id="chapter3" class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow-md p-6 mb-8 scroll-mt-24 border-l-4 border-purple-500">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-purple-800">Chapter 3: Dynamics</h2>
-            <a href="Physics-9th-Definitions-Chapter3.html" class="text-sm bg-purple-600 text-white px-3 py-1 rounded-full hover:bg-purple-700 transition-colors">View Full Chapter</a>
-          </div>
-          
-          <div class="space-y-4">
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-purple-800">Force</h3>
-              <p class="text-gray-700">
-                A push or pull that changes or tends to change the state of rest or uniform motion of a body.
-              </p>
-            </div>
-            
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-purple-800">Newton's First Law</h3>
-              <p class="text-gray-700 text-justify leading-relaxed">
-                A body continues its state of rest or uniform motion unless acted upon by an external unbalanced force.
-              </p>
-            </div>
-            
-            <div class="bg-purple-100/50 p-4 rounded-lg border border-purple-200">
-              <strong class="font-semibold text-purple-800">Newton's Laws:</strong>
-              <div class="mt-3 space-y-2 text-gray-700">
-                <div>• <span class="font-medium">First Law</span>: Law of Inertia</div>
-                <div>• <span class="font-medium">Second Law</span>: \( F = ma \)</div>
-                <div>• <span class="font-medium">Third Law</span>: Action-Reaction</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 4 Definitions -->
-        <div id="chapter4" class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl shadow-md p-6 mb-8 scroll-mt-24 border-l-4 border-pink-500">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-pink-800">Chapter 4: Turning Effect of Forces</h2>
-            <a href="Physics-9th-Definitions-Chapter4.html" class="text-sm bg-pink-600 text-white px-3 py-1 rounded-full hover:bg-pink-700 transition-colors">View Full Chapter</a>
-          </div>
-          
-          <div class="space-y-4">
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-pink-800">Torque</h3>
-              <p class="text-gray-700 text-justify leading-relaxed">
-                The turning effect of a force about an axis of rotation. \( \tau = F \times d \)
-              </p>
-            </div>
-            
-            <div class="bg-pink-100/50 p-4 rounded-lg border border-pink-200">
-              <strong class="font-semibold text-pink-800">Conditions for Equilibrium:</strong>
-              <div class="mt-3 space-y-2 text-gray-700">
-                <div>• Sum of all forces = 0 (translational equilibrium)</div>
-                <div>• Sum of all torques = 0 (rotational equilibrium)</div>
-              </div>
-            </div>
-            
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-pink-800">Center of Mass</h3>
-              <p class="text-gray-700">A point where the whole mass of the body is assumed to be concentrated.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 5 Definitions -->
-        <div id="chapter5" class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl shadow-md p-6 mb-8 scroll-mt-24 border-l-4 border-yellow-500">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-yellow-800">Chapter 5: Work and Energy</h2>
-            <a href="Physics-9th-Definitions-Chapter5.html" class="text-sm bg-yellow-600 text-white px-3 py-1 rounded-full hover:bg-yellow-700 transition-colors">View Full Chapter</a>
-          </div>
-          
-          <div class="space-y-4">
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-yellow-800">Work</h3>
-              <p class="text-gray-700">Product of force and displacement in the direction of force. \( W = F \times d \times \cosθ \)</p>
-            </div>
-            
-            <div class="space-y-4">
-              <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <h3 class="font-semibold text-yellow-800">Energy</h3>
-                <p class="text-gray-700">
-                  Capacity to do work. Unit: joule (J)
-                </p>
-              </div>
-              
-              <div class="bg-yellow-100/50 p-4 rounded-lg border border-yellow-200">
-                <strong class="font-semibold text-yellow-800">Forms of Energy:</strong>
-                <div class="mt-3 space-y-2 pl-2 text-gray-700">
-                  <div class="flex items-start">
-                    <span class="mr-2">•</span>
-                    <span>Kinetic Energy: <span class="font-medium">\( KE = \frac{1}{2}mv^2 \)</span></span>
-                  </div>
-                  <div class="flex items-start">
-                    <span class="mr-2">•</span>
-                    <span>Potential Energy: <span class="font-medium">\( PE = mgh \)</span></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 6 Definitions -->
-        <div id="chapter6" class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl shadow-md p-6 mb-8 scroll-mt-24 border-l-4 border-teal-500">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-teal-800">Chapter 6: Properties of Matter</h2>
-            <a href="Physics-9th-Definitions-Chapter6.html" class="text-sm bg-teal-600 text-white px-3 py-1 rounded-full hover:bg-teal-700 transition-colors">View Full Chapter</a>
-          </div>
-          
-          <div class="space-y-4">
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-teal-800">Density</h3>
-              <p class="text-gray-700">
-                Mass per unit volume. \( \rho = \frac{m}{V} \)
-              </p>
-            </div>
-            
-            <div class="bg-teal-100/50 p-4 rounded-lg border border-teal-200">
-              <strong class="font-semibold text-teal-800 mb-3 block">Elasticity Formulas:</strong>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
-                <div class="flex items-center">
-                  <span class="w-20 font-medium">Stress:</span>
-                  <span class="flex-1">\( \frac{F}{A} \)</span>
-                </div>
-                <div class="flex items-center">
-                  <span class="w-20 font-medium">Strain:</span>
-                  <span class="flex-1">\( \frac{\Delta L}{L} \)</span>
-                </div>
-                <div class="flex items-center">
-                  <span class="w-20 font-medium">Young's Modulus:</span>
-                  <span class="flex-1">\( \frac{Stress}{Strain} \)</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-teal-800">Hooke's Law</h3>
-              <p class="text-gray-700 text-center text-lg">\( F = kx \)</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 7 Definitions -->
-        <div id="chapter7" class="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl shadow-md p-6 mb-8 scroll-mt-24 border-l-4 border-indigo-500">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-indigo-800">Chapter 7: Thermal Properties of Matter</h2>
-            <a href="Physics-9th-Definitions-Chapter7.html" class="text-sm bg-indigo-600 text-white px-3 py-1 rounded-full hover:bg-indigo-700 transition-colors">View Full Chapter</a>
-          </div>
-          
-          <div class="space-y-4">
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-indigo-800">Temperature</h3>
-              <p class="text-gray-700">
-                A measure of the average kinetic energy of the particles in a substance.
-              </p>
-            </div>
-            
-            <div class="bg-indigo-100/50 p-4 rounded-lg border border-indigo-200">
-              <strong class="font-semibold text-indigo-800 mb-3 block">Heat Formulas:</strong>
-              <div class="space-y-2 text-gray-700">
-                <div class="flex items-baseline">
-                  <span class="mr-2">•</span>
-                  <div>
-                    <span class="font-medium">Specific Heat:</span> 
-                    \( Q = mc\Delta T \)
-                  </div>
-                </div>
-                <div class="flex items-baseline">
-                  <span class="mr-2">•</span>
-                  <div>
-                    <span class="font-medium">Latent Heat:</span> 
-                    \( Q = mL \)
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-indigo-800">Thermal Expansion</h3>
-              <p class="text-gray-700">
-                The increase in size of a substance due to increase in temperature.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 8 Definitions -->
-        <div id="chapter8" class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl shadow-md p-6 mb-8 scroll-mt-24 border-l-4 border-red-500">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-red-800">Chapter 8: Magnetism</h2>
-            <a href="Physics-9th-Definitions-Chapter8.html" class="text-sm bg-red-600 text-white px-3 py-1 rounded-full hover:bg-red-700 transition-colors">View Full Chapter</a>
-          </div>
-          
-          <div class="space-y-4">
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-red-800">Magnetic Field</h3>
-              <p class="text-gray-700">
-                The region around a magnet where its magnetic force can be detected.
-              </p>
-            </div>
-            
-            <div class="bg-red-100/50 p-4 rounded-lg border border-red-200">
-              <strong class="font-semibold text-red-800 mb-3 block">Magnetic Properties:</strong>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
-                <div class="flex items-center">
-                  <span class="w-24 font-medium">Magnetic Flux:</span>
-                  <span class="font-medium">\( \Phi = BA \)</span>
-                </div>
-                <div class="flex items-center">
-                  <span class="w-24 font-medium">Flux Density:</span>
-                  <span class="font-medium">\( B = \frac{F}{Il} \)</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-red-800">Electromagnet</h3>
-              <p class="text-gray-700">A temporary magnet created by passing electric current through a coil.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 9 Definitions -->
-        <div id="chapter9" class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl shadow-md p-6 mb-8 scroll-mt-24 border-l-4 border-gray-500">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-bold text-gray-800">Chapter 9: Nature of Science</h2>
-            <a href="Physics-9th-Definitions-Chapter9.html" class="text-sm bg-gray-600 text-white px-3 py-1 rounded-full hover:bg-gray-700 transition-colors">View Full Chapter</a>
-          </div>
-          
-          <div class="space-y-4">
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-gray-800">Scientific Method</h3>
-              <p class="text-gray-700 text-justify leading-relaxed">
-                A systematic approach to research consisting of observation, hypothesis, experimentation, and conclusion.
-              </p>
-            </div>
-            
-            <div class="bg-gray-100/50 p-4 rounded-lg border border-gray-200">
-              <strong class="font-semibold text-gray-800 mb-3 block">Scientific Principles:</strong>
-              <div class="space-y-2 text-gray-700">
-                <div class="flex items-baseline">
-                  <span class="mr-2">•</span>
-                  <span>Empirical evidence</span>
-                </div>
-                <div class="flex items-baseline">
-                  <span class="mr-2">•</span>
-                  <span>Testability</span>
-                </div>
-                <div class="flex items-baseline">
-                  <span class="mr-2">•</span>
-                  <span>Reproducibility</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-              <h3 class="font-semibold text-gray-800">Technology</h3>
-              <p class="text-gray-700">The application of scientific knowledge for practical purposes.</p>
-            </div>
+          <div class="flex justify-end mt-4">
+            <a href="Physics-9th-Definitions-Chapter1.html" class="btn-view">View Full Chapter</a>
           </div>
         </div>
       </div>
     </div>
-  </div>
+
+    <!-- Chapter 2 Definitions -->
+    <div class="chapter-card open">
+      <div class="chapter-header flex justify-between items-center p-4 bg-green-50 hover:bg-green-100 transition">
+        <h2 class="text-base md:text-lg font-semibold text-green-800">📗 Chapter 2 – Kinematics</h2>
+        <div class="flex items-center gap-2">
+          <span class="toggle-icon text-green-700 font-bold text-xl">−</span>
+        </div>
+      </div>
+      <div class="chapter-content">
+        <div class="space-y-4">
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-green-800">Kinematics</h3>
+            <p class="text-gray-700">
+              The study of motion of objects without considering the forces that cause the motion.
+            </p>
+          </div>
+          
+          <div class="bg-green-100/50 p-4 rounded-lg border border-green-200">
+            <strong class="font-semibold text-green-800">Equations of Motion:</strong><br>
+            <div class="space-y-2 mt-2 text-gray-700">
+              <div>\( v = u + at \)</div>
+              <div>\( s = ut + \frac{1}{2}at^2 \)</div>
+              <div>\( 2as = v^2 - u^2 \)</div>
+            </div>
+          </div>
+          
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-green-800">Acceleration</h3>
+            <p class="text-gray-700">
+              The rate of change of velocity with time. Unit: m/s²
+            </p>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <a href="Physics-9th-Definitions-Chapter2.html" class="btn-view">View Full Chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 3 Definitions -->
+    <div class="chapter-card open">
+      <div class="chapter-header flex justify-between items-center p-4 bg-purple-50 hover:bg-purple-100 transition">
+        <h2 class="text-base md:text-lg font-semibold text-purple-800">📙 Chapter 3 – Dynamics</h2>
+        <div class="flex items-center gap-2">
+          <span class="toggle-icon text-purple-700 font-bold text-xl">−</span>
+        </div>
+      </div>
+      <div class="chapter-content">
+        <div class="space-y-4">
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-purple-800">Force</h3>
+            <p class="text-gray-700">
+              A push or pull that changes or tends to change the state of rest or uniform motion of a body.
+            </p>
+          </div>
+          
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-purple-800">Newton's First Law</h3>
+            <p class="text-gray-700 text-justify leading-relaxed">
+              A body continues its state of rest or uniform motion unless acted upon by an external unbalanced force.
+            </p>
+          </div>
+          
+          <div class="bg-purple-100/50 p-4 rounded-lg border border-purple-200">
+            <strong class="font-semibold text-purple-800">Newton's Laws:</strong>
+            <div class="mt-3 space-y-2 text-gray-700">
+              <div>• <span class="font-medium">First Law</span>: Law of Inertia</div>
+              <div>• <span class="font-medium">Second Law</span>: \( F = ma \)</div>
+              <div>• <span class="font-medium">Third Law</span>: Action-Reaction</div>
+            </div>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <a href="Physics-9th-Definitions-Chapter3.html" class="btn-view">View Full Chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 4 Definitions -->
+    <div class="chapter-card open">
+      <div class="chapter-header flex justify-between items-center p-4 bg-pink-50 hover:bg-pink-100 transition">
+        <h2 class="text-base md:text-lg font-semibold text-pink-800">📕 Chapter 4 – Turning Effect of Forces</h2>
+        <div class="flex items-center gap-2">
+          <span class="toggle-icon text-pink-700 font-bold text-xl">−</span>
+        </div>
+      </div>
+      <div class="chapter-content">
+        <div class="space-y-4">
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-pink-800">Torque</h3>
+            <p class="text-gray-700 text-justify leading-relaxed">
+              The turning effect of a force about an axis of rotation. \( \tau = F \times d \)
+            </p>
+          </div>
+          
+          <div class="bg-pink-100/50 p-4 rounded-lg border border-pink-200">
+            <strong class="font-semibold text-pink-800">Conditions for Equilibrium:</strong>
+            <div class="mt-3 space-y-2 text-gray-700">
+              <div>• Sum of all forces = 0 (translational equilibrium)</div>
+              <div>• Sum of all torques = 0 (rotational equilibrium)</div>
+            </div>
+          </div>
+          
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-pink-800">Center of Mass</h3>
+            <p class="text-gray-700">A point where the whole mass of the body is assumed to be concentrated.</p>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <a href="Physics-9th-Definitions-Chapter4.html" class="btn-view">View Full Chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 5 Definitions -->
+    <div class="chapter-card open">
+      <div class="chapter-header flex justify-between items-center p-4 bg-yellow-50 hover:bg-yellow-100 transition">
+        <h2 class="text-base md:text-lg font-semibold text-yellow-800">📔 Chapter 5 – Work and Energy</h2>
+        <div class="flex items-center gap-2">
+          <span class="toggle-icon text-yellow-700 font-bold text-xl">−</span>
+        </div>
+      </div>
+      <div class="chapter-content">
+        <div class="space-y-4">
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-yellow-800">Work</h3>
+            <p class="text-gray-700">Product of force and displacement in the direction of force. \( W = F \times d \times \cosθ \)</p>
+          </div>
+          
+          <div class="space-y-4">
+            <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="font-semibold text-yellow-800">Energy</h3>
+              <p class="text-gray-700">
+                Capacity to do work. Unit: joule (J)
+              </p>
+            </div>
+            
+            <div class="bg-yellow-100/50 p-4 rounded-lg border border-yellow-200">
+              <strong class="font-semibold text-yellow-800">Forms of Energy:</strong>
+              <div class="mt-3 space-y-2 pl-2 text-gray-700">
+                <div class="flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Kinetic Energy: <span class="font-medium">\( KE = \frac{1}{2}mv^2 \)</span></span>
+                </div>
+                <div class="flex items-start">
+                  <span class="mr-2">•</span>
+                  <span>Potential Energy: <span class="font-medium">\( PE = mgh \)</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <a href="Physics-9th-Definitions-Chapter5.html" class="btn-view">View Full Chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 6 Definitions -->
+    <div class="chapter-card open">
+      <div class="chapter-header flex justify-between items-center p-4 bg-teal-50 hover:bg-teal-100 transition">
+        <h2 class="text-base md:text-lg font-semibold text-teal-800">📒 Chapter 6 – Properties of Matter</h2>
+        <div class="flex items-center gap-2">
+          <span class="toggle-icon text-teal-700 font-bold text-xl">−</span>
+        </div>
+      </div>
+      <div class="chapter-content">
+        <div class="space-y-4">
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-teal-800">Density</h3>
+            <p class="text-gray-700">
+              Mass per unit volume. \( \rho = \frac{m}{V} \)
+            </p>
+          </div>
+          
+          <div class="bg-teal-100/50 p-4 rounded-lg border border-teal-200">
+            <strong class="font-semibold text-teal-800 mb-3 block">Elasticity Formulas:</strong>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+              <div class="flex items-center">
+                <span class="w-20 font-medium">Stress:</span>
+                <span class="flex-1">\( \frac{F}{A} \)</span>
+              </div>
+              <div class="flex items-center">
+                <span class="w-20 font-medium">Strain:</span>
+                <span class="flex-1">\( \frac{\Delta L}{L} \)</span>
+              </div>
+              <div class="flex items-center">
+                <span class="w-20 font-medium">Young's Modulus:</span>
+                <span class="flex-1">\( \frac{Stress}{Strain} \)</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-teal-800">Hooke's Law</h3>
+            <p class="text-gray-700 text-center text-lg">\( F = kx \)</p>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <a href="Physics-9th-Definitions-Chapter6.html" class="btn-view">View Full Chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 7 Definitions -->
+    <div class="chapter-card open">
+      <div class="chapter-header flex justify-between items-center p-4 bg-indigo-50 hover:bg-indigo-100 transition">
+        <h2 class="text-base md:text-lg font-semibold text-indigo-800">📚 Chapter 7 – Thermal Properties of Matter</h2>
+        <div class="flex items-center gap-2">
+          <span class="toggle-icon text-indigo-700 font-bold text-xl">−</span>
+        </div>
+      </div>
+      <div class="chapter-content">
+        <div class="space-y-4">
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-indigo-800">Temperature</h3>
+            <p class="text-gray-700">
+              A measure of the average kinetic energy of the particles in a substance.
+            </p>
+          </div>
+          
+          <div class="bg-indigo-100/50 p-4 rounded-lg border border-indigo-200">
+            <strong class="font-semibold text-indigo-800 mb-3 block">Heat Formulas:</strong>
+            <div class="space-y-2 text-gray-700">
+              <div class="flex items-baseline">
+                <span class="mr-2">•</span>
+                <div>
+                  <span class="font-medium">Specific Heat:</span> 
+                  \( Q = mc\Delta T \)
+                </div>
+              </div>
+              <div class="flex items-baseline">
+                <span class="mr-2">•</span>
+                <div>
+                  <span class="font-medium">Latent Heat:</span> 
+                  \( Q = mL \)
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-indigo-800">Thermal Expansion</h3>
+            <p class="text-gray-700">
+              The increase in size of a substance due to increase in temperature.
+            </p>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <a href="Physics-9th-Definitions-Chapter7.html" class="btn-view">View Full Chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 8 Definitions -->
+    <div class="chapter-card open">
+      <div class="chapter-header flex justify-between items-center p-4 bg-red-50 hover:bg-red-100 transition">
+        <h2 class="text-base md:text-lg font-semibold text-red-800">📖 Chapter 8 – Magnetism</h2>
+        <div class="flex items-center gap-2">
+          <span class="toggle-icon text-red-700 font-bold text-xl">−</span>
+        </div>
+      </div>
+      <div class="chapter-content">
+        <div class="space-y-4">
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-red-800">Magnetic Field</h3>
+            <p class="text-gray-700">
+              The region around a magnet where its magnetic force can be detected.
+            </p>
+          </div>
+          
+          <div class="bg-red-100/50 p-4 rounded-lg border border-red-200">
+            <strong class="font-semibold text-red-800 mb-3 block">Magnetic Properties:</strong>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-700">
+              <div class="flex items-center">
+                <span class="w-24 font-medium">Magnetic Flux:</span>
+                <span class="font-medium">\( \Phi = BA \)</span>
+              </div>
+              <div class="flex items-center">
+                <span class="w-24 font-medium">Flux Density:</span>
+                <span class="font-medium">\( B = \frac{F}{Il} \)</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-red-800">Electromagnet</h3>
+            <p class="text-gray-700">A temporary magnet created by passing electric current through a coil.</p>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <a href="Physics-9th-Definitions-Chapter8.html" class="btn-view">View Full Chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 9 Definitions -->
+    <div class="chapter-card open">
+      <div class="chapter-header flex justify-between items-center p-4 bg-gray-50 hover:bg-gray-100 transition">
+        <h2 class="text-base md:text-lg font-semibold text-gray-800">📙 Chapter 9 – Nature of Science</h2>
+        <div class="flex items-center gap-2">
+          <span class="toggle-icon text-gray-700 font-bold text-xl">−</span>
+        </div>
+      </div>
+      <div class="chapter-content">
+        <div class="space-y-4">
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-gray-800">Scientific Method</h3>
+            <p class="text-gray-700 text-justify leading-relaxed">
+              A systematic approach to research consisting of observation, hypothesis, experimentation, and conclusion.
+            </p>
+          </div>
+          
+          <div class="bg-gray-100/50 p-4 rounded-lg border border-gray-200">
+            <strong class="font-semibold text-gray-800 mb-3 block">Scientific Principles:</strong>
+            <div class="space-y-2 text-gray-700">
+              <div class="flex items-baseline">
+                <span class="mr-2">•</span>
+                <span>Empirical evidence</span>
+              </div>
+              <div class="flex items-baseline">
+                <span class="mr-2">•</span>
+                <span>Testability</span>
+              </div>
+              <div class="flex items-baseline">
+                <span class="mr-2">•</span>
+                <span>Reproducibility</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white/80 p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-semibold text-gray-800">Technology</h3>
+            <p class="text-gray-700">The application of scientific knowledge for practical purposes.</p>
+          </div>
+          
+          <div class="flex justify-end mt-4">
+            <a href="Physics-9th-Definitions-Chapter9.html" class="btn-view">View Full Chapter</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
 <!-- 🧭 Internal Linking Section for SEO & Navigation -->
 <section class="max-w-7xl mx-auto px-6 py-14">
   <div class="bg-gradient-to-br from-blue-50 via-white to-cyan-50 rounded-3xl shadow-xl p-10 border border-gray-200">
@@ -754,152 +738,123 @@
   </div>
 </section>
 
-  <!-- Footer -->
+ <!-- Footer -->
   <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10">
     <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
         <!-- Logo & Description -->
         <div class="md:col-span-1 text-center md:text-left">
           <a href="index.html" class="flex flex-col md:flex-row items-center md:items-start gap-3 group transition duration-300">
-            <img 
-              src="images/logo.png" 
+            <img
+              src="images/logo.png"
               alt="Hira Science Academy"
               class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
             <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mt-2 md:mt-0">
               Hira Science Academy
             </span>
           </a>
-
           <p class="mt-4 text-sm text-gray-200">
             Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).
           </p>
-
-          <!-- Social Media Links -->
-          <div class="mt-4 flex justify-center md:justify-start space-x-6 text-gray-200">
-            <a href="https://web.facebook.com/HiraScienceAcademy.Daska" target="_blank" aria-label="Facebook" class="hover:text-blue-400 transition-colors">
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.1v-2.88h2.1V9.41c0-2.07 1.23-3.22 3.11-3.22.9 0 1.84.16 1.84.16v2.03h-1.04c-1.03 0-1.35.64-1.35 1.3v1.57h2.3l-.37 2.88h-1.93v6.99A10 10 0 0 0 22 12z" />
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/hira.scienceacademy/" target="_blank" aria-label="Instagram" class="hover:text-pink-400 transition-colors">
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.25 1.13 1.13 0 0 1 0-2.25Z" />
-              </svg>
-            </a>
-            <a href="https://wa.me/923338114798" target="_blank" aria-label="WhatsApp" class="hover:text-green-400 transition-colors">
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 32 32">
-                <path d="M16 2.4c-7.51 0-13.6 6.09-13.6 13.6 0 2.39.63 4.71 1.83 6.76L2 30l7.45-2.31c1.92 1.05 4.09 1.61 6.3 1.61h.01c7.51 0 13.6-6.09 13.6-13.6S23.51 2.4 16 2.4zm0 24.6c-1.89 0-3.75-.5-5.39-1.46l-.39-.23-4.42 1.37 1.43-4.29-.26-.41a11.17 11.17 0 01-1.73-6.01c0-6.2 5.04-11.24 11.24-11.24S27.24 9.8 27.24 16 22.2 27 16 27zm6.13-8.67c-.34-.17-2.01-.99-2.32-1.1-.31-.11-.54-.17-.76.17-.22.34-.88 1.1-1.08 1.32-.2.22-.4.25-.74.08-.34-.17-1.44-.53-2.75-1.69-1.02-.91-1.71-2.02-1.91-2.36-.2-.34-.02-.52.15-.69.16-.16.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.08-.17-.76-1.84-1.04-2.53-.27-.64-.54-.55-.76-.56l-.65-.01c-.23 0-.6.08-.91.4-.31.31-1.19 1.16-1.19 2.83s1.22 3.29 1.39 3.51c.17.22 2.39 3.65 5.8 5.12.81.35 1.44.56 1.93.71.81.26 1.54.22 2.12.14.65-.1 2.01-.82 2.3-1.61.28-.79.28-1.46.2-1.61-.08-.14-.31-.23-.65-.4z"/>
-              </svg>
-            </a>
-          </div>
         </div>
 
         <!-- Programs -->
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
           <ul class="space-y-2">
-            <li><a href="index.html#courses" class="hover:text-cyan-400 transition-colors">9th Class</a></li>
-            <li><a href="index.html#courses" class="hover:text-cyan-400 transition-colors">10th Class</a></li>
-            <li><a href="fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+            <li><a href="courses-details.html#class9" class="hover:text-cyan-400 transition-colors">9th Class</a></li>
+            <li><a href="courses-details.html#class10" class="hover:text-cyan-400 transition-colors">10th Class</a></li>
+            <li><a href="courses-details.html#fsc" class="hover:text-cyan-400 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
             <li><a href="fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">Entry Test Preparation</a></li>
           </ul>
         </div>
 
         <!-- Resources -->
-        <div class="text-center md:text-left">
-          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
-          <ul class="space-y-2">
-            <li><a href="blog.html" class="hover:text-cyan-400 transition-colors">Study Tips & Blog</a></li>
-            <li><a href="career-services.html" class="hover:text-cyan-400 transition-colors">Career Guidance</a></li>
-            <li><a href="student-portal.html" class="hover:text-cyan-400 transition-colors">Student Portal</a></li>
-            <li><a href="alumni-network.html" class="hover:text-cyan-400 transition-colors">Alumni Network</a></li>
-            <li><a href="events.html" class="hover:text-cyan-400 transition-colors">Events & Workshops</a></li>
-          </ul>
-        </div>
-
-        <!-- Legal -->
-        <div class="text-center md:text-left">
-          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
-          <ul class="space-y-2">
-            <li><a href="terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
-            <li><a href="privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
-            <li><a href="refund-policy.html" class="hover:text-cyan-400 transition-colors">Refund Policy</a></li>
-            <li><a href="accessibility.html" class="hover:text-cyan-400 transition-colors">Accessibility</a></li>
-          </ul>
-        </div>
-
-        <!-- About -->
-        <div class="text-center md:text-left">
-          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
-          <ul class="space-y-2">
-            <li><a href="about.html" class="hover:text-cyan-400 transition-colors active">About Hira Academy</a></li>
-            <li><a href="mission.html" class="hover:text-cyan-400 transition-colors">Our Mission</a></li>
-            <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact Us</a></li>
-          </ul>
-        </div>
+      <div class="text-center md:text-left">
+        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+        <ul class="space-y-2">
+          <li><a href="https://hiraacademy.online/blog.html" class="hover:text-cyan-400 transition-colors">Study Tips & Blog</a></li>
+          <li><a href="https://hiraacademy.online/career-services.html" class="hover:text-cyan-400 transition-colors">Career Guidance</a></li>
+          <li><a href="https://hiraacademy.online/student-portal.html" class="hover:text-cyan-400 transition-colors">Student Portal</a></li>
+          <li><a href="https://hiraacademy.online/alumni-network.html" class="hover:text-cyan-400 transition-colors">Alumni Network</a></li>
+          <li><a href="https://hiraacademy.online/events.html" class="hover:text-cyan-400 transition-colors">Events & Workshops</a></li>
+        </ul>
       </div>
 
-      <div class="mt-12 border-t border-blue-700 pt-6">
-        <p class="text-base text-gray-200 text-center">
-          &copy; 2025 Hira Science Academy. All rights reserved.
-        </p>
+      <!-- Legal -->
+      <div class="text-center md:text-left">
+        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+        <ul class="space-y-2">
+          <li><a href="https://hiraacademy.online/terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
+          <li><a href="https://hiraacademy.online/privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
+          <li><a href="https://hiraacademy.online/refund-policy.html" class="hover:text-cyan-400 transition-colors">Refund Policy</a></li>
+          <li><a href="https://hiraacademy.online/accessibility.html" class="hover:text-cyan-400 transition-colors">Accessibility</a></li>
+        </ul>
       </div>
+
+      <!-- About -->
+      <div class="text-center md:text-left">
+        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+        <ul class="space-y-2">
+          <li><a href="https://hiraacademy.online/about.html" class="hover:text-cyan-400 transition-colors">About Hira Academy</a></li>
+          <li><a href="https://hiraacademy.online/mission.html" class="hover:text-cyan-400 transition-colors">Our Mission</a></li>
+          <li><a href="https://hiraacademy.online/contact.html" class="hover:text-cyan-400 transition-colors">Contact Us</a></li>
+        </ul>
+      </div>
+
     </div>
+
+    <div class="mt-12 border-t border-blue-700 pt-6">
+      <p class="text-base text-gray-200 text-center">
+        &copy; 2025 Hira Science Academy. All rights reserved.
+      </p>
+    </div>
+  </div>
   </footer>
 
-  <!-- Back to Top Button -->
-  <button id="backToTop" class="fixed bottom-6 right-6 bg-indigo-800 hover:bg-indigo-700 text-white p-3 rounded-full shadow-lg transition duration-300 opacity-0 invisible">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-    </svg>
-  </button>
-
+  <!-- JavaScript -->
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu elements
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIconOpen = document.getElementById('menu-icon-open');
-    const menuIconClose = document.getElementById('menu-icon-close');
-    
-    // Back to top button
-    const backToTopBtn = document.getElementById('backToTop');
-
-    // Mobile menu toggle function
-    function toggleMobileMenu() {
-      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIconOpen = document.getElementById('menu-icon-open');
+      const menuIconClose = document.getElementById('menu-icon-close');
+      
       mobileMenu.classList.toggle('hidden');
       menuIconOpen.classList.toggle('hidden');
       menuIconClose.classList.toggle('hidden');
-      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
-    }
-
-    // Event listeners
-    mobileMenuButton.addEventListener('click', toggleMobileMenu);
-    
-    // Close menu when clicking on links
-    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
-      link.addEventListener('click', toggleMobileMenu);
     });
 
-    // Back to top button functionality
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopBtn.classList.remove('opacity-0', 'invisible');
-        backToTopBtn.classList.add('opacity-100', 'visible');
-      } else {
-        backToTopBtn.classList.remove('opacity-100', 'visible');
-        backToTopBtn.classList.add('opacity-0', 'invisible');
+    // Chapter expand/collapse
+    document.addEventListener("click", e => {
+      if (e.target.closest(".chapter-header")) {
+        const card = e.target.closest(".chapter-card");
+        const isOpen = card.classList.contains("open");
+        document.querySelectorAll(".chapter-card").forEach(c => {
+          c.classList.remove("open");
+          c.querySelector(".toggle-icon").textContent = "+";
+        });
+        if (!isOpen) {
+          card.classList.add("open");
+          card.querySelector(".toggle-icon").textContent = "−";
+        }
       }
     });
-    
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+
+    // Search functionality
+    document.getElementById('searchInput').addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase();
+      const chapters = document.querySelectorAll('.chapter-card');
+      
+      chapters.forEach(chapter => {
+        const chapterText = chapter.textContent.toLowerCase();
+        if (chapterText.includes(searchTerm)) {
+          chapter.style.display = 'block';
+        } else {
+          chapter.style.display = 'none';
+        }
       });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
