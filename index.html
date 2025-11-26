@@ -91,33 +91,7 @@
 
   <!-- ✅ Tailwind CSS Custom Theme -->
 
-<script>
-// Nuclear option - add this right after <body> tag
-window.addEventListener('load', function() {
-    // Remove any hash
-    history.replaceState(null, null, window.location.pathname);
-    
-    // Force scroll to top repeatedly
-    function scrollTop() {
-        window.scrollTo(0, 0);
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
-    
-    scrollTop();
-    setTimeout(scrollTop, 10);
-    setTimeout(scrollTop, 50);
-    setTimeout(scrollTop, 100);
-    setTimeout(scrollTop, 500);
-});
 
-// Also prevent hash change events
-window.addEventListener('hashchange', function(e) {
-    e.preventDefault();
-    history.replaceState(null, null, window.location.pathname);
-    window.scrollTo(0, 0);
-});
-</script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -453,54 +427,82 @@ window.addEventListener('hashchange', function(e) {
   });
 </script>
 
-<!-- 🌟 Enhanced Hero Section -->
-<section id="home" class="relative bg-gradient-to-r from-primary-700 via-secondary-700 to-primary-800 text-white py-28 lg:py-40 overflow-hidden">
-  <div class="absolute inset-0 bg-[url('https://www.hiraacademy.online/images/pattern.svg')] opacity-10"></div>
-  
+<!-- ⭐ LCP Optimized Hero Section -->
+<section id="home"
+  class="relative bg-gradient-to-r from-primary-700 via-secondary-700 to-primary-800 text-white py-24 md:py-36 overflow-hidden hero-section">
+
+  <div class="absolute inset-0 opacity-10 pattern-bg"></div>
+
   <div class="container mx-auto px-6 relative z-10">
     <div class="flex flex-col md:flex-row items-center">
 
-      <!-- 📘 Left Side Text -->
-      <div class="md:w-1/2 mb-12 md:mb-0 animate-fade-in-up">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight drop-shadow-2xl" style="font-family: 'Playfair Display', serif;">
-          Excellence in <br class="hidden lg:block"/> 
-          <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">Science Education</span>
+      <!-- ⭐ Left Content -->
+      <div class="md:w-1/2 mb-12 md:mb-0">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight"
+            style="font-family: 'Playfair Display', serif;">
+          Excellence in <br class="hidden lg:block"/>
+          <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+            Science Education
+          </span>
         </h1>
 
-        <p class="text-lg md:text-xl text-primary-100 mb-6 max-w-xl text-justify leading-relaxed">
-          At <strong>Hira Science Academy</strong>, we provide expert guidance for <strong>Class 9</strong> and <strong>Class 10</strong> students 
-          following the <strong>Punjab Curriculum</strong>. Our mission is to make science simple, interesting, and result-oriented.
+        <p class="text-lg md:text-xl text-primary-100 mb-6 max-w-xl leading-relaxed text-justify">
+          At <strong>Hira Science Academy</strong>, we offer expert guidance for 
+          <strong>Class 9</strong> and <strong>Class 10</strong> students following the 
+          <strong>Punjab Curriculum</strong>. Our mission is to make science simple, engaging, and result-oriented.
         </p>
 
-        <p class="text-base md:text-lg text-primary-100 mb-10 max-w-xl text-justify leading-relaxed">
-          Taught by experienced <strong>MSc Mathematics</strong> and <strong>M.Phil Chemistry</strong> educators, 
-          our programs include <strong>complete notes</strong>, <strong>past papers</strong>, <strong>chapter-wise MCQs</strong>, and 
-          personalized learning plans that build confidence for board exams. 
-          Students gain deep understanding through <strong>concept-based learning</strong> and regular assessments.
+        <p class="text-base md:text-lg text-primary-100 mb-10 max-w-xl leading-relaxed text-justify">
+          Taught by <strong>MSc Mathematics</strong> and <strong>M.Phil Chemistry</strong> educators,
+          our programs include <strong>complete notes</strong>, <strong>past papers</strong>, 
+          <strong>chapter-wise MCQs</strong>, and personalized learning plans that ensure deep understanding
+          and strong board exam preparation.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#courses" class="bg-white text-primary-700 hover:bg-gray-100 px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition duration-300 text-center">
+          <a href="#courses"
+             class="bg-white text-primary-700 hover:bg-gray-100 px-8 py-3 rounded-xl font-semibold shadow-md transition text-center">
             📚 Browse Courses
           </a>
-          <a href="https://www.hiraacademy.online/contact.html" class="border-2 border-white hover:bg-white hover:text-primary-700 px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition duration-300 text-center">
+
+          <a href="https://www.hiraacademy.online/contact.html"
+             class="border-2 border-white hover:bg-white hover:text-primary-700 px-8 py-3 rounded-xl font-semibold shadow-md transition text-center">
             ✉️ Contact Us
           </a>
-          <a href="https://www.hiraacademy.online/about.html" class="bg-yellow-400 text-primary-900 hover:bg-yellow-500 px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition duration-300 text-center">
+
+          <a href="https://www.hiraacademy.online/about.html"
+             class="bg-yellow-400 text-primary-900 hover:bg-yellow-500 px-8 py-3 rounded-xl font-semibold shadow-md transition text-center">
             🔍 Read More
           </a>
         </div>
       </div>
 
-      <!-- 🖼️ Right Side Image -->
-      <div class="md:w-1/2 md:pl-12 animate-fade-in">
-        <img src="https://www.hiraacademy.online/images/classroom.jpg" alt="Students actively learning in a modern classroom environment" 
-             class="rounded-3xl shadow-2xl ring-4 ring-white/20 hover:scale-105 transition duration-500">
+      <!-- ⭐ LCP Image (Optimized) -->
+      <div class="md:w-1/2 md:pl-12">
+        <img 
+          src="https://www.hiraacademy.online/images/classroom.webp"
+          alt="Students learning in a modern classroom"
+          width="900" 
+          height="700"
+          loading="eager"
+          fetchpriority="high"
+          class="rounded-3xl shadow-xl object-cover w-full h-auto"
+        >
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- ⭐ Supportive CSS -->
+<style>
+  .pattern-bg {
+    background-image: url('https://www.hiraacademy.online/images/pattern.svg');
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+
 
 <!-- 🌟 Class Notes Section -->
 <section id="notes" class="py-16 bg-gradient-to-b from-blue-50 to-white">
@@ -654,8 +656,8 @@ window.addEventListener('hashchange', function(e) {
       <h2 class="text-4xl font-extrabold text-gray-900">
         🎓 Our Academic Programs
       </h2>
-      <p class="mt-3 max-w-3xl mx-auto text-lg text-gray-600">
-        Quality education programs following the Punjab Curriculum & Textbook Board syllabus.
+      <p class="mt-3 max-w-3xl mx-auto text-lg text-gray-600 text-justify">
+        We provide high-quality education programs strictly following the Punjab Curriculum & Textbook Board syllabus, designed to build strong foundations and ensure academic excellence.
       </p>
     </div>
 
@@ -666,13 +668,13 @@ window.addEventListener('hashchange', function(e) {
       <div class="relative flex flex-col rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
         <!-- Gradient Bar -->
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary-400 to-primary-600"></div>
-        <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://www.hiraacademy.online/images/class9-banner.jpg" alt="9th Class Course">
+        <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://www.hiraacademy.online/images/class9-banner.webp" alt="9th Class Course">
         <div class="bg-white p-6 flex flex-col justify-between flex-1">
           <div>
             <span class="inline-block bg-primary-100 text-primary-800 px-3 py-1 text-sm font-medium rounded-full">📘 9th Class</span>
             <h3 class="mt-3 text-2xl font-bold text-primary-600">9th Class Science Program</h3>
-            <p class="mt-3 text-base text-gray-600">
-              Covers all science subjects including <strong>Physics</strong>, <strong>Chemistry</strong>, <strong>Biology</strong>, <strong>Maths</strong>, and <strong>English</strong>.
+            <p class="mt-3 text-base text-gray-600 text-justify">
+              This program covers all essential science subjects, including <strong>Physics</strong>, <strong>Chemistry</strong>, <strong>Biology</strong>, <strong>Mathematics</strong>, and <strong>English</strong>, providing a comprehensive learning experience.
             </p>
           </div>
           <div class="mt-6 flex items-center justify-between">
@@ -688,13 +690,13 @@ window.addEventListener('hashchange', function(e) {
       <div class="relative flex flex-col rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300">
         <!-- Gradient Bar -->
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary-400 to-secondary-600"></div>
-        <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://www.hiraacademy.online/images/class10-banner.jpg" alt="10th Class Course">
+        <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://www.hiraacademy.online/images/class10-banner.webp" alt="10th Class Course">
         <div class="bg-white p-6 flex flex-col justify-between flex-1">
           <div>
             <span class="inline-block bg-secondary-100 text-secondary-800 px-3 py-1 text-sm font-medium rounded-full">📗 10th Class</span>
             <h3 class="mt-3 text-2xl font-bold text-secondary-600">10th Class Science Program</h3>
-            <p class="mt-3 text-base text-gray-600">
-              Complete syllabus coverage with <strong>practical preparation</strong>, <strong>revisions</strong>, and <strong>solved exercises</strong>.
+            <p class="mt-3 text-base text-gray-600 text-justify">
+              This program offers complete syllabus coverage with <strong>practical preparations</strong>, <strong>revision exercises</strong>, and <strong>solved examples</strong> to ensure students are fully prepared for exams.
             </p>
           </div>
           <div class="mt-6 flex items-center justify-between">
@@ -718,89 +720,114 @@ window.addEventListener('hashchange', function(e) {
   </div>
 </section>
 
-<!-- Features Section -->
-<section id="features" class="py-20 bg-gradient-to-b from-white to-gray-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    
+
+<!-- ⭐ Improved Features Section -->
+<section id="features" class="py-24 bg-gradient-to-b from-white to-gray-50">
+  <div class="max-w-7xl mx-auto px-6">
+
     <!-- Heading -->
     <div class="text-center">
-      <h2 class="text-4xl font-extrabold text-gray-900">
+      <h2 class="text-4xl font-extrabold text-gray-900 tracking-tight">
         🌟 Why Choose Hira Science Academy?
       </h2>
-      <p class="mt-3 max-w-3xl mx-auto text-lg text-gray-600">
-        We are committed to providing <strong>exceptional learning experiences</strong> for every student.
+      <p class="mt-3 max-w-3xl mx-auto text-lg text-gray-600 leading-relaxed text-justify">
+        We are committed to providing <strong>exceptional learning experiences</strong> for every student through quality teaching, personal support, and structured preparation.
       </p>
     </div>
 
-    <!-- Features Grid -->
-    <div class="mt-14 grid gap-10 md:grid-cols-3">
+    <!-- Feature Cards -->
+    <div class="mt-16 grid md:grid-cols-3 gap-10">
 
-      <!-- Feature 1 -->
-      <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-8 text-center">
+      <!-- Card 1 -->
+      <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center">
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-400 to-primary-600 rounded-t-2xl"></div>
-        <div class="flex items-center justify-center h-14 w-14 mx-auto rounded-full bg-primary-500 text-white shadow-md">
+
+        <div class="flex items-center justify-center h-14 w-14 mx-auto rounded-full bg-primary-500 text-white shadow-md group-hover:scale-110 transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6v6l4 2m5-3a9 9 0 11-9-9" />
           </svg>
         </div>
+
         <h3 class="mt-6 text-xl font-semibold text-gray-900">Experienced & Caring Teachers</h3>
-        <p class="mt-4 text-gray-600 text-justify">
-          Our qualified teachers focus on <strong>concept-based learning</strong> and provide personal attention to every student.
+        <p class="mt-4 text-gray-600 text-justify leading-relaxed">
+          Our qualified faculty focuses on <strong>concept-based learning</strong>, helping students understand topics deeply with personal guidance and timely support.
         </p>
       </div>
 
-      <!-- Feature 2 -->
-      <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-8 text-center">
+      <!-- Card 2 -->
+      <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center">
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary-400 to-secondary-600 rounded-t-2xl"></div>
-        <div class="flex items-center justify-center h-14 w-14 mx-auto rounded-full bg-secondary-500 text-white shadow-md">
+
+        <div class="flex items-center justify-center h-14 w-14 mx-auto rounded-full bg-secondary-500 text-white shadow-md group-hover:scale-110 transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m6 2a9 9 0 11-9-9" />
           </svg>
         </div>
+
         <h3 class="mt-6 text-xl font-semibold text-gray-900">Excellent Academic Results</h3>
-        <p class="mt-4 text-gray-600 text-justify">
-          Our students consistently achieve <strong>top scores</strong> in board exams and entry tests across Punjab.
+        <p class="mt-4 text-gray-600 text-justify leading-relaxed">
+          Our students consistently secure <strong>top scores</strong> in board exams through structured notes, regular testing, and targeted exam preparation.
         </p>
       </div>
 
-      <!-- Feature 3 -->
-      <div class="relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 p-8 text-center">
+      <!-- Card 3 -->
+      <div class="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-8 text-center">
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-t-2xl"></div>
-        <div class="flex items-center justify-center h-14 w-14 mx-auto rounded-full bg-indigo-500 text-white shadow-md">
+
+        <div class="flex items-center justify-center h-14 w-14 mx-auto rounded-full bg-indigo-500 text-white shadow-md group-hover:scale-110 transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8c1.5 0 4 .5 4 3s-2.5 3-4 3-4-.5-4-3 2.5-3 4-3z" />
           </svg>
         </div>
+
         <h3 class="mt-6 text-xl font-semibold text-gray-900">Affordable & Student-Friendly</h3>
-        <p class="mt-4 text-gray-600 text-justify">
-          We provide <strong>quality education</strong> at reasonable fees in a supportive environment.
+        <p class="mt-4 text-gray-600 text-justify leading-relaxed">
+          We provide <strong>quality education</strong> at affordable fees along with a supportive and friendly environment that encourages student success.
         </p>
       </div>
 
     </div>
 
-    <!-- CTA -->
-    <div class="mt-16 rounded-2xl bg-gradient-to-r from-primary-600 to-secondary-600 shadow-2xl overflow-hidden">
+    <!-- CTA Banner -->
+    <div class="mt-20 rounded-3xl bg-gradient-to-r from-primary-600 to-secondary-600 shadow-2xl overflow-hidden">
       <div class="flex flex-col md:flex-row">
+        
+        <!-- Left Text -->
         <div class="p-10 md:p-14 md:w-2/3">
-          <h3 class="text-3xl font-bold text-white">🚀 Ready to Transform Your Future?</h3>
-          <p class="mt-4 text-primary-100 max-w-xl text-justify">
-            Join our community of achievers and start your journey toward <strong>academic excellence</strong> with Hira Science Academy.
-          </p>
+          <h3 class="text-3xl font-bold text-white leading-tight">
+            🚀 Ready to Transform Your Future?
+          </h3>
+       <p class="mt-4 text-primary-100 text-justify leading-relaxed max-w-xl">
+  Join our community of high achievers and begin your journey toward <strong>academic excellence</strong> with Hira Science Academy. 
+  Our structured notes, regular assessments, and personalized feedback help students strengthen concepts and build confidence. 
+  With a supportive learning environment and experienced teachers, every student receives the guidance they need to succeed. 
+  Start today and unlock new opportunities for a brighter academic future.
+</p>
+
           <div class="mt-8">
-            <a href="#contact" class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-medium rounded-xl shadow-md text-primary-700 bg-white hover:bg-gray-100 transition">
+            <a href="https://hiraacademy.online/contact.html"
+               class="inline-flex items-center px-8 py-3 border border-transparent text-lg font-semibold rounded-xl shadow-md text-primary-700 bg-white hover:bg-gray-100 transition">
               Apply Now →
             </a>
           </div>
         </div>
+
+        <!-- Right Image -->
         <div class="hidden md:block md:w-1/3">
-          <img class="h-full w-full object-cover" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/129a4d20-46db-4973-8468-b823202bff01.png" alt="Graduation ceremony">
+          <img class="h-full w-full object-cover"
+               src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/129a4d20-46db-4973-8468-b823202bff01.png"
+               alt="Students celebrating academic success">
         </div>
+
       </div>
     </div>
 
   </div>
 </section>
+
 
 <!-- Testimonials Section -->
 <section id="testimonials" class="py-20 bg-gradient-to-b from-gray-50 to-white">
@@ -1017,12 +1044,12 @@ window.addEventListener('hashchange', function(e) {
       <div class="bg-white rounded-2xl shadow-xl p-8 hover:shadow-2xl transition duration-300">
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
         
-        <form action="https://formspree.io/f/mrblzkkq" method="POST" class="space-y-6">
+        <form action="https://formspree.io/f/mrblzkkq" method="POST" class="space-y-6" id="contactForm">
           <input type="hidden" name="_next" value="https://www.hiraacademy.online/thank-you.html">
 
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
-            <input type="text" name="name" id="name" required autofocus
+            <input type="text" name="name" id="name" required
               class="mt-2 block w-full border border-gray-300 rounded-lg shadow-sm py-3 px-4 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Enter your full name">
           </div>
@@ -1072,6 +1099,28 @@ window.addEventListener('hashchange', function(e) {
     </div>
   </div>
 </section>
+
+<!-- Add this script to prevent auto-focus scrolling -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Remove autofocus from any elements that might have it
+  const autofocusElements = document.querySelectorAll('[autofocus]');
+  autofocusElements.forEach(element => {
+    element.removeAttribute('autofocus');
+  });
+  
+  // Additional protection against form auto-focus
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('focusin', function(e) {
+      // Only allow focus if user intentionally clicked on the form
+      if (!e.target.matches('input, select, textarea')) {
+        e.preventDefault();
+      }
+    });
+  }
+});
+</script>
 
 <!-- 🧭 Internal Linking Section for SEO & Navigation -->
 <section class="max-w-7xl mx-auto px-6 py-14">
