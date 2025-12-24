@@ -211,49 +211,187 @@
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
 
-<!-- Temporary Notice Board -->
-<div id="noticeBoard" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30 transition-opacity duration-300 opacity-0 hidden">
-  <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-4 transform transition-all duration-300 scale-95 border border-gray-200">
+<!-- Enhanced Notice Board - No Backdrop Blur -->
+<div id="noticeBoard"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/30 transition-all duration-300 opacity-0 hidden">
+
+  <div
+    class="bg-white rounded-2xl shadow-2xl max-w-lg w-full mx-4 transform transition-all duration-300 scale-95
+           border border-gray-200 shadow-lg shadow-gray-500/10">
+
     <!-- Header -->
-    <div class="bg-gradient-to-r from-blue-600 to-purple-600 rounded-t-2xl p-6 text-white">
-      <div class="flex justify-between items-center">
-        <h3 class="text-xl font-bold">📢 Important Notice</h3>
-        <button id="closeNotice" class="text-white hover:text-gray-200 text-2xl font-bold transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-white hover:bg-opacity-20">
-          &times;
+    <div
+      class="bg-gradient-to-r from-blue-700 via-blue-600 to-purple-600 rounded-t-2xl p-6 text-white relative overflow-hidden">
+
+      <!-- Decorative shapes -->
+      <div class="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-16 translate-x-8"></div>
+      <div class="absolute bottom-0 left-0 w-24 h-24 bg-purple-500/10 rounded-full -translate-x-8 translate-y-8"></div>
+
+      <div class="flex justify-between items-center relative z-10">
+        <div class="flex items-center space-x-3">
+          <div class="bg-white/20 p-2 rounded-lg">
+            <span class="text-xl">📢</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold tracking-tight">Important Notice</h3>
+            <p class="text-sm text-blue-100 opacity-90">Hira Science Academy</p>
+          </div>
+        </div>
+
+        <button id="closeNotice"
+          class="text-white hover:bg-white/20 transition-all duration-200 w-10 h-10
+                 flex items-center justify-center rounded-lg focus:outline-none
+                 focus:ring-2 focus:ring-white/50 active:scale-95"
+          aria-label="Close notice">
+          <span class="text-2xl font-light">&times;</span>
         </button>
       </div>
     </div>
-    
+
     <!-- Content -->
     <div class="p-6">
-      <p class="text-gray-700 mb-4 text-justify">
-        Welcome to Hira Science Academy! Check out our latest academic updates and resources:
-      </p>
-      
-      <div class="space-y-3 mb-6">
-        <a href="https://www.hiraacademy.online/smart-reduced-syllabus-grade9-mathematics-2026.html" target="_blank" class="flex items-center p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors group border border-blue-100">
-          <span class="text-blue-600 mr-3 text-lg">🧮</span>
-          <span class="text-blue-700 font-medium group-hover:text-blue-800">
-            SMART / Reduced Syllabus — Grade 9 <br>
-            <span class="text-sm text-gray-600">Mathematics 2026 (Punjab Board)</span>
-          </span>
+      <div class="mb-6">
+        <p class="text-gray-800 mb-2 text-lg font-semibold">
+          Welcome to Hira Science Academy!
+        </p>
+        <p class="text-gray-600">
+          Discover the latest academic updates and resources prepared according to official guidelines:
+        </p>
+      </div>
+
+      <!-- Resources -->
+      <div class="space-y-4 mb-8">
+
+        <!-- Mathematics -->
+        <a href="https://www.hiraacademy.online/smart-reduced-syllabus-grade9-mathematics-2026.html"
+          target="_blank" rel="noopener noreferrer"
+          class="flex items-center p-4 bg-blue-50/80 rounded-xl hover:bg-blue-100
+                 transition-all duration-200 group border border-blue-200
+                 hover:border-blue-300 hover:shadow-md active:scale-[0.99]">
+
+          <div class="bg-white p-3 rounded-lg mr-4 shadow-sm group-hover:shadow transition-shadow">
+            <span class="text-2xl text-blue-600">🧮</span>
+          </div>
+
+          <div class="flex-1">
+            <h4 class="text-blue-800 font-semibold group-hover:text-blue-900 transition-colors">
+              SMART / Reduced Syllabus — Grade 9
+            </h4>
+            <p class="text-gray-700 mt-1 text-sm">
+              Mathematics 2026
+              <span class="text-gray-500">(PECTAA / PCTB / BISE)</span>
+            </p>
+
+            <div class="flex items-center mt-2">
+              <span
+                class="text-xs text-blue-600 font-medium bg-white px-2 py-1
+                       rounded-full border border-blue-200">
+                View Resource
+              </span>
+              <svg
+                class="w-4 h-4 ml-2 text-blue-500 transform group-hover:translate-x-1 transition-transform"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </div>
+          </div>
         </a>
 
-        <a href="https://www.hiraacademy.online/smart-reduced-syllabus-grade9-physics-2026.html" target="_blank" class="flex items-center p-3 bg-cyan-50 rounded-lg hover:bg-cyan-100 transition-colors group border border-cyan-100">
-          <span class="text-cyan-600 mr-3 text-lg">⚛️</span>
-          <span class="text-cyan-700 font-medium group-hover:text-cyan-800">
-            SMART / Reduced Syllabus — Grade 9 <br>
-            <span class="text-sm text-gray-600">Physics 2026 (Punjab Board)</span>
-          </span>
+        <!-- Physics -->
+        <a href="https://www.hiraacademy.online/smart-reduced-syllabus-grade9-physics-2026.html"
+          target="_blank" rel="noopener noreferrer"
+          class="flex items-center p-4 bg-cyan-50/80 rounded-xl hover:bg-cyan-100
+                 transition-all duration-200 group border border-cyan-200
+                 hover:border-cyan-300 hover:shadow-md active:scale-[0.99]">
+
+          <div class="bg-white p-3 rounded-lg mr-4 shadow-sm group-hover:shadow transition-shadow">
+            <span class="text-2xl text-cyan-600">⚛️</span>
+          </div>
+
+          <div class="flex-1">
+            <h4 class="text-cyan-800 font-semibold group-hover:text-cyan-900 transition-colors">
+              SMART / Reduced Syllabus — Grade 9
+            </h4>
+            <p class="text-gray-700 mt-1 text-sm">
+              Physics 2026
+              <span class="text-gray-500">(PECTAA / PCTB / BISE)</span>
+            </p>
+
+            <div class="flex items-center mt-2">
+              <span
+                class="text-xs text-cyan-600 font-medium bg-white px-2 py-1
+                       rounded-full border border-cyan-200">
+                View Resource
+              </span>
+              <svg
+                class="w-4 h-4 ml-2 text-cyan-500 transform group-hover:translate-x-1 transition-transform"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+              </svg>
+            </div>
+          </div>
         </a>
+
       </div>
-      
-      <p class="text-sm text-gray-500 text-center">
-        Click anywhere outside or the close button to dismiss
-      </p>
+
+      <!-- Footer -->
+      <div class="pt-6 border-t border-gray-100">
+        <p class="text-sm text-gray-500 text-center flex items-center justify-center space-x-2">
+          <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 9l-7 7-7-7"></path>
+          </svg>
+          <span>Click outside, press ESC, or use the close button</span>
+        </p>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const noticeBoard = document.getElementById('noticeBoard');
+  const closeButton = document.getElementById('closeNotice');
+
+  function showNotice() {
+    const lastShown = localStorage.getItem('noticeLastShown');
+    const today = new Date().toDateString();
+    if (lastShown === today) return;
+
+    setTimeout(() => {
+      noticeBoard.classList.remove('hidden');
+      setTimeout(() => {
+        noticeBoard.classList.add('opacity-100');
+        noticeBoard.querySelector('.transform').classList.remove('scale-95');
+        noticeBoard.querySelector('.transform').classList.add('scale-100');
+      }, 10);
+    }, 1500);
+  }
+
+  function closeNotice() {
+    localStorage.setItem('noticeLastShown', new Date().toDateString());
+    noticeBoard.classList.remove('opacity-100');
+    noticeBoard.querySelector('.transform').classList.add('scale-95');
+    setTimeout(() => noticeBoard.classList.add('hidden'), 300);
+  }
+
+  showNotice();
+  closeButton.addEventListener('click', closeNotice);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !noticeBoard.classList.contains('hidden')) {
+      closeNotice();
+    }
+  });
+
+  noticeBoard.addEventListener('click', (e) => {
+    if (e.target === noticeBoard) closeNotice();
+  });
+});
+</script>
+
 
 <!-- Improved Navigation Bar with Scroll-Spy -->
 <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
