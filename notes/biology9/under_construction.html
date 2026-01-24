@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Biology Notes Under Construction - Hira Science Academy</title>
+  <meta http-equiv="refresh" content="5; URL=../../Biology-9th.html" />
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Inter', Arial, sans-serif;
+      padding-top: 100px;
+      background-color: #f9fafb;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 40px;
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      border: 1px solid #e2e8f0;
+    }
+    h1 {
+      color: #10b981;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+    .icon {
+      font-size: 4em;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.2em;
+      color: #374151;
+      margin-bottom: 30px;
+    }
+    .button-group {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 10px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+    .btn-secondary {
+      background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+      box-shadow: 0 4px 12px rgba(107, 114, 128, 0.2);
+    }
+    .btn-secondary:hover {
+      background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+      box-shadow: 0 6px 20px rgba(107, 114, 128, 0.3);
+    }
+    .countdown {
+      margin-top: 30px;
+      padding: 15px;
+      background-color: #f0f9ff;
+      border-radius: 10px;
+      border-left: 4px solid #0ea5e9;
+    }
+    .countdown-text {
+      font-size: 1em;
+      color: #0c4a6e;
+      font-weight: 500;
+    }
+    .link-list {
+      margin-top: 30px;
+      text-align: left;
+      padding: 20px;
+      background-color: #f0fdf4;
+      border-radius: 10px;
+      border: 1px solid #bbf7d0;
+    }
+    .link-list h3 {
+      color: #065f46;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .link-list ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .link-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #dcfce7;
+    }
+    .link-list li:last-child {
+      border-bottom: none;
+    }
+    .link-list a {
+      color: #059669;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .link-list a:hover {
+      color: #047857;
+      text-decoration: underline;
+    }
+  </style>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="icon">🚧</div>
+    <h1>Biology Notes Coming Soon</h1>
+    <p>The requested biology notes are currently under development by our subject specialists.<br>
+       We're working hard to provide you with high-quality, detailed content with diagrams and explanations.</p>
+    
+    <div class="countdown">
+      <p class="countdown-text">You will be redirected to the Biology Notes page in <span id="countdown">5</span> seconds...</p>
+    </div>
+
+    <div class="button-group">
+      <a href="../../Biology-9th.html" class="btn">
+        <span>📚</span> Back to Biology Notes
+      </a>
+      <a href="../../index.html" class="btn btn-secondary">
+        <span>🏠</span> Go to Homepage
+      </a>
+      <a href="Biology_All_Chapters_MCQs.html" class="btn">
+        <span>📝</span> Practice MCQs
+      </a>
+    </div>
+
+    <div class="link-list">
+      <h3>Available Biology Resources:</h3>
+      <ul>
+        <li><a href="Biology_All_Chapters_MCQs.html">📝 All Chapters MCQs Collection</a></li>
+        <li><a href="../../Biology-9th.html#chapters">📘 Chapter-wise Notes Overview</a></li>
+        <li><a href="../../index.html#notes">📚 All Subjects Notes</a></li>
+        <li><a href="../../fsc-entry-test.html">🎯 FSC Entry Test Preparation</a></li>
+      </ul>
+    </div>
+
+    <p style="margin-top: 30px; color: #6b7280; font-size: 0.9em;">
+      Need help? <a href="../../contact.html" style="color: #10b981;">Contact our support team</a>
+    </p>
+  </div>
+
+  <script>
+    // Countdown timer
+    let seconds = 5;
+    const countdownElement = document.getElementById('countdown');
+    const countdownInterval = setInterval(() => {
+      seconds--;
+      countdownElement.textContent = seconds;
+      if (seconds <= 0) {
+        clearInterval(countdownInterval);
+      }
+    }, 1000);
+
+    // Cancel redirect if user clicks any link
+    document.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        clearInterval(countdownInterval);
+        document.getElementById('countdown').textContent = '0';
+      });
+    });
+  </script>
+</body>
+</html>
