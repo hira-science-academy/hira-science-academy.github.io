@@ -1955,79 +1955,101 @@
       generateCertificate();
     });
 
-    // Generate certificate PDF
-    function generateCertificate() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF('landscape');
-      
-      // Certificate background
-      doc.setFillColor(240, 248, 255);
-      doc.rect(0, 0, 297, 210, 'F');
-      
-      // Decorative border
-      doc.setDrawColor(59, 130, 246);
-      doc.setLineWidth(2);
-      doc.rect(10, 10, 277, 190);
-      
-      // Header
-      doc.setFontSize(32);
-      doc.setTextColor(13, 110, 253);
-      doc.text("Certificate of Achievement", 148.5, 40, { align: "center" });
-      
-      // Subtitle
-      doc.setFontSize(14);
-      doc.setTextColor(100, 116, 139);
-      doc.text("This certificate is awarded to", 148.5, 60, { align: "center" });
-      
-      // Student name
-      doc.setFontSize(28);
-      doc.setTextColor(30, 64, 175);
-      doc.text(testState.studentName, 148.5, 80, { align: "center" });
-      
-      // School name
-      doc.setFontSize(16);
-      doc.setTextColor(71, 85, 105);
-      doc.text(`of ${testState.schoolName}`, 148.5, 95, { align: "center" });
-      
-      // Test details
-      doc.setFontSize(14);
-      doc.text("for successfully completing the", 148.5, 115, { align: "center" });
-      
-      doc.setFontSize(20);
-      doc.setTextColor(13, 110, 253);
-      doc.text("Class 9 Mathematics MCQ Test", 148.5, 130, { align: "center" });
-      
-      // Score box
-      doc.setFillColor(255, 255, 255);
-      doc.roundedRect(90, 140, 117, 30, 5, 5, 'F');
-      doc.setDrawColor(203, 213, 225);
-      doc.roundedRect(90, 140, 117, 30, 5, 5);
-      
-      const correct = parseInt(document.getElementById('correct-count').textContent);
-      const percentage = document.getElementById('percentage').textContent;
-      
-      doc.setFontSize(18);
-      doc.setTextColor(30, 64, 175);
-      doc.text(`Score: ${correct}/100 (${percentage})`, 148.5, 158, { align: "center" });
-      
-      // Performance
-      const performance = document.getElementById('performance-badge').textContent;
-      doc.setFontSize(14);
-      doc.setTextColor(71, 85, 105);
-      doc.text(`Performance: ${performance}`, 148.5, 175, { align: "center" });
-      
-      // Date
-      doc.text(`Date: ${new Date().toLocaleDateString('en-PK')}`, 148.5, 185, { align: "center" });
-      
-      // Footer
-      doc.setFontSize(12);
-      doc.setTextColor(100, 116, 139);
-      doc.text("Hira Science Academy | PECTAA 2025 Syllabus", 148.5, 195, { align: "center" });
-      doc.text("www.hiraacademy.online", 148.5, 200, { align: "center" });
-      
-      // Save PDF
-      doc.save(`Certificate-${testState.studentName.replace(/\s+/g, '-')}-Math-9.pdf`);
-    }
+    // Generate certificate PDF (Professional & Minimal)
+function generateCertificate() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('landscape');
+
+  // Soft background (off-white)
+  doc.setFillColor(248, 250, 252);
+  doc.rect(0, 0, 297, 210, 'F');
+
+  // Top accent line
+  doc.setDrawColor(37, 99, 235);
+  doc.setLineWidth(3);
+  doc.line(20, 20, 277, 20);
+
+  // Bottom accent line
+  doc.setLineWidth(1);
+  doc.setDrawColor(203, 213, 225);
+  doc.line(20, 190, 277, 190);
+
+  // Title
+  doc.setFontSize(34);
+  doc.setTextColor(15, 23, 42);
+  doc.text("Certificate of Achievement", 148.5, 50, { align: "center" });
+
+  // Subtitle
+  doc.setFontSize(14);
+  doc.setTextColor(100, 116, 139);
+  doc.text("This certificate is proudly presented to", 148.5, 65, { align: "center" });
+
+  // Student Name
+  doc.setFontSize(30);
+  doc.setTextColor(37, 99, 235);
+  doc.text(testState.studentName, 148.5, 85, { align: "center" });
+
+  // School Name
+  doc.setFontSize(15);
+  doc.setTextColor(71, 85, 105);
+  doc.text(testState.schoolName, 148.5, 98, { align: "center" });
+
+  // Description
+  doc.setFontSize(14);
+  doc.setTextColor(51, 65, 85);
+  doc.text(
+    "for successfully completing the assessment",
+    148.5,
+    115,
+    { align: "center" }
+  );
+
+  // Test Name
+  doc.setFontSize(20);
+  doc.setTextColor(15, 23, 42);
+  doc.text("Class 9 Mathematics MCQ Test", 148.5, 130, { align: "center" });
+
+  // Score section (clean, no box)
+  const correct = parseInt(document.getElementById('correct-count').textContent);
+  const percentage = document.getElementById('percentage').textContent;
+
+  doc.setFontSize(18);
+  doc.setTextColor(22, 101, 52);
+  doc.text(`Score: ${correct}/100 (${percentage})`, 148.5, 150, { align: "center" });
+
+  // Performance
+  const performance = document.getElementById('performance-badge').textContent;
+  doc.setFontSize(14);
+  doc.setTextColor(71, 85, 105);
+  doc.text(`Performance Level: ${performance}`, 148.5, 165, { align: "center" });
+
+  // Date
+  doc.setFontSize(12);
+  doc.setTextColor(100, 116, 139);
+  doc.text(`Issued on: ${new Date().toLocaleDateString('en-PK')}`, 30, 185);
+
+  // Authority / Academy
+  doc.text("Authorized by", 247, 175, { align: "right" });
+  doc.setFontSize(13);
+  doc.setTextColor(15, 23, 42);
+  doc.text("Hira Science Academy", 247, 185, { align: "right" });
+
+  // Footer
+  doc.setFontSize(11);
+  doc.setTextColor(100, 116, 139);
+  doc.text(
+    "Hira Science Academy | PECTAA 2025 Syllabus | www.hiraacademy.online",
+    148.5,
+    200,
+    { align: "center" }
+  );
+
+  // Save PDF
+  doc.save(
+    `Certificate-${testState.studentName.replace(/\s+/g, '-')}-Class9-Math.pdf`
+  );
+}
+
 
     // Retake test
     document.getElementById('retake-test').addEventListener('click', function() {
