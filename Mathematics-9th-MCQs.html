@@ -418,25 +418,33 @@
 @media screen and (max-width: 768px) {
   /* Targets the mobile menu container in your HTML */
   #mobile-menu {
-    display: flex; /* Ensures it shows when toggled */
-    flex-direction: column;
-    padding: 1rem;
+    /* flex-direction only works if display is flex */
+    flex-direction: column !important; 
+    padding: 1rem !important;
     background-color: #ffffff;
     border-bottom: 1px solid #e2e8f0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 100;
   }
 
-  /* Targets the individual links inside the mobile menu */
+  /* Ensures links stack and have enough breathing room */
   #mobile-menu a {
-    font-size: 15px;
-    padding: 12px 15px;
-    margin: 2px 0;
+    display: block !important;
+    font-size: 16px;
+    padding: 12px 20px !important;
+    margin: 4px 0;
     border-radius: 8px;
+    width: 100%;
+    text-align: left;
   }
 
-  /* Fixes potential header overlap/overflow */
-  nav, .test-header {
+  /* Prevent the main page from shifting/shaking when menu opens */
+  nav {
+    position: relative;
     width: 100%;
-    overflow-x: hidden;
   }
 }
   </style>
