@@ -414,37 +414,33 @@
       margin: 1rem 0;
       display: none;
     }
-/* This ONLY affects mobile/small screens (under 768px) */
-@media screen and (max-width: 768px) {
-  /* Targets the mobile menu container in your HTML */
-  #mobile-menu {
-    /* flex-direction only works if display is flex */
-    flex-direction: column !important; 
-    padding: 1rem !important;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e2e8f0;
-    position: absolute;
-    top: 100%;
+/* FIXED MOBILE NAVIGATION */
+@media (max-width: 768px) {
+  /* 1. Force the menu to show and stack vertically when active */
+  #mobile-menu:not(.hidden) {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute; /* Floats over the content */
+    top: 80px; /* Positions it right under the logo (h-20) */
     left: 0;
     right: 0;
-    z-index: 100;
+    background-color: white;
+    z-index: 100; /* Keeps it above the blue header */
+    border-bottom: 2px solid #e2e8f0;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
 
-  /* Ensures links stack and have enough breathing room */
+  /* 2. Style the individual links for better tapping */
   #mobile-menu a {
-    display: block !important;
-    font-size: 16px;
-    padding: 12px 20px !important;
-    margin: 4px 0;
-    border-radius: 8px;
+    padding: 1rem 1.5rem !important;
+    border-bottom: 1px solid #f1f5f9;
     width: 100%;
-    text-align: left;
   }
 
-  /* Prevent the main page from shifting/shaking when menu opens */
-  nav {
+  /* 3. Ensure the main header doesn't hide the menu */
+  .test-header {
     position: relative;
-    width: 100%;
+    z-index: 10;
   }
 }
   </style>
