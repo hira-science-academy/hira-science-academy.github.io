@@ -413,31 +413,30 @@
       margin: 1rem 0;
       display: none;
     }
-/* MOBILE VIEW FIXES */
 @media (max-width: 768px) {
-  /* Ensure the mobile menu container is hidden until toggled */
-  #mobile-menu.hidden {
+  /* 1. Ensure the desktop links are definitely hidden */
+  .md\:flex.space-x-8 {
     display: none !important;
   }
 
-  /* When visible, position it over the content */
-  #mobile-menu:not(.hidden) {
-    display: flex !important;
-    flex-direction: column;
-    position: absolute;
-    top: 80px; /* Positions it below the logo bar */
+  /* 2. Position the mobile menu OVER the page content */
+  #mobile-menu {
+    position: absolute !important;
+    top: 80px; /* Adjust this to match your header height */
     left: 0;
-    right: 0;
+    width: 100%;
     background-color: white;
-    z-index: 1000; /* High z-index to stay above the blue header */
-    border-bottom: 2px solid #e2e8f0;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 9999 !important; /* Forces it to stay on top of the blue section */
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   }
 
-  /* Adjust mobile links for better touch area */
+  /* 3. Style the mobile links for better clicking */
   #mobile-menu a {
-    padding: 1rem 1.5rem !important;
-    border-bottom: 1px solid #f1f5f9;
+    display: block !important;
+    padding: 15px 20px !important;
+    border-bottom: 1px solid #eee;
+    color: #333 !important;
   }
 }
   </style>
