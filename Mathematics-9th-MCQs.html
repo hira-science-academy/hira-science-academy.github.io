@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,8 +56,21 @@
   <script defer src="https://cdn.tailwindcss.com"></script>
 
   <!-- MathJax for LaTeX -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+        ignoreHtmlClass: 'tex2jax_ignore'
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
 
   <!-- jsPDF for PDF generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -240,7 +251,9 @@
       font-weight: 700;
     }
     
+    .score-outstanding { --score-color: #047857; }
     .score-excellent { --score-color: #10b981; }
+    .score-very-good { --score-color: #22c55e; }
     .score-good { --score-color: #f59e0b; }
     .score-average { --score-color: #f97316; }
     .score-poor { --score-color: #ef4444; }
@@ -381,7 +394,7 @@
     }
     
     /* Mobile Optimization */
-    @media (max-width: 768px) {
+      @media (max-width: 768px) {
       .question-number-btn {
         width: 36px;
         height: 36px;
@@ -404,6 +417,12 @@
         min-width: 120px;
       }
     }
+      
+      /* Ensure the desktop links are hidden */
+      .md\\:flex.space-x-8 {
+        display: none !important;
+      }
+    }
     
     /* Success Message */
     .success-message {
@@ -415,7 +434,35 @@
       margin: 1rem 0;
       display: none;
     }
-@media (max-width: 768px) {
+    
+    /* Wrong Answers Section */
+    .wrong-answer-card {
+      background: white;
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    .wrong-question-title {
+      color: #dc2626;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+    
+    .wrong-answer-option {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      border: 2px solid transparent;
+    }
+    
+    /* Mobile Menu Fixes */
+   @media (max-width: 768px) {
   /* 1. Ensure the desktop links are definitely hidden */
   .md\:flex.space-x-8 {
     display: none !important;
@@ -851,9 +898,12 @@
         </div>
         
         <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
           <button id="download-certificate" class="btn btn-success">
             <span>📥</span> Download Certificate
+          </button>
+          <button id="show-wrong-answers" class="btn bg-orange-500 text-white hover:bg-orange-600">
+            <span>📝</span> Review Wrong Answers
           </button>
           <button id="retake-test" class="btn btn-primary">
             <span>🔄</span> Retake Test
@@ -861,6 +911,27 @@
           <a href="Mathematics-9th.html" class="btn bg-gray-700 text-white hover:bg-gray-800">
             <span>📚</span> Back to Notes
           </a>
+        </div>
+      </div>
+      
+      <!-- Wrong Answers Section -->
+      <div id="wrong-answers-section" class="hidden mt-10">
+        <div class="text-center mb-8">
+          <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
+            <span class="text-2xl">📝</span>
+          </div>
+          <h2 class="text-2xl font-bold text-red-800">Review Wrong Answers</h2>
+          <p class="text-gray-600 mt-2">Review the questions you answered incorrectly along with correct answers</p>
+        </div>
+        
+        <div id="wrong-answers-container">
+          <!-- Wrong answers will be loaded here -->
+        </div>
+        
+        <div class="text-center mt-8">
+          <button id="hide-wrong-answers" class="btn bg-gray-600 text-white hover:bg-gray-700">
+            <span>⬆️</span> Back to Results Summary
+          </button>
         </div>
       </div>
     </div>
@@ -890,14 +961,14 @@
 
   <!-- JavaScript -->
   <script>
-    // Mobile menu toggle - FIXED
+    // Mobile menu toggle
     document.getElementById('mobile-menu-button').addEventListener('click', function(e) {
       e.stopPropagation();
       const mobileMenu = document.getElementById('mobile-menu');
       mobileMenu.classList.toggle('hidden');
     });
 
-    // Close mobile menu when clicking outside - FIXED
+    // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
       const mobileMenu = document.getElementById('mobile-menu');
       const menuButton = document.getElementById('mobile-menu-button');
@@ -929,7 +1000,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // MCQ Data - ALL 100 QUESTIONS
+    // MCQ Data - ALL 100 QUESTIONS (Converted to proper LaTeX for MathJax)
     const mcqData = [
       {
         question: "\\(\\sqrt{7}\\) is:",
@@ -1472,6 +1543,8 @@
     const markedControls = document.getElementById('marked-controls');
     const testControlsFooter = document.getElementById('test-controls-footer');
     const successMessage = document.getElementById('success-message');
+    const wrongAnswersSection = document.getElementById('wrong-answers-section');
+    const wrongAnswersContainer = document.getElementById('wrong-answers-container');
 
     // Handle student form submission to Web3Forms
     studentForm.addEventListener('submit', async function(e) {
@@ -1971,28 +2044,51 @@
       let performanceText = '';
       let showTips = false;
       
-      if (percentage >= 80) {
+      if (percentage >= 90) {
+        scoreCircle.classList.add('score-outstanding');
+        document.getElementById('performance-badge').textContent = 'Outstanding 🏆';
+        document.getElementById('performance-badge').className =
+          'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-emerald-700 to-green-800 shadow-xl';
+        performanceText =
+          'Exceptional achievement! You demonstrate an excellent command of Class 9 Mathematics. This is a top-level performance.';
+      } else if (percentage >= 80) {
         scoreCircle.classList.add('score-excellent');
         document.getElementById('performance-badge').textContent = 'Excellent 🎉';
-        document.getElementById('performance-badge').className = 'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-green-500 to-emerald-600 shadow-lg';
-        performanceText = 'Outstanding performance! You have mastered Class 9 Mathematics concepts. Keep up the excellent work!';
+        document.getElementById('performance-badge').className =
+          'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-green-500 to-emerald-600 shadow-lg';
+        performanceText =
+          'Excellent performance! Your understanding of the concepts is strong. Keep practicing to reach the highest level.';
+      } else if (percentage >= 70) {
+        scoreCircle.classList.add('score-very-good');
+        document.getElementById('performance-badge').textContent = 'Very Good ⭐';
+        document.getElementById('performance-badge').className =
+          'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-lime-500 to-green-500 shadow-lg';
+        performanceText =
+          'Very good result! Most concepts are clear. A little more revision will further improve your score.';
+        showTips = true;
       } else if (percentage >= 60) {
         scoreCircle.classList.add('score-good');
         document.getElementById('performance-badge').textContent = 'Good 👍';
-        document.getElementById('performance-badge').className = 'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-yellow-500 to-orange-500 shadow-lg';
-        performanceText = 'Good job! You have a solid understanding of most topics. Review the questions you missed for even better results.';
+        document.getElementById('performance-badge').className =
+          'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-yellow-500 to-orange-500 shadow-lg';
+        performanceText =
+          'Good effort! You have a reasonable understanding of the topics. Regular practice will help you improve.';
         showTips = true;
       } else if (percentage >= 40) {
         scoreCircle.classList.add('score-average');
         document.getElementById('performance-badge').textContent = 'Average 📚';
-        document.getElementById('performance-badge').className = 'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-orange-500 to-red-500 shadow-lg';
-        performanceText = 'Fair performance. Focus on reviewing key concepts and practicing more to improve your score.';
+        document.getElementById('performance-badge').className =
+          'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-orange-500 to-red-500 shadow-lg';
+        performanceText =
+          'Average performance. Focus on strengthening basic concepts and solving more practice questions.';
         showTips = true;
       } else {
         scoreCircle.classList.add('score-poor');
         document.getElementById('performance-badge').textContent = 'Needs Improvement 🎯';
-        document.getElementById('performance-badge').className = 'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-red-500 to-pink-500 shadow-lg';
-        performanceText = 'You need to focus more on core concepts. Review the Class 9 Mathematics notes and try the test again.';
+        document.getElementById('performance-badge').className =
+          'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-red-600 to-pink-600 shadow-lg';
+        performanceText =
+          'This score indicates that more effort is required. Revise the fundamentals and attempt the test again.';
         showTips = true;
       }
       
@@ -2009,6 +2105,86 @@
       document.getElementById('test-duration').textContent = formatTime(testState.timeSpent);
     }
 
+    // Show wrong answers
+    function showWrongAnswers() {
+      // Clear previous content
+      wrongAnswersContainer.innerHTML = '';
+      
+      let hasWrongAnswers = false;
+      
+      for (let i = 0; i < 100; i++) {
+        if (testState.answers[i] !== null && testState.answers[i] !== mcqData[i].correct) {
+          hasWrongAnswers = true;
+          const question = mcqData[i];
+          const userAnswer = testState.answers[i];
+          const correctAnswer = question.correct;
+          
+          const wrongAnswerCard = document.createElement('div');
+          wrongAnswerCard.className = 'wrong-answer-card';
+          wrongAnswerCard.innerHTML = `
+            <div class="wrong-question-title">
+              <span>❌</span> Question ${i + 1}
+            </div>
+            <div class="math-equation mb-4">
+              ${question.question}
+            </div>
+            <div class="space-y-3">
+              ${question.options.map((option, optIndex) => {
+                let bgClass = 'bg-gray-50 border-gray-200';
+                let badge = '';
+                
+                if (optIndex === userAnswer) {
+                  bgClass = 'bg-red-100 border-red-300';
+                  badge = '<span class="ml-auto text-red-600 font-semibold">✗ Your Answer</span>';
+                }
+                if (optIndex === correctAnswer) {
+                  bgClass = 'bg-green-100 border-green-300';
+                  badge = '<span class="ml-auto text-green-600 font-semibold">✓ Correct Answer</span>';
+                }
+                
+                return `
+                  <div class="wrong-answer-option ${bgClass} border">
+                    <div class="flex items-center">
+                      <span class="mr-4 font-bold w-8 h-8 flex items-center justify-center rounded-full ${optIndex === userAnswer ? 'bg-red-500 text-white' : optIndex === correctAnswer ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-700'}">
+                        ${String.fromCharCode(65 + optIndex)}
+                      </span>
+                      <span>${option}</span>
+                      ${badge}
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          `;
+          
+          wrongAnswersContainer.appendChild(wrongAnswerCard);
+        }
+      }
+      
+      if (!hasWrongAnswers) {
+        wrongAnswersContainer.innerHTML = `
+          <div class="text-center py-10">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
+              <span class="text-3xl">🎉</span>
+            </div>
+            <h3 class="text-xl font-bold text-green-800 mb-2">No Wrong Answers!</h3>
+            <p class="text-gray-600">Perfect! You answered all questions correctly. Excellent performance!</p>
+          </div>
+        `;
+      }
+      
+      // Show wrong answers section
+      wrongAnswersSection.classList.remove('hidden');
+      
+      // Scroll to wrong answers section
+      wrongAnswersSection.scrollIntoView({ behavior: 'smooth' });
+      
+      // IMPORTANT: Render MathJax equations in the wrong answers section
+      if (window.MathJax) {
+        MathJax.typesetPromise();
+      }
+    }
+
     // Show results
     function showResults() {
       testContainer.classList.add('hidden');
@@ -2017,95 +2193,103 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Download certificate
-    document.getElementById('download-certificate').addEventListener('click', function() {
-      generateCertificate();
+    // Show wrong answers button
+    document.getElementById('show-wrong-answers').addEventListener('click', showWrongAnswers);
+
+    // Hide wrong answers button
+    document.getElementById('hide-wrong-answers').addEventListener('click', function() {
+      wrongAnswersSection.classList.add('hidden');
+      // Scroll back to top of results
+      document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
     });
 
-    // Generate certificate PDF (Professional & Minimal)
+    // Generate certificate PDF (Premium Academic Style)
     function generateCertificate() {
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF('landscape');
 
-      // Soft background (off-white)
-      doc.setFillColor(248, 250, 252);
+      // Elegant background (warm off-white)
+      doc.setFillColor(250, 250, 245);
       doc.rect(0, 0, 297, 210, 'F');
 
-      // Top accent line
-      doc.setDrawColor(37, 99, 235);
-      doc.setLineWidth(3);
-      doc.line(20, 20, 277, 20);
+      // Top gold accent
+      doc.setDrawColor(180, 140, 60); // muted gold
+      doc.setLineWidth(4);
+      doc.line(15, 22, 282, 22);
 
-      // Bottom accent line
+      // Bottom soft divider
       doc.setLineWidth(1);
-      doc.setDrawColor(203, 213, 225);
-      doc.line(20, 190, 277, 190);
+      doc.setDrawColor(220, 220, 220);
+      doc.line(20, 188, 277, 188);
 
       // Title
-      doc.setFontSize(34);
-      doc.setTextColor(15, 23, 42);
-      doc.text("Certificate of Achievement", 148.5, 50, { align: "center" });
+      doc.setFontSize(36);
+      doc.setTextColor(15, 23, 42); // deep navy
+      doc.text("Certificate of Achievement", 148.5, 55, { align: "center" });
 
       // Subtitle
       doc.setFontSize(14);
       doc.setTextColor(100, 116, 139);
-      doc.text("This certificate is proudly presented to", 148.5, 65, { align: "center" });
+      doc.text("This certificate is proudly awarded to", 148.5, 70, { align: "center" });
 
-      // Student Name
-      doc.setFontSize(30);
-      doc.setTextColor(37, 99, 235);
-      doc.text(testState.studentName, 148.5, 85, { align: "center" });
+      // Student Name (highlight)
+      doc.setFontSize(32);
+      doc.setTextColor(37, 99, 235); // royal blue
+      doc.text(testState.studentName, 148.5, 90, { align: "center" });
 
       // School Name
       doc.setFontSize(15);
       doc.setTextColor(71, 85, 105);
-      doc.text(testState.schoolName, 148.5, 98, { align: "center" });
+      doc.text(testState.schoolName, 148.5, 104, { align: "center" });
 
       // Description
       doc.setFontSize(14);
       doc.setTextColor(51, 65, 85);
       doc.text(
-        "for successfully completing the assessment",
+        "for successfully completing and demonstrating proficiency in",
         148.5,
-        115,
+        120,
         { align: "center" }
       );
 
       // Test Name
-      doc.setFontSize(20);
+      doc.setFontSize(21);
       doc.setTextColor(15, 23, 42);
-      doc.text("Class 9 Mathematics MCQ Test", 148.5, 130, { align: "center" });
+      doc.text("Class 9 Mathematics MCQ Assessment", 148.5, 136, { align: "center" });
 
-      // Score section (clean, no box)
+      // Score
       const correct = parseInt(document.getElementById('correct-count').textContent);
       const percentage = document.getElementById('percentage').textContent;
 
       doc.setFontSize(18);
-      doc.setTextColor(22, 101, 52);
-      doc.text(`Score: ${correct}/100 (${percentage})`, 148.5, 150, { align: "center" });
+      doc.setTextColor(22, 101, 52); // academic green
+      doc.text(`Score: ${correct} / 100   (${percentage})`, 148.5, 155, { align: "center" });
 
       // Performance
       const performance = document.getElementById('performance-badge').textContent;
       doc.setFontSize(14);
       doc.setTextColor(71, 85, 105);
-      doc.text(`Performance Level: ${performance}`, 148.5, 165, { align: "center" });
+      doc.text(`Performance Level: ${performance}`, 148.5, 168, { align: "center" });
 
       // Date
       doc.setFontSize(12);
       doc.setTextColor(100, 116, 139);
-      doc.text(`Issued on: ${new Date().toLocaleDateString('en-PK')}`, 30, 185);
+      doc.text(`Issued on: ${new Date().toLocaleDateString('en-PK')}`, 25, 182);
 
-      // Authority / Academy
-      doc.text("Authorized by", 247, 175, { align: "right" });
-      doc.setFontSize(13);
+      // Authority
+      doc.setFontSize(12);
+      doc.setTextColor(100, 116, 139);
+      doc.text("Authorized by", 272, 172, { align: "right" });
+
+      doc.setFontSize(14);
       doc.setTextColor(15, 23, 42);
-      doc.text("Hira Science Academy", 247, 185, { align: "right" });
+      doc.text("Hira Science Academy", 272, 182, { align: "right" });
 
       // Footer
       doc.setFontSize(11);
-      doc.setTextColor(100, 116, 139);
+      doc.setTextColor(120, 120, 120);
       doc.text(
-        "Hira Science Academy | PECTAA 2025 Syllabus | www.hiraacademy.online",
+        "Hira Science Academy • PECTAA 2025 Syllabus • www.hiraacademy.online",
         148.5,
         200,
         { align: "center" }
@@ -2116,6 +2300,9 @@
         `Certificate-${testState.studentName.replace(/\s+/g, '-')}-Class9-Math.pdf`
       );
     }
+
+    // Download certificate
+    document.getElementById('download-certificate').addEventListener('click', generateCertificate);
 
     // Retake test
     document.getElementById('retake-test').addEventListener('click', function() {
@@ -2132,6 +2319,7 @@
         
         // Reset UI
         resultsSection.classList.add('hidden');
+        wrongAnswersSection.classList.add('hidden');
         testContainer.classList.remove('hidden');
         studentInfoSection.classList.remove('hidden');
         testControlsFooter.classList.add('hidden');
@@ -2148,32 +2336,9 @@
       }
     });
 
-    // Initialize MathJax properly
-    window.MathJax = {
-      tex: {
-        inlineMath: [['\\(', '\\)']],
-        displayMath: [['\\[', '\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        ignoreHtmlClass: 'tex2jax_ignore'
-      },
-      startup: {
-        pageReady: () => {
-          return MathJax.startup.defaultPageReady().then(() => {
-            console.log('MathJax is ready');
-          });
-        }
-      }
-    };
-
-    // Function to render MathJax after content loads
-    function renderMathJax() {
-      if (window.MathJax && window.MathJax.typesetPromise) {
-        MathJax.typesetPromise();
-      }
+    // Initialize MathJax for rendering
+    if (window.MathJax) {
+      MathJax.typesetPromise();
     }
   </script>
 </body>
