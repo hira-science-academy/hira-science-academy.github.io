@@ -207,6 +207,38 @@
         padding-bottom: 8px;
       }
     }
+@keyframes portalPulse {
+  0% {
+    box-shadow: 0 0 0px rgba(250, 204, 21, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(250, 204, 21, 0.9);
+  }
+  100% {
+    box-shadow: 0 0 0px rgba(250, 204, 21, 0.6);
+    transform: scale(1);
+  }
+}
+
+.student-portal-blink {
+  animation: portalPulse 1.8s infinite ease-in-out;
+  position: relative;
+}
+
+/* Optional small dot indicator */
+.student-portal-blink::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: portalPulse 1.8s infinite;
+}
+
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
@@ -233,8 +265,24 @@
       </div>
     </div>
 
-   <!-- Compact Announcements List -->
+ <!-- Compact Announcements List -->
 <div class="p-3 space-y-2 max-h-60 overflow-y-auto">
+  <!-- NEW: Student Portal Announcement -->
+  <div class="flex items-start hover:bg-gray-50 p-2 rounded-lg transition-colors">
+    <div class="w-6 h-6 flex items-center justify-center bg-primary-100 text-primary-600 rounded text-xs mr-2 flex-shrink-0">
+      🎓
+    </div>
+    <div class="flex-1 min-w-0">
+      <a href="student-portal.html"
+         class="text-sm font-medium text-gray-800 hover:text-blue-600 truncate block">
+        NEW: Student Portal – Manage Attendance, Results & Progress
+      </a>
+      <div class="text-xs text-gray-500 mt-0.5">
+        Teachers: Admin Panel • Students/Parents: View Results & Attendance
+      </div>
+    </div>
+  </div>
+
   <!-- NEW: 100 MCQs Practice Page - MATHEMATICS -->
   <div class="flex items-start hover:bg-gray-50 p-2 rounded-lg transition-colors">
     <div class="w-6 h-6 flex items-center justify-center bg-red-100 text-red-600 rounded text-xs mr-2 flex-shrink-0">
@@ -453,7 +501,9 @@ document.addEventListener('DOMContentLoaded', function () {
         <a href="#features" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
         <a href="#testimonials" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
         <a href="#contact" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
-        <!-- Updated: Changed from blog.html to #blog-preview -->
+       <a href="student-portal.html" class="nav-link text-primary-600 font-bold hover:text-secondary-600 px-3 py-2 text-sm transition-colors">
+        <i class="fas fa-user-grad text-xs mr-1"></i> Student Portal
+    </a>
         <a href="#blog-preview" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Blog</a>
       </div>
 
@@ -481,7 +531,9 @@ document.addEventListener('DOMContentLoaded', function () {
       <a href="#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Why Us</a>
       <a href="#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Testimonials</a>
       <a href="#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Contact</a>
-      <!-- Updated: Changed from blog.html to #blog-preview -->
+      <a href="student-portal.html" class="block px-3 py-2 rounded-md text-base font-bold text-primary-600 bg-primary-50 hover:bg-gray-50 transition-colors">
+            <i class="fas fa-user-grad mr-2"></i> Student Portal
+        </a>
       <a href="#blog-preview" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Blog</a>
     </div>
   </div>
@@ -581,21 +633,32 @@ document.addEventListener('DOMContentLoaded', function () {
           and strong board exam preparation.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#courses"
-             class="bg-white text-primary-700 hover:bg-gray-100 px-8 py-3 rounded-xl font-semibold shadow-md transition text-center">
-            📚 Browse Courses
-          </a>
+        <!-- ⭐ Two-Row Button Layout -->
+        <div class="space-y-4 max-w-md">
+          <!-- First Row -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="#courses"
+               class="flex-1 bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold shadow-md transition text-center">
+              📚 Browse Courses
+            </a>
+            <a href="student-portal.html" 
+   class="flex-1 student-portal-blink bg-gradient-to-r from-rose-500 to-red-600 text-white hover:from-rose-600 hover:to-red-700 px-6 py-3 rounded-xl font-bold shadow-lg transition text-center flex items-center justify-center gap-2">
+  <span>🎓 Student Portal</span>
+</a>
 
-          <a href="contact.html"
-             class="border-2 border-white hover:bg-white hover:text-primary-700 px-8 py-3 rounded-xl font-semibold shadow-md transition text-center">
-            ✉️ Contact Us
-          </a>
-
-          <a href="about.html"
-             class="bg-yellow-400 text-primary-900 hover:bg-yellow-500 px-8 py-3 rounded-xl font-semibold shadow-md transition text-center">
-            🔍 Read More
-          </a>
+          </div>
+          
+          <!-- Second Row -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="contact.html"
+               class="flex-1 border-2 border-white hover:bg-white hover:text-primary-700 px-6 py-3 rounded-xl font-semibold shadow-md transition text-center">
+              ✉️ Contact Us
+            </a>
+            <a href="about.html"
+               class="flex-1 bg-yellow-400 text-primary-900 hover:bg-yellow-500 px-6 py-3 rounded-xl font-semibold shadow-md transition text-center">
+              🔍 Read More
+            </a>
+          </div>
         </div>
       </div>
 

@@ -1,361 +1,3147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9CK25HVFYZ');
-  </script>
- <!-- AdSense Global Script -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-     crossorigin="anonymous"></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow" /> <meta name="author" content="Hira Science Academy" />
+    
+    <title>Student Portal | Hira Science Academy</title>
+    <meta name="description" content="Access student records, attendance, and academic performance at Hira Science Academy Student Portal." />
 
-  <!-- SEO for Student Portal Page - Hira Science Academy -->
-  <title>Student Portal | Hira Science Academy</title>
-  <meta name="description" content="Access notes, quizzes, progress, and resources in the Hira Science Academy student portal.">
-  <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://hiraacademy.online/student-portal.html">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://www.hiraacademy.online/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.hiraacademy.online/images/apple-touch-icon.png" />
+    <link rel="manifest" href="https://www.hiraacademy.online/images/site.webmanifest" />
 
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
-    }
-    p, li {
-      text-align: justify;
-    }
-  </style>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hira Science Academy" />
+    <meta property="og:title" content="Student Portal | Hira Science Academy" />
+    <meta property="og:description" content="Official Student Portal for Hira Science Academy students." />
+    <meta property="og:image" content="https://www.hiraacademy.online/images/logo.webp" />
+    <meta property="og:url" content="https://www.hiraacademy.online/" />
+
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Import Tailwind CSS from main site -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif']
+                    },
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e'
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Import fonts from main site -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #0ea5e9;
+            --secondary-color: #8b5cf6;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+        
+        /* Card styling */
+        .portal-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        
+        .portal-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        /* Tab styling */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tab-btn {
+            position: relative;
+            padding: 12px 20px;
+            font-weight: 500;
+            color: #64748b;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            color: #475569;
+        }
+        
+        /* Status badges */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .status-present {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .status-absent {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        
+        .status-late {
+            background-color: #fef3c7;
+            color: #92400e;
+        }
+        
+        .status-inactive {
+            background-color: #e5e7eb;
+            color: #374151;
+        }
+        
+        .status-active {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        /* Form styling */
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #334155;
+        }
+        
+        /* Button styling */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #0c8bd6, #2563eb);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--success-color), #22c55e);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(135deg, #0da271, #16a34a);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger-color), #dc2626);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #e63535, #b91c1c);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning-color), #eab308);
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #d97706, #ca8a04);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #94a3b8, #64748b);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: linear-gradient(135deg, #7c8ca0, #475569);
+            box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
+        }
+        
+        /* Table styling */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .data-table th {
+            background-color: #f8fafc;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #475569;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .data-table td {
+            padding: 16px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        .data-table tr:hover {
+            background-color: #f8fafc;
+        }
+        
+        /* Loading animation */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #e2e8f0;
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .tab-btn {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 12px 8px;
+            }
+        }
+        
+        /* Subject selection grid */
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        
+        .subject-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .subject-option:hover {
+            border-color: var(--primary-color);
+            background-color: #f0f9ff;
+        }
+        
+        .subject-option.selected {
+            border-color: var(--primary-color);
+            background-color: #f0f9ff;
+            box-shadow: 0 2px 8px rgba(14, 165, 233, 0.2);
+        }
+        
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+        }
+        
+        /* Batch marks entry grid - UPDATED */
+        .marks-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr; /* Updated: Removed Total Marks column */
+            gap: 1px;
+            background-color: #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .marks-grid-header {
+            background-color: #1e40af;
+            color: white;
+            padding: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .marks-grid-cell {
+            background-color: white;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 60px;
+        }
+        
+        .marks-input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #d1d5db;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+        
+        .marks-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+        }
+        
+        .marks-input.valid {
+            border-color: #10b981;
+            background-color: #f0f9ff;
+        }
+        
+        .marks-input.invalid {
+            border-color: #ef4444;
+            background-color: #fef2f2;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), #3b82f6);
+            transition: width 0.3s ease;
+        }
+        
+        /* Student status indicators */
+        .status-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .status-dot.active {
+            background-color: #10b981;
+        }
+        
+        .status-dot.inactive {
+            background-color: #94a3b8;
+        }
+        
+        /* Quick actions toolbar */
+        .quick-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            padding: 12px;
+            background-color: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .quick-action-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid #d1d5db;
+            background-color: white;
+            transition: all 0.2s;
+        }
+        
+        .quick-action-btn:hover {
+            background-color: #f1f5f9;
+            transform: translateY(-1px);
+        }
+        
+        /* Search and filter bar */
+        .search-filter-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+        
+        .search-input {
+            flex: 1;
+            min-width: 200px;
+            padding: 10px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .filter-select {
+            padding: 10px 16px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 14px;
+            background-color: white;
+        }
+        
+        /* Toast notification - NEW */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            color: white;
+            font-weight: 500;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: slideIn 0.3s ease-out;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            max-width: 350px;
+        }
+        
+        .toast-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .toast-info {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+        
+        .toast-warning {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+        
+        .toast-error {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        @media (max-width: 1024px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-nav {
+                display: none;
+            }
+            
+            .mobile-nav.active {
+                display: block;
+            }
+            
+            .marks-grid {
+                grid-template-columns: 1fr;
+                overflow-x: auto;
+            }
+            
+            .marks-grid-header {
+                position: sticky;
+                left: 0;
+            }
+            
+            .toast {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                max-width: none;
+            }
+        }
+        
+        /* Privacy protection for student data - UPDATED */
+        .privacy-mask {
+            background-color: #f1f5f9;
+            color: #64748b;
+            font-style: italic;
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+        
+        .privacy-notice {
+            background-color: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #92400e;
+            margin-top: 4px;
+        }
+        
+        /* Action buttons styling */
+        .btn-action-edit, .btn-action-delete {
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-action-edit:hover {
+            background-color: #e0f2fe;
+        }
+        
+        .btn-action-delete:hover {
+            background-color: #fee2e2;
+        }
+        
+        /* Empty state styling */
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: #64748b;
+        }
+        
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        /* Privacy toggle styling */
+        .privacy-toggle {
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        
+        .privacy-toggle:hover {
+            color: var(--primary-color);
+        }
+        
+        /* Global marks header styling - FIXED: Added proper styling */
+        .global-marks-header {
+            background-color: #4f46e5;
+            color: white;
+            padding: 16px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+        
+        .global-marks-input {
+            width: 120px;
+            padding: 10px 12px;
+            border: 2px solid #a5b4fc;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: 600;
+            background-color: white;
+            color: #1e40af;
+        }
+        
+        .global-marks-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        .global-date-input {
+            width: 150px;
+            padding: 10px 12px;
+            border: 2px solid #a5b4fc;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+            background-color: white;
+            color: #1e40af;
+        }
+        
+        .global-date-input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-gray-800 font-sans leading-relaxed">
+<body>
+    <!-- Navigation - Consistent with main site -->
+    <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="index.html" class="flex items-center gap-3 group transition duration-300">
+                        <img 
+                            src="https://www.hiraacademy.online/images/logo.webp" 
+                            alt="Hira Science Academy"
+                            class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
+                        
+                        <span class="text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
+                            Hira Science Academy
+                        </span>
+                    </a>
+                </div>
 
-<!-- Improved Navigation Bar with Scroll-Spy -->
-<nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-20 items-center">
-      <!-- Logo -->
-      <div class="flex-shrink-0 flex items-center">
-        <a href="index.html" class="flex items-center gap-3 group transition duration-300">
-          <img 
-            src="https://www.hiraacademy.online/images/logo.webp" 
-            alt="Hira Science Academy"
-            class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-          
-          <!-- FIXED: Added fallback color and proper gradient text -->
-          <span class="text-2xl font-bold text-primary-600 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
-            Hira Science Academy
-          </span>
-        </a>
-      </div>
+                <!-- Desktop Navigation -->
+                <div class="hidden md:ml-10 md:flex md:space-x-8">
+                    <a href="index.html" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                    <a href="index.html#notes" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
+                    <a href="index.html#courses" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
+                    <a href="student-portal.html" class="nav-link active text-primary-600 px-3 py-2 text-sm font-medium">Student Portal</a>
+                    <a href="index.html#contact" class="nav-link text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+                </div>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:ml-10 md:flex md:space-x-8">
-        <a href="index.html#home" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
-        <a href="index.html#notes" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
-        <a href="index.html#courses" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
-        <a href="index.html#features" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
-        <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
-        <a href="index.html#contact" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
-        <a href="index.html#blog-preview" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Blog</a>
-      </div>
-
-      <!-- Mobile menu button -->
-      <div class="-mr-2 flex items-center md:hidden">
-        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <span class="sr-only">Open main menu</span>
-          <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Home</a>
-      <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Notes</a>
-      <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Courses</a>
-      <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Why Us</a>
-      <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Testimonials</a>
-      <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Contact</a>
-      <a href="index.html#blog-preview" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Blog</a>
-    </div>
-  </div>
-</nav>
-
-<!-- Student Portal Content -->
-<section class="max-w-3xl mx-auto px-6 py-12 bg-white shadow-lg rounded-2xl mt-10 border border-gray-200">
-  <h1 class="text-4xl font-bold mb-3 text-indigo-700 text-center">🎓 Student Portal</h1>
-  <p class="mb-6 text-center text-gray-500 text-sm">Last updated: October 20, 2025</p>
-
-  <p class="text-lg text-gray-700 leading-relaxed text-justify">
-    The <strong>Hira Academy Student Portal</strong> is an upcoming platform designed to help students easily access all academic resources in one place. Through this portal, students will soon be able to:
-  </p>
-
-  <ul class="list-disc list-inside mt-4 space-y-2 text-gray-700">
-    <li>📘 View and download <strong>chapter-wise notes</strong> and solved exercises</li>
-    <li>📐 Access <strong>assignments</strong> and track submission status</li>
-    <li>📊 Check <strong>performance reports</strong> and progress charts</li>
-    <li>💬 Receive <strong>teacher feedback</strong> and announcements</li>
-  </ul>
-
-  <div class="mt-8 bg-indigo-50 p-4 rounded-lg border-l-4 border-indigo-500">
-    <p class="text-gray-700 text-center">
-      🚀 <strong>Coming soon!</strong> Stay tuned as we prepare to launch the Student Portal to make your learning experience smarter and easier.
-    </p>
-  </div>
-
-  <div class="text-center mt-10">
-    <a href="index.html" class="inline-block bg-indigo-600 text-white px-6 py-2 rounded-full shadow hover:bg-indigo-700 transition duration-200">
-      ← Back to Home
-    </a>
-  </div>
-</section>
-
-<!-- 🧭 Internal Linking Section for SEO & Navigation -->
-<section class="max-w-7xl mx-auto px-6 py-14">
-  <div class="bg-gradient-to-br from-blue-50 via-white to-cyan-50 rounded-3xl shadow-xl p-10 border border-gray-200">
-    <h2 class="text-3xl font-bold text-center text-blue-800 mb-6 tracking-wide">
-      Explore Learning Resources Across All Grades
-    </h2>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
-      From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.
-    </p>
-
-    <!-- Resource Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      
-      <!-- Class 9 Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-blue-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources
-        </h3>
-        <nav>
-          <ul class="space-y-4">
-            <li><a href="https://hiraacademy.online/Mathematics-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-            <li><a href="https://hiraacademy.online/Physics-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-            <li><a href="https://hiraacademy.online/Chemistry-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-            <li><a href="https://hiraacademy.online/Biology-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
-            <li><a href="https://hiraacademy.online/Islamiat-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li>
-            <li><a href="https://hiraacademy.online/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li>
-          </ul>
-        </nav>
-      </article>
-
-      <!-- Class 10 Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-green-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources
-        </h3>
-        <nav>
-          <ul class="space-y-4">
-            <li><a href="https://hiraacademy.online/Mathematics-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-            <li><a href="https://hiraacademy.online/Physics-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-            <li><a href="https://hiraacademy.online/Chemistry-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-            <li><a href="https://hiraacademy.online/Biology-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
-            <li><a href="https://hiraacademy.online/PakistanStudies-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li>
-          </ul>
-        </nav>
-      </article>
-
-      <!-- Special Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources
-        </h3>
-        <ul class="space-y-4">
-          <li><a href="https://hiraacademy.online/fsc-entry-test.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li>
-          <li><a href="https://hiraacademy.online/physics-numericals.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li>
-          <li><a href="https://hiraacademy.online/math-mistakes.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li>
-          <li><a href="https://hiraacademy.online/physics-formulas.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li>
-          <li><a href="https://hiraacademy.online/blog.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li>
-        </ul>
-      </article>
-
-      <!-- Quick Links -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links
-        </h3>
-        <ul class="space-y-4">
-          <li><a href="https://hiraacademy.online/courses-details.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li>
-          <li><a href="https://hiraacademy.online/contact.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li>
-          <li><a href="https://hiraacademy.online/about.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li>
-          <li><a href="https://hiraacademy.online/career-services.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li>
-          <li><a href="https://hiraacademy.online/student-portal.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li>
-        </ul>
-      </article>
-
-      <!-- Definitions & Key Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources
-        </h3>
-        <ul class="space-y-4">
-          <li><a href="https://hiraacademy.online/Math-9th-Definitions.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li>
-          <li><a href="https://hiraacademy.online/Physics-9th-Definitions.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li>
-          <li><a href="https://hiraacademy.online/grade9-math-pairing-scheme-2026.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li>
-          <li><a href="https://hiraacademy.online/grade9-physics-pairing-scheme-2026.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li>
-          <li><a href="https://hiraacademy.online/grade9-mathematics-model-paper-2026.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li>
-        </ul>
-      </article>
-
-      <!-- Support & Policies -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies
-        </h3>
-        <ul class="space-y-4">
-          <li><a href="https://hiraacademy.online/terms.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li>
-          <li><a href="https://hiraacademy.online/privacy-policy.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li>
-          <li><a href="https://hiraacademy.online/refund-policy.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li>
-          <li><a href="https://hiraacademy.online/accessibility.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li>
-          <li><a href="https://hiraacademy.online/mission.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li>
-        </ul>
-      </article>
-
-    </div>
-
-    <!-- CTA -->
-    <div class="mt-12 text-center">
-      <a href="https://hiraacademy.online/index.html" class="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all">
-        <span class="mr-3">🏠</span>Return to Homepage
-      </a>
-    </div>
-  </div>
-</section>
-
-  <!-- Footer -->
-  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10">
-    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
-        <!-- Logo & Description -->
-        <div class="md:col-span-1 text-center md:text-left">
-          <a href="index.html" class="flex flex-col md:flex-row items-center md:items-start gap-3 group transition duration-300">
-            <img 
-              src="images/logo.webp" 
-              alt="Hira Science Academy"
-              class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mt-2 md:mt-0">
-              Hira Science Academy
-            </span>
-          </a>
-
-          <p class="mt-4 text-sm text-gray-200">
-            Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).
-          </p>
-
-          <!-- Social Media Links -->
-          <div class="mt-4 flex justify-center md:justify-start space-x-6 text-gray-200">
-            <a href="https://web.facebook.com/HiraScienceAcademy.Daska" target="_blank" aria-label="Facebook" class="hover:text-blue-400 transition-colors">
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.1v-2.88h2.1V9.41c0-2.07 1.23-3.22 3.11-3.22.9 0 1.84.16 1.84.16v2.03h-1.04c-1.03 0-1.35.64-1.35 1.3v1.57h2.3l-.37 2.88h-1.93v6.99A10 10 0 0 0 22 12z" />
-              </svg>
-            </a>
-            <a href="https://www.instagram.com/hira.scienceacademy/" target="_blank" aria-label="Instagram" class="hover:text-pink-400 transition-colors">
-              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.25 1.13 1.13 0 0 1 0-2.25Z" />
-              </svg>
-            </a>
-            <a href="https://wa.me/923338114798" target="_blank" aria-label="WhatsApp" class="hover:text-green-400 transition-colors">
-              <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 32 32">
-                <path d="M16 2.4c-7.51 0-13.6 6.09-13.6 13.6 0 2.39.63 4.71 1.83 6.76L2 30l7.45-2.31c1.92 1.05 4.09 1.61 6.3 1.61h.01c7.51 0 13.6-6.09 13.6-13.6S23.51 2.4 16 2.4zm0 24.6c-1.89 0-3.75-.5-5.39-1.46l-.39-.23-4.42 1.37 1.43-4.29-.26-.41a11.17 11.17 0 01-1.73-6.01c0-6.2 5.04-11.24 11.24-11.24S27.24 9.8 27.24 16 22.2 27 16 27zm6.13-8.67c-.34-.17-2.01-.99-2.32-1.1-.31-.11-.54-.17-.76.17-.22.34-.88 1.1-1.08 1.32-.2.22-.4.25-.74.08-.34-.17-1.44-.53-2.75-1.69-1.02-.91-1.71-2.02-1.91-2.36-.2-.34-.02-.52.15-.69.16-.16.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.08-.17-.76-1.84-1.04-2.53-.27-.64-.54-.55-.76-.56l-.65-.01c-.23 0-.6.08-.91.4-.31.31-1.19 1.16-1.19 2.83s1.22 3.29 1.39 3.51c.17.22 2.39 3.65 5.8 5.12.81.35 1.44.56 1.93.71.81.26 1.54.22 2.12.14.65-.1 2.01-.82 2.3-1.61.28-.79.28-1.46.2-1.61-.08-.14-.31-.23-.65-.4z"/>
-              </svg>
-            </a>
-          </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <span class="sr-only">Open menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <!-- Programs -->
-        <div class="text-center md:text-left">
-          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
-          <ul class="space-y-2">
-            <li><a href="index.html#courses" class="hover:text-cyan-400 transition-colors">9th Class</a></li>
-            <li><a href="index.html#courses" class="hover:text-cyan-400 transition-colors">10th Class</a></li>
-            <li><a href="fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
-            <li><a href="fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">Entry Test Preparation</a></li>
-          </ul>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Home</a>
+                <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Notes</a>
+                <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Courses</a>
+                <a href="student-portal.html" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 bg-primary-50 text-primary-600 hover:bg-primary-50">Student Portal</a>
+                <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 transition-colors">Contact</a>
+            </div>
         </div>
+    </nav>
 
-        <!-- Resources -->
-        <div class="text-center md:text-left">
-          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
-          <ul class="space-y-2">
-            <li><a href="blog.html" class="hover:text-cyan-400 transition-colors">Study Tips & Blog</a></li>
-            <li><a href="career-services.html" class="hover:text-cyan-400 transition-colors">Career Guidance</a></li>
-            <li><a href="student-portal.html" class="hover:text-cyan-400 transition-colors">Student Portal</a></li>
-            <li><a href="alumni-network.html" class="hover:text-cyan-400 transition-colors">Alumni Network</a></li>
-            <li><a href="events.html" class="hover:text-cyan-400 transition-colors">Events & Workshops</a></li>
-          </ul>
-        </div>
+    <!-- Toast Notification Container - NEW -->
+    <div id="toastContainer"></div>
 
-        <!-- Legal -->
-        <div class="text-center md:text-left">
-          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
-          <ul class="space-y-2">
-            <li><a href="terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
-            <li><a href="privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
-            <li><a href="refund-policy.html" class="hover:text-cyan-400 transition-colors">Refund Policy</a></li>
-            <li><a href="accessibility.html" class="hover:text-cyan-400 transition-colors">Accessibility</a></li>
-          </ul>
-        </div>
-
-        <!-- About -->
-        <div class="text-center md:text-left">
-          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
-          <ul class="space-y-2">
-            <li><a href="about.html" class="hover:text-cyan-400 transition-colors active">About Hira Academy</a></li>
-            <li><a href="mission.html" class="hover:text-cyan-400 transition-colors">Our Mission</a></li>
-            <li><a href="contact.html" class="hover:text-cyan-400 transition-colors">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-12 border-t border-blue-700 pt-6">
-        <p class="text-base text-gray-200 text-center">
-          &copy; 2025 Hira Science Academy. All rights reserved.
-        </p>
-      </div>
+    <!-- Loading Screen -->
+    <div id="loading" class="fixed inset-0 bg-white/90 z-50 flex flex-col items-center justify-center hidden">
+        <div class="loading-spinner mb-4"></div>
+        <p id="loadingText" class="font-medium text-primary-900">Syncing with database...</p>
     </div>
-  </footer>
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuIconOpen = document.getElementById('menu-icon-open');
-    const menuIconClose = document.getElementById('menu-icon-close');
 
-    mobileMenuButton.addEventListener('click', function () {
-      if (mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.remove('hidden');
-        menuIconOpen.classList.add('hidden');
-        menuIconClose.classList.remove('hidden');
-      } else {
-        mobileMenu.classList.add('hidden');
-        menuIconOpen.classList.remove('hidden');
-        menuIconClose.classList.add('hidden');
-      }
-    });
+    <!-- Main Portal Container -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-gray-900 mb-4">Student Portal</h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">Access attendance, exam results, and academic records for Hira Science Academy students, teachers, and parents.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Teacher Login Card -->
+                <div onclick="showSection('teacherForm')" class="portal-card p-8 cursor-pointer text-center group">
+                    <div class="h-16 w-16 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 text-2xl mx-auto mb-4 group-hover:bg-primary-200 transition-colors">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Teacher Login</h3>
+                    <p class="text-gray-600">Access administrative tools, attendance, and result entry</p>
+                    <div class="mt-4 text-primary-600 font-medium">Access Admin Panel →</div>
+                </div>
+                
+                <!-- Parent Login Card -->
+                <div onclick="showSection('parentForm')" class="portal-card p-8 cursor-pointer text-center group">
+                    <div class="h-16 w-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-2xl mx-auto mb-4 group-hover:bg-green-200 transition-colors">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Parent Login</h3>
+                    <p class="text-gray-600">View your child's attendance, results, and progress</p>
+                    <div class="mt-4 text-green-600 font-medium">View Student Progress →</div>
+                </div>
+                
+                <!-- Student Login Card -->
+                <div onclick="showSection('studentForm')" class="portal-card p-8 cursor-pointer text-center group">
+                    <div class="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-2xl mx-auto mb-4 group-hover:bg-blue-200 transition-colors">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Student Login</h3>
+                    <p class="text-gray-600">Check your attendance, exam results, and academic info</p>
+                    <div class="mt-4 text-blue-600 font-medium">View Dashboard →</div>
+                </div>
+            </div>
+            
+            <div class="text-center text-gray-500 text-sm">
+                <p><i class="fas fa-shield-alt mr-2"></i>Your data is secured and private</p>
+            </div>
+        </div>
 
-    document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
-      link.addEventListener('click', function () {
-        mobileMenu.classList.add('hidden');
-        menuIconOpen.classList.remove('hidden');
-        menuIconClose.classList.add('hidden');
-        mobileMenuButton.setAttribute('aria-expanded', 'false');
-      });
-    });
-  });
-</script>
+        <!-- Teacher Login Form -->
+        <div id="teacherForm" class="hidden max-w-md mx-auto">
+            <div class="portal-card p-8">
+                <button onclick="showSection('loginScreen')" class="text-primary-600 hover:text-primary-800 mb-6 inline-flex items-center">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Login Options
+                </button>
+                
+                <div class="flex items-center mb-6">
+                    <div class="h-12 w-12 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 text-xl mr-3">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Teacher Login</h2>
+                        <p class="text-gray-600">Enter your credentials to access admin panel</p>
+                    </div>
+                </div>
+                
+                <form id="tLogin">
+                    <div class="mb-6">
+                        <label for="t_email" class="form-label">Email Address</label>
+                        <input type="email" id="t_email" placeholder="teacher@example.com" class="form-input" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="t_pass" class="form-label">Password</label>
+                        <input type="password" id="t_pass" placeholder="Enter your password" class="form-input" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-full" id="teacherLoginBtn">
+                        <i class="fas fa-sign-in-alt mr-2"></i> Login as Teacher
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Parent Login Form -->
+        <div id="parentForm" class="hidden max-w-md mx-auto">
+            <div class="portal-card p-8">
+                <button onclick="showSection('loginScreen')" class="text-green-600 hover:text-green-800 mb-6 inline-flex items-center">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Login Options
+                </button>
+                
+                <div class="flex items-center mb-6">
+                    <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xl mr-3">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Parent Login</h2>
+                        <p class="text-gray-600">View your child's academic information</p>
+                    </div>
+                </div>
+                
+                <form id="pLogin">
+                    <div class="mb-6">
+                        <label for="p_roll" class="form-label">Student Roll Number</label>
+                            <input type="text" id="p_roll" placeholder="e.g., 2023001" class="form-input" required>
+                    </div>
+                    
+                    <div class="mb-6">
+                        <label for="p_mobile" class="form-label">Parent Mobile Number</label>
+                        <input type="tel" id="p_mobile" placeholder="e.g., 03XX-XXXXXXX" class="form-input" required>
+                        <p class="text-sm text-gray-500 mt-1">Enter the mobile number registered with the academy</p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success w-full" id="parentLoginBtn">
+                        <i class="fas fa-user-check mr-2"></i> Login as Parent
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Student Login Form -->
+        <div id="studentForm" class="hidden max-w-md mx-auto">
+            <div class="portal-card p-8">
+                <button onclick="showSection('loginScreen')" class="text-blue-600 hover:text-blue-800 mb-6 inline-flex items-center">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Login Options
+                </button>
+                
+                <div class="flex items-center mb-6">
+                    <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl mr-3">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800">Student Login</h2>
+                        <p class="text-gray-600">Access your academic dashboard</p>
+                    </div>
+                </div>
+                
+                <form id="sLogin">
+                    <div class="mb-6">
+                        <label for="s_roll" class="form-label">Your Roll Number</label>
+                        <input type="text" id="s_roll" placeholder="e.g., 2023001" class="form-input" required>
+                        <p class="text-sm text-gray-500 mt-1">Enter the roll number provided by the academy</p>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary w-full" id="studentLoginBtn">
+                        <i class="fas fa-graduation-cap mr-2"></i> Access Student Dashboard
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Admin Panel -->
+        <div id="adminPanel" class="hidden teacher-view">
+            <!-- Admin Header -->
+            <div class="portal-card p-6 mb-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                            <i class="fas fa-tachometer-alt mr-3 text-primary-600"></i> Teacher Admin Panel
+                        </h2>
+                        <p class="text-gray-600 mt-1">Welcome, <span id="adminUser" class="font-medium text-primary-700"></span></p>
+                        <div class="privacy-notice mt-2">
+                            <i class="fas fa-eye-slash mr-1"></i> Student personal data is hidden for privacy
+                            <button onclick="togglePrivacyMode()" class="ml-2 text-primary-600 hover:text-primary-800 text-sm font-medium">
+                                <i class="fas fa-eye mr-1"></i>Show Data
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-3 mt-4 md:mt-0">
+                        <button onclick="toggleModal('addStudentModal')" class="btn btn-primary">
+                            <i class="fas fa-user-plus mr-2"></i> Add Student
+                        </button>
+                        <button onclick="toggleModal('addTeacherModal')" class="btn btn-primary">
+                            <i class="fas fa-chalkboard-teacher mr-2"></i> Add Teacher
+                        </button>
+                        <button onclick="showActivityLog()" class="btn btn-secondary">
+                            <i class="fas fa-history mr-2"></i> Activity Log
+                        </button>
+                        <button onclick="logout()" class="btn btn-danger">
+                            <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab Navigation -->
+            <div class="flex overflow-x-auto border-b mb-6">
+                <button class="tab-btn active" onclick="openTab(event, 'tab-students')">
+                    <i class="fas fa-users mr-2"></i> Students
+                </button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-teachers')">
+                    <i class="fas fa-chalkboard-teacher mr-2"></i> Teachers
+                </button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-attendance')">
+                    <i class="fas fa-calendar-check mr-2"></i> Attendance
+                </button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-marks')">
+                    <i class="fas fa-chart-bar mr-2"></i> Exam Marks
+                </button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-batch-marks')">
+                    <i class="fas fa-table mr-2"></i> Batch Entry
+                </button>
+                <button class="tab-btn" onclick="openTab(event, 'tab-reports')">
+                    <i class="fas fa-chart-pie mr-2"></i> Reports
+                </button>
+            </div>
+            
+            <!-- Students Tab -->
+            <div id="tab-students" class="tab-content active">
+                <div class="portal-card p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-gray-800">Student Records</h3>
+                        <div class="text-sm text-gray-500">
+                            Active: <span id="studentCount" class="font-bold text-primary-600">0</span> students
+                        </div>
+                    </div>
+                    
+                    <!-- Search and Filter Bar with Sync Button -->
+                    <div class="search-filter-bar mb-6">
+                        <input type="text" id="studentSearch" placeholder="Search students by name or roll number..." class="search-input" onkeyup="filterStudents()">
+                        <select id="studentClassFilter" class="filter-select" onchange="filterStudents()">
+                            <option value="">All Classes</option>
+                            <option value="Pre-9th">Pre-9th</option>
+                            <option value="9th">9th Class</option>
+                            <option value="10th">10th Class</option>
+                            <option value="1st Year">1st Year</option>
+                            <option value="2nd Year">2nd Year</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <button onclick="syncData()" class="btn btn-primary">
+                            <i class="fas fa-sync-alt mr-2"></i> Sync Data
+                        </button>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Roll No</th>
+                                    <th>Name</th>
+                                    <th>Class</th>
+                                    <th>Student Mobile</th>
+                                    <th>Parent Mobile</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="studentsTable">
+                                <!-- Student data will be populated here -->
+                                <tr>
+                                    <td colspan="8" class="py-8 text-center text-gray-500">
+                                        <div class="empty-state">
+                                            <i class="fas fa-users"></i>
+                                            <p class="text-lg font-medium">No students found</p>
+                                            <p class="text-sm mt-1">Add your first student using the "Add Student" button above</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teachers Tab -->
+            <div id="tab-teachers" class="tab-content">
+                <div class="portal-card p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-bold text-gray-800">Teacher Records</h3>
+                        <div class="text-sm text-gray-500">
+                            Total: <span id="teacherCount" class="font-bold text-primary-600">0</span> teachers
+                        </div>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Security Question</th>
+                                    <th>Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody id="teachersTable">
+                                <!-- Teacher data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance Tab -->
+            <div id="tab-attendance" class="tab-content">
+                <div class="portal-card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Attendance Management</h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div>
+                            <label class="form-label">Select Date</label>
+                            <input type="date" id="attDate" class="form-input">
+                        </div>
+                        <div>
+                            <label class="form-label">Select Class</label>
+                            <select id="attClass" class="form-input" onchange="filterAttendanceByClass()">
+                                <option value="">All Classes</option>
+                                <!-- Options will be populated dynamically -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label">Quick Actions</label>
+                            <div class="flex gap-2">
+                                <button onclick="markAllPresent()" class="btn btn-success flex-1">
+                                    <i class="fas fa-check-circle mr-2"></i> All Present
+                                </button>
+                                <button onclick="markAllAbsent()" class="btn btn-danger flex-1">
+                                    <i class="fas fa-times-circle mr-2"></i> All Absent
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="attendanceList" class="space-y-3 mb-6 max-h-96 overflow-y-auto p-2">
+                        <!-- Attendance list will be populated here -->
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm text-gray-500">
+                            Marked: <span id="markedCount" class="font-bold">0</span> / <span id="totalCount" class="font-bold">0</span> students
+                        </div>
+                        <button onclick="saveAttendanceBatch()" class="btn btn-success">
+                            <i class="fas fa-save mr-2"></i> Save Attendance
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exam Marks Tab -->
+            <div id="tab-marks" class="tab-content">
+                <div class="portal-card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Exam Results Entry</h3>
+                    
+                    <!-- Result Entry Form -->
+                    <form id="mForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 p-4 bg-gray-50 rounded-xl">
+                        <div>
+                            <label class="form-label">Student</label>
+                            <select id="mStudent" class="form-input" required>
+                                <option value="">Select Student</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Class</label>
+                            <select id="mClass" class="form-input" onchange="loadSubjects()" required>
+                                <option value="">Select Class</option>
+                                <option value="Pre-9th">Pre-9th</option>
+                                <option value="9th">9th Class</option>
+                                <option value="10th">10th Class</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Exam Type</label>
+                            <select id="mExamType" class="form-input" required>
+                                <option value="">Select Type</option>
+                                <option value="Midterm">Midterm</option>
+                                <option value="Final">Final</option>
+                                <option value="Unit Test">Unit Test</option>
+                                <option value="Quiz">Quiz</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Subject</label>
+                            <div id="subjectContainer">
+                                <select id="mSubject" class="form-input" required>
+                                    <option value="">Select Subject</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Obtained Marks</label>
+                            <input type="number" id="mObtained" placeholder="Marks obtained" class="form-input" required min="0" step="0.5">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Total Marks</label>
+                            <input type="number" id="mTotal" placeholder="Total marks" class="form-input" required min="1" value="100">
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <button type="submit" class="btn btn-primary w-full mt-6">
+                                <i class="fas fa-plus-circle mr-2"></i> Add Exam Result
+                            </button>
+                        </div>
+                    </form>
+                    
+                    <!-- Subject Grid for Mobile - UNHIDDEN FOR SIDEBAR -->
+                    <div id="subjectGrid" class="subject-grid mb-6">
+                        <!-- Subject options will be populated here -->
+                        <div class="text-gray-500 text-center py-4">Select a class first to load subjects</div>
+                    </div>
+                    
+                    <!-- Results Table -->
+                    <div class="overflow-x-auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Student</th>
+                                    <th>Exam Type</th>
+                                    <th>Subject</th>
+                                    <th>Marks</th>
+                                    <th>Percentage</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody id="marksTable">
+                                <!-- Marks data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Batch Marks Entry Tab - FIXED: Global Marks Configuration visible -->
+            <div id="tab-batch-marks" class="tab-content">
+                <div class="portal-card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Batch Exam Marks Entry</h3>
+                    
+                    <!-- Step 1: Setup Form -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 p-4 bg-gray-50 rounded-xl">
+                        <div>
+                            <label class="form-label">Select Class</label>
+                            <select id="batchClass" class="form-input" onchange="loadBatchStudents()" required>
+                                <option value="">Select Class</option>
+                                <option value="Pre-9th">Pre-9th</option>
+                                <option value="9th">9th Class</option>
+                                <option value="10th">10th Class</option>
+                                <option value="1st Year">1st Year</option>
+                                <option value="2nd Year">2nd Year</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Select Subject</label>
+                            <select id="batchSubject" class="form-input" required>
+                                <option value="">Select Class First</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Exam Type</label>
+                            <select id="batchExamType" class="form-input" required>
+                                <option value="">Select Type</option>
+                                <option value="Midterm">Midterm</option>
+                                <option value="Final">Final</option>
+                                <option value="Unit Test">Unit Test</option>
+                                <option value="Quiz">Quiz</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2: Global Marks Header - FIXED: Now visible with proper styling -->
+                    <div class="global-marks-header mb-6">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                            <div>
+                                <h4 class="text-lg font-bold text-white">Global Marks Configuration</h4>
+                                <p class="text-sm text-white/90">Set total marks once for all students</p>
+                            </div>
+                            <div class="flex flex-col md:flex-row md:items-center gap-4">
+                                <div>
+                                    <label class="text-sm font-medium text-white mb-1 block">Total Marks:</label>
+                                    <input type="number" id="globalTotalMarks" class="global-marks-input" value="100" min="1" required>
+                                </div>
+                                <div>
+                                    <label class="text-sm font-medium text-white mb-1 block">Exam Date:</label>
+                                    <input type="date" id="batchExamDate" class="global-date-input" value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Actions Toolbar -->
+                    <div class="quick-actions mb-6">
+                        <button onclick="setAllMarks()" class="quick-action-btn">
+                            <i class="fas fa-copy mr-2"></i> Set All To:
+                        </button>
+                        <input type="number" id="setAllValue" placeholder="Value" class="quick-action-btn" style="width: 80px;">
+                        <button onclick="clearAllMarks()" class="quick-action-btn">
+                            <i class="fas fa-trash-alt mr-2"></i> Clear All
+                        </button>
+                        <button onclick="downloadTemplate()" class="quick-action-btn">
+                            <i class="fas fa-download mr-2"></i> Download Template
+                        </button>
+                        <div class="flex-grow"></div>
+                        <span id="progressText" class="text-sm text-gray-600">Ready to enter marks</span>
+                    </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="progress-bar mb-4">
+                        <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    
+                    <!-- Batch Marks Grid -->
+                    <div id="batchMarksContainer" class="overflow-x-auto">
+                        <div class="marks-grid" id="batchMarksGrid">
+                            <!-- Marks grid will be populated here -->
+                            <div class="text-gray-500 text-center py-8" style="grid-column: 1 / -1;">
+                                Select a class first to load students
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Save Button -->
+                    <div class="flex justify-between items-center mt-6">
+                        <div class="text-sm text-gray-500">
+                            <span id="enteredCount">0</span> of <span id="totalStudentsCount">0</span> students entered
+                        </div>
+                        <button onclick="saveBatchMarks()" class="btn btn-success" id="saveBatchBtn" disabled>
+                            <i class="fas fa-save mr-2"></i> Save All Marks
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Tab -->
+            <div id="tab-reports" class="tab-content">
+                <div class="portal-card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-6">Analytics & Reports</h3>
+                    
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                            <div class="flex items-center">
+                                <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl mr-4">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Active Students</p>
+                                    <p class="text-3xl font-bold text-blue-600" id="totalStudents">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-xl border border-green-100">
+                            <div class="flex items-center">
+                                <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xl mr-4">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Total Teachers</p>
+                                    <p class="text-3xl font-bold text-green-600" id="totalTeachers">0</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-xl border border-purple-100">
+                            <div class="flex items-center">
+                                <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-xl mr-4">
+                                    <i class="fas fa-calendar-check"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Today's Attendance</p>
+                                    <p class="text-3xl font-bold text-purple-600" id="todayAttendance">0%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white border border-gray-200 rounded-xl p-6">
+                            <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                                <i class="fas fa-history mr-2 text-primary-600"></i> Recent Activity
+                            </h4>
+                            <div id="recentActivity" class="space-y-3">
+                                <!-- Recent activity will be populated here -->
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white border border-gray-200 rounded-xl p-6">
+                            <h4 class="font-bold text-gray-800 mb-4 flex items-center">
+                                <i class="fas fa-chart-line mr-2 text-green-600"></i> Performance Summary
+                            </h4>
+                            <div id="performanceSummary" class="space-y-3">
+                                <div class="text-center py-8 text-gray-500">
+                                    Performance data will be shown here
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Dashboard -->
+        <div id="userDashboard" class="hidden">
+            <!-- Student Header -->
+            <div class="portal-card p-6 mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100">
+                <div class="flex flex-col md:flex-row md:items-center justify-between">
+                    <div>
+                        <h2 class="text-2xl font-bold text-gray-800 flex items-center">
+                            <i class="fas fa-user-graduate mr-3 text-primary-600"></i> Student Dashboard
+                        </h2>
+                        <div class="mt-2 space-y-1">
+                            <p class="text-gray-700">Welcome, <span id="uName" class="font-bold text-primary-700"></span></p>
+                            <p class="text-gray-600">Roll No: <span id="uRoll" class="font-medium"></span> | Class: <span id="uClass" class="font-medium"></span></p>
+                        </div>
+                    </div>
+                    
+                    <button onclick="logout()" class="btn btn-danger mt-4 md:mt-0">
+                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Stats Overview -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="portal-card p-6">
+                    <div class="flex items-center">
+                        <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl mr-4">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Attendance Rate</p>
+                            <p class="text-2xl font-bold text-blue-600" id="attendanceRate">0%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portal-card p-6">
+                    <div class="flex items-center">
+                        <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xl mr-4">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Average Marks</p>
+                            <p class="text-2xl font-bold text-green-600" id="averageMarks">0%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portal-card p-6">
+                    <div class="flex items-center">
+                        <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-xl mr-4">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Total Exams</p>
+                            <p class="text-2xl font-bold text-purple-600" id="totalExams">0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Attendance History -->
+                <div class="portal-card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-history mr-2 text-primary-600"></i> Attendance History
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Marked By</th>
+                                </tr>
+                            </thead>
+                            <tbody id="uAtt">
+                                <!-- Attendance data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Exam Results -->
+                <div class="portal-card p-6">
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
+                        <i class="fas fa-chart-line mr-2 text-green-600"></i> Exam Results
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Exam Type</th>
+                                    <th>Marks</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody id="uMarks">
+                                <!-- Exam results will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Personal Information (Full access for student/parent) -->
+            <div class="portal-card p-6 mt-8">
+                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
+                    <i class="fas fa-user-circle mr-2 text-primary-600"></i> Personal Information
+                </h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="form-label">Email Address</label>
+                        <div class="p-3 bg-gray-50 rounded-lg" id="uEmail">Not provided</div>
+                    </div>
+                    
+                    <div>
+                        <label class="form-label">Mobile Number</label>
+                        <div class="p-3 bg-gray-50 rounded-lg" id="uMobile">Not provided</div>
+                    </div>
+                    
+                    <div>
+                        <label class="form-label">Parent Mobile</label>
+                        <div class="p-3 bg-gray-50 rounded-lg" id="uParentMobile">Not provided</div>
+                    </div>
+                    
+                    <div>
+                        <label class="form-label">Address</label>
+                        <div class="p-3 bg-gray-50 rounded-lg" id="uAddress">Not provided</div>
+                    </div>
+                    
+                    <div>
+                        <label class="form-label">Enrollment Date</label>
+                        <div class="p-3 bg-gray-50 rounded-lg" id="uCreatedAt">Not available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Student Modal -->
+    <div id="addStudentModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="portal-card w-full max-w-md">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Add New Student</h3>
+                    <button onclick="toggleModal('addStudentModal')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="newStudentForm">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="form-label">Roll Number *</label>
+                            <input type="text" id="nRoll" placeholder="e.g., 2023001" class="form-input" required>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" id="nName" placeholder="Student's full name" class="form-input" required>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="form-label">Class *</label>
+                                <select id="nClass" class="form-input" required>
+                                    <option value="">Select Class</option>
+                                    <option value="Pre-9th">Pre-9th</option>
+                                    <option value="9th">9th Class</option>
+                                    <option value="10th">10th Class</option>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="form-label">Mobile Number *</label>
+                                <input type="tel" id="nMobile" placeholder="03XX-XXXXXXX" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Parent Mobile Number</label>
+                            <input type="tel" id="nParentMobile" placeholder="03XX-XXXXXXX" class="form-input">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Email Address (Optional)</label>
+                            <input type="email" id="nEmail" placeholder="student@example.com" class="form-input">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Address (Optional)</label>
+                            <textarea id="nAddress" placeholder="Student's address" class="form-input" rows="2"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-3 mt-8">
+                        <button type="submit" class="btn btn-primary flex-1">
+                            <i class="fas fa-save mr-2"></i> Save Student
+                        </button>
+                        <button type="button" onclick="toggleModal('addStudentModal')" class="btn btn-danger flex-1">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Student Modal -->
+    <div id="editStudentModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="portal-card w-full max-w-md">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Edit Student</h3>
+                    <button onclick="toggleModal('editStudentModal')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="editStudentForm">
+                    <input type="hidden" id="editRoll">
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="form-label">Roll Number *</label>
+                            <input type="text" id="editRollNumber" class="form-input" readonly>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" id="editName" placeholder="Student's full name" class="form-input" required>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="form-label">Class *</label>
+                                <select id="editClass" class="form-input" required>
+                                    <option value="">Select Class</option>
+                                    <option value="Pre-9th">Pre-9th</option>
+                                    <option value="9th">9th Class</option>
+                                    <option value="10th">10th Class</option>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="form-label">Mobile Number *</label>
+                                <input type="tel" id="editMobile" placeholder="03XX-XXXXXXX" class="form-input" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Status Field - Added dynamically -->
+                        
+                        <div>
+                            <label class="form-label">Parent Mobile Number</label>
+                            <input type="tel" id="editParentMobile" placeholder="03XX-XXXXXXX" class="form-input">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Email Address (Optional)</label>
+                            <input type="email" id="editEmail" placeholder="student@example.com" class="form-input">
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Address (Optional)</label>
+                            <textarea id="editAddress" placeholder="Student's address" class="form-input" rows="2"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-3 mt-8">
+                        <button type="submit" class="btn btn-primary flex-1">
+                            <i class="fas fa-save mr-2"></i> Update Student
+                        </button>
+                        <button type="button" onclick="toggleModal('editStudentModal')" class="btn btn-danger flex-1">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Student Modal -->
+    <div id="deleteStudentModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="portal-card w-full max-w-md">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Delete Student</h3>
+                    <button onclick="toggleModal('deleteStudentModal')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <div class="flex items-center text-red-600 mb-2">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        <span class="font-bold">WARNING: Permanent Deletion</span>
+                    </div>
+                    <p class="text-sm text-red-600">
+                        This will PERMANENTLY delete the student record. This action cannot be undone.
+                    </p>
+                </div>
+                
+                <div class="mb-6">
+                    <p class="text-gray-700 mb-2">Are you sure you want to permanently delete <span id="deleteStudentName" class="font-bold"></span>?</p>
+                    <p class="text-sm text-gray-600">Roll No: <span id="deleteStudentRoll" class="font-medium"></span></p>
+                </div>
+                
+                <form id="deleteStudentForm">
+                    <input type="hidden" id="deleteRoll">
+                    
+                    <div class="mb-4">
+                        <label class="form-label">Reason for Deletion (Optional)</label>
+                        <textarea id="deleteReason" placeholder="Enter reason for deleting this student..." class="form-input" rows="3"></textarea>
+                    </div>
+                    
+                    <div class="flex gap-3">
+                        <button type="submit" class="btn btn-danger flex-1">
+                            <i class="fas fa-trash mr-2"></i> Permanently Delete
+                        </button>
+                        <button type="button" onclick="toggleModal('deleteStudentModal')" class="btn btn-secondary flex-1">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Teacher Modal -->
+    <div id="addTeacherModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="portal-card w-full max-w-md">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Add New Teacher</h3>
+                    <button onclick="toggleModal('addTeacherModal')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <form id="newTeacherForm">
+                    <div class="space-y-4">
+                        <div>
+                            <label class="form-label">Full Name *</label>
+                            <input type="text" id="tName" placeholder="Teacher's full name" class="form-input" required>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" id="tEmail" placeholder="teacher@example.com" class="form-input" required>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Password *</label>
+                            <input type="password" id="tPassword" placeholder="Create a secure password" class="form-input" required>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Security Question *</label>
+                            <input type="text" id="tSecurityQuestion" placeholder="e.g., What is your pet's name?" class="form-input" required>
+                        </div>
+                        
+                        <div>
+                            <label class="form-label">Security Answer *</label>
+                            <input type="text" id="tSecurityAnswer" placeholder="Answer to security question" class="form-input" required>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-3 mt-8">
+                        <button type="submit" class="btn btn-primary flex-1">
+                            <i class="fas fa-save mr-2"></i> Save Teacher
+                        </button>
+                        <button type="button" onclick="toggleModal('addTeacherModal')" class="btn btn-danger flex-1">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activity Log Modal -->
+    <div id="activityLogModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="portal-card w-full max-w-4xl">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-gray-800">Activity Log</h3>
+                    <button onclick="toggleModal('activityLogModal')" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div id="activityLogContent"></div>
+                <div class="mt-6 flex justify-end">
+                    <button onclick="toggleModal('activityLogModal')" class="btn btn-secondary">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer - Consistent with main site -->
+    <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-base text-gray-200">
+                    &copy; 2025 Hira Science Academy. All rights reserved.
+                </p>
+                <p class="mt-2 text-sm text-gray-300">
+                    Student Portal v2.1 | Enhanced Student Management with Activity Logging
+                </p>
+                <div class="mt-4">
+                    <a href="index.html" class="text-cyan-400 hover:text-white transition-colors mx-2">Home</a>
+                    <a href="privacy-policy.html" class="text-cyan-400 hover:text-white transition-colors mx-2">Privacy Policy</a>
+                    <a href="terms.html" class="text-cyan-400 hover:text-white transition-colors mx-2">Terms of Service</a>
+                    <a href="contact.html" class="text-cyan-400 hover:text-white transition-colors mx-2">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript (FIXED: All issues resolved) -->
+    <script>
+        // CONFIGURATION
+        const SHEET_ID = '1iyNR7BnpLjTnOcI43PlpQ-2V0JdxCj7r_pTyOe67gWo';
+        const BASE_URL = 'https://opensheet.elk.sh';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwOIA4jJlznPCWwe38qM1-rqsNRwWbHIfDdVENFwmZq8DzoXgce31AYLwX0KOUAp7DiIg/exec';
+
+        // Subject lists by class
+        const SUBJECTS = {
+            'Pre-9th': ['Mathematics', 'English', 'Urdu', 'Science', 'Islamiyat'],
+            '9th': ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'Urdu', 'Islamiyat'],
+            '10th': ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'Urdu', 'Pakistan Studies', 'Islamiyat'],
+            '1st Year': ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'Urdu', 'Islamiyat'],
+            '2nd Year': ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'Urdu', 'Pakistan Studies', 'Islamiyat'],
+            'Other': ['General Studies', 'Computer Science', 'Mathematics', 'English']
+        };
+
+        let appData = { 
+            teachers: [], 
+            students: [], 
+            attendance: [], 
+            marks: [],
+            activity_log: []
+        };
+        let currentUser = null;
+        let batchMarksData = {};
+        let allStudents = [];
+        let isPrivacyMode = true;
+
+        // Toast notification function
+        function showToast(message, type = 'info', duration = 3000) {
+            const toastContainer = document.getElementById('toastContainer');
+            const toastId = 'toast-' + Date.now();
+            
+            const toast = document.createElement('div');
+            toast.id = toastId;
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `
+                <i class="fas ${getToastIcon(type)}"></i>
+                <span>${message}</span>
+                <button onclick="removeToast('${toastId}')" class="ml-auto text-white/80 hover:text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            toastContainer.appendChild(toast);
+            
+            setTimeout(() => {
+                removeToast(toastId);
+            }, duration);
+            
+            return toastId;
+        }
+        
+        function getToastIcon(type) {
+            switch(type) {
+                case 'success': return 'fa-check-circle';
+                case 'error': return 'fa-exclamation-circle';
+                case 'warning': return 'fa-exclamation-triangle';
+                case 'info': 
+                default: return 'fa-info-circle';
+            }
+        }
+        
+        function removeToast(toastId) {
+            const toast = document.getElementById(toastId);
+            if (toast) {
+                toast.style.animation = 'slideOut 0.3s ease-out forwards';
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.parentNode.removeChild(toast);
+                    }
+                }, 300);
+            }
+        }
+
+        // Log activity function
+        async function logActivity(action_type, description, details = '') {
+            const activityData = {
+                sheet: 'activity_log',
+                timestamp: new Date().toISOString(),
+                user: currentUser?.name || currentUser?.email || 'System',
+                action_type: action_type,
+                description: description,
+                details: details
+            };
+            
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: new URLSearchParams(activityData)
+                });
+                console.log('Activity logged:', activityData);
+            } catch (e) {
+                console.error('Error logging activity:', e);
+            }
+        }
+
+        // INITIAL SYNC - FIXED: Proper data loading
+        window.onload = () => {
+            // Set today's date for attendance
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('attDate').value = today;
+            
+            // Set up mobile menu toggle
+            document.getElementById('mobile-menu-button').addEventListener('click', function() {
+                const menu = document.getElementById('mobile-menu');
+                menu.classList.toggle('hidden');
+            });
+            
+            // Set default date for batch marks
+            document.getElementById('batchExamDate').value = today;
+            
+            // Load initial data
+            syncData();
+        };
+
+        // FIXED: Sync data function - properly fetches and processes data
+        async function syncData() {
+            showLoading(true, "Fetching data from database...");
+            try {
+                const [teachers, students, attendance, marks, activity_log] = await Promise.all([
+                    fetch(`${BASE_URL}/${SHEET_ID}/teachers`).then(r => r.ok ? r.json() : []),
+                    fetch(`${BASE_URL}/${SHEET_ID}/students`).then(r => r.ok ? r.json() : []),
+                    fetch(`${BASE_URL}/${SHEET_ID}/attendance`).then(r => r.ok ? r.json() : []),
+                    fetch(`${BASE_URL}/${SHEET_ID}/exam_marks`).then(r => r.ok ? r.json() : []),
+                    fetch(`${BASE_URL}/${SHEET_ID}/activity_log`).then(r => r.ok ? r.json() : [])
+                ]);
+                
+                appData = { 
+                    teachers: teachers || [], 
+                    students: students || [], 
+                    attendance: attendance || [], 
+                    marks: marks || [],
+                    activity_log: activity_log || []
+                };
+                
+                // Store all active students
+                allStudents = (appData.students || []).filter(s => s.status !== 'inactive');
+                
+                console.log("Data loaded successfully:", {
+                    teachers: appData.teachers.length,
+                    students: allStudents.length,
+                    attendance: appData.attendance.length,
+                    marks: appData.marks.length,
+                    activity_log: appData.activity_log.length
+                });
+                
+                populateAdminTables();
+                updateReports();
+                
+                showToast('Data synchronized successfully!', 'success');
+            } catch (e) {
+                console.error("Error loading data:", e);
+                showToast('Error: Could not sync with database. Please check your internet connection.', 'error', 5000);
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // FIXED: Send to sheet function - proper error handling
+        async function sendToSheet(payload) {
+            // Show loading immediately - FIXED
+            showLoading(true, "Saving to database...");
+            const body = new URLSearchParams(payload);
+            
+            try {
+                if (currentUser) {
+                    body.append('timestamp', new Date().toISOString());
+                    body.append('entered_by', currentUser.name || currentUser.email);
+                }
+                
+                const response = await fetch(SCRIPT_URL, { 
+                    method: 'POST', 
+                    mode: 'no-cors', 
+                    body: body 
+                });
+                
+                // Log activity for certain actions
+                const sheet = payload.sheet;
+                if (sheet === 'students' && payload.roll_number) {
+                    if (payload.name) {
+                        const action = payload.created_by ? 'add' : 'edit';
+                        await logActivity(
+                            action, 
+                            `${action === 'add' ? 'Added' : 'Updated'} student record`,
+                            `Roll: ${payload.roll_number}, Name: ${payload.name}, Status: ${payload.status || 'active'}`
+                        );
+                    }
+                } else if (sheet === 'students_delete') {
+                    await logActivity(
+                        'delete',
+                        'Permanently deleted student',
+                        `Roll: ${payload.roll_number}, Reason: ${payload.delete_reason}`
+                    );
+                } else if (sheet === 'exam_marks' && payload.batch_entry === 'yes') {
+                    await logActivity(
+                        'batch_save',
+                        'Saved batch exam marks',
+                        `Class: ${payload.class}, Subject: ${payload.subject}`
+                    );
+                } else if (sheet === 'attendance') {
+                    await logActivity(
+                        'edit',
+                        'Marked attendance',
+                        `Date: ${payload.date}, Students: ${payload.status}`
+                    );
+                }
+                
+                showLoading(false);
+                return true;
+            } catch (e) {
+                console.error("Save error:", e);
+                showToast('Save Error! Check your internet connection.', 'error');
+                showLoading(false);
+                return false;
+            }
+        }
+
+        // ========== FIXED LOGIN FUNCTIONS ==========
+        // Teacher Login - FIXED
+        document.getElementById('tLogin').onsubmit = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('t_email').value.trim();
+            const pass = document.getElementById('t_pass').value.trim();
+            
+            if (!email || !pass) {
+                showToast('Please enter both email and password', 'warning');
+                return;
+            }
+            
+            showLoading(true, "Authenticating...");
+            
+            // Log login attempt
+            await logActivity('login_attempt', 'Teacher login attempt', `Email: ${email}`);
+            
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 800));
+            
+            const teacher = appData.teachers.find(t => 
+                t.email.toLowerCase() === email.toLowerCase() && 
+                t.password === pass
+            );
+            
+            if (teacher) {
+                currentUser = {
+                    type: 'teacher',
+                    email: teacher.email,
+                    name: teacher.name
+                };
+                
+                // Log successful login
+                await logActivity(
+                    'login_success',
+                    'Teacher logged in successfully',
+                    `Email: ${teacher.email}`
+                );
+                
+                // Show success toast
+                showToast(`Welcome, ${teacher.name}!`, 'success');
+                
+                // Transition to admin panel
+                showLoading(false);
+                showSection('adminPanel');
+                document.getElementById('adminUser').innerText = teacher.name;
+                
+                // Refresh data after login
+                setTimeout(() => syncData(), 500);
+                
+            } else {
+                // Log failed login
+                await logActivity(
+                    'login_failed',
+                    'Teacher login failed',
+                    `Email: ${email}`
+                );
+                
+                showLoading(false);
+                showToast('Invalid Teacher Credentials', 'error');
+            }
+        };
+
+        // Student Login - FIXED
+        document.getElementById('sLogin').onsubmit = async (e) => {
+            e.preventDefault();
+            const roll = document.getElementById('s_roll').value.trim();
+            
+            if (!roll) {
+                showToast('Please enter your roll number', 'warning');
+                return;
+            }
+            
+            showLoading(true, "Authenticating...");
+            
+            // Log login attempt
+            await logActivity('login_attempt', 'Student login attempt', `Roll: ${roll}`);
+            
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 800));
+            
+            const student = appData.students.find(s => 
+                (s.roll_number || s.roll).toString() === roll && s.status !== 'inactive'
+            );
+            
+            if (student) {
+                // Log successful login
+                await logActivity(
+                    'login_success',
+                    'Student logged in successfully',
+                    `Roll: ${roll}, Name: ${student.name}`
+                );
+                
+                // Show success toast
+                showToast(`Welcome, ${student.name}!`, 'success');
+                
+                // Login user and show dashboard
+                showLoading(false);
+                loginUser(student);
+                
+            } else {
+                // Log failed login
+                await logActivity(
+                    'login_failed',
+                    'Student login failed',
+                    `Roll: ${roll}`
+                );
+                
+                showLoading(false);
+                showToast('Roll Number Not Found or Student is Inactive', 'error');
+            }
+        };
+
+        // Parent Login - FIXED
+        document.getElementById('pLogin').onsubmit = async (e) => {
+            e.preventDefault();
+            const roll = document.getElementById('p_roll').value.trim();
+            const mobile = document.getElementById('p_mobile').value.trim();
+            
+            if (!roll || !mobile) {
+                showToast('Please enter both roll number and mobile number', 'warning');
+                return;
+            }
+            
+            showLoading(true, "Authenticating...");
+            
+            // Log login attempt
+            await logActivity('login_attempt', 'Parent login attempt', `Roll: ${roll}, Mobile: ${mobile}`);
+            
+            // Simulate network delay
+            await new Promise(resolve => setTimeout(resolve, 800));
+            
+            const student = appData.students.find(s => 
+                (s.roll_number || s.roll).toString() === roll && 
+                s.parent_mobile === mobile &&
+                s.status !== 'inactive'
+            );
+            
+            if (student) {
+                // Log successful login
+                await logActivity(
+                    'login_success',
+                    'Parent logged in successfully',
+                    `Roll: ${roll}, Name: ${student.name}`
+                );
+                
+                // Show success toast
+                showToast(`Welcome! Viewing ${student.name}'s progress`, 'success');
+                
+                // Login user and show dashboard
+                showLoading(false);
+                loginUser(student);
+                
+            } else {
+                // Log failed login
+                await logActivity(
+                    'login_failed',
+                    'Parent login failed',
+                    `Roll: ${roll}, Mobile: ${mobile}`
+                );
+                
+                showLoading(false);
+                showToast('Roll Number or Mobile Number Mismatch or Student is Inactive', 'error');
+            }
+        };
+
+        function loginUser(student) {
+            currentUser = {
+                type: 'student',
+                roll: student.roll_number || student.roll,
+                name: student.name
+            };
+            
+            showSection('userDashboard');
+            
+            // Update user info
+            document.getElementById('uName').innerText = student.name;
+            document.getElementById('uRoll').innerText = student.roll_number || student.roll;
+            document.getElementById('uClass').innerText = student.class || 'Not specified';
+            document.getElementById('uMobile').innerText = student.mobile || 'Not provided';
+            document.getElementById('uEmail').innerText = student.email || 'Not provided';
+            document.getElementById('uAddress').innerText = student.address || 'Not provided';
+            document.getElementById('uParentMobile').innerText = student.parent_mobile || 'Not provided';
+            document.getElementById('uCreatedAt').innerText = student.created_at || 'Not available';
+            
+            const roll = student.roll_number || student.roll;
+            
+            // Calculate attendance rate
+            const userAttendance = appData.attendance.filter(x => x.roll_number == roll);
+            const presentCount = userAttendance.filter(x => x.status === 'Present').length;
+            const attendanceRate = userAttendance.length > 0 ? Math.round((presentCount / userAttendance.length) * 100) : 0;
+            document.getElementById('attendanceRate').innerText = `${attendanceRate}%`;
+            
+            // Update attendance table
+            const recentAttendance = userAttendance
+                .sort((a, b) => new Date(b.date) - new Date(a.date))
+                .slice(0, 10);
+            
+            document.getElementById('uAtt').innerHTML = recentAttendance.map(x => `
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="py-3 px-4">${x.date || 'N/A'}</td>
+                    <td class="py-3 px-4">
+                        <span class="status-badge ${x.status === 'Present' ? 'status-present' : x.status === 'Absent' ? 'status-absent' : 'status-late'}">
+                            ${x.status}
+                        </span>
+                    </td>
+                    <td class="py-3 px-4">${x.marked_by || 'N/A'}</td>
+                </tr>
+            `).join('');
+            
+            // Calculate average marks
+            const userMarks = appData.marks.filter(x => x.roll_number == roll);
+            document.getElementById('totalExams').innerText = userMarks.length;
+            
+            if (userMarks.length > 0) {
+                const totalPercentage = userMarks.reduce((sum, m) => {
+                    const obtained = parseFloat(m.obtained_marks) || 0;
+                    const total = parseFloat(m.total_marks) || 100;
+                    return sum + (obtained / total) * 100;
+                }, 0);
+                const averagePercentage = (totalPercentage / userMarks.length).toFixed(1);
+                document.getElementById('averageMarks').innerText = `${averagePercentage}%`;
+                
+                // Update marks table
+                const recentMarks = userMarks
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))
+                    .slice(0, 10);
+                
+                document.getElementById('uMarks').innerHTML = recentMarks.map(x => {
+                    const obtained = parseFloat(x.obtained_marks) || 0;
+                    const total = parseFloat(x.total_marks) || 100;
+                    const percentage = total > 0 ? ((obtained / total) * 100).toFixed(2) : 0;
+                    
+                    return `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="py-3 px-4">${x.subject || 'N/A'}</td>
+                        <td class="py-3 px-4">${x.exam_type || 'N/A'}</td>
+                        <td class="py-3 px-4 font-bold">${obtained}/${total}</td>
+                        <td class="py-3 px-4 font-bold ${percentage >= 50 ? 'text-green-600' : 'text-red-600'}">${percentage}%</td>
+                    </tr>
+                    `;
+                }).join('');
+            } else {
+                document.getElementById('averageMarks').innerText = 'N/A';
+                document.getElementById('uMarks').innerHTML = `
+                    <tr>
+                        <td colspan="4" class="py-8 text-center text-gray-500">
+                            No exam results available yet.
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        // FIXED: Populate admin tables with data synchronization
+        function populateAdminTables() {
+            const isTeacherView = currentUser?.type === 'teacher';
+            
+            // Get all students including inactive
+            const allStudentsWithStatus = appData.students || [];
+            const activeStudents = allStudentsWithStatus.filter(s => s.status !== 'inactive');
+            
+            // Update student count
+            document.getElementById('studentCount').innerText = activeStudents.length;
+            document.getElementById('totalStudents').textContent = activeStudents.length;
+            
+            // Populate students table - FIXED: Proper data display
+            const studentsTable = document.getElementById('studentsTable');
+            
+            if (activeStudents.length === 0) {
+                studentsTable.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="py-8 text-center text-gray-500">
+                            <div class="empty-state">
+                                <i class="fas fa-users"></i>
+                                <p class="text-lg font-medium">No students found</p>
+                                <p class="text-sm mt-1">Add your first student using the "Add Student" button above</p>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            } else {
+                studentsTable.innerHTML = activeStudents.map(s => {
+                    // Get student data
+                    const studentClass = s.class || 'N/A';
+                    const studentMobile = s.mobile || 'Not provided';
+                    const parentMobile = s.parent_mobile || s.parent_mobile_number || 'Not provided';
+                    const email = s.email || 'Not provided';
+                    const address = s.address || 'Not provided';
+                    
+                    // Determine what to show based on privacy mode
+                    const showStudentMobile = isTeacherView && isPrivacyMode ? 
+                        '<span class="privacy-mask"><i class="fas fa-eye-slash mr-1"></i>Hidden</span>' : 
+                        (studentMobile === 'Not provided' ? '<span class="text-gray-400 italic">Not provided</span>' : studentMobile);
+                    
+                    const showParentMobile = isTeacherView && isPrivacyMode ? 
+                        '<span class="privacy-mask"><i class="fas fa-eye-slash mr-1"></i>Hidden</span>' : 
+                        (parentMobile === 'Not provided' ? '<span class="text-gray-400 italic">Not provided</span>' : parentMobile);
+                    
+                    const showEmail = isTeacherView && isPrivacyMode ? 
+                        '<span class="privacy-mask"><i class="fas fa-eye-slash mr-1"></i>Hidden</span>' : 
+                        (email === 'Not provided' ? '<span class="text-gray-400 italic">Not provided</span>' : email);
+                    
+                    const showAddress = isTeacherView && isPrivacyMode ? 
+                        '<span class="privacy-mask"><i class="fas fa-eye-slash mr-1"></i>Hidden</span>' : 
+                        (address === 'Not provided' ? '<span class="text-gray-400 italic">Not provided</span>' : address);
+                    
+                    return `
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="py-3 px-4 font-medium">${s.roll_number || s.roll}</td>
+                        <td class="py-3 px-4 font-medium">${s.name}</td>
+                        <td class="py-3 px-4">${studentClass}</td>
+                        <td class="py-3 px-4">${showStudentMobile}</td>
+                        <td class="py-3 px-4">${showParentMobile}</td>
+                        <td class="py-3 px-4">${showEmail}</td>
+                        <td class="py-3 px-4">${showAddress}</td>
+                        <td class="py-3 px-4">
+                            <div class="flex gap-3 justify-center">
+                                <button onclick="editStudent('${s.roll_number || s.roll}')" 
+                                        class="btn-action-edit text-primary-600 hover:text-primary-800 p-2 rounded-full hover:bg-primary-50 transition-colors" 
+                                        title="Edit Student">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="deleteStudent('${s.roll_number || s.roll}')" 
+                                        class="btn-action-delete text-red-600 hover:text-red-800 p-2 rounded-full hover:bg-red-50 transition-colors" 
+                                        title="Delete Student">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    `;
+                }).join('');
+            }
+            
+            // Update privacy notice
+            const privacyNotice = document.querySelector('.privacy-notice');
+            if (privacyNotice && currentUser?.type === 'teacher') {
+                const eyeIcon = isPrivacyMode ? 'fa-eye-slash' : 'fa-eye';
+                const buttonText = isPrivacyMode ? 'Show Data' : 'Hide Data';
+                privacyNotice.innerHTML = `
+                    <i class="fas ${eyeIcon} mr-1"></i> 
+                    Student personal data is ${isPrivacyMode ? 'hidden' : 'visible'} for privacy protection. 
+                    <button onclick="togglePrivacyMode()" class="ml-2 text-primary-600 hover:text-primary-800 text-sm font-medium">
+                        <i class="fas ${isPrivacyMode ? 'fa-eye' : 'fa-eye-slash'} mr-1"></i>${buttonText}
+                    </button>
+                `;
+            }
+            
+            // Populate teachers table
+            const teachersTable = document.getElementById('teachersTable');
+            const teacherCount = appData.teachers.length;
+            document.getElementById('teacherCount').innerText = teacherCount;
+            document.getElementById('totalTeachers').textContent = teacherCount;
+            
+            teachersTable.innerHTML = appData.teachers.map(t => `
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="py-3 px-4 font-medium">${t.name}</td>
+                    <td class="py-3 px-4">${t.email}</td>
+                    <td class="py-3 px-4">${t.security_question || 'N/A'}</td>
+                    <td class="py-3 px-4">${t.created_at || 'N/A'}</td>
+                </tr>
+            `).join('');
+            
+            // FIXED: Populate attendance class dropdown with ALL classes
+            populateAttendanceClassDropdown();
+            
+            // Populate attendance list
+            populateAttendanceList();
+            
+            // Populate student dropdown for marks
+            const studentSelect = document.getElementById('mStudent');
+            studentSelect.innerHTML = '<option value="">Select Student</option>' + 
+                activeStudents.map(s => `
+                    <option value="${s.roll_number || s.roll}">
+                        ${s.name} (${s.class || 'N/A'}) - ${s.roll_number || s.roll}
+                    </option>
+                `).join('');
+            
+            // Populate marks table
+            const marksTable = document.getElementById('marksTable');
+            marksTable.innerHTML = appData.marks.map(m => {
+                const student = activeStudents.find(s => (s.roll_number || s.roll) == m.roll_number);
+                if (!student) return '';
+                
+                const obtained = parseFloat(m.obtained_marks) || 0;
+                const total = parseFloat(m.total_marks) || 100;
+                const percentage = total > 0 ? ((obtained / total) * 100).toFixed(2) : 0;
+                
+                return `
+                <tr class="border-b hover:bg-gray-50">
+                    <td class="py-3 px-4">${student ? student.name : m.roll_number}</td>
+                    <td class="py-3 px-4">${m.exam_type || 'N/A'}</td>
+                    <td class="py-3 px-4">${m.subject || 'N/A'}</td>
+                    <td class="py-3 px-4 font-medium">${obtained}/${total}</td>
+                    <td class="py-3 px-4 font-bold ${percentage >= 50 ? 'text-green-600' : 'text-red-600'}">${percentage}%</td>
+                    <td class="py-3 px-4">${m.date || 'N/A'}</td>
+                </tr>
+                `;
+            }).join('');
+            
+            // Initialize subject loading
+            loadSubjects();
+        }
+
+        // FIXED: Populate attendance class dropdown with ALL classes
+        function populateAttendanceClassDropdown() {
+            const classSelect = document.getElementById('attClass');
+            const activeStudents = (appData.students || []).filter(s => s.status !== 'inactive');
+            
+            // Get unique classes from all students
+            const uniqueClasses = [...new Set(activeStudents.map(s => s.class).filter(c => c))].sort();
+            
+            // Always include all standard classes even if no students yet
+            const allClasses = ['Pre-9th', '9th', '10th', '1st Year', '2nd Year', 'Other'];
+            
+            // Combine existing classes with standard classes
+            const combinedClasses = [...new Set([...allClasses, ...uniqueClasses])].sort();
+            
+            classSelect.innerHTML = '<option value="">All Classes</option>' + 
+                combinedClasses.map(c => `<option value="${c}">${c}</option>`).join('');
+        }
+
+        // TOGGLE PRIVACY MODE FUNCTION
+        function togglePrivacyMode() {
+            isPrivacyMode = !isPrivacyMode;
+            populateAdminTables();
+            
+            showToast(
+                isPrivacyMode ? 'Privacy mode enabled - Student data hidden' : 'Privacy mode disabled - Student data visible',
+                'info'
+            );
+            
+            logActivity(
+                'edit',
+                `Privacy mode ${isPrivacyMode ? 'enabled' : 'disabled'}`,
+                `Teacher: ${currentUser?.name || currentUser?.email}`
+            );
+        }
+
+        // ========== FIXED: ADD STUDENT FORM - Immediate loading ==========
+        document.getElementById('newStudentForm').onsubmit = async (e) => {
+            e.preventDefault();
+            
+            const roll = document.getElementById('nRoll').value.trim();
+            const name = document.getElementById('nName').value.trim();
+            const studentClass = document.getElementById('nClass').value.trim();
+            const mobile = document.getElementById('nMobile').value.trim();
+            
+            if (!roll || !name || !studentClass || !mobile) {
+                showToast("Please fill in all required fields", 'warning');
+                return;
+            }
+            
+            // FIXED: Show loading immediately
+            showLoading(true, "Saving to database...");
+            
+            const studentData = {
+                sheet: 'students',
+                roll_number: roll,
+                name: name,
+                class: studentClass,
+                mobile: mobile,
+                parent_mobile: document.getElementById('nParentMobile').value.trim(),
+                email: document.getElementById('nEmail').value.trim(),
+                address: document.getElementById('nAddress').value.trim(),
+                status: 'active',
+                created_at: new Date().toISOString().split('T')[0],
+                created_by: currentUser?.name || 'Admin',
+                updated_at: new Date().toISOString().split('T')[0],
+                updated_by: currentUser?.name || 'Admin'
+            };
+            
+            // Check if roll number already exists
+            const existingStudent = (appData.students || []).find(s => 
+                (s.roll_number || s.roll).toString() === studentData.roll_number
+            );
+            
+            if (existingStudent) {
+                if (existingStudent.status === 'inactive') {
+                    if (confirm(`Roll number ${studentData.roll_number} exists but is inactive. Reactivate this student?`)) {
+                        const updateData = {
+                            ...studentData,
+                            sheet: 'students',
+                            status: 'active',
+                            updated_at: new Date().toISOString().split('T')[0],
+                            updated_by: currentUser?.name || 'Admin'
+                        };
+                        
+                        const success = await sendToSheet(updateData);
+                        if (success) {
+                            showToast("Student reactivated successfully!", 'success');
+                            toggleModal('addStudentModal');
+                            e.target.reset();
+                            setTimeout(() => syncData(), 1000);
+                        }
+                    } else {
+                        showLoading(false);
+                    }
+                } else {
+                    showLoading(false);
+                    showToast(`Roll number ${studentData.roll_number} already exists`, 'warning');
+                }
+                return;
+            }
+            
+            const success = await sendToSheet(studentData);
+            if (success) {
+                showToast("Student added successfully!", 'success');
+                toggleModal('addStudentModal');
+                e.target.reset();
+                setTimeout(() => syncData(), 1000);
+            }
+        };
+
+        // ========== FIXED: BATCH MARKS ENTRY ==========
+        function loadBatchStudents() {
+            const selectedClass = document.getElementById('batchClass').value;
+            if (!selectedClass) return;
+            
+            // Update subject dropdown
+            const subjectSelect = document.getElementById('batchSubject');
+            if (SUBJECTS[selectedClass]) {
+                subjectSelect.innerHTML = '<option value="">Select Subject</option>' + 
+                    SUBJECTS[selectedClass].map(subject => `<option value="${subject}">${subject}</option>`).join('');
+            }
+            
+            // Get active students for selected class
+            const classStudents = (appData.students || []).filter(s => s.class === selectedClass && s.status !== 'inactive');
+            
+            if (classStudents.length === 0) {
+                document.getElementById('batchMarksGrid').innerHTML = `
+                    <div class="marks-grid-header" style="grid-column: 1 / -1;">
+                        No active students found for ${selectedClass}
+                    </div>
+                `;
+                document.getElementById('saveBatchBtn').disabled = true;
+                document.getElementById('totalStudentsCount').textContent = '0';
+                document.getElementById('enteredCount').textContent = '0';
+                updateProgressBar(0, 0);
+                return;
+            }
+            
+            // Initialize batch marks data
+            batchMarksData = {
+                class: selectedClass,
+                students: classStudents,
+                marks: {}
+            };
+            
+            // Build marks grid - 4 columns
+            let gridHTML = `
+                <div class="marks-grid-header">Student Name</div>
+                <div class="marks-grid-header">Roll No</div>
+                <div class="marks-grid-header">Obtained Marks</div>
+                <div class="marks-grid-header">Percentage</div>
+            `;
+            
+            classStudents.forEach((student) => {
+                const roll = student.roll_number || student.roll;
+                gridHTML += `
+                    <div class="marks-grid-cell font-medium text-left">${student.name}</div>
+                    <div class="marks-grid-cell">${roll}</div>
+                    <div class="marks-grid-cell">
+                        <input type="number" 
+                               id="obtained_${roll}" 
+                               class="marks-input" 
+                               placeholder="Enter marks" 
+                               min="0" 
+                               step="0.5"
+                               onchange="updateBatchPercentage('${roll}')"
+                               oninput="updateProgress()">
+                    </div>
+                    <div class="marks-grid-cell">
+                        <span id="percent_${roll}" class="font-bold">0%</span>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('batchMarksGrid').innerHTML = gridHTML;
+            document.getElementById('saveBatchBtn').disabled = true;
+            document.getElementById('totalStudentsCount').textContent = classStudents.length;
+            document.getElementById('enteredCount').textContent = '0';
+            updateProgressBar(0, classStudents.length);
+        }
+
+        // UPDATED: Function to calculate percentage using global total marks
+        function updateBatchPercentage(roll) {
+            const obtainedInput = document.getElementById(`obtained_${roll}`);
+            const percentElement = document.getElementById(`percent_${roll}`);
+            
+            const obtained = parseFloat(obtainedInput.value) || 0;
+            const total = parseFloat(document.getElementById('globalTotalMarks').value) || 100;
+            
+            if (obtained > total) {
+                obtainedInput.classList.add('invalid');
+                obtainedInput.classList.remove('valid');
+                percentElement.textContent = 'Invalid';
+                percentElement.className = 'font-bold text-red-600';
+            } else if (obtained > 0 && total > 0) {
+                obtainedInput.classList.remove('invalid');
+                obtainedInput.classList.add('valid');
+                const percentage = total > 0 ? ((obtained / total) * 100).toFixed(2) : 0;
+                percentElement.textContent = `${percentage}%`;
+                percentElement.className = `font-bold ${percentage >= 50 ? 'text-green-600' : 'text-red-600'}`;
+                
+                // Store in batch data
+                batchMarksData.marks[roll] = {
+                    obtained: obtained,
+                    total: total,
+                    percentage: percentage
+                };
+            } else {
+                obtainedInput.classList.remove('valid', 'invalid');
+                percentElement.textContent = '0%';
+                percentElement.className = 'font-bold';
+                delete batchMarksData.marks[roll];
+            }
+        }
+
+        function updateProgress() {
+            const totalStudents = batchMarksData.students?.length || 0;
+            const enteredCount = Object.keys(batchMarksData.marks).length;
+            
+            document.getElementById('enteredCount').textContent = enteredCount;
+            document.getElementById('saveBatchBtn').disabled = enteredCount === 0;
+            
+            updateProgressBar(enteredCount, totalStudents);
+            
+            const progressText = document.getElementById('progressText');
+            if (enteredCount === totalStudents) {
+                progressText.textContent = 'All marks entered! Ready to save.';
+                progressText.className = 'text-sm text-green-600 font-medium';
+            } else {
+                progressText.textContent = `${enteredCount} of ${totalStudents} students entered`;
+                progressText.className = 'text-sm text-gray-600';
+            }
+        }
+
+        function updateProgressBar(entered, total) {
+            const percentage = total > 0 ? (entered / total) * 100 : 0;
+            const progressFill = document.getElementById('progressFill');
+            progressFill.style.width = `${percentage}%`;
+        }
+
+        function setAllMarks() {
+            const value = parseFloat(document.getElementById('setAllValue').value);
+            if (isNaN(value)) {
+                showToast('Please enter a valid number', 'warning');
+                return;
+            }
+            
+            batchMarksData.students?.forEach(student => {
+                const roll = student.roll_number || student.roll;
+                const input = document.getElementById(`obtained_${roll}`);
+                if (input) {
+                    input.value = value;
+                    updateBatchPercentage(roll);
+                }
+            });
+            
+            updateProgress();
+            showToast(`Set all marks to ${value}`, 'info');
+        }
+
+        function clearAllMarks() {
+            if (!confirm('Clear all entered marks?')) return;
+            
+            batchMarksData.students?.forEach(student => {
+                const roll = student.roll_number || student.roll;
+                const obtainedInput = document.getElementById(`obtained_${roll}`);
+                if (obtainedInput) {
+                    obtainedInput.value = '';
+                    obtainedInput.classList.remove('valid', 'invalid');
+                }
+                const percentElement = document.getElementById(`percent_${roll}`);
+                if (percentElement) {
+                    percentElement.textContent = '0%';
+                    percentElement.className = 'font-bold';
+                }
+            });
+            
+            batchMarksData.marks = {};
+            updateProgress();
+            showToast('All marks cleared', 'info');
+        }
+
+        function downloadTemplate() {
+            const selectedClass = document.getElementById('batchClass').value;
+            const selectedSubject = document.getElementById('batchSubject').value;
+            const examType = document.getElementById('batchExamType').value;
+            
+            if (!selectedClass || !selectedSubject || !examType) {
+                showToast('Please select class, subject, and exam type first', 'warning');
+                return;
+            }
+            
+            const totalMarks = document.getElementById('globalTotalMarks').value || 100;
+            
+            let csvContent = "Roll No,Student Name,Obtained Marks\n";
+            
+            batchMarksData.students?.forEach(student => {
+                csvContent += `${student.roll_number || student.roll},"${student.name}",\n`;
+            });
+            
+            csvContent += `\nNote: Total marks for all students = ${totalMarks}\n`;
+            
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `Marks_Template_${selectedClass}_${selectedSubject}_${examType}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            showToast('Template downloaded successfully', 'success');
+        }
+
+        // UPDATED: Save batch marks using global total marks
+        async function saveBatchMarks() {
+            const selectedClass = document.getElementById('batchClass').value;
+            const selectedSubject = document.getElementById('batchSubject').value;
+            const examType = document.getElementById('batchExamType').value;
+            const examDate = document.getElementById('batchExamDate').value || new Date().toISOString().split('T')[0];
+            const globalTotalMarks = parseFloat(document.getElementById('globalTotalMarks').value) || 100;
+            
+            if (!selectedClass || !selectedSubject || !examType) {
+                showToast('Please select class, subject, and exam type', 'warning');
+                return;
+            }
+            
+            if (Object.keys(batchMarksData.marks).length === 0) {
+                showToast('No marks entered to save', 'warning');
+                return;
+            }
+            
+            if (!confirm(`Save ${Object.keys(batchMarksData.marks).length} exam results for ${selectedClass} ${selectedSubject}?`)) {
+                return;
+            }
+            
+            showLoading(true, 'Saving batch marks...');
+            showToast('Saving marks to database...', 'info', 3000);
+            
+            try {
+                for (const [roll, markData] of Object.entries(batchMarksData.marks)) {
+                    const marksData = {
+                        sheet: 'exam_marks',
+                        roll_number: roll,
+                        exam_type: examType,
+                        subject: selectedSubject,
+                        total_marks: globalTotalMarks,
+                        obtained_marks: markData.obtained,
+                        percentage: markData.percentage,
+                        date: examDate,
+                        entered_by: currentUser?.name || 'Admin',
+                        class: selectedClass,
+                        batch_entry: 'yes'
+                    };
+                    
+                    await sendToSheet(marksData);
+                }
+                
+                showToast(`Successfully saved ${Object.keys(batchMarksData.marks).length} exam results!`, 'success');
+                
+                // Reset batch data
+                batchMarksData = {};
+                document.getElementById('batchMarksGrid').innerHTML = '';
+                document.getElementById('saveBatchBtn').disabled = true;
+                updateProgressBar(0, 0);
+                
+                setTimeout(() => syncData(), 1000);
+                
+            } catch (error) {
+                console.error('Error saving batch marks:', error);
+                showToast('Error saving marks. Please try again.', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // EXISTING FUNCTIONS (Updated)
+        function loadSubjects() {
+            const selectedClass = document.getElementById('mClass').value;
+            const subjectSelect = document.getElementById('mSubject');
+            const subjectGrid = document.getElementById('subjectGrid');
+            
+            if (selectedClass && SUBJECTS[selectedClass]) {
+                const subjects = SUBJECTS[selectedClass];
+                
+                subjectSelect.innerHTML = '<option value="">Select Subject</option>' + 
+                    subjects.map(subject => `<option value="${subject}">${subject}</option>`).join('');
+                
+                subjectGrid.innerHTML = subjects.map(subject => `
+                    <div class="subject-option" onclick="selectSubject('${subject}')">
+                        <div class="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <span>${subject}</span>
+                    </div>
+                `).join('');
+                
+                if (window.innerWidth < 768) {
+                    subjectGrid.classList.remove('hidden');
+                    document.getElementById('subjectContainer').classList.add('hidden');
+                } else {
+                    subjectGrid.classList.remove('hidden');
+                }
+            } else {
+                subjectSelect.innerHTML = '<option value="">Select Class First</option>';
+                subjectGrid.innerHTML = '<div class="text-gray-500 text-center py-4">Select a class first to load subjects</div>';
+                subjectGrid.classList.remove('hidden');
+            }
+            
+            const batchSubject = document.getElementById('batchSubject');
+            if (selectedClass && SUBJECTS[selectedClass]) {
+                batchSubject.innerHTML = '<option value="">Select Subject</option>' + 
+                    SUBJECTS[selectedClass].map(subject => `<option value="${subject}">${subject}</option>`).join('');
+            }
+        }
+
+        function selectSubject(subject) {
+            document.getElementById('mSubject').value = subject;
+            
+            document.querySelectorAll('.subject-option').forEach(option => {
+                option.classList.remove('selected');
+                const subjectName = option.querySelector('span').textContent;
+                if (subjectName === subject) {
+                    option.classList.add('selected');
+                }
+            });
+            
+            const subjectSelect = document.getElementById('mSubject');
+            subjectSelect.value = subject;
+            
+            showToast(`Selected subject: ${subject}`, 'info', 1500);
+        }
+
+        function populateAttendanceList() {
+            const attendanceList = document.getElementById('attendanceList');
+            const today = new Date().toISOString().split('T')[0];
+            const selectedDate = document.getElementById('attDate').value || today;
+            const selectedClass = document.getElementById('attClass').value;
+            
+            let filteredStudents = (appData.students || []).filter(s => s.status !== 'inactive');
+            if (selectedClass) {
+                filteredStudents = filteredStudents.filter(s => s.class === selectedClass);
+            }
+            
+            const totalCount = filteredStudents.length;
+            document.getElementById('totalCount').innerText = totalCount;
+            
+            let markedCount = 0;
+            
+            attendanceList.innerHTML = filteredStudents.map(s => {
+                const existingAttendance = appData.attendance.find(a => 
+                    a.roll_number == (s.roll_number || s.roll) && a.date == selectedDate
+                );
+                
+                if (existingAttendance) markedCount++;
+                
+                return `
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-gray-50 rounded-xl border hover:bg-gray-100 transition-colors">
+                    <div class="mb-3 sm:mb-0">
+                        <div class="font-medium text-gray-800">${s.name}</div>
+                        <div class="text-sm text-gray-600">${s.roll_number || s.roll} - ${s.class || 'N/A'}</div>
+                    </div>
+                    <div class="flex gap-3">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="at_${s.roll_number || s.roll}" value="Present" 
+                                ${existingAttendance?.status === 'Present' ? 'checked' : ''}
+                                class="mr-2 h-5 w-5 text-green-500 focus:ring-green-400">
+                            <span class="text-green-700">Present</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="at_${s.roll_number || s.roll}" value="Absent"
+                                ${existingAttendance?.status === 'Absent' ? 'checked' : ''}
+                                class="mr-2 h-5 w-5 text-red-500 focus:ring-red-400">
+                            <span class="text-red-700">Absent</span>
+                        </label>
+                        <label class="flex items-center cursor-pointer">
+                            <input type="radio" name="at_${s.roll_number || s.roll}" value="Late"
+                                ${existingAttendance?.status === 'Late' ? 'checked' : ''}
+                                class="mr-2 h-5 w-5 text-amber-500 focus:ring-amber-400">
+                            <span class="text-amber-700">Late</span>
+                        </label>
+                    </div>
+                </div>
+                `;
+            }).join('');
+            
+            document.getElementById('markedCount').innerText = markedCount;
+        }
+
+        function markAllPresent() {
+            document.querySelectorAll('input[type="radio"][value="Present"]').forEach(radio => {
+                radio.checked = true;
+            });
+            updateMarkedCount();
+            showToast('All students marked as Present', 'info');
+        }
+
+        function markAllAbsent() {
+            document.querySelectorAll('input[type="radio"][value="Absent"]').forEach(radio => {
+                radio.checked = true;
+            });
+            updateMarkedCount();
+            showToast('All students marked as Absent', 'info');
+        }
+
+        function filterAttendanceByClass() {
+            populateAttendanceList();
+        }
+
+        async function saveAttendanceBatch() {
+            const date = document.getElementById('attDate').value || new Date().toISOString().split('T')[0];
+            const selectedClass = document.getElementById('attClass').value;
+            
+            let studentsToMark = (appData.students || []).filter(s => s.status !== 'inactive');
+            if (selectedClass) {
+                studentsToMark = studentsToMark.filter(s => s.class === selectedClass);
+            }
+            
+            if (studentsToMark.length === 0) {
+                showToast("No students found to mark attendance.", 'warning');
+                return;
+            }
+            
+            showLoading(true, "Saving attendance...");
+            showToast('Saving attendance data...', 'info', 3000);
+            
+            try {
+                const attendanceData = [];
+                
+                studentsToMark.forEach(student => {
+                    const roll = student.roll_number || student.roll;
+                    const radio = document.querySelector(`input[name="at_${roll}"]:checked`);
+                    const status = radio ? radio.value : 'Absent';
+                    
+                    attendanceData.push({
+                        sheet: 'attendance',
+                        roll_number: roll,
+                        date: date,
+                        status: status,
+                        marked_by: currentUser?.name || 'Admin'
+                    });
+                });
+                
+                const savePromises = attendanceData.map(data => sendToSheet(data));
+                await Promise.all(savePromises);
+                
+                showToast(`Attendance saved for ${attendanceData.length} students!`, 'success');
+                
+                populateAttendanceList();
+                
+            } catch (error) {
+                console.error('Error saving attendance:', error);
+                showToast('Error saving attendance. Please try again.', 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        function updateMarkedCount() {
+            const radios = document.querySelectorAll('input[type="radio"]:checked');
+            const markedCount = radios.length;
+            document.getElementById('markedCount').innerText = markedCount;
+        }
+
+        // Add new teacher
+        document.getElementById('newTeacherForm').onsubmit = async (e) => {
+            e.preventDefault();
+            
+            const teacherData = {
+                sheet: 'teachers',
+                name: document.getElementById('tName').value.trim(),
+                email: document.getElementById('tEmail').value.trim(),
+                password: document.getElementById('tPassword').value.trim(),
+                security_question: document.getElementById('tSecurityQuestion').value.trim(),
+                security_answer: document.getElementById('tSecurityAnswer').value.trim(),
+                created_at: new Date().toISOString().split('T')[0]
+            };
+            
+            const success = await sendToSheet(teacherData);
+            if (success) {
+                showToast("Teacher added successfully!", 'success');
+                toggleModal('addTeacherModal');
+                e.target.reset();
+                setTimeout(() => syncData(), 500);
+            }
+        };
+
+        // Add exam marks
+        document.getElementById('mForm').onsubmit = async (e) => {
+            e.preventDefault();
+            
+            const roll = document.getElementById('mStudent').value;
+            const student = (appData.students || []).find(s => (s.roll_number || s.roll).toString() === roll);
+            const studentClass = student?.class || '';
+            
+            const obtained = parseFloat(document.getElementById('mObtained').value);
+            const total = parseFloat(document.getElementById('mTotal').value);
+            const percentage = total > 0 ? ((obtained / total) * 100).toFixed(2) : 0;
+            
+            const marksData = {
+                sheet: 'exam_marks',
+                roll_number: roll,
+                exam_type: document.getElementById('mExamType').value,
+                subject: document.getElementById('mSubject').value.trim(),
+                total_marks: total,
+                obtained_marks: obtained,
+                percentage: percentage,
+                date: new Date().toISOString().split('T')[0],
+                entered_by: currentUser?.name || 'Admin',
+                class: studentClass,
+                batch_entry: 'no'
+            };
+            
+            const success = await sendToSheet(marksData);
+            if (success) {
+                showToast("Exam marks added successfully!", 'success');
+                e.target.reset();
+                setTimeout(() => syncData(), 500);
+            }
+        };
+
+        function updateReports() {
+            const activeStudents = (appData.students || []).filter(s => s.status !== 'inactive');
+            document.getElementById('totalStudents').textContent = activeStudents.length;
+            document.getElementById('totalTeachers').textContent = appData.teachers.length;
+            
+            const today = new Date().toISOString().split('T')[0];
+            const todayAttendance = appData.attendance.filter(a => a.date === today);
+            const presentCount = todayAttendance.filter(a => a.status === 'Present').length;
+            const totalCount = todayAttendance.length;
+            const attendancePercentage = totalCount > 0 ? Math.round((presentCount / totalCount) * 100) : 0;
+            
+            document.getElementById('todayAttendance').textContent = `${attendancePercentage}%`;
+            
+            const recentActivityElem = document.getElementById('recentActivity');
+            const recentActivity = [...(appData.activity_log || [])]
+                .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+                .slice(0, 5);
+            
+            recentActivityElem.innerHTML = recentActivity.map(log => {
+                return `
+                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border">
+                    <div>
+                        <div class="font-medium text-sm">${log.user || 'System'}</div>
+                        <div class="text-xs text-gray-600">${log.description || 'N/A'}</div>
+                    </div>
+                    <span class="text-xs text-gray-500">${formatTimeAgo(log.timestamp)}</span>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // Helper function for time formatting
+        function formatTimeAgo(timestamp) {
+            if (!timestamp) return 'Just now';
+            
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+            
+            if (diffMins < 60) return `${diffMins}m ago`;
+            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffDays < 7) return `${diffDays}d ago`;
+            return date.toLocaleDateString();
+        }
+
+        // UI HELPERS
+        function showSection(id) {
+            ['loginScreen', 'teacherForm', 'parentForm', 'studentForm', 'adminPanel', 'userDashboard'].forEach(s => {
+                const elem = document.getElementById(s);
+                if (elem) elem.classList.add('hidden');
+            });
+            const target = document.getElementById(id);
+            if (target) target.classList.remove('hidden');
+        }
+
+        function openTab(evt, tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => {
+                c.classList.remove('active');
+            });
+            
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active');
+            });
+            
+            const tabContent = document.getElementById(tabId);
+            if (tabContent) {
+                tabContent.classList.add('active');
+            }
+            
+            if (evt && evt.currentTarget) {
+                evt.currentTarget.classList.add('active');
+            }
+            
+            if (tabId === 'tab-batch-marks') {
+                loadBatchStudents();
+            }
+        }
+
+        function toggleModal(id) {
+            const modal = document.getElementById(id);
+            if (modal) {
+                modal.classList.toggle('hidden');
+            }
+        }
+
+        function showLoading(show, text = "") {
+            const loading = document.getElementById('loading');
+            const loadingText = document.getElementById('loadingText');
+            
+            if (loading) {
+                loading.classList.toggle('hidden', !show);
+            }
+            
+            if (loadingText && text) {
+                loadingText.innerText = text;
+            }
+        }
+
+        async function logout() {
+            if (currentUser) {
+                await logActivity(
+                    'logout',
+                    'User logged out',
+                    `User: ${currentUser.name || currentUser.email}`
+                );
+                
+                showToast(`Goodbye, ${currentUser.name || 'User'}!`, 'info');
+            }
+            currentUser = null;
+            
+            setTimeout(() => {
+                location.reload();
+            }, 1000);
+        }
+
+        // Initialize event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('change', function(e) {
+                if (e.target.type === 'radio' && e.target.name.startsWith('at_')) {
+                    updateMarkedCount();
+                }
+            });
+            
+            const attDate = document.getElementById('attDate');
+            if (attDate) {
+                attDate.addEventListener('change', populateAttendanceList);
+            }
+        });
+
+        // Handle window resize for subject selection
+        window.addEventListener('resize', loadSubjects);
+        
+        // Initialize subject grid
+        loadSubjects();
+    </script>
 </body>
 </html>
