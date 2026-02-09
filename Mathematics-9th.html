@@ -39,7 +39,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.online/images/math-apple-touch-icon.png" />
   <link rel="manifest" href="https://hiraacademy.online/images/math-site.webmanifest" />
 
-  <meta name="theme-color" content="#0d6efd" />
+  <meta name="theme-color" content="#0f766e" />
   <meta name="google-site-verification" content="PoG2THxUheASrY2fAcLy7YogjEOxZiE7CJvJeMx_ivs" />
 
   <!-- Google Analytics -->
@@ -57,54 +57,282 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
   </noscript>
 
   <!-- Tailwind CSS -->
   <script defer src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Styles -->
+  <!-- Custom Styles -->
   <style>
-    body { 
-      font-family: 'Poppins', 'Cambria Math', sans-serif;
+    :root {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --secondary: #2563eb;
+      --accent: #7c3aed;
+      --light: #f8fafc;
+      --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+      --card-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    body {
+      font-family: 'Inter', 'Poppins', sans-serif;
       background-color: #f9fafb;
+      color: #1f2937;
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
+    
+    .header-gradient {
+      background: linear-gradient(135deg, #0f766e 0%, #0891b2 100%);
+    }
+    
     .chapter-card {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
       overflow: hidden;
-      transition: all 0.3s;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid #e5e7eb;
+      margin-bottom: 1.5rem;
     }
-    .chapter-header { cursor: pointer; padding: 1rem; margin-bottom: 0.5rem; }
-    .chapter-card.open .chapter-content { display: block; }
-    .chapter-content { display: none; border-top: 1px solid #e5e7eb; padding: 1rem 1.5rem; }
+    
+    .chapter-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: #cbd5e1;
+    }
+    
+    .chapter-card.open {
+      border-left: 4px solid var(--primary);
+    }
+    
+    .chapter-header {
+      cursor: pointer;
+      padding: 1.25rem 1.5rem;
+      transition: background-color 0.2s;
+    }
+    
+    .chapter-header:hover {
+      background-color: #f8fafc;
+    }
+    
+    .chapter-content {
+      display: none;
+      border-top: 1px solid #f1f5f9;
+      padding: 1.5rem;
+      background-color: #f8fafc;
+    }
+    
+    .chapter-card.open .chapter-content {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
     .btn-view {
-      background-color: #0d6efd;
+      background-color: var(--primary);
       color: white;
-      padding: 6px 14px;
-      border-radius: 9999px;
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
       font-weight: 500;
-      transition: background 0.3s;
+      font-size: 0.875rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 2.5rem;
+      box-shadow: 0 2px 5px rgba(15, 118, 110, 0.2);
     }
-    .btn-view:hover { background-color: #0b5ed7; }
-    img { max-width: 100%; height: auto; }
-    .back-to-top {
-      position: fixed; bottom: 30px; right: 30px;
-      width: 50px; height: 50px;
-      background-color: #0d6efd; color: white;
-      border-radius: 50%; border: none;
-      font-size: 20px; cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      opacity: 0; visibility: hidden;
+    
+    .btn-view:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.3);
+    }
+    
+    .btn-view:active {
+      transform: translateY(0);
+    }
+    
+    .new-badge {
+      background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.025em;
+      box-shadow: 0 2px 5px rgba(236, 72, 153, 0.2);
+    }
+    
+    .practice-banner {
+      background: linear-gradient(135deg, #0ea5e9 0%, #3b82f6 100%);
+      color: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
+      position: relative;
+    }
+    
+    .practice-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+      border-radius: 50%;
+    }
+    
+    .search-container {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem 1rem 3.5rem;
+      border-radius: 50px;
+      border: 2px solid #e5e7eb;
+      font-size: 1rem;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       transition: all 0.3s;
     }
-    .back-to-top.show { opacity: 1; visibility: visible; }
-    .back-to-top:hover { background-color: #0b5ed7; transform: translateY(-3px); }
+    
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 6px 20px rgba(15, 118, 110, 0.15);
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      font-size: 1.25rem;
+    }
+    
+    .toggle-icon {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.25rem;
+      transition: transform 0.3s;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(15, 118, 110, 0.1);
+    }
+    
+    .chapter-card.open .toggle-icon {
+      transform: rotate(180deg);
+      background-color: rgba(15, 118, 110, 0.2);
+    }
+    
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 3.5rem;
+      height: 3.5rem;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .unit-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .chapter-header {
+        padding: 1rem 1.25rem;
+      }
+      
+      .chapter-content {
+        padding: 1.25rem 1rem;
+      }
+      
+      .btn-view {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+      
+      .search-input {
+        padding: 0.875rem 1.25rem 0.875rem 3rem;
+        font-size: 0.9375rem;
+      }
+      
+      .search-icon {
+        left: 1.25rem;
+      }
+      
+      .back-to-top {
+        width: 3rem;
+        height: 3rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 640px) {
+      .unit-icon {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.75rem;
+      }
+    }
+    
+    /* Animation for search results */
+    .search-highlight {
+      background-color: #fef3c7;
+      border-radius: 4px;
+      padding: 0 2px;
+    }
   </style>
 
   <!-- Structured Data: Article -->
@@ -113,7 +341,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Class 9 Mathematics Notes | Hira Science Academy – PECTAA 2025 Syllabus",
-    "description": "Download free Class 9 Mathematics Notes for 2025 Punjab PECTAA syllabus. Includes solved exercises, review questions, definitions, and MCQs for practice.",
+    "description": "Download free Class 9 Mathematics Notes for 2025 Punjab PECTAA syllabus. Each chapter includes solved exercises, review questions, definitions, and MCQs for practice.",
     "author": { "@type": "Organization", "name": "Hira Science Academy" },
     "publisher": {
       "@type": "Organization",
@@ -124,7 +352,9 @@
       }
     },
     "url": "https://hiraacademy.online/Mathematics-9th.html",
-    "image": "https://hiraacademy.online/images/math-9th-notes-pctb-2025.jpg"
+    "image": "https://hiraacademy.online/images/math-9th-notes-pctb-2025.jpg",
+    "datePublished": "2025-01-01",
+    "educationalLevel": "Secondary"
   }
   </script>
 
@@ -283,657 +513,1380 @@
 </script>
 </head>
 
-
-
 <body class="text-gray-800">
 
- <!-- Improved Navigation Bar with Scroll-Spy -->
-<nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-20 items-center">
-      <!-- Logo -->
-      <div class="flex-shrink-0 flex items-center">
-        <a href="index.html" class="flex items-center gap-3 group transition duration-300">
-          <img 
-            src="https://www.hiraacademy.online/images/logo.webp" 
-            alt="Hira Science Academy"
-            class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-          
-          <!-- FIXED: Added fallback color and proper gradient text -->
-          <span class="text-2xl font-bold text-primary-600 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
-            Hira Science Academy
-          </span>
-        </a>
-      </div>
+  <!-- Improved Navigation Bar -->
+  <nav class="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <a href="index.html" class="flex items-center gap-3 group transition duration-300">
+            <img 
+              src="https://www.hiraacademy.online/images/logo.webp" 
+              alt="Hira Science Academy"
+              class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
+            
+            <span class="text-2xl font-bold text-primary-600 bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
+              Hira Science Academy
+            </span>
+          </a>
+        </div>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:ml-10 md:flex md:space-x-8">
-        <a href="index.html#home" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
-        <a href="index.html#notes" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
-        <a href="index.html#courses" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
-        <a href="index.html#features" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
-        <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
-        <a href="index.html#contact" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
-        <a href="index.html#blog-preview" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Blog</a>
-      </div>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:ml-10 md:flex md:space-x-8">
+          <a href="index.html#home" class="nav-link text-gray-900 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+          <a href="index.html#notes" class="nav-link text-gray-900 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
+          <a href="index.html#courses" class="nav-link text-gray-900 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
+          <a href="index.html#features" class="nav-link text-gray-900 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
+          <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
+          <a href="index.html#contact" class="nav-link text-gray-900 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
+          <a href="index.html#blog-preview" class="nav-link text-gray-900 hover:text-teal-600 px-3 py-2 text-sm font-medium transition-colors">Blog</a>
+        </div>
 
-      <!-- Mobile menu button -->
-      <div class="-mr-2 flex items-center md:hidden">
-        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
-          <span class="sr-only">Open main menu</span>
-          <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
+        <!-- Mobile menu button -->
+        <div class="-mr-2 flex items-center md:hidden">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-teal-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-teal-500">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Home</a>
-      <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Notes</a>
-      <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Courses</a>
-      <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Why Us</a>
-      <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Testimonials</a>
-      <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Contact</a>
-      <a href="index.html#blog-preview" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Blog</a>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 transition-colors">Home</a>
+        <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 transition-colors">Notes</a>
+        <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 transition-colors">Courses</a>
+        <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 transition-colors">Why Us</a>
+        <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 transition-colors">Testimonials</a>
+        <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 transition-colors">Contact</a>
+        <a href="index.html#blog-preview" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50 transition-colors">Blog</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-900 to-cyan-700 text-white py-12 text-center shadow-lg">
-    <h1 class="text-3xl font-bold">Class 9 Mathematics Notes</h1>
-    <p class="mt-2 text-blue-100">Based on Punjab PECTAA 2025 syllabus – Free PDF Notes, Exercises & MCQs</p>
-    <!-- ADD THIS BUTTON -->
-    <div class="mt-4">
-     <div class="flex justify-center flex-wrap gap-4 mt-4">
-  <a href="https://hiraacademy.online/Math-9th-Definitions.html" 
-     class="bg-white text-blue-700 px-6 py-3 rounded-full font-semibold hover:bg-blue-50 hover:shadow-md transition duration-300 text-center">
-    📚 View All Definitions
-  </a>
-
-  <a href="https://hiraacademy.online/smart-reduced-syllabus-grade9-mathematics-2026.html" 
-     class="bg-yellow-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-yellow-600 hover:shadow-md transition duration-300 text-center">
-    📋 PECTAA 2026 Syllabus
-  </a>
-</div>
-
+  <header class="header-gradient text-white py-16 text-center shadow-lg">
+    <div class="max-w-5xl mx-auto px-6">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Class 9 Mathematics Notes</h1>
+      <p class="text-xl text-teal-100 mb-2">PECTAA 2025 Syllabus | Punjab Board</p>
+      <p class="text-lg text-teal-200 mb-6">Complete Notes with Solved Exercises, Definitions & MCQs</p>
+      <p class="text-teal-50">Prepared by Hira Science Academy</p>
+      <!-- Buttons -->
+      <div class="mt-6 flex justify-center flex-wrap gap-4">
+        <a href="https://hiraacademy.online/Math-9th-Definitions.html" 
+           class="bg-white text-teal-700 px-6 py-3 rounded-full font-semibold hover:bg-teal-50 hover:shadow-md transition duration-300 text-center">
+          📚 View All Definitions
+        </a>
+        <a href="https://hiraacademy.online/smart-reduced-syllabus-grade9-mathematics-2026.html" 
+           class="bg-yellow-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-yellow-600 hover:shadow-md transition duration-300 text-center">
+          📋 PECTAA 2026 Syllabus
+        </a>
+      </div>
     </div>
   </header>
 
-  <!-- Search -->
-  <div class="max-w-4xl mx-auto px-6 mt-10 mb-8 text-center">
-    <input id="searchInput" type="text" placeholder="🔍 Search chapters or exercises..."
-           class="w-full md:w-2/3 px-4 py-3 border rounded-full shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none text-center">
-  </div>
+  <!-- Enhanced Search Section -->
+  <section class="max-w-4xl mx-auto px-6 mt-12 mb-8">
+    <div class="search-container">
+      <div class="search-icon">🔍</div>
+      <input 
+        id="searchInput" 
+        type="text" 
+        placeholder="Search for chapters, exercises, or topics..."
+        class="search-input"
+        aria-label="Search mathematics notes">
+      <div class="text-sm text-gray-500 mt-2 text-center">Try searching for "Real Numbers", "Exercise 1.1", or "Trigonometry"</div>
+    </div>
+  </section>
 
   <!-- 📘 Mathematics Class 9 Book Section -->
-  <section class="max-w-5xl mx-auto px-6 mb-10 flex flex-col md:flex-row items-center justify-between gap-8">
+  <section class="max-w-6xl mx-auto px-6 mb-12 flex flex-col md:flex-row items-center justify-between gap-10">
   
-  <!-- Left side: Intro content -->
-  <div class="md:w-2/3 text-center md:text-left">
-    <h2 class="text-2xl font-bold text-blue-800 mb-3">
-      Class 9 Mathematics Book – Punjab Curriculum (PCTB / PECTAA 2025)
-    </h2>
-    <p class="text-gray-700 leading-relaxed text-justify">
-      Access the complete <strong>Class 9 Mathematics notes (PECTAA 2025)</strong> with 
-      <strong>solved exercises, definitions, theorems, examples, and review MCQs</strong>. 
-      These notes follow the latest syllabus prescribed by the 
-      <strong>Punjab Education Curriculum Training and Assessment Authority (PECTAA)</strong>, 
-      formerly known as the <strong>Punjab Curriculum and Textbook Board (PCTB)</strong>.
-    </p>
-    <p class="text-gray-700 mt-3 leading-relaxed text-justify">
-      The content is carefully structured for both <strong>English and Urdu Medium</strong> students, 
-      helping them strengthen mathematical concepts, practice problem-solving, and prepare confidently 
-      for board examinations. Perfect for <strong>students, teachers, and exam candidates</strong> who 
-      prefer well-organized and authentic study materials.
-    </p>
-  </div>
+    <!-- Left side: Intro content -->
+    <div class="md:w-2/3 text-center md:text-left">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Class 9 Mathematics Book – Punjab Curriculum (PCTB / PECTAA 2025)
+      </h2>
+      <p class="text-gray-700 leading-relaxed text-justify mb-4">
+        Access the complete <strong class="text-teal-700">Class 9 Mathematics notes (PECTAA 2025)</strong> with 
+        <strong class="text-teal-700">solved exercises, definitions, theorems, examples, and review MCQs</strong>. 
+        These notes follow the latest syllabus prescribed by the 
+        <strong class="text-teal-700">Punjab Education Curriculum Training and Assessment Authority (PECTAA)</strong>, 
+        formerly known as the <strong class="text-teal-700">Punjab Curriculum and Textbook Board (PCTB)</strong>.
+      </p>
+      <p class="text-gray-700 leading-relaxed text-justify">
+        The content is carefully structured for both <strong class="text-teal-700">English and Urdu Medium</strong> students, 
+        helping them strengthen mathematical concepts, practice problem-solving, and prepare confidently 
+        for board examinations. Perfect for <strong class="text-teal-700">students, teachers, and exam candidates</strong> who 
+        prefer well-organized and authentic study materials.
+      </p>
+    </div>
 
-  <!-- Right side: Book image -->
-  <div class="md:w-1/3 w-full flex justify-center">
-    <img 
-      src="https://hiraacademy.online/images/math9-book.jpg" 
-      alt="Class 9 Mathematics Book 2025 – Punjab Curriculum and Textbook Board (PCTB) / PECTAA" 
-      title="Class 9 Mathematics Notes and Solved Exercises – PCTB / PECTAA 2025" 
-      width="300" height="450"
-      loading="lazy"
-      class="w-full max-w-xs rounded-lg shadow-md cursor-pointer transition-transform duration-300 hover:scale-105"
-      onclick="openModal(this.src)"
-    />
-  </div>
-</section>
-
-<!-- Modal for Image -->
-<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50">
-  <span class="absolute top-5 right-8 text-white text-3xl cursor-pointer" onclick="closeModal()">&times;</span>
-  <img id="modalImage" class="max-w-full max-h-[90vh] rounded-lg shadow-lg" alt="Book Preview" />
-</div>
-
-<!-- Script for modal behavior -->
-<script>
-  function openModal(src) {
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    modalImg.src = src;
-    modal.classList.remove("hidden");
-    modal.classList.add("flex");
-  }
-  function closeModal() {
-    const modal = document.getElementById("imageModal");
-    modal.classList.remove("flex");
-    modal.classList.add("hidden");
-  }
-</script>
-
-
-  <!-- Modal for Image Zoom -->
-  <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 hidden items-center justify-center z-50">
-    <span class="absolute top-6 right-8 text-white text-3xl font-bold cursor-pointer" onclick="closeModal()">&times;</span>
-    <img id="modalImage" class="max-w-full max-h-[90vh] rounded-lg shadow-lg transition-transform duration-300 transform scale-100" />
-  </div>
-<!-- Practice Test Banner -->
-<section class="max-w-5xl mx-auto px-6 my-8">
-  <div class="bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-2xl p-8 shadow-lg">
-    <div class="flex flex-col md:flex-row items-center justify-between">
-      <div class="mb-6 md:mb-0">
-        <h2 class="text-2xl font-bold mb-2">Ready to Test Your Knowledge?</h2>
-        <p class="text-green-100">Take our interactive MCQs test with 100 questions and instant results.</p>
+    <!-- Right side: Book image -->
+    <div class="md:w-1/3 w-full flex justify-center">
+      <div class="relative group">
+        <img 
+          src="https://hiraacademy.online/images/math9-book.jpg" 
+          alt="Class 9 Mathematics Book 2025 – Punjab Curriculum and Textbook Board (PCTB) / PECTAA" 
+          title="Class 9 Mathematics Notes and Solved Exercises – PCTB / PECTAA 2025" 
+          width="300" height="450"
+          loading="lazy"
+          class="w-full max-w-xs rounded-xl shadow-lg cursor-pointer transition-transform duration-500 group-hover:scale-105 group-hover:shadow-2xl"
+          onclick="openModal(this.src)"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-teal-900/30 to-transparent opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-500"></div>
       </div>
-      <a href="Mathematics-9th-MCQs.html" 
-         class="bg-white text-green-700 hover:bg-green-50 font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition duration-300 inline-flex items-center">
-        <span class="mr-2">🚀</span> Start Practice Test
-      </a>
+    </div>
+  </section>
+
+  <!-- Modal for Image -->
+  <div id="imageModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4">
+    <div class="relative max-w-4xl w-full">
+      <span class="absolute -top-12 right-0 text-white text-4xl cursor-pointer hover:text-gray-300 transition-colors" onclick="closeModal()">&times;</span>
+      <img id="modalImage" class="w-full h-auto rounded-xl shadow-2xl" alt="Book Preview" />
     </div>
   </div>
-</section>
+
+  <!-- Enhanced Practice Test Banner -->
+  <section class="max-w-6xl mx-auto px-6 my-10">
+    <div class="practice-banner p-8 md:p-10" style="background: linear-gradient(135deg, #0f766e 0%, #0891b2 100%);">
+      <div class="flex flex-col md:flex-row items-center justify-between relative z-10">
+        <div class="mb-6 md:mb-0 md:pr-8">
+          <h2 class="text-2xl md:text-3xl font-bold mb-3">Practice for the 2025 Syllabus</h2>
+          <p class="text-teal-100 text-lg">Take our interactive MCQs test tailored to the PECTAA Syllabus.</p>
+          <p class="text-teal-50 text-sm mt-2">Test your knowledge with 100 questions and instant results</p>
+        </div>
+        <a href="Mathematics-9th-MCQs.html" 
+           class="bg-white text-teal-700 hover:bg-teal-50 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 inline-flex items-center transform hover:-translate-y-1">
+          <span class="mr-3 text-xl">🚀</span> 
+          <span>Start Practice Test</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Chapters Section -->
-  <main class="max-w-5xl mx-auto px-6 pb-16 space-y-6">
-   <!-- Chapter 1 -->
-  <div class="chapter-card open">
-    <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-      <h2 class="text-base md:text-lg font-semibold text-blue-800">📘 Chapter 1 – Real Numbers</h2>
-      <div class="flex items-center gap-2">
-        <span class="px-2 py-1 text-xs md:text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full animate-pulse shadow-md">
-          New
-        </span>
-        <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
-      </div>
+  <main class="max-w-6xl mx-auto px-6 pb-20">
+    <div class="mb-10 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-3">All 13 Chapters - Complete Coverage</h2>
+      <p class="text-gray-600 max-w-3xl mx-auto">Click on any chapter to expand and view all exercises, definitions, and MCQs. Each chapter includes step-by-step solutions and practice materials.</p>
     </div>
-
-    <div class="chapter-content">
-      <p class="text-gray-700 mb-4 text-justify">Real numbers form the foundation of mathematics. This chapter covers rational and irrational numbers, decimal representation, and operations on real numbers.</p>
-      <ul class="space-y-3">
-        <li class="flex justify-between items-center">📄 Exercise 1.1 <a href="https://hiraacademy.online/notes/math9/Chapter1_Exercise1.1.html" class="btn-view">View Notes</a></li>
-        <li class="flex justify-between items-center">📄 Exercise 1.2 <a href="https://hiraacademy.online/notes/math9/Chapter1_Exercise1.2.html" class="btn-view">View Notes</a></li>
-        <li class="flex justify-between items-center">📄 Exercise 1.3 <a href="https://hiraacademy.online/notes/math9/Chapter1_Exercise1.3.html" class="btn-view">View Notes</a></li>
-        <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter1_ReviewExercise.html" class="btn-view">View Notes</a></li>
-        <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter1_Definitions.html" class="btn-view">View Notes</a></li>
-        <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter1_MCQs.html" class="btn-view">View Notes</a></li>
-      </ul>
-    </div>
-  </div>
- <!-- Chapter 2 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <!-- Left side: Chapter name -->
-        <h2 class="text-base md:text-lg font-semibold text-blue-800">
-          📗 Chapter 2 – Logarithms
-        </h2>
-
-        <!-- Right side: New badge + toggle -->
-        <div class="flex items-center gap-2">
-          <span class="px-2 py-1 text-xs md:text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full animate-pulse shadow-md">
-            New
-          </span>
-          <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    
+    <!-- Chapter 1 -->
+    <div class="chapter-card open" data-chapter="1" data-name="Real Numbers">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-pink-100 to-pink-200 text-pink-700">
+            <span class="text-xl">📘</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 1 – Real Numbers</h2>
+            <p class="text-sm text-gray-600 mt-1">Rational and irrational numbers, decimal representation, operations</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
         </div>
       </div>
 
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Logarithms help simplify complex calculations. This chapter covers laws of logarithms, common logarithms, and applications in solving exponential equations.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 2.1 <a href="https://hiraacademy.online/notes/math9/Chapter2_Exercise2.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 2.2 <a href="https://hiraacademy.online/notes/math9/Chapter2_Exercise2.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 2.3 <a href="https://hiraacademy.online/notes/math9/Chapter2_Exercise2.3.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 2.4 <a href="https://hiraacademy.online/notes/math9/Chapter2_Exercise2.4.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter2_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter2_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter2_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Real numbers form the foundation of mathematics. This chapter covers rational and irrational numbers, decimal representation, and operations on real numbers with practical applications in measurement and calculations.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">1.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 1.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter1_Exercise1.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">1.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 1.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter1_Exercise1.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">1.3</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 1.3</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter1_Exercise1.3.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter1_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter1_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter1_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 2 -->
+    <div class="chapter-card" data-chapter="2" data-name="Logarithms">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-emerald-100 to-emerald-200 text-emerald-700">
+            <span class="text-xl">📗</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 2 – Logarithms</h2>
+            <p class="text-sm text-gray-600 mt-1">Laws of logarithms, common logarithms, exponential equations</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
+        </div>
+      </div>
+
+      <div class="chapter-content">
+        <p class="text-gray-700 mb-6 text-justify">Logarithms help simplify complex calculations in science and engineering. This chapter covers laws of logarithms, common logarithms, and applications in solving exponential equations with real-world examples.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+                <span class="text-emerald-700 font-medium">2.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 2.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter2_Exercise2.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+                <span class="text-emerald-700 font-medium">2.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 2.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter2_Exercise2.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+                <span class="text-emerald-700 font-medium">2.3</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 2.3</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter2_Exercise2.3.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+                <span class="text-emerald-700 font-medium">2.4</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 2.4</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter2_Exercise2.4.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+                <span class="text-emerald-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter2_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+                <span class="text-emerald-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter2_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center mr-4">
+                <span class="text-emerald-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter2_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 3 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <!-- Left side: Chapter name -->
-        <h2 class="text-base md:text-lg font-semibold text-blue-800">
-          📙 Chapter 3 – Sets and Functions
-        </h2>
-
-        <!-- Right side: New badge + toggle -->
-        <div class="flex items-center gap-2">
-          <span class="px-2 py-1 text-xs md:text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full animate-pulse shadow-md">
-            New
-          </span>
-          <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    <div class="chapter-card" data-chapter="3" data-name="Sets and Functions">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-amber-100 to-amber-200 text-amber-700">
+            <span class="text-xl">📙</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 3 – Sets and Functions</h2>
+            <p class="text-sm text-gray-600 mt-1">Set operations, Venn diagrams, function types, notation</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
         </div>
       </div>
 
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Sets and functions are fundamental concepts in mathematics. This chapter covers set operations, Venn diagrams, types of functions, and function notation.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 3.1 <a href="https://hiraacademy.online/notes/math9/Chapter3_Exercise3.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 3.2 <a href="https://hiraacademy.online/notes/math9/Chapter3_Exercise3.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 3.3 <a href="https://hiraacademy.online/notes/math9/Chapter3_Exercise3.3.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter3_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter3_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter3_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Sets and functions are fundamental concepts in mathematics with applications in computer science and data analysis. This chapter covers set operations, Venn diagrams, types of functions, and function notation with practical examples.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center mr-4">
+                <span class="text-amber-700 font-medium">3.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 3.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter3_Exercise3.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center mr-4">
+                <span class="text-amber-700 font-medium">3.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 3.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter3_Exercise3.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center mr-4">
+                <span class="text-amber-700 font-medium">3.3</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 3.3</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter3_Exercise3.3.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center mr-4">
+                <span class="text-amber-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter3_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center mr-4">
+                <span class="text-amber-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter3_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center mr-4">
+                <span class="text-amber-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter3_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 4 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <!-- Left side: Chapter name -->
-        <h2 class="text-base md:text-lg font-semibold text-blue-800">
-          📕 Chapter 4 – Factorization and Algebraic Manipulation
-        </h2>
-
-        <!-- Right side: New badge + toggle -->
-        <div class="flex items-center gap-2">
-          <span class="px-2 py-1 text-xs md:text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full animate-pulse shadow-md">
-            New
-          </span>
-          <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    <div class="chapter-card" data-chapter="4" data-name="Factorization and Algebraic Manipulation">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-red-100 to-red-200 text-red-700">
+            <span class="text-xl">📕</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 4 – Factorization and Algebraic Manipulation</h2>
+            <p class="text-sm text-gray-600 mt-1">Factorization techniques, algebraic fractions, simplification</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
         </div>
       </div>
 
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Factorization simplifies algebraic expressions. This chapter covers various factorization techniques, algebraic fractions, and simplification of complex expressions.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 4.1 <a href="https://hiraacademy.online/notes/math9/Chapter4_Exercise4.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 4.2 <a href="https://hiraacademy.online/notes/math9/Chapter4_Exercise4.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 4.3 <a href="https://hiraacademy.online/notes/math9/Chapter4_Exercise4.3.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 4.4 <a href="https://hiraacademy.online/notes/math9/Chapter4_Exercise4.4.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter4_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter4_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter4_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Factorization simplifies algebraic expressions and equations. This chapter covers various factorization techniques, algebraic fractions, and simplification of complex expressions with applications in solving equations.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                <span class="text-red-700 font-medium">4.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 4.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter4_Exercise4.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                <span class="text-red-700 font-medium">4.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 4.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter4_Exercise4.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                <span class="text-red-700 font-medium">4.3</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 4.3</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter4_Exercise4.3.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                <span class="text-red-700 font-medium">4.4</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 4.4</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter4_Exercise4.4.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                <span class="text-red-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter4_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                <span class="text-red-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter4_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center mr-4">
+                <span class="text-red-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter4_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- Continue with remaining chapters (5-13) following the same pattern -->
     <!-- Chapter 5 -->
-<div class="chapter-card open">
-  <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-    <!-- Left side: Chapter name -->
-    <h2 class="text-base md:text-lg font-semibold text-blue-800">
-      📔 Chapter 5 – Linear Equations and Inequalities
-    </h2>
-    
-    <!-- Right side: New badge + toggle -->
-    <div class="flex items-center gap-2">
-      <span class="px-2 py-1 text-xs md:text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full animate-pulse shadow-md">
-        New
-      </span>
-      <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
-    </div>
-  </div>
+    <div class="chapter-card" data-chapter="5" data-name="Linear Equations and Inequalities">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-indigo-100 to-indigo-200 text-indigo-700">
+            <span class="text-xl">📓</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 5 – Linear Equations and Inequalities</h2>
+            <p class="text-sm text-gray-600 mt-1">Solving linear equations, graphing inequalities, word problems</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
+        </div>
+      </div>
+
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Linear equations and inequalities are essential for solving real-world problems. This chapter covers solving linear equations, graphing inequalities, and word problems.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 5.1 <a href="https://hiraacademy.online/notes/math9/Chapter5_Exercise5.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 5.2 <a href="https://hiraacademy.online/notes/math9/Chapter5_Exercise5.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter5_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter5_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter5_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Linear equations and inequalities are essential for solving real-world problems in economics, physics, and engineering. This chapter covers solving techniques, graphing methods, and practical applications.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                <span class="text-indigo-700 font-medium">5.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 5.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter5_Exercise5.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                <span class="text-indigo-700 font-medium">5.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 5.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter5_Exercise5.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                <span class="text-indigo-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter5_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                <span class="text-indigo-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter5_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
+                <span class="text-indigo-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter5_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 6 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <h2 class="font-semibold text-lg text-blue-800">📒 Chapter 6 – Trigonometry</h2>
-        <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    <div class="chapter-card" data-chapter="6" data-name="Trigonometry">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-blue-100 to-blue-200 text-blue-700">
+            <span class="text-xl">📔</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 6 – Trigonometry</h2>
+            <p class="text-sm text-gray-600 mt-1">Trigonometric ratios, identities, triangle solving, applications</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
+        </div>
       </div>
+
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Trigonometry deals with relationships between angles and sides of triangles. This chapter covers trigonometric ratios, identities, and applications in solving triangles.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 6.1 <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 6.2 <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 6.3 <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.3.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 6.4 <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.4.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 6.5 <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.5.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 6.6 <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.6.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter6_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter6_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter6_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Trigonometry deals with relationships between angles and sides of triangles with applications in architecture, navigation, and physics. This chapter covers trigonometric ratios, identities, and applications in solving triangles.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <span class="text-blue-700 font-medium">6.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 6.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <span class="text-blue-700 font-medium">6.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 6.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <span class="text-blue-700 font-medium">6.3</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 6.3</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.3.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <span class="text-blue-700 font-medium">6.4</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 6.4</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.4.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <span class="text-blue-700 font-medium">6.5</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 6.5</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.5.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <span class="text-blue-700 font-medium">6.6</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 6.6</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter6_Exercise6.6.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <span class="text-blue-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter6_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <span class="text-blue-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter6_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-4">
+                <span class="text-blue-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter6_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 7 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <h2 class="font-semibold text-lg text-blue-800">📚 Chapter 7 – Coordinate Geometry</h2>
-        <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    <div class="chapter-card" data-chapter="7" data-name="Coordinate Geometry">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-purple-100 to-purple-200 text-purple-700">
+            <span class="text-xl">📒</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 7 – Coordinate Geometry</h2>
+            <p class="text-sm text-gray-600 mt-1">Cartesian plane, distance formula, midpoint, line equations</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
+        </div>
       </div>
+
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Coordinate geometry connects algebra and geometry. This chapter covers the Cartesian plane, distance formula, midpoint formula, and equations of lines.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 7.1 <a href="https://hiraacademy.online/notes/math9/Chapter7_Exercise7.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 7.2 <a href="https://hiraacademy.online/notes/math9/Chapter7_Exercise7.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 7.3 <a href="https://hiraacademy.online/notes/math9/Chapter7_Exercise7.3.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter7_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter7_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter7_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Coordinate geometry connects algebra and geometry with applications in computer graphics and engineering. This chapter covers the Cartesian plane, distance formula, midpoint formula, and equations of lines with practical examples.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                <span class="text-purple-700 font-medium">7.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 7.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter7_Exercise7.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                <span class="text-purple-700 font-medium">7.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 7.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter7_Exercise7.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                <span class="text-purple-700 font-medium">7.3</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 7.3</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter7_Exercise7.3.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                <span class="text-purple-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter7_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                <span class="text-purple-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter7_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-purple-100 flex items-center justify-center mr-4">
+                <span class="text-purple-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter7_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 8 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <h2 class="font-semibold text-lg text-blue-800">📖 Chapter 8 – Logic</h2>
-        <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    <div class="chapter-card" data-chapter="8" data-name="Logic">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-cyan-100 to-cyan-200 text-cyan-700">
+            <span class="text-xl">📚</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 8 – Logic</h2>
+            <p class="text-sm text-gray-600 mt-1">Statements, truth tables, logical equivalence, proof techniques</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
+        </div>
       </div>
+
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Logic forms the basis of mathematical reasoning. This chapter covers statements, truth tables, logical equivalence, and basic proof techniques.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter8_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter8_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter8_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Logic forms the basis of mathematical reasoning and computer programming. This chapter covers statements, truth tables, logical equivalence, and basic proof techniques with applications in problem-solving.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-cyan-100 flex items-center justify-center mr-4">
+                <span class="text-cyan-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter8_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-cyan-100 flex items-center justify-center mr-4">
+                <span class="text-cyan-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter8_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-cyan-100 flex items-center justify-center mr-4">
+                <span class="text-cyan-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter8_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 9 -->
-<div class="chapter-card open">
-  <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-    <!-- Left side: Chapter name -->
-    <h2 class="text-base md:text-lg font-semibold text-blue-800">
-      📙 Chapter 9 – Similar Figures
-    </h2>
-    
-    <!-- Right side: New badge + toggle -->
-    <div class="flex items-center gap-2">
-      <span class="px-2 py-1 text-xs md:text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full animate-pulse shadow-md">
-        New
-      </span>
-      <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
-    </div>
-  </div>
+    <div class="chapter-card" data-chapter="9" data-name="Similar Figures">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-lime-100 to-lime-200 text-lime-700">
+            <span class="text-xl">📖</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 9 – Similar Figures</h2>
+            <p class="text-sm text-gray-600 mt-1">Similarity criteria, ratio of areas and volumes, geometry applications</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
+        </div>
+      </div>
+
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Similar figures have the same shape but different sizes. This chapter covers similarity criteria, ratio of areas and volumes, and applications in geometry.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 9.1 <a href="https://hiraacademy.online/notes/math9/Chapter9_Exercise9.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 9.2 <a href="https://hiraacademy.online/notes/math9/Chapter9_Exercise9.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 9.3 <a href="https://hiraacademy.online/notes/math9/Chapter9_Exercise9.3.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 9.4 <a href="https://hiraacademy.online/notes/math9/Chapter9_Exercise9.4.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter9_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter9_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter9_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Similar figures have the same shape but different sizes with applications in map reading and scale models. This chapter covers similarity criteria, ratio of areas and volumes, and applications in geometry and design.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-lime-100 flex items-center justify-center mr-4">
+                <span class="text-lime-700 font-medium">9.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 9.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter9_Exercise9.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-lime-100 flex items-center justify-center mr-4">
+                <span class="text-lime-700 font-medium">9.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 9.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter9_Exercise9.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-lime-100 flex items-center justify-center mr-4">
+                <span class="text-lime-700 font-medium">9.3</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 9.3</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter9_Exercise9.3.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-lime-100 flex items-center justify-center mr-4">
+                <span class="text-lime-700 font-medium">9.4</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 9.4</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter9_Exercise9.4.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-lime-100 flex items-center justify-center mr-4">
+                <span class="text-lime-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter9_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-lime-100 flex items-center justify-center mr-4">
+                <span class="text-lime-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter9_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-lime-100 flex items-center justify-center mr-4">
+                <span class="text-lime-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter9_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 10 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <h2 class="font-semibold text-lg text-blue-800">📘 Chapter 10 – Graphs of Functions</h2>
-        <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    <div class="chapter-card" data-chapter="10" data-name="Graphs of Functions">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-orange-100 to-orange-200 text-orange-700">
+            <span class="text-xl">📘</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 10 – Graphs of Functions</h2>
+            <p class="text-sm text-gray-600 mt-1">Linear, quadratic functions, graphing techniques, interpretations</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
+        </div>
       </div>
+
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Graphs provide visual representations of functions. This chapter covers linear, quadratic, and other basic functions, their graphs, and interpretations.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 10.1 <a href="https://hiraacademy.online/notes/math9/Chapter10_Exercise10.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 10.2 <a href="https://hiraacademy.online/notes/math9/Chapter10_Exercise10.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter10_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter10_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter10_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Graphs provide visual representations of functions with applications in economics and science. This chapter covers linear, quadratic, and other basic functions, their graphs, and interpretations of graphical data.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mr-4">
+                <span class="text-orange-700 font-medium">10.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 10.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter10_Exercise10.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mr-4">
+                <span class="text-orange-700 font-medium">10.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 10.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter10_Exercise10.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mr-4">
+                <span class="text-orange-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter10_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mr-4">
+                <span class="text-orange-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter10_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center mr-4">
+                <span class="text-orange-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter10_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 11 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <h2 class="font-semibold text-lg text-blue-800">📔 Chapter 11 – Loci and Construction</h2>
-        <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    <div class="chapter-card" data-chapter="11" data-name="Loci and Construction">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-rose-100 to-rose-200 text-rose-700">
+            <span class="text-xl">📗</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 11 – Loci and Construction</h2>
+            <p class="text-sm text-gray-600 mt-1">Geometric constructions, loci problems, engineering applications</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
+        </div>
       </div>
+
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Loci are sets of points satisfying specific conditions. This chapter covers basic geometric constructions, loci problems, and their applications.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 11.1 <a href="https://hiraacademy.online/notes/math9/Chapter11_Exercise11.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 11.2 <a href="https://hiraacademy.online/notes/math9/Chapter11_Exercise11.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter11_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter11_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter11_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Loci are sets of points satisfying specific conditions with applications in engineering design. This chapter covers basic geometric constructions, loci problems, and their applications in technical drawing and design.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center mr-4">
+                <span class="text-rose-700 font-medium">11.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 11.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter11_Exercise11.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center mr-4">
+                <span class="text-rose-700 font-medium">11.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 11.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter11_Exercise11.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center mr-4">
+                <span class="text-rose-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter11_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center mr-4">
+                <span class="text-rose-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter11_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center mr-4">
+                <span class="text-rose-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter11_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 12 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <!-- Left side: Chapter name -->
-        <h2 class="text-base md:text-lg font-semibold text-blue-800">
-          📒 Chapter 12 – Information Handling
-        </h2>
-
-        <!-- Right side: New badge + toggle icon -->
-        <div class="flex items-center gap-2">
-          <span class="px-2 py-1 text-xs md:text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full animate-pulse shadow-md">
-            New
-          </span>
-          <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    <div class="chapter-card" data-chapter="12" data-name="Information Handling">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-violet-100 to-violet-200 text-violet-700">
+            <span class="text-xl">📙</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 12 – Information Handling</h2>
+            <p class="text-sm text-gray-600 mt-1">Data collection, graphical representations, statistical analysis</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
         </div>
       </div>
 
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Information handling involves organizing and interpreting data. This chapter covers data collection, representation through graphs and charts, and basic statistics.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 12.1 <a href="https://hiraacademy.online/notes/math9/Chapter12_Exercise12.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 12.2 <a href="https://hiraacademy.online/notes/math9/Chapter12_Exercise12.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter12_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter12_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter12_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Information handling is crucial in data analysis and decision making. This chapter covers data collection, graphical representations, measures of central tendency, and interpretation for business analytics and research studies.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center mr-4">
+                <span class="text-violet-700 font-medium">12.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 12.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter12_Exercise12.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center mr-4">
+                <span class="text-violet-700 font-medium">12.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 12.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter12_Exercise12.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center mr-4">
+                <span class="text-violet-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter12_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center mr-4">
+                <span class="text-violet-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter12_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center mr-4">
+                <span class="text-violet-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter12_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
 
     <!-- Chapter 13 -->
-    <div class="chapter-card open">
-      <div class="chapter-header flex justify-between items-center p-4 bg-blue-50 hover:bg-blue-100 transition">
-        <!-- Left side: Chapter name -->
-        <h2 class="text-base md:text-lg font-semibold text-blue-800">
-          📙 Chapter 13 – Probability
-        </h2>
-
-        <!-- Right side: New badge + toggle icon -->
-        <div class="flex items-center gap-2">
-          <span class="px-2 py-1 text-xs md:text-sm font-bold text-white bg-gradient-to-r from-pink-500 to-red-500 rounded-full animate-pulse shadow-md">
-            New
-          </span>
-          <span class="toggle-icon text-blue-700 font-bold text-xl">−</span>
+    <div class="chapter-card" data-chapter="13" data-name="Probability">
+      <div class="chapter-header flex justify-between items-center">
+        <div class="flex items-center">
+          <div class="unit-icon bg-gradient-to-br from-teal-100 to-teal-200 text-teal-700">
+            <span class="text-xl">📙</span>
+          </div>
+          <div>
+            <h2 class="text-lg md:text-xl font-semibold text-gray-900">Chapter 13 – Probability</h2>
+            <p class="text-sm text-gray-600 mt-1">Basic concepts, sample spaces, probability calculation, applications</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="new-badge">New 2025</span>
+          <span class="toggle-icon">↓</span>
         </div>
       </div>
 
       <div class="chapter-content">
-        <p class="text-gray-700 mb-4 text-justify">Probability measures the likelihood of events. This chapter covers basic probability concepts, sample spaces, and calculation of probabilities for simple events.</p>
-        <ul class="space-y-3">
-          <li class="flex justify-between items-center">📄 Exercise 13.1 <a href="https://hiraacademy.online/notes/math9/Chapter13_Exercise13.1.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📄 Exercise 13.2 <a href="https://hiraacademy.online/notes/math9/Chapter13_Exercise13.2.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📙 Review Exercise <a href="https://hiraacademy.online/notes/math9/Chapter13_ReviewExercise.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📒 Definitions <a href="https://hiraacademy.online/notes/math9/Chapter13_Definitions.html" class="btn-view">View Notes</a></li>
-          <li class="flex justify-between items-center">📝 MCQs <a href="https://hiraacademy.online/notes/math9/Chapter13_MCQs.html" class="btn-view">View Notes</a></li>
-        </ul>
+        <p class="text-gray-700 mb-6 text-justify">Probability quantifies uncertainty in scientific research and finance. This chapter covers basic probability concepts, sample spaces, calculation of probabilities for simple events, and real-world applications in risk assessment and decision making.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">13.1</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 13.1</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter13_Exercise13.1.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">13.2</span>
+              </div>
+              <span class="font-medium text-gray-900">Exercise 13.2</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter13_Exercise13.2.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">R</span>
+              </div>
+              <span class="font-medium text-gray-900">Review Exercise</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter13_ReviewExercise.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">D</span>
+              </div>
+              <span class="font-medium text-gray-900">Definitions</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter13_Definitions.html" class="btn-view">View</a>
+          </div>
+          <div class="flex justify-between items-center bg-white p-4 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+            <div class="flex items-center">
+              <div class="w-8 h-8 rounded-full bg-teal-100 flex items-center justify-center mr-4">
+                <span class="text-teal-700 font-medium">M</span>
+              </div>
+              <span class="font-medium text-gray-900">MCQs</span>
+            </div>
+            <a href="https://hiraacademy.online/notes/math9/Chapter13_MCQs.html" class="btn-view">View</a>
+          </div>
+        </div>
       </div>
     </div>
-<section class="px-6 py-8 bg-white rounded-lg shadow-sm mb-8">
-  <h2 class="text-2xl font-bold text-blue-800 mb-4 text-center">
-    Complete Class 9 Mathematics Solutions (PECTAA / Punjab Board)
-  </h2>
 
-  <div class="prose max-w-none">
-    <p class="text-lg text-gray-700 mb-4 text-justify">
-      Our <strong>Class 9 Mathematics Notes – Punjab Curriculum (PECTAA 2025)</strong> provide
-      complete, concept-based solutions for the entire syllabus. These notes strictly follow
-      the latest guidelines of the <strong>Punjab Education Curriculum Training and Assessment Authority</strong>
-      and are ideal for students, teachers, and exam candidates who prefer high-quality, authentic study material.
-    </p>
+    <!-- Key Features Section -->
+    <section class="mt-16 mb-12 px-8 py-10 bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-lg">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">
+        Complete Class 9 Mathematics Solutions (PECTAA 2025 Syllabus)
+      </h2>
 
-    <h3 class="text-xl font-semibold text-blue-700 mb-3 text-center">
-      What You Will Get
-    </h3>
-    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-      <li class="flex items-center">✅ Step-by-step solved exercises (all units)</li>
-      <li class="flex items-center">✅ Clear definitions and important theorems</li>
-      <li class="flex items-center">✅ Practice MCQs with correct answers</li>
-      <li class="flex items-center">✅ Review exercises with complete solutions</li>
-      <li class="flex items-center">✅ Chapter-wise important questions</li>
-      <li class="flex items-center">✅ Exam preparation and scoring tips</li>
-    </ul>
+      <div class="prose max-w-none">
+        <p class="text-lg text-gray-700 mb-6 text-justify">
+          Our <strong class="text-teal-700">Class 9 Mathematics Notes (PECTAA 2025 Edition)</strong> provide complete, concept-based solutions for the 
+          entire syllabus prescribed by the <strong class="text-teal-700">Punjab Education Curriculum Training and Assessment Authority</strong>. 
+          These notes are specifically designed to emphasize <strong class="text-teal-700">understanding through solved examples, definitions, and practice problems</strong>.
+        </p>
 
-    <h3 class="text-xl font-semibold text-blue-700 mb-3 text-center">
-      Chapters and Covered Topics
-    </h3>
-    <p class="text-gray-700 text-justify">
-      <strong>Real Numbers, Logarithms, Algebraic Expressions, Matrices, Geometry, Coordinate Geometry,
-      Trigonometry, Mensuration, and Statistics</strong>. These notes are suitable for both English and Urdu 
-      medium students following the Punjab Board (PCTB / PECTAA) syllabus and offer complete support for 
-      conceptual understanding and exam preparation.
-    </p>
-  </div>
-</section>
+        <p class="text-gray-700 mb-8 text-justify">
+          <strong class="text-teal-700">Prepared by Hira Science Academy</strong>, these resources offer comprehensive coverage 
+          of all 13 chapters with step-by-step solutions, practical applications, and exam-focused material. Perfect for students 
+          preparing for Punjab Board examinations and teachers seeking updated, authentic study materials.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-xl font-semibold text-teal-800 mb-5 flex items-center">
+              <span class="mr-3">✅</span> Key Features of the 2025 Edition
+            </h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <span class="text-teal-600 mr-3 mt-1">✓</span>
+                <span>Based on PECTAA 2025 Syllabus</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-teal-600 mr-3 mt-1">✓</span>
+                <span>Step-by-step solved exercises</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-teal-600 mr-3 mt-1">✓</span>
+                <span>Complete definitions and theorems</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-teal-600 mr-3 mt-1">✓</span>
+                <span>Practice MCQs with explanations</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-teal-600 mr-3 mt-1">✓</span>
+                <span>Review exercises with solutions</span>
+              </li>
+              <li class="flex items-start">
+                <span class="text-teal-600 mr-3 mt-1">✓</span>
+                <span>Exam preparation and scoring tips</span>
+              </li>
+            </ul>
+          </div>
+          
+          <div>
+            <h3 class="text-xl font-semibold text-teal-800 mb-5 flex items-center">
+              <span class="mr-3">🌐</span> Chapters Covered
+            </h3>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-gray-200">
+              <p class="text-gray-700 text-justify">
+                <strong>Real Numbers</strong>, 
+                <strong>Logarithms</strong>, 
+                <strong>Sets and Functions</strong>, 
+                <strong>Factorization</strong>, 
+                <strong>Linear Equations</strong>, 
+                <strong>Trigonometry</strong>, 
+                <strong>Coordinate Geometry</strong>, 
+                <strong>Logic</strong>, 
+                <strong>Similar Figures</strong>, 
+                <strong>Graphs of Functions</strong>, 
+                <strong>Loci and Construction</strong>, 
+                <strong>Information Handling</strong>, 
+                and <strong>Probability</strong>.
+              </p>
+              <p class="text-gray-700 mt-4 text-justify">
+                These notes bridge the gap between theoretical mathematics and practical applications, preparing students for higher education and board examinations.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- 🧭 Internal Linking Section for SEO & Navigation -->
+  <section class="max-w-7xl mx-auto px-6 py-14">
+    <div class="bg-gradient-to-br from-teal-50 via-white to-emerald-50 rounded-3xl shadow-xl p-10 border border-gray-200">
+      <h2 class="text-3xl font-bold text-center text-teal-800 mb-6 tracking-wide">
+        Explore Learning Resources Across All Grades
+      </h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
+        From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.
+      </p>
 
+      <!-- Resource Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Class 9 Resources -->
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+          <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
+            <span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources
+          </h3>
+          <nav>
+            <ul class="space-y-4">
+              <li><a href="Mathematics-9th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
+              <li><a href="Physics-9th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
+              <li><a href="Chemistry-9th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
+              <li><a href="Biology-9th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
+              <li><a href="Islamiat-9th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li>
+              <li><a href="smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-teal-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li>
+            </ul>
+          </nav>
+        </article>
 
-<!-- 🧭 Internal Linking Section for SEO & Navigation -->
-<section class="max-w-7xl mx-auto px-6 py-14">
-  <div class="bg-gradient-to-br from-blue-50 via-white to-cyan-50 rounded-3xl shadow-xl p-10 border border-gray-200">
-    <h2 class="text-3xl font-bold text-center text-blue-800 mb-6 tracking-wide">
-      Explore Learning Resources Across All Grades
-    </h2>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
-      From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.
-    </p>
+        <!-- Class 10 Resources -->
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+          <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
+            <span class="bg-emerald-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources
+          </h3>
+          <nav>
+            <ul class="space-y-4">
+              <li><a href="Mathematics-10th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
+              <li><a href="Physics-10th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
+              <li><a href="Chemistry-10th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
+              <li><a href="Biology-10th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
+              <li><a href="PakistanStudies-10th.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li>
+            </ul>
+          </nav>
+        </article>
 
-    <!-- Resource Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      
-      <!-- Class 9 Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-blue-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources
-        </h3>
-        <nav>
+        <!-- Special Resources -->
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+          <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
+            <span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources
+          </h3>
           <ul class="space-y-4">
-            <li><a href="https://hiraacademy.online/Mathematics-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-            <li><a href="https://hiraacademy.online/Physics-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-            <li><a href="https://hiraacademy.online/Chemistry-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-            <li><a href="https://hiraacademy.online/Biology-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
-            <li><a href="https://hiraacademy.online/Islamiat-9th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li>
-            <li><a href="https://hiraacademy.online/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li>
+            <li><a href="fsc-entry-test.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li>
+            <li><a href="physics-numericals.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li>
+            <li><a href="math-mistakes.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li>
+            <li><a href="physics-formulas.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li>
+            <li><a href="blog.html" class="text-teal-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li>
           </ul>
-        </nav>
-      </article>
+        </article>
 
-      <!-- Class 10 Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-green-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources
-        </h3>
-        <nav>
+        <!-- Quick Links -->
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+          <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
+            <span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links
+          </h3>
           <ul class="space-y-4">
-            <li><a href="https://hiraacademy.online/Mathematics-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-            <li><a href="https://hiraacademy.online/Physics-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-            <li><a href="https://hiraacademy.online/Chemistry-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-            <li><a href="https://hiraacademy.online/Biology-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
-            <li><a href="https://hiraacademy.online/PakistanStudies-10th.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li>
+            <li><a href="courses-details.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li>
+            <li><a href="contact.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li>
+            <li><a href="about.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li>
+            <li><a href="career-services.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li>
+            <li><a href="student-portal.html" class="text-teal-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li>
           </ul>
-        </nav>
-      </article>
+        </article>
 
-      <!-- Special Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources
-        </h3>
-        <ul class="space-y-4">
-          <li><a href="https://hiraacademy.online/fsc-entry-test.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li>
-          <li><a href="https://hiraacademy.online/physics-numericals.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li>
-          <li><a href="https://hiraacademy.online/math-mistakes.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li>
-          <li><a href="https://hiraacademy.online/physics-formulas.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li>
-          <li><a href="https://hiraacademy.online/blog.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li>
-        </ul>
-      </article>
+        <!-- Definitions & Key Resources -->
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+          <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
+            <span class="bg-cyan-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources
+          </h3>
+          <ul class="space-y-4">
+            <li><a href="Math-9th-Definitions.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li>
+            <li><a href="Physics-9th-Definitions.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li>
+            <li><a href="grade9-math-pairing-scheme-2026.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li>
+            <li><a href="grade9-physics-pairing-scheme-2026.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li>
+            <li><a href="grade10-mathematics-model-paper-2026.html" class="text-teal-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li>
+          </ul>
+        </article>
 
-      <!-- Quick Links -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links
-        </h3>
-        <ul class="space-y-4">
-          <li><a href="https://hiraacademy.online/courses-details.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li>
-          <li><a href="https://hiraacademy.online/contact.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li>
-          <li><a href="https://hiraacademy.online/about.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li>
-          <li><a href="https://hiraacademy.online/career-services.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li>
-          <li><a href="https://hiraacademy.online/student-portal.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li>
-        </ul>
-      </article>
+        <!-- Support & Policies -->
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-2 transition-all duration-500">
+          <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
+            <span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies
+          </h3>
+          <ul class="space-y-4">
+            <li><a href="terms.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li>
+            <li><a href="privacy-policy.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li>
+            <li><a href="refund-policy.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li>
+            <li><a href="accessibility.html" class="hover:underline hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li>
+            <li><a href="mission.html" class="text-teal-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li>
+          </ul>
+        </article>
+      </div>
 
-      <!-- Definitions & Key Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources
-        </h3>
-        <ul class="space-y-4">
-          <li><a href="https://hiraacademy.online/Math-9th-Definitions.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li>
-          <li><a href="https://hiraacademy.online/Physics-9th-Definitions.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li>
-          <li><a href="https://hiraacademy.online/grade9-math-pairing-scheme-2026.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li>
-          <li><a href="https://hiraacademy.online/grade9-physics-pairing-scheme-2026.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li>
-          <li><a href="https://hiraacademy.online/grade9-mathematics-model-paper-2026.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li>
-        </ul>
-      </article>
-
-      <!-- Support & Policies -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-        <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center">
-          <span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies
-        </h3>
-        <ul class="space-y-4">
-          <li><a href="https://hiraacademy.online/terms.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li>
-          <li><a href="https://hiraacademy.online/privacy-policy.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li>
-          <li><a href="https://hiraacademy.online/refund-policy.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li>
-          <li><a href="https://hiraacademy.online/accessibility.html" class="hover:underline hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li>
-          <li><a href="https://hiraacademy.online/mission.html" class="text-blue-600 font-semibold hover:underline flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li>
-        </ul>
-      </article>
-
+      <!-- CTA -->
+      <div class="mt-12 text-center">
+        <a href="index.html" class="inline-flex items-center bg-teal-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-teal-700 hover:shadow-xl transition-all hover:-translate-y-1">
+          <span class="mr-3">🏠</span>Return to Homepage
+        </a>
+      </div>
     </div>
+  </section>
 
-    <!-- CTA -->
-    <div class="mt-12 text-center">
-      <a href="https://hiraacademy.online/index.html" class="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-blue-700 hover:shadow-xl transition-all">
-        <span class="mr-3">🏠</span>Return to Homepage
-      </a>
-    </div>
-  </div>
-</section>
-
-  <!-- Footer (Same as main page) -->
-  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10">
+  <!-- Footer -->
+  <footer class="bg-teal-900 text-gray-100 shadow-xl relative z-10">
     <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
         <!-- Logo & Description -->
@@ -943,7 +1896,7 @@
               src="images/logo.webp"
               alt="Hira Science Academy"
               class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mt-2 md:mt-0">
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-300 to-teal-400 bg-clip-text text-transparent mt-2 md:mt-0">
               Hira Science Academy
             </span>
           </a>
@@ -956,10 +1909,10 @@
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
           <ul class="space-y-2">
-            <li><a href="courses-details.html#class9" class="hover:text-cyan-400 transition-colors">9th Class</a></li>
-            <li><a href="courses-details.html#class10" class="hover:text-cyan-400 transition-colors">10th Class</a></li>
-            <li><a href="courses-details.html#fsc" class="hover:text-cyan-400 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
-            <li><a href="fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">Entry Test Preparation</a></li>
+            <li><a href="courses-details.html#class9" class="hover:text-cyan-300 transition-colors">9th Class</a></li>
+            <li><a href="courses-details.html#class10" class="hover:text-cyan-300 transition-colors">10th Class</a></li>
+            <li><a href="courses-details.html#fsc" class="hover:text-cyan-300 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+            <li><a href="fsc-entry-test.html" class="hover:text-cyan-300 transition-colors">Entry Test Preparation</a></li>
           </ul>
         </div>
 
@@ -967,11 +1920,11 @@
       <div class="text-center md:text-left">
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
         <ul class="space-y-2">
-          <li><a href="https://hiraacademy.online/blog.html" class="hover:text-cyan-400 transition-colors">Study Tips & Blog</a></li>
-          <li><a href="https://hiraacademy.online/career-services.html" class="hover:text-cyan-400 transition-colors">Career Guidance</a></li>
-          <li><a href="https://hiraacademy.online/student-portal.html" class="hover:text-cyan-400 transition-colors">Student Portal</a></li>
-          <li><a href="https://hiraacademy.online/alumni-network.html" class="hover:text-cyan-400 transition-colors">Alumni Network</a></li>
-          <li><a href="https://hiraacademy.online/events.html" class="hover:text-cyan-400 transition-colors">Events & Workshops</a></li>
+          <li><a href="blog.html" class="hover:text-cyan-300 transition-colors">Study Tips & Blog</a></li>
+          <li><a href="career-services.html" class="hover:text-cyan-300 transition-colors">Career Guidance</a></li>
+          <li><a href="student-portal.html" class="hover:text-cyan-300 transition-colors">Student Portal</a></li>
+          <li><a href="alumni-network.html" class="hover:text-cyan-300 transition-colors">Alumni Network</a></li>
+          <li><a href="events.html" class="hover:text-cyan-300 transition-colors">Events & Workshops</a></li>
         </ul>
       </div>
 
@@ -979,10 +1932,10 @@
       <div class="text-center md:text-left">
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
         <ul class="space-y-2">
-          <li><a href="https://hiraacademy.online/terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
-          <li><a href="https://hiraacademy.online/privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
-          <li><a href="https://hiraacademy.online/refund-policy.html" class="hover:text-cyan-400 transition-colors">Refund Policy</a></li>
-          <li><a href="https://hiraacademy.online/accessibility.html" class="hover:text-cyan-400 transition-colors">Accessibility</a></li>
+          <li><a href="terms.html" class="hover:text-cyan-300 transition-colors">Terms of Service</a></li>
+          <li><a href="privacy-policy.html" class="hover:text-cyan-300 transition-colors">Privacy Policy</a></li>
+          <li><a href="refund-policy.html" class="hover:text-cyan-300 transition-colors">Refund Policy</a></li>
+          <li><a href="accessibility.html" class="hover:text-cyan-300 transition-colors">Accessibility</a></li>
         </ul>
       </div>
 
@@ -990,17 +1943,19 @@
       <div class="text-center md:text-left">
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
         <ul class="space-y-2">
-          <li><a href="https://hiraacademy.online/about.html" class="hover:text-cyan-400 transition-colors">About Hira Academy</a></li>
-          <li><a href="https://hiraacademy.online/mission.html" class="hover:text-cyan-400 transition-colors">Our Mission</a></li>
-          <li><a href="https://hiraacademy.online/contact.html" class="hover:text-cyan-400 transition-colors">Contact Us</a></li>
+          <li><a href="about.html" class="hover:text-cyan-300 transition-colors">About Hira Academy</a></li>
+          <li><a href="mission.html" class="hover:text-cyan-300 transition-colors">Our Mission</a></li>
+          <li><a href="contact.html" class="hover:text-cyan-300 transition-colors">Contact Us</a></li>
         </ul>
       </div>
-
     </div>
 
-    <div class="mt-12 border-t border-blue-700 pt-6">
+    <div class="mt-12 border-t border-teal-700 pt-6">
       <p class="text-base text-gray-200 text-center">
-        &copy; 2025 Hira Science Academy. All rights reserved.
+        &copy; 2025 Hira Science Academy. All rights reserved. | Class 9 Mathematics Notes 2025 PECTAA Syllabus
+      </p>
+      <p class="text-sm text-gray-300 text-center mt-2">
+        Prepared by Hira Science Academy
       </p>
     </div>
   </div>
@@ -1029,47 +1984,146 @@
       if (e.target.closest(".chapter-header")) {
         const card = e.target.closest(".chapter-card");
         const isOpen = card.classList.contains("open");
-        document.querySelectorAll(".chapter-card").forEach(c => {
-          c.classList.remove("open");
-          c.querySelector(".toggle-icon").textContent = "+";
-        });
-        if (!isOpen) {
+        
+        // If clicking on an already open card, close it
+        if (isOpen) {
+          card.classList.remove("open");
+          card.querySelector(".toggle-icon").textContent = "↓";
+        } else {
+          // Close all other cards
+          document.querySelectorAll(".chapter-card").forEach(c => {
+            c.classList.remove("open");
+            c.querySelector(".toggle-icon").textContent = "↓";
+          });
+          
+          // Open the clicked card
           card.classList.add("open");
-          card.querySelector(".toggle-icon").textContent = "−";
+          card.querySelector(".toggle-icon").textContent = "↑";
         }
       }
     });
 
-    // Search functionality
-    document.getElementById('searchInput').addEventListener('input', function() {
-      const searchTerm = this.value.toLowerCase();
-      const chapters = document.querySelectorAll('.chapter-card');
+    // Enhanced search functionality
+    const searchInput = document.getElementById('searchInput');
+    const chapters = document.querySelectorAll('.chapter-card');
+    
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase().trim();
       
+      if (searchTerm.length === 0) {
+        // Show all chapters and remove highlights
+        chapters.forEach(chapter => {
+          chapter.style.display = 'block';
+          removeHighlights(chapter);
+        });
+        return;
+      }
+      
+      // Search through chapters
       chapters.forEach(chapter => {
         const chapterText = chapter.textContent.toLowerCase();
-        if (chapterText.includes(searchTerm)) {
+        const chapterTitle = chapter.querySelector('h2').textContent.toLowerCase();
+        const chapterNumber = chapter.getAttribute('data-chapter') || '';
+        const chapterName = chapter.getAttribute('data-name') || '';
+        
+        // Check if search term matches
+        if (chapterText.includes(searchTerm) || 
+            chapterTitle.includes(searchTerm) || 
+            chapterNumber.includes(searchTerm) ||
+            chapterName.toLowerCase().includes(searchTerm)) {
           chapter.style.display = 'block';
+          
+          // Highlight search term in chapter
+          highlightSearchTerm(chapter, searchTerm);
+          
+          // Auto-open matching chapters
+          if (!chapter.classList.contains('open')) {
+            chapter.classList.add('open');
+            chapter.querySelector(".toggle-icon").textContent = "↑";
+          }
         } else {
           chapter.style.display = 'none';
+          removeHighlights(chapter);
         }
       });
     });
+    
+    // Helper function to highlight search terms
+    function highlightSearchTerm(element, term) {
+      removeHighlights(element);
+      
+      // Only highlight in text nodes (not in buttons or icons)
+      const walker = document.createTreeWalker(
+        element,
+        NodeFilter.SHOW_TEXT,
+        {
+          acceptNode: function(node) {
+            // Skip text in buttons, icons, and certain elements
+            if (node.parentElement.closest('button') || 
+                node.parentElement.closest('.btn-view') ||
+                node.parentElement.closest('.toggle-icon') ||
+                node.parentElement.closest('.new-badge')) {
+              return NodeFilter.FILTER_REJECT;
+            }
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        },
+        false
+      );
+      
+      const nodes = [];
+      let node;
+      while (node = walker.nextNode()) {
+        nodes.push(node);
+      }
+      
+      nodes.forEach(node => {
+        const text = node.nodeValue;
+        const regex = new RegExp(`(${term})`, 'gi');
+        if (regex.test(text)) {
+          const span = document.createElement('span');
+          span.className = 'search-highlight';
+          span.textContent = term;
+          
+          const replacedText = text.replace(regex, `<span class="search-highlight">$1</span>`);
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = replacedText;
+          
+          node.parentNode.replaceChild(tempDiv.firstChild, node);
+        }
+      });
+    }
+    
+    // Helper function to remove highlights
+    function removeHighlights(element) {
+      const highlights = element.querySelectorAll('.search-highlight');
+      highlights.forEach(highlight => {
+        const parent = highlight.parentNode;
+        parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+        parent.normalize();
+      });
+    }
 
     // Image modal functionality
     function openModal(src) {
-      document.getElementById('modalImage').src = src;
-      document.getElementById('imageModal').classList.remove('hidden');
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      modalImg.src = src;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
       document.body.style.overflow = 'hidden';
     }
 
     function closeModal() {
-      document.getElementById('imageModal').classList.add('hidden');
+      const modal = document.getElementById("imageModal");
+      modal.classList.remove("flex");
+      modal.classList.add("hidden");
       document.body.style.overflow = 'auto';
     }
 
     // Close modal when clicking outside the image
     document.getElementById('imageModal').addEventListener('click', function(e) {
-      if (e.target === this) {
+      if (e.target === this || e.target.classList.contains('close-modal')) {
         closeModal();
       }
     });
@@ -1092,6 +2146,18 @@
         top: 0,
         behavior: 'smooth'
       });
+    });
+    
+    // Add touch-friendly adjustments for mobile
+    document.addEventListener('DOMContentLoaded', function() {
+      // Make buttons more touch-friendly on mobile
+      if ('ontouchstart' in window) {
+        const buttons = document.querySelectorAll('.btn-view, .back-to-top, .chapter-header');
+        buttons.forEach(button => {
+          button.style.minHeight = '44px';
+          button.style.minWidth = '44px';
+        });
+      }
     });
   </script>
 </body>
