@@ -565,7 +565,7 @@
             margin-top: 4px;
         }
         
-        .btn-action-edit, .btn-action-delete, .btn-action-whatsapp {
+        .btn-action-edit, .btn-action-delete, .btn-action-whatsapp, .btn-action-roll {
             width: 36px;
             height: 36px;
             display: inline-flex;
@@ -586,6 +586,11 @@
         .btn-action-whatsapp:hover {
             background-color: #d1fae5;
             color: #25D366;
+        }
+        
+        .btn-action-roll:hover {
+            background-color: #fef3c7;
+            color: #f59e0b;
         }
         
         .empty-state {
@@ -847,6 +852,95 @@
             filter: blur(4px);
             user-select: none;
         }
+
+        /* New dashboard styles */
+        .stat-card {
+            transition: all 0.2s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 20px -10px rgba(14,165,233,0.2);
+        }
+        .progress-ring-circle {
+            transition: stroke-dashoffset 0.5s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .attendance-dot-modern {
+            width: 10px;
+            height: 10px;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .attendance-row-modern {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            border: 1px solid #eef2f6;
+            transition: 0.15s;
+        }
+        .attendance-row-modern:hover {
+            border-color: var(--primary-color);
+            background: #fafdff;
+        }
+        .result-card {
+            background: white;
+            border-radius: 1.25rem;
+            border: 1px solid #edf2f7;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: 0.2s;
+        }
+        .result-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(14,165,233,0.1);
+        }
+        .progress-thin {
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .progress-fill-blue {
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-color), #3b82f6);
+            border-radius: 999px;
+        }
+        .privacy-badge {
+            background: #f1f4f9;
+            color: #475569;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            display: inline-flex;
+            align-items: center;
+        }
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+        .month-card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .month-name {
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        .month-percentage {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .month-count {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
@@ -1056,7 +1150,7 @@
                 <form id="pLogin">
                     <div class="mb-6">
                         <label for="p_roll" class="form-label">Student Roll Number</label>
-                        <input type="text" id="p_roll" placeholder="e.g., 2023001" class="form-input" required>
+                        <input type="text" id="p_roll" placeholder="e.g., HSA-09-2024-001" class="form-input" required>
                     </div>
                     
                     <div class="mb-6">
@@ -1092,7 +1186,7 @@
                 <form id="sLogin">
                     <div class="mb-6">
                         <label for="s_roll" class="form-label">Your Roll Number</label>
-                        <input type="text" id="s_roll" placeholder="e.g., 2023001" class="form-input" required>
+                        <input type="text" id="s_roll" placeholder="e.g., HSA-09-2024-001" class="form-input" required>
                         <p class="text-sm text-gray-500 mt-1">Enter the roll number provided by the academy</p>
                     </div>
                     
@@ -1103,7 +1197,7 @@
             </div>
         </div>
 
-        <!-- Admin Panel -->
+        <!-- Admin Panel (FULLY RESTORED) -->
         <div id="adminPanel" class="hidden teacher-view">
             <!-- Admin Header -->
             <div class="portal-card p-6 mb-6">
@@ -1537,130 +1631,111 @@
             </div>
         </div>
 
-        <!-- User Dashboard -->
+        <!-- REDESIGNED USER DASHBOARD (STUDENT / PARENT) -->
         <div id="userDashboard" class="hidden">
-            <div class="portal-card p-6 mb-6 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100">
-                <div class="flex flex-col md:flex-row md:items-center justify-between">
+            <!-- top welcome banner - minimal personal info -->
+            <div class="portal-card p-5 mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 flex flex-wrap items-center justify-between">
+                <div class="flex items-center gap-4">
+                    <div class="h-12 w-12 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 text-xl">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
                     <div>
-                        <h2 class="text-2xl font-bold text-gray-800 flex items-center">
-                            <i class="fas fa-user-graduate mr-3 text-primary-600"></i> Student Dashboard
-                        </h2>
-                        <div class="mt-2 space-y-1">
-                            <p class="text-gray-700">Welcome, <span id="uName" class="font-bold text-primary-700"></span></p>
-                            <p class="text-gray-600">Roll No: <span id="uRoll" class="font-medium"></span> | Class: <span id="uClass" class="font-medium"></span></p>
-                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800">Student Dashboard</h2>
+                        <p class="text-gray-600 text-sm flex items-center gap-2">
+                            <span><i class="far fa-id-card mr-1"></i>Roll # <span id="uRoll" class="font-medium"></span></span>
+                            <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
+                            <span><i class="far fa-building mr-1"></i>Class <span id="uClass" class="font-medium"></span></span>
+                            <span class="privacy-badge ml-2"><i class="fas fa-eye-slash mr-1 text-xs"></i>privacy protected</span>
+                        </p>
                     </div>
-                    
-                    <button onclick="logout()" class="btn btn-danger mt-4 md:mt-0">
-                        <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                    </button>
+                </div>
+                <button onclick="logout()" class="btn btn-danger mt-3 sm:mt-0">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                </button>
+            </div>
+
+            <!-- STATS HEADER -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
+                <!-- attendance rate with ring progress -->
+                <div class="portal-card p-5 stat-card flex items-center gap-4">
+                    <div class="relative w-20 h-20 flex items-center justify-center">
+                        <svg class="w-20 h-20 -rotate-90" viewBox="0 0 36 36">
+                            <circle cx="18" cy="18" r="16" fill="none" stroke="#e2e8f0" stroke-width="2.5"></circle>
+                            <circle id="attendanceRing" cx="18" cy="18" r="16" fill="none" stroke="#0ea5e9" stroke-width="2.5" stroke-dasharray="100.5" stroke-dashoffset="50.25" stroke-linecap="round" style="transition: stroke-dashoffset 0.5s;"></circle>
+                        </svg>
+                        <span id="attRateBig" class="absolute text-xl font-bold text-primary-600">0%</span>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 flex items-center"><i class="fas fa-calendar-check text-primary-400 mr-1"></i> Overall Attendance</p>
+                        <p class="text-2xl font-bold text-gray-800"><span id="attRateNum">0</span>%</p>
+                        <p class="text-xs text-gray-500" id="attFullSummary">0 Present / 0 Total days</p>
+                    </div>
+                </div>
+
+                <!-- average marks with star -->
+                <div class="portal-card p-5 stat-card flex items-center gap-4">
+                    <div class="h-16 w-16 rounded-2xl bg-amber-50 flex items-center justify-center text-3xl text-amber-500">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 flex items-center"><i class="fas fa-chart-line text-amber-500 mr-1"></i> Average Marks</p>
+                        <p class="text-2xl font-bold text-gray-800"><span id="avgMarksBig">0</span>%</p>
+                        <p class="text-xs text-gray-500" id="examsCountTotal">Based on 0 exams</p>
+                    </div>
+                </div>
+
+                <!-- total exams taken -->
+                <div class="portal-card p-5 stat-card flex items-center gap-4">
+                    <div class="h-16 w-16 rounded-2xl bg-purple-50 flex items-center justify-center text-3xl text-purple-500">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500 flex items-center"><i class="fas fa-clipboard-list text-purple-400 mr-1"></i> Exams Taken</p>
+                        <p class="text-2xl font-bold text-gray-800"><span id="totalExamsBig">0</span></p>
+                        <p class="text-xs text-gray-500">Total examinations</p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div class="portal-card p-6">
-                    <div class="flex items-center">
-                        <div class="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 text-xl mr-4">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-600">Attendance Rate</p>
-                            <p class="text-2xl font-bold text-blue-600" id="attendanceRate">0%</p>
-                        </div>
-                    </div>
+
+            <!-- MONTHLY ATTENDANCE BREAKDOWN (Full Year View) -->
+            <div class="portal-card p-6 mb-8">
+                <div class="flex items-center justify-between mb-5">
+                    <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fas fa-calendar-alt text-primary-500 mr-2"></i> Monthly Attendance Breakdown</h3>
+                    <span class="text-xs bg-blue-50 text-primary-700 px-3 py-1 rounded-full">Full Academic Year</span>
                 </div>
-                
-                <div class="portal-card p-6">
-                    <div class="flex items-center">
-                        <div class="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center text-green-600 text-xl mr-4">
-                            <i class="fas fa-chart-bar"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-600">Average Marks</p>
-                            <p class="text-2xl font-bold text-green-600" id="averageMarks">0%</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portal-card p-6">
-                    <div class="flex items-center">
-                        <div class="h-12 w-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-xl mr-4">
-                            <i class="fas fa-medal"></i>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-600">Total Exams</p>
-                            <p class="text-2xl font-bold text-purple-600" id="totalExams">0</p>
-                        </div>
-                    </div>
+                <div id="monthlyAttendance" class="month-grid">
+                    <!-- Monthly stats will be injected here -->
                 </div>
             </div>
-            
+
+            <!-- TWO COLUMN LAYOUT -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- LEFT: recent attendance history -->
                 <div class="portal-card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-history mr-2 text-primary-600"></i> Attendance History
-                    </h3>
-                    <div class="table-container">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Marked By</th>
-                                </tr>
-                            </thead>
-                            <tbody id="uAtt"></tbody>
-                        </table>
+                    <div class="flex items-center justify-between mb-5">
+                        <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fas fa-history text-primary-500 mr-2"></i> Recent Attendance</h3>
+                        <span class="text-xs bg-blue-50 text-primary-700 px-3 py-1 rounded-full">last 10 records</span>
+                    </div>
+                    <div id="uAttModern" class="space-y-3 max-h-96 overflow-y-auto pr-1">
+                        <div class="text-center text-gray-400 py-6"><i class="fas fa-calendar-week fa-2x mb-2 opacity-30"></i><p>No attendance records yet</p></div>
                     </div>
                 </div>
-                
+
+                <!-- RIGHT: exam results cards -->
                 <div class="portal-card p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                        <i class="fas fa-chart-line mr-2 text-green-600"></i> Exam Results
-                    </h3>
-                    <div class="table-container">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th>Subject</th>
-                                    <th>Exam Type</th>
-                                    <th>Marks</th>
-                                    <th>Percentage</th>
-                                </tr>
-                            </thead>
-                            <tbody id="uMarks"></tbody>
-                        </table>
+                    <div class="flex items-center justify-between mb-5">
+                        <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fas fa-medal text-amber-500 mr-2"></i> Exam Results</h3>
+                        <span class="text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full"><span id="resultCount">0</span> exams</span>
+                    </div>
+                    <div id="uMarksModern" class="space-y-4 max-h-96 overflow-y-auto pr-1">
+                        <div class="text-center text-gray-400 py-6"><i class="fas fa-file-alt fa-2x mb-2 opacity-30"></i><p>No results published yet</p></div>
                     </div>
                 </div>
             </div>
-            
-            <div class="portal-card p-6 mt-8">
-                <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center">
-                    <i class="fas fa-user-circle mr-2 text-primary-600"></i> Personal Information
-                </h3>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="form-label">Email Address</label>
-                        <div class="p-3 bg-gray-50 rounded-lg" id="uEmail">Not provided</div>
-                    </div>
-                    <div>
-                        <label class="form-label">Mobile Number</label>
-                        <div class="p-3 bg-gray-50 rounded-lg" id="uMobile">Not provided</div>
-                    </div>
-                    <div>
-                        <label class="form-label">Parent Mobile</label>
-                        <div class="p-3 bg-gray-50 rounded-lg" id="uParentMobile">Not provided</div>
-                    </div>
-                    <div>
-                        <label class="form-label">Address</label>
-                        <div class="p-3 bg-gray-50 rounded-lg" id="uAddress">Not provided</div>
-                    </div>
-                    <div>
-                        <label class="form-label">Enrollment Date</label>
-                        <div class="p-3 bg-gray-50 rounded-lg" id="uCreatedAt">Not available</div>
-                    </div>
-                </div>
+
+            <!-- privacy note -->
+            <div class="text-xs text-gray-400 flex justify-end items-center mt-6 gap-2">
+                <i class="fas fa-shield-alt"></i> personal information is never shown – secured by Hira Academy
             </div>
         </div>
     </main>
@@ -1678,10 +1753,6 @@
                 
                 <form id="newStudentForm">
                     <div class="space-y-4">
-                        <div>
-                            <label class="form-label">Roll Number *</label>
-                            <input type="text" id="nRoll" placeholder="e.g., 2023001" class="form-input" required>
-                        </div>
                         <div>
                             <label class="form-label">Full Name *</label>
                             <input type="text" id="nName" placeholder="Student's full name" class="form-input" required>
@@ -1896,7 +1967,6 @@
         </div>
     </div>
 
-    <!-- WhatsApp Confirmation Modal -->
     <div id="whatsappConfirmModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
         <div class="portal-card w-full max-w-md">
             <div class="p-6">
@@ -1928,7 +1998,7 @@
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <p class="text-base text-gray-200">&copy; 2025 Hira Science Academy. All rights reserved.</p>
-                <p class="mt-2 text-sm text-gray-300">Student Portal v3.0 | Enhanced WhatsApp Integration</p>
+                <p class="mt-2 text-sm text-gray-300">Student Portal v3.0 | Enhanced WhatsApp Integration | Auto Roll Number Format: HSA-[Class]-YYYY-[Seq]</p>
                 <div class="mt-4">
                     <a href="index.html" class="text-cyan-400 hover:text-white transition-colors mx-2">Home</a>
                     <a href="privacy-policy.html" class="text-cyan-400 hover:text-white transition-colors mx-2">Privacy Policy</a>
@@ -1939,9 +2009,9 @@
         </div>
     </footer>
 
-    <!-- JavaScript - COMPLETELY PRESERVED ORIGINAL WITH ADDED FUNCTIONS -->
+    <!-- JavaScript - COMPLETE WITH ALL FUNCTIONS -->
     <script>
-        // CONFIGURATION (EXACTLY AS ORIGINAL)
+        // CONFIGURATION
         const SHEET_ID = '1iyNR7BnpLjTnOcI43PlpQ-2V0JdxCj7r_pTyOe67gWo';
         const BASE_URL = 'https://opensheet.elk.sh';
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwOIA4jJlznPCWwe38qM1-rqsNRwWbHIfDdVENFwmZq8DzoXgce31AYLwX0KOUAp7DiIg/exec';
@@ -1964,8 +2034,72 @@
         // WhatsApp Queue System
         let whatsAppQueue = [];
         let currentQueueIndex = 0;
-        let whatsAppType = ''; // 'attendance' or 'marks'
-        let whatsAppContext = {}; // Store context data (date, subject, examType, etc.)
+        let whatsAppType = '';
+        let whatsAppContext = {};
+
+        // Helper function to get class number from class name
+        function getClassNumber(classValue) {
+            if (!classValue) return '00';
+            if (classValue.includes('Pre')) return '00';
+            if (classValue.includes('9th')) return '09';
+            if (classValue.includes('10th')) return '10';
+            if (classValue.includes('1st Year') || classValue.includes('1st')) return '11';
+            if (classValue.includes('2nd Year') || classValue.includes('2nd')) return '12';
+            if (classValue.includes('Other')) return '99';
+            
+            // Try to extract numbers
+            const match = classValue.match(/\d+/);
+            if (match) {
+                const num = parseInt(match[0]);
+                return num < 10 ? '0' + num : num.toString();
+            }
+            return '00';
+        }
+
+        // Helper function to generate auto roll number
+        function generateAutoRollNumber(studentClass) {
+            const currentYear = new Date().getFullYear().toString();
+            const classNumber = getClassNumber(studentClass);
+            
+            // Filter students by class to get sequence number
+            const classStudents = (appData.students || []).filter(s => 
+                s.class === studentClass && s.status !== 'inactive'
+            );
+            
+            // Get existing roll numbers in this class to determine next sequence
+            let maxSeq = 0;
+            classStudents.forEach(s => {
+                const roll = s.roll_number || s.roll;
+                if (roll && roll.startsWith('HSA-')) {
+                    const parts = roll.split('-');
+                    if (parts.length === 4 && parts[3]) {
+                        const seq = parseInt(parts[3]);
+                        if (!isNaN(seq) && seq > maxSeq) {
+                            maxSeq = seq;
+                        }
+                    }
+                }
+            });
+            
+            // If no existing students in this class, also check all students to maintain global uniqueness
+            if (maxSeq === 0) {
+                (appData.students || []).forEach(s => {
+                    const roll = s.roll_number || s.roll;
+                    if (roll && roll.startsWith('HSA-')) {
+                        const parts = roll.split('-');
+                        if (parts.length === 4 && parts[3] && parts[1] === classNumber && parts[2] === currentYear) {
+                            const seq = parseInt(parts[3]);
+                            if (!isNaN(seq) && seq > maxSeq) {
+                                maxSeq = seq;
+                            }
+                        }
+                    }
+                });
+            }
+            
+            const nextSeq = (maxSeq + 1).toString().padStart(3, '0');
+            return `HSA-${classNumber}-${currentYear}-${nextSeq}`;
+        }
 
         // WhatsApp Helper Functions
         function formatPhoneNumber(phone) {
@@ -1999,36 +2133,66 @@
             const encodedMessage = encodeURIComponent(message);
             const url = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
             
-            // Open in new tab
             window.open(url, '_blank');
             
-            // Mark as sent in UI
             markRowAsSent(roll, type);
+            showToast(`WhatsApp opened for ${roll}`, 'success');
             
             return true;
         }
 
         function markRowAsSent(roll, type) {
             if (type === 'attendance') {
-                // Find and mark the attendance row
                 const row = document.querySelector(`[data-roll="${roll}"]`);
                 if (row) {
                     row.classList.add('whatsapp-sent-row');
-                    // Add checkmark if not exists
                     if (!row.querySelector('.check-indicator')) {
                         const checkmark = document.createElement('span');
                         checkmark.className = 'check-indicator ml-2';
                         checkmark.innerHTML = '<i class="fas fa-check-circle text-green-600"></i>';
-                        row.querySelector('.flex.items-center.gap-3').appendChild(checkmark);
+                        row.querySelector('.flex.items-center.gap-3')?.appendChild(checkmark);
                     }
                 }
             } else if (type === 'marks') {
-                // Find and mark the marks grid row
                 const cells = document.querySelectorAll(`[data-roll="${roll}"]`);
                 cells.forEach(cell => {
                     cell.classList.add('whatsapp-sent-row');
                 });
+            } else if (type === 'rollnumber') {
+                const row = document.querySelector(`[data-roll="${roll}"]`);
+                if (row) {
+                    row.classList.add('whatsapp-sent-row');
+                    const actionCell = row.querySelector('td:last-child');
+                    if (actionCell) {
+                        const existingIndicator = actionCell.querySelector('.roll-sent-indicator');
+                        if (!existingIndicator) {
+                            const indicator = document.createElement('span');
+                            indicator.className = 'roll-sent-indicator ml-2 text-green-600';
+                            indicator.innerHTML = '<i class="fas fa-check-circle" title="Roll number sent"></i>';
+                            actionCell.appendChild(indicator);
+                        }
+                    }
+                }
             }
+        }
+
+        // Send roll number via WhatsApp
+        function sendRollNumberWhatsApp(roll) {
+            const student = (appData.students || []).find(s => (s.roll_number || s.roll) == roll);
+            if (!student) {
+                return showToast('Student not found', 'error');
+            }
+            
+            if (!student.parent_mobile) {
+                return showToast('No parent mobile number found for this student', 'warning');
+            }
+            
+            const formattedRoll = student.roll_number || student.roll;
+            const studentClass = student.class || 'N/A';
+            const message = `👤 *Student:* ${student.name}\n🏫 *Class:* ${studentClass}\n🆔 *Roll Number:* ${formattedRoll}\n\nYour child has been registered at *Hira Science Academy*. Please save this roll number for future reference.\n\nRegards,\nHira Science Academy.`;
+            
+            sendIndividualWhatsApp(student.parent_mobile, message, roll, 'rollnumber');
+            logActivity('whatsapp', `Sent roll number to parent of ${student.name}`, `Roll: ${formattedRoll}`);
         }
 
         // Prepare WhatsApp messages for attendance
@@ -2061,13 +2225,11 @@
                 return showToast('No absent students with parent mobile numbers found', 'warning');
             }
             
-            // Store in queue
             whatsAppQueue = absentStudents;
             currentQueueIndex = 0;
             whatsAppType = 'attendance';
             whatsAppContext = { date: date };
             
-            // Show confirmation modal
             showWhatsAppConfirmModal(
                 `Send absence alerts to ${absentStudents.length} parents?`,
                 absentStudents
@@ -2096,7 +2258,7 @@
                                  percentage >= 60 ? 'B' : 
                                  percentage >= 50 ? 'C' : 'F';
                     
-                    const message = `📚 *Subject:* ${selectedSubject}\n📝 *Exam:* ${examType}\n📊 *Marks:* ${markData.obtained}/${globalTotalMarks}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
+                    const message = `👤 *Student:* ${student.name}\n📚 *Subject:* ${selectedSubject}\n📝 *Exam:* ${examType}\n📊 *Marks:* ${markData.obtained}/${globalTotalMarks}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
                     
                     recipients.push({
                         roll: roll,
@@ -2111,7 +2273,6 @@
                 return showToast('No students with parent mobile numbers found', 'warning');
             }
             
-            // Store in queue
             whatsAppQueue = recipients;
             currentQueueIndex = 0;
             whatsAppType = 'marks';
@@ -2122,7 +2283,6 @@
                 totalMarks: globalTotalMarks
             };
             
-            // Show confirmation modal
             showWhatsAppConfirmModal(
                 `Send results to ${recipients.length} parents?`,
                 recipients
@@ -2151,7 +2311,6 @@
                 return;
             }
             
-            // Show progress modal
             showWhatsAppProgressModal();
         }
 
@@ -2163,7 +2322,6 @@
             const progressFill = document.getElementById('whatsappProgressFill');
             const statusText = document.getElementById('waStatusText');
             
-            // Build progress list
             progressList.innerHTML = '';
             whatsAppQueue.forEach((msg, index) => {
                 const statusClass = index < currentQueueIndex ? 'sent' : 'pending';
@@ -2178,7 +2336,6 @@
             progressFill.style.width = `${(currentQueueIndex / whatsAppQueue.length) * 100}%`;
             statusText.textContent = currentQueueIndex < whatsAppQueue.length ? 'Ready to send next' : 'All messages sent';
             
-            // Enable/disable send next button based on queue status
             const sendNextBtn = document.getElementById('sendNextInQueueBtn');
             sendNextBtn.disabled = currentQueueIndex >= whatsAppQueue.length;
             sendNextBtn.textContent = currentQueueIndex >= whatsAppQueue.length ? 'All Sent' : 'Send Next';
@@ -2195,16 +2352,13 @@
             
             const currentMessage = whatsAppQueue[currentQueueIndex];
             
-            // Send the message
             const formattedNumber = formatPhoneNumber(currentMessage.phone);
             const encodedMessage = encodeURIComponent(currentMessage.message);
             const url = `https://wa.me/${formattedNumber}?text=${encodedMessage}`;
             window.open(url, '_blank');
             
-            // Mark as sent in UI
             markRowAsSent(currentMessage.roll, whatsAppType);
             
-            // Update progress
             const progressItem = document.getElementById(`wa-progress-${currentQueueIndex}`);
             if (progressItem) {
                 progressItem.classList.remove('pending');
@@ -2214,11 +2368,9 @@
             
             currentQueueIndex++;
             
-            // Update progress bar and count
             document.getElementById('whatsappProgressCount').textContent = `${currentQueueIndex}/${whatsAppQueue.length}`;
             document.getElementById('whatsappProgressFill').style.width = `${(currentQueueIndex / whatsAppQueue.length) * 100}%`;
             
-            // Update status text
             const statusText = document.getElementById('waStatusText');
             if (currentQueueIndex >= whatsAppQueue.length) {
                 statusText.textContent = 'All messages sent!';
@@ -2229,7 +2381,6 @@
                 statusText.textContent = `Sent ${currentQueueIndex} of ${whatsAppQueue.length}`;
             }
             
-            // Log activity
             logActivity('whatsapp', `Sent WhatsApp to ${currentMessage.name}`, `Type: ${whatsAppType}`);
         }
 
@@ -2259,28 +2410,21 @@
             }
         }
 
-        // Activity Log with Fallback
+        // Activity Log
         async function logActivity(action_type, description, details = '') {
             const activityData = { sheet: 'activity_log', timestamp: new Date().toISOString(), user: currentUser?.name || currentUser?.email || 'System', action_type, description, details };
             try {
                 await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: new URLSearchParams(activityData) });
             } catch (e) {
-                console.warn('Activity log failed, storing locally');
-                try {
-                    const localLog = JSON.parse(localStorage.getItem('offline_activity') || '[]');
-                    localLog.push(activityData);
-                    localStorage.setItem('offline_activity', JSON.stringify(localLog.slice(-20)));
-                } catch (storageErr) {
-                    console.error('LocalStorage full, cannot store log');
-                }
+                console.warn('Activity log failed');
             }
         }
 
         // Initialize
         window.onload = () => {
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('attDate') && (document.getElementById('attDate').value = today);
-            document.getElementById('batchExamDate') && (document.getElementById('batchExamDate').value = today);
+            if (document.getElementById('attDate')) document.getElementById('attDate').value = today;
+            if (document.getElementById('batchExamDate')) document.getElementById('batchExamDate').value = today;
             document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
                 document.getElementById('mobile-menu').classList.toggle('hidden');
             });
@@ -2314,14 +2458,17 @@
         // Send to Sheet
         async function sendToSheet(payload) {
             showLoading(true, "Saving to database...");
-            const body = new URLSearchParams(payload);
+            const body = new URLSearchParams();
+            Object.keys(payload).forEach(key => body.append(key, payload[key]));
+            body.append('timestamp', new Date().toISOString());
+            if (currentUser) body.append('entered_by', currentUser.name || currentUser.email);
             try {
-                if (currentUser) body.append('entered_by', currentUser.name || currentUser.email);
                 await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body });
+                showToast('Data saved successfully!', 'success');
                 return true;
             } catch (e) {
                 console.error("Save error:", e);
-                showToast('Save Error! offline mode', 'error');
+                showToast('Save Error! Please check your connection', 'error');
                 return false;
             } finally {
                 showLoading(false);
@@ -2332,7 +2479,7 @@
         function togglePrivacyMode() {
             isPrivacyMode = !isPrivacyMode;
             populateAdminTables();
-            showToast(isPrivacyMode ? 'Privacy mode ON (data hidden)' : 'Privacy mode OFF (data visible)', 'info');
+            showToast(isPrivacyMode ? 'Privacy mode ON' : 'Privacy mode OFF', 'info');
             logActivity('edit', `Privacy mode ${isPrivacyMode ? 'enabled' : 'disabled'}`);
         }
 
@@ -2346,19 +2493,39 @@
 
             showLoading(true, "Saving attendance...");
             try {
-                const savePromises = [];
+                let successCount = 0;
+                let failCount = 0;
                 
                 for (const student of studentsToMark) {
                     const roll = student.roll_number || student.roll;
                     const radio = document.querySelector(`input[name="at_${roll}"]:checked`);
                     const status = radio ? radio.value : 'Absent';
-                    const data = { sheet: 'attendance', roll_number: roll, date, status, marked_by: currentUser?.name || 'Admin' };
-                    savePromises.push(sendToSheet(data));
+                    
+                    const data = { 
+                        sheet: 'attendance', 
+                        roll_number: roll, 
+                        date: date, 
+                        status: status, 
+                        marked_by: currentUser?.name || 'Admin',
+                        timestamp: new Date().toISOString(),
+                        class: student.class || ''
+                    };
+                    
+                    const success = await sendToSheet(data);
+                    if (success) {
+                        successCount++;
+                    } else {
+                        failCount++;
+                    }
                 }
                 
-                await Promise.all(savePromises);
-                showToast(`Attendance saved for ${studentsToMark.length} students!`, 'success');
+                if (failCount > 0) {
+                    showToast(`Attendance saved: ${successCount} successful, ${failCount} failed`, 'warning');
+                } else {
+                    showToast(`Attendance saved for ${successCount} students!`, 'success');
+                }
                 
+                setTimeout(() => syncData(), 1000);
                 populateAttendanceList();
             } catch (error) {
                 console.error(error);
@@ -2382,19 +2549,38 @@
 
             showLoading(true, 'Saving batch marks...');
             try {
-                const savePromises = [];
+                let successCount = 0;
+                let failCount = 0;
                 
                 for (const [roll, markData] of Object.entries(batchMarksData.marks)) {
                     const marksData = {
-                        sheet: 'exam_marks', roll_number: roll, exam_type: examType, subject: selectedSubject,
-                        total_marks: globalTotalMarks, obtained_marks: markData.obtained, percentage: markData.percentage,
-                        date: examDate, entered_by: currentUser?.name || 'Admin', class: selectedClass, batch_entry: 'yes'
+                        sheet: 'exam_marks', 
+                        roll_number: roll, 
+                        exam_type: examType, 
+                        subject: selectedSubject,
+                        total_marks: globalTotalMarks, 
+                        obtained_marks: markData.obtained, 
+                        percentage: markData.percentage || ((markData.obtained / globalTotalMarks) * 100).toFixed(2),
+                        date: examDate, 
+                        entered_by: currentUser?.name || 'Admin', 
+                        class: selectedClass, 
+                        batch_entry: 'yes',
+                        timestamp: new Date().toISOString()
                     };
-                    savePromises.push(sendToSheet(marksData));
+                    
+                    const success = await sendToSheet(marksData);
+                    if (success) {
+                        successCount++;
+                    } else {
+                        failCount++;
+                    }
                 }
                 
-                await Promise.all(savePromises);
-                showToast(`Successfully saved ${Object.keys(batchMarksData.marks).length} results!`, 'success');
+                if (failCount > 0) {
+                    showToast(`Saved ${successCount} results, ${failCount} failed`, 'warning');
+                } else {
+                    showToast(`Successfully saved ${successCount} results!`, 'success');
+                }
                 
                 batchMarksData = {};
                 document.getElementById('batchMarksGrid').innerHTML = '<div class="text-gray-500 text-center py-8" style="grid-column: 1 / -1;">Select a class first to load students</div>';
@@ -2433,7 +2619,7 @@
                     const showEmail = (isTeacherView && isPrivacyMode) ? '<span class="privacy-mask"><i class="fas fa-eye-slash mr-1"></i>Hidden</span>' : email;
                     const showAddress = (isTeacherView && isPrivacyMode) ? '<span class="privacy-mask"><i class="fas fa-eye-slash mr-1"></i>Hidden</span>' : address;
 
-                    return `<tr>
+                    return `<tr data-roll="${roll}">
                         <td class="py-3 px-4">${roll}</td>
                         <td class="py-3 px-4">${s.name}</td>
                         <td class="py-3 px-4">${studentClass}</td>
@@ -2441,28 +2627,24 @@
                         <td class="py-3 px-4">${showParentMobile}</td>
                         <td class="py-3 px-4">${showEmail}</td>
                         <td class="py-3 px-4">${showAddress}</td>
-                        <td class="py-3 px-4"><div class="flex gap-2"><button onclick="editStudent('${roll}')" class="btn-action-edit text-primary-600"><i class="fas fa-edit"></i></button><button onclick="deleteStudent('${roll}')" class="btn-action-delete text-red-600"><i class="fas fa-trash"></i></button><button onclick="sendWhatsAppToStudent('${roll}')" class="btn-action-whatsapp text-green-600" title="Send WhatsApp to parent"><i class="fab fa-whatsapp"></i></button></div></td>
+                        <td class="py-3 px-4"><div class="flex gap-2"><button onclick="editStudent('${roll}')" class="btn-action-edit text-primary-600"><i class="fas fa-edit"></i></button><button onclick="deleteStudent('${roll}')" class="btn-action-delete text-red-600"><i class="fas fa-trash"></i></button><button onclick="sendWhatsAppToStudent('${roll}')" class="btn-action-whatsapp text-green-600" title="Send WhatsApp to parent"><i class="fab fa-whatsapp"></i></button><button onclick="sendRollNumberWhatsApp('${roll}')" class="btn-action-roll text-amber-600" title="Send Roll Number via WhatsApp"><i class="fas fa-id-card"></i></button></div></td>
                     </tr>`;
                 }).join('');
             }
 
-            // Update privacy notice
             const notice = document.querySelector('.privacy-notice');
             if (notice && currentUser?.type === 'teacher') {
                 notice.innerHTML = `<i class="fas ${isPrivacyMode ? 'fa-eye-slash' : 'fa-eye'} mr-1"></i> Student personal data is ${isPrivacyMode ? 'hidden' : 'visible'}. <button onclick="togglePrivacyMode()" class="ml-2 text-primary-600 hover:text-primary-800 text-sm font-medium"><i class="fas ${isPrivacyMode ? 'fa-eye' : 'fa-eye-slash'} mr-1"></i>${isPrivacyMode ? 'Show Data' : 'Hide Data'}</button>`;
             }
 
-            // Teachers table
             const teachersTable = document.getElementById('teachersTable');
             document.getElementById('teacherCount').innerText = appData.teachers.length;
             document.getElementById('totalTeachers').textContent = appData.teachers.length;
             teachersTable.innerHTML = appData.teachers.map(t => `<tr><td class="py-3 px-4">${t.name}</td><td class="py-3 px-4">${t.email}</td><td class="py-3 px-4">${t.security_question || 'N/A'}</td><td class="py-3 px-4">${t.created_at || 'N/A'}</td></tr>`).join('');
 
-            // Student dropdown for marks
             const studentSelect = document.getElementById('mStudent');
             studentSelect.innerHTML = '<option value="">Select Student</option>' + activeStudents.map(s => `<option value="${s.roll_number || s.roll}">${s.name} (${s.class || 'N/A'}) - ${s.roll_number || s.roll}</option>`).join('');
 
-            // Marks table
             const marksTable = document.getElementById('marksTable');
             marksTable.innerHTML = appData.marks.map(m => {
                 const student = activeStudents.find(s => (s.roll_number || s.roll) == m.roll_number);
@@ -2478,7 +2660,7 @@
                     <td class="py-3 px-4 font-bold ${percentage >= 50 ? 'text-green-600' : 'text-red-600'}">${percentage}%</td>
                     <td class="py-3 px-4">${m.date || 'N/A'}</td>
                     <td class="py-3 px-4">
-                        <button onclick="sendWhatsAppForResult('${m.roll_number}', '${m.subject}', '${m.exam_type}', ${obtained}, ${total})" class="btn-action-whatsapp text-green-600" title="Send result via WhatsApp">
+                        <button onclick="sendWhatsAppForResult('${m.roll_number}', '${m.subject}', '${m.exam_type}', ${obtained}, ${total}, '${student.name}')" class="btn-action-whatsapp text-green-600" title="Send result via WhatsApp">
                             <i class="fab fa-whatsapp"></i>
                         </button>
                     </td>
@@ -2489,8 +2671,7 @@
             populateAttendanceClassDropdown();
         }
 
-        // Send WhatsApp for individual result
-        function sendWhatsAppForResult(roll, subject, examType, obtained, total) {
+        function sendWhatsAppForResult(roll, subject, examType, obtained, total, studentName) {
             const student = (appData.students || []).find(s => (s.roll_number || s.roll) == roll);
             if (!student || !student.parent_mobile) {
                 return showToast('No parent mobile number found for this student', 'warning');
@@ -2502,19 +2683,18 @@
                          percentage >= 60 ? 'B' : 
                          percentage >= 50 ? 'C' : 'F';
             
-            const message = `📚 *Subject:* ${subject}\n📝 *Exam:* ${examType}\n📊 *Marks:* ${obtained}/${total}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
+            const message = `👤 *Student:* ${student.name}\n📚 *Subject:* ${subject}\n📝 *Exam:* ${examType}\n📊 *Marks:* ${obtained}/${total}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
             
             sendIndividualWhatsApp(student.parent_mobile, message, roll, 'marks');
         }
 
-        // Send WhatsApp to individual student
         function sendWhatsAppToStudent(roll) {
             const student = (appData.students || []).find(s => (s.roll_number || s.roll) == roll);
             if (!student || !student.parent_mobile) {
                 return showToast('No parent mobile number found for this student', 'warning');
             }
             
-            const message = `Dear Parent,\n\nThis is a message from *Hira Science Academy* regarding your child *${student.name}*.\n\nPlease contact us for any queries.\n\nRegards,\nHira Science Academy.`;
+            const message = `👤 *Student:* ${student.name}\n\nDear Parent,\n\nThis is a message from *Hira Science Academy* regarding your child.\n\nPlease contact us for any queries.\n\nRegards,\nHira Science Academy.`;
             sendIndividualWhatsApp(student.parent_mobile, message, roll, 'student');
         }
 
@@ -2559,7 +2739,6 @@
             document.getElementById('markedCount').innerText = markedCount;
         }
 
-        // Send individual attendance WhatsApp
         function sendAttendanceWhatsApp(roll, name, phone) {
             const date = document.getElementById('attDate').value || new Date().toISOString().split('T')[0];
             const message = `📅 *Date:* ${date}\n👤 *Student:* ${name}\n🕒 *Status:* Absent\n\nPlease ensure regular attendance.\n\nRegards,\nHira Science Academy.`;
@@ -2619,7 +2798,6 @@
             updateProgressBar(0, classStudents.length);
         }
 
-        // Send individual batch marks WhatsApp
         function sendBatchMarksWhatsApp(roll, name, phone) {
             const obtainedInput = document.getElementById(`obtained_${roll}`);
             if (!obtainedInput || !obtainedInput.value) {
@@ -2641,7 +2819,7 @@
                          percentage >= 60 ? 'B' : 
                          percentage >= 50 ? 'C' : 'F';
             
-            const message = `📚 *Subject:* ${subject}\n📝 *Exam:* ${examType}\n📊 *Marks:* ${obtained}/${total}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
+            const message = `👤 *Student:* ${name}\n📚 *Subject:* ${subject}\n📝 *Exam:* ${examType}\n📊 *Marks:* ${obtained}/${total}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
             
             sendIndividualWhatsApp(phone, message, roll, 'marks');
         }
@@ -2812,127 +2990,167 @@
             }
         };
 
+        // Function to generate monthly attendance breakdown
+        function generateMonthlyAttendance(attendanceRecords) {
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const monthlyData = {};
+            
+            months.forEach(month => {
+                monthlyData[month] = { present: 0, total: 0 };
+            });
+            
+            attendanceRecords.forEach(record => {
+                if (record.date) {
+                    const date = new Date(record.date);
+                    const month = months[date.getMonth()];
+                    if (month) {
+                        monthlyData[month].total++;
+                        if (record.status === 'Present') {
+                            monthlyData[month].present++;
+                        }
+                    }
+                }
+            });
+            
+            let html = '';
+            months.forEach(month => {
+                const data = monthlyData[month];
+                const percentage = data.total > 0 ? Math.round((data.present / data.total) * 100) : 0;
+                html += `
+                    <div class="month-card">
+                        <div class="month-name">${month}</div>
+                        <div class="month-percentage">${percentage}%</div>
+                        <div class="month-count">${data.present}/${data.total}</div>
+                    </div>
+                `;
+            });
+            
+            return html;
+        }
+
+        // REDESIGNED LOGIN USER FUNCTION
         function loginUser(student) {
             currentUser = { type: 'student', roll: student.roll_number || student.roll, name: student.name };
+
             showSection('userDashboard');
-            document.getElementById('uName').innerText = student.name;
+
             document.getElementById('uRoll').innerText = student.roll_number || student.roll;
             document.getElementById('uClass').innerText = student.class || 'Not specified';
-            document.getElementById('uMobile').innerText = student.mobile || 'Not provided';
-            document.getElementById('uEmail').innerText = student.email || 'Not provided';
-            document.getElementById('uAddress').innerText = student.address || 'Not provided';
-            document.getElementById('uParentMobile').innerText = student.parent_mobile || 'Not provided';
-            document.getElementById('uCreatedAt').innerText = student.created_at || 'Not available';
 
             const roll = student.roll_number || student.roll;
             const userAttendance = appData.attendance.filter(x => x.roll_number == roll);
             const presentCount = userAttendance.filter(x => x.status === 'Present').length;
             const attendanceRate = userAttendance.length > 0 ? Math.round((presentCount / userAttendance.length) * 100) : 0;
-            document.getElementById('attendanceRate').innerText = `${attendanceRate}%`;
 
-            const recentAttendance = userAttendance.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10);
-            document.getElementById('uAtt').innerHTML = recentAttendance.map(x => `<tr><td class="py-3 px-4">${x.date || 'N/A'}</td><td class="py-3 px-4"><span class="status-badge ${x.status === 'Present' ? 'status-present' : x.status === 'Absent' ? 'status-absent' : 'status-late'}">${x.status}</span></td><td class="py-3 px-4">${x.marked_by || 'N/A'}</td></tr>`).join('');
+            // Update attendance stats
+            document.getElementById('attRateBig').innerText = attendanceRate + '%';
+            document.getElementById('attRateNum').innerText = attendanceRate;
+            document.getElementById('attFullSummary').innerText = `${presentCount} Present / ${userAttendance.length} Total days`;
 
+            // Update progress ring
+            const circumference = 2 * Math.PI * 16;
+            const offset = circumference - (attendanceRate / 100) * circumference;
+            const ring = document.getElementById('attendanceRing');
+            if (ring) {
+                ring.style.strokeDasharray = `${circumference}`;
+                ring.style.strokeDashoffset = offset;
+            }
+
+            // Generate monthly attendance breakdown
+            const monthlyContainer = document.getElementById('monthlyAttendance');
+            monthlyContainer.innerHTML = generateMonthlyAttendance(userAttendance);
+
+            // Exam stats
             const userMarks = appData.marks.filter(x => x.roll_number == roll);
-            document.getElementById('totalExams').innerText = userMarks.length;
-            if (userMarks.length > 0) {
-                const totalPercentage = userMarks.reduce((sum, m) => { const o = parseFloat(m.obtained_marks) || 0; const t = parseFloat(m.total_marks) || 100; return sum + (o / t) * 100; }, 0);
-                const averagePercentage = (totalPercentage / userMarks.length).toFixed(1);
-                document.getElementById('averageMarks').innerText = `${averagePercentage}%`;
-                document.getElementById('uMarks').innerHTML = userMarks.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10).map(x => { const o = parseFloat(x.obtained_marks) || 0; const t = parseFloat(x.total_marks) || 100; const p = t > 0 ? ((o / t) * 100).toFixed(2) : 0; return `<tr><td class="py-3 px-4">${x.subject || 'N/A'}</td><td class="py-3 px-4">${x.exam_type || 'N/A'}</td><td class="py-3 px-4 font-bold">${o}/${t}</td><td class="py-3 px-4 font-bold ${p >= 50 ? 'text-green-600' : 'text-red-600'}">${p}%</td></tr>`; }).join('');
+            const examCount = userMarks.length;
+            document.getElementById('totalExamsBig').innerText = examCount;
+            document.getElementById('resultCount').innerText = examCount;
+            document.getElementById('examsCountTotal').innerText = `Based on ${examCount} exam${examCount !== 1 ? 's' : ''}`;
+
+            let avgPercent = 0;
+            if (examCount > 0) {
+                const totalPerc = userMarks.reduce((sum, m) => {
+                    const o = parseFloat(m.obtained_marks) || 0;
+                    const t = parseFloat(m.total_marks) || 100;
+                    return sum + (o / t) * 100;
+                }, 0);
+                avgPercent = (totalPerc / examCount).toFixed(1);
+            }
+            document.getElementById('avgMarksBig').innerText = avgPercent;
+
+            // Recent attendance (last 10 records)
+            const attContainer = document.getElementById('uAttModern');
+            const recentAtt = userAttendance.sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 10);
+
+            if (recentAtt.length === 0) {
+                attContainer.innerHTML = `<div class="text-center text-gray-400 py-6"><i class="fas fa-calendar-week fa-2x mb-2 opacity-30"></i><p>No attendance records yet</p></div>`;
             } else {
-                document.getElementById('averageMarks').innerText = 'N/A';
-                document.getElementById('uMarks').innerHTML = '<tr><td colspan="4" class="py-8 text-center text-gray-500">No exam results available yet.</td></tr>';
+                let attHtml = '';
+                recentAtt.forEach(rec => {
+                    let statusColor = '';
+                    let icon = '';
+                    if (rec.status === 'Present') { statusColor = 'bg-green-100 text-green-700 border-green-200'; icon = 'fa-check-circle'; }
+                    else if (rec.status === 'Absent') { statusColor = 'bg-red-100 text-red-700 border-red-200'; icon = 'fa-times-circle'; }
+                    else { statusColor = 'bg-amber-100 text-amber-700 border-amber-200'; icon = 'fa-clock'; }
+
+                    attHtml += `
+                        <div class="attendance-row-modern flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <span class="attendance-dot-modern ${rec.status === 'Present' ? 'bg-green-500' : (rec.status === 'Absent' ? 'bg-red-500' : 'bg-amber-500')}"></span>
+                                <span class="font-medium text-gray-800">${new Date(rec.date).toLocaleDateString('en-PK', { day: '2-digit', month: 'short', year: 'numeric' })}</span>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-medium border ${statusColor}"><i class="fas ${icon} mr-1"></i>${rec.status}</span>
+                        </div>
+                    `;
+                });
+                attContainer.innerHTML = attHtml;
             }
-        }
 
-        // Add Student
-        document.getElementById('newStudentForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const roll = document.getElementById('nRoll').value.trim();
-            const name = document.getElementById('nName').value.trim();
-            const studentClass = document.getElementById('nClass').value.trim();
-            const mobile = document.getElementById('nMobile').value.trim();
-            if (!roll || !name || !studentClass || !mobile) return showToast("Please fill in all required fields", 'warning');
-            showLoading(true, "Saving to database...");
-            const studentData = { sheet: 'students', roll_number: roll, name, class: studentClass, mobile, parent_mobile: document.getElementById('nParentMobile').value.trim(), email: document.getElementById('nEmail').value.trim(), address: document.getElementById('nAddress').value.trim(), status: 'active', created_at: new Date().toISOString().split('T')[0], created_by: currentUser?.name || 'Admin', updated_at: new Date().toISOString().split('T')[0], updated_by: currentUser?.name || 'Admin' };
-            const existing = (appData.students || []).find(s => (s.roll_number || s.roll).toString() === studentData.roll_number);
-            if (existing) {
-                if (existing.status === 'inactive' && confirm(`Roll number ${studentData.roll_number} exists but is inactive. Reactivate this student?`)) {
-                    const updateData = { ...studentData, sheet: 'students', status: 'active', updated_at: new Date().toISOString().split('T')[0], updated_by: currentUser?.name || 'Admin' };
-                    const success = await sendToSheet(updateData);
-                    if (success) { showToast("Student reactivated successfully!", 'success'); toggleModal('addStudentModal'); e.target.reset(); setTimeout(() => syncData(), 1000); } else showLoading(false);
-                } else { showLoading(false); showToast(`Roll number ${studentData.roll_number} already exists`, 'warning'); }
-                return;
+            // Exam results cards
+            const marksContainer = document.getElementById('uMarksModern');
+            if (userMarks.length === 0) {
+                marksContainer.innerHTML = `<div class="text-center text-gray-400 py-6"><i class="fas fa-file-alt fa-2x mb-2 opacity-30"></i><p>No results published yet</p></div>`;
+            } else {
+                const sorted = userMarks.sort((a, b) => new Date(b.date) - new Date(a.date));
+                let marksHtml = '';
+                sorted.slice(0, 10).forEach(m => {
+                    const obtained = parseFloat(m.obtained_marks) || 0;
+                    const total = parseFloat(m.total_marks) || 100;
+                    const perc = total > 0 ? ((obtained / total) * 100).toFixed(1) : 0;
+                    const gradeColor = perc >= 60 ? 'text-green-600' : (perc >= 40 ? 'text-amber-600' : 'text-red-600');
+                    marksHtml += `
+                        <div class="result-card p-4 hover:shadow-md transition">
+                            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                                <h4 class="font-bold text-gray-800"><i class="fas fa-book-open text-primary-500 mr-2"></i>${m.subject || 'Subject'}</h4>
+                                <span class="text-xs bg-gray-100 px-3 py-1 rounded-full">${m.exam_type || 'Exam'}</span>
+                            </div>
+                            <div class="flex items-end justify-between mt-2">
+                                <div>
+                                    <span class="text-lg font-bold text-gray-800">${obtained}</span><span class="text-gray-500">/${total}</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-lg font-bold ${gradeColor}">${perc}%</span>
+                                </div>
+                            </div>
+                            <div class="progress-thin mt-3">
+                                <div class="progress-fill-blue" style="width: ${Math.min(perc, 100)}%"></div>
+                            </div>
+                            <div class="flex justify-end mt-2">
+                                <span class="text-xs text-gray-400"><i class="far fa-calendar-alt mr-1"></i>${m.date || 'N/A'}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                marksContainer.innerHTML = marksHtml;
             }
-            const success = await sendToSheet(studentData);
-            if (success) { showToast("Student added successfully!", 'success'); toggleModal('addStudentModal'); e.target.reset(); setTimeout(() => syncData(), 1000); }
-        };
 
-        // Add Teacher
-        document.getElementById('newTeacherForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const teacherData = { sheet: 'teachers', name: document.getElementById('tName').value.trim(), email: document.getElementById('tEmail').value.trim(), password: document.getElementById('tPassword').value.trim(), security_question: document.getElementById('tSecurityQuestion').value.trim(), security_answer: document.getElementById('tSecurityAnswer').value.trim(), created_at: new Date().toISOString().split('T')[0] };
-            const success = await sendToSheet(teacherData);
-            if (success) { showToast("Teacher added successfully!", 'success'); toggleModal('addTeacherModal'); e.target.reset(); setTimeout(() => syncData(), 500); }
-        };
-
-        // Add Exam Marks
-        document.getElementById('mForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const roll = document.getElementById('mStudent').value;
-            const student = (appData.students || []).find(s => (s.roll_number || s.roll).toString() === roll);
-            const obtained = parseFloat(document.getElementById('mObtained').value);
-            const total = parseFloat(document.getElementById('mTotal').value);
-            const percentage = total > 0 ? ((obtained / total) * 100).toFixed(2) : 0;
-            const marksData = { sheet: 'exam_marks', roll_number: roll, exam_type: document.getElementById('mExamType').value, subject: document.getElementById('mSubject').value.trim(), total_marks: total, obtained_marks: obtained, percentage, date: new Date().toISOString().split('T')[0], entered_by: currentUser?.name || 'Admin', class: student?.class || '', batch_entry: 'no' };
-            const success = await sendToSheet(marksData);
-            if (success) { 
-                showToast("Exam marks added successfully!", 'success'); 
-                e.target.reset(); 
-                setTimeout(() => syncData(), 500);
-                
-                // Send WhatsApp for individual entry
-                if (student && student.parent_mobile) {
-                    const grade = percentage >= 80 ? 'A+' : 
-                                 percentage >= 70 ? 'A' : 
-                                 percentage >= 60 ? 'B' : 
-                                 percentage >= 50 ? 'C' : 'F';
-                    
-                    const message = `📚 *Subject:* ${document.getElementById('mSubject').value}\n📝 *Exam:* ${document.getElementById('mExamType').value}\n📊 *Marks:* ${obtained}/${total}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
-                    
-                    if (confirm('Send WhatsApp notification to parent?')) {
-                        sendIndividualWhatsApp(student.parent_mobile, message, roll, 'marks');
-                    }
-                }
-            }
-        };
-
-        function updateReports() {
-            const activeStudents = (appData.students || []).filter(s => s.status !== 'inactive');
-            document.getElementById('totalStudents').textContent = activeStudents.length;
-            document.getElementById('totalTeachers').textContent = appData.teachers.length;
-            const today = new Date().toISOString().split('T')[0];
-            const todayAttendance = appData.attendance.filter(a => a.date === today);
-            const presentCount = todayAttendance.filter(a => a.status === 'Present').length;
-            const totalCount = todayAttendance.length;
-            document.getElementById('todayAttendance').textContent = `${totalCount > 0 ? Math.round((presentCount / totalCount) * 100) : 0}%`;
-            const recentActivity = [...(appData.activity_log || [])].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 5);
-            document.getElementById('recentActivity').innerHTML = recentActivity.map(log => `<div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border"><div><div class="font-medium text-sm">${log.user || 'System'}</div><div class="text-xs text-gray-600">${log.description || 'N/A'}</div></div><span class="text-xs text-gray-500">${formatTimeAgo(log.timestamp)}</span></div>`).join('');
-        }
-
-        function formatTimeAgo(timestamp) {
-            if (!timestamp) return 'Just now';
-            const date = new Date(timestamp);
-            const now = new Date();
-            const diffMs = now - date;
-            const diffMins = Math.floor(diffMs / 60000);
-            const diffHours = Math.floor(diffMs / 3600000);
-            const diffDays = Math.floor(diffMs / 86400000);
-            if (diffMins < 60) return `${diffMins}m ago`;
-            if (diffHours < 24) return `${diffHours}h ago`;
-            if (diffDays < 7) return `${diffDays}d ago`;
-            return date.toLocaleDateString();
+            // Clear any personal fields
+            document.getElementById('uName').innerText = '';
+            document.getElementById('uMobile').innerText = '';
+            document.getElementById('uEmail').innerText = '';
+            document.getElementById('uAddress').innerText = '';
+            document.getElementById('uParentMobile').innerText = '';
+            document.getElementById('uCreatedAt').innerText = '';
         }
 
         // UI Helpers
@@ -2954,7 +3172,6 @@
 
         async function logout() {
             if (currentUser) { await logActivity('logout', 'User logged out', `User: ${currentUser.name || currentUser.email}`); showToast(`Goodbye, ${currentUser.name || 'User'}!`, 'info'); }
-            // Clear storage before reload
             localStorage.clear();
             sessionStorage.clear();
             currentUser = null;
@@ -2963,7 +3180,6 @@
 
         function showActivityLog() { toggleModal('activityLogModal'); }
         
-        // ***** COMPLETED FUNCTIONS *****
         function editStudent(roll) {
             const student = (appData.students || []).find(s => (s.roll_number || s.roll) == roll);
             if (!student) return showToast('Student not found', 'error');
@@ -2994,7 +3210,8 @@
                 address: document.getElementById('editAddress').value.trim(),
                 updated_at: new Date().toISOString().split('T')[0],
                 updated_by: currentUser?.name || 'Admin',
-                status: 'active'
+                status: 'active',
+                timestamp: new Date().toISOString()
             };
             
             showLoading(true, 'Updating student...');
@@ -3029,7 +3246,8 @@
                 status: 'inactive',
                 deleted_at: new Date().toISOString().split('T')[0],
                 deleted_by: currentUser?.name || 'Admin',
-                delete_reason: reason || 'No reason provided'
+                delete_reason: reason || 'No reason provided',
+                timestamp: new Date().toISOString()
             };
             
             showLoading(true, 'Deleting student...');
@@ -3048,13 +3266,179 @@
             const rows = document.querySelectorAll('#studentsTable tr');
             
             rows.forEach(row => {
-                if (row.querySelector('td[colspan]')) return; // Skip empty state row
+                if (row.querySelector('td[colspan]')) return;
                 const text = row.innerText.toLowerCase();
                 const classMatch = !classFilter || text.includes(classFilter.toLowerCase());
                 const searchMatch = !searchTerm || text.includes(searchTerm);
                 row.style.display = classMatch && searchMatch ? '' : 'none';
             });
         }
+
+        function updateReports() {
+            const activeStudents = (appData.students || []).filter(s => s.status !== 'inactive');
+            document.getElementById('totalStudents').textContent = activeStudents.length;
+            document.getElementById('totalTeachers').textContent = appData.teachers.length;
+            const today = new Date().toISOString().split('T')[0];
+            const todayAttendance = appData.attendance.filter(a => a.date === today);
+            const presentCount = todayAttendance.filter(a => a.status === 'Present').length;
+            const totalCount = todayAttendance.length;
+            document.getElementById('todayAttendance').textContent = `${totalCount > 0 ? Math.round((presentCount / totalCount) * 100) : 0}%`;
+            const recentActivity = [...(appData.activity_log || [])].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)).slice(0, 5);
+            document.getElementById('recentActivity').innerHTML = recentActivity.map(log => `<div class="flex justify-between items-center p-3 bg-gray-50 rounded-xl border"><div><div class="font-medium text-sm">${log.user || 'System'}</div><div class="text-xs text-gray-600">${log.description || 'N/A'}</div></div><span class="text-xs text-gray-500">${formatTimeAgo(log.timestamp)}</span></div>`).join('');
+        }
+
+        function formatTimeAgo(timestamp) {
+            if (!timestamp) return 'Just now';
+            const date = new Date(timestamp);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+            if (diffMins < 60) return `${diffMins}m ago`;
+            if (diffHours < 24) return `${diffHours}h ago`;
+            if (diffDays < 7) return `${diffDays}d ago`;
+            return date.toLocaleDateString();
+        }
+
+        // Add Student form
+        document.getElementById('newStudentForm').onsubmit = async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('nName').value.trim();
+            const studentClass = document.getElementById('nClass').value.trim();
+            const mobile = document.getElementById('nMobile').value.trim();
+            
+            if (!name || !studentClass || !mobile) return showToast("Please fill in all required fields", 'warning');
+            
+            showLoading(true, "Generating roll number...");
+            
+            // Generate auto roll number
+            const autoRoll = generateAutoRollNumber(studentClass);
+            
+            showLoading(true, "Saving to database...");
+            
+            const studentData = { 
+                sheet: 'students', 
+                roll_number: autoRoll, 
+                name, 
+                class: studentClass, 
+                mobile, 
+                parent_mobile: document.getElementById('nParentMobile').value.trim(), 
+                email: document.getElementById('nEmail').value.trim(), 
+                address: document.getElementById('nAddress').value.trim(), 
+                status: 'active', 
+                created_at: new Date().toISOString().split('T')[0], 
+                created_by: currentUser?.name || 'Admin', 
+                updated_at: new Date().toISOString().split('T')[0], 
+                updated_by: currentUser?.name || 'Admin',
+                timestamp: new Date().toISOString()
+            };
+            
+            const existing = (appData.students || []).find(s => (s.roll_number || s.roll).toString() === studentData.roll_number);
+            if (existing) {
+                if (existing.status === 'inactive' && confirm(`Roll number ${studentData.roll_number} exists but is inactive. Reactivate this student?`)) {
+                    const updateData = { ...studentData, sheet: 'students', status: 'active', updated_at: new Date().toISOString().split('T')[0], updated_by: currentUser?.name || 'Admin' };
+                    const success = await sendToSheet(updateData);
+                    if (success) { 
+                        showToast("Student reactivated successfully!", 'success'); 
+                        toggleModal('addStudentModal'); 
+                        e.target.reset(); 
+                        setTimeout(() => syncData(), 1000);
+                        
+                        // Send roll number WhatsApp after reactivation
+                        if (studentData.parent_mobile) {
+                            setTimeout(() => {
+                                if (confirm('Send roll number via WhatsApp to parent?')) {
+                                    sendRollNumberWhatsApp(autoRoll);
+                                }
+                            }, 1500);
+                        }
+                    } else showLoading(false);
+                } else { 
+                    showLoading(false); 
+                    showToast(`Roll number ${studentData.roll_number} already exists`, 'warning'); 
+                }
+                return;
+            }
+            
+            const success = await sendToSheet(studentData);
+            if (success) { 
+                showToast("Student added successfully with roll number: " + autoRoll, 'success'); 
+                toggleModal('addStudentModal'); 
+                e.target.reset(); 
+                setTimeout(() => syncData(), 1000);
+                
+                // Ask to send roll number via WhatsApp
+                if (studentData.parent_mobile) {
+                    setTimeout(() => {
+                        if (confirm('Send roll number via WhatsApp to parent?')) {
+                            sendRollNumberWhatsApp(autoRoll);
+                        }
+                    }, 1500);
+                }
+            }
+        };
+
+        // Add Teacher form
+        document.getElementById('newTeacherForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const teacherData = { 
+                sheet: 'teachers', 
+                name: document.getElementById('tName').value.trim(), 
+                email: document.getElementById('tEmail').value.trim(), 
+                password: document.getElementById('tPassword').value.trim(), 
+                security_question: document.getElementById('tSecurityQuestion').value.trim(), 
+                security_answer: document.getElementById('tSecurityAnswer').value.trim(), 
+                created_at: new Date().toISOString().split('T')[0],
+                timestamp: new Date().toISOString()
+            };
+            const success = await sendToSheet(teacherData);
+            if (success) { showToast("Teacher added successfully!", 'success'); toggleModal('addTeacherModal'); e.target.reset(); setTimeout(() => syncData(), 500); }
+        };
+
+        // Add Exam Marks
+        document.getElementById('mForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const roll = document.getElementById('mStudent').value;
+            const student = (appData.students || []).find(s => (s.roll_number || s.roll).toString() === roll);
+            const obtained = parseFloat(document.getElementById('mObtained').value);
+            const total = parseFloat(document.getElementById('mTotal').value);
+            const percentage = total > 0 ? ((obtained / total) * 100).toFixed(2) : 0;
+            const marksData = { 
+                sheet: 'exam_marks', 
+                roll_number: roll, 
+                exam_type: document.getElementById('mExamType').value, 
+                subject: document.getElementById('mSubject').value.trim(), 
+                total_marks: total, 
+                obtained_marks: obtained, 
+                percentage, 
+                date: new Date().toISOString().split('T')[0], 
+                entered_by: currentUser?.name || 'Admin', 
+                class: student?.class || '', 
+                batch_entry: 'no',
+                timestamp: new Date().toISOString()
+            };
+            const success = await sendToSheet(marksData);
+            if (success) { 
+                showToast("Exam marks added successfully!", 'success'); 
+                e.target.reset(); 
+                setTimeout(() => syncData(), 500);
+                
+                if (student && student.parent_mobile) {
+                    const grade = percentage >= 80 ? 'A+' : 
+                                 percentage >= 70 ? 'A' : 
+                                 percentage >= 60 ? 'B' : 
+                                 percentage >= 50 ? 'C' : 'F';
+                    
+                    const message = `👤 *Student:* ${student.name}\n📚 *Subject:* ${document.getElementById('mSubject').value}\n📝 *Exam:* ${document.getElementById('mExamType').value}\n📊 *Marks:* ${obtained}/${total}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
+                    
+                    if (confirm('Send WhatsApp notification to parent?')) {
+                        sendIndividualWhatsApp(student.parent_mobile, message, roll, 'marks');
+                    }
+                }
+            }
+        };
 
         // Event listeners
         document.addEventListener('change', function(e) { if (e.target.type === 'radio' && e.target.name.startsWith('at_')) updateMarkedCount(); });
