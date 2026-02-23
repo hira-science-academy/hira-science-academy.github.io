@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Govt. Christian High School Daska</title>
+<meta name="title" content="Student Portal | Govt. Christian High School Daska">
+<meta name="description" content="Official Student Information Portal for GCHS Daska (EMIS: 34310007). Access real-time results, attendance, and academic records.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hiraacademy.online/gchs-portal">
+<meta property="og:title" content="GCHS Daska - Student Information Portal">
+<meta property="og:description" content="Digital access to student records, attendance, and exam results for Govt. Christian High School Daska.">
+<meta property="og:image" content="https://hiraacademy.online/images/gchs-portal-og.jpg">
+
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://hiraacademy.online/gchs-portal">
+<meta property="twitter:title" content="GCHS Daska - Student Information Portal">
+<meta property="twitter:description" content="Digital access to student records, attendance, and exam results for Govt. Christian High School Daska.">
+<meta property="twitter:image" content="https://hiraacademy.online/images/gchs-portal-og.jpg">
+
+<meta name="theme-color" content="#1e3a8a">
+
+    <!-- School Logo -->
+    <link rel="icon" href="gchs_logo.png" type="images/png" />
+
+    <!-- Tailwind, Fonts, Font Awesome, Chart.js -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Merriweather', 'serif']
+                    },
+                    colors: {
+                        navy: '#002147',
+                        gold: '#FFD700'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --navy: #002147;
+            --gold: #FFD700;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+        
+        .portal-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 33, 71, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .portal-card:hover {
+            box-shadow: 0 8px 30px rgba(0, 33, 71, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+        
+        .tab-btn {
+            position: relative; padding: 12px 20px; font-weight: 500; color: #64748b;
+            border-bottom: 3px solid transparent; transition: all 0.3s ease;
+        }
+        .tab-btn.active {
+            color: var(--navy); border-bottom-color: var(--gold); font-weight: 600;
+        }
+        
+        .btn-navy {
+            background: var(--navy); color: white; transition: all 0.3s ease;
+        }
+        .btn-navy:hover {
+            background: #003366; box-shadow: 0 4px 12px rgba(0,33,71,0.3);
+        }
+        .btn-gold {
+            background: var(--gold); color: var(--navy); font-weight: 600;
+        }
+        .btn-gold:hover {
+            background: #e6c200; box-shadow: 0 4px 12px rgba(255,215,0,0.3);
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669); color: white;
+        }
+        .btn-success:hover {
+            background: linear-gradient(135deg, #0da271, #047857);
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #ef4444, #dc2626); color: white;
+        }
+        .btn-danger:hover {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+        }
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E); color: white;
+        }
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #20ba5a, #0e6b5f);
+        }
+        .btn-action-edit, .btn-action-delete, .btn-action-whatsapp, .btn-action-roll {
+            width: 36px; height: 36px; display: inline-flex; align-items: center; justify-content: center;
+            border-radius: 50%; transition: 0.2s;
+        }
+        .btn-action-edit:hover { background-color: #e0f2fe; }
+        .btn-action-delete:hover { background-color: #fee2e2; }
+        .btn-action-whatsapp:hover { background-color: #d1fae5; color: #25D366; }
+        .btn-action-roll:hover { background-color: #fef3c7; color: #f59e0b; }
+        
+        .form-input {
+            width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 10px;
+            font-size: 1rem; transition: all 0.3s;
+        }
+        .form-input:focus {
+            outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(0,33,71,0.1);
+        }
+        .data-table {
+            width: 100%; border-collapse: separate; border-spacing: 0;
+        }
+        .data-table th {
+            background-color: #f8fafc; padding: 16px; text-align: left; font-weight: 600;
+            color: #475569; border-bottom: 2px solid #e2e8f0;
+        }
+        .data-table td { padding: 16px; border-bottom: 1px solid #f1f5f9; }
+        .data-table tr:hover { background-color: #f8fafc; }
+        
+        .loading-spinner {
+            width: 40px; height: 40px; border: 4px solid #e2e8f0; border-top-color: var(--navy);
+            border-radius: 50%; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .toast {
+            position: fixed; top: 20px; right: 20px; padding: 12px 24px; border-radius: 8px;
+            color: white; font-weight: 500; z-index: 9999; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            animation: slideIn 0.3s ease-out; display: flex; align-items: center; gap: 10px;
+        }
+        .toast-success { background: linear-gradient(135deg, #10b981, #059669); }
+        .toast-error { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .toast-warning { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .toast-info { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        
+        .whatsapp-sent-row { background-color: #f0fdf4 !important; }
+        .privacy-mask { background-color: #f1f5f9; color: #64748b; font-style: italic; padding: 4px 10px; border-radius: 4px; font-size: 0.85rem; }
+        .privacy-notice { background-color: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #92400e; }
+        
+        .marks-grid {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr; gap: 1px;
+            background-color: #e5e7eb; border-radius: 8px; overflow-x: auto;
+        }
+        .marks-grid-header { background-color: #002147; color: white; padding: 12px; font-weight: 600; text-align: center; }
+        .marks-grid-cell { background-color: white; padding: 12px; display: flex; align-items: center; justify-content: center; min-height: 60px; }
+        .marks-input { width: 100%; padding: 8px; border: 2px solid #d1d5db; border-radius: 6px; text-align: center; }
+        .marks-input:focus { border-color: var(--navy); outline: none; }
+        .global-marks-header { background-color: #1e3a8a; color: white; padding: 16px 20px; border-radius: 10px; margin-bottom: 20px; }
+        .global-marks-input { width: 120px; padding: 10px; border: 2px solid #a5b4fc; border-radius: 6px; text-align: center; background: white; color: #1e40af; }
+        .global-date-input { width: 150px; padding: 10px 12px; border: 2px solid #a5b4fc; border-radius: 6px; text-align: center; background-color: white; color: #1e40af; }
+        
+        .quick-action-btn {
+            padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 500;
+            cursor: pointer; border: 1px solid #d1d5db; background: white; transition: 0.2s;
+        }
+        .quick-action-btn:hover { background: #f1f5f9; transform: translateY(-1px); }
+        
+        .search-filter-bar { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
+        .search-input { flex: 1; min-width: 200px; padding: 10px 16px; border: 1px solid #d1d5db; border-radius: 8px; }
+        .filter-select { padding: 10px 16px; border: 1px solid #d1d5db; border-radius: 8px; background: white; }
+        
+        /* WhatsApp Progress Modal Styles */
+        .whatsapp-progress-modal {
+            max-width: 500px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        .whatsapp-progress-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .whatsapp-progress-item.sent {
+            background-color: #f0fdf4;
+        }
+        .whatsapp-control-panel {
+            background: linear-gradient(135deg, #075e54, #128c7e);
+            color: white;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .whatsapp-status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #4ade80;
+            margin-right: 6px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+        .progress-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--navy), #3b82f6);
+            transition: width 0.3s ease;
+        }
+        .send-next-btn {
+            background-color: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .send-next-btn:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+        .send-next-btn:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        @media (max-width: 768px) {
+            .tab-btn { padding: 8px 12px; font-size: 0.85rem; }
+            .marks-grid { min-width: 600px; }
+        }
+        /* attendance monthly summary */
+        .monthly-att-card { background:#f1f5f9; border-radius:12px; padding:12px; text-align:center; }
+        .att-percent { font-size:1.5rem; font-weight:bold; }
+        /* grade badges */
+        .grade-badge { padding:2px 10px; border-radius:20px; font-weight:600; font-size:0.9rem; display:inline-block; }
+        .grade-a { background:#d1fae5; color:#065f46; }
+        .grade-b { background:#dbeafe; color:#1e40af; }
+        .grade-c { background:#fef3c7; color:#92400e; }
+        .grade-d { background:#fee2e2; color:#991b1b; }
+        .grade-f { background:#fecaca; color:#7f1d1d; }
+        /* trend icons */
+        .trend-up { color:#10b981; }
+        .trend-down { color:#ef4444; }
+        .trend-flat { color:#6b7280; }
+        /* attendance status badge */
+        .att-badge-good { background:#d1fae5; color:#065f46; border-radius:999px; padding:2px 12px; font-weight:500; }
+        .att-badge-average { background:#fef3c7; color:#92400e; border-radius:999px; padding:2px 12px; font-weight:500; }
+        .att-badge-low { background:#fee2e2; color:#991b1b; border-radius:999px; padding:2px 12px; font-weight:500; }
+    </style>
+</head>
+<body>
+
+<div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
+<div id="loading" class="fixed inset-0 bg-white/90 z-50 flex flex-col items-center justify-center hidden">
+    <div class="loading-spinner mb-4"></div>
+    <p id="loadingText" class="font-medium text-navy">Loading...</p>
+</div>
+
+<!-- WhatsApp Sent Notification -->
+<div id="whatsappNotification" class="hidden fixed bottom-24 right-6 bg-green-600 text-white px-4 py-3 rounded-lg shadow-lg z-50 flex items-center gap-2">
+    <i class="fab fa-whatsapp text-xl"></i>
+    <span id="whatsappMessage">Messages sent successfully!</span>
+</div>
+
+<!-- WhatsApp Progress Modal (from A.txt) -->
+<div id="whatsappProgressModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="portal-card w-full max-w-lg whatsapp-progress-modal">
+        <div class="p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-navy">WhatsApp Messages Queue</h3>
+                <button onclick="closeWhatsAppProgress()" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Control Panel -->
+            <div class="whatsapp-control-panel mb-4">
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex items-center">
+                        <span class="whatsapp-status-indicator"></span>
+                        <span class="font-medium" id="waStatusText">Ready to send</span>
+                    </div>
+                    <div class="flex gap-2">
+                        <button onclick="sendNextInQueue()" class="send-next-btn text-sm py-1 px-3" id="sendNextInQueueBtn">
+                            <i class="fas fa-paper-plane mr-1"></i> Send Next
+                        </button>
+                        <button onclick="closeWhatsAppProgress()" class="bg-gray-500 text-white text-sm py-1 px-3 rounded-lg">
+                            <i class="fas fa-times mr-1"></i> Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="whatsappProgressContent" class="max-h-96 overflow-y-auto mb-4">
+                <div class="whatsapp-batch-progress">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-medium">Progress</span>
+                        <span id="whatsappProgressCount">0/0</span>
+                    </div>
+                    <div class="progress-bar mb-4">
+                        <div id="whatsappProgressFill" class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <div id="whatsappProgressList" class="space-y-2"></div>
+                </div>
+            </div>
+            
+            <div class="flex justify-end gap-3">
+                <button onclick="closeWhatsAppProgress()" class="bg-gray-200 px-4 py-2 rounded-lg">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<main class="max-w-7xl mx-auto px-4 py-8">
+    <!-- Header with logo image (replaced GD monogram) -->
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
+        <div class="flex items-center gap-4">
+            <!-- Logo image -->
+            <img src="images/gchs_logo.png" alt="Govt Christian High School Daska Logo"
+     class="h-16 w-auto rounded-lg shadow-md cursor-pointer" id="logoImage"
+     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' viewBox=\'0 0 64 64\'%3E%3Crect width=\'64\' height=\'64\' fill=\'%23002147\'/%3E%3Ctext x=\'12\' y=\'42\' fill=\'%23FFD700\' font-size=\'28\' font-family=\'Arial\'%3EGD%3C/text%3E%3C/svg%3E';">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-navy font-serif">Govt. Christian High School Daska</h1>
+                <p class="text-gray-600">Est. 1882 · EMIS 34310007 · Old Kachehri Road, Daska</p>
+            </div>
+        </div>
+        <a href="https://hiraacademy.online" target="_blank"
+   class="inline-flex items-center gap-3 px-6 py-3 rounded-xl 
+          bg-gradient-to-r from-navy to-blue-900 
+          text-white font-semibold text-lg
+          shadow-lg hover:shadow-2xl 
+          hover:scale-105 transform transition-all duration-300 
+          border border-gold/30 hover:border-gold">
+    
+    <i class="fas fa-external-link-alt text-gold"></i>
+    <span>Visit Hira Science Academy</span>
+</a>
+    </div>
+
+    <!-- Login Screen (first) -->
+    <div id="loginScreen">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-navy mb-2">Student Information Portal</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Secure access to attendance, examination results, and academic progress</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div onclick="showSection('teacherForm')" class="portal-card p-8 cursor-pointer text-center group">
+                <div class="h-16 w-16 rounded-full bg-navy/10 flex items-center justify-center text-navy text-2xl mx-auto mb-4 group-hover:bg-navy/20"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h3 class="text-xl font-bold text-navy mb-2">Teacher Login</h3>
+                <p class="text-gray-600 text-sm">Admin panel · Attendance & Results</p>
+                <div class="mt-4 text-navy font-medium">Access →</div>
+            </div>
+            <div onclick="showSection('parentForm')" class="portal-card p-8 cursor-pointer text-center group">
+                <div class="h-16 w-16 rounded-full bg-gold/20 flex items-center justify-center text-gold-600 text-2xl mx-auto mb-4 group-hover:bg-gold/30"><i class="fas fa-user-friends"></i></div>
+                <h3 class="text-xl font-bold text-navy mb-2">Parent Login</h3>
+                <p class="text-gray-600 text-sm">Monitor your child's progress</p>
+                <div class="mt-4 text-navy font-medium">View →</div>
+            </div>
+            <div onclick="showSection('studentForm')" class="portal-card p-8 cursor-pointer text-center group">
+                <div class="h-16 w-16 rounded-full bg-navy/5 flex items-center justify-center text-navy text-2xl mx-auto"><i class="fas fa-user-graduate"></i></div>
+                <h3 class="text-xl font-bold text-navy mb-2">Student Login</h3>
+                <p class="text-gray-600 text-sm">View your academic dashboard</p>
+                <div class="mt-4 text-navy font-medium">Dashboard →</div>
+            </div>
+        </div>
+
+        <!-- School Description -->
+       <div class="mt-12 max-w-5xl mx-auto bg-gradient-to-br from-navy/5 to-blue-50 p-6 md:p-10 rounded-3xl border border-navy/10 shadow-lg text-center">
+    
+    <!-- Logo -->
+    <div class="mb-6">
+        <img src="images/gchs_logo.png" 
+     id="logoImage2"
+     alt="Govt Christian High School Daska Logo"
+     class="w-24 md:w-32 mx-auto object-contain cursor-pointer transition duration-300 hover:scale-105">
+    </div>
+
+    <!-- Heading -->
+    <h2 class="text-2xl md:text-3xl font-bold text-navy mb-6">
+        About Govt. Christian High School Daska
+    </h2>
+
+    <!-- Text -->
+    <div class="text-gray-700 leading-relaxed text-justify text-base md:text-lg">
+        <p>
+            Govt. Christian High School Daska is one of the oldest and most prestigious educational institutions in the region. 
+            Established in <strong>1882</strong>, the school has a proud legacy of academic excellence and character building, 
+            nurturing generations of students into responsible and successful citizens. The institution proudly holds 
+            <strong>EMIS Code: 34310007</strong>.
+        </p>
+
+        <p class="mt-4">
+            Located on <strong>Old Kachehri Road, Daska</strong>, the school offers education up to the 
+            <strong>High School level</strong> and remains committed to excellence through dedicated faculty, 
+            a disciplined environment, and strong moral values.
+        </p>
+
+        <p class="mt-4">
+            With a rich heritage and forward-looking vision, the school continues to inspire achievement 
+            and uphold the highest standards of education.
+        </p>
+    </div>
+
+</div>
+
+        <div class="text-center text-gray-500 text-sm mt-6">
+            <i class="fas fa-shield-alt mr-2"></i>SSL Secured · Privacy Protected
+        </div>
+    </div>
+
+    <!-- Teacher Login Form -->
+    <div id="teacherForm" class="hidden max-w-md mx-auto">
+        <div class="portal-card p-8">
+            <button onclick="showSection('loginScreen')" class="text-navy hover:underline mb-4"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="h-12 w-12 rounded-full bg-navy/10 flex items-center justify-center text-navy text-xl"><i class="fas fa-chalkboard-teacher"></i></div>
+                <div><h2 class="text-2xl font-bold text-navy">Teacher Login</h2><p class="text-gray-600 text-sm">Enter your credentials</p></div>
+            </div>
+            <form id="teacherLoginForm">
+                <div class="mb-4"><label class="block font-medium mb-1">Email Address</label><input type="email" id="teacherEmail" class="form-input" placeholder="teacher@school.edu" required></div>
+                <div class="mb-6"><label class="block font-medium mb-1">Password</label><input type="password" id="teacherPass" class="form-input" placeholder="••••••••" required></div>
+                <button type="submit" class="btn-navy w-full py-3 rounded-xl font-semibold"><i class="fas fa-sign-in-alt mr-2"></i> Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Parent Login Form -->
+    <div id="parentForm" class="hidden max-w-md mx-auto">
+        <div class="portal-card p-8">
+            <button onclick="showSection('loginScreen')" class="text-navy hover:underline mb-4"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="h-12 w-12 rounded-full bg-gold/20 flex items-center justify-center text-gold-600 text-xl"><i class="fas fa-user-friends"></i></div>
+                <div><h2 class="text-2xl font-bold text-navy">Parent Login</h2><p class="text-gray-600 text-sm">Access your child's records</p></div>
+            </div>
+            <form id="parentLoginForm">
+                <div class="mb-4"><label class="block font-medium mb-1">Student Roll Number</label>
+                    <input type="text" id="parentRoll" class="form-input" placeholder="e.g., GCHS-A-01" required>
+                    <p class="text-xs text-gray-500 mt-1"><i class="fas fa-info-circle mr-1"></i> Found on fee slip, ID card, or contact school office.</p>
+                </div>
+                <div class="mb-6"><label class="block font-medium mb-1">Parent Mobile Number</label>
+                    <input type="tel" id="parentMobile" class="form-input" placeholder="e.g., 03001234567" required>
+                </div>
+                <button type="submit" class="btn-gold w-full py-3 rounded-xl font-semibold"><i class="fas fa-user-check mr-2"></i> View Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Student Login Form -->
+    <div id="studentForm" class="hidden max-w-md mx-auto">
+        <div class="portal-card p-8">
+            <button onclick="showSection('loginScreen')" class="text-navy hover:underline mb-4"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="h-12 w-12 rounded-full bg-navy/5 flex items-center justify-center text-navy text-xl"><i class="fas fa-user-graduate"></i></div>
+                <div><h2 class="text-2xl font-bold text-navy">Student Login</h2><p class="text-gray-600 text-sm">Enter your roll number</p></div>
+            </div>
+            <form id="studentLoginForm">
+                <div class="mb-6"><label class="block font-medium mb-1">Roll Number</label>
+                    <input type="text" id="studentRoll" class="form-input" placeholder="e.g., GCHS-A-01" required>
+                    <p class="text-xs text-gray-500 mt-1"><i class="fas fa-info-circle mr-1"></i> Printed on your ID card and exam slip.</p>
+                </div>
+                <button type="submit" class="btn-navy w-full py-3 rounded-xl font-semibold"><i class="fas fa-graduation-cap mr-2"></i> Access Dashboard</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel (unchanged – identical to original) -->
+    <div id="adminPanel" class="hidden">
+        <div class="portal-card p-6 mb-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-navy flex items-center"><i class="fas fa-tachometer-alt mr-3 text-gold"></i> Teacher Admin Panel</h2>
+                    <p class="text-gray-600">Welcome, <span id="adminUser" class="font-semibold text-navy"></span></p>
+                    <div class="privacy-notice mt-2" id="privacyNotice"><i class="fas fa-eye-slash mr-1"></i> Student personal data is hidden for privacy <button onclick="togglePrivacyMode()" class="ml-2 text-navy hover:underline text-sm font-medium"><i class="fas fa-eye mr-1"></i>Show Data</button></div>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="openAddStudentModal()" class="btn-navy px-4 py-2 rounded-xl text-sm"><i class="fas fa-user-plus mr-2"></i> Add Student</button>
+                    <button onclick="openAddTeacherModal()" class="btn-gold px-4 py-2 rounded-xl text-sm"><i class="fas fa-chalkboard-teacher mr-2"></i> Add Teacher</button>
+                    <button onclick="logout()" class="bg-gray-200 px-4 py-2 rounded-xl text-sm"><i class="fas fa-sign-out-alt mr-2"></i> Logout</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="flex overflow-x-auto border-b mb-6">
+            <button class="tab-btn active" onclick="openTab(event, 'tabStudents')"><i class="fas fa-users mr-2"></i>Students</button>
+            <button class="tab-btn" onclick="openTab(event, 'tabTeachers')"><i class="fas fa-chalkboard mr-2"></i>Teachers</button>
+            <button class="tab-btn" onclick="openTab(event, 'tabAttendance')"><i class="fas fa-calendar-check mr-2"></i>Attendance</button>
+            <button class="tab-btn" onclick="openTab(event, 'tabMarks')"><i class="fas fa-chart-bar mr-2"></i>Exam Marks</button>
+            <button class="tab-btn" onclick="openTab(event, 'tabBatchMarks')"><i class="fas fa-table mr-2"></i>Batch Entry</button>
+        </div>
+
+        <!-- Students Tab -->
+        <div id="tabStudents" class="tab-content active">
+            <div class="portal-card p-6">
+                <div class="flex justify-between items-center mb-6"><h3 class="text-xl font-bold text-navy">Student Records</h3><span>Active: <span id="studentCount" class="font-bold text-navy">0</span></span></div>
+                <div class="search-filter-bar">
+                    <input type="text" id="studentSearch" placeholder="Search name or roll..." class="search-input" onkeyup="filterStudents()">
+                    <select id="studentClassFilter" class="filter-select" onchange="filterStudents()"><option value="">All Classes</option><option value="9">9th</option><option value="10">10th</option></select>
+                    <select id="studentSectionFilter" class="filter-select" onchange="filterStudents()"><option value="">All Sections</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select>
+                    <button onclick="syncData()" class="btn-navy px-4 py-2 rounded-lg text-sm"><i class="fas fa-sync-alt mr-2"></i>Sync</button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="data-table w-full">
+                        <thead><tr><th>Roll</th><th>Name</th><th>Class</th><th>Section</th><th>Parent Mobile</th><th>Actions</th></tr></thead>
+                        <tbody id="studentsTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Teachers Tab -->
+        <div id="tabTeachers" class="tab-content">
+            <div class="portal-card p-6"><h3 class="text-xl font-bold text-navy mb-6">Teacher Records</h3><table class="data-table"><thead><tr><th>Name</th><th>Email</th><th>Joined</th></tr></thead><tbody id="teachersTableBody"></tbody></table></div>
+        </div>
+
+        <!-- Attendance Tab -->
+        <div id="tabAttendance" class="tab-content">
+            <div class="portal-card p-6">
+                <h3 class="text-xl font-bold text-navy mb-6">Attendance Management</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                    <div><label class="text-sm">Date</label><input type="date" id="attDate" class="form-input"></div>
+                    <div><label class="text-sm">Class</label><select id="attClass" class="form-input" onchange="loadAttendanceStudents()"><option value="9">9th</option><option value="10">10th</option></select></div>
+                    <div><label class="text-sm">Section</label><select id="attSection" class="form-input" onchange="loadAttendanceStudents()"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+                    <div class="flex items-end gap-2">
+                        <button onclick="markAllPresent()" class="bg-green-600 text-white px-3 py-2 rounded-lg text-sm"><i class="fas fa-check-circle mr-1"></i>All Present</button>
+                        <button onclick="markAllAbsent()" class="bg-red-600 text-white px-3 py-2 rounded-lg text-sm"><i class="fas fa-times-circle mr-1"></i>All Absent</button>
+                    </div>
+                </div>
+                <div id="attendanceContainer" class="space-y-3 max-h-96 overflow-y-auto mb-6"></div>
+                <div class="flex flex-wrap justify-between items-center">
+                    <div class="flex gap-4"><span>Marked: <span id="markedCount">0</span>/<span id="totalCount">0</span></span><button onclick="prepareAttendanceWhatsApp()" class="btn-whatsapp px-4 py-2 rounded-lg text-sm"><i class="fab fa-whatsapp mr-2"></i>Send Absent Alerts</button></div>
+                    <button onclick="saveAttendance()" class="btn-navy px-6 py-2 rounded-lg"><i class="fas fa-save mr-2"></i>Save Attendance</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exam Marks Tab -->
+        <div id="tabMarks" class="tab-content">
+            <div class="portal-card p-6">
+                <h3 class="text-xl font-bold text-navy mb-6">Exam Results Entry</h3>
+                <form id="marksForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8 p-4 bg-gray-50 rounded-xl">
+                    <div><label class="form-label">Student</label><select id="markStudent" class="form-input" required></select></div>
+                    <div><label class="form-label">Subject</label><select id="markSubject" class="form-input" required><option>Math</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>English</option><option>Urdu</option><option>Pak Studies</option><option>Islamiat</option><option>Computer Science</option></select></div>
+                    <div><label class="form-label">Exam Type</label>
+                        <select id="markExamType" class="form-input" required>
+                            <option value="Midterm">Midterm</option>
+                            <option value="Final">Final</option>
+                            <option value="Unit Test">Unit Test</option>
+                            <option value="Quiz">Quiz</option>
+                            <option value="Annual">Annual</option>
+                            <option value="Monthly Test">Monthly Test</option>
+                        </select>
+                    </div>
+                    <div><label class="form-label">Obtained</label><input type="number" id="markObtained" class="form-input" required min="0" step="0.5" placeholder="e.g., 85"></div>
+                    <div><label class="form-label">Total</label><input type="number" id="markTotal" class="form-input" required min="1" value="100" placeholder="100"></div>
+                    <div class="flex items-end"><button type="submit" class="btn-navy w-full py-3 rounded-lg"><i class="fas fa-plus-circle mr-2"></i>Add</button></div>
+                </form>
+                <div class="overflow-x-auto"><table class="data-table"><thead><tr><th>Student</th><th>Subject</th><th>Exam</th><th>Marks</th><th>%</th><th>Actions</th></tr></thead><tbody id="marksTableBody"></tbody></table></div>
+            </div>
+        </div>
+
+        <!-- Batch Marks Entry Tab -->
+        <div id="tabBatchMarks" class="tab-content">
+            <div class="portal-card p-6">
+                <h3 class="text-xl font-bold text-navy mb-6">Batch Exam Marks Entry</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6 p-4 bg-gray-50 rounded-xl">
+                    <div><label class="form-label">Class</label><select id="batchClass" class="form-input" onchange="loadBatchStudents()"><option value="">Select</option><option value="9">9th</option><option value="10">10th</option></select></div>
+                    <div><label class="form-label">Section</label>
+                        <select id="batchSection" class="form-input" onchange="loadBatchStudents()">
+                            <option value="">All Sections</option>
+                            <option>A</option><option>B</option><option>C</option><option>D</option><option>E</option>
+                        </select>
+                    </div>
+                    <div><label class="form-label">Subject</label>
+                        <select id="batchSubjectSelect" class="form-input" onchange="batchSubjectChanged()">
+                            <option value="Math">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Biology">Biology</option>
+                            <option value="English">English</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Pak Studies">Pakistan Studies</option>
+                            <option value="Islamiat">Islamiyat</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="__custom__">Custom (type below)</option>
+                        </select>
+                        <input type="text" id="batchSubjectCustom" class="form-input mt-2 hidden" placeholder="Enter subject name" value="">
+                    </div>
+                    <div><label class="form-label">Exam Type</label>
+                        <select id="batchExamType" class="form-input">
+                            <option value="Midterm">Midterm</option>
+                            <option value="Final">Final</option>
+                            <option value="Unit Test">Unit Test</option>
+                            <option value="Quiz">Quiz</option>
+                            <option value="Annual">Annual</option>
+                            <option value="Monthly Test">Monthly Test</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="global-marks-header">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <h4 class="text-lg font-bold text-white">Global Marks Configuration</h4>
+                        <div class="flex gap-4"><div><label class="text-sm text-white">Total Marks:</label><input type="number" id="globalTotalMarks" class="global-marks-input" value="100"></div><div><label class="text-sm text-white">Exam Date:</label><input type="date" id="batchExamDate" class="global-date-input"></div></div>
+                    </div>
+                </div>
+                <div class="quick-actions flex gap-2 flex-wrap mb-4">
+                    <button onclick="setAllMarks()" class="quick-action-btn"><i class="fas fa-copy mr-2"></i>Set All To:</button><input type="number" id="setAllValue" class="quick-action-btn w-20" value="0">
+                    <button onclick="clearAllMarks()" class="quick-action-btn"><i class="fas fa-trash-alt mr-2"></i>Clear All</button>
+                    <button onclick="downloadTemplate()" class="quick-action-btn"><i class="fas fa-download mr-2"></i>Template</button>
+                    <button onclick="prepareBatchMarksWhatsApp()" class="quick-action-btn bg-green-50 text-green-700 border-green-300"><i class="fab fa-whatsapp mr-2"></i>Send Results</button>
+                    <span id="progressText" class="text-sm text-gray-600 ml-auto">Ready</span>
+                </div>
+                <div class="progress-bar h-2 bg-gray-200 rounded mb-4"><div id="progressFill" class="h-full bg-navy rounded" style="width:0%"></div></div>
+                <div id="batchMarksContainer" class="overflow-x-auto"><div id="batchMarksGrid" class="marks-grid"></div></div>
+                <div class="flex justify-between mt-6"><span id="enteredCount">0</span>/<span id="totalStudentsCount">0</span> entered<button onclick="saveBatchMarks()" class="btn-success px-6 py-2 rounded-lg" id="saveBatchBtn" disabled><i class="fas fa-save mr-2"></i>Save All</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- USER DASHBOARD (UPDATED per requirements) -->
+    <div id="userDashboard" class="hidden">
+        <div class="portal-card p-6 bg-gradient-to-r from-navy/5 to-gold/5 mb-8">
+            <div class="flex flex-wrap justify-between items-center">
+                <div class="flex items-center gap-4">
+                    <div class="h-16 w-16 rounded-full bg-navy flex items-center justify-center text-gold text-2xl"><i class="fas fa-user-graduate"></i></div>
+                    <div><h2 class="text-2xl font-bold text-navy">Student Progress</h2><p class="text-gray-600"><span id="dashboardRoll"></span> · Class <span id="dashboardClass"></span> · Section <span id="dashboardSection"></span></p></div>
+                </div>
+                <button onclick="logout()" class="bg-gray-200 px-4 py-2 rounded-lg text-sm"><i class="fas fa-sign-out-alt mr-2"></i>Logout</button>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Attendance card with badge -->
+            <div class="portal-card p-6">
+                <div class="flex items-center gap-4">
+                    <div class="h-16 w-16 rounded-full bg-navy/10 flex items-center justify-center text-navy text-2xl"><i class="fas fa-calendar-check"></i></div>
+                    <div>
+                        <p class="text-sm text-gray-500">Attendance (Total Days Present)</p>
+                        <div class="flex items-center gap-3 flex-wrap">
+                            <p class="text-3xl font-bold text-navy"><span id="dashboardAttPercent">0</span>%</p>
+                            <span id="attStatusBadge" class="att-badge-good text-sm px-3 py-1">Good</span>
+                        </div>
+                        <p class="text-xs"><span id="dashboardAttPresent">0</span>/<span id="dashboardAttTotal">0</span> days present</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Performance Insight Card -->
+            <div class="portal-card p-6">
+                <div class="flex items-center gap-4">
+                    <div class="h-16 w-16 rounded-full bg-gold/20 flex items-center justify-center text-amber-600 text-2xl"><i class="fas fa-lightbulb"></i></div>
+                    <div>
+                        <p class="text-sm text-gray-500">Performance Insight</p>
+                        <p id="performanceInsight" class="text-sm font-medium text-navy">Loading...</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Exams summary card -->
+            <div class="portal-card p-6">
+                <div class="flex items-center gap-4">
+                    <div class="h-16 w-16 rounded-full bg-purple-100 flex items-center justify-center text-purple-600 text-2xl"><i class="fas fa-pencil-alt"></i></div>
+                    <div>
+                        <p class="text-sm text-gray-500">Exams Taken</p>
+                        <p class="text-3xl font-bold text-navy"><span id="dashboardTotalExams">0</span></p>
+                        <p class="text-xs">Average <span id="dashboardAvgMarks">0</span>%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Monthly attendance (label simplified) -->
+            <div class="portal-card p-6">
+                <h3 class="font-bold text-navy mb-4">Monthly Attendance (Apr–Mar)</h3>
+                <div id="sessionAttendanceContainer" class="space-y-4 max-h-96 overflow-y-auto"></div>
+                <div class="mt-4 pt-2 border-t"><span class="font-medium">Total Present: </span><span id="sessionTotalPercent">0</span>%</div>
+            </div>
+            <!-- Performance trend chart -->
+            <div class="portal-card p-6">
+                <h3 class="font-bold text-navy mb-4">Performance Trend</h3>
+                <canvas id="resultsChart" width="400" height="250"></canvas>
+            </div>
+        </div>
+
+        <!-- Marks table with grade & trend -->
+        <div class="portal-card p-6 mt-6">
+            <h3 class="font-bold text-navy mb-4">Subject-wise Grades & Marks</h3>
+            <div class="overflow-x-auto">
+                <table class="data-table w-full">
+                    <thead>
+                        <tr><th>Subject</th><th>Exam</th><th>Marks Scored</th><th>Grade</th><th>Trend</th></tr>
+                    </thead>
+                    <tbody id="userMarksTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Modals -->
+<div id="addStudentModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="portal-card max-w-md w-full p-6">
+        <div class="flex justify-between items-center mb-6"><h3 class="text-xl font-bold text-navy">Add Student</h3><button onclick="toggleModal('addStudentModal')" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button></div>
+        <form id="addStudentForm">
+            <div class="space-y-4">
+                <div><label class="form-label">Full Name *</label><input type="text" id="studentName" class="form-input" placeholder="Ali Raza" required></div>
+                <div class="grid grid-cols-2 gap-4"><div><label class="form-label">Class *</label><select id="studentClass" class="form-input" required><option value="9">9th</option><option value="10">10th</option></select></div><div><label class="form-label">Section *</label><select id="studentSection" class="form-input" required><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div></div>
+                <div><label class="form-label">Parent Mobile *</label><input type="tel" id="studentParentMobile" class="form-input" placeholder="03001234567" required></div>
+                <div><label class="form-label">Student Mobile (optional)</label><input type="tel" id="studentMobile" class="form-input" placeholder="03001234567"></div>
+            </div>
+            <div class="flex gap-3 mt-8"><button type="submit" class="btn-navy flex-1 py-3 rounded-lg"><i class="fas fa-save mr-2"></i>Save</button><button type="button" onclick="toggleModal('addStudentModal')" class="bg-gray-200 flex-1 py-3 rounded-lg">Cancel</button></div>
+        </form>
+    </div>
+</div>
+
+<div id="addTeacherModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="portal-card max-w-md w-full p-6">
+        <div class="flex justify-between items-center mb-6"><h3 class="text-xl font-bold text-navy">Add Teacher</h3><button onclick="toggleModal('addTeacherModal')" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button></div>
+        <form id="addTeacherForm">
+            <div class="space-y-4">
+                <div><label class="form-label">Full Name *</label><input type="text" id="teacherName" class="form-input" placeholder="Mr. John" required></div>
+                <div><label class="form-label">Email *</label><input type="email" id="teacherEmail" class="form-input" placeholder="teacher@school.edu" required></div>
+                <div><label class="form-label">Password *</label><input type="password" id="teacherPassword" class="form-input" placeholder="••••••••" required></div>
+            </div>
+            <div class="flex gap-3 mt-8"><button type="submit" class="btn-navy flex-1 py-3 rounded-lg"><i class="fas fa-save mr-2"></i>Add</button><button type="button" onclick="toggleModal('addTeacherModal')" class="bg-gray-200 flex-1 py-3 rounded-lg">Cancel</button></div>
+        </form>
+    </div>
+</div>
+
+<div id="whatsappConfirmModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="portal-card max-w-md w-full p-6">
+        <h3 class="text-xl font-bold text-navy mb-4">Send WhatsApp Messages</h3>
+        <p id="whatsappConfirmText" class="text-gray-700 mb-4"></p>
+        <div id="whatsappRecipientList" class="max-h-60 overflow-y-auto border rounded-lg p-3 mb-4"></div>
+        <div class="flex gap-3"><button onclick="startWhatsAppQueue()" class="bg-green-500 text-white flex-1 py-2 rounded-lg"><i class="fab fa-whatsapp mr-2"></i>Start</button><button onclick="toggleModal('whatsappConfirmModal')" class="bg-gray-200 flex-1 py-2 rounded-lg">Cancel</button></div>
+    </div>
+</div>
+
+<!-- Image Zoom Modal -->
+<div id="imageModal" class="fixed inset-0 hidden items-center justify-center bg-black/70 backdrop-blur-sm z-50 p-4">
+    <div class="relative max-w-lg w-full">
+        <button id="closeModal" class="absolute -top-10 right-0 text-white text-4xl font-bold hover:text-gray-300 transition">&times;</button>
+        <img id="modalImage" class="w-full rounded-2xl shadow-2xl animate-zoomIn">
+    </div>
+</div>
+
+<style>
+@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.animate-zoomIn { animation: zoomIn 0.3s ease-out; }
+</style>
+
+<script>
+    // CONFIG
+    const SPREADSHEET_ID = '1vYIBSOfb6P41qswMIhYWd_SjiE0t3vGqA5meSFTU_t8';
+    const BASE_URL = 'https://opensheet.elk.sh';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGsPIfZLhds8pcIWF9cxQr2BYb5Rbx9HpyWaXOFmHDDsG-_HzRGI8_GkWYZiINerX6/exec';
+
+    let appData = { teachers: [], students: [], attendance: [], marks: [] };
+    let currentUser = null;
+    let whatsAppQueue = [];
+    let currentQueueIndex = 0;
+    let whatsAppType = '';
+    let isPrivacyMode = true;
+    let batchMarksData = { class: null, section: null, students: [], marks: {} };
+    let currentEditRoll = null;
+    let resultsChart = null;
+
+    // Helper functions (identical to original)
+    function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `toast toast-${type}`;
+        toast.innerHTML = `<i class="fas ${type==='success'?'fa-check-circle':type==='error'?'fa-exclamation-circle':'fa-info-circle'} mr-2"></i>${message}<button onclick="this.parentElement.remove()" class="ml-4 text-white/80 hover:text-white"><i class="fas fa-times"></i></button>`;
+        document.getElementById('toastContainer').appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+    function showLoading(show, text='Loading...') { 
+        document.getElementById('loadingText').innerText = text; 
+        document.getElementById('loading').classList.toggle('hidden', !show); 
+    }
+    function showSection(id) { 
+        ['loginScreen','teacherForm','parentForm','studentForm','adminPanel','userDashboard'].forEach(s => document.getElementById(s)?.classList.add('hidden')); 
+        document.getElementById(id)?.classList.remove('hidden'); 
+    }
+    function toggleModal(id) { 
+        document.getElementById(id)?.classList.toggle('hidden'); 
+    }
+    function openTab(ev, tabId) { 
+        document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active')); 
+        document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); 
+        document.getElementById(tabId)?.classList.add('active'); 
+        if(ev) ev.currentTarget.classList.add('active'); 
+        if(tabId==='tabAttendance') loadAttendanceStudents(); 
+        if(tabId==='tabBatchMarks') loadBatchStudents(); 
+    }
+    function formatPhoneNumber(phone) { 
+        if(!phone) return null; 
+        let n = phone.replace(/\D/g,''); 
+        if(n.startsWith('0')) n='92'+n.substring(1); 
+        if(!n.startsWith('92')) n='92'+n; 
+        return n; 
+    }
+    function generateRollNumber(section) { 
+        let max=0; 
+        appData.students.filter(s=>s.section===section).forEach(s=>{ 
+            let p=s.roll?.split('-'); 
+            if(p?.length===3) max=Math.max(max, parseInt(p[2])||0); 
+        }); 
+        return `GCHS-${section}-${(max+1).toString().padStart(2,'0')}`; 
+    }
+    function markRowAsSent(roll,type) { 
+        document.querySelectorAll(`[data-roll="${roll}"]`).forEach(el=>el.classList.add('whatsapp-sent-row')); 
+    }
+
+    function sendIndividualWhatsApp(phone, message, roll, type) {
+        if (!phone) { showToast('No phone number', 'warning'); return false; }
+        const student = appData.students.find(s => s.roll === roll);
+        if (!student) { showToast('Student not found', 'error'); return false; }
+        const detailedMessage = `*GOVT. CHRISTIAN HIGH SCHOOL DASKA*\n━━━━━━━━━━━━━━━━━━━━━\n👤 *Student:* ${student.name}\n🆔 *Roll No:* ${student.roll}\n📚 *Class:* ${student.class} - ${student.section}\n━━━━━━━━━━━━━━━━━━━━━\n${message}\n\n📞 *School Contact:* 0333-8114798\n🏫 *Old Kachehri Road, Daska*`;
+        const formattedNumber = formatPhoneNumber(phone);
+        const encodedMessage = encodeURIComponent(detailedMessage);
+        window.open(`https://wa.me/${formattedNumber}?text=${encodedMessage}`, '_blank');
+        markRowAsSent(roll, type);
+        showToast(`WhatsApp opened for ${student.name}`, 'success');
+        return true;
+    }
+
+    function showWhatsAppNotification(message) {
+        const notif = document.getElementById('whatsappNotification');
+        document.getElementById('whatsappMessage').innerText = message;
+        notif.classList.remove('hidden');
+        setTimeout(() => notif.classList.add('hidden'), 3000);
+    }
+
+    // WhatsApp Queue System
+    function showWhatsAppProgressModal() {
+        const modal = document.getElementById('whatsappProgressModal');
+        const progressList = document.getElementById('whatsappProgressList');
+        const progressCount = document.getElementById('whatsappProgressCount');
+        const progressFill = document.getElementById('whatsappProgressFill');
+        const statusText = document.getElementById('waStatusText');
+        
+        progressList.innerHTML = '';
+        whatsAppQueue.forEach((msg, index) => {
+            const statusClass = index < currentQueueIndex ? 'sent' : 'pending';
+            progressList.innerHTML += `<div id="wa-progress-${index}" class="whatsapp-progress-item ${statusClass}">
+                <i class="fas ${index < currentQueueIndex ? 'fa-check-circle text-green-600' : 'fa-clock text-gray-400'}"></i>
+                <span class="flex-1">${msg.name}</span>
+                <span class="check-icon"><i class="fas fa-check-circle text-green-600"></i></span>
+            </div>`;
+        });
+        progressCount.textContent = `${currentQueueIndex}/${whatsAppQueue.length}`;
+        progressFill.style.width = `${(currentQueueIndex / whatsAppQueue.length) * 100}%`;
+        statusText.textContent = currentQueueIndex < whatsAppQueue.length ? 'Ready to send next' : 'All messages sent';
+        const sendNextBtn = document.getElementById('sendNextInQueueBtn');
+        sendNextBtn.disabled = currentQueueIndex >= whatsAppQueue.length;
+        sendNextBtn.textContent = currentQueueIndex >= whatsAppQueue.length ? 'All Sent' : 'Send Next';
+        modal.classList.remove('hidden');
+    }
+
+    function closeWhatsAppProgress() {
+        document.getElementById('whatsappProgressModal').classList.add('hidden');
+    }
+
+    function sendNextInQueue() {
+        if (currentQueueIndex >= whatsAppQueue.length) { showToast('All messages sent', 'success'); return; }
+        const currentMessage = whatsAppQueue[currentQueueIndex];
+        sendIndividualWhatsApp(currentMessage.phone, currentMessage.message, currentMessage.roll, whatsAppType);
+        const progressItem = document.getElementById(`wa-progress-${currentQueueIndex}`);
+        if (progressItem) {
+            progressItem.classList.remove('pending');
+            progressItem.classList.add('sent');
+            progressItem.querySelector('i').className = 'fas fa-check-circle text-green-600';
+        }
+        currentQueueIndex++;
+        document.getElementById('whatsappProgressCount').textContent = `${currentQueueIndex}/${whatsAppQueue.length}`;
+        document.getElementById('whatsappProgressFill').style.width = `${(currentQueueIndex / whatsAppQueue.length) * 100}%`;
+        const statusText = document.getElementById('waStatusText');
+        if (currentQueueIndex >= whatsAppQueue.length) {
+            statusText.textContent = 'All messages sent!';
+            document.getElementById('sendNextInQueueBtn').disabled = true;
+            document.getElementById('sendNextInQueueBtn').textContent = 'All Sent';
+            showToast('All WhatsApp messages sent!', 'success');
+        } else {
+            statusText.textContent = `Sent ${currentQueueIndex} of ${whatsAppQueue.length}`;
+        }
+    }
+
+    // Data sync
+    async function syncData() {
+        showLoading(true,'Fetching...');
+        try {
+            let [teachers,students,attendance,marks] = await Promise.all([
+                fetch(`${BASE_URL}/${SPREADSHEET_ID}/teachers`).then(r=>r.ok?r.json():[]),
+                fetch(`${BASE_URL}/${SPREADSHEET_ID}/students`).then(r=>r.ok?r.json():[]),
+                fetch(`${BASE_URL}/${SPREADSHEET_ID}/attendance`).then(r=>r.ok?r.json():[]),
+                fetch(`${BASE_URL}/${SPREADSHEET_ID}/marks`).then(r=>r.ok?r.json():[])
+            ]);
+            appData = { teachers, students, attendance, marks };
+            if(currentUser?.type==='teacher') populateAdminTables();
+            else if(currentUser?.roll) refreshUserDashboard(currentUser.roll);
+            showToast('Data synced','success');
+        } catch(e) { 
+            console.error(e);
+            showToast('Sync failed','error'); 
+        } finally { showLoading(false); }
+    }
+    
+    async function sendToSheet(data) {
+        showLoading(true,'Saving...');
+        try {
+            await fetch(APPS_SCRIPT_URL, { method:'POST', mode:'no-cors', body: new URLSearchParams(data) });
+            showToast('Saved','success'); 
+            return true;
+        } catch(e) { 
+            console.error(e);
+            showToast('Save error','error'); 
+            return false; 
+        } finally { showLoading(false); }
+    }
+
+    // Login handlers (unchanged)
+    document.getElementById('teacherLoginForm').onsubmit = async (e) => {
+        e.preventDefault();
+        let email = document.getElementById('teacherEmail').value.trim();
+        let pass = document.getElementById('teacherPass').value.trim();
+        showLoading(true); 
+        await syncData();
+        let teacher = appData.teachers.find(t=>t.email===email && t.password===pass);
+        if(teacher) { 
+            currentUser={type:'teacher',name:teacher.name,email}; 
+            showSection('adminPanel'); 
+            document.getElementById('adminUser').innerText=teacher.name; 
+            populateAdminTables(); 
+            showToast(`Welcome ${teacher.name}`,'success'); 
+        } else showToast('Invalid','error'); 
+        showLoading(false);
+    };
+    
+    document.getElementById('studentLoginForm').onsubmit = async (e) => {
+        e.preventDefault(); 
+        let roll=document.getElementById('studentRoll').value.trim(); 
+        showLoading(true); 
+        await syncData();
+        let s=appData.students.find(s=>s.roll===roll); 
+        if(s) { 
+            currentUser={type:'student',roll,name:s.name}; 
+            showSection('userDashboard'); 
+            refreshUserDashboard(roll); 
+            showToast(`Welcome ${s.name}`,'success'); 
+        } else showToast('Not found','error'); 
+        showLoading(false);
+    };
+    
+    document.getElementById('parentLoginForm').onsubmit = async (e) => {
+        e.preventDefault(); 
+        let roll=document.getElementById('parentRoll').value.trim(); 
+        let mob=document.getElementById('parentMobile').value.trim(); 
+        showLoading(true); 
+        await syncData();
+        let s=appData.students.find(s=>s.roll===roll && s.parent_mobile===mob); 
+        if(s) { 
+            currentUser={type:'parent',roll,name:s.name}; 
+            showSection('userDashboard'); 
+            refreshUserDashboard(roll); 
+            showToast(`Viewing ${s.name}`,'success'); 
+        } else showToast('Mismatch','error'); 
+        showLoading(false);
+    };
+
+    // Privacy toggle
+    function togglePrivacyMode() { 
+        isPrivacyMode = !isPrivacyMode; 
+        populateAdminTables(); 
+        showToast(isPrivacyMode?'Privacy ON':'Privacy OFF','info'); 
+    }
+
+    // Edit Student
+    function editStudent(roll) {
+        const student = appData.students.find(s => s.roll === roll);
+        if (!student) { showToast('Student not found','error'); return; }
+        document.getElementById('studentName').value = student.name || '';
+        document.getElementById('studentClass').value = student.class || '9';
+        document.getElementById('studentSection').value = student.section || 'A';
+        document.getElementById('studentParentMobile').value = student.parent_mobile || '';
+        document.getElementById('studentMobile').value = student.mobile || '';
+        currentEditRoll = roll;
+        document.querySelector('#addStudentModal h3').innerText = 'Edit Student';
+        const submitBtn = document.querySelector('#addStudentModal button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fas fa-save mr-2"></i>Update';
+        toggleModal('addStudentModal');
+    }
+
+    // Delete Student
+    async function deleteStudent(roll) {
+        if(!confirm(`Delete student ${roll}?`)) return;
+        showLoading(true, 'Deleting...');
+        try {
+            await sendToSheet({ sheet:'students', action: 'delete', roll, status:'inactive', deleted_at:new Date().toISOString().split('T')[0] });
+            showToast(`Deleted ${roll}`,'success');
+            setTimeout(syncData,1000);
+        } catch(e) { showToast('Error','error'); } finally { showLoading(false); }
+    }
+
+    // Populate admin tables (unchanged – same as original)
+    function populateAdminTables() {
+        let active = appData.students.filter(s=>s.status!=='inactive');
+        document.getElementById('studentCount').innerText = active.length;
+        let rows = active.map(s=>{
+            let parent = isPrivacyMode ? '<span class="privacy-mask"><i class="fas fa-eye-slash mr-1"></i>Hidden</span>' : (s.parent_mobile||'');
+            return `<tr data-roll="${s.roll}"><td>${s.roll}</td><td>${s.name}</td><td>${s.class}</td><td>${s.section}</td><td>${parent}</td><td><div class="flex gap-2"><button onclick="editStudent('${s.roll}')" class="btn-action-edit text-blue-600"><i class="fas fa-edit"></i></button><button onclick="deleteStudent('${s.roll}')" class="btn-action-delete text-red-600"><i class="fas fa-trash"></i></button><button onclick="sendWhatsAppToParent('${s.roll}')" class="btn-action-whatsapp text-green-600"><i class="fab fa-whatsapp"></i></button><button onclick="sendRollNumberWhatsApp('${s.roll}')" class="btn-action-roll text-amber-600"><i class="fas fa-id-card"></i></button></div></td></tr>`;
+        }).join('');
+        document.getElementById('studentsTableBody').innerHTML = rows || '<tr><td colspan="6" class="text-center py-4">No students</td></tr>';
+        document.getElementById('teachersTableBody').innerHTML = appData.teachers.map(t=>`<tr><td>${t.name}</td><td>${t.email}</td><td>${t.created_at||''}</td></tr>`).join('')||'<tr><td colspan="3" class="text-center">No teachers</td></tr>';
+        let markSelect = document.getElementById('markStudent');
+        if(markSelect) markSelect.innerHTML = '<option value="">Select</option>'+active.map(s=>`<option value="${s.roll}">${s.roll} - ${s.name}</option>`).join('');
+        let marksHtml = appData.marks.map(m=>{
+            let st = active.find(s=>s.roll===m.roll); if(!st) return '';
+            let perc = parseFloat(m.percentage)||0;
+            return `<tr><td>${st.name}</td><td>${m.subject}</td><td>${m.exam_type}</td><td>${m.obtained}/${m.total}</td><td>${perc}%</td><td><button onclick="sendResultWhatsApp('${m.roll}','${m.subject}','${m.exam_type}',${m.obtained},${m.total},'${st.name}')" class="btn-action-whatsapp text-green-600"><i class="fab fa-whatsapp"></i></button></td></tr>`;
+        }).join('');
+        document.getElementById('marksTableBody').innerHTML = marksHtml || '<tr><td colspan="6" class="text-center">No results</td></tr>';
+    }
+
+    // Batch marks functions (unchanged)
+    function batchSubjectChanged() {
+        let select = document.getElementById('batchSubjectSelect');
+        let customInput = document.getElementById('batchSubjectCustom');
+        if(select.value === '__custom__') { customInput.classList.remove('hidden'); customInput.value = ''; } 
+        else { customInput.classList.add('hidden'); customInput.value = select.value; }
+    }
+    function getCurrentSubject() {
+        let select = document.getElementById('batchSubjectSelect');
+        let custom = document.getElementById('batchSubjectCustom');
+        if(select.value === '__custom__') return custom.value.trim() || 'Custom Subject';
+        return select.value;
+    }
+    function loadBatchStudents() {
+        let cls = document.getElementById('batchClass').value;
+        let sec = document.getElementById('batchSection').value;
+        if(!cls) return;
+        let students = appData.students.filter(s=>s.class==cls && s.status!=='inactive');
+        if(sec) students = students.filter(s=>s.section === sec);
+        batchMarksData = { class: cls, section: sec, students, marks:{} };
+        let grid = document.getElementById('batchMarksGrid');
+        if(!students.length) { grid.innerHTML = '<div class="marks-grid-header" colspan="5">No students</div>'; return; }
+        let html = `<div class="marks-grid-header">Name</div><div class="marks-grid-header">Roll</div><div class="marks-grid-header">Obtained</div><div class="marks-grid-header">%</div><div class="marks-grid-header">WhatsApp</div>`;
+        students.forEach(s=>{
+            html += `<div class="marks-grid-cell" data-roll="${s.roll}">${s.name}</div><div class="marks-grid-cell">${s.roll}</div><div class="marks-grid-cell"><input type="number" id="obtained_${s.roll}" class="marks-input" onchange="updateBatchPercentage('${s.roll}')"></div><div class="marks-grid-cell"><span id="percent_${s.roll}">0%</span></div><div class="marks-grid-cell">${s.parent_mobile?`<i class="fab fa-whatsapp text-green-600 cursor-pointer" onclick="sendBatchMarksWhatsApp('${s.roll}')"></i>`:'—'}</div>`;
+        });
+        grid.innerHTML = html;
+        document.getElementById('totalStudentsCount').innerText = students.length;
+        document.getElementById('enteredCount').innerText = '0';
+        document.getElementById('saveBatchBtn').disabled = true;
+        document.getElementById('progressFill').style.width = '0%';
+    }
+    function updateBatchPercentage(roll) {
+        let inp = document.getElementById(`obtained_${roll}`); 
+        let val = parseFloat(inp.value)||0; 
+        let total = parseFloat(document.getElementById('globalTotalMarks').value)||100;
+        let perc = total>0? ((val/total)*100).toFixed(2):0;
+        document.getElementById(`percent_${roll}`).innerText = perc+'%'; 
+        if(val>total) inp.classList.add('invalid'); 
+        else inp.classList.remove('invalid');
+        if(val>0 && val<=total) batchMarksData.marks[roll] = {obtained:val, total, percentage:perc}; 
+        else delete batchMarksData.marks[roll];
+        let entered = Object.keys(batchMarksData.marks).length; 
+        document.getElementById('enteredCount').innerText = entered; 
+        document.getElementById('saveBatchBtn').disabled = entered===0;
+        document.getElementById('progressFill').style.width = (entered/batchMarksData.students.length*100)+'%';
+        document.getElementById('progressText').innerHTML = entered === batchMarksData.students.length ? 
+            '<span class="text-green-600 font-medium">All marks entered!</span>' : `${entered} of ${batchMarksData.students.length} entered`;
+    }
+    function setAllMarks() { 
+        let v=document.getElementById('setAllValue').value; 
+        if(v==='') return; 
+        batchMarksData.students.forEach(s=>{ 
+            let inp=document.getElementById(`obtained_${s.roll}`); 
+            if(inp) inp.value=v; 
+            updateBatchPercentage(s.roll); 
+        }); 
+    }
+    function clearAllMarks() { 
+        batchMarksData.students.forEach(s=>{ 
+            let inp=document.getElementById(`obtained_${s.roll}`); 
+            if(inp) inp.value=''; 
+        }); 
+        batchMarksData.marks={}; 
+        updateBatchPercentage('dummy'); 
+    }
+    async function saveBatchMarks() {
+        if(!batchMarksData.students) return; 
+        let cls=document.getElementById('batchClass').value, subj=getCurrentSubject(), exam=document.getElementById('batchExamType').value, date=document.getElementById('batchExamDate').value||new Date().toISOString().split('T')[0], total=parseFloat(document.getElementById('globalTotalMarks').value)||100;
+        showLoading(true, 'Saving batch marks...');
+        try {
+            for(let [roll,data] of Object.entries(batchMarksData.marks)) {
+                await sendToSheet({ sheet:'marks', roll, subject:subj, exam_type:exam, obtained:data.obtained, total, percentage:data.percentage, date, class:cls, entered_by:currentUser?.name||'Admin' });
+            }
+            showToast('Batch saved','success'); 
+            batchMarksData.marks = {};
+            loadBatchStudents();
+            setTimeout(syncData,1000);
+        } catch(e) {
+            showToast('Error saving batch','error');
+        } finally {
+            showLoading(false);
+        }
+    }
+    function prepareBatchMarksWhatsApp() {
+        let list=[]; 
+        batchMarksData.students?.forEach(s=>{ 
+            if(batchMarksData.marks[s.roll] && s.parent_mobile) {
+                let d=batchMarksData.marks[s.roll]; 
+                let perc=d.percentage;
+                let grade = perc >= 80 ? 'A+' : perc >= 70 ? 'A' : perc >= 60 ? 'B' : perc >= 50 ? 'C' : 'F';
+                list.push({ name:s.name, phone:s.parent_mobile, roll:s.roll, message: `📝 *Exam Result*\n📚 *Subject:* ${getCurrentSubject()}\n📊 *Marks:* ${d.obtained}/${d.total}\n📈 *Percentage:* ${perc}%\n🏅 *Grade:* ${grade}` });
+            }
+        });
+        if(!list.length) return showToast('No students with parent numbers found','warning');
+        whatsAppQueue = list; currentQueueIndex = 0; whatsAppType = 'marks';
+        document.getElementById('whatsappConfirmText').innerText = `Send results to ${list.length} parents?`;
+        document.getElementById('whatsappRecipientList').innerHTML = list.map(l=>`<div class="flex justify-between py-1 border-b"><span>${l.name}</span><span class="text-sm text-gray-600">${formatPhoneNumber(l.phone)}</span></div>`).join('');
+        toggleModal('whatsappConfirmModal');
+    }
+    function startWhatsAppQueue() { toggleModal('whatsappConfirmModal'); showWhatsAppProgressModal(); }
+
+    // Attendance functions (unchanged)
+    function loadAttendanceStudents() {
+        let cls=document.getElementById('attClass').value, sec=document.getElementById('attSection').value, date=document.getElementById('attDate').value||new Date().toISOString().split('T')[0];
+        let students=appData.students.filter(s=>s.class==cls && s.section===sec && s.status!=='inactive');
+        document.getElementById('totalCount').innerText=students.length;
+        if(!students.length) { document.getElementById('attendanceContainer').innerHTML='<p class="text-center py-4">No students</p>'; return; }
+        let marked=0;
+        let html=students.map(s=>{ 
+            let exist=appData.attendance.find(a=>a.roll===s.roll && a.date===date); 
+            if(exist) marked++; 
+            return `<div class="attendance-row flex flex-wrap justify-between items-center p-4 bg-gray-50 rounded-xl" data-roll="${s.roll}">
+                <div><span class="font-medium">${s.name}</span> <span class="text-sm text-gray-500">${s.roll}</span></div>
+                <div class="flex gap-4">
+                    <label><input type="radio" name="att_${s.roll}" value="Present" ${exist?.status==='Present'?'checked':''}> Present</label>
+                    <label><input type="radio" name="att_${s.roll}" value="Absent" ${exist?.status==='Absent'?'checked':''}> Absent</label>
+                    <label><input type="radio" name="att_${s.roll}" value="Late" ${exist?.status==='Late'?'checked':''}> Late</label>
+                </div>
+            </div>`; 
+        }).join('');
+        document.getElementById('attendanceContainer').innerHTML=html; 
+        document.getElementById('markedCount').innerText=marked;
+    }
+    function markAllPresent() { 
+        document.querySelectorAll('input[type="radio"][value="Present"]').forEach(r=>r.checked=true); 
+        updateMarkedCount(); 
+    }
+    function markAllAbsent() { 
+        document.querySelectorAll('input[type="radio"][value="Absent"]').forEach(r=>r.checked=true); 
+        updateMarkedCount(); 
+    }
+    function updateMarkedCount() { 
+        document.getElementById('markedCount').innerText = document.querySelectorAll('input[type="radio"]:checked').length; 
+    }
+    async function saveAttendance() {
+        let date=document.getElementById('attDate').value||new Date().toISOString().split('T')[0], 
+            cls=document.getElementById('attClass').value, 
+            sec=document.getElementById('attSection').value;
+        showLoading(true, 'Saving attendance...');
+        try {
+            for(let s of appData.students.filter(s=>s.class==cls && s.section===sec && s.status!=='inactive')) {
+                let status = document.querySelector(`input[name="att_${s.roll}"]:checked`)?.value||'Absent';
+                await sendToSheet({ sheet:'attendance', roll:s.roll, date, status, class:cls, section:sec, marked_by:currentUser?.name||'Admin' });
+            }
+            showToast('Attendance saved','success'); 
+            setTimeout(syncData,1000);
+        } catch(e) {
+            showToast('Error saving attendance','error');
+        } finally {
+            showLoading(false);
+        }
+    }
+    function prepareAttendanceWhatsApp() {
+        let absent=[]; 
+        document.querySelectorAll('.attendance-row').forEach(row=>{ 
+            if(row.querySelector('input:checked')?.value==='Absent') { 
+                let roll=row.dataset.roll; 
+                let s=appData.students.find(s=>s.roll===roll); 
+                if(s?.parent_mobile) absent.push(s); 
+            } 
+        });
+        if(!absent.length) return showToast('No absent students with parent numbers','warning');
+        let date=document.getElementById('attDate').value||new Date().toISOString().split('T')[0]; 
+        let list=absent.map(s=>({ name:s.name, phone:s.parent_mobile, roll:s.roll, message:`📅 *Absence Alert*\n📌 *Status:* Absent on ${date}\n⚠️ Please ensure regular attendance.` }));
+        whatsAppQueue = list; currentQueueIndex = 0; whatsAppType = 'attendance';
+        document.getElementById('whatsappConfirmText').innerText=`Send absence alerts to ${list.length} parents?`;
+        document.getElementById('whatsappRecipientList').innerHTML = list.map(l=>`<div class="flex justify-between py-1 border-b"><span>${l.name}</span><span class="text-sm text-gray-600">${formatPhoneNumber(l.phone)}</span></div>`).join('');
+        toggleModal('whatsappConfirmModal');
+    }
+
+    // Marks form
+    document.getElementById('marksForm').onsubmit = async (e) => {
+        e.preventDefault(); 
+        let roll=document.getElementById('markStudent').value, 
+            subj=document.getElementById('markSubject').value, 
+            exam=document.getElementById('markExamType').value, 
+            obt=parseFloat(document.getElementById('markObtained').value), 
+            tot=parseFloat(document.getElementById('markTotal').value), 
+            perc=((obt/tot)*100).toFixed(2);
+        showLoading(true, 'Saving marks...');
+        try {
+            await sendToSheet({ sheet:'marks', roll, subject:subj, exam_type:exam, obtained:obt, total:tot, percentage:perc, date:new Date().toISOString().split('T')[0], entered_by:currentUser?.name||'Admin' });
+            showToast('Result added','success'); 
+            e.target.reset(); 
+            setTimeout(syncData,1000);
+        } catch(e) { showToast('Error saving marks','error'); } finally { showLoading(false); }
+    };
+
+    // DASHBOARD RENDERING (UPDATED)
+    function refreshUserDashboard(roll) {
+        let s = appData.students.find(s => s.roll === roll);
+        if (!s) return;
+        document.getElementById('dashboardRoll').innerText = roll;
+        document.getElementById('dashboardClass').innerText = s.class;
+        document.getElementById('dashboardSection').innerText = s.section;
+
+        // Attendance stats
+        let att = appData.attendance.filter(a => a.roll === roll);
+        let pres = att.filter(a => a.status === 'Present').length;
+        let attPerc = att.length ? Math.round((pres / att.length) * 100) : 0;
+        document.getElementById('dashboardAttPercent').innerText = attPerc;
+        document.getElementById('dashboardAttPresent').innerText = pres;
+        document.getElementById('dashboardAttTotal').innerText = att.length;
+
+        // Color-coded badge
+        let badge = document.getElementById('attStatusBadge');
+        if (attPerc >= 85) { badge.className = 'att-badge-good text-sm px-3 py-1'; badge.innerText = 'Good (>85%)'; }
+        else if (attPerc >= 75) { badge.className = 'att-badge-average text-sm px-3 py-1'; badge.innerText = 'Average (75-85%)'; }
+        else { badge.className = 'att-badge-low text-sm px-3 py-1'; badge.innerText = 'Low (<75%)'; }
+
+        // Marks & Performance Insight
+        let marks = appData.marks.filter(m => m.roll === roll);
+        document.getElementById('dashboardTotalExams').innerText = marks.length;
+        let avg = 0;
+        if (marks.length) {
+            let sum = marks.reduce((a, m) => a + (parseFloat(m.percentage) || 0), 0);
+            avg = (sum / marks.length).toFixed(1);
+        }
+        document.getElementById('dashboardAvgMarks').innerText = avg;
+
+        // Insight sentence
+        let insight = 'Your child is progressing steadily.';
+        if (marks.length) {
+            let lowSubjects = marks.filter(m => (parseFloat(m.percentage) || 0) < 60).length;
+            let highSubjects = marks.filter(m => (parseFloat(m.percentage) || 0) >= 80).length;
+            if (lowSubjects === 0 && highSubjects >= 3) insight = '🎉 Exceptional performance! Keep it up.';
+            else if (lowSubjects === 0) insight = '✅ Good performance across subjects.';
+            else if (lowSubjects <= 2) insight = '📘 Doing well, but some subjects need attention.';
+            else insight = '⚠️ Attention needed in several subjects.';
+        }
+        document.getElementById('performanceInsight').innerText = insight;
+
+        // Session attendance (simplified label)
+        let sessionMonths = ['Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar'];
+        let monthlyCounts = {};
+        sessionMonths.forEach(m => monthlyCounts[m] = { present: 0, total: 0 });
+        let now = new Date();
+        let sessionYear = now.getMonth() >= 3 ? now.getFullYear() : now.getFullYear() - 1;
+        att.forEach(a => {
+            let d = new Date(a.date);
+            if (d.getFullYear() === sessionYear && d.getMonth() >= 2) {
+                let monthName = sessionMonths[d.getMonth() - 2];
+                if (monthName) { monthlyCounts[monthName].total++; if (a.status === 'Present') monthlyCounts[monthName].present++; }
+            } else if (d.getFullYear() === sessionYear + 1 && d.getMonth() <= 1) {
+                let monthName = sessionMonths[d.getMonth() + 10];
+                if (monthName) { monthlyCounts[monthName].total++; if (a.status === 'Present') monthlyCounts[monthName].present++; }
+            }
+        });
+        let sessionHTML = '';
+        let totalPres = 0, totalDays = 0;
+        sessionMonths.forEach(m => {
+            let p = monthlyCounts[m].present, t = monthlyCounts[m].total;
+            if (t > 0) { totalPres += p; totalDays += t; }
+            let perc = t > 0 ? ((p / t) * 100).toFixed(1) : 0;
+            sessionHTML += `<div class="flex justify-between items-center"><span class="font-medium w-16">${m}</span><div class="flex-1 bg-gray-200 h-2 rounded mx-2"><div class="h-2 bg-navy rounded" style="width:${perc}%"></div></div><span>${p}/${t} (${perc}%)</span></div>`;
+        });
+        document.getElementById('sessionAttendanceContainer').innerHTML = sessionHTML || '<p>No attendance data</p>';
+        document.getElementById('sessionTotalPercent').innerText = totalDays > 0 ? ((totalPres / totalDays) * 100).toFixed(1) : '0';
+
+        // Chart
+        if (resultsChart) resultsChart.destroy();
+        let ctx = document.getElementById('resultsChart').getContext('2d');
+        let sortedMarks = marks.sort((a,b) => new Date(a.date) - new Date(b.date)).slice(-6);
+        resultsChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: sortedMarks.map(m => m.subject.substring(0,6)+'...'),
+                datasets: [{
+                    label: 'Percentage',
+                    data: sortedMarks.map(m => parseFloat(m.percentage) || 0),
+                    borderColor: '#002147',
+                    backgroundColor: 'rgba(0,33,71,0.1)',
+                    tension: 0.2
+                }]
+            }
+        });
+
+        // Marks table with grade and trend
+        let marksHtml = '';
+        let sortedByDate = marks.sort((a,b) => new Date(b.date) - new Date(a.date)); // most recent first
+        // group by subject for trend
+        let subjectMap = {};
+        sortedByDate.forEach(m => { if (!subjectMap[m.subject]) subjectMap[m.subject] = []; subjectMap[m.subject].push(m); });
+        for (let subj in subjectMap) {
+            let subjMarks = subjectMap[subj].sort((a,b) => new Date(a.date) - new Date(b.date));
+            subjMarks.forEach((m, idx) => {
+                let perc = parseFloat(m.percentage) || 0;
+                let grade = perc >= 80 ? 'A' : perc >= 70 ? 'B' : perc >= 60 ? 'C' : perc >= 50 ? 'D' : 'F';
+                let gradeClass = grade === 'A' ? 'grade-a' : grade === 'B' ? 'grade-b' : grade === 'C' ? 'grade-c' : grade === 'D' ? 'grade-d' : 'grade-f';
+                // Trend icon (compare with previous exam for same subject)
+                let trendIcon = '<i class="fas fa-minus trend-flat"></i>';
+                if (idx > 0) {
+                    let prevPerc = parseFloat(subjMarks[idx-1].percentage) || 0;
+                    if (perc > prevPerc) trendIcon = '<i class="fas fa-arrow-up trend-up"></i>';
+                    else if (perc < prevPerc) trendIcon = '<i class="fas fa-arrow-down trend-down"></i>';
+                }
+                marksHtml += `<tr>
+                    <td>${m.subject}</td><td>${m.exam_type}</td><td>${m.obtained}/${m.total}</td>
+                    <td><span class="grade-badge ${gradeClass}">${grade}</span></td>
+                    <td>${trendIcon}</td>
+                </tr>`;
+            });
+        }
+        document.getElementById('userMarksTableBody').innerHTML = marksHtml || '<tr><td colspan="5" class="text-center py-4">No exam results yet</td></tr>';
+    }
+
+    // Add student modal open (reset)
+    function openAddStudentModal() {
+        document.getElementById('addStudentForm').reset();
+        document.querySelector('#addStudentModal h3').innerText = 'Add Student';
+        const submitBtn = document.querySelector('#addStudentModal button[type="submit"]');
+        submitBtn.innerHTML = '<i class="fas fa-save mr-2"></i>Save';
+        currentEditRoll = null;
+        toggleModal('addStudentModal'); 
+    }
+    
+    // Add student form submit
+    document.getElementById('addStudentForm').onsubmit = async (e) => {
+        e.preventDefault(); 
+        let name=document.getElementById('studentName').value.trim(), 
+            cls=document.getElementById('studentClass').value, 
+            sec=document.getElementById('studentSection').value, 
+            parentMob=document.getElementById('studentParentMobile').value.trim(), 
+            stuMob=document.getElementById('studentMobile').value.trim();  
+        showLoading(true, currentEditRoll ? 'Updating...' : 'Adding...');
+        try {
+            if (currentEditRoll) {
+                await sendToSheet({ sheet:'students', action: 'update', roll: currentEditRoll, name, class:cls, section:sec, parent_mobile:parentMob, mobile:stuMob, updated_at:new Date().toISOString().split('T')[0] });
+                showToast(`Updated ${currentEditRoll}`, 'success');
+            } else {
+                let roll = generateRollNumber(sec);
+                await sendToSheet({ sheet:'students', roll, name, class:cls, section:sec, parent_mobile:parentMob, mobile:stuMob, status:'active', created_at:new Date().toISOString().split('T')[0] });
+                showToast(`Added ${roll}`, 'success');
+            }
+            toggleModal('addStudentModal');
+            e.target.reset(); 
+            setTimeout(syncData, 1000);
+        } catch(e) { showToast('Error','error'); } finally { showLoading(false); }
+    };
+    
+    function openAddTeacherModal() { toggleModal('addTeacherModal'); }
+    
+    document.getElementById('addTeacherForm').onsubmit = async (e) => {
+        e.preventDefault(); 
+        let nameInput = document.getElementById('teacherName');
+        let emailInput = document.getElementById('teacherEmail');
+        let passwordInput = document.getElementById('teacherPassword');
+        let name = nameInput.value.trim();
+        let email = emailInput.value.trim();  
+        let password = passwordInput.value.trim();
+        if (!name || !email || !password) { showToast('Fill all fields','warning'); return; }
+        showLoading(true, 'Adding teacher...');
+        try {
+            await sendToSheet({ sheet:'teachers', name, email, password, created_at:new Date().toISOString().split('T')[0] });
+            showToast('Teacher added','success');
+            toggleModal('addTeacherModal');
+            nameInput.value = ''; emailInput.value = ''; passwordInput.value = '';
+            setTimeout(syncData,1000);
+        } catch(e) { showToast('Error','error'); } finally { showLoading(false); }
+    };
+
+    function sendWhatsAppToParent(roll) { 
+        let s=appData.students.find(s=>s.roll===roll); 
+        if(!s?.parent_mobile) return showToast('No number','warning'); 
+        sendIndividualWhatsApp(s.parent_mobile, '👋 *Important Notice*', roll, 'general');
+    }
+    function sendRollNumberWhatsApp(roll) { 
+        let s=appData.students.find(s=>s.roll===roll); 
+        if(!s?.parent_mobile) return showToast('No number','warning'); 
+        sendIndividualWhatsApp(s.parent_mobile, '✅ *Registration Confirmation*\nYour child registered.', roll, 'roll'); 
+    }
+    function sendResultWhatsApp(roll,subj,exam,obt,tot,name) { 
+        let s=appData.students.find(s=>s.roll===roll); 
+        if(!s?.parent_mobile) return showToast('No number','warning'); 
+        let perc = ((obt/tot)*100).toFixed(2);
+        let grade = perc >= 80 ? 'A+' : perc >= 70 ? 'A' : perc >= 60 ? 'B' : perc >= 50 ? 'C' : 'F';
+        let msg = `📝 *${exam} Result*\n📚 *Subject:* ${subj}\n📊 *Marks:* ${obt}/${tot}\n📈 *Percentage:* ${perc}%\n🏅 *Grade:* ${grade}`;
+        sendIndividualWhatsApp(s.parent_mobile, msg, roll, 'marks'); 
+    }
+    function sendBatchMarksWhatsApp(roll) { 
+        let s=appData.students.find(s=>s.roll===roll); 
+        if(!s?.parent_mobile) return; 
+        let val=document.getElementById(`obtained_${roll}`)?.value; 
+        if(!val) return showToast('Enter marks first','warning'); 
+        let obt=parseFloat(val), tot=parseFloat(document.getElementById('globalTotalMarks').value)||100, 
+            subj=getCurrentSubject(), exam=document.getElementById('batchExamType').value,
+            perc = ((obt/tot)*100).toFixed(2),
+            grade = perc >= 80 ? 'A+' : perc >= 70 ? 'A' : perc >= 60 ? 'B' : perc >= 50 ? 'C' : 'F';
+        let msg = `📝 *${exam} Result*\n📚 *Subject:* ${subj}\n📊 *Marks:* ${obt}/${tot}\n📈 *Percentage:* ${perc}%\n🏅 *Grade:* ${grade}`;
+        sendIndividualWhatsApp(s.parent_mobile, msg, roll, 'marks'); 
+    }
+
+    function filterStudents() {
+        let search=document.getElementById('studentSearch')?.value.toLowerCase()||'', 
+            classF=document.getElementById('studentClassFilter')?.value||'', 
+            secF=document.getElementById('studentSectionFilter')?.value||'';
+        document.querySelectorAll('#studentsTableBody tr').forEach(r=>{ 
+            if(r.cells.length>1){ 
+                let txt=r.innerText.toLowerCase(); 
+                let match=(!search||txt.includes(search)) && (!classF||txt.includes(classF.toLowerCase())) && (!secF||txt.includes(`section ${secF.toLowerCase()}`)); 
+                r.style.display=match?'':'none'; 
+            } 
+        });
+    }
+    
+    function downloadTemplate() { 
+        let cls = document.getElementById('batchClass').value;
+        let subj = getCurrentSubject();
+        let exam = document.getElementById('batchExamType').value;
+        if(!cls || !subj || !exam) { showToast('Please select class, subject, exam type','warning'); return; }
+        let csv = "Roll No,Student Name,Obtained Marks\n";
+        batchMarksData.students?.forEach(s => { csv += `${s.roll},"${s.name}",\n`; });
+        let blob = new Blob([csv], {type: 'text/csv'});
+        let url = window.URL.createObjectURL(blob);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = `Marks_Template_${cls}_${subj}_${exam}.csv`;
+        document.body.appendChild(a); a.click(); document.body.removeChild(a); window.URL.revokeObjectURL(url);
+        showToast('Template downloaded', 'success');
+    }
+
+    async function logout() { currentUser=null; showSection('loginScreen'); showToast('Logged out','info'); }
+
+    // Image zoom
+    const logoImage = document.getElementById("logoImage");
+    const modal = document.getElementById("imageModal");
+    const modalImg = document.getElementById("modalImage");
+    const closeModal = document.getElementById("closeModal");
+    logoImage.addEventListener("click", function () { modal.classList.remove("hidden"); modal.classList.add("flex"); modalImg.src = this.src; });
+    closeModal.addEventListener("click", function () { modal.classList.add("hidden"); modal.classList.remove("flex"); });
+    modal.addEventListener("click", function (e) { if (e.target === modal) { modal.classList.add("hidden"); modal.classList.remove("flex"); } });
+
+    // Init
+    window.onload = () => {
+        document.getElementById('attDate').value = new Date().toISOString().split('T')[0];
+        document.getElementById('batchExamDate').value = new Date().toISOString().split('T')[0];
+        syncData();
+    };
+</script>
+</body>
+</html>
