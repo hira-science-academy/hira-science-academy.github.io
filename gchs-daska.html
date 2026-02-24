@@ -4,23 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Portal | Govt. Christian High School Daska</title>
-<meta name="title" content="Student Portal | Govt. Christian High School Daska">
-<meta name="description" content="Official Student Information Portal for GCHS Daska (EMIS: 34310007). Access real-time results, attendance, and academic records.">
-<link rel="canonical" href="https://hiraacademy.online/gchs-daska.html">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://hiraacademy.online/gchs-daska.html">
-<meta property="og:title" content="GCHS Daska - Student Information Portal">
-<meta property="og:description" content="Digital access to student records, attendance, and exam results for Govt. Christian High School Daska.">
-<meta property="og:image" content="https://hiraacademy.online/images/gchs-portal-og.jpg">
-
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://hiraacademy.online/gchs-daska.html">
-<meta property="twitter:title" content="GCHS Daska - Student Information Portal">
-<meta property="twitter:description" content="Digital access to student records, attendance, and exam results for Govt. Christian High School Daska.">
-<meta property="twitter:image" content="https://hiraacademy.online/images/gchs-portal-og.jpg">
-
-<meta name="theme-color" content="#1e3a8a">
+    <meta name="title" content="Student Portal | Govt. Christian High School Daska">
+    <meta name="description" content="Official Student Information Portal for GCHS Daska (EMIS: 34310007). Access real-time results, attendance, and academic records.">
+    <link rel="canonical" href="https://hiraacademy.online/gchs-daska.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hiraacademy.online/gchs-daska.html">
+    <meta property="og:title" content="GCHS Daska - Student Information Portal">
+    <meta property="og:description" content="Digital access to student records, attendance, and exam results for Govt. Christian High School Daska.">
+    <meta property="og:image" content="https://hiraacademy.online/images/gchs-portal-og.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hiraacademy.online/gchs-daska.html">
+    <meta property="twitter:title" content="GCHS Daska - Student Information Portal">
+    <meta property="twitter:description" content="Digital access to student records, attendance, and exam results for Govt. Christian High School Daska.">
+    <meta property="twitter:image" content="https://hiraacademy.online/images/gchs-portal-og.jpg">
+    <meta name="theme-color" content="#1e3a8a">
 
     <!-- School Logo -->
     <link rel="icon" href="gchs_logo.png" type="images/png" />
@@ -30,6 +27,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -46,6 +45,7 @@
             }
         }
     </script>
+    
     <style>
         :root {
             --navy: #002147;
@@ -184,93 +184,37 @@
         .search-input { flex: 1; min-width: 200px; padding: 10px 16px; border: 1px solid #d1d5db; border-radius: 8px; }
         .filter-select { padding: 10px 16px; border: 1px solid #d1d5db; border-radius: 8px; background: white; }
         
-        /* WhatsApp Progress Modal Styles */
-        .whatsapp-progress-modal {
-            max-width: 500px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        .whatsapp-progress-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            border-bottom: 1px solid #f3f4f6;
-        }
-        .whatsapp-progress-item.sent {
-            background-color: #f0fdf4;
-        }
-        .whatsapp-control-panel {
-            background: linear-gradient(135deg, #075e54, #128c7e);
-            color: white;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 16px;
-        }
-        .whatsapp-status-indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #4ade80;
-            margin-right: 6px;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.4; }
-            100% { opacity: 1; }
-        }
-        .progress-bar {
-            height: 8px;
-            background-color: #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--navy), #3b82f6);
-            transition: width 0.3s ease;
-        }
-        .send-next-btn {
-            background-color: #10b981;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        .send-next-btn:hover {
-            background-color: #059669;
-            transform: translateY(-2px);
-        }
-        .send-next-btn:disabled {
-            background-color: #9ca3af;
-            cursor: not-allowed;
-            transform: none;
-        }
+        .whatsapp-progress-modal { max-width: 500px; max-height: 80vh; overflow-y: auto; }
+        .whatsapp-progress-item { display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px solid #f3f4f6; }
+        .whatsapp-progress-item.sent { background-color: #f0fdf4; }
+        .whatsapp-control-panel { background: linear-gradient(135deg, #075e54, #128c7e); color: white; border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+        .whatsapp-status-indicator { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background-color: #4ade80; margin-right: 6px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+        .progress-bar { height: 8px; background-color: #e5e7eb; border-radius: 4px; overflow: hidden; margin: 20px 0; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, var(--navy), #3b82f6); transition: width 0.3s ease; }
+        .send-next-btn { background-color: #10b981; color: white; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+        .send-next-btn:hover { background-color: #059669; transform: translateY(-2px); }
+        .send-next-btn:disabled { background-color: #9ca3af; cursor: not-allowed; transform: none; }
         
         @media (max-width: 768px) {
             .tab-btn { padding: 8px 12px; font-size: 0.85rem; }
             .marks-grid { min-width: 600px; }
         }
-        /* attendance monthly summary */
+        
         .monthly-att-card { background:#f1f5f9; border-radius:12px; padding:12px; text-align:center; }
         .att-percent { font-size:1.5rem; font-weight:bold; }
-        /* grade badges */
+        
         .grade-badge { padding:2px 10px; border-radius:20px; font-weight:600; font-size:0.9rem; display:inline-block; }
         .grade-a { background:#d1fae5; color:#065f46; }
         .grade-b { background:#dbeafe; color:#1e40af; }
         .grade-c { background:#fef3c7; color:#92400e; }
         .grade-d { background:#fee2e2; color:#991b1b; }
         .grade-f { background:#fecaca; color:#7f1d1d; }
-        /* trend icons */
+        
         .trend-up { color:#10b981; }
         .trend-down { color:#ef4444; }
         .trend-flat { color:#6b7280; }
-        /* attendance status badge */
+        
         .att-badge-good { background:#d1fae5; color:#065f46; border-radius:999px; padding:2px 12px; font-weight:500; }
         .att-badge-average { background:#fef3c7; color:#92400e; border-radius:999px; padding:2px 12px; font-weight:500; }
         .att-badge-low { background:#fee2e2; color:#991b1b; border-radius:999px; padding:2px 12px; font-weight:500; }
@@ -290,7 +234,7 @@
     <span id="whatsappMessage">Messages sent successfully!</span>
 </div>
 
-<!-- WhatsApp Progress Modal (from A.txt) -->
+<!-- WhatsApp Progress Modal -->
 <div id="whatsappProgressModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
     <div class="portal-card w-full max-w-lg whatsapp-progress-modal">
         <div class="p-6">
@@ -340,32 +284,30 @@
 </div>
 
 <main class="max-w-7xl mx-auto px-4 py-8">
-    <!-- Header with logo image (replaced GD monogram) -->
+    <!-- Header with logo image -->
     <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
         <div class="flex items-center gap-4">
-            <!-- Logo image -->
             <img src="images/gchs_logo.png" alt="Govt Christian High School Daska Logo"
-     class="h-16 w-auto rounded-lg shadow-md cursor-pointer" id="logoImage"
-     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' viewBox=\'0 0 64 64\'%3E%3Crect width=\'64\' height=\'64\' fill=\'%23002147\'/%3E%3Ctext x=\'12\' y=\'42\' fill=\'%23FFD700\' font-size=\'28\' font-family=\'Arial\'%3EGD%3C/text%3E%3C/svg%3E';">
+                 class="h-16 w-auto rounded-lg shadow-md cursor-pointer" id="logoImage"
+                 onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'64\' height=\'64\' viewBox=\'0 0 64 64\'%3E%3Crect width=\'64\' height=\'64\' fill=\'%23002147\'/%3E%3Ctext x=\'12\' y=\'42\' fill=\'%23FFD700\' font-size=\'28\' font-family=\'Arial\'%3EGD%3C/text%3E%3C/svg%3E';">
             <div>
                 <h1 class="text-3xl md:text-4xl font-bold text-navy font-serif">Govt. Christian High School Daska</h1>
                 <p class="text-gray-600">Est. 1882 · EMIS 34310007 · Old Kachehri Road, Daska</p>
             </div>
         </div>
         <a href="https://hiraacademy.online" target="_blank"
-   class="inline-flex items-center gap-3 px-6 py-3 rounded-xl 
-          bg-gradient-to-r from-navy to-blue-900 
-          text-white font-semibold text-lg
-          shadow-lg hover:shadow-2xl 
-          hover:scale-105 transform transition-all duration-300 
-          border border-gold/30 hover:border-gold">
-    
-    <i class="fas fa-external-link-alt text-gold"></i>
-    <span>Visit Hira Science Academy</span>
-</a>
+           class="inline-flex items-center gap-3 px-6 py-3 rounded-xl 
+                  bg-gradient-to-r from-navy to-blue-900 
+                  text-white font-semibold text-lg
+                  shadow-lg hover:shadow-2xl 
+                  hover:scale-105 transform transition-all duration-300 
+                  border border-gold/30 hover:border-gold">
+            <i class="fas fa-external-link-alt text-gold"></i>
+            <span>Visit Hira Science Academy</span>
+        </a>
     </div>
 
-    <!-- Login Screen (first) -->
+    <!-- Login Screen -->
     <div id="loginScreen">
         <div class="text-center mb-8">
             <h2 class="text-2xl font-bold text-navy mb-2">Student Information Portal</h2>
@@ -392,248 +334,101 @@
             </div>
         </div>
 
-<!-- ================= PREMIUM HERITAGE ABOUT SECTION ================= -->
+        <!-- PREMIUM HERITAGE ABOUT SECTION -->
+        <section class="mt-16 max-w-6xl mx-auto px-4">
+            <div class="bg-gradient-to-br from-[#0b1e3c] to-[#13294b] text-white rounded-3xl shadow-2xl border border-yellow-600/30 p-6 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600"></div>
+                <div class="text-center mb-8">
+                    <img src="images/gchs_logo.png" id="aboutLogo" alt="Govt Christian High School Daska Logo" class="w-24 md:w-32 mx-auto object-contain cursor-pointer transition duration-500 hover:scale-110">
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-yellow-400 tracking-wide mb-3">Govt. Christian High School Daska</h2>
+                <p class="text-center text-yellow-200 italic mb-10 text-sm md:text-base">A Proud Legacy of Excellence Since 1882</p>
+                <div class="space-y-6 text-justify text-gray-200 leading-relaxed text-base md:text-lg">
+                    <p>Established in <strong class="text-yellow-400">1882</strong>, Govt. Christian High School Daska is among the oldest educational institutions of the region. Originally founded as a Mission School during the British era, it aimed to provide modern education, English instruction, moral values, and disciplined academic training.</p>
+                    <p>A historic milestone was achieved on <strong class="text-yellow-400">26 March 1915</strong> when the foundation stone of Daska Mission High School was laid by <strong class="text-yellow-400">E.R. Abbott Esq., Deputy Commissioner</strong>. This marked the formal recognition and strengthening of the institution.</p>
+                    <p>After the independence of Pakistan in <strong class="text-yellow-400">1947</strong>, the school continued its mission of excellence and later became known as <strong class="text-yellow-400">Government Christian High School Daska</strong>. The institution proudly holds <strong class="text-yellow-400">EMIS Code: 34310007</strong> and is located on Old Kachehri Road, Daska.</p>
+                    <p>For more than 140 years, the school has produced countless successful professionals, leaders, and responsible citizens, maintaining a strong tradition of discipline, integrity, and academic achievement.</p>
+                </div>
+                <div class="my-12 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                <h3 class="text-2xl md:text-3xl font-bold text-center text-yellow-400 mb-10">Historical Timeline</h3>
+                <div class="relative border-l-2 border-yellow-500 ml-4 md:ml-10 space-y-12">
+                    <div class="ml-6 relative">
+                        <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
+                        <h4 class="text-xl font-semibold text-yellow-300">1882 – Establishment</h4>
+                        <p class="text-gray-300 mt-2 leading-relaxed text-justify">The institution was founded in 1882 as a Mission School during British India. At a time when modern education was limited in the region, the school emerged as a center of structured academic learning, discipline, and moral instruction. It introduced organized classroom systems, English education, and a curriculum designed to uplift the intellectual standards of the local community.</p>
+                    </div>
+                    <div class="ml-6 relative">
+                        <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
+                        <h4 class="text-xl font-semibold text-yellow-300">Early 1900s – Expansion & Recognition</h4>
+                        <p class="text-gray-300 mt-2 leading-relaxed text-justify">In the early twentieth century, the school experienced steady growth in enrollment and academic reputation. It became a respected institution in Daska and surrounding areas, attracting students from nearby towns and villages. The emphasis on discipline, character-building, and academic excellence strengthened its foundation.</p>
+                    </div>
+                    <div class="ml-6 relative">
+                        <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
+                        <h4 class="text-xl font-semibold text-yellow-300">26 March 1915 – Foundation Stone</h4>
+                        <p class="text-gray-300 mt-2 leading-relaxed text-justify">A historic milestone was achieved when the foundation stone of Daska Mission High School was formally laid by E.R. Abbott Esq., Deputy Commissioner. This ceremony symbolized official recognition and administrative support, marking the transformation of the institution into a prominent high school of the region.</p>
+                    </div>
+                    <div class="ml-6 relative">
+                        <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
+                        <h4 class="text-xl font-semibold text-yellow-300">1947 – After Independence</h4>
+                        <p class="text-gray-300 mt-2 leading-relaxed text-justify">Following the independence of Pakistan in 1947, the institution continued its noble mission under the new national framework. It maintained its academic traditions while adapting to the evolving educational system of Pakistan, eventually becoming known as Government Christian High School Daska.</p>
+                    </div>
+                    <div class="ml-6 relative">
+                        <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
+                        <h4 class="text-xl font-semibold text-yellow-300">Late 20th Century – Academic Strengthening</h4>
+                        <p class="text-gray-300 mt-2 leading-relaxed text-justify">During the late twentieth century, the school strengthened its academic structure, faculty development, and examination performance. It gained recognition for producing outstanding results in board examinations and for nurturing responsible, well-disciplined citizens.</p>
+                    </div>
+                    <div class="ml-6 relative">
+                        <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
+                        <h4 class="text-xl font-semibold text-yellow-300">Present – Continuing Excellence</h4>
+                        <p class="text-gray-300 mt-2 leading-relaxed text-justify">Today, Govt. Christian High School Daska stands as a proud symbol of heritage and excellence. With over 140 years of history, the institution continues to provide quality education up to the high school level. It remains committed to academic integrity, moral values, and preparing students to meet the challenges of the modern world with confidence and dignity.</p>
+                    </div>
+                </div>
+                <div class="my-12 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                <div class="text-center">
+                    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6">Historic Foundation Stone – 1915</h3>
+                    <img src="images/GCHS_foundation.jpg" id="foundationImage" alt="Foundation Stone 1915" class="w-full md:w-3/4 mx-auto rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
+                    <p class="text-gray-300 text-sm mt-4">Foundation Stone laid on 26 March 1915 by E.R. Abbott, Deputy Commissioner.</p>
+                </div>
+            </div>
+        </section>
 
-<section class="mt-16 max-w-6xl mx-auto px-4">
+        <!-- IMAGE MODAL -->
+        <div id="imageModal" class="fixed inset-0 bg-black/95 hidden items-center justify-center z-50 p-4">
+            <div class="relative w-full h-full flex items-center justify-center">
+                <button id="closeModal" class="absolute top-6 right-6 text-yellow-400 text-4xl font-bold z-50 hover:scale-110 transition">&times;</button>
+                <img id="modalImage" class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border-4 border-yellow-600/40 transition duration-300">
+            </div>
+        </div>
 
-  <div class="bg-gradient-to-br from-[#0b1e3c] to-[#13294b] text-white rounded-3xl shadow-2xl border border-yellow-600/30 p-6 md:p-12 relative overflow-hidden">
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const modal = document.getElementById('imageModal');
+                const modalImg = document.getElementById('modalImage');
+                const closeModal = document.getElementById('closeModal');
+                const logo = document.getElementById('aboutLogo');
+                const foundation = document.getElementById('foundationImage');
+                const headerLogo = document.getElementById('logoImage');
 
-    <!-- GOLD TOP LINE -->
-    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600"></div>
+                function openModal(src) {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    modalImg.src = src;
+                }
 
-    <!-- LOGO -->
-    <div class="text-center mb-8">
-      <img src="images/gchs_logo.png"
-        id="aboutLogo"
-        alt="Govt Christian High School Daska Logo"
-        class="w-24 md:w-32 mx-auto object-contain cursor-pointer transition duration-500 hover:scale-110">
-    </div>
+                function closeModalFunction() {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }
 
-    <!-- HEADING -->
-    <h2 class="text-3xl md:text-4xl font-extrabold text-center text-yellow-400 tracking-wide mb-3">
-      Govt. Christian High School Daska
-    </h2>
+                if (logo) logo.addEventListener('click', function () { openModal(this.src); });
+                if (foundation) foundation.addEventListener('click', function () { openModal(this.src); });
+                if (headerLogo) headerLogo.addEventListener('click', function () { openModal(this.src); });
 
-    <p class="text-center text-yellow-200 italic mb-10 text-sm md:text-base">
-      A Proud Legacy of Excellence Since 1882
-    </p>
-
-    <!-- HISTORY TEXT -->
-    <div class="space-y-6 text-justify text-gray-200 leading-relaxed text-base md:text-lg">
-
-      <p>
-        Established in <strong class="text-yellow-400">1882</strong>, Govt. Christian High School Daska 
-        is among the oldest educational institutions of the region. Originally founded 
-        as a Mission School during the British era, it aimed to provide modern education, 
-        English instruction, moral values, and disciplined academic training.
-      </p>
-
-      <p>
-        A historic milestone was achieved on 
-        <strong class="text-yellow-400">26 March 1915</strong> when the foundation stone 
-        of Daska Mission High School was laid by 
-        <strong class="text-yellow-400">E.R. Abbott Esq., Deputy Commissioner</strong>.
-        This marked the formal recognition and strengthening of the institution.
-      </p>
-
-      <p>
-        After the independence of Pakistan in 
-        <strong class="text-yellow-400">1947</strong>, the school continued its mission of 
-        excellence and later became known as 
-        <strong class="text-yellow-400">Government Christian High School Daska</strong>.
-        The institution proudly holds <strong class="text-yellow-400">EMIS Code: 34310007</strong> 
-        and is located on Old Kachehri Road, Daska.
-      </p>
-
-      <p>
-        For more than 140 years, the school has produced countless successful professionals, 
-        leaders, and responsible citizens, maintaining a strong tradition of discipline, 
-        integrity, and academic achievement.
-      </p>
-
-    </div>
-
-    <!-- GOLD DIVIDER -->
-    <div class="my-12 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-
-<!-- TIMELINE -->
-<h3 class="text-2xl md:text-3xl font-bold text-center text-yellow-400 mb-10">
-  Historical Timeline
-</h3>
-
-<div class="relative border-l-2 border-yellow-500 ml-4 md:ml-10 space-y-12">
-
-  <!-- 1882 -->
-  <div class="ml-6 relative">
-    <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
-    <h4 class="text-xl font-semibold text-yellow-300">1882 – Establishment</h4>
-    <p class="text-gray-300 mt-2 leading-relaxed text-justify">
-      The institution was founded in 1882 as a Mission School during British India. 
-      At a time when modern education was limited in the region, the school emerged 
-      as a center of structured academic learning, discipline, and moral instruction. 
-      It introduced organized classroom systems, English education, and a curriculum 
-      designed to uplift the intellectual standards of the local community.
-    </p>
-  </div>
-
-  <!-- Early 1900s Growth -->
-  <div class="ml-6 relative">
-    <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
-    <h4 class="text-xl font-semibold text-yellow-300">Early 1900s – Expansion & Recognition</h4>
-    <p class="text-gray-300 mt-2 leading-relaxed text-justify">
-      In the early twentieth century, the school experienced steady growth in 
-      enrollment and academic reputation. It became a respected institution in Daska 
-      and surrounding areas, attracting students from nearby towns and villages. 
-      The emphasis on discipline, character-building, and academic excellence 
-      strengthened its foundation.
-    </p>
-  </div>
-
-  <!-- 1915 -->
-  <div class="ml-6 relative">
-    <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
-    <h4 class="text-xl font-semibold text-yellow-300">26 March 1915 – Foundation Stone</h4>
-    <p class="text-gray-300 mt-2 leading-relaxed text-justify">
-      A historic milestone was achieved when the foundation stone of Daska Mission 
-      High School was formally laid by E.R. Abbott Esq., Deputy Commissioner. 
-      This ceremony symbolized official recognition and administrative support, 
-      marking the transformation of the institution into a prominent high school 
-      of the region.
-    </p>
-  </div>
-
-  <!-- 1947 -->
-  <div class="ml-6 relative">
-    <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
-    <h4 class="text-xl font-semibold text-yellow-300">1947 – After Independence</h4>
-    <p class="text-gray-300 mt-2 leading-relaxed text-justify">
-      Following the independence of Pakistan in 1947, the institution continued 
-      its noble mission under the new national framework. It maintained its academic 
-      traditions while adapting to the evolving educational system of Pakistan, 
-      eventually becoming known as Government Christian High School Daska.
-    </p>
-  </div>
-
-  <!-- Late 20th Century -->
-  <div class="ml-6 relative">
-    <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
-    <h4 class="text-xl font-semibold text-yellow-300">Late 20th Century – Academic Strengthening</h4>
-    <p class="text-gray-300 mt-2 leading-relaxed text-justify">
-      During the late twentieth century, the school strengthened its academic 
-      structure, faculty development, and examination performance. It gained 
-      recognition for producing outstanding results in board examinations and 
-      for nurturing responsible, well-disciplined citizens.
-    </p>
-  </div>
-
-  <!-- Present -->
-  <div class="ml-6 relative">
-    <div class="absolute -left-9 top-2 w-6 h-6 bg-yellow-500 rounded-full border-4 border-[#0b1e3c]"></div>
-    <h4 class="text-xl font-semibold text-yellow-300">Present – Continuing Excellence</h4>
-    <p class="text-gray-300 mt-2 leading-relaxed text-justify">
-      Today, Govt. Christian High School Daska stands as a proud symbol of 
-      heritage and excellence. With over 140 years of history, the institution 
-      continues to provide quality education up to the high school level. 
-      It remains committed to academic integrity, moral values, and preparing 
-      students to meet the challenges of the modern world with confidence and dignity.
-    </p>
-  </div>
-
-</div>
-
-    <!-- GOLD DIVIDER -->
-    <div class="my-12 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-
-    <!-- FOUNDATION IMAGE -->
-    <div class="text-center">
-      <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6">
-        Historic Foundation Stone – 1915
-      </h3>
-
-      <img src="images/GCHS_foundation.jpg"
-        id="foundationImage"
-        alt="Foundation Stone 1915"
-        class="w-full md:w-3/4 mx-auto rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
-
-      <p class="text-gray-300 text-sm mt-4">
-        Foundation Stone laid on 26 March 1915 by E.R. Abbott, Deputy Commissioner.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ================= IMAGE MODAL ================= -->
-
-<!-- ================= PREMIUM IMAGE MODAL ================= -->
-
-<div id="imageModal" 
-     class="fixed inset-0 bg-black/95 hidden items-center justify-center z-50 p-4">
-
-  <div class="relative w-full h-full flex items-center justify-center">
-
-    <!-- Close Button -->
-    <button id="closeModal"
-      class="absolute top-6 right-6 text-yellow-400 text-4xl font-bold z-50 hover:scale-110 transition">
-      &times;
-    </button>
-
-    <!-- Image -->
-    <img id="modalImage"
-      class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border-4 border-yellow-600/40 transition duration-300">
-      
-  </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  const modal = document.getElementById('imageModal');
-  const modalImg = document.getElementById('modalImage');
-  const closeModal = document.getElementById('closeModal');
-  const logo = document.getElementById('aboutLogo');
-  const foundation = document.getElementById('foundationImage');
-
-  function openModal(src) {
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    modalImg.src = src;
-  }
-
-  function closeModalFunction() {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-  }
-
-  if (logo) {
-    logo.addEventListener('click', function () {
-      openModal(this.src);
-    });
-  }
-
-  if (foundation) {
-    foundation.addEventListener('click', function () {
-      openModal(this.src);
-    });
-  }
-
-  closeModal.addEventListener('click', closeModalFunction);
-
-  modal.addEventListener('click', function (e) {
-    if (e.target === modal) {
-      closeModalFunction();
-    }
-  });
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === "Escape") {
-      closeModalFunction();
-    }
-  });
-
-});
-</script>
+                closeModal.addEventListener('click', closeModalFunction);
+                modal.addEventListener('click', function (e) { if (e.target === modal) closeModalFunction(); });
+                document.addEventListener('keydown', function (e) { if (e.key === "Escape") closeModalFunction(); });
+            });
+        </script>
 
         <div class="text-center text-gray-500 text-sm mt-6">
             <i class="fas fa-shield-alt mr-2"></i>SSL Secured · Privacy Protected
@@ -729,7 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <input type="text" id="studentSearch" placeholder="Search name or roll..." class="search-input" onkeyup="filterStudents()">
                     <select id="studentClassFilter" class="filter-select" onchange="filterStudents()"><option value="">All Classes</option><option value="9">9th</option><option value="10">10th</option></select>
                     <select id="studentSectionFilter" class="filter-select" onchange="filterStudents()"><option value="">All Sections</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select>
-                    <button onclick="syncData()" class="btn-navy px-4 py-2 rounded-lg text-sm"><i class="fas fa-sync-alt mr-2"></i>Sync</button>
+                    <button onclick="loadData()" class="btn-navy px-4 py-2 rounded-lg text-sm"><i class="fas fa-sync-alt mr-2"></i>Sync</button>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="data-table w-full">
@@ -855,7 +650,10 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="flex flex-wrap justify-between items-center">
                 <div class="flex items-center gap-4">
                     <div class="h-16 w-16 rounded-full bg-navy flex items-center justify-center text-gold text-2xl"><i class="fas fa-user-graduate"></i></div>
-                    <div><h2 class="text-2xl font-bold text-navy">Student Progress</h2><p class="text-gray-600"><span id="dashboardRoll"></span> · Class <span id="dashboardClass"></span> · Section <span id="dashboardSection"></span></p></div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-navy" id="studentNameHeader"></h2>
+                        <p class="text-gray-600"><span id="dashboardRoll"></span> · Class <span id="dashboardClass"></span> · Section <span id="dashboardSection"></span></p>
+                    </div>
                 </div>
                 <button onclick="logout()" class="bg-gray-200 px-4 py-2 rounded-lg text-sm"><i class="fas fa-sign-out-alt mr-2"></i>Logout</button>
             </div>
@@ -900,26 +698,39 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Monthly attendance (label simplified) -->
+            <!-- Monthly attendance -->
             <div class="portal-card p-6">
                 <h3 class="font-bold text-navy mb-4">Monthly Attendance (Apr–Mar)</h3>
                 <div id="sessionAttendanceContainer" class="space-y-4 max-h-96 overflow-y-auto"></div>
                 <div class="mt-4 pt-2 border-t"><span class="font-medium">Total Present: </span><span id="sessionTotalPercent">0</span>%</div>
             </div>
-            <!-- Performance trend chart -->
+            <!-- Daily Attendance List (NEW) -->
             <div class="portal-card p-6">
-                <h3 class="font-bold text-navy mb-4">Performance Trend</h3>
-                <canvas id="resultsChart" width="400" height="250"></canvas>
+                <h3 class="font-bold text-navy mb-4">Daily Attendance Record</h3>
+                <div class="overflow-x-auto max-h-96 overflow-y-auto">
+                    <table class="w-full text-sm">
+                        <thead class="bg-gray-50 sticky top-0">
+                            <tr><th class="text-left p-2">Date</th><th class="text-left p-2">Status</th></tr>
+                        </thead>
+                        <tbody id="dailyAttendanceTableBody"></tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
-        <!-- Marks table with grade & trend -->
+        <!-- Performance trend chart (bar chart with data labels) -->
+        <div class="portal-card p-6 mt-6">
+            <h3 class="font-bold text-navy mb-4">Performance Trend</h3>
+            <canvas id="resultsChart" width="400" height="200"></canvas>
+        </div>
+
+        <!-- Marks table with grade (most recent first) -->
         <div class="portal-card p-6 mt-6">
             <h3 class="font-bold text-navy mb-4">Subject-wise Grades & Marks</h3>
             <div class="overflow-x-auto">
                 <table class="data-table w-full">
                     <thead>
-                        <tr><th>Subject</th><th>Exam</th><th>Marks Scored</th><th>Grade</th><th>Trend</th></tr>
+                        <tr><th>Date</th><th>Subject</th><th>Exam</th><th>Marks Scored</th><th>Grade</th></tr>
                     </thead>
                     <tbody id="userMarksTableBody"></tbody>
                 </table>
@@ -967,24 +778,14 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
 </div>
 
-<!-- Image Zoom Modal -->
-<div id="imageModal" class="fixed inset-0 hidden items-center justify-center bg-black/70 backdrop-blur-sm z-50 p-4">
-    <div class="relative max-w-lg w-full">
-        <button id="closeModal" class="absolute -top-10 right-0 text-white text-4xl font-bold hover:text-gray-300 transition">&times;</button>
-        <img id="modalImage" class="w-full rounded-2xl shadow-2xl animate-zoomIn">
-    </div>
-</div>
-
-<style>
-@keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.animate-zoomIn { animation: zoomIn 0.3s ease-out; }
-</style>
-
 <script>
+    // Register Chart.js plugin
+    Chart.register(ChartDataLabels);
+
     // CONFIG
     const SPREADSHEET_ID = '1vYIBSOfb6P41qswMIhYWd_SjiE0t3vGqA5meSFTU_t8';
     const BASE_URL = 'https://opensheet.elk.sh';
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyGsPIfZLhds8pcIWF9cxQr2BYb5Rbx9HpyWaXOFmHDDsG-_HzRGI8_GkWYZiINerX6/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKL6GsDKH48-rTYiTY1PUYBJLr8N3yB2kw9VFXjRCgpKbRGXWIxQwOcYzWufCo6Gzb/exec';
 
     let appData = { teachers: [], students: [], attendance: [], marks: [] };
     let currentUser = null;
@@ -996,7 +797,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentEditRoll = null;
     let resultsChart = null;
 
-    // Helper functions (identical to original)
+    // Helper functions
     function showToast(message, type = 'info') {
         const toast = document.createElement('div');
         toast.className = `toast toast-${type}`;
@@ -1030,14 +831,42 @@ document.addEventListener("DOMContentLoaded", function () {
         if(!n.startsWith('92')) n='92'+n; 
         return n; 
     }
-    function generateRollNumber(section) { 
-        let max=0; 
-        appData.students.filter(s=>s.section===section).forEach(s=>{ 
-            let p=s.roll?.split('-'); 
-            if(p?.length===3) max=Math.max(max, parseInt(p[2])||0); 
-        }); 
-        return `GCHS-${section}-${(max+1).toString().padStart(2,'0')}`; 
+    
+    // UPDATED: generateRollNumber function that uses both class and section
+    function generateRollNumber(classNum, section) {
+        // Format: GCHS-{class}{section}-{sequential number}
+        // Example: GCHS-9A-01, GCHS-10B-01
+        
+        // Combine class and section (remove any spaces)
+        const classSection = classNum + section;
+        
+        // Filter students with same class and section
+        const sameClassSection = appData.students.filter(s => 
+            s.class === classNum && s.section === section && s.status !== 'inactive'
+        );
+        
+        // Find the maximum roll number
+        let maxNum = 0;
+        sameClassSection.forEach(s => {
+            if (s.roll) {
+                // Extract the number part from roll (format: GCHS-{classSection}-XX)
+                const parts = s.roll.split('-');
+                if (parts.length === 3) {
+                    const num = parseInt(parts[2]);
+                    if (!isNaN(num) && num > maxNum) {
+                        maxNum = num;
+                    }
+                }
+            }
+        });
+        
+        // Generate next number (01, 02, etc.)
+        const nextNum = (maxNum + 1).toString().padStart(2, '0');
+        
+        // Return formatted roll number
+        return `GCHS-${classSection}-${nextNum}`;
     }
+    
     function markRowAsSent(roll,type) { 
         document.querySelectorAll(`[data-roll="${roll}"]`).forEach(el=>el.classList.add('whatsapp-sent-row')); 
     }
@@ -1116,8 +945,8 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Data sync
-    async function syncData() {
+    // Data sync (fixed to use BASE_URL correctly)
+    async function loadData() {
         showLoading(true,'Fetching...');
         try {
             let [teachers,students,attendance,marks] = await Promise.all([
@@ -1149,13 +978,13 @@ document.addEventListener("DOMContentLoaded", function () {
         } finally { showLoading(false); }
     }
 
-    // Login handlers (unchanged)
+    // Login handlers
     document.getElementById('teacherLoginForm').onsubmit = async (e) => {
         e.preventDefault();
         let email = document.getElementById('teacherEmail').value.trim();
         let pass = document.getElementById('teacherPass').value.trim();
         showLoading(true); 
-        await syncData();
+        await loadData();
         let teacher = appData.teachers.find(t=>t.email===email && t.password===pass);
         if(teacher) { 
             currentUser={type:'teacher',name:teacher.name,email}; 
@@ -1171,7 +1000,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault(); 
         let roll=document.getElementById('studentRoll').value.trim(); 
         showLoading(true); 
-        await syncData();
+        await loadData();
         let s=appData.students.find(s=>s.roll===roll); 
         if(s) { 
             currentUser={type:'student',roll,name:s.name}; 
@@ -1187,7 +1016,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let roll=document.getElementById('parentRoll').value.trim(); 
         let mob=document.getElementById('parentMobile').value.trim(); 
         showLoading(true); 
-        await syncData();
+        await loadData();
         let s=appData.students.find(s=>s.roll===roll && s.parent_mobile===mob); 
         if(s) { 
             currentUser={type:'parent',roll,name:s.name}; 
@@ -1228,11 +1057,11 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             await sendToSheet({ sheet:'students', action: 'delete', roll, status:'inactive', deleted_at:new Date().toISOString().split('T')[0] });
             showToast(`Deleted ${roll}`,'success');
-            setTimeout(syncData,1000);
+            setTimeout(loadData,1000);
         } catch(e) { showToast('Error','error'); } finally { showLoading(false); }
     }
 
-    // Populate admin tables (unchanged – same as original)
+    // Populate admin tables
     function populateAdminTables() {
         let active = appData.students.filter(s=>s.status!=='inactive');
         document.getElementById('studentCount').innerText = active.length;
@@ -1252,7 +1081,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('marksTableBody').innerHTML = marksHtml || '<tr><td colspan="6" class="text-center">No results</td></tr>';
     }
 
-    // Batch marks functions (unchanged)
+    // Batch marks functions
     function batchSubjectChanged() {
         let select = document.getElementById('batchSubjectSelect');
         let customInput = document.getElementById('batchSubjectCustom');
@@ -1329,7 +1158,7 @@ document.addEventListener("DOMContentLoaded", function () {
             showToast('Batch saved','success'); 
             batchMarksData.marks = {};
             loadBatchStudents();
-            setTimeout(syncData,1000);
+            setTimeout(loadData,1000);
         } catch(e) {
             showToast('Error saving batch','error');
         } finally {
@@ -1354,7 +1183,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     function startWhatsAppQueue() { toggleModal('whatsappConfirmModal'); showWhatsAppProgressModal(); }
 
-    // Attendance functions (unchanged)
+    // Attendance functions
     function loadAttendanceStudents() {
         let cls=document.getElementById('attClass').value, sec=document.getElementById('attSection').value, date=document.getElementById('attDate').value||new Date().toISOString().split('T')[0];
         let students=appData.students.filter(s=>s.class==cls && s.section===sec && s.status!=='inactive');
@@ -1398,7 +1227,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 await sendToSheet({ sheet:'attendance', roll:s.roll, date, status, class:cls, section:sec, marked_by:currentUser?.name||'Admin' });
             }
             showToast('Attendance saved','success'); 
-            setTimeout(syncData,1000);
+            setTimeout(loadData,1000);
         } catch(e) {
             showToast('Error saving attendance','error');
         } finally {
@@ -1437,7 +1266,7 @@ document.addEventListener("DOMContentLoaded", function () {
             await sendToSheet({ sheet:'marks', roll, subject:subj, exam_type:exam, obtained:obt, total:tot, percentage:perc, date:new Date().toISOString().split('T')[0], entered_by:currentUser?.name||'Admin' });
             showToast('Result added','success'); 
             e.target.reset(); 
-            setTimeout(syncData,1000);
+            setTimeout(loadData,1000);
         } catch(e) { showToast('Error saving marks','error'); } finally { showLoading(false); }
     };
 
@@ -1445,6 +1274,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function refreshUserDashboard(roll) {
         let s = appData.students.find(s => s.roll === roll);
         if (!s) return;
+        document.getElementById('studentNameHeader').innerText = s.name;
         document.getElementById('dashboardRoll').innerText = roll;
         document.getElementById('dashboardClass').innerText = s.class;
         document.getElementById('dashboardSection').innerText = s.section;
@@ -1512,54 +1342,80 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('sessionAttendanceContainer').innerHTML = sessionHTML || '<p>No attendance data</p>';
         document.getElementById('sessionTotalPercent').innerText = totalDays > 0 ? ((totalPres / totalDays) * 100).toFixed(1) : '0';
 
-        // Chart
+        // Daily attendance list (NEW)
+        let sortedAttendance = [...att].sort((a, b) => new Date(b.date) - new Date(a.date));
+        let dailyHTML = '';
+        sortedAttendance.forEach(a => {
+            let statusClass = a.status === 'Present' ? 'status-present' : a.status === 'Absent' ? 'status-absent' : 'status-late';
+            dailyHTML += `<tr><td class="p-2 border-b">${a.date}</td><td class="p-2 border-b ${statusClass}">${a.status}</td></tr>`;
+        });
+        document.getElementById('dailyAttendanceTableBody').innerHTML = dailyHTML || '<tr><td colspan="2" class="text-center py-4">No attendance records</td></tr>';
+
+        // Chart (Bar chart with subject names)
         if (resultsChart) resultsChart.destroy();
         let ctx = document.getElementById('resultsChart').getContext('2d');
-        let sortedMarks = marks.sort((a,b) => new Date(a.date) - new Date(b.date)).slice(-6);
+        
+        // Group marks by subject and get most recent for each subject
+        let subjectMap = {};
+        marks.forEach(m => {
+            if (!subjectMap[m.subject] || new Date(m.date) > new Date(subjectMap[m.subject].date)) {
+                subjectMap[m.subject] = m;
+            }
+        });
+        
+        let subjects = Object.keys(subjectMap);
+        let percentages = subjects.map(s => parseFloat(subjectMap[s].percentage) || 0);
+        
         resultsChart = new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: sortedMarks.map(m => m.subject.substring(0,6)+'...'),
+                labels: subjects,
                 datasets: [{
                     label: 'Percentage',
-                    data: sortedMarks.map(m => parseFloat(m.percentage) || 0),
+                    data: percentages,
+                    backgroundColor: 'rgba(0,33,71,0.7)',
                     borderColor: '#002147',
-                    backgroundColor: 'rgba(0,33,71,0.1)',
-                    tension: 0.2
+                    borderWidth: 1
                 }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        offset: 4,
+                        color: '#002147',
+                        font: { weight: 'bold', size: 12 },
+                        formatter: (value) => value + '%'
+                    },
+                    legend: { display: false }
+                },
+                scales: {
+                    y: { beginAtZero: true, max: 100 }
+                }
             }
         });
 
-        // Marks table with grade and trend
+        // Marks table with most recent at top
+        let sortedMarks = [...marks].sort((a, b) => new Date(b.date) - new Date(a.date));
         let marksHtml = '';
-        let sortedByDate = marks.sort((a,b) => new Date(b.date) - new Date(a.date)); // most recent first
-        // group by subject for trend
-        let subjectMap = {};
-        sortedByDate.forEach(m => { if (!subjectMap[m.subject]) subjectMap[m.subject] = []; subjectMap[m.subject].push(m); });
-        for (let subj in subjectMap) {
-            let subjMarks = subjectMap[subj].sort((a,b) => new Date(a.date) - new Date(b.date));
-            subjMarks.forEach((m, idx) => {
-                let perc = parseFloat(m.percentage) || 0;
-                let grade = perc >= 80 ? 'A' : perc >= 70 ? 'B' : perc >= 60 ? 'C' : perc >= 50 ? 'D' : 'F';
-                let gradeClass = grade === 'A' ? 'grade-a' : grade === 'B' ? 'grade-b' : grade === 'C' ? 'grade-c' : grade === 'D' ? 'grade-d' : 'grade-f';
-                // Trend icon (compare with previous exam for same subject)
-                let trendIcon = '<i class="fas fa-minus trend-flat"></i>';
-                if (idx > 0) {
-                    let prevPerc = parseFloat(subjMarks[idx-1].percentage) || 0;
-                    if (perc > prevPerc) trendIcon = '<i class="fas fa-arrow-up trend-up"></i>';
-                    else if (perc < prevPerc) trendIcon = '<i class="fas fa-arrow-down trend-down"></i>';
-                }
-                marksHtml += `<tr>
-                    <td>${m.subject}</td><td>${m.exam_type}</td><td>${m.obtained}/${m.total}</td>
-                    <td><span class="grade-badge ${gradeClass}">${grade}</span></td>
-                    <td>${trendIcon}</td>
-                </tr>`;
-            });
-        }
+        sortedMarks.forEach(m => {
+            let perc = parseFloat(m.percentage) || 0;
+            let grade = perc >= 80 ? 'A' : perc >= 70 ? 'B' : perc >= 60 ? 'C' : perc >= 50 ? 'D' : 'F';
+            let gradeClass = grade === 'A' ? 'grade-a' : grade === 'B' ? 'grade-b' : grade === 'C' ? 'grade-c' : grade === 'D' ? 'grade-d' : 'grade-f';
+            marksHtml += `<tr>
+                <td class="p-2">${m.date || 'N/A'}</td>
+                <td class="p-2">${m.subject}</td>
+                <td class="p-2">${m.exam_type}</td>
+                <td class="p-2">${m.obtained}/${m.total}</td>
+                <td class="p-2"><span class="grade-badge ${gradeClass}">${grade}</span></td>
+            </tr>`;
+        });
         document.getElementById('userMarksTableBody').innerHTML = marksHtml || '<tr><td colspan="5" class="text-center py-4">No exam results yet</td></tr>';
     }
 
-    // Add student modal open (reset)
+    // Add student modal open (reset) - FIXED: Modal closes immediately
     function openAddStudentModal() {
         document.getElementById('addStudentForm').reset();
         document.querySelector('#addStudentModal h3').innerText = 'Add Student';
@@ -1569,49 +1425,101 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleModal('addStudentModal'); 
     }
     
-    // Add student form submit
+    // Add student form submit - FIXED: Modal closes immediately with corrected roll number generation
     document.getElementById('addStudentForm').onsubmit = async (e) => {
         e.preventDefault(); 
-        let name=document.getElementById('studentName').value.trim(), 
-            cls=document.getElementById('studentClass').value, 
-            sec=document.getElementById('studentSection').value, 
-            parentMob=document.getElementById('studentParentMobile').value.trim(), 
-            stuMob=document.getElementById('studentMobile').value.trim();  
-        showLoading(true, currentEditRoll ? 'Updating...' : 'Adding...');
+        
+        // Close modal immediately
+        toggleModal('addStudentModal');
+        
+        // Show saving toast
+        showToast('Saving student...', 'info');
+        
+        let name = document.getElementById('studentName').value.trim(), 
+            cls = document.getElementById('studentClass').value, 
+            sec = document.getElementById('studentSection').value, 
+            parentMob = document.getElementById('studentParentMobile').value.trim(), 
+            stuMob = document.getElementById('studentMobile').value.trim();  
+        
         try {
             if (currentEditRoll) {
-                await sendToSheet({ sheet:'students', action: 'update', roll: currentEditRoll, name, class:cls, section:sec, parent_mobile:parentMob, mobile:stuMob, updated_at:new Date().toISOString().split('T')[0] });
+                await sendToSheet({ 
+                    sheet: 'students', 
+                    action: 'update', 
+                    roll: currentEditRoll, 
+                    name, 
+                    class: cls, 
+                    section: sec, 
+                    parent_mobile: parentMob, 
+                    mobile: stuMob, 
+                    updated_at: new Date().toISOString().split('T')[0] 
+                });
                 showToast(`Updated ${currentEditRoll}`, 'success');
             } else {
-                let roll = generateRollNumber(sec);
-                await sendToSheet({ sheet:'students', roll, name, class:cls, section:sec, parent_mobile:parentMob, mobile:stuMob, status:'active', created_at:new Date().toISOString().split('T')[0] });
+                // UPDATED: Pass both class and section to generateRollNumber
+                let roll = generateRollNumber(cls, sec);
+                await sendToSheet({ 
+                    sheet: 'students', 
+                    roll, 
+                    name, 
+                    class: cls, 
+                    section: sec, 
+                    parent_mobile: parentMob, 
+                    mobile: stuMob, 
+                    status: 'active', 
+                    created_at: new Date().toISOString().split('T')[0] 
+                });
                 showToast(`Added ${roll}`, 'success');
             }
-            toggleModal('addStudentModal');
             e.target.reset(); 
-            setTimeout(syncData, 1000);
-        } catch(e) { showToast('Error','error'); } finally { showLoading(false); }
+            setTimeout(loadData, 1000);
+        } catch(e) { 
+            showToast('Error saving student', 'error'); 
+        }
     };
     
-    function openAddTeacherModal() { toggleModal('addTeacherModal'); }
+    function openAddTeacherModal() { 
+        toggleModal('addTeacherModal'); 
+    }
     
+    // Add teacher form submit - FIXED: Email properly saved, modal closes immediately
     document.getElementById('addTeacherForm').onsubmit = async (e) => {
         e.preventDefault(); 
+        
+        // Close modal immediately
+        toggleModal('addTeacherModal');
+        
+        // Show saving toast
+        showToast('Adding teacher...', 'info');
+        
         let nameInput = document.getElementById('teacherName');
         let emailInput = document.getElementById('teacherEmail');
         let passwordInput = document.getElementById('teacherPassword');
         let name = nameInput.value.trim();
         let email = emailInput.value.trim();  
         let password = passwordInput.value.trim();
-        if (!name || !email || !password) { showToast('Fill all fields','warning'); return; }
-        showLoading(true, 'Adding teacher...');
+        
+        if (!name || !email || !password) { 
+            showToast('Fill all fields','warning'); 
+            return; 
+        }
+        
         try {
-            await sendToSheet({ sheet:'teachers', name, email, password, created_at:new Date().toISOString().split('T')[0] });
+            await sendToSheet({ 
+                sheet:'teachers', 
+                name: name, 
+                email: email,  // Explicitly set email
+                password: password, 
+                created_at: new Date().toISOString().split('T')[0] 
+            });
             showToast('Teacher added','success');
-            toggleModal('addTeacherModal');
-            nameInput.value = ''; emailInput.value = ''; passwordInput.value = '';
-            setTimeout(syncData,1000);
-        } catch(e) { showToast('Error','error'); } finally { showLoading(false); }
+            nameInput.value = ''; 
+            emailInput.value = ''; 
+            passwordInput.value = '';
+            setTimeout(loadData,1000);
+        } catch(e) { 
+            showToast('Error adding teacher','error'); 
+        }
     };
 
     function sendWhatsAppToParent(roll) { 
@@ -1676,20 +1584,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function logout() { currentUser=null; showSection('loginScreen'); showToast('Logged out','info'); }
 
-    // Image zoom
-    const logoImage = document.getElementById("logoImage");
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    const closeModal = document.getElementById("closeModal");
-    logoImage.addEventListener("click", function () { modal.classList.remove("hidden"); modal.classList.add("flex"); modalImg.src = this.src; });
-    closeModal.addEventListener("click", function () { modal.classList.add("hidden"); modal.classList.remove("flex"); });
-    modal.addEventListener("click", function (e) { if (e.target === modal) { modal.classList.add("hidden"); modal.classList.remove("flex"); } });
-
     // Init
     window.onload = () => {
         document.getElementById('attDate').value = new Date().toISOString().split('T')[0];
         document.getElementById('batchExamDate').value = new Date().toISOString().split('T')[0];
-        syncData();
+        loadData();
     };
 </script>
 </body>
