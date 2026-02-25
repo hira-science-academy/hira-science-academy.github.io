@@ -7,7 +7,8 @@
     <meta name="author" content="Hira Science Academy" />
     
     <title>Student Portal | Hira Science Academy</title>
-    <meta name="description" content="Access student records, attendance, and academic performance at Hira Science Academy Student Portal." />
+    <meta name="title" content="Student Portal | Hira Science Academy">
+    <meta name="description" content="Access attendance, exam results, and academic performance at the official Hira Science Academy Student Portal.">
 
     <link rel="canonical" href="https://hiraacademy.online/student-portal.html">
 
@@ -15,18 +16,31 @@
     <link rel="apple-touch-icon" sizes="180x180" href="https://www.hiraacademy.online/images/apple-touch-icon.png" />
     <link rel="manifest" href="https://www.hiraacademy.online/images/site.webmanifest" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Hira Science Academy" />
-    <meta property="og:title" content="Student Portal | Hira Science Academy" />
-    <meta property="og:description" content="Official Student Portal for Hira Science Academy students." />
-    <meta property="og:image" content="https://www.hiraacademy.online/images/logo.webp" />
-    <meta property="og:url" content="https://www.hiraacademy.online/" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hiraacademy.online/student-portal.html">
+    <meta property="og:title" content="Student Portal | Hira Science Academy">
+    <meta property="og:description" content="Official digital gateway for students and parents to track academic progress, attendance, and results.">
+    <meta property="og:image" content="https://www.hiraacademy.online/images/portal-og-image.jpg">
+    <meta property="og:site_name" content="Hira Science Academy">
 
-    <meta name="theme-color" content="#0ea5e9" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://hiraacademy.online/student-portal.html">
+    <meta property="twitter:title" content="Student Portal | Hira Science Academy">
+    <meta property="twitter:description" content="Check your attendance and exam results online at Hira Science Academy.">
+    <meta property="twitter:image" content="https://www.hiraacademy.online/images/portal-og-image.jpg">
+
+    <meta name="theme-color" content="#0ea5e9">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js & datalabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
@@ -941,6 +955,8 @@
             font-size: 0.75rem;
             color: #64748b;
         }
+        /* chart container */
+        .chart-container { height: 280px; width: 100%; }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
@@ -1049,7 +1065,7 @@
     <!-- Loading Screen -->
     <div id="loading" class="fixed inset-0 bg-white/90 z-50 flex flex-col items-center justify-center hidden">
         <div class="loading-spinner mb-4"></div>
-        <p id="loadingText" class="font-medium text-primary-900">Syncing with database...</p>
+        <p id="loadingText" class="font-medium text-primary-900">Processing...</p>
     </div>
 
     <!-- Main Portal Container -->
@@ -1150,7 +1166,7 @@
                 <form id="pLogin">
                     <div class="mb-6">
                         <label for="p_roll" class="form-label">Student Roll Number</label>
-                        <input type="text" id="p_roll" placeholder="e.g., HSA-09-2024-001" class="form-input" required>
+                        <input type="text" id="p_roll" placeholder="e.g., HSA-09-001" class="form-input" required>
                     </div>
                     
                     <div class="mb-6">
@@ -1186,7 +1202,7 @@
                 <form id="sLogin">
                     <div class="mb-6">
                         <label for="s_roll" class="form-label">Your Roll Number</label>
-                        <input type="text" id="s_roll" placeholder="e.g., HSA-09-2024-001" class="form-input" required>
+                        <input type="text" id="s_roll" placeholder="e.g., HSA-09-001" class="form-input" required>
                         <p class="text-sm text-gray-500 mt-1">Enter the roll number provided by the academy</p>
                     </div>
                     
@@ -1197,7 +1213,7 @@
             </div>
         </div>
 
-        <!-- Admin Panel (FULLY RESTORED) -->
+        <!-- Admin Panel -->
         <div id="adminPanel" class="hidden teacher-view">
             <!-- Admin Header -->
             <div class="portal-card p-6 mb-6">
@@ -1268,7 +1284,6 @@
                         <input type="text" id="studentSearch" placeholder="Search students by name or roll number..." class="search-input" onkeyup="filterStudents()">
                         <select id="studentClassFilter" class="filter-select" onchange="filterStudents()">
                             <option value="">All Classes</option>
-                            <option value="Pre-9th">Pre-9th</option>
                             <option value="9th">9th Class</option>
                             <option value="10th">10th Class</option>
                             <option value="1st Year">1st Year</option>
@@ -1400,7 +1415,6 @@
                             <label class="form-label">Class</label>
                             <select id="mClass" class="form-input" onchange="loadSubjects()" required>
                                 <option value="">Select Class</option>
-                                <option value="Pre-9th">Pre-9th</option>
                                 <option value="9th">9th Class</option>
                                 <option value="10th">10th Class</option>
                                 <option value="1st Year">1st Year</option>
@@ -1478,7 +1492,6 @@
                             <label class="form-label">Select Class</label>
                             <select id="batchClass" class="form-input" onchange="loadBatchStudents()" required>
                                 <option value="">Select Class</option>
-                                <option value="Pre-9th">Pre-9th</option>
                                 <option value="9th">9th Class</option>
                                 <option value="10th">10th Class</option>
                                 <option value="1st Year">1st Year</option>
@@ -1633,20 +1646,21 @@
 
         <!-- REDESIGNED USER DASHBOARD (STUDENT / PARENT) -->
         <div id="userDashboard" class="hidden">
-            <!-- top welcome banner - minimal personal info -->
+            <!-- top welcome banner - name first, larger, prominent -->
             <div class="portal-card p-5 mb-8 bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-100 flex flex-wrap items-center justify-between">
                 <div class="flex items-center gap-4">
-                    <div class="h-12 w-12 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 text-xl">
+                    <div class="h-14 w-14 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 text-2xl">
                         <i class="fas fa-user-graduate"></i>
                     </div>
                     <div>
-                        <h2 class="text-2xl font-bold text-gray-800">Student Dashboard</h2>
-                        <p class="text-gray-600 text-sm flex items-center gap-2">
+                        <!-- Student Name first in larger font -->
+                        <h2 class="text-3xl font-bold text-gray-800 leading-tight" id="uNameDisplay"></h2>
+                        <div class="flex items-center gap-2 text-gray-600 text-sm mt-1">
                             <span><i class="far fa-id-card mr-1"></i>Roll # <span id="uRoll" class="font-medium"></span></span>
                             <span class="w-1 h-1 bg-gray-400 rounded-full"></span>
                             <span><i class="far fa-building mr-1"></i>Class <span id="uClass" class="font-medium"></span></span>
                             <span class="privacy-badge ml-2"><i class="fas fa-eye-slash mr-1 text-xs"></i>privacy protected</span>
-                        </p>
+                        </div>
                     </div>
                 </div>
                 <button onclick="logout()" class="btn btn-danger mt-3 sm:mt-0">
@@ -1733,6 +1747,17 @@
                 </div>
             </div>
 
+            <!-- Performance Trend Chart (Bar chart with datalabels) -->
+            <div class="portal-card p-6 mt-8">
+                <div class="flex items-center justify-between mb-5">
+                    <h3 class="text-lg font-bold text-gray-800 flex items-center"><i class="fas fa-chart-bar text-green-600 mr-2"></i> Performance Trend by Subject</h3>
+                    <span class="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">latest exams</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="performanceChart"></canvas>
+                </div>
+            </div>
+
             <!-- privacy note -->
             <div class="text-xs text-gray-400 flex justify-end items-center mt-6 gap-2">
                 <i class="fas fa-shield-alt"></i> personal information is never shown – secured by Hira Academy
@@ -1762,7 +1787,6 @@
                                 <label class="form-label">Class *</label>
                                 <select id="nClass" class="form-input" required>
                                     <option value="">Select Class</option>
-                                    <option value="Pre-9th">Pre-9th</option>
                                     <option value="9th">9th Class</option>
                                     <option value="10th">10th Class</option>
                                     <option value="1st Year">1st Year</option>
@@ -1790,7 +1814,7 @@
                     </div>
                     
                     <div class="flex gap-3 mt-8">
-                        <button type="submit" class="btn btn-primary flex-1">
+                        <button type="submit" class="btn btn-primary flex-1" id="saveStudentBtn">
                             <i class="fas fa-save mr-2"></i> Save Student
                         </button>
                         <button type="button" onclick="toggleModal('addStudentModal')" class="btn btn-danger flex-1">Cancel</button>
@@ -1826,7 +1850,6 @@
                                 <label class="form-label">Class *</label>
                                 <select id="editClass" class="form-input" required>
                                     <option value="">Select Class</option>
-                                    <option value="Pre-9th">Pre-9th</option>
                                     <option value="9th">9th Class</option>
                                     <option value="10th">10th Class</option>
                                     <option value="1st Year">1st Year</option>
@@ -1940,7 +1963,7 @@
                     </div>
                     
                     <div class="flex gap-3 mt-8">
-                        <button type="submit" class="btn btn-primary flex-1">
+                        <button type="submit" class="btn btn-primary flex-1" id="saveTeacherBtn">
                             <i class="fas fa-save mr-2"></i> Save Teacher
                         </button>
                         <button type="button" onclick="toggleModal('addTeacherModal')" class="btn btn-danger flex-1">Cancel</button>
@@ -1998,7 +2021,7 @@
         <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
             <div class="text-center">
                 <p class="text-base text-gray-200">&copy; 2025 Hira Science Academy. All rights reserved.</p>
-                <p class="mt-2 text-sm text-gray-300">Student Portal v3.0 | Enhanced WhatsApp Integration | Auto Roll Number Format: HSA-[Class]-YYYY-[Seq]</p>
+                <p class="mt-2 text-sm text-gray-300">Student Portal v3.0 | Enhanced WhatsApp Integration | Roll Number Format: HSA-[Class]-[Number]</p>
                 <div class="mt-4">
                     <a href="index.html" class="text-cyan-400 hover:text-white transition-colors mx-2">Home</a>
                     <a href="privacy-policy.html" class="text-cyan-400 hover:text-white transition-colors mx-2">Privacy Policy</a>
@@ -2015,9 +2038,9 @@
         const SHEET_ID = '1iyNR7BnpLjTnOcI43PlpQ-2V0JdxCj7r_pTyOe67gWo';
         const BASE_URL = 'https://opensheet.elk.sh';
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwOIA4jJlznPCWwe38qM1-rqsNRwWbHIfDdVENFwmZq8DzoXgce31AYLwX0KOUAp7DiIg/exec';
+        const PORTAL_URL = 'https://hiraacademy.online/student-portal.html';
 
         const SUBJECTS = {
-            'Pre-9th': ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'Urdu', 'Pakistan Studies', 'Islamiyat'],
             '9th': ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'Urdu', 'Pakistan Studies', 'Islamiyat'],
             '10th': ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'Urdu', 'Pakistan Studies', 'Islamiyat'],
             '1st Year': ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'Urdu', 'Islamiyat'],
@@ -2037,29 +2060,23 @@
         let whatsAppType = '';
         let whatsAppContext = {};
 
-        // Helper function to get class number from class name
-        function getClassNumber(classValue) {
+        // Chart instance
+        let performanceChart = null;
+
+        // Helper function to get class code for roll number
+        function getClassCode(classValue) {
             if (!classValue) return '00';
-            if (classValue.includes('Pre')) return '00';
             if (classValue.includes('9th')) return '09';
             if (classValue.includes('10th')) return '10';
-            if (classValue.includes('1st Year') || classValue.includes('1st')) return '11';
-            if (classValue.includes('2nd Year') || classValue.includes('2nd')) return '12';
+            if (classValue.includes('1st Year')) return '11';
+            if (classValue.includes('2nd Year')) return '12';
             if (classValue.includes('Other')) return '99';
-            
-            // Try to extract numbers
-            const match = classValue.match(/\d+/);
-            if (match) {
-                const num = parseInt(match[0]);
-                return num < 10 ? '0' + num : num.toString();
-            }
             return '00';
         }
 
-        // Helper function to generate auto roll number
+        // Helper function to generate auto roll number - UPDATED format: HSA-[class]-[sequence]
         function generateAutoRollNumber(studentClass) {
-            const currentYear = new Date().getFullYear().toString();
-            const classNumber = getClassNumber(studentClass);
+            const classCode = getClassCode(studentClass);
             
             // Filter students by class to get sequence number
             const classStudents = (appData.students || []).filter(s => 
@@ -2072,8 +2089,8 @@
                 const roll = s.roll_number || s.roll;
                 if (roll && roll.startsWith('HSA-')) {
                     const parts = roll.split('-');
-                    if (parts.length === 4 && parts[3]) {
-                        const seq = parseInt(parts[3]);
+                    if (parts.length === 3 && parts[2]) {
+                        const seq = parseInt(parts[2]);
                         if (!isNaN(seq) && seq > maxSeq) {
                             maxSeq = seq;
                         }
@@ -2081,27 +2098,68 @@
                 }
             });
             
-            // If no existing students in this class, also check all students to maintain global uniqueness
+            // If no existing students in this class, start from 1
             if (maxSeq === 0) {
-                (appData.students || []).forEach(s => {
-                    const roll = s.roll_number || s.roll;
-                    if (roll && roll.startsWith('HSA-')) {
-                        const parts = roll.split('-');
-                        if (parts.length === 4 && parts[3] && parts[1] === classNumber && parts[2] === currentYear) {
-                            const seq = parseInt(parts[3]);
-                            if (!isNaN(seq) && seq > maxSeq) {
-                                maxSeq = seq;
-                            }
-                        }
-                    }
-                });
+                maxSeq = 0;
             }
             
-            const nextSeq = (maxSeq + 1).toString().padStart(3, '0');
-            return `HSA-${classNumber}-${currentYear}-${nextSeq}`;
+            const nextSeq = (maxSeq + 1).toString().padStart(2, '0');
+            return `HSA-${classCode}-${nextSeq}`;
         }
 
-        // WhatsApp Helper Functions
+        // Enhanced WhatsApp message creator with portal link
+        function createWhatsAppMessage(data) {
+            const portalLink = `🔗 *Student Portal:* ${PORTAL_URL}\n📱 Login with Roll Number to view full details`;
+            
+            if (data.type === 'attendance') {
+                return `*🏫 HIRA SCIENCE ACADEMY*\n` +
+                       `━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                       `*📋 ATTENDANCE ALERT*\n\n` +
+                       `*👤 STUDENT:* ${data.name.toUpperCase()}\n` +
+                       `*🆔 ROLL NO:* ${data.roll}\n` +
+                       `*📅 DATE:* ${data.date}\n` +
+                       `*⚠️ STATUS:* ❌ ABSENT\n\n` +
+                       `━━━━━━━━━━━━━━━━━━━━━\n` +
+                       `${portalLink}\n\n` +
+                       `*Regards,*\n` +
+                       `*Hira Science Academy*`;
+            }
+            
+            if (data.type === 'result') {
+                const emoji = data.percentage >= 60 ? '🎉' : '📚';
+                return `*🏫 HIRA SCIENCE ACADEMY*\n` +
+                       `━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                       `*📋 EXAM RESULT*\n\n` +
+                       `*👤 STUDENT:* ${data.name.toUpperCase()}\n` +
+                       `*🆔 ROLL NO:* ${data.roll}\n` +
+                       `*📚 SUBJECT:* ${data.subject}\n` +
+                       `*📝 EXAM:* ${data.examType}\n` +
+                       `*📊 MARKS:* ${data.obtained}/${data.total}\n` +
+                       `*📈 PERCENTAGE:* ${data.percentage}%\n` +
+                       `*🏅 GRADE:* ${data.grade}\n\n` +
+                       `━━━━━━━━━━━━━━━━━━━━━\n` +
+                       `${portalLink}\n\n` +
+                       `*Regards,*\n` +
+                       `*Hira Science Academy*`;
+            }
+            
+            if (data.type === 'rollnumber') {
+                return `*🏫 HIRA SCIENCE ACADEMY*\n` +
+                       `━━━━━━━━━━━━━━━━━━━━━\n\n` +
+                       `*📋 STUDENT REGISTRATION*\n\n` +
+                       `*👤 STUDENT:* ${data.name.toUpperCase()}\n` +
+                       `*🏫 CLASS:* ${data.class}\n` +
+                       `*🆔 ROLL NO:* ${data.roll}\n\n` +
+                       `━━━━━━━━━━━━━━━━━━━━━\n` +
+                       `${portalLink}\n\n` +
+                       `*Regards,*\n` +
+                       `*Hira Science Academy*`;
+            }
+            
+            return '';
+        }
+
+        // WhatsApp Helper Functions - UPDATED to use enhanced messages
         function formatPhoneNumber(phone) {
             if (!phone) return null;
             let number = phone.replace(/\D/g, '');
@@ -2176,7 +2234,7 @@
             }
         }
 
-        // Send roll number via WhatsApp
+        // Send roll number via WhatsApp - UPDATED
         function sendRollNumberWhatsApp(roll) {
             const student = (appData.students || []).find(s => (s.roll_number || s.roll) == roll);
             if (!student) {
@@ -2189,13 +2247,19 @@
             
             const formattedRoll = student.roll_number || student.roll;
             const studentClass = student.class || 'N/A';
-            const message = `👤 *Student:* ${student.name}\n🏫 *Class:* ${studentClass}\n🆔 *Roll Number:* ${formattedRoll}\n\nYour child has been registered at *Hira Science Academy*. Please save this roll number for future reference.\n\nRegards,\nHira Science Academy.`;
+            
+            const message = createWhatsAppMessage({
+                type: 'rollnumber',
+                name: student.name,
+                roll: formattedRoll,
+                class: studentClass
+            });
             
             sendIndividualWhatsApp(student.parent_mobile, message, roll, 'rollnumber');
             logActivity('whatsapp', `Sent roll number to parent of ${student.name}`, `Roll: ${formattedRoll}`);
         }
 
-        // Prepare WhatsApp messages for attendance
+        // Prepare WhatsApp messages for attendance - UPDATED
         function prepareAttendanceWhatsApp() {
             const date = document.getElementById('attDate').value || new Date().toISOString().split('T')[0];
             const selectedClass = document.getElementById('attClass').value;
@@ -2210,7 +2274,12 @@
                 const status = radio ? radio.value : 'Absent';
                 
                 if (status === 'Absent' && student.parent_mobile) {
-                    const message = `📅 *Date:* ${date}\n👤 *Student:* ${student.name}\n🕒 *Status:* Absent\n\nPlease ensure regular attendance.\n\nRegards,\nHira Science Academy.`;
+                    const message = createWhatsAppMessage({
+                        type: 'attendance',
+                        name: student.name,
+                        roll: roll,
+                        date: date
+                    });
                     
                     absentStudents.push({
                         roll: roll,
@@ -2236,7 +2305,7 @@
             );
         }
 
-        // Prepare WhatsApp messages for batch marks
+        // Prepare WhatsApp messages for batch marks - UPDATED
         function prepareBatchMarksWhatsApp() {
             if (!batchMarksData.students || Object.keys(batchMarksData.marks).length === 0) {
                 return showToast('No marks entered to send', 'warning');
@@ -2258,7 +2327,17 @@
                                  percentage >= 60 ? 'B' : 
                                  percentage >= 50 ? 'C' : 'F';
                     
-                    const message = `👤 *Student:* ${student.name}\n📚 *Subject:* ${selectedSubject}\n📝 *Exam:* ${examType}\n📊 *Marks:* ${markData.obtained}/${globalTotalMarks}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
+                    const message = createWhatsAppMessage({
+                        type: 'result',
+                        name: student.name,
+                        roll: roll,
+                        subject: selectedSubject,
+                        examType: examType,
+                        obtained: markData.obtained,
+                        total: globalTotalMarks,
+                        percentage: percentage,
+                        grade: grade
+                    });
                     
                     recipients.push({
                         roll: roll,
@@ -2447,31 +2526,67 @@
                 populateAdminTables();
                 updateReports();
                 showToast('Data synchronized successfully!', 'success');
+                showLoading(false);
             } catch (e) {
                 console.error("Error loading data:", e);
                 showToast('Error: Could not sync with database. Check internet.', 'error', 5000);
-            } finally {
                 showLoading(false);
             }
         }
 
-        // Send to Sheet
+        // Send to Sheet - FIXED VERSION
         async function sendToSheet(payload) {
             showLoading(true, "Saving to database...");
-            const body = new URLSearchParams();
-            Object.keys(payload).forEach(key => body.append(key, payload[key]));
-            body.append('timestamp', new Date().toISOString());
-            if (currentUser) body.append('entered_by', currentUser.name || currentUser.email);
+            
+            // Create form data
+            const formData = new FormData();
+            Object.keys(payload).forEach(key => {
+                formData.append(key, payload[key]);
+            });
+            formData.append('timestamp', new Date().toISOString());
+            if (currentUser) formData.append('entered_by', currentUser.name || currentUser.email);
+            
             try {
-                await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body });
+                // Using fetch with proper CORS mode
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors', // This is required for Google Apps Script
+                    body: formData
+                });
+                
+                // With no-cors, we can't check response status, but we assume it worked
                 showToast('Data saved successfully!', 'success');
+                showLoading(false);
+                return true;
+            } catch (e) {
+                console.error("Save error:", e);
+                showToast('Save Error! Please check your connection', 'error');
+                showLoading(false);
+                return false;
+            }
+        }
+
+        // Alternative direct save function for student/teacher forms (without loading spinner)
+        async function saveDataDirect(payload, successMessage) {
+            const formData = new FormData();
+            Object.keys(payload).forEach(key => {
+                formData.append(key, payload[key]);
+            });
+            formData.append('timestamp', new Date().toISOString());
+            if (currentUser) formData.append('entered_by', currentUser.name || currentUser.email);
+            
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+                showToast(successMessage, 'success');
                 return true;
             } catch (e) {
                 console.error("Save error:", e);
                 showToast('Save Error! Please check your connection', 'error');
                 return false;
-            } finally {
-                showLoading(false);
             }
         }
 
@@ -2671,6 +2786,7 @@
             populateAttendanceClassDropdown();
         }
 
+        // Send WhatsApp for result - UPDATED
         function sendWhatsAppForResult(roll, subject, examType, obtained, total, studentName) {
             const student = (appData.students || []).find(s => (s.roll_number || s.roll) == roll);
             if (!student || !student.parent_mobile) {
@@ -2683,7 +2799,17 @@
                          percentage >= 60 ? 'B' : 
                          percentage >= 50 ? 'C' : 'F';
             
-            const message = `👤 *Student:* ${student.name}\n📚 *Subject:* ${subject}\n📝 *Exam:* ${examType}\n📊 *Marks:* ${obtained}/${total}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
+            const message = createWhatsAppMessage({
+                type: 'result',
+                name: student.name,
+                roll: roll,
+                subject: subject,
+                examType: examType,
+                obtained: obtained,
+                total: total,
+                percentage: percentage,
+                grade: grade
+            });
             
             sendIndividualWhatsApp(student.parent_mobile, message, roll, 'marks');
         }
@@ -2694,7 +2820,13 @@
                 return showToast('No parent mobile number found for this student', 'warning');
             }
             
-            const message = `👤 *Student:* ${student.name}\n\nDear Parent,\n\nThis is a message from *Hira Science Academy* regarding your child.\n\nPlease contact us for any queries.\n\nRegards,\nHira Science Academy.`;
+            const message = createWhatsAppMessage({
+                type: 'rollnumber',
+                name: student.name,
+                roll: roll,
+                class: student.class
+            });
+            
             sendIndividualWhatsApp(student.parent_mobile, message, roll, 'student');
         }
 
@@ -2702,7 +2834,7 @@
             const classSelect = document.getElementById('attClass');
             const activeStudents = (appData.students || []).filter(s => s.status !== 'inactive');
             const uniqueClasses = [...new Set(activeStudents.map(s => s.class).filter(c => c))].sort();
-            const allClasses = ['Pre-9th', '9th', '10th', '1st Year', '2nd Year', 'Other'];
+            const allClasses = ['9th', '10th', '1st Year', '2nd Year', 'Other'];
             const combinedClasses = [...new Set([...allClasses, ...uniqueClasses])].sort();
             classSelect.innerHTML = '<option value="">All Classes</option>' + combinedClasses.map(c => `<option value="${c}">${c}</option>`).join('');
         }
@@ -2739,9 +2871,17 @@
             document.getElementById('markedCount').innerText = markedCount;
         }
 
+        // Send attendance WhatsApp - UPDATED
         function sendAttendanceWhatsApp(roll, name, phone) {
             const date = document.getElementById('attDate').value || new Date().toISOString().split('T')[0];
-            const message = `📅 *Date:* ${date}\n👤 *Student:* ${name}\n🕒 *Status:* Absent\n\nPlease ensure regular attendance.\n\nRegards,\nHira Science Academy.`;
+            
+            const message = createWhatsAppMessage({
+                type: 'attendance',
+                name: name,
+                roll: roll,
+                date: date
+            });
+            
             sendIndividualWhatsApp(phone, message, roll, 'attendance');
         }
 
@@ -2798,6 +2938,7 @@
             updateProgressBar(0, classStudents.length);
         }
 
+        // Send batch marks WhatsApp - UPDATED
         function sendBatchMarksWhatsApp(roll, name, phone) {
             const obtainedInput = document.getElementById(`obtained_${roll}`);
             if (!obtainedInput || !obtainedInput.value) {
@@ -2819,7 +2960,17 @@
                          percentage >= 60 ? 'B' : 
                          percentage >= 50 ? 'C' : 'F';
             
-            const message = `👤 *Student:* ${name}\n📚 *Subject:* ${subject}\n📝 *Exam:* ${examType}\n📊 *Marks:* ${obtained}/${total}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
+            const message = createWhatsAppMessage({
+                type: 'result',
+                name: name,
+                roll: roll,
+                subject: subject,
+                examType: examType,
+                obtained: obtained,
+                total: total,
+                percentage: percentage,
+                grade: grade
+            });
             
             sendIndividualWhatsApp(phone, message, roll, 'marks');
         }
@@ -2912,11 +3063,13 @@
         function markAllPresent() {
             document.querySelectorAll('input[type="radio"][value="Present"]').forEach(r => r.checked = true);
             updateMarkedCount();
+            showToast('All students marked Present', 'success');
         }
 
         function markAllAbsent() {
             document.querySelectorAll('input[type="radio"][value="Absent"]').forEach(r => r.checked = true);
             updateMarkedCount();
+            showToast('All students marked Absent', 'info');
         }
 
         function filterAttendanceByClass() { populateAttendanceList(); }
@@ -3028,12 +3181,14 @@
             return html;
         }
 
-        // REDESIGNED LOGIN USER FUNCTION
+        // REDESIGNED LOGIN USER FUNCTION (UPDATED: name first, roll below)
         function loginUser(student) {
             currentUser = { type: 'student', roll: student.roll_number || student.roll, name: student.name };
 
             showSection('userDashboard');
 
+            // Display name first, larger
+            document.getElementById('uNameDisplay').innerText = student.name;
             document.getElementById('uRoll').innerText = student.roll_number || student.roll;
             document.getElementById('uClass').innerText = student.class || 'Not specified';
 
@@ -3144,13 +3299,68 @@
                 marksContainer.innerHTML = marksHtml;
             }
 
-            // Clear any personal fields
-            document.getElementById('uName').innerText = '';
-            document.getElementById('uMobile').innerText = '';
-            document.getElementById('uEmail').innerText = '';
-            document.getElementById('uAddress').innerText = '';
-            document.getElementById('uParentMobile').innerText = '';
-            document.getElementById('uCreatedAt').innerText = '';
+            // --- Bar chart with datalabels ---
+            if (performanceChart) performanceChart.destroy();
+
+            const ctx = document.getElementById('performanceChart')?.getContext('2d');
+            if (ctx && userMarks.length > 0) {
+                // Group by subject, take most recent mark per subject
+                const subjectMap = new Map();
+                userMarks.forEach(m => {
+                    const sub = m.subject || 'Other';
+                    if (!subjectMap.has(sub) || new Date(m.date) > new Date(subjectMap.get(sub).date)) {
+                        subjectMap.set(sub, m);
+                    }
+                });
+                const subjects = Array.from(subjectMap.keys());
+                const percentages = subjects.map(sub => {
+                    const m = subjectMap.get(sub);
+                    const o = parseFloat(m.obtained_marks) || 0;
+                    const t = parseFloat(m.total_marks) || 100;
+                    return ((o / t) * 100).toFixed(1);
+                });
+
+                performanceChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: subjects,
+                        datasets: [{
+                            label: 'Percentage (%)',
+                            data: percentages,
+                            backgroundColor: 'rgba(14, 165, 233, 0.7)',
+                            borderColor: '#0284c7',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            datalabels: {
+                                anchor: 'end',
+                                align: 'top',
+                                offset: 4,
+                                color: '#0c4a6e',
+                                font: { weight: 'bold', size: 11 },
+                                formatter: (value) => value + '%'
+                            },
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: { beginAtZero: true, max: 100, title: { display: true, text: 'Percentage' } },
+                            x: { title: { display: true, text: 'Subjects' } }
+                        }
+                    },
+                    plugins: [ChartDataLabels] // enable datalabels plugin
+                });
+            } else {
+                // destroy canvas if no data
+                const canvas = document.getElementById('performanceChart');
+                if (canvas) {
+                    const parent = canvas.parentNode;
+                    parent.innerHTML = '<div class="text-center text-gray-400 py-4">No exam data to display chart</div>';
+                }
+            }
         }
 
         // UI Helpers
@@ -3168,14 +3378,21 @@
         }
 
         function toggleModal(id) { document.getElementById(id)?.classList.toggle('hidden'); }
-        function showLoading(show, text = "") { document.getElementById('loading').classList.toggle('hidden', !show); if (text) document.getElementById('loadingText').innerText = text; }
+        function showLoading(show, text = "") { 
+            document.getElementById('loading').classList.toggle('hidden', !show); 
+            if (text) document.getElementById('loadingText').innerText = text; 
+        }
 
         async function logout() {
-            if (currentUser) { await logActivity('logout', 'User logged out', `User: ${currentUser.name || currentUser.email}`); showToast(`Goodbye, ${currentUser.name || 'User'}!`, 'info'); }
+            showToast("Logging out...", "info");
+            if (currentUser) { 
+                await logActivity('logout', 'User logged out', `User: ${currentUser.name || currentUser.email}`); 
+                showToast(`Goodbye, ${currentUser.name || 'User'}!`, 'info'); 
+            }
             localStorage.clear();
             sessionStorage.clear();
             currentUser = null;
-            setTimeout(() => location.reload(), 1000);
+            setTimeout(() => location.reload(), 1500);
         }
 
         function showActivityLog() { toggleModal('activityLogModal'); }
@@ -3301,7 +3518,7 @@
             return date.toLocaleDateString();
         }
 
-        // Add Student form
+        // Add Student form - UPDATED with new roll number format
         document.getElementById('newStudentForm').onsubmit = async (e) => {
             e.preventDefault();
             
@@ -3311,12 +3528,8 @@
             
             if (!name || !studentClass || !mobile) return showToast("Please fill in all required fields", 'warning');
             
-            showLoading(true, "Generating roll number...");
-            
-            // Generate auto roll number
+            // Generate auto roll number first (using current appData)
             const autoRoll = generateAutoRollNumber(studentClass);
-            
-            showLoading(true, "Saving to database...");
             
             const studentData = { 
                 sheet: 'students', 
@@ -3335,39 +3548,28 @@
                 timestamp: new Date().toISOString()
             };
             
-            const existing = (appData.students || []).find(s => (s.roll_number || s.roll).toString() === studentData.roll_number);
-            if (existing) {
-                if (existing.status === 'inactive' && confirm(`Roll number ${studentData.roll_number} exists but is inactive. Reactivate this student?`)) {
-                    const updateData = { ...studentData, sheet: 'students', status: 'active', updated_at: new Date().toISOString().split('T')[0], updated_by: currentUser?.name || 'Admin' };
-                    const success = await sendToSheet(updateData);
-                    if (success) { 
-                        showToast("Student reactivated successfully!", 'success'); 
-                        toggleModal('addStudentModal'); 
-                        e.target.reset(); 
-                        setTimeout(() => syncData(), 1000);
-                        
-                        // Send roll number WhatsApp after reactivation
-                        if (studentData.parent_mobile) {
-                            setTimeout(() => {
-                                if (confirm('Send roll number via WhatsApp to parent?')) {
-                                    sendRollNumberWhatsApp(autoRoll);
-                                }
-                            }, 1500);
-                        }
-                    } else showLoading(false);
-                } else { 
-                    showLoading(false); 
-                    showToast(`Roll number ${studentData.roll_number} already exists`, 'warning'); 
-                }
-                return;
-            }
+            // Show saving toast and close modal immediately
+            showToast("Saving student...", "info");
+            toggleModal('addStudentModal');
+            e.target.reset();
             
-            const success = await sendToSheet(studentData);
-            if (success) { 
-                showToast("Student added successfully with roll number: " + autoRoll, 'success'); 
-                toggleModal('addStudentModal'); 
-                e.target.reset(); 
-                setTimeout(() => syncData(), 1000);
+            // Save data in background using FormData
+            const formData = new FormData();
+            Object.keys(studentData).forEach(key => {
+                formData.append(key, studentData[key]);
+            });
+            formData.append('timestamp', new Date().toISOString());
+            if (currentUser) formData.append('entered_by', currentUser.name || currentUser.email);
+            
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+                
+                showToast("Student added successfully with roll number: " + autoRoll, 'success');
+                setTimeout(() => syncData(), 2000); // Give sheet time to update
                 
                 // Ask to send roll number via WhatsApp
                 if (studentData.parent_mobile) {
@@ -3375,14 +3577,18 @@
                         if (confirm('Send roll number via WhatsApp to parent?')) {
                             sendRollNumberWhatsApp(autoRoll);
                         }
-                    }, 1500);
+                    }, 2500);
                 }
+            } catch (e) {
+                console.error("Save error:", e);
+                showToast('Save Error! Please check your connection', 'error');
             }
         };
 
-        // Add Teacher form
+        // Add Teacher form - FIXED
         document.getElementById('newTeacherForm').onsubmit = async (e) => {
             e.preventDefault();
+            
             const teacherData = { 
                 sheet: 'teachers', 
                 name: document.getElementById('tName').value.trim(), 
@@ -3393,11 +3599,36 @@
                 created_at: new Date().toISOString().split('T')[0],
                 timestamp: new Date().toISOString()
             };
-            const success = await sendToSheet(teacherData);
-            if (success) { showToast("Teacher added successfully!", 'success'); toggleModal('addTeacherModal'); e.target.reset(); setTimeout(() => syncData(), 500); }
+            
+            // Show saving toast and close modal immediately
+            showToast("Saving teacher...", "info");
+            toggleModal('addTeacherModal');
+            e.target.reset();
+            
+            // Save data in background using FormData
+            const formData = new FormData();
+            Object.keys(teacherData).forEach(key => {
+                formData.append(key, teacherData[key]);
+            });
+            formData.append('timestamp', new Date().toISOString());
+            if (currentUser) formData.append('entered_by', currentUser.name || currentUser.email);
+            
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+                
+                showToast("Teacher added successfully!", 'success');
+                setTimeout(() => syncData(), 2000);
+            } catch (e) {
+                console.error("Save error:", e);
+                showToast('Save Error! Please check your connection', 'error');
+            }
         };
 
-        // Add Exam Marks
+        // Add Exam Marks - FIXED
         document.getElementById('mForm').onsubmit = async (e) => {
             e.preventDefault();
             const roll = document.getElementById('mStudent').value;
@@ -3419,11 +3650,27 @@
                 batch_entry: 'no',
                 timestamp: new Date().toISOString()
             };
-            const success = await sendToSheet(marksData);
-            if (success) { 
-                showToast("Exam marks added successfully!", 'success'); 
-                e.target.reset(); 
-                setTimeout(() => syncData(), 500);
+            
+            showToast("Saving exam result...", "info");
+            
+            // Save using FormData
+            const formData = new FormData();
+            Object.keys(marksData).forEach(key => {
+                formData.append(key, marksData[key]);
+            });
+            formData.append('timestamp', new Date().toISOString());
+            if (currentUser) formData.append('entered_by', currentUser.name || currentUser.email);
+            
+            try {
+                await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+                
+                showToast("Exam marks added successfully!", 'success');
+                e.target.reset();
+                setTimeout(() => syncData(), 2000);
                 
                 if (student && student.parent_mobile) {
                     const grade = percentage >= 80 ? 'A+' : 
@@ -3431,12 +3678,25 @@
                                  percentage >= 60 ? 'B' : 
                                  percentage >= 50 ? 'C' : 'F';
                     
-                    const message = `👤 *Student:* ${student.name}\n📚 *Subject:* ${document.getElementById('mSubject').value}\n📝 *Exam:* ${document.getElementById('mExamType').value}\n📊 *Marks:* ${obtained}/${total}\n📈 *Percentage:* ${percentage}%\n🏅 *Grade:* ${grade}\n\nRegards,\nHira Science Academy.`;
+                    const message = createWhatsAppMessage({
+                        type: 'result',
+                        name: student.name,
+                        roll: roll,
+                        subject: document.getElementById('mSubject').value,
+                        examType: document.getElementById('mExamType').value,
+                        obtained: obtained,
+                        total: total,
+                        percentage: percentage,
+                        grade: grade
+                    });
                     
                     if (confirm('Send WhatsApp notification to parent?')) {
                         sendIndividualWhatsApp(student.parent_mobile, message, roll, 'marks');
                     }
                 }
+            } catch (e) {
+                console.error("Save error:", e);
+                showToast('Save Error! Please check your connection', 'error');
             }
         };
 
