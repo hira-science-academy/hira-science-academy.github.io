@@ -327,7 +327,7 @@
                 <div class="mt-4 text-navy font-medium">View →</div>
             </div>
             <div onclick="showSection('studentForm')" class="portal-card p-8 cursor-pointer text-center group">
-                <div class="h-16 w-16 rounded-full bg-navy/5 flex items-center justify-center text-navy text-2xl mx-auto"><i class="fas fa-user-graduate"></i></div>
+                <div class="h-16 w-16 rounded-full bg-navy/5 flex items-center justify-center text-navy text-2xl"><i class="fas fa-user-graduate"></i></div>
                 <h3 class="text-xl font-bold text-navy mb-2">Student Login</h3>
                 <p class="text-gray-600 text-sm">View your academic dashboard</p>
                 <div class="mt-4 text-navy font-medium">Dashboard →</div>
@@ -787,6 +787,9 @@
     const BASE_URL = 'https://opensheet.elk.sh';
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKL6GsDKH48-rTYiTY1PUYBJLr8N3yB2kw9VFXjRCgpKbRGXWIxQwOcYzWufCo6Gzb/exec';
 
+    // --- UPDATED: Portal link constant ---
+    const PORTAL_LINK = 'https://hiraacademy.online/gchs-daska.html';
+
     let appData = { teachers: [], students: [], attendance: [], marks: [] };
     let currentUser = null;
     let whatsAppQueue = [];
@@ -871,11 +874,13 @@
         document.querySelectorAll(`[data-roll="${roll}"]`).forEach(el=>el.classList.add('whatsapp-sent-row')); 
     }
 
+    // --- UPDATED: sendIndividualWhatsApp includes portal link instead of school contact ---
     function sendIndividualWhatsApp(phone, message, roll, type) {
         if (!phone) { showToast('No phone number', 'warning'); return false; }
         const student = appData.students.find(s => s.roll === roll);
         if (!student) { showToast('Student not found', 'error'); return false; }
-        const detailedMessage = `*GOVT. CHRISTIAN HIGH SCHOOL DASKA*\n━━━━━━━━━━━━━━━━━━━━━\n👤 *Student:* ${student.name}\n🆔 *Roll No:* ${student.roll}\n📚 *Class:* ${student.class} - ${student.section}\n━━━━━━━━━━━━━━━━━━━━━\n${message}\n\n📞 *School Contact:* 0333-8114798\n🏫 *Old Kachehri Road, Daska*`;
+        // School header & details, then user message, then portal login prompt & link
+        const detailedMessage = `*GOVT. CHRISTIAN HIGH SCHOOL DASKA*\n━━━━━━━━━━━━━━━━━━━━━\n👤 *Student:* ${student.name}\n🆔 *Roll No:* ${student.roll}\n📚 *Class:* ${student.class} - ${student.section}\n━━━━━━━━━━━━━━━━━━━━━\n${message}\n\n🔗 *Login with Roll Number to view full details:*\n${PORTAL_LINK}\n\n📱 *Stay connected with your child's progress*`;
         const formattedNumber = formatPhoneNumber(phone);
         const encodedMessage = encodeURIComponent(detailedMessage);
         window.open(`https://wa.me/${formattedNumber}?text=${encodedMessage}`, '_blank');
@@ -1165,6 +1170,7 @@
             showLoading(false);
         }
     }
+    // --- UPDATED: prepareBatchMarksWhatsApp uses PORTAL_LINK in message? No, individual send uses base function already updated.
     function prepareBatchMarksWhatsApp() {
         let list=[]; 
         batchMarksData.students?.forEach(s=>{ 
