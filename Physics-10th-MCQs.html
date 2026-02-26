@@ -91,7 +91,32 @@
     .wrong-answer-option { padding: 0.75rem 1rem; border-radius: 8px; margin-bottom: 0.5rem; }
     .teal-form { background: linear-gradient(135deg,#0f766e 0%,#2dd4bf 100%); border-radius:20px; padding:2.5rem; }
     .success-message { background: #d1fae5; border:2px solid #10b981; color:#065f46; padding:1rem; border-radius:10px; }
-    @media (max-width:768px) { .question-number-btn { width:36px; height:36px; font-size:0.75rem; } .score-circle { width:120px; height:120px; font-size:1.75rem; } .score-circle::before { width:100px; height:100px; } }
+    @media (max-width: 768px) {
+  /* 1. Ensure the desktop links are definitely hidden */
+  .md\:flex.space-x-8 {
+    display: none !important;
+  }
+
+  /* 2. Position the mobile menu OVER the page content */
+  #mobile-menu {
+    position: absolute !important;
+    top: 80px; /* Adjust this to match your header height */
+    left: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 9999 !important; /* Forces it to stay on top of the blue section */
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  /* 3. Style the mobile links for better clicking */
+  #mobile-menu a {
+    display: block !important;
+    padding: 15px 20px !important;
+    border-bottom: 1px solid #eee;
+    color: #333 !important;
+  }
+}
   </style>
 </head>
 <body class="text-gray-800 antialiased">
@@ -154,13 +179,13 @@
   <div class="flex items-center justify-between">
     <div class="flex items-center">
       <span class="text-2xl mr-3">✅</span>
-      <span class="font-semibold">Data submitted successfully to Web3Forms!</span>
+      <span class="font-semibold">Information saved successfully!</span>
     </div>
     <button onclick="this.parentElement.parentElement.style.display='none'" class="text-green-700 hover:text-green-900">✕</button>
   </div>
 </div>
 
-<!-- Student Information Form - USING FETCH API TO PREVENT REDIRECT -->
+<!-- Student Information Form - with proper fields -->
 <section id="student-info" class="max-w-2xl mx-auto px-6 mt-10 mb-8">
   <div class="teal-form">
     <div class="text-center mb-8">
@@ -171,74 +196,63 @@
       <p class="text-teal-100 mt-2">Please fill in your details to start the test</p>
     </div>
     
-    <!-- Form with fetch API to prevent redirect -->
+    <!-- Web3Forms Form - with proper fields -->
     <form id="studentForm" class="space-y-6">
-      <!-- Web3Forms Required Fields -->
+      <!-- Web3Forms Required Field -->
       <input type="hidden" name="access_key" value="2a0edcb1-883a-406b-9546-01442fd1b72d">
-      <input type="hidden" name="subject" value="Physics Class 10 MCQ Test Registration - Hira Academy">
-      <input type="hidden" name="from_name" value="Hira Science Academy">
       
-      <!-- Honeypot for spam protection -->
-      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label for="studentName" class="block text-sm font-medium mb-2 text-teal-100">
-            Student Name <span class="text-red-300">*</span>
-          </label>
-          <input type="text" id="studentName" name="name" required 
-                 class="form-input" placeholder="Enter your full name">
-        </div>
-        <div>
-          <label for="schoolName" class="block text-sm font-medium mb-2 text-teal-100">
-            School Name <span class="text-red-300">*</span>
-          </label>
-          <input type="text" id="schoolName" name="school" required 
-                 class="form-input" placeholder="Enter your school name">
-        </div>
-      </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <label for="contact" class="block text-sm font-medium mb-2 text-teal-100">
-            Contact Number <span class="text-red-300">*</span>
-          </label>
-          <input type="tel" id="contact" name="contact" required 
-                 class="form-input" placeholder="03XX-XXXXXXX">
-        </div>
-        <div>
-          <label for="rollNumber" class="block text-sm font-medium mb-2 text-teal-100">
-            Roll Number (Optional)
-          </label>
-          <input type="text" id="rollNumber" name="roll_number"
-                 class="form-input" placeholder="Enter roll number">
-        </div>
+      <!-- Form Fields - as requested -->
+      <div>
+        <label for="fullName" class="block text-sm font-medium mb-2 text-teal-100">
+          Full Name <span class="text-red-300">*</span>
+        </label>
+        <input type="text" id="fullName" name="name" required 
+               class="form-input" placeholder="Enter your full name">
       </div>
       
       <div>
-        <label for="email" class="block text-sm font-medium mb-2 text-teal-100">
+        <label for="mobileNumber" class="block text-sm font-medium mb-2 text-teal-100">
+          Mobile Number <span class="text-red-300">*</span>
+        </label>
+        <input type="tel" id="mobileNumber" name="phone" required 
+               class="form-input" placeholder="03XX-XXXXXXX">
+      </div>
+      
+      <div>
+        <label for="schoolName" class="block text-sm font-medium mb-2 text-teal-100">
+          School Name <span class="text-red-300">*</span>
+        </label>
+        <input type="text" id="schoolName" name="school" required 
+               class="form-input" placeholder="Enter your school name">
+      </div>
+      
+      <div>
+        <label for="rollNumber" class="block text-sm font-medium mb-2 text-teal-100">
+          Roll Number <span class="text-red-300">*</span>
+        </label>
+        <input type="text" id="rollNumber" name="roll_number" required 
+               class="form-input" placeholder="Enter your roll number">
+      </div>
+      
+      <div>
+        <label for="emailAddress" class="block text-sm font-medium mb-2 text-teal-100">
           Email Address (Optional)
         </label>
-        <input type="email" id="email" name="email"
+        <input type="email" id="emailAddress" name="email" 
                class="form-input" placeholder="example@email.com">
       </div>
       
-      <!-- Combined message field -->
-      <input type="hidden" name="message" id="formMessage" value="">
+      <!-- Hidden field for combined message (will be populated by JS) -->
+      <input type="hidden" name="message" id="combinedMessage" value="">
       
-      <!-- Test Results Fields (will be populated later) -->
-      <input type="hidden" id="testScore" name="test_score" value="">
-      <input type="hidden" id="testPercentage" name="test_percentage" value="">
-      <input type="hidden" id="testTime" name="test_time" value="">
-      <input type="hidden" id="testDate" name="test_date" value="">
-      <input type="hidden" id="testStatus" name="test_status" value="Registered">
+      <!-- Test results will be submitted separately at the end -->
       
       <div class="text-center pt-4">
-        <button type="button" id="submitFormBtn" class="btn bg-white text-teal-700 hover:bg-teal-50 px-10 py-3 text-lg font-bold">
-          <span>🚀</span> Start Class 10 Physics MCQs Test
+        <button type="button" id="registerBtn" class="btn bg-white text-teal-700 hover:bg-teal-50 px-10 py-3 text-lg font-bold">
+          <span>📝</span> Register & Continue
         </button>
         <p class="text-sm text-teal-100 mt-4">
-          Your data will be submitted and you'll proceed to chapter selection
+          Your information will be saved
         </p>
       </div>
     </form>
@@ -249,7 +263,7 @@
 <section id="chapter-dashboard" class="max-w-6xl mx-auto px-6 py-8 hidden">
   <div class="text-center mb-10">
     <span class="inline-block bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-sm font-semibold">
-      📌 Welcome <span id="dashboard-student-name"></span>
+      📌 Welcome <span id="dashboard-student-name"></span> from <span id="dashboard-school-name"></span>
     </span>
     <h2 class="text-3xl font-bold text-teal-800 mt-4">Select Chapter & Section</h2>
     <p class="text-gray-600 mt-2">Choose Exercise (textbook) or Additional MCQs for extra practice</p>
@@ -348,6 +362,11 @@
         <button id="show-wrong-answers" class="btn bg-orange-500 text-white hover:bg-orange-600"><span>📝</span> Review Wrong Answers</button>
         <button id="retake-test" class="btn btn-primary"><span>🔄</span> Back to Chapters</button>
       </div>
+      
+      <!-- Test Results Submission Status -->
+      <div id="results-submission-status" class="mt-4 text-sm text-gray-600 hidden">
+        Submitting results...
+      </div>
     </div>
     
     <!-- Wrong Answers Section -->
@@ -382,298 +401,298 @@
 <button class="back-to-top" id="backToTop">↑</button>
 
 <script>
-  // ==================== FULL MCQ DATA (all 264 questions) ====================
+  // ==================== FULL MCQ DATA with Full Unit Names ====================
   const mcqData = [
     // Unit 10 - Simple Harmonic Motion and Waves
-    { chapter: "Unit 10", question: "Which of the following is an example of simple harmonic motion? (Exercise)", options: ["the motion of simple pendulum", "the motion of ceiling fan", "the spinning of the Earth on its axis", "the spinning of the Earth on its axis"], correct: 0 },
-    { chapter: "Unit 10", question: "If the mass of the bob of a pendulum is increased by a factor of 3, the period of the pendulum's motion will (Exercise)", options: ["be increased by a factor of $2$", "remain the same", "be decreased by a factor of $2$", "be decreased by a factor of $4$"], correct: 1 },
-    { chapter: "Unit 10", question: "Which of the following devices can be used to produce both transverse and Longitudinal waves? (Exercise)", options: ["a string", "a ripple tank", "a helical spring (slinky)", "a tuning fork"], correct: 2 },
-    { chapter: "Unit 10", question: "Waves transfer (Exercise)", options: ["energy", "frequency", "wavelength", "velocity"], correct: 0 },
-    { chapter: "Unit 10", question: "Which of the following is a method of energy transfer? (Exercise)", options: ["Conduction", "Radiation", "wave motion", "all of these"], correct: 3 },
-    { chapter: "Unit 10", question: "In a vacuum, all electromagnetic waves have the same (Exercise)", options: ["speed", "frequency", "amplitude", "Wavelength"], correct: 0 },
-    { chapter: "Unit 10", question: "Large ripple tank with a vibrator working at a frequency of $30\\ Hz$ produces $25$ complete waves in a distance of $50\\ cm$. The velocity of the wave is (Exercise)", options: ["$53\\ cms^{-1}$", "$60cms^{-1}$", "$750cms^{-1}$", "$1500\\ cms^{-1}$"], correct: 1 },
-    { chapter: "Unit 10", question: "Which of the following characteristics of a wave is independent of the others? (Exercise)", options: ["Speed", "Frequency", "amplitude", "Wavelength"], correct: 2 },
-    { chapter: "Unit 10", question: "The relation between v, f and λ of a wave is (Exercise)", options: ["v f = λ", "f λ = v", "v λ = f", "v = λ / f"], correct: 1 },
-    { chapter: "Unit 10", question: "The length of simple pendulum is doubled its time period will be (Additional)", options: ["$\\sqrt{2}\\ T$", "$\\frac{T}{\\sqrt{2}}$", "$2T$", "$\\frac{T}{2}$"], correct: 0 },
-    { chapter: "Unit 10", question: "In simple pendulum motion restoring force is provided by (Additional)", options: ["Air resistance", "Tension in string", "Inertia", "Weight of body"], correct: 3 },
-    { chapter: "Unit 10", question: "When did Christian Huygens invent the pendulum clock? (Additional)", options: ["1856", "1656", "1756", "1956"], correct: 1 },
-    { chapter: "Unit 10", question: "The example of shock absorbers of the vehicle is (Additional)", options: ["SHM", "Vibratory motion", "Damped motion", "linear motion"], correct: 2 },
-    { chapter: "Unit 10", question: "Which of these waves consist of compressions or rarefaction? (Additional)", options: ["Radio waves", "Sound waves", "Television waves", "X-Rays"], correct: 1 },
-    { chapter: "Unit 10", question: "If the frequency of wave is $4\\ Hz$ and wavelength is $0.4\\ m$, then speed will be (Additional)", options: ["$16\\ {ms}^{-1}$", "$16\\ m$", "$1.6\\ {ms}^{-1}$", "$1.6\\ m$"], correct: 2 },
-    { chapter: "Unit 10", question: "Frequency is equal to (Additional)", options: ["$f = \\frac{1}{g}$", "$f = 2\\pi\\sqrt{\\frac{l}{g}}$", "$f = kx$", "$f = \\frac{1}{T}$"], correct: 3 },
-    { chapter: "Unit 10", question: "The expression of Hook's law (Additional)", options: ["$F = - kx$", "$k = \\frac{- 2F}{x}$", "$F = \\frac{- 1}{kx}$", "$F = - \\frac{x}{k}$"], correct: 0 },
-    { chapter: "Unit 10", question: "Time period of simple pendulum is given by (Additional)", options: ["$T = 2\\pi\\sqrt{\\frac{l}{g}}$", "$T = 2\\pi\\sqrt{\\frac{m}{g}}$", "$T = 2\\pi\\sqrt{\\frac{m}{k}}$", "$T = 2\\pi\\sqrt{\\frac{g}{l}}$"], correct: 0 },
-    { chapter: "Unit 10", question: "Time period of a mass spring system is given by (Additional)", options: ["$T = 2\\pi\\sqrt{\\frac{k}{m}}$", "$T = \\frac{1}{2\\pi}\\sqrt{\\frac{k}{m}}$", "$T = \\frac{1}{2\\pi}\\sqrt{\\frac{m}{k}}$", "$T = 2\\pi\\sqrt{\\frac{m}{k}}$"], correct: 3 },
-    { chapter: "Unit 10", question: "K.E. of mass spring system is maximum at (Additional)", options: ["Extreme position", "Mean position", "Both A and B", "None of these"], correct: 1 },
-    { chapter: "Unit 10", question: "If $l = 1\\ m$ then the time period of simple pendulum is (Additional)", options: ["$2.11\\ sec$", "$1.89\\ sec$", "$1.99\\ sec$", "$1.88\\ sec$"], correct: 2 },
-    { chapter: "Unit 10", question: "Bending of waves around corners is called _________ (Additional)", options: ["Reflection", "Refraction", "Diffraction", "Interference"], correct: 2 },
-    { chapter: "Unit 10", question: "In which state of matter longitudinal waves move faster (Additional)", options: ["Gas", "Liquid", "Solid", "Plasma"], correct: 2 },
-    { chapter: "Unit 10", question: "Which are the radio waves (Additional)", options: ["Electric waves", "Electromagnetic waves", "Longitudinal waves", "All of these"], correct: 1 },
-    { chapter: "Unit 10", question: "In SHM, velocity at extreme position is (Additional)", options: ["Maximum", "Minimum", "Zero", "None of these"], correct: 2 },
-    { chapter: "Unit 10", question: "The product of time period and frequency is (Additional)", options: ["$V$", "$1$", "$0$", "$\\lambda$"], correct: 1 },
-    { chapter: "Unit 10", question: "SI unit of frequency (Additional)", options: ["$Hz$", "$A$", "$s$", "$C$"], correct: 0 },
-    { chapter: "Unit 10", question: "SI unit of amplitude (Additional)", options: ["$S$", "$cm$", "$m$", "None of these"], correct: 2 },
-    { chapter: "Unit 10", question: "The main types of waves are (Additional)", options: ["$1$", "$2$", "$3$", "$4$"], correct: 1 },
-    { chapter: "Unit 10", question: "When water waves enter the region of shallow water their wavelength (Additional)", options: ["Increase", "Decrease", "Become zero", "Remain same"], correct: 1 },
-    { chapter: "Unit 10", question: "Earth-quake produces (Additional)", options: ["Seismic waves", "Crest waves", "Wave fronts", "Sound waves"], correct: 0 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Which of the following is an example of simple harmonic motion? (Exercise)", options: ["the motion of simple pendulum", "the motion of ceiling fan", "the spinning of the Earth on its axis", "the spinning of the Earth on its axis"], correct: 0 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "If the mass of the bob of a pendulum is increased by a factor of 3, the period of the pendulum's motion will (Exercise)", options: ["be increased by a factor of $2$", "remain the same", "be decreased by a factor of $2$", "be decreased by a factor of $4$"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Which of the following devices can be used to produce both transverse and Longitudinal waves? (Exercise)", options: ["a string", "a ripple tank", "a helical spring (slinky)", "a tuning fork"], correct: 2 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Waves transfer (Exercise)", options: ["energy", "frequency", "wavelength", "velocity"], correct: 0 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Which of the following is a method of energy transfer? (Exercise)", options: ["Conduction", "Radiation", "wave motion", "all of these"], correct: 3 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "In a vacuum, all electromagnetic waves have the same (Exercise)", options: ["speed", "frequency", "amplitude", "Wavelength"], correct: 0 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Large ripple tank with a vibrator working at a frequency of $30\\ Hz$ produces $25$ complete waves in a distance of $50\\ cm$. The velocity of the wave is (Exercise)", options: ["$53\\ cms^{-1}$", "$60cms^{-1}$", "$750cms^{-1}$", "$1500\\ cms^{-1}$"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Which of the following characteristics of a wave is independent of the others? (Exercise)", options: ["Speed", "Frequency", "amplitude", "Wavelength"], correct: 2 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "The relation between v, f and λ of a wave is (Exercise)", options: ["v f = λ", "f λ = v", "v λ = f", "v = λ / f"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "The length of simple pendulum is doubled its time period will be (Additional)", options: ["$\\sqrt{2}\\ T$", "$\\frac{T}{\\sqrt{2}}$", "$2T$", "$\\frac{T}{2}$"], correct: 0 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "In simple pendulum motion restoring force is provided by (Additional)", options: ["Air resistance", "Tension in string", "Inertia", "Weight of body"], correct: 3 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "When did Christian Huygens invent the pendulum clock? (Additional)", options: ["1856", "1656", "1756", "1956"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "The example of shock absorbers of the vehicle is (Additional)", options: ["SHM", "Vibratory motion", "Damped motion", "linear motion"], correct: 2 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Which of these waves consist of compressions or rarefaction? (Additional)", options: ["Radio waves", "Sound waves", "Television waves", "X-Rays"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "If the frequency of wave is $4\\ Hz$ and wavelength is $0.4\\ m$, then speed will be (Additional)", options: ["$16\\ {ms}^{-1}$", "$16\\ m$", "$1.6\\ {ms}^{-1}$", "$1.6\\ m$"], correct: 2 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Frequency is equal to (Additional)", options: ["$f = \\frac{1}{g}$", "$f = 2\\pi\\sqrt{\\frac{l}{g}}$", "$f = kx$", "$f = \\frac{1}{T}$"], correct: 3 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "The expression of Hook's law (Additional)", options: ["$F = - kx$", "$k = \\frac{- 2F}{x}$", "$F = \\frac{- 1}{kx}$", "$F = - \\frac{x}{k}$"], correct: 0 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Time period of simple pendulum is given by (Additional)", options: ["$T = 2\\pi\\sqrt{\\frac{l}{g}}$", "$T = 2\\pi\\sqrt{\\frac{m}{g}}$", "$T = 2\\pi\\sqrt{\\frac{m}{k}}$", "$T = 2\\pi\\sqrt{\\frac{g}{l}}$"], correct: 0 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Time period of a mass spring system is given by (Additional)", options: ["$T = 2\\pi\\sqrt{\\frac{k}{m}}$", "$T = \\frac{1}{2\\pi}\\sqrt{\\frac{k}{m}}$", "$T = \\frac{1}{2\\pi}\\sqrt{\\frac{m}{k}}$", "$T = 2\\pi\\sqrt{\\frac{m}{k}}$"], correct: 3 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "K.E. of mass spring system is maximum at (Additional)", options: ["Extreme position", "Mean position", "Both A and B", "None of these"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "If $l = 1\\ m$ then the time period of simple pendulum is (Additional)", options: ["$2.11\\ sec$", "$1.89\\ sec$", "$1.99\\ sec$", "$1.88\\ sec$"], correct: 2 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Bending of waves around corners is called _________ (Additional)", options: ["Reflection", "Refraction", "Diffraction", "Interference"], correct: 2 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "In which state of matter longitudinal waves move faster (Additional)", options: ["Gas", "Liquid", "Solid", "Plasma"], correct: 2 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Which are the radio waves (Additional)", options: ["Electric waves", "Electromagnetic waves", "Longitudinal waves", "All of these"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "In SHM, velocity at extreme position is (Additional)", options: ["Maximum", "Minimum", "Zero", "None of these"], correct: 2 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "The product of time period and frequency is (Additional)", options: ["$V$", "$1$", "$0$", "$\\lambda$"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "SI unit of frequency (Additional)", options: ["$Hz$", "$A$", "$s$", "$C$"], correct: 0 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "SI unit of amplitude (Additional)", options: ["$S$", "$cm$", "$m$", "None of these"], correct: 2 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "The main types of waves are (Additional)", options: ["$1$", "$2$", "$3$", "$4$"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "When water waves enter the region of shallow water their wavelength (Additional)", options: ["Increase", "Decrease", "Become zero", "Remain same"], correct: 1 },
+    { chapter: "Unit 10: Simple Harmonic Motion and Waves", question: "Earth-quake produces (Additional)", options: ["Seismic waves", "Crest waves", "Wave fronts", "Sound waves"], correct: 0 },
     
     // Unit 11 - Sound
-    { chapter: "Unit 11", question: "Which is an example of a longitudinal wave? (Exercise)", options: ["sound wave", "light wave", "radio wave", "water wave"], correct: 0 },
-    { chapter: "Unit 11", question: "How does sound travel from its source to your ear? (Exercise)", options: ["by changes in air pressure", "by vibrations in wires or strings", "by electromagnetic wave", "by infrared waves"], correct: 0 },
-    { chapter: "Unit 11", question: "Which form of energy is sound? (Exercise)", options: ["Electrical", "mechanical", "thermal", "Chemical"], correct: 1 },
-    { chapter: "Unit 11", question: "Astronauts in space need to communicate with each other by radio links because (Exercise)", options: ["sound waves travel very slowly in space", "sound waves travel very fast in space", "sound waves cannot travel in space", "sound waves have low frequency in space"], correct: 2 },
-    { chapter: "Unit 11", question: "The loudness of a sound is most closely related to its OR The loudness of a sound mostly depend upon (Exercise)", options: ["Frequency", "Period", "wavelength", "Amplitude"], correct: 3 },
-    { chapter: "Unit 11", question: "For a normal person, audible frequency range for sound wave lies between (Exercise)", options: ["10 Hz and 10 kHz", "20 Hz and 20 kHz", "25 Hz and 25 kHz", "30 Hz and 30 kHz"], correct: 1 },
-    { chapter: "Unit 11", question: "When the frequency of a sound wave is increased, which of the following will decrease? i. wavelength ii. period iii. Amplitude (Exercise)", options: ["i only", "iii only", "i and ii only", "i and iii only"], correct: 2 },
-    { chapter: "Unit 11", question: "SI unit of intensity (Additional)", options: ["$Wm^{-1}$", "$Wm^{-2}$", "$Wm$", "$Wm^{2}$"], correct: 1 },
-    { chapter: "Unit 11", question: "Speed of sound at room temperature is (Additional)", options: ["$320\\ ms^{-1}$", "$330\\ ms^{-1}$", "$340\\ ms^{-1}$", "$350\\ ms^{-1}$"], correct: 2 },
-    { chapter: "Unit 11", question: "The sensation of sound persist in our mind is (Additional)", options: ["$0.01\\ s$", "$0.1\\ s$", "$0.02\\ s$", "$0.2\\ s$"], correct: 1 },
-    { chapter: "Unit 11", question: "One Bel is equal to (Additional)", options: ["$40\\ dB$", "$20\\ dB$", "$90\\ dB$", "$10\\ dB$"], correct: 3 },
-    { chapter: "Unit 11", question: "The intensity level of rusting of leaves is (Additional)", options: ["$10\\ dB$", "$20\\ dB$", "$30\\ dB$", "$40\\ dB$"], correct: 0 },
-    { chapter: "Unit 11", question: "The sound level of whisper is (Additional)", options: ["$10\\ dB$", "$30\\ dB$", "$40\\ dB$", "$90\\ dB$"], correct: 1 },
-    { chapter: "Unit 11", question: "The intensity level of fast train siren (Additional)", options: ["$150\\ dB$", "$130\\ dB$", "$100\\ dB$", "$120\\ dB$"], correct: 1 },
-    { chapter: "Unit 11", question: "In general, the speed of sound is greater in (Additional)", options: ["Gases", "Liquids", "Solids", "None of these"], correct: 2 },
-    { chapter: "Unit 11", question: "The consecutive waves compression and rarefactions is called (Additional)", options: ["Frequency", "Time period", "Focal length", "Wavelength"], correct: 3 },
-    { chapter: "Unit 11", question: "If speed of sound wave is $340\\ ms^{-1}$ and wavelength $0.5\\ m$, then calculate frequency (Additional)", options: ["$340\\ Hz$", "$0.5\\ Hz$", "$680\\ Hz$", "$170\\ Hz$"], correct: 2 },
-    { chapter: "Unit 11", question: "Speed of sound in distilled water at $25^{\\circ}C$ is (Additional)", options: ["$7478\\ ms^{-1}$", "$7488\\ ms^{-1}$", "$1498\\ ms^{-1}$", "$1508\\ ms^{-1}$"], correct: 2 },
-    { chapter: "Unit 11", question: "The speed of sound in air at $25^{\\circ}C$ (Additional)", options: ["$1246\\ kmh^{-1}$ OR $346\\ ms^{-1}$", "$1264\\ kmh^{-1}$", "$1346\\ kmh^{-1}$", "$1364\\ kmh^{-1}$"], correct: 0 },
-    { chapter: "Unit 11", question: "The speed of sound in air at $0^{\\circ}C$ (Additional)", options: ["$317\\ ms^{-1}$", "$386\\ ms^{-1}$", "$346\\ ms^{-1}$", "$331\\ ms^{-1}$"], correct: 3 },
-    { chapter: "Unit 11", question: "The speed of sound in wood at $25^{\\circ}C$ (Additional)", options: ["$5950\\ ms^{-1}$", "$5960\\ ms^{-1}$", "$3980\\ ms^{-1}$", "$2000\\ ms^{-1}$"], correct: 3 },
-    { chapter: "Unit 11", question: "The speed of sound in liquid is _________ than that of gas (Additional)", options: ["3 times", "4 times", "5 times", "15 times"], correct: 2 },
-    { chapter: "Unit 11", question: "The speed of sound in solid is _________ greater than that of gases (Additional)", options: ["3 times", "4 times", "5 times", "15 times"], correct: 3 },
-    { chapter: "Unit 11", question: "The intensity level of siren is (Additional)", options: ["$150\\ dB$", "$130\\ dB$", "$100\\ dB$", "$120\\ dB$"], correct: 3 },
+    { chapter: "Unit 11: Sound", question: "Which is an example of a longitudinal wave? (Exercise)", options: ["sound wave", "light wave", "radio wave", "water wave"], correct: 0 },
+    { chapter: "Unit 11: Sound", question: "How does sound travel from its source to your ear? (Exercise)", options: ["by changes in air pressure", "by vibrations in wires or strings", "by electromagnetic wave", "by infrared waves"], correct: 0 },
+    { chapter: "Unit 11: Sound", question: "Which form of energy is sound? (Exercise)", options: ["Electrical", "mechanical", "thermal", "Chemical"], correct: 1 },
+    { chapter: "Unit 11: Sound", question: "Astronauts in space need to communicate with each other by radio links because (Exercise)", options: ["sound waves travel very slowly in space", "sound waves travel very fast in space", "sound waves cannot travel in space", "sound waves have low frequency in space"], correct: 2 },
+    { chapter: "Unit 11: Sound", question: "The loudness of a sound is most closely related to its OR The loudness of a sound mostly depend upon (Exercise)", options: ["Frequency", "Period", "wavelength", "Amplitude"], correct: 3 },
+    { chapter: "Unit 11: Sound", question: "For a normal person, audible frequency range for sound wave lies between (Exercise)", options: ["10 Hz and 10 kHz", "20 Hz and 20 kHz", "25 Hz and 25 kHz", "30 Hz and 30 kHz"], correct: 1 },
+    { chapter: "Unit 11: Sound", question: "When the frequency of a sound wave is increased, which of the following will decrease? i. wavelength ii. period iii. Amplitude (Exercise)", options: ["i only", "iii only", "i and ii only", "i and iii only"], correct: 2 },
+    { chapter: "Unit 11: Sound", question: "SI unit of intensity (Additional)", options: ["$Wm^{-1}$", "$Wm^{-2}$", "$Wm$", "$Wm^{2}$"], correct: 1 },
+    { chapter: "Unit 11: Sound", question: "Speed of sound at room temperature is (Additional)", options: ["$320\\ ms^{-1}$", "$330\\ ms^{-1}$", "$340\\ ms^{-1}$", "$350\\ ms^{-1}$"], correct: 2 },
+    { chapter: "Unit 11: Sound", question: "The sensation of sound persist in our mind is (Additional)", options: ["$0.01\\ s$", "$0.1\\ s$", "$0.02\\ s$", "$0.2\\ s$"], correct: 1 },
+    { chapter: "Unit 11: Sound", question: "One Bel is equal to (Additional)", options: ["$40\\ dB$", "$20\\ dB$", "$90\\ dB$", "$10\\ dB$"], correct: 3 },
+    { chapter: "Unit 11: Sound", question: "The intensity level of rusting of leaves is (Additional)", options: ["$10\\ dB$", "$20\\ dB$", "$30\\ dB$", "$40\\ dB$"], correct: 0 },
+    { chapter: "Unit 11: Sound", question: "The sound level of whisper is (Additional)", options: ["$10\\ dB$", "$30\\ dB$", "$40\\ dB$", "$90\\ dB$"], correct: 1 },
+    { chapter: "Unit 11: Sound", question: "The intensity level of fast train siren (Additional)", options: ["$150\\ dB$", "$130\\ dB$", "$100\\ dB$", "$120\\ dB$"], correct: 1 },
+    { chapter: "Unit 11: Sound", question: "In general, the speed of sound is greater in (Additional)", options: ["Gases", "Liquids", "Solids", "None of these"], correct: 2 },
+    { chapter: "Unit 11: Sound", question: "The consecutive waves compression and rarefactions is called (Additional)", options: ["Frequency", "Time period", "Focal length", "Wavelength"], correct: 3 },
+    { chapter: "Unit 11: Sound", question: "If speed of sound wave is $340\\ ms^{-1}$ and wavelength $0.5\\ m$, then calculate frequency (Additional)", options: ["$340\\ Hz$", "$0.5\\ Hz$", "$680\\ Hz$", "$170\\ Hz$"], correct: 2 },
+    { chapter: "Unit 11: Sound", question: "Speed of sound in distilled water at $25^{\\circ}C$ is (Additional)", options: ["$7478\\ ms^{-1}$", "$7488\\ ms^{-1}$", "$1498\\ ms^{-1}$", "$1508\\ ms^{-1}$"], correct: 2 },
+    { chapter: "Unit 11: Sound", question: "The speed of sound in air at $25^{\\circ}C$ (Additional)", options: ["$1246\\ kmh^{-1}$ OR $346\\ ms^{-1}$", "$1264\\ kmh^{-1}$", "$1346\\ kmh^{-1}$", "$1364\\ kmh^{-1}$"], correct: 0 },
+    { chapter: "Unit 11: Sound", question: "The speed of sound in air at $0^{\\circ}C$ (Additional)", options: ["$317\\ ms^{-1}$", "$386\\ ms^{-1}$", "$346\\ ms^{-1}$", "$331\\ ms^{-1}$"], correct: 3 },
+    { chapter: "Unit 11: Sound", question: "The speed of sound in wood at $25^{\\circ}C$ (Additional)", options: ["$5950\\ ms^{-1}$", "$5960\\ ms^{-1}$", "$3980\\ ms^{-1}$", "$2000\\ ms^{-1}$"], correct: 3 },
+    { chapter: "Unit 11: Sound", question: "The speed of sound in liquid is _________ than that of gas (Additional)", options: ["3 times", "4 times", "5 times", "15 times"], correct: 2 },
+    { chapter: "Unit 11: Sound", question: "The speed of sound in solid is _________ greater than that of gases (Additional)", options: ["3 times", "4 times", "5 times", "15 times"], correct: 3 },
+    { chapter: "Unit 11: Sound", question: "The intensity level of siren is (Additional)", options: ["$150\\ dB$", "$130\\ dB$", "$100\\ dB$", "$120\\ dB$"], correct: 3 },
     
     // Unit 12 - Geometrical Optics
-    { chapter: "Unit 12", question: "Which of the following quantity is not changed during refraction of light? (Exercise)", options: ["its direction", "its speed", "its frequency", "its wavelength"], correct: 2 },
-    { chapter: "Unit 12", question: "A converging mirror with a radius of 20 cm creates a real image 30 cm from the mirror. What is the object distance? (Exercise)", options: ["$- 5.0\\ cm$", "$- 7.5\\ cm$", "$15\\ cm$", "$- 20\\ cm$"], correct: 2 },
-    { chapter: "Unit 12", question: "An object is placed at the centre of curvature of a concave mirror. The image produced by the mirror is located (Exercise)", options: ["out beyond the centre of curvature.", "at the centre of curvature.", "between the centre of curvature and the focal point", "at the focal point"], correct: 1 },
-    { chapter: "Unit 12", question: "An object is 14 cm in front of a convex mirror. The image is 5.8 cm behind the mirror. What is the focal length of the mirror? (Exercise)", options: ["$- 4.1\\ cm$", "$- 8.2\\ cm$", "$- 9.9\\ cm$", "$- 20\\ cm$"], correct: 2 },
-    { chapter: "Unit 12", question: "The index of refraction depends on (Exercise)", options: ["the focal length", "the speed of light", "the image distance", "the object distance"], correct: 1 },
-    { chapter: "Unit 12", question: "Which type of image is formed by a convex lens on a screen? (Exercise)", options: ["inverted and real", "inverted and virtual", "upright and real", "upright and virtual"], correct: 0 },
-    { chapter: "Unit 12", question: "Which type of image is produced by the converging lens of human eye if it views a distant object? (Exercise)", options: ["real, erect, same size", "real, inverted, diminished", "virtual, erect, diminished", "virtual, inverted, magnified"], correct: 1 },
-    { chapter: "Unit 12", question: "Image formed by a camera is (Exercise)", options: ["real, inverted, and diminished", "virtual, upright and diminished", "virtual, upright and magnified", "real, inverted and magnified"], correct: 0 },
-    { chapter: "Unit 12", question: "If a ray of light in glass is incident on an air surface at an angle greater than the critical angle, the ray will (Exercise)", options: ["refract only", "reflect only", "partially refract and partially reflect", "diffract only"], correct: 1 },
-    { chapter: "Unit 12", question: "The critical angle for a beam of light passing from water into air is 48.8 degrees. This means that all light rays with an angle of incidence greater than this angle will be (Exercise)", options: ["Absorbed", "totally reflected", "partially reflected and partially transmitted", "totally transmitted"], correct: 1 },
-    { chapter: "Unit 12", question: "Wave theory of light is formulated by (Additional)", options: ["Newton", "Faraday", "Bell", "Maxwell"], correct: 3 },
-    { chapter: "Unit 12", question: "Focal length of spherical mirror is equal to (Additional)", options: ["$\\frac{R}{2}$", "$\\frac{R}{4}$", "$2R$", "$4R$"], correct: 0 },
-    { chapter: "Unit 12", question: "Refractive index of diamond is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$2.42$"], correct: 3 },
-    { chapter: "Unit 12", question: "Refractive index of air is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$2.42$"], correct: 0 },
-    { chapter: "Unit 12", question: "Refractive index of ice is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$2.42$"], correct: 2 },
-    { chapter: "Unit 12", question: "Refractive index of water is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$2.42$"], correct: 1 },
-    { chapter: "Unit 12", question: "Refractive index of ethyl alcohol is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$1.36$"], correct: 3 },
-    { chapter: "Unit 12", question: "Refractive index of cubic zircon is (Additional)", options: ["$1.00$", "$1.33$", "$2.21$", "$2.42$"], correct: 2 },
-    { chapter: "Unit 12", question: "Refractive index of glass (flint) is (Additional)", options: ["$1.66$", "$1.52$", "$1.31$", "$2.42$"], correct: 0 },
-    { chapter: "Unit 12", question: "Refractive index of glass (crown) is (Additional)", options: ["$1.66$", "$1.52$", "$1.31$", "$2.42$"], correct: 1 },
-    { chapter: "Unit 12", question: "Refractive index depends on (Additional)", options: ["Object distance", "Image distance", "Focal length", "Speed of light"], correct: 3 },
-    { chapter: "Unit 12", question: "Critical angle of glass is (Additional)", options: ["$0^{\\circ}$", "$45^{\\circ}$", "$90^{\\circ}$", "$42^{\\circ}$"], correct: 3 },
-    { chapter: "Unit 12", question: "Critical angle of water is (Additional)", options: ["$48.2^{\\circ}$", "$48.4^{\\circ}$", "$48.6^{\\circ}$", "$48.8^{\\circ}$"], correct: 3 },
-    { chapter: "Unit 12", question: "Optical fiber work on the principal of (Additional)", options: ["Refraction", "Reflection", "Diffraction", "Total internal reflection"], correct: 3 },
-    { chapter: "Unit 12", question: "Endoscope which is used to diagnose bladder is called (Additional)", options: ["Gastroscope", "Cystoscope", "Bronchoscope", "Microscope"], correct: 1 },
-    { chapter: "Unit 12", question: "At night we can see stars in the sky without telescope (Additional)", options: ["300", "3000", "30000", "300000"], correct: 1 },
-    { chapter: "Unit 12", question: "The magnification of a combination of lenses is equal to the _________ of the magnifications of each lens. (Additional)", options: ["Addition", "Subtraction", "Product", "None of these"], correct: 2 },
-    { chapter: "Unit 12", question: "Number of lenses used in slide projector is (Additional)", options: ["1", "2", "3", "0"], correct: 2 },
-    { chapter: "Unit 12", question: "The power of lens is reciprocal of (Additional)", options: ["Focal point", "Focal length", "Dioptre", "Principal focus"], correct: 1 },
-    { chapter: "Unit 12", question: "The change in focal length of the eye lens is called (Additional)", options: ["Modification", "Induction", "Accommodation", "Distinct vision"], correct: 2 },
-    { chapter: "Unit 12", question: "The speed of light in water is approximately (Additional)", options: ["$3.0 \\times 10^{8}\\ {ms}^{-1}$", "$2.0 \\times 10^{8}{\\ ms}^{-1}$", "$2.3 \\times 10^{8}\\ {ms}^{-1}$", "$2.6 \\times 10^{8}{\\ ms}^{-1}$"], correct: 2 },
-    { chapter: "Unit 12", question: "The speed of light in air is approximately (Additional)", options: ["$3.0 \\times 10^{8}\\ {ms}^{-1}$", "$2.0 \\times 10^{8}{\\ ms}^{-1}$", "$2.3 \\times 10^{8}\\ {ms}^{-1}$", "$2.6 \\times 10^{8}{\\ ms}^{-1}$"], correct: 0 },
-    { chapter: "Unit 12", question: "The speed of light in glass is approximately (Additional)", options: ["$3.0 \\times 10^{8}\\ {ms}^{-1}$", "$2.0 \\times 10^{8}{\\ ms}^{-1}$", "$2.3 \\times 10^{8}\\ {ms}^{-1}$", "$2.6 \\times 10^{8}{\\ ms}^{-1}$"], correct: 1 },
-    { chapter: "Unit 12", question: "Human eye has (Additional)", options: ["Concave lens", "Convex lens", "Concave mirror", "Convex mirror"], correct: 1 },
-    { chapter: "Unit 12", question: "A converging mirror with a radius of 20 cm. its focal length will be (Additional)", options: ["$10\\ cm$", "$- 10\\ cm$", "$20\\ cm$", "$- 20\\ cm$"], correct: 0 },
-    { chapter: "Unit 12", question: "Which type of mirror used in head lights (Additional)", options: ["Concave mirror", "Convex mirror", "Parabolic mirror", "Both (A) and (B)"], correct: 2 },
-    { chapter: "Unit 12", question: "Snell's law stated as (Additional)", options: ["$\\frac{\\sin i}{\\sin r} = n = \\frac{n_{2}}{n_{1}}$", "$\\frac{\\sin i}{\\sin r} = n = \\frac{n_{1}}{n_{2}}$", "$\\frac{\\sin r}{\\sin i} = n = \\frac{n_{2}}{n_{1}}$", "$\\frac{\\cos i}{\\cos r} = n = \\frac{n_{2}}{n_{1}}$"], correct: 0 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Which of the following quantity is not changed during refraction of light? (Exercise)", options: ["its direction", "its speed", "its frequency", "its wavelength"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "A converging mirror with a radius of 20 cm creates a real image 30 cm from the mirror. What is the object distance? (Exercise)", options: ["$- 5.0\\ cm$", "$- 7.5\\ cm$", "$15\\ cm$", "$- 20\\ cm$"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "An object is placed at the centre of curvature of a concave mirror. The image produced by the mirror is located (Exercise)", options: ["out beyond the centre of curvature.", "at the centre of curvature.", "between the centre of curvature and the focal point", "at the focal point"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "An object is 14 cm in front of a convex mirror. The image is 5.8 cm behind the mirror. What is the focal length of the mirror? (Exercise)", options: ["$- 4.1\\ cm$", "$- 8.2\\ cm$", "$- 9.9\\ cm$", "$- 20\\ cm$"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "The index of refraction depends on (Exercise)", options: ["the focal length", "the speed of light", "the image distance", "the object distance"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Which type of image is formed by a convex lens on a screen? (Exercise)", options: ["inverted and real", "inverted and virtual", "upright and real", "upright and virtual"], correct: 0 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Which type of image is produced by the converging lens of human eye if it views a distant object? (Exercise)", options: ["real, erect, same size", "real, inverted, diminished", "virtual, erect, diminished", "virtual, inverted, magnified"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Image formed by a camera is (Exercise)", options: ["real, inverted, and diminished", "virtual, upright and diminished", "virtual, upright and magnified", "real, inverted and magnified"], correct: 0 },
+    { chapter: "Unit 12: Geometrical Optics", question: "If a ray of light in glass is incident on an air surface at an angle greater than the critical angle, the ray will (Exercise)", options: ["refract only", "reflect only", "partially refract and partially reflect", "diffract only"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "The critical angle for a beam of light passing from water into air is 48.8 degrees. This means that all light rays with an angle of incidence greater than this angle will be (Exercise)", options: ["Absorbed", "totally reflected", "partially reflected and partially transmitted", "totally transmitted"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Wave theory of light is formulated by (Additional)", options: ["Newton", "Faraday", "Bell", "Maxwell"], correct: 3 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Focal length of spherical mirror is equal to (Additional)", options: ["$\\frac{R}{2}$", "$\\frac{R}{4}$", "$2R$", "$4R$"], correct: 0 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Refractive index of diamond is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$2.42$"], correct: 3 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Refractive index of air is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$2.42$"], correct: 0 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Refractive index of ice is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$2.42$"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Refractive index of water is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$2.42$"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Refractive index of ethyl alcohol is (Additional)", options: ["$1.00$", "$1.33$", "$1.31$", "$1.36$"], correct: 3 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Refractive index of cubic zircon is (Additional)", options: ["$1.00$", "$1.33$", "$2.21$", "$2.42$"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Refractive index of glass (flint) is (Additional)", options: ["$1.66$", "$1.52$", "$1.31$", "$2.42$"], correct: 0 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Refractive index of glass (crown) is (Additional)", options: ["$1.66$", "$1.52$", "$1.31$", "$2.42$"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Refractive index depends on (Additional)", options: ["Object distance", "Image distance", "Focal length", "Speed of light"], correct: 3 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Critical angle of glass is (Additional)", options: ["$0^{\\circ}$", "$45^{\\circ}$", "$90^{\\circ}$", "$42^{\\circ}$"], correct: 3 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Critical angle of water is (Additional)", options: ["$48.2^{\\circ}$", "$48.4^{\\circ}$", "$48.6^{\\circ}$", "$48.8^{\\circ}$"], correct: 3 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Optical fiber work on the principal of (Additional)", options: ["Refraction", "Reflection", "Diffraction", "Total internal reflection"], correct: 3 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Endoscope which is used to diagnose bladder is called (Additional)", options: ["Gastroscope", "Cystoscope", "Bronchoscope", "Microscope"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "At night we can see stars in the sky without telescope (Additional)", options: ["300", "3000", "30000", "300000"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "The magnification of a combination of lenses is equal to the _________ of the magnifications of each lens. (Additional)", options: ["Addition", "Subtraction", "Product", "None of these"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Number of lenses used in slide projector is (Additional)", options: ["1", "2", "3", "0"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "The power of lens is reciprocal of (Additional)", options: ["Focal point", "Focal length", "Dioptre", "Principal focus"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "The change in focal length of the eye lens is called (Additional)", options: ["Modification", "Induction", "Accommodation", "Distinct vision"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "The speed of light in water is approximately (Additional)", options: ["$3.0 \\times 10^{8}\\ {ms}^{-1}$", "$2.0 \\times 10^{8}{\\ ms}^{-1}$", "$2.3 \\times 10^{8}\\ {ms}^{-1}$", "$2.6 \\times 10^{8}{\\ ms}^{-1}$"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "The speed of light in air is approximately (Additional)", options: ["$3.0 \\times 10^{8}\\ {ms}^{-1}$", "$2.0 \\times 10^{8}{\\ ms}^{-1}$", "$2.3 \\times 10^{8}\\ {ms}^{-1}$", "$2.6 \\times 10^{8}{\\ ms}^{-1}$"], correct: 0 },
+    { chapter: "Unit 12: Geometrical Optics", question: "The speed of light in glass is approximately (Additional)", options: ["$3.0 \\times 10^{8}\\ {ms}^{-1}$", "$2.0 \\times 10^{8}{\\ ms}^{-1}$", "$2.3 \\times 10^{8}\\ {ms}^{-1}$", "$2.6 \\times 10^{8}{\\ ms}^{-1}$"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Human eye has (Additional)", options: ["Concave lens", "Convex lens", "Concave mirror", "Convex mirror"], correct: 1 },
+    { chapter: "Unit 12: Geometrical Optics", question: "A converging mirror with a radius of 20 cm. its focal length will be (Additional)", options: ["$10\\ cm$", "$- 10\\ cm$", "$20\\ cm$", "$- 20\\ cm$"], correct: 0 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Which type of mirror used in head lights (Additional)", options: ["Concave mirror", "Convex mirror", "Parabolic mirror", "Both (A) and (B)"], correct: 2 },
+    { chapter: "Unit 12: Geometrical Optics", question: "Snell's law stated as (Additional)", options: ["$\\frac{\\sin i}{\\sin r} = n = \\frac{n_{2}}{n_{1}}$", "$\\frac{\\sin i}{\\sin r} = n = \\frac{n_{1}}{n_{2}}$", "$\\frac{\\sin r}{\\sin i} = n = \\frac{n_{2}}{n_{1}}$", "$\\frac{\\cos i}{\\cos r} = n = \\frac{n_{2}}{n_{1}}$"], correct: 0 },
     
     // Unit 13 - Electrostatics
-    { chapter: "Unit 13", question: "A positive electric charge (Exercise)", options: ["attracts other positive charge", "repels other positive charge", "attracts a neutral charge", "repels a neutral charge"], correct: 1 },
-    { chapter: "Unit 13", question: "An object gains excess negative charge after being rubbed against another object, which is: (Exercise)", options: ["Neutral", "negatively charged", "positively charged", "either A, B or C"], correct: 1 },
-    { chapter: "Unit 13", question: "Two uncharged objects A and B are rubbed against each other. When object B is placed near a negatively charged object C, the two objects repel each other. Which of the following statements is true about object A? (Exercise)", options: ["remains uncharged", "becomes positively charged", "becomes negatively charged", "Unpredictable"], correct: 3 },
-    { chapter: "Unit 13", question: "When you rub a plastic rod against your hair several times and put it near some bits of paper, the pieces of papers are attracted towards it. What does this observation indicate? (Exercise)", options: ["the rod and the paper are oppositely charged", "the rod acquires a positive charge", "the rod and the paper have the same charges", "the rod acquires a negative charge"], correct: 0 },
-    { chapter: "Unit 13", question: "According to Coulomb's law, what happens to the attraction of two oppositely charged objects as their distance of separation increases? (Exercise)", options: ["Increases", "Decreases", "remains unchanged", "cannot be determined"], correct: 1 },
-    { chapter: "Unit 13", question: "The Coulomb's law is valid for the charges which are (Exercise)", options: ["moving and point charges", "moving and non-point charges", "stationary and point charges", "stationary and large size charges"], correct: 2 },
-    { chapter: "Unit 13", question: "A positive and a negative charge are initially 4 cm apart. When they are moved closer together so that they are now only 1 cm apart, the force between them is (Exercise)", options: ["4 times smaller than before", "4 times larger than before", "8 times larger than before", "16 times larger than before"], correct: 3 },
-    { chapter: "Unit 13", question: "Five joules of work is needed to shift 10 C of charge from one place to another. The potential difference between the places is (Exercise)", options: ["$0.5\\ V$", "$2\\ V$", "$5\\ V$", "$10\\ V$"], correct: 0 },
-    { chapter: "Unit 13", question: "Two small charged spheres are separated by 2 mm. Which of the following would produce the greatest attractive force? (Exercise)", options: ["$+ 1q\\ and\\  + 4q$", "$- 1q\\ and\\  - 4q$", "$+ 2q\\ and\\  + 2q$", "$+ 2q\\ and\\  - 2q$"], correct: 3 },
-    { chapter: "Unit 13", question: "Electric field lines (Exercise)", options: ["always cross each other", "never cross each other", "cross each other in the region of strong field", "cross each other in the region of weak field"], correct: 1 },
-    { chapter: "Unit 13", question: "Capacitance is defined as (Exercise)", options: ["$VC$", "$\\frac{Q}{V}$", "$QV$", "$\\frac{V}{Q}$"], correct: 1 },
-    { chapter: "Unit 13", question: "Charges are of type (Additional)", options: ["$1$", "$2$", "$3$", "$4$"], correct: 1 },
-    { chapter: "Unit 13", question: "Unit of charge (Additional)", options: ["$V$", "$C$", "$A$", "$\\mathrm{\\Omega}$"], correct: 1 },
-    { chapter: "Unit 13", question: "The electroscope is an instrument which is used for (Additional)", options: ["Detecting charge", "Detecting current", "Detecting radiations", "None of these"], correct: 0 },
-    { chapter: "Unit 13", question: "The value of $k$ in SI (Additional)", options: ["$9 \\times 10^{9}\\ {Nm}^{2}C^{-2}$", "$9 \\times 10^{-9}\\ {Nm}^{2}C^{-2}$", "$9 \\times 10^{10}\\ {Nm}^{2}C^{-2}$", "$9 \\times 10^{13}\\ {Nm}^{2}C^{-2}$"], correct: 0 },
-    { chapter: "Unit 13", question: "Michael Faraday belongs to (Additional)", options: ["UK", "USA", "KSA", "Russia"], correct: 0 },
-    { chapter: "Unit 13", question: "$5\\ J$ work is needed to shift $5\\ C$ charge from one place to another, the P.D. between plates is (Additional)", options: ["$1\\ V$", "$2\\ V$", "$3\\ V$", "$4\\ V$"], correct: 0 },
-    { chapter: "Unit 13", question: "If $4\\ J$ work is done on a $2\\ C$ charge against the direction of electric field the value of electric potential is (Additional)", options: ["$1\\ V$", "$2\\ V$", "$3\\ V$", "$4\\ V$"], correct: 1 },
-    { chapter: "Unit 13", question: "The formula of electric field intensity is (Additional)", options: ["$E = \\frac{q_{{^\\circ}}}{F}$", "$E = \\frac{F}{q_{{^\\circ}}}$", "$E = Fq_{{^\\circ}}$", "$E = \\frac{1}{Fq_{{^\\circ}}}$"], correct: 1 },
-    { chapter: "Unit 13", question: "The unit of electric intensity is (Additional)", options: ["$Ns$", "${ms}^{-1}$", "$Nm$", "$NC^{-1}$"], correct: 3 },
-    { chapter: "Unit 13", question: "The unit of electric potential is (Additional)", options: ["$J$", "$Js$", "$JC^{-1}$", "$Jm^{-1}$"], correct: 2 },
-    { chapter: "Unit 13", question: "SI unit of electric potential is (Additional)", options: ["$C$ (coulomb)", "$V$(volt)", "$F$(farad)", "$J$(joule)"], correct: 1 },
-    { chapter: "Unit 13", question: "The formula of electric potential is (Additional)", options: ["$V = \\frac{q}{W}$", "$V = \\frac{W}{q}$", "$q = VW$", "$V = QF$"], correct: 1 },
-    { chapter: "Unit 13", question: "In mica capacitor the dielectric is (Additional)", options: ["Aluminum", "Plastic", "Paper", "Mica"], correct: 3 },
-    { chapter: "Unit 13", question: "Capacitor are used to store (Additional)", options: ["Resistance", "Voltage", "Charge", "Current"], correct: 2 },
-    { chapter: "Unit 13", question: "SI unit of capacitance is (Additional)", options: ["Newton", "Coulomb", "Volt", "Farad"], correct: 3 },
-    { chapter: "Unit 13", question: "If $4\\ C$ charge is given to the plates of capacitor and potential between plates is $2\\ V$, then capacitance is (Additional)", options: ["$2\\ F$", "$4\\ F$", "$6\\ F$", "$8\\ F$"], correct: 0 },
-    { chapter: "Unit 13", question: "If three capacitors of $3\\ pF,4\\ pF$ and $5\\ pF$ are connected in parallel with a battery of $6\\ V$. Total capacitance will be (Additional)", options: ["$6\\ pF$", "$12\\ pF$", "$1.2\\ pF$", "$1.3\\ pF$"], correct: 1 },
-    { chapter: "Unit 13", question: "If three capacitors of $3\\ pF,4\\ pF$ and $5\\ pF$ are connected in series with a battery of $6\\ V$. Total capacitance will be (Additional)", options: ["$1.1\\ pF$", "$1.2\\ pF$", "$1.3\\ pF$", "$12\\ pF$"], correct: 2 },
-    { chapter: "Unit 13", question: "Capacitors can be used to differentiate between high frequency and low frequency signals, such circuit is called (Additional)", options: ["Series circuit", "Parallel circuit", "Filter circuit", "None of these"], correct: 2 },
-    { chapter: "Unit 13", question: "It blocks DC current but allow AC current to pass through a circuit (Additional)", options: ["Capacitor", "Resistance", "Specific resistance", "Thermometer"], correct: 0 },
-    { chapter: "Unit 13", question: "Each bolt of lightning contains the energy (Additional)", options: ["$1k$ million joule", "$2k$ million joule", "$3k$ million joule", "$3k$ million joule"], correct: 0 },
-    { chapter: "Unit 13", question: "Which is incorrect when two capacitors are connected in parallel (Additional)", options: ["$V = V_{1} = V_{2}$", "$Q = Q_{1} + Q_{2}$", "$C_{eq} = C_{1} + C_{2}$", "$Q = Q_{1} = Q_{2}$"], correct: 3 },
-    { chapter: "Unit 13", question: "Which is incorrect when two capacitors are connected in series (Additional)", options: ["$Q = Q_{1} = Q_{2}$", "$V = V_{1} + V_{2}$", "$\\frac{1}{C_{eq}} = \\frac{1}{C_{1}} + \\frac{1}{C_{2}}$", "$V = V_{1} = V_{2}$"], correct: 3 },
-    { chapter: "Unit 13", question: "The electric field lines are used to representation of (Additional)", options: ["Capacitance", "Electric potential", "Potential difference", "Electric field"], correct: 3 },
+    { chapter: "Unit 13: Electrostatics", question: "A positive electric charge (Exercise)", options: ["attracts other positive charge", "repels other positive charge", "attracts a neutral charge", "repels a neutral charge"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "An object gains excess negative charge after being rubbed against another object, which is: (Exercise)", options: ["Neutral", "negatively charged", "positively charged", "either A, B or C"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "Two uncharged objects A and B are rubbed against each other. When object B is placed near a negatively charged object C, the two objects repel each other. Which of the following statements is true about object A? (Exercise)", options: ["remains uncharged", "becomes positively charged", "becomes negatively charged", "Unpredictable"], correct: 3 },
+    { chapter: "Unit 13: Electrostatics", question: "When you rub a plastic rod against your hair several times and put it near some bits of paper, the pieces of papers are attracted towards it. What does this observation indicate? (Exercise)", options: ["the rod and the paper are oppositely charged", "the rod acquires a positive charge", "the rod and the paper have the same charges", "the rod acquires a negative charge"], correct: 0 },
+    { chapter: "Unit 13: Electrostatics", question: "According to Coulomb's law, what happens to the attraction of two oppositely charged objects as their distance of separation increases? (Exercise)", options: ["Increases", "Decreases", "remains unchanged", "cannot be determined"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "The Coulomb's law is valid for the charges which are (Exercise)", options: ["moving and point charges", "moving and non-point charges", "stationary and point charges", "stationary and large size charges"], correct: 2 },
+    { chapter: "Unit 13: Electrostatics", question: "A positive and a negative charge are initially 4 cm apart. When they are moved closer together so that they are now only 1 cm apart, the force between them is (Exercise)", options: ["4 times smaller than before", "4 times larger than before", "8 times larger than before", "16 times larger than before"], correct: 3 },
+    { chapter: "Unit 13: Electrostatics", question: "Five joules of work is needed to shift 10 C of charge from one place to another. The potential difference between the places is (Exercise)", options: ["$0.5\\ V$", "$2\\ V$", "$5\\ V$", "$10\\ V$"], correct: 0 },
+    { chapter: "Unit 13: Electrostatics", question: "Two small charged spheres are separated by 2 mm. Which of the following would produce the greatest attractive force? (Exercise)", options: ["$+ 1q\\ and\\  + 4q$", "$- 1q\\ and\\  - 4q$", "$+ 2q\\ and\\  + 2q$", "$+ 2q\\ and\\  - 2q$"], correct: 3 },
+    { chapter: "Unit 13: Electrostatics", question: "Electric field lines (Exercise)", options: ["always cross each other", "never cross each other", "cross each other in the region of strong field", "cross each other in the region of weak field"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "Capacitance is defined as (Exercise)", options: ["$VC$", "$\\frac{Q}{V}$", "$QV$", "$\\frac{V}{Q}$"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "Charges are of type (Additional)", options: ["$1$", "$2$", "$3$", "$4$"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "Unit of charge (Additional)", options: ["$V$", "$C$", "$A$", "$\\mathrm{\\Omega}$"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "The electroscope is an instrument which is used for (Additional)", options: ["Detecting charge", "Detecting current", "Detecting radiations", "None of these"], correct: 0 },
+    { chapter: "Unit 13: Electrostatics", question: "The value of $k$ in SI (Additional)", options: ["$9 \\times 10^{9}\\ {Nm}^{2}C^{-2}$", "$9 \\times 10^{-9}\\ {Nm}^{2}C^{-2}$", "$9 \\times 10^{10}\\ {Nm}^{2}C^{-2}$", "$9 \\times 10^{13}\\ {Nm}^{2}C^{-2}$"], correct: 0 },
+    { chapter: "Unit 13: Electrostatics", question: "Michael Faraday belongs to (Additional)", options: ["UK", "USA", "KSA", "Russia"], correct: 0 },
+    { chapter: "Unit 13: Electrostatics", question: "$5\\ J$ work is needed to shift $5\\ C$ charge from one place to another, the P.D. between plates is (Additional)", options: ["$1\\ V$", "$2\\ V$", "$3\\ V$", "$4\\ V$"], correct: 0 },
+    { chapter: "Unit 13: Electrostatics", question: "If $4\\ J$ work is done on a $2\\ C$ charge against the direction of electric field the value of electric potential is (Additional)", options: ["$1\\ V$", "$2\\ V$", "$3\\ V$", "$4\\ V$"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "The formula of electric field intensity is (Additional)", options: ["$E = \\frac{q_{{^\\circ}}}{F}$", "$E = \\frac{F}{q_{{^\\circ}}}$", "$E = Fq_{{^\\circ}}$", "$E = \\frac{1}{Fq_{{^\\circ}}}$"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "The unit of electric intensity is (Additional)", options: ["$Ns$", "${ms}^{-1}$", "$Nm$", "$NC^{-1}$"], correct: 3 },
+    { chapter: "Unit 13: Electrostatics", question: "The unit of electric potential is (Additional)", options: ["$J$", "$Js$", "$JC^{-1}$", "$Jm^{-1}$"], correct: 2 },
+    { chapter: "Unit 13: Electrostatics", question: "SI unit of electric potential is (Additional)", options: ["$C$ (coulomb)", "$V$(volt)", "$F$(farad)", "$J$(joule)"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "The formula of electric potential is (Additional)", options: ["$V = \\frac{q}{W}$", "$V = \\frac{W}{q}$", "$q = VW$", "$V = QF$"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "In mica capacitor the dielectric is (Additional)", options: ["Aluminum", "Plastic", "Paper", "Mica"], correct: 3 },
+    { chapter: "Unit 13: Electrostatics", question: "Capacitor are used to store (Additional)", options: ["Resistance", "Voltage", "Charge", "Current"], correct: 2 },
+    { chapter: "Unit 13: Electrostatics", question: "SI unit of capacitance is (Additional)", options: ["Newton", "Coulomb", "Volt", "Farad"], correct: 3 },
+    { chapter: "Unit 13: Electrostatics", question: "If $4\\ C$ charge is given to the plates of capacitor and potential between plates is $2\\ V$, then capacitance is (Additional)", options: ["$2\\ F$", "$4\\ F$", "$6\\ F$", "$8\\ F$"], correct: 0 },
+    { chapter: "Unit 13: Electrostatics", question: "If three capacitors of $3\\ pF,4\\ pF$ and $5\\ pF$ are connected in parallel with a battery of $6\\ V$. Total capacitance will be (Additional)", options: ["$6\\ pF$", "$12\\ pF$", "$1.2\\ pF$", "$1.3\\ pF$"], correct: 1 },
+    { chapter: "Unit 13: Electrostatics", question: "If three capacitors of $3\\ pF,4\\ pF$ and $5\\ pF$ are connected in series with a battery of $6\\ V$. Total capacitance will be (Additional)", options: ["$1.1\\ pF$", "$1.2\\ pF$", "$1.3\\ pF$", "$12\\ pF$"], correct: 2 },
+    { chapter: "Unit 13: Electrostatics", question: "Capacitors can be used to differentiate between high frequency and low frequency signals, such circuit is called (Additional)", options: ["Series circuit", "Parallel circuit", "Filter circuit", "None of these"], correct: 2 },
+    { chapter: "Unit 13: Electrostatics", question: "It blocks DC current but allow AC current to pass through a circuit (Additional)", options: ["Capacitor", "Resistance", "Specific resistance", "Thermometer"], correct: 0 },
+    { chapter: "Unit 13: Electrostatics", question: "Each bolt of lightning contains the energy (Additional)", options: ["$1k$ million joule", "$2k$ million joule", "$3k$ million joule", "$3k$ million joule"], correct: 0 },
+    { chapter: "Unit 13: Electrostatics", question: "Which is incorrect when two capacitors are connected in parallel (Additional)", options: ["$V = V_{1} = V_{2}$", "$Q = Q_{1} + Q_{2}$", "$C_{eq} = C_{1} + C_{2}$", "$Q = Q_{1} = Q_{2}$"], correct: 3 },
+    { chapter: "Unit 13: Electrostatics", question: "Which is incorrect when two capacitors are connected in series (Additional)", options: ["$Q = Q_{1} = Q_{2}$", "$V = V_{1} + V_{2}$", "$\\frac{1}{C_{eq}} = \\frac{1}{C_{1}} + \\frac{1}{C_{2}}$", "$V = V_{1} = V_{2}$"], correct: 3 },
+    { chapter: "Unit 13: Electrostatics", question: "The electric field lines are used to representation of (Additional)", options: ["Capacitance", "Electric potential", "Potential difference", "Electric field"], correct: 3 },
     
     // Unit 14 - Current Electricity
-    { chapter: "Unit 14", question: "An electric current in conductors is due to the flow of (Exercise)", options: ["positive ions", "negative ions", "positive charges", "free electrons"], correct: 3 },
-    { chapter: "Unit 14", question: "What is the voltage across a $6\\ \\Omega$ resistor when $3\\ A$ of current passes through it? (Exercise)", options: ["$2\\ V$", "$9\\ V$", "$18\\ V$", "$36\\ V$"], correct: 2 },
-    { chapter: "Unit 14", question: "What happens to the intensity or the brightness of the lamps connected in series as more and more lamps are added? (Exercise)", options: ["Increases", "decreases", "remains the same", "cannot be predicted"], correct: 1 },
-    { chapter: "Unit 14", question: "Why should household appliances be connected in parallel with the voltage source? (Exercise)", options: ["to increase the resistance of the circuit", "to decrease the resistance of the circuit", "to provide each appliance the same voltage as the power source", "to provide each appliance the same current as the power source"], correct: 2 },
-    { chapter: "Unit 14", question: "Electric potential and $e.m.f$ (Exercise)", options: ["are the same terms", "are the different terms", "have different units", "both (B) and (C)"], correct: 1 },
-    { chapter: "Unit 14", question: "When we double the voltage in a simple electric circuit, we double the (Exercise)", options: ["current", "power", "resistance", "both (a) and (b)"], correct: 0 },
-    { chapter: "Unit 14", question: "If we double both the current and the voltage in a circuit while keeping its resistance constant, the power (Exercise)", options: ["remains unchanged", "halves", "doubles", "Quadruples OR become four times"], correct: 3 },
-    { chapter: "Unit 14", question: "What is the power rating of a lamp connected to a $12\\ V$ source when it carries $2.5\\ A?$ (Exercise)", options: ["$4.8\\ W$", "$14.5\\ W$", "$30\\ W$", "$60\\ W$"], correct: 2 },
-    { chapter: "Unit 14", question: "The combined resistance of two identical resistors, connected in series is $8\\ \\Omega$. Their combined resistance in a parallel arrangement will be (Exercise)", options: ["$2\\ \\Omega$", "$4\\ \\Omega$", "$8\\ \\Omega$", "$12\\ \\Omega$"], correct: 1 },
-    { chapter: "Unit 14", question: "Formula of current is (Additional)", options: ["$I = Qt$", "$I = \\frac{Q}{t}$", "$I = \\frac{t}{Q}$", "All of these"], correct: 1 },
-    { chapter: "Unit 14", question: "SI unit of current is (Additional)", options: ["Coulomb", "Ampere", "Volt", "Farad"], correct: 1 },
-    { chapter: "Unit 14", question: "The unit of potential difference is (Additional)", options: ["Joule", "Coulomb", "Farad", "Volt"], correct: 3 },
-    { chapter: "Unit 14", question: "Formula of $e.m.f$ (Additional)", options: ["$E = \\frac{J}{Q}$", "$E = \\frac{W}{I}$", "$E = \\frac{W}{Q}$", "$E = \\frac{W}{Q}$"], correct: 2 },
-    { chapter: "Unit 14", question: "The unit of $e.m.f$ in SI system is equal to (Additional)", options: ["$J$", "$Jm^{-1}$", "$JS^{-1}$", "$JC^{-1}$ OR $V$(volt)"], correct: 3 },
-    { chapter: "Unit 14", question: "An ideal volt meter has resistance (Additional)", options: ["Very low", "Very large", "Low", "Zero"], correct: 1 },
-    { chapter: "Unit 14", question: "Specific resistance of copper is (Additional)", options: ["$1.7 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$1.69 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$100 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$3500 \\times 10^{-8}\\ \\mathrm{\\Omega}m$"], correct: 0 },
-    { chapter: "Unit 14", question: "Specific resistance of silver is (Additional)", options: ["$1.7 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$1.69 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$100 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$3500 \\times 10^{-8}\\ \\mathrm{\\Omega}m$"], correct: 0 },
-    { chapter: "Unit 14", question: "Specific resistance of aluminium is (Additional)", options: ["$2.75 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$5.25 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$9.8 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$10.6 \\times 10^{-8}\\ \\mathrm{\\Omega}m$"], correct: 0 },
-    { chapter: "Unit 14", question: "Unit of resistance is (Additional)", options: ["$F$(Farad)", "$C$(Coulomb)", "$\\mathrm{\\Omega}$(Ohm)", "$V$(Volt)"], correct: 2 },
-    { chapter: "Unit 14", question: "When resistances are connected in series, the current passing through them is (Additional)", options: ["Different", "Zero", "Same", "None"], correct: 2 },
-    { chapter: "Unit 14", question: "Which one is OHMIC in nature? (Additional)", options: ["Thermister", "Filament lamp", "Fixed resistor", "Variable resistor"], correct: 2 },
-    { chapter: "Unit 14", question: "Mathematical form of joule's law (Additional)", options: ["$W = I^{2}Rt$", "$W = IR^{2}t$", "$W = I^{2}R^{2}t$", "$W = IRt$"], correct: 1 },
-    { chapter: "Unit 14", question: "Which one is not true for power? (Additional)", options: ["$P = I^{2}R$", "$P = \\frac{QV}{t}$", "$P = IR$", "$P = IV$"], correct: 2 },
-    { chapter: "Unit 14", question: "The unit of electric power is (Additional)", options: ["Ampere", "Joule", "Watt", "Volt"], correct: 2 },
-    { chapter: "Unit 14", question: "$1kWh$ is equal to (Additional)", options: ["$3\\ MJ$", "$3.6\\ MJ$", "$2\\ MJ$", "$2.6\\ MJ$"], correct: 1 },
-    { chapter: "Unit 14", question: "SI unit of electric power is (Additional)", options: ["$1\\ W = Js$", "$1\\ W = Js^{-1}$", "$1\\ W = J^{-1}s^{-1}$", "$1\\ W = J^{-1}s$"], correct: 1 },
-    { chapter: "Unit 14", question: "Potential of neutral wire (Additional)", options: ["$0\\ V$", "$1\\ V$", "$100\\ V$", "$220\\ V$"], correct: 0 },
-    { chapter: "Unit 14", question: "An ideal ammeter has resistance (Additional)", options: ["Very low", "Very large", "Low", "Zero"], correct: 3 },
-    { chapter: "Unit 14", question: "Two resistances $6\\ k\\mathrm{\\Omega}$ and $12k\\mathrm{\\Omega}$ are connected in parallel across a $6\\ V$ battery. The potential difference across $6\\ k\\mathrm{\\Omega}$ resistance is _________ volts. (Additional)", options: ["2", "4", "6", "12"], correct: 2 },
-    { chapter: "Unit 14", question: "A $100\\ Watt$ bulb is connected to $250\\ V$ supply the current flowing through the bulb is (Additional)", options: ["$0.4\\ A$", "$2.5\\ A$", "$4.8$", "$14.5\\ A$"], correct: 0 },
-    { chapter: "Unit 14", question: "The equivalent resistance of two resistor of $6\\ k\\mathrm{\\Omega}$ and $4k\\mathrm{\\Omega}$ are connected in series across $10\\ V$ battery (Additional)", options: ["$10\\ k\\mathrm{\\Omega}$", "$2\\ k\\mathrm{\\Omega}$", "$\\frac{12}{5}\\ k\\mathrm{\\Omega}$", "$\\frac{5}{12}\\ k\\mathrm{\\Omega}$"], correct: 0 },
+    { chapter: "Unit 14: Current Electricity", question: "An electric current in conductors is due to the flow of (Exercise)", options: ["positive ions", "negative ions", "positive charges", "free electrons"], correct: 3 },
+    { chapter: "Unit 14: Current Electricity", question: "What is the voltage across a $6\\ \\Omega$ resistor when $3\\ A$ of current passes through it? (Exercise)", options: ["$2\\ V$", "$9\\ V$", "$18\\ V$", "$36\\ V$"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "What happens to the intensity or the brightness of the lamps connected in series as more and more lamps are added? (Exercise)", options: ["Increases", "decreases", "remains the same", "cannot be predicted"], correct: 1 },
+    { chapter: "Unit 14: Current Electricity", question: "Why should household appliances be connected in parallel with the voltage source? (Exercise)", options: ["to increase the resistance of the circuit", "to decrease the resistance of the circuit", "to provide each appliance the same voltage as the power source", "to provide each appliance the same current as the power source"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "Electric potential and $e.m.f$ (Exercise)", options: ["are the same terms", "are the different terms", "have different units", "both (B) and (C)"], correct: 1 },
+    { chapter: "Unit 14: Current Electricity", question: "When we double the voltage in a simple electric circuit, we double the (Exercise)", options: ["current", "power", "resistance", "both (a) and (b)"], correct: 0 },
+    { chapter: "Unit 14: Current Electricity", question: "If we double both the current and the voltage in a circuit while keeping its resistance constant, the power (Exercise)", options: ["remains unchanged", "halves", "doubles", "Quadruples OR become four times"], correct: 3 },
+    { chapter: "Unit 14: Current Electricity", question: "What is the power rating of a lamp connected to a $12\\ V$ source when it carries $2.5\\ A?$ (Exercise)", options: ["$4.8\\ W$", "$14.5\\ W$", "$30\\ W$", "$60\\ W$"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "The combined resistance of two identical resistors, connected in series is $8\\ \\Omega$. Their combined resistance in a parallel arrangement will be (Exercise)", options: ["$2\\ \\Omega$", "$4\\ \\Omega$", "$8\\ \\Omega$", "$12\\ \\Omega$"], correct: 1 },
+    { chapter: "Unit 14: Current Electricity", question: "Formula of current is (Additional)", options: ["$I = Qt$", "$I = \\frac{Q}{t}$", "$I = \\frac{t}{Q}$", "All of these"], correct: 1 },
+    { chapter: "Unit 14: Current Electricity", question: "SI unit of current is (Additional)", options: ["Coulomb", "Ampere", "Volt", "Farad"], correct: 1 },
+    { chapter: "Unit 14: Current Electricity", question: "The unit of potential difference is (Additional)", options: ["Joule", "Coulomb", "Farad", "Volt"], correct: 3 },
+    { chapter: "Unit 14: Current Electricity", question: "Formula of $e.m.f$ (Additional)", options: ["$E = \\frac{J}{Q}$", "$E = \\frac{W}{I}$", "$E = \\frac{W}{Q}$", "$E = \\frac{W}{Q}$"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "The unit of $e.m.f$ in SI system is equal to (Additional)", options: ["$J$", "$Jm^{-1}$", "$JS^{-1}$", "$JC^{-1}$ OR $V$(volt)"], correct: 3 },
+    { chapter: "Unit 14: Current Electricity", question: "An ideal volt meter has resistance (Additional)", options: ["Very low", "Very large", "Low", "Zero"], correct: 1 },
+    { chapter: "Unit 14: Current Electricity", question: "Specific resistance of copper is (Additional)", options: ["$1.7 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$1.69 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$100 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$3500 \\times 10^{-8}\\ \\mathrm{\\Omega}m$"], correct: 0 },
+    { chapter: "Unit 14: Current Electricity", question: "Specific resistance of silver is (Additional)", options: ["$1.7 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$1.69 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$100 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$3500 \\times 10^{-8}\\ \\mathrm{\\Omega}m$"], correct: 0 },
+    { chapter: "Unit 14: Current Electricity", question: "Specific resistance of aluminium is (Additional)", options: ["$2.75 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$5.25 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$9.8 \\times 10^{-8}\\ \\mathrm{\\Omega}m$", "$10.6 \\times 10^{-8}\\ \\mathrm{\\Omega}m$"], correct: 0 },
+    { chapter: "Unit 14: Current Electricity", question: "Unit of resistance is (Additional)", options: ["$F$(Farad)", "$C$(Coulomb)", "$\\mathrm{\\Omega}$(Ohm)", "$V$(Volt)"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "When resistances are connected in series, the current passing through them is (Additional)", options: ["Different", "Zero", "Same", "None"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "Which one is OHMIC in nature? (Additional)", options: ["Thermister", "Filament lamp", "Fixed resistor", "Variable resistor"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "Mathematical form of joule's law (Additional)", options: ["$W = I^{2}Rt$", "$W = IR^{2}t$", "$W = I^{2}R^{2}t$", "$W = IRt$"], correct: 1 },
+    { chapter: "Unit 14: Current Electricity", question: "Which one is not true for power? (Additional)", options: ["$P = I^{2}R$", "$P = \\frac{QV}{t}$", "$P = IR$", "$P = IV$"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "The unit of electric power is (Additional)", options: ["Ampere", "Joule", "Watt", "Volt"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "$1kWh$ is equal to (Additional)", options: ["$3\\ MJ$", "$3.6\\ MJ$", "$2\\ MJ$", "$2.6\\ MJ$"], correct: 1 },
+    { chapter: "Unit 14: Current Electricity", question: "SI unit of electric power is (Additional)", options: ["$1\\ W = Js$", "$1\\ W = Js^{-1}$", "$1\\ W = J^{-1}s^{-1}$", "$1\\ W = J^{-1}s$"], correct: 1 },
+    { chapter: "Unit 14: Current Electricity", question: "Potential of neutral wire (Additional)", options: ["$0\\ V$", "$1\\ V$", "$100\\ V$", "$220\\ V$"], correct: 0 },
+    { chapter: "Unit 14: Current Electricity", question: "An ideal ammeter has resistance (Additional)", options: ["Very low", "Very large", "Low", "Zero"], correct: 3 },
+    { chapter: "Unit 14: Current Electricity", question: "Two resistances $6\\ k\\mathrm{\\Omega}$ and $12k\\mathrm{\\Omega}$ are connected in parallel across a $6\\ V$ battery. The potential difference across $6\\ k\\mathrm{\\Omega}$ resistance is _________ volts. (Additional)", options: ["2", "4", "6", "12"], correct: 2 },
+    { chapter: "Unit 14: Current Electricity", question: "A $100\\ Watt$ bulb is connected to $250\\ V$ supply the current flowing through the bulb is (Additional)", options: ["$0.4\\ A$", "$2.5\\ A$", "$4.8$", "$14.5\\ A$"], correct: 0 },
+    { chapter: "Unit 14: Current Electricity", question: "The equivalent resistance of two resistor of $6\\ k\\mathrm{\\Omega}$ and $4k\\mathrm{\\Omega}$ are connected in series across $10\\ V$ battery (Additional)", options: ["$10\\ k\\mathrm{\\Omega}$", "$2\\ k\\mathrm{\\Omega}$", "$\\frac{12}{5}\\ k\\mathrm{\\Omega}$", "$\\frac{5}{12}\\ k\\mathrm{\\Omega}$"], correct: 0 },
     
     // Unit 15 - Electromagnetism
-    { chapter: "Unit 15", question: "Which statement is true about the magnetic poles? (Exercise)", options: ["unlike poles repel", "like poles attract", "magnetic poles do not effect each other", "a single magnetic pole does not exist"], correct: 3 },
-    { chapter: "Unit 15", question: "What is the direction of the magnetic field lines inside a bar magnet? (Exercise)", options: ["from north pole to south pole", "from south pole to north pole", "from side to side", "there are no magnetic field lines"], correct: 1 },
-    { chapter: "Unit 15", question: "The presence of a magnetic field can be detected by a (Exercise)", options: ["small mass", "stationary positive charge", "stationary negative charge", "magnetic compass"], correct: 3 },
-    { chapter: "Unit 15", question: "If the current in a wire which is placed perpendicular to a magnetic field increases, the force on the wire (Exercise)", options: ["increases", "decreases", "remains the same", "will be zero"], correct: 0 },
-    { chapter: "Unit 15", question: "A D.C motor converts (Exercise)", options: ["mechanical energy into electrical energy", "mechanical energy into chemical energy", "electrical energy into mechanical energy", "electrical energy into chemical energy"], correct: 2 },
-    { chapter: "Unit 15", question: "Which part of a D.C motor reverses the direction of current through the coil every half-cycle? (Exercise)", options: ["the armature", "the commutator", "the brushes", "the slip rings"], correct: 1 },
-    { chapter: "Unit 15", question: "The direction of induced e.m.f. in a circuit is in accordance with conservation of (Exercise)", options: ["Mass", "charge", "momentum", "Energy"], correct: 3 },
-    { chapter: "Unit 15", question: "The step-up transformer (Exercise)", options: ["increases the input current", "increases the input voltage", "has more turns in the primary", "has less turns in the secondary coil"], correct: 1 },
-    { chapter: "Unit 15", question: "The turn ratios of a transformer is10. It means (Exercise)", options: ["$I_{s} = 10I_{p}$", "$N_{s} = \\frac{N_{p}}{10}$", "$N_{s} = 10N_{p}$", "$V_{s} = \\frac{V_{p}}{10}$"], correct: 2 },
-    { chapter: "Unit 15", question: "Laws of electromagnetic induction and electrolysis were presented by (Additional)", options: ["Simon ohm", "George coulomb", "Newton", "Michael faraday"], correct: 3 },
-    { chapter: "Unit 15", question: "In DC motor, coil can rotate in a magnetic field by an angle of (Additional)", options: ["$30^{\\circ}$", "$45^{\\circ}$", "$60^{\\circ}$", "$90^{\\circ}$"], correct: 3 },
-    { chapter: "Unit 15", question: "Which device is based on the principle of electromagnetism (Additional)", options: ["Mobile phone", "T.V", "CD,s", "Electric motor"], correct: 3 },
-    { chapter: "Unit 15", question: "Transformer is used to change the value of (Additional)", options: ["Charge", "Energy", "Power", "Voltage"], correct: 3 },
-    { chapter: "Unit 15", question: "Mutual induction works in (Additional)", options: ["Transistor", "Transformer", "DC motor", "AC generator"], correct: 1 },
-    { chapter: "Unit 15", question: "Transformer is called step-down when (Additional)", options: ["$V_{s} > N_{s}$", "$V_{p} > V_{s}$", "$V_{s} > V_{p}$", "$V_{p} > N_{s}$"], correct: 1 },
-    { chapter: "Unit 15", question: "Formula of ideal transformer is (Additional)", options: ["$V_{p}V_{s} = I_{p}I_{s}$", "$V_{p}I_{p} = V_{s}I_{s}$", "$V_{p}I_{s} = V_{s}I_{p}$", "None of these"], correct: 1 },
-    { chapter: "Unit 15", question: "A strong _________ field lies in Faraday Cage (Additional)", options: ["Gravitational", "Electric", "Magnetic", "geometric"], correct: 1 },
+    { chapter: "Unit 15: Electromagnetism", question: "Which statement is true about the magnetic poles? (Exercise)", options: ["unlike poles repel", "like poles attract", "magnetic poles do not effect each other", "a single magnetic pole does not exist"], correct: 3 },
+    { chapter: "Unit 15: Electromagnetism", question: "What is the direction of the magnetic field lines inside a bar magnet? (Exercise)", options: ["from north pole to south pole", "from south pole to north pole", "from side to side", "there are no magnetic field lines"], correct: 1 },
+    { chapter: "Unit 15: Electromagnetism", question: "The presence of a magnetic field can be detected by a (Exercise)", options: ["small mass", "stationary positive charge", "stationary negative charge", "magnetic compass"], correct: 3 },
+    { chapter: "Unit 15: Electromagnetism", question: "If the current in a wire which is placed perpendicular to a magnetic field increases, the force on the wire (Exercise)", options: ["increases", "decreases", "remains the same", "will be zero"], correct: 0 },
+    { chapter: "Unit 15: Electromagnetism", question: "A D.C motor converts (Exercise)", options: ["mechanical energy into electrical energy", "mechanical energy into chemical energy", "electrical energy into mechanical energy", "electrical energy into chemical energy"], correct: 2 },
+    { chapter: "Unit 15: Electromagnetism", question: "Which part of a D.C motor reverses the direction of current through the coil every half-cycle? (Exercise)", options: ["the armature", "the commutator", "the brushes", "the slip rings"], correct: 1 },
+    { chapter: "Unit 15: Electromagnetism", question: "The direction of induced e.m.f. in a circuit is in accordance with conservation of (Exercise)", options: ["Mass", "charge", "momentum", "Energy"], correct: 3 },
+    { chapter: "Unit 15: Electromagnetism", question: "The step-up transformer (Exercise)", options: ["increases the input current", "increases the input voltage", "has more turns in the primary", "has less turns in the secondary coil"], correct: 1 },
+    { chapter: "Unit 15: Electromagnetism", question: "The turn ratios of a transformer is10. It means (Exercise)", options: ["$I_{s} = 10I_{p}$", "$N_{s} = \\frac{N_{p}}{10}$", "$N_{s} = 10N_{p}$", "$V_{s} = \\frac{V_{p}}{10}$"], correct: 2 },
+    { chapter: "Unit 15: Electromagnetism", question: "Laws of electromagnetic induction and electrolysis were presented by (Additional)", options: ["Simon ohm", "George coulomb", "Newton", "Michael faraday"], correct: 3 },
+    { chapter: "Unit 15: Electromagnetism", question: "In DC motor, coil can rotate in a magnetic field by an angle of (Additional)", options: ["$30^{\\circ}$", "$45^{\\circ}$", "$60^{\\circ}$", "$90^{\\circ}$"], correct: 3 },
+    { chapter: "Unit 15: Electromagnetism", question: "Which device is based on the principle of electromagnetism (Additional)", options: ["Mobile phone", "T.V", "CD,s", "Electric motor"], correct: 3 },
+    { chapter: "Unit 15: Electromagnetism", question: "Transformer is used to change the value of (Additional)", options: ["Charge", "Energy", "Power", "Voltage"], correct: 3 },
+    { chapter: "Unit 15: Electromagnetism", question: "Mutual induction works in (Additional)", options: ["Transistor", "Transformer", "DC motor", "AC generator"], correct: 1 },
+    { chapter: "Unit 15: Electromagnetism", question: "Transformer is called step-down when (Additional)", options: ["$V_{s} > N_{s}$", "$V_{p} > V_{s}$", "$V_{s} > V_{p}$", "$V_{p} > N_{s}$"], correct: 1 },
+    { chapter: "Unit 15: Electromagnetism", question: "Formula of ideal transformer is (Additional)", options: ["$V_{p}V_{s} = I_{p}I_{s}$", "$V_{p}I_{p} = V_{s}I_{s}$", "$V_{p}I_{s} = V_{s}I_{p}$", "None of these"], correct: 1 },
+    { chapter: "Unit 15: Electromagnetism", question: "A strong _________ field lies in Faraday Cage (Additional)", options: ["Gravitational", "Electric", "Magnetic", "geometric"], correct: 1 },
     
     // Unit 16 - Basic Electronics
-    { chapter: "Unit 16", question: "The process by which electrons are emitted by a hot metal surface is known as (Exercise)", options: ["Boiling", "evaporation", "conduction", "thermionic emission"], correct: 3 },
-    { chapter: "Unit 16", question: "The particles emitted from a hot cathode surface are (Exercise)", options: ["positive ions", "negative ions", "protons", "Electrons"], correct: 3 },
-    { chapter: "Unit 16", question: "The logical operation performed by this gate is (Exercise)", options: ["AND", "NOR", "NAND", "OR"], correct: 2 },
-    { chapter: "Unit 16", question: "AND gate can be formed by using two (Exercise)", options: ["NOT gates", "OR gates", "NOR gates", "NAND gates"], correct: 3 },
-    { chapter: "Unit 16", question: "The output of a two-input NOR gate is 1 when: (Exercise)", options: ["A is '1' and B is '0'", "A is '0' and B is '1'", "both A and B are '0'", "both A and B are '1'"], correct: 2 },
-    { chapter: "Unit 16", question: "If X = A.B, then X is '1' when: (Exercise)", options: ["A and B are '1'", "A or B is '0'", "A is '0' and B is '1'", "A is '1' and B is '0'"], correct: 0 },
-    { chapter: "Unit 16", question: "The output of a NAND gate is '0' when (Exercise)", options: ["both of its inputs are '0'", "both of its inputs are '1'", "any of its inputs is '0'", "any of its inputs is '1'"], correct: 1 },
-    { chapter: "Unit 16", question: "The biggest achievement of electronics is (Additional)", options: ["Calculator", "Transistor", "Computer", "Mobile"], correct: 1 },
-    { chapter: "Unit 16", question: "The screen of cathode ray tube consist of material (Additional)", options: ["Zinc", "Iron", "Phosphor", "Glass"], correct: 2 },
-    { chapter: "Unit 16", question: "The screen of cathode ray oscilloscope is (Additional)", options: ["Reflecting", "Refracting", "Diffracting", "Fluorescent"], correct: 3 },
-    { chapter: "Unit 16", question: "CRO is used for (Additional)", options: ["Measurement of voltage", "To find range", "To show wave form", "All of these"], correct: 3 },
-    { chapter: "Unit 16", question: "In tungsten filament, the potential given to produce the beam of electrons by thermionic emission (Additional)", options: ["$6\\ V$", "$7\\ V$", "$8\\ V$", "$9\\ V$"], correct: 0 },
-    { chapter: "Unit 16", question: "In tungsten filament, the current given to produce the beam of electrons by thermionic emission (Additional)", options: ["$0.1\\ A$", "$0.2\\ A$", "$0.3\\ A$", "$0.4\\ A$"], correct: 2 },
-    { chapter: "Unit 16", question: "One megabyte is equal to (Additional)", options: ["$1000\\ KB$", "$1004\\ KB$", "$1014\\ KB$", "$1024\\ KB$"], correct: 3 },
-    { chapter: "Unit 16", question: "The output of a two-input OR gate is $0$ when (Additional)", options: ["$A = 0,\\ B = 0$", "$A = 1,\\ B = 1$", "$A = 0,\\ B = 1$", "$A = 1,\\ B = 0$"], correct: 0 },
-    { chapter: "Unit 16", question: "In CRO potential of grid is (Additional)", options: ["Positive", "Negative", "Zero", "Neutral"], correct: 1 },
-    { chapter: "Unit 16", question: "The equation of AND operation is (Additional)", options: ["$X = A.B$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 0 },
-    { chapter: "Unit 16", question: "The equation of OR operation is (Additional)", options: ["$X = A.B$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 1 },
-    { chapter: "Unit 16", question: "The equation of NOT operation is (Additional)", options: ["$X = \\overline{A.B}$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 2 },
-    { chapter: "Unit 16", question: "The equation of NAND operation is (Additional)", options: ["$X = \\overline{A.B}$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 0 },
-    { chapter: "Unit 16", question: "The equation of NOR operation is (Additional)", options: ["$X = \\overline{A.B}$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 3 },
-    { chapter: "Unit 16", question: "One byte is equal to (Additional)", options: ["$0\\ bit$", "$1\\ bit$", "$4\\ bits$", "$8\\ bits$"], correct: 3 },
-    { chapter: "Unit 16", question: "Number of input terminals in $NOT$ gate (Additional)", options: ["1", "2", "3", "4"], correct: 0 },
+    { chapter: "Unit 16: Basic Electronics", question: "The process by which electrons are emitted by a hot metal surface is known as (Exercise)", options: ["Boiling", "evaporation", "conduction", "thermionic emission"], correct: 3 },
+    { chapter: "Unit 16: Basic Electronics", question: "The particles emitted from a hot cathode surface are (Exercise)", options: ["positive ions", "negative ions", "protons", "Electrons"], correct: 3 },
+    { chapter: "Unit 16: Basic Electronics", question: "The logical operation performed by this gate is (Exercise)", options: ["AND", "NOR", "NAND", "OR"], correct: 2 },
+    { chapter: "Unit 16: Basic Electronics", question: "AND gate can be formed by using two (Exercise)", options: ["NOT gates", "OR gates", "NOR gates", "NAND gates"], correct: 3 },
+    { chapter: "Unit 16: Basic Electronics", question: "The output of a two-input NOR gate is 1 when: (Exercise)", options: ["A is '1' and B is '0'", "A is '0' and B is '1'", "both A and B are '0'", "both A and B are '1'"], correct: 2 },
+    { chapter: "Unit 16: Basic Electronics", question: "If X = A.B, then X is '1' when: (Exercise)", options: ["A and B are '1'", "A or B is '0'", "A is '0' and B is '1'", "A is '1' and B is '0'"], correct: 0 },
+    { chapter: "Unit 16: Basic Electronics", question: "The output of a NAND gate is '0' when (Exercise)", options: ["both of its inputs are '0'", "both of its inputs are '1'", "any of its inputs is '0'", "any of its inputs is '1'"], correct: 1 },
+    { chapter: "Unit 16: Basic Electronics", question: "The biggest achievement of electronics is (Additional)", options: ["Calculator", "Transistor", "Computer", "Mobile"], correct: 1 },
+    { chapter: "Unit 16: Basic Electronics", question: "The screen of cathode ray tube consist of material (Additional)", options: ["Zinc", "Iron", "Phosphor", "Glass"], correct: 2 },
+    { chapter: "Unit 16: Basic Electronics", question: "The screen of cathode ray oscilloscope is (Additional)", options: ["Reflecting", "Refracting", "Diffracting", "Fluorescent"], correct: 3 },
+    { chapter: "Unit 16: Basic Electronics", question: "CRO is used for (Additional)", options: ["Measurement of voltage", "To find range", "To show wave form", "All of these"], correct: 3 },
+    { chapter: "Unit 16: Basic Electronics", question: "In tungsten filament, the potential given to produce the beam of electrons by thermionic emission (Additional)", options: ["$6\\ V$", "$7\\ V$", "$8\\ V$", "$9\\ V$"], correct: 0 },
+    { chapter: "Unit 16: Basic Electronics", question: "In tungsten filament, the current given to produce the beam of electrons by thermionic emission (Additional)", options: ["$0.1\\ A$", "$0.2\\ A$", "$0.3\\ A$", "$0.4\\ A$"], correct: 2 },
+    { chapter: "Unit 16: Basic Electronics", question: "One megabyte is equal to (Additional)", options: ["$1000\\ KB$", "$1004\\ KB$", "$1014\\ KB$", "$1024\\ KB$"], correct: 3 },
+    { chapter: "Unit 16: Basic Electronics", question: "The output of a two-input OR gate is $0$ when (Additional)", options: ["$A = 0,\\ B = 0$", "$A = 1,\\ B = 1$", "$A = 0,\\ B = 1$", "$A = 1,\\ B = 0$"], correct: 0 },
+    { chapter: "Unit 16: Basic Electronics", question: "In CRO potential of grid is (Additional)", options: ["Positive", "Negative", "Zero", "Neutral"], correct: 1 },
+    { chapter: "Unit 16: Basic Electronics", question: "The equation of AND operation is (Additional)", options: ["$X = A.B$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 0 },
+    { chapter: "Unit 16: Basic Electronics", question: "The equation of OR operation is (Additional)", options: ["$X = A.B$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 1 },
+    { chapter: "Unit 16: Basic Electronics", question: "The equation of NOT operation is (Additional)", options: ["$X = \\overline{A.B}$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 2 },
+    { chapter: "Unit 16: Basic Electronics", question: "The equation of NAND operation is (Additional)", options: ["$X = \\overline{A.B}$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 0 },
+    { chapter: "Unit 16: Basic Electronics", question: "The equation of NOR operation is (Additional)", options: ["$X = \\overline{A.B}$", "$X = A + B$", "$X = \\overline{A}$", "$X = \\overline{A + B}$"], correct: 3 },
+    { chapter: "Unit 16: Basic Electronics", question: "One byte is equal to (Additional)", options: ["$0\\ bit$", "$1\\ bit$", "$4\\ bits$", "$8\\ bits$"], correct: 3 },
+    { chapter: "Unit 16: Basic Electronics", question: "Number of input terminals in $NOT$ gate (Additional)", options: ["1", "2", "3", "4"], correct: 0 },
     
     // Unit 17 - Information and Communication Technology
-    { chapter: "Unit 17", question: "In computer terminology information means (Exercise)", options: ["any data", "raw data", "processed data", "large data"], correct: 2 },
-    { chapter: "Unit 17", question: "Which is the most suitable means of reliable continuous communication between an orbiting satellite and Earth? (Exercise)", options: ["Microwaves", "radiowaves", "sound waves", "any light wave"], correct: 0 },
-    { chapter: "Unit 17", question: "The basic operations performed by a computer are (Exercise)", options: ["arithmetic operations", "non-arithmetic operations", "logical operations", "both (a) and (c)"], correct: 3 },
-    { chapter: "Unit 17", question: "The brain of any computer system is (Exercise)", options: ["Monitor", "memory", "CPU", "control unit"], correct: 2 },
-    { chapter: "Unit 17", question: "Which of the following is not processing? (Exercise)", options: ["Arranging", "manipulating", "calculating", "Gathering"], correct: 3 },
-    { chapter: "Unit 17", question: "From which of the following we can get information almost about everything. (Exercise)", options: ["Book", "teacher", "computer", "Internet"], correct: 3 },
-    { chapter: "Unit 17", question: "What does the term e-mail stand for? (Exercise)", options: ["emergency mail", "electronic mail", "extra mail", "external mail"], correct: 1 },
-    { chapter: "Unit 17", question: "If a metal (tungsten filament) is heated to high temperature which of the particles or emitted (Additional)", options: ["Neutrons", "Protons", "Electrons", "(A) And (B) both"], correct: 2 },
-    { chapter: "Unit 17", question: "Hardware are devices are (Additional)", options: ["Output devices", "Input devices", "Data storage devices", "All of these"], correct: 3 },
-    { chapter: "Unit 17", question: "With broadband information can be downloaded in (Additional)", options: ["$1\\ sec$", "$1\\ min.$", "$1\\ day$", "$2\\ days$"], correct: 0 },
-    { chapter: "Unit 17", question: "CD can store computer data (Additional)", options: ["$680$ mega byte", "$1000$ mega byte", "$610$ mega byte", "$620$ byte"], correct: 0 },
-    { chapter: "Unit 17", question: "The disk made of aluminum is (Additional)", options: ["Compact disk", "hard disk", "Floppy disk", "Laser disk"], correct: 1 },
-    { chapter: "Unit 17", question: "$1kB$ is equal to (Additional)", options: ["$920$ bytes", "$1000$ bytes", "$1020$ bytes", "$1024$ bytes"], correct: 3 },
-    { chapter: "Unit 17", question: "$1\\ MB$ is equal to (Additional)", options: ["$1024\\ KB$", "$1034\\ KB$", "$1044\\ KB$", "$1054\\ KB$"], correct: 0 },
-    { chapter: "Unit 17", question: "If CD is made of metal then it is called (Additional)", options: ["Magnetic disk", "Hard disk", "Floppy disk", "Compact disk"], correct: 1 },
-    { chapter: "Unit 17", question: "Alexander Graham Bell invented simple telephone in (Additional)", options: ["1648", "1676", "1776", "1876"], correct: 3 },
-    { chapter: "Unit 17", question: "Working principle of a telephone is similar to (Additional)", options: ["Type writer", "E-mail", "Computer", "Telegraph"], correct: 3 },
-    { chapter: "Unit 17", question: "The first radio signals transmitted through air by (Additional)", options: ["Marconi", "Newton", "Coulomb", "Flaming"], correct: 0 },
-    { chapter: "Unit 17", question: "Which of these is not a web browser (Additional)", options: ["Chrome", "Mozilla Firefox", "Safari", "YouTube"], correct: 3 },
-    { chapter: "Unit 17", question: "In computer terminology, the term machinery is referred to (Additional)", options: ["Procedure", "Data", "Hardware", "Software"], correct: 2 },
-    { chapter: "Unit 17", question: "Mouthpiece and earpiece are the parts of (Additional)", options: ["Microscope", "Telephone", "Television", "Computer"], correct: 1 },
-    { chapter: "Unit 17", question: "Radio waves are (Additional)", options: ["Stationary", "Electromagnetic", "Particles", "Mechanical waves"], correct: 1 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "In computer terminology information means (Exercise)", options: ["any data", "raw data", "processed data", "large data"], correct: 2 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "Which is the most suitable means of reliable continuous communication between an orbiting satellite and Earth? (Exercise)", options: ["Microwaves", "radiowaves", "sound waves", "any light wave"], correct: 0 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "The basic operations performed by a computer are (Exercise)", options: ["arithmetic operations", "non-arithmetic operations", "logical operations", "both (a) and (c)"], correct: 3 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "The brain of any computer system is (Exercise)", options: ["Monitor", "memory", "CPU", "control unit"], correct: 2 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "Which of the following is not processing? (Exercise)", options: ["Arranging", "manipulating", "calculating", "Gathering"], correct: 3 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "From which of the following we can get information almost about everything. (Exercise)", options: ["Book", "teacher", "computer", "Internet"], correct: 3 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "What does the term e-mail stand for? (Exercise)", options: ["emergency mail", "electronic mail", "extra mail", "external mail"], correct: 1 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "If a metal (tungsten filament) is heated to high temperature which of the particles or emitted (Additional)", options: ["Neutrons", "Protons", "Electrons", "(A) And (B) both"], correct: 2 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "Hardware are devices are (Additional)", options: ["Output devices", "Input devices", "Data storage devices", "All of these"], correct: 3 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "With broadband information can be downloaded in (Additional)", options: ["$1\\ sec$", "$1\\ min.$", "$1\\ day$", "$2\\ days$"], correct: 0 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "CD can store computer data (Additional)", options: ["$680$ mega byte", "$1000$ mega byte", "$610$ mega byte", "$620$ byte"], correct: 0 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "The disk made of aluminum is (Additional)", options: ["Compact disk", "hard disk", "Floppy disk", "Laser disk"], correct: 1 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "$1kB$ is equal to (Additional)", options: ["$920$ bytes", "$1000$ bytes", "$1020$ bytes", "$1024$ bytes"], correct: 3 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "$1\\ MB$ is equal to (Additional)", options: ["$1024\\ KB$", "$1034\\ KB$", "$1044\\ KB$", "$1054\\ KB$"], correct: 0 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "If CD is made of metal then it is called (Additional)", options: ["Magnetic disk", "Hard disk", "Floppy disk", "Compact disk"], correct: 1 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "Alexander Graham Bell invented simple telephone in (Additional)", options: ["1648", "1676", "1776", "1876"], correct: 3 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "Working principle of a telephone is similar to (Additional)", options: ["Type writer", "E-mail", "Computer", "Telegraph"], correct: 3 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "The first radio signals transmitted through air by (Additional)", options: ["Marconi", "Newton", "Coulomb", "Flaming"], correct: 0 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "Which of these is not a web browser (Additional)", options: ["Chrome", "Mozilla Firefox", "Safari", "YouTube"], correct: 3 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "In computer terminology, the term machinery is referred to (Additional)", options: ["Procedure", "Data", "Hardware", "Software"], correct: 2 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "Mouthpiece and earpiece are the parts of (Additional)", options: ["Microscope", "Telephone", "Television", "Computer"], correct: 1 },
+    { chapter: "Unit 17: Information and Communication Technology", question: "Radio waves are (Additional)", options: ["Stationary", "Electromagnetic", "Particles", "Mechanical waves"], correct: 1 },
     
     // Unit 18 - Atomic and Nuclear Physics
-    { chapter: "Unit 18", question: "Isotopes are atoms of same element with different (Exercise)", options: ["atomic mass", "atomic number", "number of protons", "number of electrons"], correct: 0 },
-    { chapter: "Unit 18", question: "One of the isotopes of uranium is $_{92}^{238}U$. The number of neutrons in this isotope is (Exercise)", options: ["92", "146", "238", "330"], correct: 1 },
-    { chapter: "Unit 18", question: "Which among the following radiations has more penetrating power? (Exercise)", options: ["a beta particle", "a gamma ray", "an alpha particle", "all have the same penetrating ability"], correct: 1 },
-    { chapter: "Unit 18", question: "What happens to the atomic number of an element which emits one alpha particle? (Exercise)", options: ["increases by 1", "stays the same", "decreases by 2", "decreases by 1"], correct: 2 },
-    { chapter: "Unit 18", question: "The half-life of a certain isotope is 1 day. What is the quantity of the isotope after 2 days? (Exercise)", options: ["one-half", "one-quarter", "one-eighth", "none of these"], correct: 1 },
-    { chapter: "Unit 18", question: "When Uranium (92 protons) ejects a beta particle, how many protons will be in the remaining nucleus? (Exercise)", options: ["89 protons", "90 protons", "91 protons", "93 protons"], correct: 3 },
-    { chapter: "Unit 18", question: "Release of energy by the Sun is due to (Exercise)", options: ["nuclear fission", "nuclear fusion", "burning of gases", "chemical reaction"], correct: 1 },
-    { chapter: "Unit 18", question: "When a heavy nucleus splits into two lighter nuclei, the process would (Exercise)", options: ["release nuclear energy", "absorb nuclear energy", "release chemical energy", "absorb chemical energy"], correct: 0 },
-    { chapter: "Unit 18", question: "The reason carbon-dating works is that (Exercise)", options: ["plants and animals are such strong emitters of carbon-14", "after a plant or animal dies, it stops taking in fresh carbon-14", "there is so much non-radioactive carbon dioxide in the air", "When plants or animals die. they absorb fresh carbon -14"], correct: 1 },
-    { chapter: "Unit 18", question: "Proton heavier than electron (Additional)", options: ["$1636\\ times$", "$1736\\ times$", "$1836\\ times$", "$1936\\ times$"], correct: 2 },
-    { chapter: "Unit 18", question: "Atomic mass number can be found by relation (Additional)", options: ["$Z - A$", "$A + N$", "$Z + N$", "$Z + A$"], correct: 2 },
-    { chapter: "Unit 18", question: "The temperature of sun is (Additional)", options: ["20 kilo Kelvin", "30 million Kelvin", "20 million Kelvin", "30 kilo Kelvin"], correct: 2 },
-    { chapter: "Unit 18", question: "The number of neutrons in tritium $\\left(_{1}^{3}H \\right)$ is (Additional)", options: ["$1$", "$2$", "$3$", "$0$"], correct: 1 },
-    { chapter: "Unit 18", question: "The number of neutrons in deuterium $\\left(_{1}^{2}H \\right)$ is (Additional)", options: ["$1$", "$2$", "$3$", "$0$"], correct: 0 },
-    { chapter: "Unit 18", question: "The number of neutrons in protium $\\left(_{1}^{1}H \\right)$ is (Additional)", options: ["$1$", "$2$", "$3$", "$0$"], correct: 3 },
-    { chapter: "Unit 18", question: "In $\\alpha$ decay decrease in atomic number _________ and mass number _________ (Additional)", options: ["$2,\\ 1$", "$2,\\ 4$", "$2,\\ 2$", "Constant"], correct: 1 },
-    { chapter: "Unit 18", question: "Safe limit of radiation exposure is _________ per year (Additional)", options: ["$3\\ rem$", "$4\\ rem$", "$5\\ rem$", "$6\\ rem$"], correct: 2 },
-    { chapter: "Unit 18", question: "Patient should be exposed to X-rays with limit (Additional)", options: ["$0\\ to\\ 1.0\\ rem$", "$1\\ to\\ 2\\ rem$", "$0.1\\ to\\ 1.0\\ rem$", "$0.2\\ to\\ 2.0\\ rem$"], correct: 2 },
-    { chapter: "Unit 18", question: "Half life of hydrogen $_{0}^{1}H$ is (Additional)", options: ["12 years", "12.3 years", "30 years", "30.3 years"], correct: 1 },
-    { chapter: "Unit 18", question: "Half life of cobalt $_{6}^{14}{Co}$ is (Additional)", options: ["12 years", "12.3 years", "30 years", "30.3 years"], correct: 2 },
-    { chapter: "Unit 18", question: "Half life of carbon $_{6}^{14}C$ is (Additional)", options: ["3750 years", "5370 years", "5730 years", "7530 years"], correct: 2 },
-    { chapter: "Unit 18", question: "Half life of iodine $_{53}^{131}I$ is (Additional)", options: ["8.07 days", "9.08 days", "10.6 days", "16.9 days"], correct: 0 },
-    { chapter: "Unit 18", question: "Half life of lead $_{82}^{212}{Pb}$ is (Additional)", options: ["8.07 hours", "9.08 hours", "10.6 hours", "16.9 hours"], correct: 2 },
-    { chapter: "Unit 18", question: "Half life of polonium $_{84}^{194}{Po}$ is (Additional)", options: ["0.1 sec", "0.3 sec", "0.5 sec", "0.7 sec"], correct: 3 },
-    { chapter: "Unit 18", question: "Half life of polonium $_{84}^{210}{Po}$ is (Additional)", options: ["12 years", "12.3 years", "130 years", "138 years"], correct: 3 },
-    { chapter: "Unit 18", question: "Half life of uranium$_{92}^{235}U$ is (Additional)", options: ["$7.1 \\times 10^{8}$ years", "$3.0 \\times 10^{8}$ years", "$4.51 \\times 10^{9}$ years", "$3.5 \\times 10^{9}$ years"], correct: 0 },
-    { chapter: "Unit 18", question: "Half life of uranium$_{92}^{236}U$ is (Additional)", options: ["$7.1 \\times 10^{8}$ years", "$3.79 \\times 10^{5}$ years", "$4.51 \\times 10^{9}$ years", "$3.5 \\times 10^{6}$ years"], correct: 2 },
-    { chapter: "Unit 18", question: "Half life of plutonium$_{94}^{242}{Pu}$ is (Additional)", options: ["$7.1 \\times 10^{8}$ years", "$3.79 \\times 10^{5}$ years", "$4.51 \\times 10^{9}$ years", "$3.5 \\times 10^{6}$ years"], correct: 1 },
-    { chapter: "Unit 18", question: "Half life of plutonium$_{94}^{236}{Pu}$ is (Additional)", options: ["0.85 years", "1.85 years", "2.85 years", "3.5 years"], correct: 2 },
-    { chapter: "Unit 18", question: "Beta particle is actually (Additional)", options: ["Neutrons", "Positrons", "Electron", "Proton"], correct: 2 },
-    { chapter: "Unit 18", question: "Alpha particles are (Additional)", options: ["Neutrons", "Helium", "Electron", "Proton"], correct: 1 },
-    { chapter: "Unit 18", question: "During fission of $1\\ kg$ of uranium$_{92}^{235}U$ energy is released (Additional)", options: ["$67 \\times 10^{10}\\ J$ OR $6.7 \\times 10^{11}\\ J$", "$65 \\times 10^{8}\\ J$", "$65 \\times 10^{8}\\ J$", "$67 \\times 10^{11}\\ J$"], correct: 0 },
-    { chapter: "Unit 18", question: "To burn 1 tone of coal ......energy is released (Additional)", options: ["$36\\  \\times \\ 10^{11}\\ J$", "$2.6\\  \\times \\ 10^{11}\\ J$", "$36\\  \\times \\ 10^{9}\\ J$ OR $3.6\\  \\times \\ 10^{10}\\ J$", "$2.6\\  \\times \\ 10^{10}\\ J$"], correct: 2 },
-    { chapter: "Unit 18", question: "Number of neutrons during emission of fission reaction are (Additional)", options: ["$2$", "$3$", "$4$", "$5$"], correct: 1 },
-    { chapter: "Unit 18", question: "To diagnose a brain tumor, it is used (Additional)", options: ["$I - 131$", "$Phosph.\\  - 32$", "$Co - 60$", "$C - 14$"], correct: 1 },
-    { chapter: "Unit 18", question: "The rays used during brain radiotherapy (Additional)", options: ["$\\alpha - rays$", "$\\beta - rays$", "$\\gamma - rays$", "$X - rays$"], correct: 2 },
-    { chapter: "Unit 18", question: "$\\alpha - rays$ passing through a gas produce (Additional)", options: ["Evaporation", "Ionization", "Excitation", "All of these"], correct: 1 },
-    { chapter: "Unit 18", question: "The half-life of radium-226 is (Additional)", options: ["4000 years", "2000 years", "1620 years", "5730 years"], correct: 2 },
-    { chapter: "Unit 18", question: "Electron volt is also a unit of energy used in atomic and nearly physics $1eV = \\ ?$ (Additional)", options: ["$1.6 \\times 10^{19}\\ J$", "$1.6 \\times 10^{-19}\\ J$", "$1.6 \\times 10^{18}\\ J$", "$1.6 \\times 10^{-18}\\ J$"], correct: 1 },
-    { chapter: "Unit 18", question: "Which of the following option is the stream of high energy electrons? (Additional)", options: ["Alpha particles", "Beta radiations", "Gemma radiations", "Positive ions"], correct: 1 },
-    { chapter: "Unit 18", question: "SI unit of radioactivity is (Additional)", options: ["$Rem$", "$Bq$", "$Bit$", "$J$"], correct: 1 },
-    { chapter: "Unit 18", question: "The process by which electron are emitted by hot metal surface is known (Additional)", options: ["Conduction", "Thermionic emission", "Evaporation", "boiling"], correct: 1 },
-    { chapter: "Unit 18", question: "Isotope of iodine-131 is used in treatment of (Additional)", options: ["Blood cancer", "Bone cancer", "Lungs cancer", "Thyroid cancer"], correct: 3 },
-    { chapter: "Unit 18", question: "One of the isotope uranium $_{92}^{238}U$. The number of neutrons in this isotope (Additional)", options: ["92", "146", "238", "330"], correct: 1 }
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Isotopes are atoms of same element with different (Exercise)", options: ["atomic mass", "atomic number", "number of protons", "number of electrons"], correct: 0 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "One of the isotopes of uranium is $_{92}^{238}U$. The number of neutrons in this isotope is (Exercise)", options: ["92", "146", "238", "330"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Which among the following radiations has more penetrating power? (Exercise)", options: ["a beta particle", "a gamma ray", "an alpha particle", "all have the same penetrating ability"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "What happens to the atomic number of an element which emits one alpha particle? (Exercise)", options: ["increases by 1", "stays the same", "decreases by 2", "decreases by 1"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "The half-life of a certain isotope is 1 day. What is the quantity of the isotope after 2 days? (Exercise)", options: ["one-half", "one-quarter", "one-eighth", "none of these"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "When Uranium (92 protons) ejects a beta particle, how many protons will be in the remaining nucleus? (Exercise)", options: ["89 protons", "90 protons", "91 protons", "93 protons"], correct: 3 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Release of energy by the Sun is due to (Exercise)", options: ["nuclear fission", "nuclear fusion", "burning of gases", "chemical reaction"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "When a heavy nucleus splits into two lighter nuclei, the process would (Exercise)", options: ["release nuclear energy", "absorb nuclear energy", "release chemical energy", "absorb chemical energy"], correct: 0 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "The reason carbon-dating works is that (Exercise)", options: ["plants and animals are such strong emitters of carbon-14", "after a plant or animal dies, it stops taking in fresh carbon-14", "there is so much non-radioactive carbon dioxide in the air", "When plants or animals die. they absorb fresh carbon -14"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Proton heavier than electron (Additional)", options: ["$1636\\ times$", "$1736\\ times$", "$1836\\ times$", "$1936\\ times$"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Atomic mass number can be found by relation (Additional)", options: ["$Z - A$", "$A + N$", "$Z + N$", "$Z + A$"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "The temperature of sun is (Additional)", options: ["20 kilo Kelvin", "30 million Kelvin", "20 million Kelvin", "30 kilo Kelvin"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "The number of neutrons in tritium $\\left(_{1}^{3}H \\right)$ is (Additional)", options: ["$1$", "$2$", "$3$", "$0$"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "The number of neutrons in deuterium $\\left(_{1}^{2}H \\right)$ is (Additional)", options: ["$1$", "$2$", "$3$", "$0$"], correct: 0 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "The number of neutrons in protium $\\left(_{1}^{1}H \\right)$ is (Additional)", options: ["$1$", "$2$", "$3$", "$0$"], correct: 3 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "In $\\alpha$ decay decrease in atomic number _________ and mass number _________ (Additional)", options: ["$2,\\ 1$", "$2,\\ 4$", "$2,\\ 2$", "Constant"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Safe limit of radiation exposure is _________ per year (Additional)", options: ["$3\\ rem$", "$4\\ rem$", "$5\\ rem$", "$6\\ rem$"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Patient should be exposed to X-rays with limit (Additional)", options: ["$0\\ to\\ 1.0\\ rem$", "$1\\ to\\ 2\\ rem$", "$0.1\\ to\\ 1.0\\ rem$", "$0.2\\ to\\ 2.0\\ rem$"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of hydrogen $_{0}^{1}H$ is (Additional)", options: ["12 years", "12.3 years", "30 years", "30.3 years"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of cobalt $_{6}^{14}{Co}$ is (Additional)", options: ["12 years", "12.3 years", "30 years", "30.3 years"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of carbon $_{6}^{14}C$ is (Additional)", options: ["3750 years", "5370 years", "5730 years", "7530 years"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of iodine $_{53}^{131}I$ is (Additional)", options: ["8.07 days", "9.08 days", "10.6 days", "16.9 days"], correct: 0 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of lead $_{82}^{212}{Pb}$ is (Additional)", options: ["8.07 hours", "9.08 hours", "10.6 hours", "16.9 hours"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of polonium $_{84}^{194}{Po}$ is (Additional)", options: ["0.1 sec", "0.3 sec", "0.5 sec", "0.7 sec"], correct: 3 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of polonium $_{84}^{210}{Po}$ is (Additional)", options: ["12 years", "12.3 years", "130 years", "138 years"], correct: 3 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of uranium$_{92}^{235}U$ is (Additional)", options: ["$7.1 \\times 10^{8}$ years", "$3.0 \\times 10^{8}$ years", "$4.51 \\times 10^{9}$ years", "$3.5 \\times 10^{9}$ years"], correct: 0 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of uranium$_{92}^{236}U$ is (Additional)", options: ["$7.1 \\times 10^{8}$ years", "$3.79 \\times 10^{5}$ years", "$4.51 \\times 10^{9}$ years", "$3.5 \\times 10^{6}$ years"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of plutonium$_{94}^{242}{Pu}$ is (Additional)", options: ["$7.1 \\times 10^{8}$ years", "$3.79 \\times 10^{5}$ years", "$4.51 \\times 10^{9}$ years", "$3.5 \\times 10^{6}$ years"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Half life of plutonium$_{94}^{236}{Pu}$ is (Additional)", options: ["0.85 years", "1.85 years", "2.85 years", "3.5 years"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Beta particle is actually (Additional)", options: ["Neutrons", "Positrons", "Electron", "Proton"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Alpha particles are (Additional)", options: ["Neutrons", "Helium", "Electron", "Proton"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "During fission of $1\\ kg$ of uranium$_{92}^{235}U$ energy is released (Additional)", options: ["$67 \\times 10^{10}\\ J$ OR $6.7 \\times 10^{11}\\ J$", "$65 \\times 10^{8}\\ J$", "$65 \\times 10^{8}\\ J$", "$67 \\times 10^{11}\\ J$"], correct: 0 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "To burn 1 tone of coal ......energy is released (Additional)", options: ["$36\\  \\times \\ 10^{11}\\ J$", "$2.6\\  \\times \\ 10^{11}\\ J$", "$36\\  \\times \\ 10^{9}\\ J$ OR $3.6\\  \\times \\ 10^{10}\\ J$", "$2.6\\  \\times \\ 10^{10}\\ J$"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Number of neutrons during emission of fission reaction are (Additional)", options: ["$2$", "$3$", "$4$", "$5$"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "To diagnose a brain tumor, it is used (Additional)", options: ["$I - 131$", "$Phosph.\\  - 32$", "$Co - 60$", "$C - 14$"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "The rays used during brain radiotherapy (Additional)", options: ["$\\alpha - rays$", "$\\beta - rays$", "$\\gamma - rays$", "$X - rays$"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "$\\alpha - rays$ passing through a gas produce (Additional)", options: ["Evaporation", "Ionization", "Excitation", "All of these"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "The half-life of radium-226 is (Additional)", options: ["4000 years", "2000 years", "1620 years", "5730 years"], correct: 2 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Electron volt is also a unit of energy used in atomic and nearly physics $1eV = \\ ?$ (Additional)", options: ["$1.6 \\times 10^{19}\\ J$", "$1.6 \\times 10^{-19}\\ J$", "$1.6 \\times 10^{18}\\ J$", "$1.6 \\times 10^{-18}\\ J$"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Which of the following option is the stream of high energy electrons? (Additional)", options: ["Alpha particles", "Beta radiations", "Gemma radiations", "Positive ions"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "SI unit of radioactivity is (Additional)", options: ["$Rem$", "$Bq$", "$Bit$", "$J$"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "The process by which electron are emitted by hot metal surface is known (Additional)", options: ["Conduction", "Thermionic emission", "Evaporation", "boiling"], correct: 1 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "Isotope of iodine-131 is used in treatment of (Additional)", options: ["Blood cancer", "Bone cancer", "Lungs cancer", "Thyroid cancer"], correct: 3 },
+    { chapter: "Unit 18: Atomic and Nuclear Physics", question: "One of the isotope uranium $_{92}^{238}U$. The number of neutrons in this isotope (Additional)", options: ["92", "146", "238", "330"], correct: 1 }
   ];
 
   // Global test state
   let testState = {
-    studentName: localStorage.getItem('studentName') || '',
-    schoolName: localStorage.getItem('schoolName') || '',
-    contact: localStorage.getItem('contact') || '',
-    rollNumber: localStorage.getItem('rollNumber') || '',
-    email: localStorage.getItem('email') || '',
+    studentName: '',
+    schoolName: '',
+    mobileNumber: '',
+    rollNumber: '',
+    email: '',
     currentQuestion: 0,
     answers: [],
     marked: [],
@@ -686,128 +705,118 @@
     originalIndices: []
   };
 
-  // If we have stored data, pre-fill the form
-  if (testState.studentName) {
-    document.getElementById('studentName').value = testState.studentName;
-    document.getElementById('schoolName').value = testState.schoolName;
-    document.getElementById('contact').value = testState.contact;
-    document.getElementById('rollNumber').value = testState.rollNumber;
-    document.getElementById('email').value = testState.email;
-  }
-
   // DOM elements
   const studentInfo = document.getElementById('student-info');
   const dashboard = document.getElementById('chapter-dashboard');
   const testContainer = document.getElementById('test-container');
   const resultsSec = document.getElementById('results-section');
   const controlsFooter = document.getElementById('test-controls-footer');
-  const studentForm = document.getElementById('studentForm');
-  const submitBtn = document.getElementById('submitFormBtn');
+  const registerBtn = document.getElementById('registerBtn');
   const successMessage = document.getElementById('success-message');
+  const resultsSubmissionStatus = document.getElementById('results-submission-status');
 
-  // Handle form submission with fetch API (no redirect)
-  submitBtn.addEventListener('click', async function() {
+  // Register button click - save data and show dashboard
+  registerBtn.addEventListener('click', function() {
     // Get form values
-    const studentName = document.getElementById('studentName').value.trim();
+    const fullName = document.getElementById('fullName').value.trim();
+    const mobileNumber = document.getElementById('mobileNumber').value.trim();
     const schoolName = document.getElementById('schoolName').value.trim();
-    const contact = document.getElementById('contact').value.trim();
     const rollNumber = document.getElementById('rollNumber').value.trim();
-    const email = document.getElementById('email').value.trim();
+    const emailAddress = document.getElementById('emailAddress').value.trim();
     
-    // Validate
-    if (!studentName || !schoolName || !contact) {
-      alert('Please enter your name, school name, and contact number.');
+    // Validate required fields
+    if (!fullName) {
+      alert('Please enter your full name.');
+      document.getElementById('fullName').focus();
       return;
     }
     
-    // Validate phone
-    const phonePattern = /^03\d{2}-?\d{7}$/;
-    if (!phonePattern.test(contact.replace(/-/g, ''))) {
-      alert('Please enter a valid contact number in format 03XX-XXXXXXX');
+    if (!mobileNumber) {
+      alert('Please enter your mobile number.');
+      document.getElementById('mobileNumber').focus();
       return;
     }
+    
+    if (!schoolName) {
+      alert('Please enter your school name.');
+      document.getElementById('schoolName').focus();
+      return;
+    }
+    
+    if (!rollNumber) {
+      alert('Please enter your roll number.');
+      document.getElementById('rollNumber').focus();
+      return;
+    }
+    
+    // Save to test state
+    testState.studentName = fullName;
+    testState.mobileNumber = mobileNumber;
+    testState.schoolName = schoolName;
+    testState.rollNumber = rollNumber;
+    testState.email = emailAddress || 'Not provided';
     
     // Save to localStorage
-    localStorage.setItem('studentName', studentName);
+    localStorage.setItem('studentName', fullName);
+    localStorage.setItem('mobileNumber', mobileNumber);
     localStorage.setItem('schoolName', schoolName);
-    localStorage.setItem('contact', contact);
     localStorage.setItem('rollNumber', rollNumber);
-    localStorage.setItem('email', email);
+    localStorage.setItem('email', emailAddress);
     
-    // Update test state
-    testState.studentName = studentName;
-    testState.schoolName = schoolName;
-    testState.contact = contact;
-    testState.rollNumber = rollNumber;
-    testState.email = email;
+    // Create combined message for initial registration
+    const combinedMessage = 
+      `Student Registration:\n` +
+      `Name: ${fullName}\n` +
+      `Mobile: ${mobileNumber}\n` +
+      `School: ${schoolName}\n` +
+      `Roll No: ${rollNumber}\n` +
+      `Email: ${emailAddress || 'Not provided'}`;
     
-    // Update displays
-    document.getElementById('dashboard-student-name').textContent = studentName;
-    document.getElementById('student-info-display').textContent = `${studentName} | ${schoolName}`;
+    document.getElementById('combinedMessage').value = combinedMessage;
     
-    // Create combined message
-    let message = `${studentName} from ${schoolName} registered for Class 10 Physics MCQ Test.\n`;
-    message += `Contact: ${contact}\n`;
-    if (rollNumber) message += `Roll Number: ${rollNumber}\n`;
-    if (email) message += `Email: ${email}\n`;
-    document.getElementById('formMessage').value = message;
+    // Submit initial registration to Web3Forms
+    const formData = new FormData(document.getElementById('studentForm'));
     
-    // Show loading
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '<span>⏳</span> Submitting...';
-    submitBtn.disabled = true;
-    
-    try {
-      // Create form data
-      const formData = new FormData(studentForm);
-      
-      // Submit to Web3Forms
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      
-      const result = await response.json();
-      
-      if (response.ok && result.success) {
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
         // Show success message
         successMessage.style.display = 'block';
+        successMessage.querySelector('span:last-child').textContent = `Welcome ${fullName}! Registration successful.`;
         setTimeout(() => {
           successMessage.style.display = 'none';
         }, 3000);
-        
-        // Hide form and show dashboard
-        studentInfo.classList.add('hidden');
-        dashboard.classList.remove('hidden');
-        renderChapterGrid();
       } else {
-        throw new Error(result.message || 'Submission failed');
+        console.warn('Registration submission issue, but continuing...');
       }
-    } catch (error) {
-      console.error('Submission error:', error);
-      alert('Form submission had an issue, but you can still proceed.');
-      
-      // Still show dashboard even if submission fails
-      studentInfo.classList.add('hidden');
-      dashboard.classList.remove('hidden');
-      renderChapterGrid();
-    } finally {
-      // Reset button
-      submitBtn.innerHTML = originalText;
-      submitBtn.disabled = false;
-    }
+    })
+    .catch(error => {
+      console.error('Registration error:', error);
+      // Continue even if registration fails
+    });
+    
+    // Update displays
+    document.getElementById('dashboard-student-name').textContent = fullName;
+    document.getElementById('dashboard-school-name').textContent = schoolName;
+    document.getElementById('student-info-display').textContent = `${fullName} | ${schoolName}`;
+    
+    // Hide form and show dashboard
+    studentInfo.classList.add('hidden');
+    dashboard.classList.remove('hidden');
+    renderChapterGrid();
   });
 
-  // Get unique chapters (Units 10-18)
-  const chapters = [...new Set(mcqData.map(q => q.chapter))].sort();
+  // Get unique chapters with full names
+  const uniqueChapters = [...new Set(mcqData.map(q => q.chapter))].sort();
 
-  // Render chapter grid
+  // Render chapter grid with full unit names
   function renderChapterGrid() {
     const grid = document.getElementById('chapter-grid');
-    grid.innerHTML = chapters.map(ch => {
+    grid.innerHTML = uniqueChapters.map(ch => {
       const exerciseCount = mcqData.filter(q => q.chapter === ch && q.question.includes('(Exercise)')).length;
       const additionalCount = mcqData.filter(q => q.chapter === ch && q.question.includes('(Additional)')).length;
       return `
@@ -1056,7 +1065,7 @@
     submitTest();
   });
 
-  // Submit test function
+  // Submit test function with results to Web3Forms
   async function submitTest() {
     testState.submitted = true;
     clearInterval(window.testTimerInterval);
@@ -1072,17 +1081,18 @@
       }
     }
     
+    const wrong = testState.answers.filter(a => a !== null).length - correct;
     const percent = Math.round((correct / testState.filteredQuestions.length) * 100);
     
     // Update results display
     resultsSec.classList.remove('hidden');
     document.getElementById('correct-count').textContent = correct;
-    document.getElementById('wrong-count').textContent = testState.answers.filter(a => a !== null).length - correct;
+    document.getElementById('wrong-count').textContent = wrong;
     document.getElementById('percentage').textContent = percent + '%';
     document.getElementById('score-percentage').textContent = percent + '%';
     document.getElementById('result-student-name').textContent = testState.studentName;
     document.getElementById('result-school-name').textContent = testState.schoolName;
-    document.getElementById('result-contact-info').textContent = `Contact: ${testState.contact}${testState.rollNumber ? ' • Roll: ' + testState.rollNumber : ''}`;
+    document.getElementById('result-contact-info').textContent = `Mobile: ${testState.mobileNumber} • Roll: ${testState.rollNumber}`;
     document.getElementById('test-date-display').textContent = new Date().toLocaleDateString('en-PK');
     
     const minutes = Math.floor(testState.timeSpent / 60);
@@ -1106,6 +1116,62 @@
     }
     
     document.getElementById('performance-text').textContent = `You scored ${percent}%. Keep practicing to improve your results!`;
+    
+    // Submit test results to Web3Forms
+    resultsSubmissionStatus.classList.remove('hidden');
+    resultsSubmissionStatus.textContent = 'Submitting your results...';
+    
+    // Create results message
+    const resultsMessage = 
+      `TEST RESULTS\n` +
+      `============\n` +
+      `Student: ${testState.studentName}\n` +
+      `School: ${testState.schoolName}\n` +
+      `Mobile: ${testState.mobileNumber}\n` +
+      `Roll No: ${testState.rollNumber}\n` +
+      `Email: ${testState.email}\n` +
+      `\n` +
+      `Chapter: ${testState.filteredQuestions[0]?.chapter || 'N/A'}\n` +
+      `Total Questions: ${testState.filteredQuestions.length}\n` +
+      `Correct Answers: ${correct}\n` +
+      `Wrong Answers: ${wrong}\n` +
+      `Percentage: ${percent}%\n` +
+      `Time Taken: ${minutes}m ${seconds}s\n` +
+      `Date: ${new Date().toLocaleDateString('en-PK')}\n` +
+      `Performance: ${badge.textContent}`;
+    
+    // Create a new form for results
+    const resultsFormData = new FormData();
+    resultsFormData.append('access_key', '2a0edcb1-883a-406b-9546-01442fd1b72d');
+    resultsFormData.append('name', testState.studentName);
+    resultsFormData.append('email', testState.email || 'no-email@example.com');
+    resultsFormData.append('phone', testState.mobileNumber);
+    resultsFormData.append('school', testState.schoolName);
+    resultsFormData.append('roll_number', testState.rollNumber);
+    resultsFormData.append('subject', `Test Results: ${percent}% - ${testState.studentName}`);
+    resultsFormData.append('from_name', 'Hira Science Academy');
+    resultsFormData.append('message', resultsMessage);
+    
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: resultsFormData
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        resultsSubmissionStatus.textContent = '✓ Results submitted successfully!';
+        resultsSubmissionStatus.classList.add('text-green-600');
+      } else {
+        resultsSubmissionStatus.textContent = '⚠ Results submission had an issue, but your results are displayed.';
+        resultsSubmissionStatus.classList.add('text-orange-600');
+      }
+    } catch (error) {
+      console.error('Results submission error:', error);
+      resultsSubmissionStatus.textContent = '⚠ Could not submit results, but they are displayed above.';
+      resultsSubmissionStatus.classList.add('text-orange-600');
+    }
     
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1236,7 +1302,7 @@
     
     doc.setFontSize(16);
     doc.setTextColor(71, 85, 105);
-    doc.text(testState.schoolName, 148.5, 100, { align: "center" });
+    doc.text(testState.schoolName || 'Student', 148.5, 100, { align: "center" });
     
     doc.setFontSize(14);
     doc.setTextColor(51, 65, 85);
