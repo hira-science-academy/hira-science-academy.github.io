@@ -25,6 +25,8 @@
     <!-- Tailwind, Fonts, Font Awesome, Chart.js -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Professional Urdu Font: Noto Nastaliq Urdu (gold standard) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
@@ -35,7 +37,8 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Merriweather', 'serif']
+                        serif: ['Merriweather', 'serif'],
+                        urdu: ['"Noto Nastaliq Urdu"', 'serif']
                     },
                     colors: {
                         navy: '#002147',
@@ -218,9 +221,92 @@
         .att-badge-good { background:#d1fae5; color:#065f46; border-radius:999px; padding:2px 12px; font-weight:500; }
         .att-badge-average { background:#fef3c7; color:#92400e; border-radius:999px; padding:2px 12px; font-weight:500; }
         .att-badge-low { background:#fee2e2; color:#991b1b; border-radius:999px; padding:2px 12px; font-weight:500; }
+
+        /* Urdu font and RTL direction */
+        .urdu-text {
+            font-family: 'Noto Nastaliq Urdu', serif;
+            direction: rtl;
+            text-align: right; /* Ensure text alignment is right for RTL */
+        }
+        /* Override text-justify for RTL */
+        .urdu-text .text-justify {
+            text-align: justify;
+            text-align-last: right; /* Improves RTL justification */
+        }
+        /* Anti-copy base */
+        .no-copy * {
+            user-select: none !important;
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+        }
+        .no-copy button, .no-copy label, .no-copy .cursor-pointer, .no-copy [onclick] {
+            pointer-events: auto !important;
+        }
+        .copy-protect-text, .copy-protect-text p, .copy-protect-text div:not(.allow-click) {
+            pointer-events: none;
+        }
+        .gallery-image {
+            pointer-events: auto !important;
+            position: relative;
+            z-index: 5;
+        }
+        .image-protect {
+            position: relative;
+            display: inline-block;
+        }
+        .image-protect::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: transparent;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .watermark-bg {
+            position: relative;
+            isolation: isolate;
+        }
+        .watermark-bg::before {
+            content: "GCHS ✦ 1882 ✦ 1915";
+            position: absolute;
+            top: 10%;
+            left: 5%;
+            right: 5%;
+            bottom: 10%;
+            font-size: clamp(2rem, 10vw, 6rem);
+            font-weight: 700;
+            color: rgba(234, 179, 8, 0.04);
+            white-space: pre;
+            transform: rotate(-15deg) scale(1.2);
+            pointer-events: none;
+            z-index: 1;
+            text-align: center;
+            line-height: 1;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            font-family: system-ui, sans-serif;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .watermark-bg > * {
+            position: relative;
+            z-index: 2;
+        }
+        .lang-section {
+            transition: opacity 0.35s ease-in-out;
+        }
+        .hidden-section {
+            display: none;
+        }
+        #imageModal { pointer-events: auto; }
+        #modalImage { pointer-events: auto; }
     </style>
 </head>
-<body>
+<body class="bg-[#0b1e3c] font-sans antialiased">
 
 <div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
 <div id="loading" class="fixed inset-0 bg-white/90 z-50 flex flex-col items-center justify-center hidden">
@@ -327,270 +413,139 @@
                 <div class="mt-4 text-navy font-medium">View →</div>
             </div>
             <div onclick="showSection('studentForm')" class="portal-card p-8 cursor-pointer text-center group">
-                <div class="h-16 w-16 rounded-full bg-navy/5 flex items-center justify-center text-navy text-2xl"><i class="fas fa-user-graduate"></i></div>
+               <div class="flex justify-center">
+    <div class="h-16 w-16 rounded-full bg-navy/5 flex items-center justify-center text-navy text-2xl">
+        <i class="fas fa-user-graduate"></i>
+    </div>
+</div>
                 <h3 class="text-xl font-bold text-navy mb-2">Student Login</h3>
                 <p class="text-gray-600 text-sm">View your academic dashboard</p>
                 <div class="mt-4 text-navy font-medium">Dashboard →</div>
             </div>
         </div>
 
-<section class="mt-20 max-w-6xl mx-auto px-4">
-
-    <div class="bg-gradient-to-br from-[#0b1e3c] to-[#13294b] text-white rounded-3xl shadow-2xl border border-yellow-600/30 p-6 md:p-14 relative overflow-hidden">
-
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600"></div>
-
-        <div class="text-center mb-10">
-            <img src="images/gchs_logo.png" 
-                 id="aboutLogo"
-                 alt="Govt Christian High School Daska Logo" 
-                 class="gallery-image w-24 md:w-32 mx-auto object-contain cursor-pointer transition duration-500 hover:scale-110">
+        <!-- ========== BILINGUAL LEGACY SECTION (merged) ========== -->
+        <!-- Author attribution header for legacy section - updated to "Researcher & Archivist" -->
+        <div class="max-w-6xl mx-auto px-4 pt-6 mt-10 text-center text-yellow-300/80 text-sm md:text-base border-b border-yellow-700/50 pb-2 flex flex-wrap items-center justify-between gap-2 bg-[#0b1e3c] rounded-t-3xl border-t border-yellow-600/30 px-6">
+            <span class="bg-[#0b1e3c] px-3 py-1 rounded-full border border-yellow-600/40">📘 EMIS: <strong class="text-yellow-400">34310007</strong></span>
+            <span class="font-medium tracking-wide">Author: M. Tayyab, SSE (Math) Govt. Christian High School, Daska</span>
+            <span class="text-yellow-400/60 text-xs italic">est. 1882</span>
         </div>
 
-        <h2 class="text-3xl md:text-4xl font-extrabold text-center text-yellow-400 tracking-wide mb-4 uppercase">
-            The Historical Legacy of Govt. Christian High School Daska
-        </h2>
-
-        <p class="text-center text-yellow-200 italic mb-12 text-sm md:text-base">
-            An Anchor of Education in Punjab Since 1882
-        </p>
-
-        <div class="space-y-6 text-gray-200 leading-relaxed text-base md:text-lg text-justify">
-
-            <p>
-                Established in <strong class="text-yellow-400">1882</strong>, Govt. Christian High School Daska is one of the oldest educational institutions in the region. Founded as the <strong>Daska Mission High School</strong> under the auspices of the Church of Scotland, it was designed as a "Main Station" for the Sialkot district, serving as a hub for both academic instruction and social reform during the British era.
-            </p>
-
-            <p>
-                A core part of the school's historical identity is the <strong class="text-yellow-400">initiative of a Scottish widow</strong>, whose philanthropic endowment allowed for the construction of permanent facilities. This act of benevolence transformed a modest mission outpost into a structured High School, providing the local population with access to English-medium education and modern sciences long before they were widely available in rural Punjab.
-            </p>
-
-            <p>
-                By the early 20th century, the institution had evolved into the <strong>Christian Boys’ Training School</strong>, a prestigious center for preparing local educators and leaders. For over 140 years, it has remained a pillar of discipline and moral values, nurturing a lineage of students who have gone on to serve in the highest echelons of the civil service, military, and academia.
-            </p>
-
+        <!-- Language toggle -->
+        <div class="flex justify-center items-center gap-6 mt-6 mb-2">
+            <span class="text-yellow-400 font-medium text-lg tracking-wider">🇬🇧 English</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="langToggle" class="sr-only peer" checked>
+                <div class="w-16 h-8 bg-gray-700 rounded-full peer peer-checked:bg-yellow-600/40 border-2 border-yellow-500/50 transition-colors"></div>
+                <div class="absolute left-1 top-1 w-6 h-6 bg-yellow-400 rounded-full transition-transform peer-checked:translate-x-8 shadow-md"></div>
+            </label>
+            <span class="text-yellow-400 font-medium text-lg tracking-wider urdu-text">🇵🇰 اردو</span>
         </div>
 
-        <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-
-        <div class="text-center mb-16">
-            <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6 uppercase">
-                The Foundation of the Modern Era (1915)
-            </h3>
-
-            <img src="images/daska_mission_1915.jpg" 
-                 alt="Foundation Ceremony of Daska Mission High School 1915" 
-                 class="gallery-image w-full md:w-4/5 mx-auto rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
-
-            <div class="mt-8 text-gray-300 text-sm md:text-base text-justify max-w-4xl mx-auto space-y-4">
-                <p>
-                    On <strong class="text-yellow-400">26 March 1915</strong>, a transformative milestone was achieved when the formal foundation stone of the expanded High School building was laid by <strong class="text-yellow-400">E.R. Abbott, Esq., Deputy Commissioner</strong>. This moment signified the official integration of the mission school into the broader administrative and educational framework of the Sialkot District.
-                </p>
-                <p>
-                    The archival records highlight the presence of <strong class="text-white font-semibold">William Scott (1866–1936)</strong>, who is seen in the historic group portrait. Scott was a central figure in the history of Daska, serving as a lifelong educator and Principal. His dedication ensured that the school became the primary station from which educational "itineration" was carried out, reaching even the most remote villages in the surrounding twenty-mile radius.
-                </p>
-            </div>
-
-            <p class="text-gray-400 text-xs mt-6 max-w-4xl mx-auto italic">
-                Source: International Mission Photography Archive / National Library of Scotland. 
-                Documenting the "Outposts – Punjab" Series (1915).
-            </p>
-        </div>
-
-        <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-
-        <div class="text-center mb-10">
-            <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6 uppercase">
-                Preserving a Century of History
-            </h3>
-
-            <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
-                <img src="images/GCHS_foundation.jpg" 
-                     alt="Foundation Stone laid 26 March 1915" 
-                     class="gallery-image w-full md:w-1/2 rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
-                
-                <div class="text-gray-300 text-sm md:text-base text-justify space-y-4">
-                    <p>
-                        The <strong class="text-yellow-400">1915 Foundation Stone</strong>, carved in high-quality marble, remains in its original position on the school grounds. It is a rare surviving artifact of pre-independence educational architecture in Daska.
-                    </p>
-                    <p>
-                        The stone is not just a marker of brick and mortar, but a symbol of the school's enduring resilience through the Partition of 1947, the nationalization of 1972, and the modern digital age. It serves as a constant reminder to students of the weight of history they carry as alumni of this institution.
-                    </p>
+        <!-- ENGLISH SECTION (visible by default) -->
+        <section id="englishSection" class="lang-section max-w-6xl mx-auto px-4 mt-4">
+            <div class="bg-gradient-to-br from-[#0b1e3c] to-[#13294b] text-white rounded-3xl shadow-2xl border border-yellow-600/30 p-6 md:p-14 relative overflow-hidden watermark-bg no-copy">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600"></div>
+                <div class="text-center mb-10">
+                    <img src="images/gchs_logo.png" alt="Govt Christian High School Daska Logo" class="gallery-image w-24 md:w-32 mx-auto object-contain cursor-pointer transition duration-500 hover:scale-110 image-protect">
+                </div>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-center text-yellow-400 tracking-wide mb-4 uppercase">The Historical Legacy of Govt. Christian High School Daska</h2>
+                <p class="text-center text-yellow-200 italic mb-12 text-sm md:text-base">An Anchor of Education in Punjab Since 1882</p>
+                <div class="space-y-6 text-gray-200 leading-relaxed text-base md:text-lg text-justify copy-protect-text">
+                    <p>Established in <strong class="text-yellow-400">1882</strong>, Govt. Christian High School Daska is one of the oldest educational institutions in the region. Founded as the <strong>Daska Mission High School</strong> under the auspices of the Church of Scotland, it was designed as a "Main Station" for the Sialkot district, serving as a hub for both academic instruction and social reform during the British era.</p>
+                    <p>A core part of the school's historical identity is the <strong class="text-yellow-400">initiative of a Scottish widow</strong>, whose philanthropic endowment allowed for the construction of permanent facilities. This act of benevolence transformed a modest mission outpost into a structured High School, providing the local population with access to English-medium education and modern sciences long before they were widely available in rural Punjab.</p>
+                    <p>By the early 20th century, the institution had evolved into the <strong>Christian Boys’ Training School</strong>, a prestigious center for preparing local educators and leaders. For over 140 years, it has remained a pillar of discipline and moral values, nurturing a lineage of students who have gone on to serve in the highest echelons of the civil service, military, and academia.</p>
+                </div>
+                <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                <div class="text-center mb-16">
+                    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6 uppercase">The Foundation of the Modern Era (1915)</h3>
+                    <div class="image-protect inline-block">
+                        <img src="images/daska_mission_1915.jpg" alt="Foundation Ceremony 1915" class="gallery-image w-full md:w-4/5 mx-auto rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
+                    </div>
+                    <div class="mt-8 text-gray-300 text-sm md:text-base text-justify max-w-4xl mx-auto space-y-4 copy-protect-text">
+                        <p>On <strong class="text-yellow-400">26 March 1915</strong>, a transformative milestone was achieved when the formal foundation stone of the expanded High School building was laid by <strong class="text-yellow-400">E.R. Abbott, Esq., Deputy Commissioner</strong>. This moment signified the official integration of the mission school into the broader administrative and educational framework of the Sialkot District.</p>
+                        <p>The archival records highlight the presence of <strong class="text-white font-semibold">William Scott (1866–1936)</strong>, who is seen in the historic group portrait. Scott was a central figure in the history of Daska, serving as a lifelong educator and Principal. His dedication ensured that the school became the primary station from which educational "itineration" was carried out, reaching even the most remote villages in the surrounding twenty-mile radius.</p>
+                    </div>
+                    <p class="text-gray-400 text-xs mt-6 max-w-4xl mx-auto italic">Source: International Mission Photography Archive / National Library of Scotland. Documenting the "Outposts – Punjab" Series (1915).</p>
+                </div>
+                <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6 uppercase">Preserving a Century of History</h3>
+                    <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
+                        <div class="image-protect w-full md:w-1/2">
+                            <img src="images/GCHS_foundation.jpg" alt="Foundation Stone laid 26 March 1915" class="gallery-image w-full rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
+                        </div>
+                        <div class="text-gray-300 text-sm md:text-base text-justify space-y-4 copy-protect-text md:w-1/2">
+                            <p>The <strong class="text-yellow-400">1915 Foundation Stone</strong>, carved in high-quality marble, remains in its original position on the school grounds. It is a rare surviving artifact of pre-independence educational architecture in Daska.</p>
+                            <p>The stone is not just a marker of brick and mortar, but a symbol of the school's enduring resilience through the Partition of 1947, the nationalization of 1972, and the modern digital age. It serves as a constant reminder to students of the weight of history they carry as alumni of this institution.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                <div class="text-gray-200 text-base md:text-lg text-justify space-y-6 copy-protect-text">
+                    <h3 class="text-xl font-bold text-yellow-400 uppercase tracking-widest">Nationalization and the Path Forward</h3>
+                    <p>Following the independence of Pakistan in <strong class="text-yellow-400">1947</strong>, the school transitioned smoothly into the national framework, continuing its mission of character building for the new nation. In <strong class="text-yellow-400">1972</strong>, under the Government of Pakistan's educational reforms, the school was officially nationalized.</p>
+                    <p>Renamed <strong class="text-yellow-400">Govt. Christian High School Daska</strong>, the institution integrated into the Punjab School Education Department while preserving its heritage. Today, holding <strong class="text-yellow-400">EMIS Code: 34310007</strong>, it remains the pride of Old Kachehri Road, committed to academic integrity, moral values, and the development of future-ready citizens.</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-
-        <div class="text-gray-200 text-base md:text-lg text-justify space-y-6">
-            <h3 class="text-xl font-bold text-yellow-400 uppercase tracking-widest">Nationalization and the Path Forward</h3>
-            <p>
-                Following the independence of Pakistan in <strong class="text-yellow-400">1947</strong>, the school transitioned smoothly into the national framework, continuing its mission of character building for the new nation. In <strong class="text-yellow-400">1972</strong>, under the Government of Pakistan's educational reforms, the school was officially nationalized. 
-            </p>
-            <p>
-                Renamed <strong class="text-yellow-400">Govt. Christian High School Daska</strong>, the institution integrated into the Punjab School Education Department while preserving its heritage. Today, holding <strong class="text-yellow-400">EMIS Code: 34310007</strong>, it remains the pride of Old Kachehri Road, committed to academic integrity, moral values, and the development of future-ready citizens.
-            </p>
-        </div>
-
-    </div>
-</section>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
-<style>
-    .urdu-text { font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; }
-</style>
-
-<section class="mt-20 max-w-6xl mx-auto px-4 urdu-text">
-    <div class="bg-gradient-to-br from-[#0b1e3c] to-[#13294b] text-white rounded-3xl shadow-2xl border border-yellow-600/30 p-6 md:p-14 relative overflow-hidden">
-
-        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600"></div>
-
-        <div class="text-center mb-10">
-            <img src="images/gchs_logo.png" 
-                 id="aboutLogoUrdu"
-                 alt="گورنمنٹ کرسچن ہائی سکول ڈسکہ لوگو" 
-                 class="gallery-image w-24 md:w-32 mx-auto object-contain cursor-pointer transition duration-500 hover:scale-110">
-        </div>
-
-        <h2 class="text-2xl md:text-4xl font-extrabold text-center text-yellow-400 tracking-wide mb-4 uppercase leading-relaxed">
-            گورنمنٹ کرسچن ہائی سکول ڈسکہ کا تاریخی ورثہ
-        </h2>
-
-        <p class="text-center text-yellow-200 italic mb-12 text-sm md:text-base">
-            1882 سے پنجاب میں تعلیم کا ایک مستحکم مرکز
-        </p>
-
-        <div class="space-y-8 text-gray-200 leading-[2.5] text-base md:text-xl text-justify">
-            <p>
-                <strong class="text-yellow-400">1882</strong> میں قائم ہونے والا گورنمنٹ کرسچن ہائی سکول ڈسکہ خطے کے قدیم ترین تعلیمی اداروں میں سے ایک ہے۔ چرچ آف اسکاٹ لینڈ کے زیرِ اہتمام <strong>ڈسکہ مشن ہائی سکول</strong> کے طور پر قائم کیا گیا یہ ادارہ ضلع سیالکوٹ کے لیے ایک "مین اسٹیشن" کے طور پر ڈیزائن کیا گیا تھا، جو برطانوی دور میں تعلیمی تدریس اور سماجی اصلاحات کے مرکز کے طور پر کام کرتا رہا۔
-            </p>
-
-            <p>
-                اسکول کی تاریخی شناخت کا ایک بنیادی حصہ <strong class="text-yellow-400">ایک اسکاٹش بیوہ خاتون کا اقدام</strong> ہے، جن کے فیاضانہ عطیہ نے مستقل عمارتوں کی تعمیر کو ممکن بنایا۔ اس نیک عمل نے ایک معمولی مشن چوکی کو ایک منظم ہائی سکول میں بدل دیا، جس سے مقامی آبادی کو انگریزی میڈیم تعلیم اور جدید سائنس تک رسائی حاصل ہوئی، وہ بھی اس وقت جب دیہی پنجاب میں یہ سہولیات میسر نہیں تھیں۔
-            </p>
-
-            <p>
-                20ویں صدی کے اوائل تک، یہ ادارہ <strong>کرسچن بوائز ٹریننگ سکول</strong> کی شکل اختیار کر گیا، جو مقامی اساتذہ اور قائدین کی تیاری کا ایک معتبر مرکز بنا۔ 140 سال سے زائد عرصے سے یہ نظم و ضبط اور اخلاقی اقدار کا مینار بنا ہوا ہے، جس نے طالب علموں کی ایسی نسلیں پروان چڑھائیں جنہوں نے سول سروس، فوج اور تعلیمی میدانوں میں اعلیٰ ترین عہدوں پر خدمات سرانجام دیں۔
-            </p>
-        </div>
-
-        <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-
-        <div class="text-center mb-16">
-            <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6 uppercase">
-                جدید دور کی بنیاد (1915)
-            </h3>
-
-            <img src="images/daska_mission_1915.jpg" 
-                 alt="ڈسکہ مشن ہائی سکول 1915 کی تقریبِ سنگِ بنیاد" 
-                 class="gallery-image w-full md:w-4/5 mx-auto rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
-
-            <div class="mt-8 text-gray-300 text-sm md:text-lg text-justify max-w-4xl mx-auto space-y-4 leading-[2.2]">
-                <p>
-                    <strong class="text-yellow-400">26 مارچ 1915</strong> کو ایک انقلابی سنگ میل اس وقت عبور کیا گیا جب ہائی سکول کی وسیع عمارت کا باقاعدہ سنگِ بنیاد <strong class="text-yellow-400">ای آر ایبٹ (E.R. Abbott)، ڈپٹی کمشنر</strong> نے رکھا۔ اس لمحے نے مشن سکول کے ضلع سیالکوٹ کے وسیع تر انتظامی اور تعلیمی ڈھانچے میں باضابطہ انضمام کی نشاندہی کی۔
-                </p>
-                <p>
-                    آرکائیو کے ریکارڈ <strong class="text-white font-semibold">ولیم اسکاٹ (1866–1936)</strong> کی موجودگی کو نمایاں کرتے ہیں، جو تاریخی گروپ تصویر میں دیکھے جا سکتے ہیں۔ اسکاٹ ڈسکہ کی تاریخ میں ایک مرکزی شخصیت تھے، جنہوں نے تاحیات معلم اور پرنسپل کے طور پر خدمات سرانجام دیں۔ ان کی لگن نے اس بات کو یقینی بنایا کہ یہ سکول تعلیمی "سفر" کا بنیادی مرکز بنے، جس سے بیس میل کے دائرے میں واقع دور دراز دیہاتوں تک تعلیم پہنچی۔
-                </p>
-            </div>
-
-            <p class="text-gray-400 text-xs mt-6 max-w-4xl mx-auto italic">
-                ماخذ: انٹرنیشنل مشن فوٹوگرافی آرکائیو / نیشنل لائبریری آف اسکاٹ لینڈ۔ "آؤٹ پوسٹس – پنجاب" سیریز (1915)۔
-            </p>
-        </div>
-
-        <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-
-        <div class="text-center mb-10">
-            <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6 uppercase">
-                ایک صدی کی تاریخ کا تحفظ
-            </h3>
-
-            <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
-                <img src="images/GCHS_foundation.jpg" 
-                     alt="سنگِ بنیاد 26 مارچ 1915" 
-                     class="gallery-image w-full md:w-1/2 rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
-                
-                <div class="text-gray-300 text-sm md:text-lg text-justify space-y-4 leading-[2.2]">
-                    <p>
-                        <strong class="text-yellow-400">1915 کا سنگِ بنیاد</strong>، جو اعلیٰ معیار کے مرمر سے تراشا گیا ہے، آج بھی سکول کے گراؤنڈ میں اپنی اصل جگہ پر موجود ہے۔ یہ ڈسکہ میں قیامِ پاکستان سے قبل کی تعلیمی طرزِ تعمیر کا ایک نایاب نمونہ ہے۔
-                    </p>
-                    <p>
-                        یہ پتھر محض اینٹ اور گارے کی علامت نہیں، بلکہ 1947 کی تقسیم، 1972 کے قومیانے کے عمل، اور جدید ڈیجیٹل دور میں اسکول کی پائیدار استقامت کا نشان ہے۔ یہ طالب علموں کو مسلسل اس تاریخی ذمہ داری کی یاد دلاتا ہے جو وہ اس ادارے کے سابقہ طالب علم (Alumni) کے طور پر اپنے کاندھوں پر اٹھائے ہوئے ہیں۔
-                    </p>
+        <!-- URDU SECTION (hidden by default) - with Noto Nastaliq Urdu and RTL direction -->
+        <section id="urduSection" class="lang-section hidden-section max-w-6xl mx-auto px-4 mt-4 urdu-text">
+            <div class="bg-gradient-to-br from-[#0b1e3c] to-[#13294b] text-white rounded-3xl shadow-2xl border border-yellow-600/30 p-6 md:p-14 relative overflow-hidden watermark-bg no-copy">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600"></div>
+                <div class="text-center mb-10">
+                    <img src="images/gchs_logo.png" alt="گورنمنٹ کرسچن ہائی سکول ڈسکہ لوگو" class="gallery-image w-24 md:w-32 mx-auto object-contain cursor-pointer transition duration-500 hover:scale-110 image-protect">
+                </div>
+                <h2 class="text-2xl md:text-4xl font-extrabold text-center text-yellow-400 tracking-wide mb-4 uppercase leading-relaxed">گورنمنٹ کرسچن ہائی سکول ڈسکہ کا تاریخی ورثہ</h2>
+                <p class="text-center text-yellow-200 italic mb-12 text-sm md:text-base">1882 سے پنجاب میں تعلیم کا ایک مستحکم مرکز</p>
+                <div class="space-y-8 text-gray-200 leading-[2.5] text-base md:text-xl text-justify copy-protect-text">
+                    <p><strong class="text-yellow-400">1882</strong> میں قائم ہونے والا گورنمنٹ کرسچن ہائی سکول ڈسکہ خطے کے قدیم ترین تعلیمی اداروں میں سے ایک ہے۔ چرچ آف اسکاٹ لینڈ کے زیرِ اہتمام <strong>ڈسکہ مشن ہائی سکول</strong> کے طور پر قائم کیا گیا یہ ادارہ ضلع سیالکوٹ کے لیے ایک "مین اسٹیشن" کے طور پر ڈیزائن کیا گیا تھا، جو برطانوی دور میں تعلیمی تدریس اور سماجی اصلاحات کے مرکز کے طور پر کام کرتا رہا۔</p>
+                    <p>اسکول کی تاریخی شناخت کا ایک بنیادی حصہ <strong class="text-yellow-400">ایک اسکاٹش بیوہ خاتون کا اقدام</strong> ہے، جن کے فیاضانہ عطیہ نے مستقل عمارتوں کی تعمیر کو ممکن بنایا۔ اس نیک عمل نے ایک معمولی مشن چوکی کو ایک منظم ہائی سکول میں بدل دیا، جس سے مقامی آبادی کو انگریزی میڈیم تعلیم اور جدید سائنس تک رسائی حاصل ہوئی، وہ بھی اس وقت جب دیہی پنجاب میں یہ سہولیات میسر نہیں تھیں۔</p>
+                    <p>20ویں صدی کے اوائل تک، یہ ادارہ <strong>کرسچن بوائز ٹریننگ سکول</strong> کی شکل اختیار کر گیا، جو مقامی اساتذہ اور قائدین کی تیاری کا ایک معتبر مرکز بنا۔ 140 سال سے زائد عرصے سے یہ نظم و ضبط اور اخلاقی اقدار کا مینار بنا ہوا ہے، جس نے طالب علموں کی ایسی نسلیں پروان چڑھائیں جنہوں نے سول سروس، فوج اور تعلیمی میدانوں میں اعلیٰ ترین عہدوں پر خدمات سرانجام دیں۔</p>
+                </div>
+                <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                <div class="text-center mb-16">
+                    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6 uppercase">جدید دور کی بنیاد (1915)</h3>
+                    <div class="image-protect inline-block">
+                        <img src="images/daska_mission_1915.jpg" alt="ڈسکہ مشن ہائی سکول 1915 کی تقریبِ سنگِ بنیاد" class="gallery-image w-full md:w-4/5 mx-auto rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
+                    </div>
+                    <div class="mt-8 text-gray-300 text-sm md:text-lg text-justify max-w-4xl mx-auto space-y-4 leading-[2.2] copy-protect-text">
+                        <p><strong class="text-yellow-400">26 مارچ 1915</strong> کو ایک انقلابی سنگ میل اس وقت عبور کیا گیا جب ہائی سکول کی وسیع عمارت کا باقاعدہ سنگِ بنیاد <strong class="text-yellow-400">ای آر ایبٹ (E.R. Abbott)، ڈپٹی کمشنر</strong> نے رکھا۔ اس لمحے نے مشن سکول کے ضلع سیالکوٹ کے وسیع تر انتظامی اور تعلیمی ڈھانچے میں باضابطہ انضمام کی نشاندہی کی۔</p>
+                        <p>آرکائیو کے ریکارڈ <strong class="text-white font-semibold">ولیم اسکاٹ (1866–1936)</strong> کی موجودگی کو نمایاں کرتے ہیں، جو تاریخی گروپ تصویر میں دیکھے جا سکتے ہیں۔ اسکاٹ ڈسکہ کی تاریخ میں ایک مرکزی شخصیت تھے، جنہوں نے تاحیات معلم اور پرنسپل کے طور پر خدمات سرانجام دیں۔ ان کی لگن نے اس بات کو یقینی بنایا کہ یہ سکول تعلیمی "سفر" کا بنیادی مرکز بنے، جس سے بیس میل کے دائرے میں واقع دور دراز دیہاتوں تک تعلیم پہنچی۔</p>
+                    </div>
+                    <p class="text-gray-400 text-xs mt-6 max-w-4xl mx-auto italic">ماخذ: انٹرنیشنل مشن فوٹوگرافی آرکائیو / نیشنل لائبریری آف اسکاٹ لینڈ۔ "آؤٹ پوسٹس – پنجاب" سیریز (1915)۔</p>
+                </div>
+                <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                <div class="text-center mb-10">
+                    <h3 class="text-2xl md:text-3xl font-bold text-yellow-400 mb-6 uppercase">ایک صدی کی تاریخ کا تحفظ</h3>
+                    <div class="flex flex-col md:flex-row items-center gap-10 max-w-5xl mx-auto">
+                        <div class="image-protect w-full md:w-1/2">
+                            <img src="images/GCHS_foundation.jpg" alt="سنگِ بنیاد 26 مارچ 1915" class="gallery-image w-full rounded-2xl shadow-2xl cursor-pointer transition duration-500 hover:scale-105 border-4 border-yellow-600/40">
+                        </div>
+                        <div class="text-gray-300 text-sm md:text-lg text-justify space-y-4 leading-[2.2] copy-protect-text md:w-1/2">
+                            <p><strong class="text-yellow-400">1915 کا سنگِ بنیاد</strong>، جو اعلیٰ معیار کے مرمر سے تراشا گیا ہے، آج بھی سکول کے گراؤنڈ میں اپنی اصل جگہ پر موجود ہے۔ یہ ڈسکہ میں قیامِ پاکستان سے قبل کی تعلیمی طرزِ تعمیر کا ایک نایاب نمونہ ہے۔</p>
+                            <p>یہ پتھر محض اینٹ اور گارے کی علامت نہیں، بلکہ 1947 کی تقسیم، 1972 کے قومیانے کے عمل، اور جدید ڈیجیٹل دور میں اسکول کی پائیدار استقامت کا نشان ہے۔ یہ طالب علموں کو مسلسل اس تاریخی ذمہ داری کی یاد دلاتا ہے جو وہ اس ادارے کے سابقہ طالب علم (Alumni) کے طور پر اپنے کاندھوں پر اٹھائے ہوئے ہیں۔</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
+                <div class="text-gray-200 text-base md:text-xl text-justify space-y-6 leading-[2.5] copy-protect-text">
+                    <h3 class="text-xl font-bold text-yellow-400 uppercase tracking-widest pr-4">قومی دھارے میں شمولیت اور مستقبل کا سفر</h3>
+                    <p><strong class="text-yellow-400">1947</strong> میں پاکستان کی آزادی کے بعد، اسکول آسانی سے قومی ڈھانچے میں منتقل ہو گیا اور نئی قوم کی کردار سازی کا مشن جاری رکھا۔ <strong class="text-yellow-400">1972</strong> میں حکومتِ پاکستان کی تعلیمی اصلاحات کے تحت اسکول کو باضابطہ طور پر قومی ملکیت میں لے لیا گیا۔</p>
+                    <p><strong class="text-yellow-400">گورنمنٹ کرسچن ہائی سکول ڈسکہ</strong> کے نام سے موسوم یہ ادارہ اپنے ورثے کو برقرار رکھتے ہوئے محکمہ تعلیم پنجاب کا حصہ بن گیا۔ آج، <strong class="text-yellow-400">EMIS کوڈ: 34310007</strong> کے ساتھ، یہ اولڈ کچہری روڈ کا فخر ہے، جو تعلیمی دیانت، اخلاقی اقدار اور مستقبل کے بہترین شہریوں کی تیاری کے لیے وقف ہے۔</p>
                 </div>
             </div>
+        </section>
+
+        <!-- ================= IMAGE MODAL (for legacy images) ================= -->
+        <div id="imageModal" class="fixed inset-0 bg-black/95 hidden items-center justify-center z-50 p-4">
+            <div class="relative w-full h-full flex items-center justify-center">
+                <button id="closeModal" class="absolute top-6 right-6 text-yellow-400 text-4xl font-bold hover:scale-110 transition">&times;</button>
+                <img id="modalImage" class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border-4 border-yellow-600/40">
+            </div>
         </div>
-
-        <div class="my-14 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent"></div>
-
-        <div class="text-gray-200 text-base md:text-xl text-justify space-y-6 leading-[2.5]">
-            <h3 class="text-xl font-bold text-yellow-400 uppercase tracking-widest border-r-4 border-yellow-500 pr-4">قومی دھارے میں شمولیت اور مستقبل کا سفر</h3>
-            <p>
-                <strong class="text-yellow-400">1947</strong> میں پاکستان کی آزادی کے بعد، اسکول آسانی سے قومی ڈھانچے میں منتقل ہو گیا اور نئی قوم کی کردار سازی کا مشن جاری رکھا۔ <strong class="text-yellow-400">1972</strong> میں حکومتِ پاکستان کی تعلیمی اصلاحات کے تحت اسکول کو باضابطہ طور پر قومی ملکیت میں لے لیا گیا۔
-            </p>
-            <p>
-                <strong class="text-yellow-400">گورنمنٹ کرسچن ہائی سکول ڈسکہ</strong> کے نام سے موسوم یہ ادارہ اپنے ورثے کو برقرار رکھتے ہوئے محکمہ تعلیم پنجاب کا حصہ بن گیا۔ آج، <strong class="text-yellow-400">EMIS کوڈ: 34310007</strong> کے ساتھ، یہ اولڈ کچہری روڈ کا فخر ہے، جو تعلیمی دیانت، اخلاقی اقدار اور مستقبل کے بہترین شہریوں کی تیاری کے لیے وقف ہے۔
-            </p>
-        </div>
-
-    </div>
-</section>
-<!-- ================= IMAGE MODAL ================= -->
-<div id="imageModal" class="fixed inset-0 bg-black/95 hidden items-center justify-center z-50 p-4">
-    <div class="relative w-full h-full flex items-center justify-center">
-        <button id="closeModal"
-                class="absolute top-6 right-6 text-yellow-400 text-4xl font-bold hover:scale-110 transition">
-            &times;
-        </button>
-        <img id="modalImage"
-             class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl border-4 border-yellow-600/40">
-    </div>
-</div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const modal = document.getElementById("imageModal");
-    const modalImg = document.getElementById("modalImage");
-    const closeModal = document.getElementById("closeModal");
-    const images = document.querySelectorAll(".gallery-image");
-
-    function openModal(src) {
-        modal.classList.remove("hidden");
-        modal.classList.add("flex");
-        modalImg.src = src;
-        document.body.style.overflow = "hidden";
-    }
-
-    function closeModalFunction() {
-        modal.classList.add("hidden");
-        modal.classList.remove("flex");
-        modalImg.src = "";
-        document.body.style.overflow = "auto";
-    }
-
-    images.forEach(img => {
-        img.addEventListener("click", function () {
-            openModal(this.src);
-        });
-    });
-
-    closeModal.addEventListener("click", closeModalFunction);
-
-    modal.addEventListener("click", function (e) {
-        if (e.target === modal) {
-            closeModalFunction();
-        }
-    });
-
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
-            closeModalFunction();
-        }
-    });
-
-});
-</script>
 
         <div class="text-center text-gray-500 text-sm mt-6">
             <i class="fas fa-shield-alt mr-2"></i>SSL Secured · Privacy Protected
@@ -606,7 +561,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div><h2 class="text-2xl font-bold text-navy">Teacher Login</h2><p class="text-gray-600 text-sm">Enter your credentials</p></div>
             </div>
             <form id="teacherLoginForm">
-                <div class="mb-4"><label class="block font-medium mb-1">Email Address</label><input type="email" id="teacherEmail" class="form-input" placeholder="teacher@school.edu" required></div>
+                <div class="mb-4"><label class="block font-medium mb-1">Email Address</label><input type="email" id="teacherEmail" class="form-input" placeholder="teacher@gmail.com" required></div>
                 <div class="mb-6"><label class="block font-medium mb-1">Password</label><input type="password" id="teacherPass" class="form-input" placeholder="••••••••" required></div>
                 <button type="submit" class="btn-navy w-full py-3 rounded-xl font-semibold"><i class="fas fa-sign-in-alt mr-2"></i> Login</button>
             </form>
@@ -623,7 +578,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <form id="parentLoginForm">
                 <div class="mb-4"><label class="block font-medium mb-1">Student Roll Number</label>
-                    <input type="text" id="parentRoll" class="form-input" placeholder="e.g., GCHS-A-01" required>
+                    <input type="text" id="parentRoll" class="form-input" placeholder="e.g., GCHS-10A-01" required>
                     <p class="text-xs text-gray-500 mt-1"><i class="fas fa-info-circle mr-1"></i> Found on fee slip, ID card, or contact school office.</p>
                 </div>
                 <div class="mb-6"><label class="block font-medium mb-1">Parent Mobile Number</label>
@@ -644,7 +599,7 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <form id="studentLoginForm">
                 <div class="mb-6"><label class="block font-medium mb-1">Roll Number</label>
-                    <input type="text" id="studentRoll" class="form-input" placeholder="e.g., GCHS-A-01" required>
+                    <input type="text" id="studentRoll" class="form-input" placeholder="e.g., GCHS-10A-01" required>
                     <p class="text-xs text-gray-500 mt-1"><i class="fas fa-info-circle mr-1"></i> Printed on your ID card and exam slip.</p>
                 </div>
                 <button type="submit" class="btn-navy w-full py-3 rounded-xl font-semibold"><i class="fas fa-graduation-cap mr-2"></i> Access Dashboard</button>
@@ -652,7 +607,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     </div>
 
-    <!-- Admin Panel (unchanged – identical to original) -->
+    <!-- Admin Panel (unchanged) -->
     <div id="adminPanel" class="hidden">
         <div class="portal-card p-6 mb-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
@@ -806,7 +761,7 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     </div>
 
-    <!-- USER DASHBOARD (UPDATED per requirements) -->
+    <!-- USER DASHBOARD -->
     <div id="userDashboard" class="hidden">
         <div class="portal-card p-6 bg-gradient-to-r from-navy/5 to-gold/5 mb-8">
             <div class="flex flex-wrap justify-between items-center">
@@ -866,7 +821,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div id="sessionAttendanceContainer" class="space-y-4 max-h-96 overflow-y-auto"></div>
                 <div class="mt-4 pt-2 border-t"><span class="font-medium">Total Present: </span><span id="sessionTotalPercent">0</span>%</div>
             </div>
-            <!-- Daily Attendance List (NEW) -->
+            <!-- Daily Attendance List -->
             <div class="portal-card p-6">
                 <h3 class="font-bold text-navy mb-4">Daily Attendance Record</h3>
                 <div class="overflow-x-auto max-h-96 overflow-y-auto">
@@ -907,7 +862,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="flex justify-between items-center mb-6"><h3 class="text-xl font-bold text-navy">Add Student</h3><button onclick="toggleModal('addStudentModal')" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button></div>
         <form id="addStudentForm">
             <div class="space-y-4">
-                <div><label class="form-label">Full Name *</label><input type="text" id="studentName" class="form-input" placeholder="Ali Raza" required></div>
+                <div><label class="form-label">Full Name *</label><input type="text" id="studentName" class="form-input" placeholder="Muhammad Umer" required></div>
                 <div class="grid grid-cols-2 gap-4"><div><label class="form-label">Class *</label><select id="studentClass" class="form-input" required><option value="9">9th</option><option value="10">10th</option></select></div><div><label class="form-label">Section *</label><select id="studentSection" class="form-input" required><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div></div>
                 <div><label class="form-label">Parent Mobile *</label><input type="tel" id="studentParentMobile" class="form-input" placeholder="03001234567" required></div>
                 <div><label class="form-label">Student Mobile (optional)</label><input type="tel" id="studentMobile" class="form-input" placeholder="03001234567"></div>
@@ -922,8 +877,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <div class="flex justify-between items-center mb-6"><h3 class="text-xl font-bold text-navy">Add Teacher</h3><button onclick="toggleModal('addTeacherModal')" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button></div>
         <form id="addTeacherForm">
             <div class="space-y-4">
-                <div><label class="form-label">Full Name *</label><input type="text" id="teacherName" class="form-input" placeholder="Mr. John" required></div>
-                <div><label class="form-label">Email *</label><input type="email" id="teacherEmail" class="form-input" placeholder="teacher@school.edu" required></div>
+                <div><label class="form-label">Full Name *</label><input type="text" id="teacherName" class="form-input" placeholder="Umer Zaman" required></div>
+                <div><label class="form-label">Email *</label><input type="email" id="teacherEmail" class="form-input" placeholder="teacher@gmail.com" required></div>
                 <div><label class="form-label">Password *</label><input type="password" id="teacherPassword" class="form-input" placeholder="••••••••" required></div>
             </div>
             <div class="flex gap-3 mt-8"><button type="submit" class="btn-navy flex-1 py-3 rounded-lg"><i class="fas fa-save mr-2"></i>Add</button><button type="button" onclick="toggleModal('addTeacherModal')" class="bg-gray-200 flex-1 py-3 rounded-lg">Cancel</button></div>
@@ -948,8 +903,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const SPREADSHEET_ID = '1vYIBSOfb6P41qswMIhYWd_SjiE0t3vGqA5meSFTU_t8';
     const BASE_URL = 'https://opensheet.elk.sh';
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKL6GsDKH48-rTYiTY1PUYBJLr8N3yB2kw9VFXjRCgpKbRGXWIxQwOcYzWufCo6Gzb/exec';
-
-    // --- UPDATED: Portal link constant ---
     const PORTAL_LINK = 'https://hiraacademy.online/gchs-daska.html';
 
     let appData = { teachers: [], students: [], attendance: [], marks: [] };
@@ -997,24 +950,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return n; 
     }
     
-    // UPDATED: generateRollNumber function that uses both class and section
+    // generateRollNumber function that uses both class and section
     function generateRollNumber(classNum, section) {
-        // Format: GCHS-{class}{section}-{sequential number}
-        // Example: GCHS-9A-01, GCHS-10B-01
-        
-        // Combine class and section (remove any spaces)
         const classSection = classNum + section;
-        
-        // Filter students with same class and section
         const sameClassSection = appData.students.filter(s => 
             s.class === classNum && s.section === section && s.status !== 'inactive'
         );
-        
-        // Find the maximum roll number
         let maxNum = 0;
         sameClassSection.forEach(s => {
             if (s.roll) {
-                // Extract the number part from roll (format: GCHS-{classSection}-XX)
                 const parts = s.roll.split('-');
                 if (parts.length === 3) {
                     const num = parseInt(parts[2]);
@@ -1024,11 +968,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
-        
-        // Generate next number (01, 02, etc.)
         const nextNum = (maxNum + 1).toString().padStart(2, '0');
-        
-        // Return formatted roll number
         return `GCHS-${classSection}-${nextNum}`;
     }
     
@@ -1036,12 +976,10 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(`[data-roll="${roll}"]`).forEach(el=>el.classList.add('whatsapp-sent-row')); 
     }
 
-    // --- UPDATED: sendIndividualWhatsApp includes portal link instead of school contact ---
     function sendIndividualWhatsApp(phone, message, roll, type) {
         if (!phone) { showToast('No phone number', 'warning'); return false; }
         const student = appData.students.find(s => s.roll === roll);
         if (!student) { showToast('Student not found', 'error'); return false; }
-        // School header & details, then user message, then portal login prompt & link
         const detailedMessage = `*GOVT. CHRISTIAN HIGH SCHOOL DASKA*\n━━━━━━━━━━━━━━━━━━━━━\n👤 *Student:* ${student.name}\n🆔 *Roll No:* ${student.roll}\n📚 *Class:* ${student.class} - ${student.section}\n━━━━━━━━━━━━━━━━━━━━━\n${message}\n\n🔗 *Login with Roll Number to view full details:*\n${PORTAL_LINK}\n\n📱 *Stay connected with your child's progress*`;
         const formattedNumber = formatPhoneNumber(phone);
         const encodedMessage = encodeURIComponent(detailedMessage);
@@ -1112,7 +1050,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Data sync (fixed to use BASE_URL correctly)
+    // Data sync
     async function loadData() {
         showLoading(true,'Fetching...');
         try {
@@ -1332,7 +1270,6 @@ document.addEventListener("DOMContentLoaded", function () {
             showLoading(false);
         }
     }
-    // --- UPDATED: prepareBatchMarksWhatsApp uses PORTAL_LINK in message? No, individual send uses base function already updated.
     function prepareBatchMarksWhatsApp() {
         let list=[]; 
         batchMarksData.students?.forEach(s=>{ 
@@ -1438,7 +1375,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch(e) { showToast('Error saving marks','error'); } finally { showLoading(false); }
     };
 
-    // DASHBOARD RENDERING (UPDATED)
+    // DASHBOARD RENDERING
     function refreshUserDashboard(roll) {
         let s = appData.students.find(s => s.roll === roll);
         if (!s) return;
@@ -1510,7 +1447,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('sessionAttendanceContainer').innerHTML = sessionHTML || '<p>No attendance data</p>';
         document.getElementById('sessionTotalPercent').innerText = totalDays > 0 ? ((totalPres / totalDays) * 100).toFixed(1) : '0';
 
-        // Daily attendance list (NEW)
+        // Daily attendance list
         let sortedAttendance = [...att].sort((a, b) => new Date(b.date) - new Date(a.date));
         let dailyHTML = '';
         sortedAttendance.forEach(a => {
@@ -1583,7 +1520,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('userMarksTableBody').innerHTML = marksHtml || '<tr><td colspan="5" class="text-center py-4">No exam results yet</td></tr>';
     }
 
-    // Add student modal open (reset) - FIXED: Modal closes immediately
+    // Add student modal open (reset)
     function openAddStudentModal() {
         document.getElementById('addStudentForm').reset();
         document.querySelector('#addStudentModal h3').innerText = 'Add Student';
@@ -1593,14 +1530,10 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleModal('addStudentModal'); 
     }
     
-    // Add student form submit - FIXED: Modal closes immediately with corrected roll number generation
+    // Add student form submit
     document.getElementById('addStudentForm').onsubmit = async (e) => {
         e.preventDefault(); 
-        
-        // Close modal immediately
         toggleModal('addStudentModal');
-        
-        // Show saving toast
         showToast('Saving student...', 'info');
         
         let name = document.getElementById('studentName').value.trim(), 
@@ -1624,7 +1557,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
                 showToast(`Updated ${currentEditRoll}`, 'success');
             } else {
-                // UPDATED: Pass both class and section to generateRollNumber
                 let roll = generateRollNumber(cls, sec);
                 await sendToSheet({ 
                     sheet: 'students', 
@@ -1650,14 +1582,10 @@ document.addEventListener("DOMContentLoaded", function () {
         toggleModal('addTeacherModal'); 
     }
     
-    // Add teacher form submit - FIXED: Email properly saved, modal closes immediately
+    // Add teacher form submit
     document.getElementById('addTeacherForm').onsubmit = async (e) => {
         e.preventDefault(); 
-        
-        // Close modal immediately
         toggleModal('addTeacherModal');
-        
-        // Show saving toast
         showToast('Adding teacher...', 'info');
         
         let nameInput = document.getElementById('teacherName');
@@ -1676,7 +1604,7 @@ document.addEventListener("DOMContentLoaded", function () {
             await sendToSheet({ 
                 sheet:'teachers', 
                 name: name, 
-                email: email,  // Explicitly set email
+                email: email, 
                 password: password, 
                 created_at: new Date().toISOString().split('T')[0] 
             });
@@ -1758,6 +1686,68 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById('batchExamDate').value = new Date().toISOString().split('T')[0];
         loadData();
     };
+
+    // NEW: language toggle + modal for legacy images
+    document.addEventListener("DOMContentLoaded", function () {
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeModal = document.getElementById("closeModal");
+        const images = document.querySelectorAll(".gallery-image");
+
+        function openModal(src) {
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            modalImg.src = src;
+            document.body.style.overflow = "hidden";
+        }
+        function closeModalFunction() {
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+            modalImg.src = "";
+            document.body.style.overflow = "auto";
+        }
+        images.forEach(img => {
+            img.addEventListener("click", function () {
+                openModal(this.src);
+            });
+        });
+        closeModal.addEventListener("click", closeModalFunction);
+        modal.addEventListener("click", function (e) {
+            if (e.target === modal) closeModalFunction();
+        });
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") closeModalFunction();
+        });
+
+        // language toggle
+        const toggle = document.getElementById('langToggle');
+        const engSec = document.getElementById('englishSection');
+        const urduSec = document.getElementById('urduSection');
+        function updateLanguage(showEnglish) {
+            if (showEnglish) {
+                engSec.classList.remove('hidden-section');
+                urduSec.classList.add('hidden-section');
+            } else {
+                engSec.classList.add('hidden-section');
+                urduSec.classList.remove('hidden-section');
+            }
+        }
+        if (toggle) {
+            toggle.addEventListener('change', function(e) { updateLanguage(e.target.checked); });
+            updateLanguage(true);
+        }
+
+        // anti-rightclick
+        document.addEventListener('contextmenu', function(e) { e.preventDefault(); });
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey || e.metaKey) {
+                if (e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U' || e.key === 's' || e.key === 'S' || e.key === 'p' || e.key === 'P') {
+                    e.preventDefault();
+                }
+            }
+            if (e.key === 'PrintScreen' || e.key === 'F12') e.preventDefault();
+        });
+    });
 </script>
 </body>
 </html>
