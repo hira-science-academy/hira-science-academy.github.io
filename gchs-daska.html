@@ -30,7 +30,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <script>
@@ -38,7 +37,7 @@
         theme: {
             extend: {
                 fontFamily: {
-                    // This forces the browser to use 'Inter' and stops phones from using their own system-ui
+                    // Removed 'system-ui' to force mobile browsers to download 'Inter'
                     sans: ['Inter', 'sans-serif'], 
                     serif: ['Merriweather', 'serif'],
                     urdu: ['"Noto Nastaliq Urdu"', 'serif']
@@ -52,31 +51,29 @@
     }
 </script>
     
-    <style>
-        :root {
-            --navy: #002147;
-            --gold: #FFD700;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-        }
+<style>
+    :root {
+        --navy: #002147;
+        --gold: #FFD700;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
+    }
         
-   body {
-    /* REMOVE all system font names. Only keep 'Inter' */
-    font-family: 'Inter', sans-serif !important;
-    
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    min-height: 100vh;
-
-    /* These 3 lines prevent the mobile browser from "guessing" font sizes */
-    -webkit-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-
-    /* Standard rendering fixes */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
+    body {
+        /* This forces the font and ensures text color is visible */
+        font-family: 'Inter', sans-serif !important;
+        color: #1e293b; 
+        
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        min-height: 100vh;
+        
+        /* Fixes mobile text jumping/resizing */
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
         
         .portal-card {
             background: white;
