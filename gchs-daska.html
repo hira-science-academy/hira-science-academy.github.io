@@ -32,14 +32,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'system-ui', 'sans-serif'],
-                        serif: ['Merriweather', 'serif'],
-                        urdu: ['"Noto Nastaliq Urdu"', 'serif']
-                    },
+tailwind.config = {
+    theme: {
+        extend: {
+            fontFamily: {
+                // Remove 'system-ui' so it doesn't default to the phone font
+                sans: ['Inter', 'sans-serif'], 
+                serif: ['Merriweather', 'serif'],
+                urdu: ['"Noto Nastaliq Urdu"', 'serif']
+            },
                     colors: {
                         navy: '#002147',
                         gold: '#FFD700'
@@ -58,20 +59,23 @@
             --danger: #ef4444;
         }
         
-       body {
-        /* Updated font-family for cross-device consistency */
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        
-        /* Background and layout */
-        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-        min-height: 100vh;
+    body {
+    /* Force Inter and remove system overrides */
+    font-family: 'Inter', sans-serif !important;
+    
+    /* Background and layout */
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    min-height: 100vh;
 
-        /* Mobile Optimization */
-        -webkit-font-smoothing: antialiased; 
-        -moz-osx-font-smoothing: grayscale;
-        text-size-adjust: 100%; 
-        -webkit-text-size-adjust: 100%;
-    }
+    /* Critical Mobile Fixes */
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale;
+    
+    /* Stops mobile browsers from changing font sizes automatically */
+    text-size-adjust: 100%; 
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
         
         .portal-card {
             background: white;
