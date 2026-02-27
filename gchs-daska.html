@@ -316,6 +316,114 @@
         font-style: normal;
         font-display: swap;
     }
+  /* Ensure both sections have same max-width and padding */
+    #authorHeader, #englishSection {
+        max-width: 72rem; /* 6xl */
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* Smooth transitions */
+    #authorHeader div[class*="bg-gradient"] {
+        transition: all 0.3s ease;
+    }
+    
+    #authorHeader div[class*="bg-gradient"]:hover {
+        box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.3);
+    }
+    
+    /* Extra small device adjustments */
+    @media (max-width: 480px) {
+        #authorHeader .px-4 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
+        .xs\:inline {
+            display: inline;
+        }
+    }
+    
+    /* Ensure text doesn't overflow */
+    @media (max-width: 360px) {
+        #authorHeader .text-xs {
+            font-size: 0.65rem;
+        }
+        
+        #authorHeader .py-4 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+    }
+ /* Match exactly with your English section background */
+    .bg-\[\#0b1e3c\] {
+        background-color: #0b1e3c;
+    }
+    
+    /* Ensure gold elements pop against dark blue */
+    #authorHeader .text-amber-300 {
+        color: #fcd34d;
+    }
+    
+    #authorHeader .text-amber-400 {
+        color: #fbbf24;
+    }
+    
+    /* Hover effect */
+    #authorHeader .relative:hover {
+        border-color: rgba(251, 191, 36, 0.8);
+        transition: all 0.3s ease;
+    }
+    
+    /* For very small screens */
+    @media (max-width: 480px) {
+        #authorHeader .px-4 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+        
+        #authorHeader .py-4 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+    }
+ /* Ensure button matches section width exactly */
+    #authorHeader, .max-w-6xl {
+        max-width: 72rem;
+    }
+    
+    /* Smooth hover effects */
+    .group:hover .bg-clip-text {
+        background-image: linear-gradient(to right, #fbbf24, #f59e0b);
+    }
+    
+    /* Mobile adjustments */
+    @media (max-width: 640px) {
+        .group {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        
+        .group .absolute.w-6.h-6 {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+    }
+    
+    /* Very small screens */
+    @media (max-width: 380px) {
+        .group {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+            gap: 0.5rem;
+        }
+        
+        .group span {
+            font-size: 0.75rem;
+        }
+    }
     </style>
 </head>
 <body class="bg-[#0b1e3c] font-sans antialiased">
@@ -440,12 +548,52 @@
         </div>
 
         <!-- ========== BILINGUAL LEGACY SECTION (merged) ========== -->
-        <!-- Author attribution header for legacy section - updated to "Researcher & Archivist" -->
-        <div class="max-w-6xl mx-auto px-4 pt-6 mt-10 text-center text-yellow-300/80 text-sm md:text-base border-b border-yellow-700/50 pb-2 flex flex-wrap items-center justify-between gap-2 bg-[#0b1e3c] rounded-t-3xl border-t border-yellow-600/30 px-6">
-            <span class="bg-[#0b1e3c] px-3 py-1 rounded-full border border-yellow-600/40">📘 EMIS: <strong class="text-yellow-400">34310007</strong></span>
-            <span class="font-medium tracking-wide">Author: M. Tayyab, SSE (Math) Govt. Christian High School, Daska</span>
-            <span class="text-yellow-400/60 text-xs italic">est. 1882</span>
+<!-- Author attribution header - Dark Blue Theme (Matching English Section) -->
+<section id="authorHeader" class="max-w-6xl mx-auto px-4 mt-4">
+    <div class="relative bg-[#0b1e3c] border-2 border-amber-400/60 rounded-2xl shadow-xl overflow-hidden">
+        
+        <!-- Decorative gold corner accents - adjusted for dark blue -->
+        <div class="absolute top-0 left-0 w-8 h-8 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-br-2xl opacity-90"></div>
+        <div class="absolute bottom-0 right-0 w-8 h-8 bg-gradient-to-tl from-amber-400 to-yellow-500 rounded-tl-2xl opacity-90"></div>
+        
+        <!-- Subtle gold overlay for texture -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0 L60 30 L30 60 L0 30 Z\' fill=\'%23fbbf24\' fill-opacity=\'0.03\'/%3E%3C/svg%3E')]"></div>
+        
+        <!-- Inner container with proper spacing -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 py-4 px-4 md:px-6 relative z-10">
+            
+            <!-- Left: EMIS Badge - Gold on Dark Blue -->
+            <div class="flex items-center gap-2 order-1 sm:order-1">
+                <span class="bg-gradient-to-r from-amber-500 to-yellow-500 text-[#0b1e3c] px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold shadow-lg flex items-center border border-yellow-300">
+                    <span class="mr-1.5 text-base">📘</span> 
+                    <span class="mr-1">EMIS</span>
+                    <span class="bg-[#0b1e3c] text-amber-400 px-2 py-0.5 rounded-full ml-1 text-[10px] sm:text-xs border border-amber-400/30">34310007</span>
+                </span>
+            </div>
+            
+            <!-- Center: Author - Gold text on Dark Blue -->
+            <div class="flex-1 text-center sm:text-left order-3 sm:order-2 w-full sm:w-auto mt-2 sm:mt-0">
+                <span class="text-amber-300/90 font-medium text-xs sm:text-sm md:text-base block leading-tight">
+                    <span class="font-light text-amber-400/80">Curated by:</span> 
+                    <span class="font-bold text-amber-300">M. Tayyab, SSE (Math)</span>
+                    <span class="block xs:inline text-amber-400/70 text-[11px] sm:text-xs font-medium mt-0.5 sm:mt-0 sm:ml-1">
+                        Govt. Christian High School, Daska
+                    </span>
+                </span>
+            </div>
+            
+            <!-- Right: Year Badge - Dark Blue on Gold -->
+            <div class="order-2 sm:order-3 self-center">
+                <span class="bg-gradient-to-r from-amber-400 to-yellow-400 text-[#0b1e3c] px-4 py-1.5 rounded-full text-xs font-bold border border-yellow-300 shadow-md flex items-center">
+                    <span class="mr-1">⭐</span> est. 1882
+                </span>
+            </div>
         </div>
+        
+        <!-- Gold gradient bottom line - brighter on dark blue -->
+        <div class="h-1.5 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400"></div>
+    </div>
+</section>
 
         <!-- Language toggle -->
         <div class="flex justify-center items-center gap-6 mt-6 mb-2">
@@ -562,19 +710,38 @@
             </div>
         </div>
 
-<a href="https://hiraacademy.online" target="_blank"
-   class="flex w-full items-center justify-center gap-3 px-6 py-4 rounded-xl
-          mt-10
-          bg-gradient-to-r from-navy to-blue-900
-          text-white font-semibold text-lg
-          shadow-lg hover:shadow-2xl
-          hover:scale-[1.02] transform transition-all duration-300
-          border border-gold/30 hover:border-gold">
+<!-- Visit Hira Science Academy Button - Matching Section Style -->
+<section class="max-w-6xl mx-auto px-4 mt-10">
+    <a href="https://hiraacademy.online" target="_blank"
+       class="group flex w-full items-center justify-center gap-3 px-4 sm:px-6 py-3 sm:py-4 
+              bg-[#0b1e3c] border-2 border-amber-400/50 rounded-2xl
+              text-amber-300 font-semibold text-sm sm:text-base md:text-lg
+              shadow-xl hover:shadow-2xl
+              hover:scale-[1.01] sm:hover:scale-[1.02] transform transition-all duration-300
+              relative overflow-hidden">
 
-    <i class="fas fa-external-link-alt text-gold"></i>
-    <span>Visit Hira Science Academy</span>
-
-</a>
+        <!-- Decorative gold corner accents (matching author header) -->
+        <div class="absolute top-0 left-0 w-6 h-6 bg-gradient-to-br from-amber-400 to-yellow-500 rounded-br-2xl opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div class="absolute bottom-0 right-0 w-6 h-6 bg-gradient-to-tl from-amber-400 to-yellow-500 rounded-tl-2xl opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+        
+        <!-- Subtle gold pattern overlay -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cpath d=\'M30 0 L60 30 L30 60 L0 30 Z\' fill=\'%23fbbf24\' fill-opacity=\'0.03\'/%3E%3C/svg%3E')] group-hover:fill-opacity-10 transition-all duration-300"></div>
+        
+        <!-- Icon with gold gradient -->
+        <i class="fas fa-external-link-alt text-amber-400 group-hover:text-amber-300 transform group-hover:scale-110 transition-all duration-300 text-base sm:text-lg md:text-xl relative z-10"></i>
+        
+        <!-- Text with gold shimmer effect -->
+        <span class="relative z-10 bg-gradient-to-r from-amber-300 to-yellow-400 bg-clip-text text-transparent font-bold tracking-wide">
+            Visit Hira Science Academy
+        </span>
+        
+        <!-- Right arrow that appears on hover -->
+        <i class="fas fa-arrow-right text-amber-400/70 group-hover:text-amber-300 opacity-0 group-hover:opacity-100 transform translate-x-[-10px] group-hover:translate-x-0 transition-all duration-300 relative z-10 text-sm sm:text-base"></i>
+        
+        <!-- Gold bottom line (matching author header) -->
+        <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
+    </a>
+</section>
 
         <div class="text-center text-gray-500 text-sm mt-6">
             <i class="fas fa-shield-alt mr-2"></i>SSL Secured · Privacy Protected
