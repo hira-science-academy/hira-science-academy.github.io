@@ -23,32 +23,34 @@
     <link rel="icon" href="images/gchs_logo.png" type="image/png" />
     
 <!-- Tailwind, Fonts, Font Awesome, Chart.js -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Professional Urdu Font: Noto Nastaliq Urdu (gold standard) -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <script>
-tailwind.config = {
-    theme: {
-        extend: {
-            fontFamily: {
-                // Remove 'system-ui' so it doesn't default to the phone font
-                sans: ['Inter', 'sans-serif'], 
-                serif: ['Merriweather', 'serif'],
-                urdu: ['"Noto Nastaliq Urdu"', 'serif']
-            },
-                    colors: {
-                        navy: '#002147',
-                        gold: '#FFD700'
-                    }
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    // This forces the browser to use 'Inter' and stops phones from using their own system-ui
+                    sans: ['Inter', 'sans-serif'], 
+                    serif: ['Merriweather', 'serif'],
+                    urdu: ['"Noto Nastaliq Urdu"', 'serif']
+                },
+                colors: {
+                    navy: '#002147',
+                    gold: '#FFD700'
                 }
             }
         }
-    </script>
+    }
+</script>
     
     <style>
         :root {
@@ -59,22 +61,21 @@ tailwind.config = {
             --danger: #ef4444;
         }
         
-    body {
-    /* Force Inter and remove system overrides */
+   body {
+    /* REMOVE all system font names. Only keep 'Inter' */
     font-family: 'Inter', sans-serif !important;
     
-    /* Background and layout */
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
     min-height: 100vh;
 
-    /* Critical Mobile Fixes */
-    -webkit-font-smoothing: antialiased; 
-    -moz-osx-font-smoothing: grayscale;
-    
-    /* Stops mobile browsers from changing font sizes automatically */
-    text-size-adjust: 100%; 
+    /* These 3 lines prevent the mobile browser from "guessing" font sizes */
     -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+
+    /* Standard rendering fixes */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
         
         .portal-card {
