@@ -11,16 +11,17 @@
     }
   })();
 </script>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-9CK25HVFYZ');
 </script>
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-4029002473204443" crossorigin="anonymous"></script>
-
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag(&#39;js&#39;, new Date());
+  gtag(&#39;config&#39;, &#39;G-9CK25HVFYZ&#39;);
+    </script>
+    <script async="" src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-4029002473204443" crossorigin="anonymous">
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, text-size-adjust=100%">
     <title>Student Portal | Govt. Christian High School Daska</title>
@@ -96,6 +97,7 @@
         box-shadow: 0 4px 20px rgba(0, 33, 71, 0.06);
         border: 1px solid #e2e8f0;
         transition: all 0.3s ease;
+        height: fit-content;
     }
     .portal-card:hover {
         box-shadow: 0 8px 30px rgba(0, 33, 71, 0.1);
@@ -242,12 +244,21 @@
     .monthly-att-card { background:#f1f5f9; border-radius:12px; padding:12px; text-align:center; }
     .att-percent { font-size:1.5rem; font-weight:bold; }
     
-    .grade-badge { padding:2px 10px; border-radius:20px; font-weight:600; font-size:0.9rem; display:inline-block; }
-    .grade-a { background:#d1fae5; color:#065f46; }
-    .grade-b { background:#dbeafe; color:#1e40af; }
-    .grade-c { background:#fef3c7; color:#92400e; }
-    .grade-d { background:#fee2e2; color:#991b1b; }
-    .grade-f { background:#fecaca; color:#7f1d1d; }
+    .grade-badge {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        display: inline-block;
+        text-align: center;
+        min-width: 40px;
+    }
+    .grade-a-plus { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; }
+    .grade-a { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
+    .grade-b { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; }
+    .grade-c { background: linear-gradient(135deg, #f59e0b, #d97706); color: white; }
+    .grade-d { background: linear-gradient(135deg, #f97316, #ea580c); color: white; }
+    .grade-f { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
     
     .trend-up { color:#10b981; }
     .trend-down { color:#ef4444; }
@@ -452,63 +463,88 @@
     }
 
     /* ===== ATTENDANCE CALENDAR STYLES ===== */
+    .calendar-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        padding: 8px 0;
+    }
+    
     .calendar-grid {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        gap: 4px;
+        gap: 6px;
+        min-width: 500px;
         background: #f8fafc;
-        padding: 8px;
-        border-radius: 12px;
-        margin-bottom: 12px;
+        padding: 12px;
+        border-radius: 16px;
+        margin-bottom: 16px;
     }
+    
     .calendar-day-header {
         text-align: center;
         font-weight: 600;
-        padding: 8px;
+        padding: 10px;
         color: var(--navy);
-        font-size: 0.85rem;
+        font-size: 0.9rem;
+        background: #eef2f6;
+        border-radius: 8px;
     }
+    
     .calendar-cell {
         aspect-ratio: 1;
         display: flex;
         align-items: center;
         justify-content: center;
         background: white;
-        border-radius: 8px;
+        border-radius: 10px;
         font-size: 0.9rem;
-        border: 1px solid #e2e8f0;
+        font-weight: 500;
+        border: 2px solid #e2e8f0;
         transition: all 0.2s;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     }
+    
     .calendar-cell.present {
         background-color: var(--success);
         color: white;
+        border-color: #059669;
     }
+    
     .calendar-cell.absent {
         background-color: var(--danger);
         color: white;
+        border-color: #b91c1c;
     }
+    
     .calendar-cell.late {
         background-color: var(--warning);
         color: white;
+        border-color: #b45309;
     }
+    
     .calendar-cell.today {
         border: 3px solid var(--navy);
         font-weight: bold;
+        transform: scale(1.02);
     }
+    
     .calendar-cell.empty {
         background: transparent;
-        border: 1px dashed #cbd5e1;
+        border: 2px dashed #cbd5e1;
     }
+    
     .legend-dot {
-        width: 12px;
-        height: 12px;
+        width: 14px;
+        height: 14px;
         border-radius: 50%;
         display: inline-block;
-        margin-right: 4px;
+        margin-right: 6px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     .legend-dot.present { background-color: var(--success); }
     .legend-dot.absent { background-color: var(--danger); }
     .legend-dot.late { background-color: var(--warning); }
+    .legend-dot.today { background-color: var(--navy); }
 
     /* Resource Cards */
     .resource-card {
@@ -590,106 +626,288 @@
     .category-library { background: rgba(245,158,11,0.1); color: #b45309; }
     .category-notices { background: rgba(239,68,68,0.1); color: #b91c1c; }
 
-    /* Uniform card heights for the two-column layout */
+    /* Uniform card heights */
     .uniform-card {
         display: flex;
         flex-direction: column;
-        height: 100%;
-        min-height: 400px;
+        height: 600px;
+        min-height: 600px;
+        max-height: 600px;
+        overflow-y: auto;
+        padding: 20px;
     }
     
     .chart-container {
         flex: 1;
         position: relative;
-        min-height: 250px;
         width: 100%;
+        min-height: 350px;
+        margin-bottom: 20px;
     }
     
     .calendar-container {
         flex: 1;
         display: flex;
         flex-direction: column;
+        min-height: 450px;
+    }
+    
+    #resultsChart {
+        max-height: 350px !important;
+        min-height: 350px !important;
+        width: 100% !important;
     }
 
-    /* Print styles */
+    /* Delete button styles */
+    .delete-btn {
+        color: #dc2626;
+        transition: all 0.2s;
+        cursor: pointer;
+        padding: 8px;
+        border-radius: 6px;
+        background: transparent;
+        border: none;
+        font-size: 1rem;
+    }
+    .delete-btn:hover {
+        background-color: #fee2e2;
+        transform: scale(1.1);
+    }
+    .delete-btn i {
+        pointer-events: none;
+    }
+    .delete-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Print styles - Single Page Report Card */
     @media print {
-        .no-print, .tab-btn, .btn-navy, .lang-section, #authorHeader, a[href], .dashboard-header-buttons {
+        .no-print, .tab-btn, .btn-navy, .lang-section, #authorHeader, a[href], .dashboard-header-buttons,
+        #notificationPanel, #downloadsHub, .dashboard-category-card, #dashboardAcademicPanel,
+        #dashboardAttendancePanel, #dashboardLibraryPanel, #dashboardNoticesPanel,
+        .grid-cols-1.md\:grid-cols-3, .portal-card.mt-6 {
             display: none !important;
         }
+        
         body { 
             background: white; 
-            padding: 20px;
+            padding: 0;
+            margin: 0;
             font-family: 'Inter', sans-serif;
         }
-        .portal-card { 
-            box-shadow: none; 
-            border: none;
-            padding: 0;
+        
+        #userDashboard {
+            display: block !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
-        .report-card-header {
+        
+        .portal-card.p-6.bg-gradient-to-r {
+            display: none !important;
+        }
+        
+        .grid.lg\:grid-cols-2 {
+            display: block !important;
+        }
+        
+        .portal-card.uniform-card {
+            height: auto !important;
+            min-height: auto !important;
+            max-height: none !important;
+            padding: 20px !important;
+            margin: 0 auto !important;
+            box-shadow: none !important;
+            border: none !important;
+            page-break-inside: avoid !important;
+        }
+        
+        .portal-card.uniform-card:first-child {
+            display: block !important;
+        }
+        
+        .portal-card.uniform-card:last-child {
+            display: none !important;
+        }
+        
+        .chart-container {
+            min-height: 300px !important;
+            max-height: 300px !important;
+            margin: 20px 0 !important;
+        }
+        
+        #resultsChart {
+            max-height: 300px !important;
+            min-height: 300px !important;
+        }
+        
+        .data-table {
+            display: none !important;
+        }
+        
+        /* Single Page Report Card Layout */
+        .report-card-print {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+        }
+        
+        .print-header {
             text-align: center;
+            margin-bottom: 20px;
             border-bottom: 2px solid #002147;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding-bottom: 15px;
         }
-        .report-card-header h1 {
+        
+        .print-header h1 {
             font-family: 'Old English', serif;
             font-size: 28px;
             color: #002147;
-            margin-bottom: 5px;
+            margin: 0;
         }
-        .student-info-grid {
+        
+        .print-header .emis {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .print-student-info {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             background: #f8fafc;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
-            margin-bottom: 30px;
+            margin: 20px 0;
+            border: 1px solid #e2e8f0;
         }
-        .marks-table {
+        
+        .print-info-item {
+            padding: 10px;
+            background: white;
+            border-radius: 6px;
+            border-left: 3px solid #002147;
+        }
+        
+        .print-info-item .label {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+        
+        .print-info-item .value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #002147;
+        }
+        
+        .print-performance-summary {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+        }
+        
+        .print-summary-item .label {
+            font-size: 12px;
+            color: #002147;
+            opacity: 0.9;
+        }
+        
+        .print-summary-item .value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #002147;
+        }
+        
+        .print-chart-section {
+            margin: 25px 0;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            page-break-inside: avoid;
+        }
+        
+        .print-chart-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #002147;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .print-chart-title i {
+            color: #FFD700;
+            font-size: 20px;
+        }
+        
+        .print-subject-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 30px 0;
+            margin-top: 15px;
         }
-        .marks-table th {
+        
+        .print-subject-table th {
             background: #002147;
             color: white;
             padding: 12px;
             text-align: left;
+            font-size: 14px;
         }
-        .marks-table td {
-            padding: 10px;
+        
+        .print-subject-table td {
+            padding: 12px;
             border-bottom: 1px solid #e2e8f0;
         }
-        .footer-note {
-            text-align: center;
-            margin-top: 40px;
-            color: #666;
+        
+        .print-progress-bar {
+            background: #e2e8f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            flex: 1;
+        }
+        
+        .print-progress-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+        
+        .print-grade-badge {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            color: white;
             font-size: 12px;
+        }
+        
+        .print-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 11px;
+        }
+        
+        .print-watermark {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            font-size: 10px;
+            color: #ccc;
+            opacity: 0.5;
         }
     }
     </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "Hira Science Academy",
-  "url": "https://hiraacademy.online/",
-  "logo": "https://hiraacademy.online/images/logo.webp",
-  "description": "Hira Science Academy provides free Class 9 & 10 notes... aligned with PECTAA 2025 syllabus and suitable for all BISE Punjab boards.",
-  "founder": [
-    { "@type": "Person", "name": "Muhammad Tayyab (MSc Mathematics)" },
-    { "@type": "Person", "name": "Mirza Abid Shabbir Mughal (M.Phil Chemistry)" }
-  ],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Daska",
-    "postalCode": "51010",
-    "addressCountry": "PK"
-  }
-}
-</script>
 </head>
 <body class="bg-[#0b1e3c] font-sans antialiased">
 
@@ -1085,6 +1303,7 @@
             <button class="tab-btn" onclick="openTab(event, 'tabNotices')"><i class="fas fa-bullhorn mr-2"></i>Notices</button>
             <button class="tab-btn" onclick="openTab(event, 'tabSyllabus')"><i class="fas fa-book-open mr-2"></i>Syllabus</button>
             <button class="tab-btn" onclick="openTab(event, 'tabHomework')"><i class="fas fa-pencil-alt mr-2"></i>Homework</button>
+            <button class="tab-btn" onclick="openTab(event, 'tabDiary')"><i class="fas fa-journal-whills mr-2"></i>Daily Diary</button>
             <button class="tab-btn" onclick="openTab(event, 'tabDateSheets')"><i class="fas fa-calendar-alt mr-2"></i>Date Sheets</button>
             <button class="tab-btn" onclick="openTab(event, 'tabFeedback')"><i class="fas fa-comment mr-2"></i>Feedback</button>
         </div>
@@ -1220,7 +1439,7 @@
             </div>
         </div>
 
-        <!-- Syllabus Tab (with VIEW links) -->
+        <!-- Syllabus Tab -->
         <div id="tabSyllabus" class="tab-content">
             <div class="portal-card p-6">
                 <h3 class="text-xl font-bold text-navy mb-6">📖 Syllabus</h3>
@@ -1240,14 +1459,13 @@
             </div>
         </div>
 
-        <!-- Homework Tab (with consistent subject dropdown + custom input) -->
+        <!-- Homework Tab -->
         <div id="tabHomework" class="tab-content">
             <div class="portal-card p-6">
                 <h3 class="text-xl font-bold text-navy mb-6">📝 Homework</h3>
                 <form id="homeworkForm" class="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8 p-4 bg-gray-50 rounded-xl">
                     <div><select id="homeworkClass" class="form-input"><option value="9">9th</option><option value="10">10th</option></select></div>
                     <div><select id="homeworkSection" class="form-input"><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option></select></div>
-                    <!-- Subject dropdown with custom option -->
                     <div>
                         <select id="homeworkSubjectSelect" class="form-input" onchange="homeworkSubjectChanged()">
                             <option value="Math">Mathematics</option>
@@ -1267,6 +1485,22 @@
                     <div><input type="date" id="homeworkDueDate" class="form-input" required></div>
                     <div class="md:col-span-5"><button type="submit" class="btn-navy px-6 py-2 rounded-lg"><i class="fas fa-plus-circle mr-2"></i>Add Homework</button></div>
                 </form>
+                <div class="mb-4 flex flex-wrap gap-4 items-center">
+                    <span class="font-medium">Filter:</span>
+                    <select id="filterHomeworkClass" class="form-input w-32" onchange="loadHomeworkTable()">
+                        <option value="all">All Classes</option>
+                        <option value="9">9th</option>
+                        <option value="10">10th</option>
+                    </select>
+                    <select id="filterHomeworkSection" class="form-input w-32" onchange="loadHomeworkTable()">
+                        <option value="all">All Sections</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select>
+                </div>
                 <div class="overflow-x-auto">
                     <table class="data-table">
                         <thead><tr><th>Class</th><th>Section</th><th>Subject</th><th>Assignment</th><th>Due Date</th><th>Actions</th></tr></thead>
@@ -1276,7 +1510,104 @@
             </div>
         </div>
 
-        <!-- Date Sheets Tab (with VIEW links) -->
+        <!-- Daily Diary Tab -->
+        <div id="tabDiary" class="tab-content">
+            <div class="portal-card p-6">
+                <h3 class="text-xl font-bold text-navy mb-6">📔 Daily Diary</h3>
+                <form id="diaryForm" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 p-4 bg-gray-50 rounded-xl">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Class</label>
+                        <select id="diaryClass" class="form-input" required>
+                            <option value="9">9th</option>
+                            <option value="10">10th</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Section</label>
+                        <select id="diarySection" class="form-input" required>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                        <select id="diarySubjectSelect" class="form-input" onchange="diarySubjectChanged()">
+                            <option value="Math">Mathematics</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                            <option value="Biology">Biology</option>
+                            <option value="English">English</option>
+                            <option value="Urdu">Urdu</option>
+                            <option value="Pak Studies">Pakistan Studies</option>
+                            <option value="Islamiat">Islamiyat</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="__custom__">Custom</option>
+                        </select>
+                        <input type="text" id="diarySubjectCustom" class="form-input mt-2 hidden" placeholder="Enter subject">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                        <input type="date" id="diaryDate" class="form-input" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Diary Entry</label>
+                        <textarea id="diaryEntry" class="form-input" rows="2" placeholder="Today's lesson/topics covered" required></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Resource Link (Optional)</label>
+                        <input type="url" id="diaryLink" class="form-input" placeholder="https://...">
+                    </div>
+                    <div class="md:col-span-2 lg:col-span-3">
+                        <button type="submit" class="btn-navy px-6 py-2 rounded-lg"><i class="fas fa-plus-circle mr-2"></i>Add Diary Entry</button>
+                    </div>
+                </form>
+
+                <!-- Diary Filters -->
+                <div class="mb-6 flex flex-wrap gap-4 items-center">
+                    <span class="font-medium">Filter Diary:</span>
+                    <select id="filterDiaryClass" class="form-input w-32" onchange="loadDiaryTable()">
+                        <option value="all">All Classes</option>
+                        <option value="9">9th</option>
+                        <option value="10">10th</option>
+                    </select>
+                    <select id="filterDiarySection" class="form-input w-32" onchange="loadDiaryTable()">
+                        <option value="all">All Sections</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                        <option value="E">E</option>
+                    </select>
+                    <input type="date" id="filterDiaryDate" class="form-input w-40" onchange="loadDiaryTable()">
+                    <button onclick="clearDiaryFilters()" class="bg-gray-200 px-4 py-2 rounded-lg text-sm hover:bg-gray-300 transition">
+                        <i class="fas fa-times mr-2"></i>Clear
+                    </button>
+                </div>
+
+                <!-- Diary Entries Table -->
+                <div class="overflow-x-auto">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Class</th>
+                                <th>Section</th>
+                                <th>Subject</th>
+                                <th>Diary Entry</th>
+                                <th>Resource</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="diaryTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date Sheets Tab -->
         <div id="tabDateSheets" class="tab-content">
             <div class="portal-card p-6">
                 <h3 class="text-xl font-bold text-navy mb-6">📅 Date Sheets</h3>
@@ -1327,14 +1658,14 @@
             </div>
         </div>
         
-        <!-- 4 CATEGORY CARDS - REFINED WITH HOVER SCALING & COLORS -->
+        <!-- 4 CATEGORY CARDS -->
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-8">
             <div onclick="showDashboardCategory('academic')" class="dashboard-category-card group">
                 <div class="category-icon-wrapper category-academic">
                     <i class="fas fa-book-open"></i>
                 </div>
                 <h4 class="font-bold text-navy text-sm md:text-base">Academic</h4>
-                <p class="text-xs text-gray-500">Syllabus & Homework</p>
+                <p class="text-xs text-gray-500">Syllabus, Homework & Diary</p>
             </div>
             <div onclick="showDashboardCategory('attendance')" class="dashboard-category-card group">
                 <div class="category-icon-wrapper category-attendance">
@@ -1412,39 +1743,51 @@
             </div>
         </div>
 
-        <!-- Two Column Layout: Subject-wise Performance Chart + Attendance Calendar - UNIFORM SIZE -->
+        <!-- Two Column Layout: Subject-wise Performance Chart + Attendance Calendar -->
         <div class="grid lg:grid-cols-2 gap-6">
-            <!-- Subject-wise Performance Chart - Uniform height -->
-            <div class="portal-card p-6 uniform-card">
-                <h3 class="font-bold text-navy mb-4">📊 Subject-wise Performance</h3>
+            <!-- Subject-wise Performance Chart with Beautiful Styling -->
+            <div class="portal-card uniform-card">
+                <h3 class="font-bold text-navy mb-4 flex items-center gap-2">
+                    <i class="fas fa-chart-pie text-gold"></i>
+                    Subject-wise Performance
+                </h3>
                 <div class="chart-container">
                     <canvas id="resultsChart"></canvas>
                 </div>
                 <div id="noChartData" class="hidden text-center text-gray-500 py-8">No exam data available</div>
             </div>
             
-            <!-- Attendance Calendar - Uniform height -->
-            <div class="portal-card p-6 uniform-card">
-                <h3 class="font-bold mb-4">📅 Attendance Calendar</h3>
+            <!-- Attendance Calendar -->
+            <div class="portal-card uniform-card">
+                <h3 class="font-bold mb-4 flex items-center gap-2">
+                    <i class="fas fa-calendar-alt text-gold"></i>
+                    Attendance Calendar
+                </h3>
                 <div class="calendar-container">
                     <div class="flex justify-between items-center mb-4">
-                        <button onclick="previousMonth()" class="bg-gray-200 px-3 py-1 rounded-lg hover:bg-gray-300 transition"><i class="fas fa-chevron-left"></i></button>
-                        <h4 id="calendarMonthYear" class="font-bold text-lg"></h4>
-                        <button onclick="nextMonth()" class="bg-gray-200 px-3 py-1 rounded-lg hover:bg-gray-300 transition"><i class="fas fa-chevron-right"></i></button>
+                        <button onclick="previousMonth()" class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300 transition font-medium"><i class="fas fa-chevron-left mr-1"></i> Prev</button>
+                        <h4 id="calendarMonthYear" class="font-bold text-xl"></h4>
+                        <button onclick="nextMonth()" class="bg-gray-200 px-4 py-2 rounded-lg hover:bg-gray-300 transition font-medium">Next <i class="fas fa-chevron-right ml-1"></i></button>
                     </div>
-                    <div id="calendarGrid" class="calendar-grid"></div>
-                    <div class="flex gap-4 justify-center mt-2">
-                        <span class="flex items-center"><span class="legend-dot present"></span> Present</span>
-                        <span class="flex items-center"><span class="legend-dot absent"></span> Absent</span>
-                        <span class="flex items-center"><span class="legend-dot late"></span> Late</span>
+                    <div class="calendar-wrapper">
+                        <div id="calendarGrid" class="calendar-grid"></div>
+                    </div>
+                    <div class="flex flex-wrap gap-4 justify-center mt-4 p-3 bg-gray-50 rounded-lg">
+                        <span class="flex items-center text-sm"><span class="legend-dot present"></span> Present</span>
+                        <span class="flex items-center text-sm"><span class="legend-dot absent"></span> Absent</span>
+                        <span class="flex items-center text-sm"><span class="legend-dot late"></span> Late</span>
+                        <span class="flex items-center text-sm"><span class="legend-dot today"></span> Today</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Marks Table -->
+        <!-- Marks Table with Beautiful Grade Badges -->
         <div class="portal-card p-6 mt-6">
-            <h3 class="font-bold text-navy mb-4">📋 Subject-wise Grades & Marks</h3>
+            <h3 class="font-bold text-navy mb-4 flex items-center gap-2">
+                <i class="fas fa-table text-gold"></i>
+                Subject-wise Grades & Marks
+            </h3>
             <div class="overflow-x-auto">
                 <table class="data-table w-full">
                     <thead><tr><th>Date</th><th>Subject</th><th>Exam</th><th>Marks</th><th>%</th><th>Grade</th><th>Action</th></tr></thead>
@@ -1503,7 +1846,7 @@
     // ===== CONFIG =====
     const SPREADSHEET_ID = '1vYIBSOfb6P41qswMIhYWd_SjiE0t3vGqA5meSFTU_t8';
     const BASE_URL = 'https://opensheet.elk.sh';
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxNvEStGWCiP37GCtIo8KkW1kGFwHTsZlWDDL6w7TKhwFEfhvWhVVpp2UeOdIf1nmx-/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_1yoq7m0-OWIQq1J0lbY_iT_NHZiyXx2dlQh-OT9G9e3QoflHOhVx08G2SXGuRFWC/exec';
     const PORTAL_LINK = 'https://hiraacademy.online/gchs-daska.html';
 
     // Data structure
@@ -1516,6 +1859,7 @@
         notices: [],
         syllabus: [],
         homework: [],
+        diary: [], 
         dateSheets: [],
         feedback: []
     };
@@ -1527,6 +1871,292 @@
     let resultsChart = null;
     let attendanceChart = null;
     let currentMonth = new Date();
+
+    // ===== UPDATED DELETE FUNCTION WITH PROPER RESPONSE HANDLING =====
+    async function performDelete(sheetName, params, buttonElement) {
+        if (!confirm(`⚠️ Are you sure you want to permanently delete this record? This action cannot be undone.`)) {
+            return;
+        }
+        
+        // Store original button HTML for restoration
+        const originalButtonHtml = buttonElement.innerHTML;
+        const originalButtonDisabled = buttonElement.disabled;
+        
+        // Show loading state on the button
+        buttonElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+        buttonElement.disabled = true;
+        
+        showLoading(true, 'Deleting record from database...');
+        
+        try {
+            const action = (sheetName === 'students') ? 'delete_permanent' : 'delete';
+            
+            // Prepare delete parameters based on sheet type
+            let deleteParams = { sheet: sheetName, action };
+            
+            if (sheetName === 'notices') {
+                deleteParams.title = params.title;
+                deleteParams.date = params.date;
+            } else if (sheetName === 'Feedback') {
+                deleteParams.suggestion = params.suggestion;
+                deleteParams.date = params.date;
+                deleteParams.user = params.user || 'guest';
+            } else if (sheetName === 'students') {
+                deleteParams.roll = params.roll;
+            } else if (sheetName === 'teachers') {
+                deleteParams.email = params.email;
+            } else if (sheetName === 'library') {
+                deleteParams.title = params.title;
+                deleteParams.link = params.link;
+            } else if (sheetName === 'syllabus') {
+                deleteParams.subject = params.subject;
+                deleteParams.class = params.class;
+                deleteParams.file_link = params.file_link;
+            } else if (sheetName === 'homework') {
+                deleteParams.class = params.class;
+                deleteParams.section = params.section;
+                deleteParams.subject = params.subject;
+                deleteParams.assignment = params.assignment;
+            } else if (sheetName === 'diary') {
+                deleteParams.date = params.date;
+                deleteParams.class = params.class;
+                deleteParams.section = params.section;
+                deleteParams.subject = params.subject;
+                deleteParams.entry = params.entry;
+            } else if (sheetName === 'date_sheets') {
+                deleteParams.exam_type = params.exam_type;
+                deleteParams.class = params.class;
+            } else if (sheetName === 'marks') {
+                deleteParams.roll = params.roll;
+                deleteParams.subject = params.subject;
+                deleteParams.exam_type = params.exam_type;
+            } else if (sheetName === 'attendance') {
+                deleteParams.roll = params.roll;
+                deleteParams.date = params.date;
+            }
+            
+            console.log('Sending delete request:', deleteParams);
+            
+            // Send request to Apps Script
+            const response = await fetch(APPS_SCRIPT_URL, {
+                method: 'POST',
+                body: new URLSearchParams(deleteParams)
+            });
+            
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                showToast('Record deleted successfully from database', 'success');
+                
+                // Only remove the row from UI after successful deletion
+                const row = buttonElement.closest('tr');
+                if (row) {
+                    // Add a fade-out effect
+                    row.style.transition = 'opacity 0.3s';
+                    row.style.opacity = '0';
+                    setTimeout(() => {
+                        row.remove();
+                    }, 300);
+                }
+                
+                // Refresh data after a short delay
+                setTimeout(async () => {
+                    await loadData();
+                    
+                    // Refresh current tab
+                    const activeTab = document.querySelector('.tab-content.active')?.id;
+                    if (activeTab) {
+                        refreshTab(activeTab);
+                    }
+                    
+                    if (currentUser && currentUser.roll) {
+                        refreshUserDashboard(currentUser.roll);
+                    }
+                }, 1000);
+            } else {
+                showToast('Error deleting record: ' + (result.message || 'Unknown error'), 'error');
+                console.error('Delete error response:', result);
+                // Restore button
+                buttonElement.innerHTML = originalButtonHtml;
+                buttonElement.disabled = originalButtonDisabled;
+            }
+            
+        } catch (error) {
+            console.error('Delete error:', error);
+            showToast('Network error while deleting: ' + error.message, 'error');
+            // Restore button
+            buttonElement.innerHTML = originalButtonHtml;
+            buttonElement.disabled = originalButtonDisabled;
+        } finally {
+            showLoading(false);
+        }
+    }
+
+    // Helper function to refresh specific tab
+    function refreshTab(tabId) {
+        switch(tabId) {
+            case 'tabStudents': populateAdminTables(); break;
+            case 'tabTeachers': 
+                document.getElementById('teachersTableBody').innerHTML = appData.teachers.map((t, index) => 
+                    `<tr><td>${t.name}</td><td>${t.email}</td><td>${t.created_at||''}</td>
+                    <td><button onclick="deleteTeacher('${index}')" class="delete-btn">
+                    <i class="fas fa-trash"></i></button></td></tr>`
+                ).join('') || '<tr><td colspan="4">No teachers</td></tr>';
+                break;
+            case 'tabAttendance': loadAttendanceStudents(); break;
+            case 'tabMarks': populateAdminTables(); break;
+            case 'tabBatchMarks': loadBatchStudents(); break;
+            case 'tabLibrary': loadLibraryTable(); break;
+            case 'tabNotices': loadNoticesTable(); break;
+            case 'tabSyllabus': loadSyllabusTable(); break;
+            case 'tabHomework': loadHomeworkTable(); break;
+            case 'tabDiary': loadDiaryTable(); break;
+            case 'tabDateSheets': loadDateSheetsTable(); break;
+            case 'tabFeedback': loadFeedbackTable(); break;
+        }
+    }
+
+    // Helper function to get sheet name from tab ID
+    function getSheetNameFromTab(tabId) {
+        const mapping = {
+            'tabStudents': 'students',
+            'tabTeachers': 'teachers',
+            'tabLibrary': 'library',
+            'tabNotices': 'notices',
+            'tabSyllabus': 'syllabus',
+            'tabHomework': 'homework',
+            'tabDiary': 'diary',
+            'tabDateSheets': 'date_sheets',
+            'tabFeedback': 'Feedback',
+            'tabAttendance': 'attendance',
+            'tabMarks': 'marks'
+        };
+        return mapping[tabId] || tabId.replace('tab', '').toLowerCase();
+    }
+
+    // ===== UPDATED EVENT DELEGATION FOR DELETE BUTTONS =====
+    document.addEventListener('click', function(e) {
+        // Find delete button - look for both class and onclick attributes
+        const deleteBtn = e.target.closest('.delete-btn, [onclick*="delete"]');
+        if (!deleteBtn) return;
+        
+        // Don't interfere with specific delete functions that have their own handlers
+        if (deleteBtn.hasAttribute('onclick') && 
+            (deleteBtn.getAttribute('onclick').includes('deleteStudent') || 
+             deleteBtn.getAttribute('onclick').includes('deleteTeacher'))) {
+            return;
+        }
+        
+        e.preventDefault();
+        
+        const row = deleteBtn.closest('tr');
+        if (!row) return;
+        
+        const activeTab = document.querySelector('.tab-content.active')?.id;
+        if (!activeTab) return;
+        
+        let params = {};
+        let sheetName = getSheetNameFromTab(activeTab);
+        
+        // Extract data based on active tab
+        if (activeTab === 'tabStudents') {
+            const roll = row.cells[0]?.innerText?.trim();
+            if (roll) params = { roll };
+            else return;
+        }
+        else if (activeTab === 'tabTeachers') {
+            const email = row.cells[1]?.innerText?.trim();
+            if (email) params = { email };
+            else return;
+        }
+        else if (activeTab === 'tabLibrary') {
+            const title = row.cells[0]?.innerText?.trim();
+            const link = row.cells[1]?.querySelector('a')?.href || '';
+            if (title) params = { title, link };
+            else return;
+        }
+        else if (activeTab === 'tabNotices') {
+            const title = row.cells[0]?.innerText?.trim();
+            const date = row.cells[1]?.innerText?.trim();
+            if (title && date) params = { title, date };
+            else return;
+        }
+        else if (activeTab === 'tabSyllabus') {
+            const subject = row.cells[0]?.innerText?.trim();
+            const className = row.cells[1]?.innerText?.trim();
+            const fileLink = row.cells[3]?.querySelector('a')?.href || '';
+            if (subject && className) params = { subject, class: className, file_link: fileLink };
+            else return;
+        }
+        else if (activeTab === 'tabHomework') {
+            const className = row.cells[0]?.innerText?.trim();
+            const section = row.cells[1]?.innerText?.trim();
+            const subject = row.cells[2]?.innerText?.trim();
+            const assignment = row.cells[3]?.innerText?.trim();
+            if (className && section && subject && assignment) {
+                params = { class: className, section, subject, assignment };
+            } else return;
+        }
+        else if (activeTab === 'tabDiary') {
+            const date = row.cells[0]?.innerText?.trim();
+            const className = row.cells[1]?.innerText?.trim();
+            const section = row.cells[2]?.innerText?.trim();
+            const subject = row.cells[3]?.innerText?.trim();
+            const entry = row.cells[4]?.innerText?.trim();
+            if (date && className && section && subject && entry) {
+                params = { date, class: className, section, subject, entry };
+            } else return;
+        }
+        else if (activeTab === 'tabDateSheets') {
+            const examType = row.cells[0]?.innerText?.trim();
+            const className = row.cells[1]?.innerText?.trim();
+            if (examType && className) {
+                params = { exam_type: examType, class: className };
+            } else return;
+        }
+        else if (activeTab === 'tabFeedback') {
+            const suggestion = row.cells[0]?.innerText?.trim();
+            const date = row.cells[1]?.innerText?.trim();
+            const user = row.cells[2]?.innerText?.trim() || 'guest';
+            if (suggestion && date) {
+                params = { suggestion, date, user };
+            } else return;
+        }
+        else if (activeTab === 'tabMarks') {
+            // For marks table, we need more complex logic
+            return; // Let the existing onclick handler work
+        }
+        
+        // Call the updated performDelete with the button reference
+        performDelete(sheetName, params, deleteBtn);
+    });
+
+    // ===== UPDATED SEND TO SHEET FUNCTION =====
+    async function sendToSheet(data) {
+        showLoading(true, 'Saving...');
+        try {
+            const response = await fetch(APPS_SCRIPT_URL, { 
+                method: 'POST', 
+                body: new URLSearchParams(data) 
+            });
+            
+            const result = await response.json();
+            
+            if (result.status === 'success') {
+                showToast('Saved successfully', 'success');
+                return true;
+            } else {
+                showToast('Error: ' + (result.message || 'Unknown error'), 'error');
+                return false;
+            }
+        } catch(e) { 
+            console.error(e);
+            showToast('Network error: ' + e.message, 'error'); 
+            return false; 
+        } finally { 
+            showLoading(false); 
+        }
+    }
 
     // ===== NOTIFICATION PANEL FUNCTIONS =====
     function toggleNotificationPanel() {
@@ -1655,6 +2285,7 @@
         if(tabId==='tabNotices') loadNoticesTable();
         if(tabId==='tabSyllabus') loadSyllabusTable();
         if(tabId==='tabHomework') loadHomeworkTable();
+        if(tabId==='tabDiary') loadDiaryTable();
         if(tabId==='tabDateSheets') loadDateSheetsTable();
         if(tabId==='tabFeedback') loadFeedbackTable();
     }
@@ -1744,7 +2375,7 @@
     async function loadData() {
         showLoading(true,'Fetching...');
         try {
-            let [teachers,students,attendance,marks,library,notices,syllabus,homework,dateSheets,feedback] = await Promise.all([
+            let [teachers,students,attendance,marks,library,notices,syllabus,homework,diary,dateSheets,feedback] = await Promise.all([
                 fetch(`${BASE_URL}/${SPREADSHEET_ID}/teachers`).then(r=>r.ok?r.json():[]),
                 fetch(`${BASE_URL}/${SPREADSHEET_ID}/students`).then(r=>r.ok?r.json():[]),
                 fetch(`${BASE_URL}/${SPREADSHEET_ID}/attendance`).then(r=>r.ok?r.json():[]),
@@ -1753,12 +2384,12 @@
                 fetch(`${BASE_URL}/${SPREADSHEET_ID}/notices`).then(r=>r.ok?r.json():[]),
                 fetch(`${BASE_URL}/${SPREADSHEET_ID}/syllabus`).then(r=>r.ok?r.json():[]),
                 fetch(`${BASE_URL}/${SPREADSHEET_ID}/homework`).then(r=>r.ok?r.json():[]),
+                fetch(`${BASE_URL}/${SPREADSHEET_ID}/diary`).then(r=>r.ok?r.json():[]),
                 fetch(`${BASE_URL}/${SPREADSHEET_ID}/date_sheets`).then(r=>r.ok?r.json():[]),
                 fetch(`${BASE_URL}/${SPREADSHEET_ID}/Feedback`).then(r=>r.ok?r.json():[])
             ]);
-            appData = { teachers, students, attendance, marks, library, notices, syllabus, homework, dateSheets, feedback };
+            appData = { teachers, students, attendance, marks, library, notices, syllabus, homework, diary, dateSheets, feedback };
             
-            // Update notification badge
             const oneWeekAgo = new Date();
             oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
             const recentNotices = notices.filter(n => new Date(n.date) > oneWeekAgo).length;
@@ -1770,6 +2401,7 @@
                 loadNoticesTable();
                 loadSyllabusTable();
                 loadHomeworkTable();
+                loadDiaryTable();
                 loadDateSheetsTable();
                 loadFeedbackTable();
             }
@@ -1781,19 +2413,6 @@
         } finally { showLoading(false); }
     }
     
-    async function sendToSheet(data) {
-        showLoading(true,'Saving...');
-        try {
-            await fetch(APPS_SCRIPT_URL, { method:'POST', mode:'no-cors', body: new URLSearchParams(data) });
-            showToast('Saved','success'); 
-            return true;
-        } catch(e) { 
-            console.error(e);
-            showToast('Save error','error'); 
-            return false; 
-        } finally { showLoading(false); }
-    }
-
     // ===== LOGIN HANDLERS =====
     document.getElementById('teacherLoginForm').onsubmit = async (e) => {
         e.preventDefault();
@@ -1864,13 +2483,10 @@
         document.querySelector('#addStudentModal button[type="submit"]').innerHTML = '<i class="fas fa-save mr-2"></i>Update';
         toggleModal('addStudentModal');
     }
+    
     async function deleteStudent(roll) {
-        if(!confirm(`Delete student ${roll}?`)) return;
-        showLoading(true, 'Deleting...');
-        await sendToSheet({ sheet:'students', action: 'delete', roll, status:'inactive', deleted_at:new Date().toISOString().split('T')[0] });
-        showToast(`Deleted ${roll}`,'success');
-        setTimeout(loadData,1000);
-        showLoading(false);
+        const row = document.querySelector(`tr[data-roll="${roll}"]`);
+        await performDelete('students', { roll }, row);
     }
 
     // ===== POPULATE ADMIN TABLES =====
@@ -1882,7 +2498,7 @@
             return `<tr data-roll="${s.roll}"><td>${s.roll}</td><td>${s.name}</td><td>${s.class}</td><td>${s.section}</td><td>${parent}</td><td><div class="flex gap-2"><button onclick="editStudent('${s.roll}')" class="btn-action-edit text-blue-600"><i class="fas fa-edit"></i></button><button onclick="deleteStudent('${s.roll}')" class="btn-action-delete text-red-600"><i class="fas fa-trash"></i></button><button onclick="sendWhatsAppToParent('${s.roll}')" class="btn-action-whatsapp text-green-600"><i class="fab fa-whatsapp"></i></button><button onclick="sendRollNumberWhatsApp('${s.roll}')" class="btn-action-roll text-amber-600"><i class="fas fa-id-card"></i></button></div></td></tr>`;
         }).join('') || '<tr><td colspan="6">No students</td></tr>';
         
-        document.getElementById('teachersTableBody').innerHTML = appData.teachers.map((t, index) => `<tr><td>${t.name}</td><td>${t.email}</td><td>${t.created_at||''}</td><td><button onclick="deleteTeacher('${index}')" class="text-red-600"><i class="fas fa-trash"></i></button></td></tr>`).join('')||'<tr><td colspan="4">No teachers</td></tr>';
+        document.getElementById('teachersTableBody').innerHTML = appData.teachers.map((t, index) => `<tr><td>${t.name}</td><td>${t.email}</td><td>${t.created_at||''}</td><td><button onclick="deleteTeacher('${index}')" class="delete-btn"><i class="fas fa-trash"></i></button></td></tr>`).join('')||'<tr><td colspan="4">No teachers</td></tr>';
         
         let markSelect = document.getElementById('markStudent');
         if(markSelect) markSelect.innerHTML = '<option value="">Select</option>'+active.map(s=>`<option value="${s.roll}">${s.roll} - ${s.name}</option>`).join('');
@@ -1908,18 +2524,15 @@
     
     function deleteTeacher(index) {
         let teacher = appData.teachers[index];
-        if(confirm(`Delete teacher ${teacher.name}?`)) {
-            sendToSheet({ sheet:'teachers', action:'delete', email:teacher.email });
-            showToast('Teacher deleted', 'success');
-            setTimeout(loadData,1000);
-        }
+        const row = document.querySelector(`#teachersTableBody tr:nth-child(${index + 1})`);
+        performDelete('teachers', { email: teacher.email }, row);
     }
 
     // ===== LIBRARY MANAGEMENT =====
     function loadLibraryTable() {
         let tbody = document.getElementById('libraryTableBody');
         if(!tbody) return;
-        tbody.innerHTML = appData.library.map((item, index) => `<tr><td>${item.title}</td><td><a href="${item.link}" target="_blank" class="text-blue-600">View</a></td><td>${item.description || ''}</td><td>${item.class || 'ALL'}</td><td><button onclick="deleteLibraryItem('${index}')" class="text-red-600"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+        tbody.innerHTML = appData.library.map((item, index) => `<tr><td>${item.title}</td><td><a href="${item.link}" target="_blank" class="text-blue-600">View</a></td><td>${item.description || ''}</td><td>${item.class || 'ALL'}</td><td><button onclick="deleteLibraryItem('${index}')" class="delete-btn"><i class="fas fa-trash"></i></button></td></tr>`).join('');
     }
     document.getElementById('libraryForm').onsubmit = async (e) => {
         e.preventDefault();
@@ -1933,18 +2546,16 @@
         setTimeout(loadData,1000);
     };
     function deleteLibraryItem(index) {
-        if(confirm('Delete this resource?')) {
-            sendToSheet({ sheet:'library', action:'delete', row: index+2 });
-            showToast('Deleted', 'success');
-            setTimeout(loadData,1000);
-        }
+        let item = appData.library[index];
+        const row = document.querySelector(`#libraryTableBody tr:nth-child(${index + 1})`);
+        performDelete('library', { title: item.title, link: item.link }, row);
     }
 
     // ===== NOTICES MANAGEMENT =====
     function loadNoticesTable() {
         let tbody = document.getElementById('noticesTableBody');
         if(!tbody) return;
-        tbody.innerHTML = appData.notices.map((item, index) => `<tr><td>${item.title}</td><td>${item.date}</td><td><span class="px-2 py-1 rounded-full text-xs ${item.priority==='High'?'bg-red-100 text-red-800':item.priority==='Normal'?'bg-blue-100 text-blue-800':'bg-gray-100'}">${item.priority}</span></td><td><button onclick="deleteNoticeItem('${index}')" class="text-red-600"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+        tbody.innerHTML = appData.notices.map((item, index) => `<tr><td>${item.title}</td><td>${item.date}</td><td><span class="px-2 py-1 rounded-full text-xs ${item.priority==='High'?'bg-red-100 text-red-800':item.priority==='Normal'?'bg-blue-100 text-blue-800':'bg-gray-100'}">${item.priority}</span></td><td><button onclick="deleteNoticeItem('${index}')" class="delete-btn"><i class="fas fa-trash"></i></button></td></tr>`).join('');
     }
     document.getElementById('noticesForm').onsubmit = async (e) => {
         e.preventDefault();
@@ -1957,18 +2568,16 @@
         setTimeout(loadData,1000);
     };
     function deleteNoticeItem(index) {
-        if(confirm('Delete this notice?')) {
-            sendToSheet({ sheet:'notices', action:'delete', row: index+2 });
-            showToast('Deleted', 'success');
-            setTimeout(loadData,1000);
-        }
+        let item = appData.notices[index];
+        const row = document.querySelector(`#noticesTableBody tr:nth-child(${index + 1})`);
+        performDelete('notices', { title: item.title, date: item.date }, row);
     }
 
     // ===== SYLLABUS MANAGEMENT =====
     function loadSyllabusTable() {
         let tbody = document.getElementById('syllabusTableBody');
         if(!tbody) return;
-        tbody.innerHTML = appData.syllabus.map((item, index) => `<tr><td>${item.subject}</td><td>${item.class}</td><td>${item.title}</td><td><a href="${item.file_link}" target="_blank" class="text-blue-600">View</a></td><td><button onclick="deleteSyllabusItem('${index}')" class="text-red-600"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+        tbody.innerHTML = appData.syllabus.map((item, index) => `<tr><td>${item.subject}</td><td>${item.class}</td><td>${item.title}</td><td><a href="${item.file_link}" target="_blank" class="text-blue-600">View</a></td><td><button onclick="deleteSyllabusItem('${index}')" class="delete-btn"><i class="fas fa-trash"></i></button></td></tr>`).join('');
     }
     document.getElementById('syllabusForm').onsubmit = async (e) => {
         e.preventDefault();
@@ -1982,14 +2591,12 @@
         setTimeout(loadData,1000);
     };
     function deleteSyllabusItem(index) {
-        if(confirm('Delete this syllabus?')) {
-            sendToSheet({ sheet:'syllabus', action:'delete', row: index+2 });
-            showToast('Deleted', 'success');
-            setTimeout(loadData,1000);
-        }
+        let item = appData.syllabus[index];
+        const row = document.querySelector(`#syllabusTableBody tr:nth-child(${index + 1})`);
+        performDelete('syllabus', { subject: item.subject, class: item.class, file_link: item.file_link }, row);
     }
 
-    // ===== HOMEWORK MANAGEMENT (updated with custom subject) =====
+    // ===== HOMEWORK MANAGEMENT =====
     function homeworkSubjectChanged() {
         let select = document.getElementById('homeworkSubjectSelect');
         let customInput = document.getElementById('homeworkSubjectCustom');
@@ -2011,8 +2618,40 @@
     function loadHomeworkTable() {
         let tbody = document.getElementById('homeworkTableBody');
         if(!tbody) return;
-        tbody.innerHTML = appData.homework.map((item, index) => `<tr><td>${item.class}</td><td>${item.section}</td><td>${item.subject}</td><td>${item.assignment}</td><td>${item.due_date}</td><td><button onclick="deleteHomeworkItem('${index}')" class="text-red-600"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+        
+        let filterClass = document.getElementById('filterHomeworkClass')?.value || 'all';
+        let filterSection = document.getElementById('filterHomeworkSection')?.value || 'all';
+        
+        let filteredHomework = appData.homework || [];
+        
+        if (filterClass !== 'all') {
+            filteredHomework = filteredHomework.filter(h => h.class == filterClass);
+        }
+        if (filterSection !== 'all') {
+            filteredHomework = filteredHomework.filter(h => h.section === filterSection);
+        }
+        
+        filteredHomework.sort((a, b) => new Date(b.due_date) - new Date(a.due_date));
+        
+        tbody.innerHTML = filteredHomework.map((item, index) => {
+            let originalIndex = appData.homework.findIndex(h => 
+                h.class === item.class && 
+                h.section === item.section && 
+                h.subject === item.subject && 
+                h.assignment === item.assignment && 
+                h.due_date === item.due_date
+            );
+            return `<tr>
+                <td>${item.class}</td>
+                <td>${item.section}</td>
+                <td>${item.subject}</td>
+                <td>${item.assignment}</td>
+                <td>${item.due_date}</td>
+                <td><button onclick="deleteHomeworkItem('${originalIndex}')" class="delete-btn"><i class="fas fa-trash"></i></button></td>
+            </tr>`;
+        }).join('') || '<tr><td colspan="6" class="text-center py-4">No homework found</td></tr>';
     }
+    
     document.getElementById('homeworkForm').onsubmit = async (e) => {
         e.preventDefault();
         let className = document.getElementById('homeworkClass').value;
@@ -2023,25 +2662,135 @@
         await sendToSheet({ sheet:'homework', class: className, section, subject, assignment, due_date: dueDate });
         showToast('Homework added', 'success');
         e.target.reset();
-        // Reset custom subject field
         document.getElementById('homeworkSubjectCustom').value = '';
         document.getElementById('homeworkSubjectCustom').classList.add('hidden');
         document.getElementById('homeworkSubjectSelect').value = 'Math';
         setTimeout(loadData,1000);
     };
+    
     function deleteHomeworkItem(index) {
-        if(confirm('Delete this homework?')) {
-            sendToSheet({ sheet:'homework', action:'delete', row: index+2 });
-            showToast('Deleted', 'success');
-            setTimeout(loadData,1000);
+        let item = appData.homework[index];
+        const row = document.querySelector(`#homeworkTableBody tr:nth-child(${index + 1})`);
+        performDelete('homework', { 
+            class: item.class, 
+            section: item.section, 
+            subject: item.subject, 
+            assignment: item.assignment 
+        }, row);
+    }
+
+    // ===== DAILY DIARY MANAGEMENT =====
+    function diarySubjectChanged() {
+        let select = document.getElementById('diarySubjectSelect');
+        let customInput = document.getElementById('diarySubjectCustom');
+        if(select.value === '__custom__') {
+            customInput.classList.remove('hidden');
+        } else {
+            customInput.classList.add('hidden');
+            customInput.value = select.value;
         }
+    }
+
+    function getDiarySubject() {
+        let select = document.getElementById('diarySubjectSelect');
+        let custom = document.getElementById('diarySubjectCustom');
+        if(select.value === '__custom__') return custom.value.trim() || 'Custom Subject';
+        return select.value;
+    }
+
+    function clearDiaryFilters() {
+        document.getElementById('filterDiaryClass').value = 'all';
+        document.getElementById('filterDiarySection').value = 'all';
+        document.getElementById('filterDiaryDate').value = '';
+        loadDiaryTable();
+    }
+
+    function loadDiaryTable() {
+        let tbody = document.getElementById('diaryTableBody');
+        if(!tbody) return;
+        
+        let filterClass = document.getElementById('filterDiaryClass')?.value || 'all';
+        let filterSection = document.getElementById('filterDiarySection')?.value || 'all';
+        let filterDate = document.getElementById('filterDiaryDate')?.value || '';
+        
+        let filteredDiary = appData.diary || [];
+        
+        if (filterClass !== 'all') {
+            filteredDiary = filteredDiary.filter(d => d.class == filterClass);
+        }
+        if (filterSection !== 'all') {
+            filteredDiary = filteredDiary.filter(d => d.section === filterSection);
+        }
+        if (filterDate) {
+            filteredDiary = filteredDiary.filter(d => d.date === filterDate);
+        }
+        
+        filteredDiary.sort((a, b) => new Date(b.date) - new Date(a.date));
+        
+        tbody.innerHTML = filteredDiary.map((item, index) => {
+            let originalIndex = appData.diary.findIndex(d => 
+                d.date === item.date && 
+                d.class === item.class && 
+                d.section === item.section && 
+                d.subject === item.subject && 
+                d.entry === item.entry
+            );
+            return `<tr>
+                <td>${item.date}</td>
+                <td>${item.class}</td>
+                <td>${item.section}</td>
+                <td>${item.subject}</td>
+                <td>${item.entry}</td>
+                <td>${item.link ? `<a href="${item.link}" target="_blank" class="text-blue-600 hover:underline">View</a>` : '—'}</td>
+                <td><button onclick="deleteDiaryItem('${originalIndex}')" class="delete-btn"><i class="fas fa-trash"></i></button></td>
+            </tr>`;
+        }).join('') || '<tr><td colspan="7" class="text-center py-4">No diary entries found</td></tr>';
+    }
+    
+    document.getElementById('diaryForm').onsubmit = async (e) => {
+        e.preventDefault();
+        let className = document.getElementById('diaryClass').value;
+        let section = document.getElementById('diarySection').value;
+        let subject = getDiarySubject();
+        let date = document.getElementById('diaryDate').value;
+        let entry = document.getElementById('diaryEntry').value;
+        let link = document.getElementById('diaryLink').value;
+        
+        await sendToSheet({ 
+            sheet:'diary', 
+            class: className, 
+            section: section, 
+            subject: subject, 
+            date: date,
+            entry: entry,
+            link: link || ''
+        });
+        showToast('Diary entry added', 'success');
+        e.target.reset();
+        document.getElementById('diarySubjectCustom').value = '';
+        document.getElementById('diarySubjectCustom').classList.add('hidden');
+        document.getElementById('diarySubjectSelect').value = 'Math';
+        document.getElementById('diaryDate').value = new Date().toISOString().split('T')[0];
+        setTimeout(loadData,1000);
+    };
+    
+    function deleteDiaryItem(index) {
+        let item = appData.diary[index];
+        const row = document.querySelector(`#diaryTableBody tr:nth-child(${index + 1})`);
+        performDelete('diary', { 
+            date: item.date, 
+            class: item.class, 
+            section: item.section, 
+            subject: item.subject, 
+            entry: item.entry 
+        }, row);
     }
 
     // ===== DATE SHEETS MANAGEMENT =====
     function loadDateSheetsTable() {
         let tbody = document.getElementById('dateSheetsTableBody');
         if(!tbody) return;
-        tbody.innerHTML = appData.dateSheets.map((item, index) => `<tr><td>${item.exam_type}</td><td>${item.class}</td><td><a href="${item.file_link}" target="_blank" class="text-blue-600">View</a></td><td><button onclick="deleteDateSheetItem('${index}')" class="text-red-600"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+        tbody.innerHTML = appData.dateSheets.map((item, index) => `<tr><td>${item.exam_type}</td><td>${item.class}</td><td><a href="${item.file_link}" target="_blank" class="text-blue-600">View</a></td><td><button onclick="deleteDateSheetItem('${index}')" class="delete-btn"><i class="fas fa-trash"></i></button></td></tr>`).join('');
     }
     document.getElementById('dateSheetsForm').onsubmit = async (e) => {
         e.preventDefault();
@@ -2054,25 +2803,24 @@
         setTimeout(loadData,1000);
     };
     function deleteDateSheetItem(index) {
-        if(confirm('Delete this date sheet?')) {
-            sendToSheet({ sheet:'date_sheets', action:'delete', row: index+2 });
-            showToast('Deleted', 'success');
-            setTimeout(loadData,1000);
-        }
+        let item = appData.dateSheets[index];
+        const row = document.querySelector(`#dateSheetsTableBody tr:nth-child(${index + 1})`);
+        performDelete('date_sheets', { 
+            exam_type: item.exam_type, 
+            class: item.class
+        }, row);
     }
 
     // ===== FEEDBACK MANAGEMENT =====
     function loadFeedbackTable() {
         let tbody = document.getElementById('feedbackTableBody');
         if(!tbody) return;
-        tbody.innerHTML = appData.feedback.map((item, index) => `<tr><td>${item.suggestion}</td><td>${item.date}</td><td>${item.user || 'guest'}</td><td><button onclick="deleteFeedbackItem('${index}')" class="text-red-600"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+        tbody.innerHTML = appData.feedback.map((item, index) => `<tr><td>${item.suggestion}</td><td>${item.date}</td><td>${item.user || 'guest'}</td><td><button onclick="deleteFeedbackItem('${index}')" class="delete-btn"><i class="fas fa-trash"></i></button></td></tr>`).join('');
     }
     function deleteFeedbackItem(index) {
-        if(confirm('Delete this feedback?')) {
-            sendToSheet({ sheet:'Feedback', action:'delete', row: index+2 });
-            showToast('Deleted', 'success');
-            setTimeout(loadData,1000);
-        }
+        let item = appData.feedback[index];
+        const row = document.querySelector(`#feedbackTableBody tr:nth-child(${index + 1})`);
+        performDelete('Feedback', { suggestion: item.suggestion, date: item.date }, row);
     }
 
     // ===== BATCH MARKS FUNCTIONS =====
@@ -2294,7 +3042,7 @@
         showLoading(false);
     };
 
-    // ===== DASHBOARD RENDERING (Updated Layout) =====
+    // ===== DASHBOARD RENDERING =====
     function refreshUserDashboard(roll) {
         let s = appData.students.find(s => s.roll === roll);
         if (!s) return;
@@ -2341,7 +3089,9 @@
                         label: 'Attendance %',
                         data: percentages,
                         backgroundColor: gradient,
-                        borderRadius: 6
+                        borderRadius: 6,
+                        barPercentage: 0.7,
+                        categoryPercentage: 0.8
                     }]
                 },
                 options: {
@@ -2362,7 +3112,7 @@
             });
         }
 
-        // Subject-wise Results Chart (Now in the top section with uniform height)
+        // Subject-wise Results Chart with Beautiful Gradient
         if (resultsChart) resultsChart.destroy();
         let ctx = document.getElementById('resultsChart').getContext('2d');
         
@@ -2383,6 +3133,16 @@
             let subjects = Object.keys(subjectMap);
             let percentages = subjects.map(s => parseFloat(subjectMap[s].percentage) || 0);
             
+            // Create beautiful gradient colors based on performance
+            const backgroundColors = percentages.map(p => {
+                if (p >= 80) return '#22c55e';
+                if (p >= 70) return '#3b82f6';
+                if (p >= 60) return '#8b5cf6';
+                if (p >= 50) return '#f59e0b';
+                if (p >= 40) return '#f97316';
+                return '#ef4444';
+            });
+            
             resultsChart = new Chart(ctx, {
                 type: 'bar',
                 data: { 
@@ -2390,8 +3150,12 @@
                     datasets: [{ 
                         label: 'Latest Score %', 
                         data: percentages, 
-                        backgroundColor: 'rgba(0,33,71,0.7)',
-                        borderRadius: 6
+                        backgroundColor: backgroundColors,
+                        borderRadius: 8,
+                        barPercentage: 0.65,
+                        categoryPercentage: 0.8,
+                        borderWidth: 2,
+                        borderColor: 'white'
                     }] 
                 },
                 options: { 
@@ -2403,26 +3167,48 @@
                             align: 'top', 
                             formatter: (v)=>v+'%',
                             color: '#002147',
-                            font: { weight: 'bold', size: 10 }
-                        } 
+                            font: { weight: 'bold', size: 11 }
+                        },
+                        tooltip: {
+                            backgroundColor: '#002147',
+                            titleColor: '#FFD700',
+                            bodyColor: 'white',
+                            borderColor: '#FFD700',
+                            borderWidth: 2
+                        }
                     }, 
-                    scales: { y: { max: 100 } } 
+                    scales: { 
+                        y: { 
+                            max: 100,
+                            grid: { color: 'rgba(0,33,71,0.1)' },
+                            ticks: { stepSize: 20 }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { font: { size: 12, weight: 'bold' } }
+                        }
+                    } 
                 }
             });
         }
 
-        // Marks Table
+        // Marks Table with Beautiful Grade Badges
         let sortedMarks = [...marks].sort((a, b) => new Date(b.date) - new Date(a.date));
         let marksHtml = '';
         sortedMarks.forEach(m => {
             let perc = parseFloat(m.percentage) || 0;
-            let grade = perc >= 80 ? 'A' : perc >= 70 ? 'B' : perc >= 60 ? 'C' : perc >= 50 ? 'D' : 'F';
-            marksHtml += `<tr><td>${m.date}</td><td>${m.subject}</td><td>${m.exam_type}</td><td>${m.obtained}/${m.total}</td><td>${perc}%</td><td><span class="grade-badge grade-${grade.toLowerCase()}">${grade}</span></td><td><button onclick="sendResultWhatsApp('${m.roll}','${m.subject}','${m.exam_type}',${m.obtained},${m.total},'${s.name}')" class="text-green-600 hover:text-green-800 transition"><i class="fab fa-whatsapp"></i></button></td></tr>`;
+            let grade = perc >= 80 ? 'A+' : perc >= 70 ? 'A' : perc >= 60 ? 'B' : perc >= 50 ? 'C' : perc >= 40 ? 'D' : 'F';
+            let gradeClass = grade === 'A+' ? 'grade-a-plus' : 
+                           grade === 'A' ? 'grade-a' : 
+                           grade === 'B' ? 'grade-b' : 
+                           grade === 'C' ? 'grade-c' : 
+                           grade === 'D' ? 'grade-d' : 'grade-f';
+            marksHtml += `<tr><td>${m.date}</td><td>${m.subject}</td><td>${m.exam_type}</td><td>${m.obtained}/${m.total}</td><td>${perc}%</td><td><span class="grade-badge ${gradeClass}">${grade}</span></td><td><button onclick="sendResultWhatsApp('${m.roll}','${m.subject}','${m.exam_type}',${m.obtained},${m.total},'${s.name}')" class="text-green-600 hover:text-green-800 transition"><i class="fab fa-whatsapp"></i></button></td></tr>`;
         });
         document.getElementById('userMarksTableBody').innerHTML = marksHtml || '<tr><td colspan="7" class="text-center py-4 text-gray-500">No exam results yet</td></tr>';
 
         // Category Data
-        loadAcademicResources(s.class);
+        loadAcademicResources(s.class, s.section);
         loadDetailedAttendance(roll);
         loadUserLibrary();
         loadUserNotices();
@@ -2432,21 +3218,24 @@
     }
 
     // ===== CATEGORY DATA LOADERS =====
-    function loadAcademicResources(className) {
+    function loadAcademicResources(className, section) {
         let container = document.getElementById('academicResourcesList');
         if(!container) return;
         
         let syllabus = appData.syllabus.filter(s => s.class == className);
-        let homework = appData.homework.filter(h => h.class == className);
+        let homework = appData.homework.filter(h => h.class == className && h.section == section);
+        let diary = appData.diary.filter(d => d.class == className && d.section == section);
         let dateSheets = appData.dateSheets.filter(d => d.class == className);
         
         let syllabusHtml = syllabus.length ? syllabus.map(s => `<div class="resource-card">📘 ${s.subject} Syllabus - <a href="${s.file_link}" target="_blank" class="text-amber-600 hover:underline">Download</a></div>`).join('') : '<div class="resource-card">No syllabus available</div>';
         
         let homeworkHtml = homework.length ? homework.map(h => `<div class="resource-card">📝 ${h.subject}: ${h.assignment} <span class="text-xs text-gray-500">(Due: ${h.due_date})</span></div>`).join('') : '<div class="resource-card">No homework assigned</div>';
         
+        let diaryHtml = diary.length ? diary.sort((a,b) => new Date(b.date) - new Date(a.date)).map(d => `<div class="resource-card">📔 ${d.subject} (${d.date}) - ${d.entry} ${d.link ? `<a href="${d.link}" target="_blank" class="text-amber-600 hover:underline ml-2">Resource</a>` : ''}</div>`).join('') : '<div class="resource-card">No diary entries</div>';
+        
         let dateSheetsHtml = dateSheets.length ? dateSheets.map(d => `<div class="resource-card">📅 ${d.exam_type} - <a href="${d.file_link}" target="_blank" class="text-amber-600 hover:underline">View</a></div>`).join('') : '<div class="resource-card">No date sheets</div>';
         
-        container.innerHTML = syllabusHtml + homeworkHtml + dateSheetsHtml;
+        container.innerHTML = syllabusHtml + homeworkHtml + diaryHtml + dateSheetsHtml;
     }
     function loadDetailedAttendance(roll) {
         let container = document.getElementById('detailedAttendanceStats');
@@ -2523,7 +3312,7 @@
         document.getElementById(panelId)?.classList.remove('hidden');
     }
 
-    // ===== REPORT CARD =====
+    // ===== SINGLE PAGE REPORT CARD with Subject-wise Performance =====
     function downloadOfficialReportCard() {
         if (!currentUser) return showToast('Please login first', 'warning');
         let student = appData.students.find(s => s.roll === currentUser.roll);
@@ -2531,29 +3320,325 @@
         let attendance = appData.attendance.filter(a => a.roll === currentUser.roll);
         let presCount = attendance.filter(a => a.status === 'Present').length;
         let attPercent = attendance.length ? ((presCount / attendance.length) * 100).toFixed(1) : 0;
-        let sortedMarks = [...marks].sort((a, b) => new Date(b.date) - new Date(a.date));
-        let marksRows = '';
-        sortedMarks.forEach(m => {
-            let perc = parseFloat(m.percentage) || 0;
-            let grade = perc >= 80 ? 'A' : perc >= 70 ? 'B' : perc >= 60 ? 'C' : perc >= 50 ? 'D' : 'F';
-            marksRows += `<tr><td>${m.date}</td><td>${m.subject}</td><td>${m.exam_type}</td><td>${m.obtained}/${m.total}</td><td>${perc}%</td><td>${grade}</td></tr>`;
+        
+        // Get latest marks for each subject
+        let subjectMap = {};
+        marks.forEach(m => {
+            if (!subjectMap[m.subject] || new Date(m.date) > new Date(subjectMap[m.subject].date)) {
+                subjectMap[m.subject] = m;
+            }
         });
+        
+        let subjects = Object.keys(subjectMap);
+        let percentages = subjects.map(s => parseFloat(subjectMap[s].percentage) || 0);
+        let avgMarks = percentages.length ? (percentages.reduce((a,b) => a + b, 0) / percentages.length).toFixed(1) : 0;
+        
+        // Generate subject-wise performance table
+        let subjectRows = '';
+        subjects.forEach((subject, index) => {
+            let perc = percentages[index];
+            let grade = perc >= 80 ? 'A+' : perc >= 70 ? 'A' : perc >= 60 ? 'B' : perc >= 50 ? 'C' : perc >= 40 ? 'D' : 'F';
+            let barColor = perc >= 80 ? '#22c55e' : perc >= 70 ? '#3b82f6' : perc >= 60 ? '#8b5cf6' : perc >= 50 ? '#f59e0b' : perc >= 40 ? '#f97316' : '#ef4444';
+            
+            subjectRows += `
+                <tr>
+                    <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e2e8f0;">${subject}</td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px;">
+                                <div style="width: ${perc}%; height: 100%; background: ${barColor}; border-radius: 4px;"></div>
+                            </div>
+                            <span style="min-width: 45px; font-weight: 600;">${perc}%</span>
+                        </div>
+                    </td>
+                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: center;">
+                        <span style="background: ${barColor}; color: white; padding: 4px 12px; border-radius: 20px; font-weight: 600;">${grade}</span>
+                    </td>
+                </tr>
+            `;
+        });
+
         let printWindow = window.open('', '_blank');
         printWindow.document.write(`
-            <html><head><title>Report Card - ${student.name}</title>
-            <style>body{font-family:'Inter',sans-serif;padding:40px;background:white;max-width:800px;margin:0 auto;}.school-name{font-family:'Old English',serif;font-size:28px;color:#002147;text-align:center;}.student-info{background:#f8fafc;padding:20px;border-radius:8px;margin:30px 0;display:grid;grid-template-columns:repeat(2,1fr);gap:15px;}th{background:#002147;color:white;padding:12px;text-align:left;}.footer{text-align:center;margin-top:50px;color:#666;border-top:2px solid #e2e8f0;padding-top:20px;}.watermark{position:fixed;top:30%;left:10%;right:10%;font-size:60px;color:rgba(255,215,0,0.1);transform:rotate(-15deg);text-align:center;pointer-events:none;z-index:-1;}</style></head>
-            <body><div class="watermark">GCHS ✦ 1882 ✦ 34310007</div>
-            <div class="school-name">Govt. Christian High School Daska</div><div style="text-align:center">EMIS: 34310007 | Est. 1882</div>
-            <h2 style="text-align:center;color:#002147;border-bottom:2px solid #002147;padding-bottom:10px;">Official Report Card</h2>
-            <div class="student-info"><div><strong>Name:</strong> ${student.name}</div><div><strong>Roll No:</strong> ${student.roll}</div><div><strong>Class:</strong> ${student.class}</div><div><strong>Section:</strong> ${student.section}</div><div><strong>Attendance:</strong> ${presCount}/${attendance.length} (${attPercent}%)</div><div><strong>Report Date:</strong> ${new Date().toLocaleDateString()}</div></div>
-            <table style="width:100%;border-collapse:collapse;"><thead><tr><th>Date</th><th>Subject</th><th>Exam</th><th>Marks</th><th>%</th><th>Grade</th></tr></thead><tbody>${marksRows || '<tr><td colspan="6">No exam results available</td></tr>'}</tbody></table>
-            <div class="footer">This is a computer-generated report card. Valid without signature.<br>© Govt. Christian High School Daska - All Rights Reserved</div>
-            <script>window.onload=function(){window.print();}</` + `script></body></html>`);
+            <html>
+            <head>
+                <title>Report Card - ${student.name}</title>
+                <link rel="preconnect" href="https://fonts.googleapis.com">
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+                <style>
+                    * {
+                        margin: 0;
+                        padding: 0;
+                        box-sizing: border-box;
+                    }
+                    
+                    body {
+                        font-family: 'Inter', sans-serif;
+                        background: white;
+                        padding: 20px;
+                        color: #1e293b;
+                    }
+                    
+                    .report-card {
+                        max-width: 900px;
+                        margin: 0 auto;
+                        background: white;
+                        border-radius: 24px;
+                        overflow: hidden;
+                        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                        page-break-inside: avoid;
+                    }
+                    
+                    .header {
+                        background: linear-gradient(135deg, #002147 0%, #1e3a8a 100%);
+                        color: white;
+                        padding: 30px 20px;
+                        text-align: center;
+                    }
+                    
+                    .school-name {
+                        font-family: 'Old English', serif;
+                        font-size: 32px;
+                        margin-bottom: 8px;
+                        color: #FFD700;
+                        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                    }
+                    
+                    .emis-badge {
+                        background: rgba(255,215,0,0.2);
+                        display: inline-block;
+                        padding: 6px 20px;
+                        border-radius: 30px;
+                        font-size: 14px;
+                        margin-top: 10px;
+                        border: 1px solid rgba(255,215,0,0.5);
+                    }
+                    
+                    .student-info {
+                        display: grid;
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 15px;
+                        background: #f8fafc;
+                        padding: 20px;
+                        margin: 20px;
+                        border-radius: 12px;
+                        border: 1px solid #e2e8f0;
+                    }
+                    
+                    .info-item {
+                        background: white;
+                        padding: 15px;
+                        border-radius: 8px;
+                        border-left: 3px solid #002147;
+                    }
+                    
+                    .info-item .label {
+                        color: #64748b;
+                        font-size: 12px;
+                        margin-bottom: 4px;
+                    }
+                    
+                    .info-item .value {
+                        font-size: 16px;
+                        font-weight: 600;
+                        color: #002147;
+                    }
+                    
+                    .performance-summary {
+                        background: linear-gradient(135deg, #f59e0b, #fbbf24);
+                        margin: 0 20px 20px 20px;
+                        padding: 15px;
+                        border-radius: 10px;
+                        display: flex;
+                        justify-content: space-around;
+                        text-align: center;
+                    }
+                    
+                    .summary-item .label {
+                        color: #002147;
+                        font-size: 12px;
+                        opacity: 0.9;
+                    }
+                    
+                    .summary-item .value {
+                        font-size: 24px;
+                        font-weight: 700;
+                        color: #002147;
+                    }
+                    
+                    .chart-section {
+                        margin: 20px;
+                        padding: 20px;
+                        background: #f8fafc;
+                        border-radius: 12px;
+                        border: 1px solid #e2e8f0;
+                        page-break-inside: avoid;
+                    }
+                    
+                    .chart-title {
+                        font-size: 18px;
+                        font-weight: 600;
+                        color: #002147;
+                        margin-bottom: 15px;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                    }
+                    
+                    .chart-title i {
+                        color: #FFD700;
+                        font-size: 20px;
+                    }
+                    
+                    .subject-table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-top: 15px;
+                    }
+                    
+                    .subject-table th {
+                        background: #002147;
+                        color: white;
+                        padding: 12px;
+                        text-align: left;
+                        font-size: 14px;
+                    }
+                    
+                    .subject-table td {
+                        padding: 12px;
+                        border-bottom: 1px solid #e2e8f0;
+                    }
+                    
+                    .progress-bar {
+                        background: #e2e8f0;
+                        height: 8px;
+                        border-radius: 4px;
+                        overflow: hidden;
+                        flex: 1;
+                    }
+                    
+                    .progress-fill {
+                        height: 100%;
+                        border-radius: 4px;
+                    }
+                    
+                    .grade-badge {
+                        padding: 4px 12px;
+                        border-radius: 20px;
+                        font-weight: 600;
+                        color: white;
+                        font-size: 12px;
+                    }
+                    
+                    .footer {
+                        text-align: center;
+                        margin: 20px;
+                        padding: 15px;
+                        border-top: 1px solid #e2e8f0;
+                        color: #64748b;
+                        font-size: 11px;
+                    }
+                    
+                    .watermark {
+                        position: fixed;
+                        bottom: 10px;
+                        right: 10px;
+                        font-size: 10px;
+                        color: #ccc;
+                        opacity: 0.5;
+                    }
+                    
+                    @media print {
+                        body { padding: 0; }
+                        .report-card { box-shadow: none; }
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="report-card">
+                    <div class="header">
+                        <div class="school-name">Govt. Christian High School Daska</div>
+                        <div style="font-size: 14px; margin-top: 5px;">EMIS: 34310007 | Est. 1882</div>
+                        <div class="emis-badge">
+                            <i class="fas fa-certificate" style="margin-right: 6px;"></i>
+                            Official Report Card
+                        </div>
+                    </div>
+
+                    <div class="student-info">
+                        <div class="info-item">
+                            <div class="label">Student Name</div>
+                            <div class="value">${student.name}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="label">Roll Number</div>
+                            <div class="value">${student.roll}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="label">Class & Section</div>
+                            <div class="value">${student.class} - ${student.section}</div>
+                        </div>
+                        <div class="info-item">
+                            <div class="label">Report Date</div>
+                            <div class="value">${new Date().toLocaleDateString()}</div>
+                        </div>
+                    </div>
+
+                    <div class="performance-summary">
+                        <div class="summary-item">
+                            <div class="label">Attendance</div>
+                            <div class="value">${attPercent}%</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="label">Average Marks</div>
+                            <div class="value">${avgMarks}%</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="label">Total Subjects</div>
+                            <div class="value">${subjects.length}</div>
+                        </div>
+                    </div>
+
+                    <div class="chart-section">
+                        <div class="chart-title">
+                            <i class="fas fa-chart-bar"></i>
+                            Subject-wise Performance Analysis
+                        </div>
+                        
+                        <table class="subject-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Performance</th>
+                                    <th>Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${subjectRows || '<tr><td colspan="3" style="text-align: center; padding: 30px;">No exam results available</td></tr>'}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="footer">
+                        <p>This is a computer-generated report card. Valid without signature.</p>
+                        <p>© Govt. Christian High School Daska - All Rights Reserved</p>
+                    </div>
+                </div>
+                <div class="watermark">GCHS ✦ 1882 ✦ 34310007</div>
+                <script>
+                    window.onload = function() {
+                        window.print();
+                    }
+                </` + `script>
+            </body>
+            </html>
+        `);
         printWindow.document.close();
     }
 
     // ===== UTILITY FUNCTIONS =====
-    function toggleModal(id) { document.getElementById(id)?.classList.toggle('hidden'); }
     function downloadFile(link) { window.open(link, '_blank'); }
     function submitDashboardSuggestion() {
         let text = document.getElementById('dashboardSuggestion')?.value;
@@ -2568,7 +3653,7 @@
     // ===== WHATSAPP FUNCTIONS =====
     function sendWhatsAppToParent(roll) { let s=appData.students.find(s=>s.roll===roll); if(s?.parent_mobile) sendIndividualWhatsApp(s.parent_mobile, '👋 *Important Notice*', roll, 'general'); }
     function sendRollNumberWhatsApp(roll) { let s=appData.students.find(s=>s.roll===roll); if(s?.parent_mobile) sendIndividualWhatsApp(s.parent_mobile, '✅ *Registration Confirmation*', roll, 'roll'); }
-    function sendResultWhatsApp(roll,subj,exam,obt,tot,name) { let s=appData.students.find(s=>s.roll===roll); if(s?.parent_mobile) { let perc = ((obt/tot)*100).toFixed(2); let grade = perc>=80?'A+':perc>=70?'A':perc>=60?'B':perc>=50?'C':'F'; let msg = `📝 *${exam} Result*\n📚 *Subject:* ${subj}\n📊 *Marks:* ${obt}/${tot}\n📈 *Percentage:* ${perc}%\n🏅 *Grade:* ${grade}`; sendIndividualWhatsApp(s.parent_mobile, msg, roll, 'marks'); } }
+    function sendResultWhatsApp(roll,subj,exam,obt,tot,name) { let s=appData.students.find(s=>s.roll===roll); if(s?.parent_mobile) { let perc = ((obt/tot)*100).toFixed(2); let grade = perc>=80?'A+':perc>=70?'A':perc>=60?'B':perc>=50?'C':perc>=40?'D':'F'; let msg = `📝 *${exam} Result*\n📚 *Subject:* ${subj}\n📊 *Marks:* ${obt}/${tot}\n📈 *Percentage:* ${perc}%\n🏅 *Grade:* ${grade}`; sendIndividualWhatsApp(s.parent_mobile, msg, roll, 'marks'); } }
     function sendBatchMarksWhatsApp(roll) { let s=appData.students.find(s=>s.roll===roll); if(!s?.parent_mobile) return; let val=document.getElementById(`obtained_${roll}`)?.value; let absentChk = document.getElementById(`absent_${roll}`); if(!val && !absentChk.checked) return showToast('Enter marks or mark absent','warning'); let obt=parseFloat(val)||0, tot=parseFloat(document.getElementById('globalTotalMarks').value)||100, subj=getCurrentSubject(), exam=document.getElementById('batchExamType').value, perc = ((obt/tot)*100).toFixed(2), grade = perc>=80?'A+':perc>=70?'A':perc>=60?'B':perc>=50?'C':'F'; let msg = `📝 *${exam} Result*\n📚 *Subject:* ${subj}\n📊 *Marks:* ${obt}/${tot}\n📈 *Percentage:* ${perc}%\n🏅 *Grade:* ${grade}`; sendIndividualWhatsApp(s.parent_mobile, msg, roll, 'marks'); }
 
     // ===== FILTER STUDENTS =====
@@ -2636,6 +3721,7 @@
     window.onload = () => {
         document.getElementById('attDate').value = new Date().toISOString().split('T')[0];
         document.getElementById('batchExamDate').value = new Date().toISOString().split('T')[0];
+        document.getElementById('diaryDate').value = new Date().toISOString().split('T')[0];
         loadData();
     };
 
