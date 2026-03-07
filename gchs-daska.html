@@ -3112,86 +3112,107 @@
             });
         }
 
-        // Subject-wise Results Chart with Beautiful Gradient
-        if (resultsChart) resultsChart.destroy();
-        let ctx = document.getElementById('resultsChart').getContext('2d');
-        
-        if(marks.length === 0) {
-            document.getElementById('noChartData').classList.remove('hidden');
-            document.getElementById('resultsChart').classList.add('hidden');
-        } else {
-            document.getElementById('noChartData').classList.add('hidden');
-            document.getElementById('resultsChart').classList.remove('hidden');
-            
-            let subjectMap = {};
-            marks.forEach(m => {
-                if (!subjectMap[m.subject] || new Date(m.date) > new Date(subjectMap[m.subject].date)) {
-                    subjectMap[m.subject] = m;
-                }
-            });
-            
-            let subjects = Object.keys(subjectMap);
-            let percentages = subjects.map(s => parseFloat(subjectMap[s].percentage) || 0);
-            
-            // Create beautiful gradient colors based on performance
-            const backgroundColors = percentages.map(p => {
-                if (p >= 80) return '#22c55e';
-                if (p >= 70) return '#3b82f6';
-                if (p >= 60) return '#8b5cf6';
-                if (p >= 50) return '#f59e0b';
-                if (p >= 40) return '#f97316';
-                return '#ef4444';
-            });
-            
-            resultsChart = new Chart(ctx, {
-                type: 'bar',
-                data: { 
-                    labels: subjects, 
-                    datasets: [{ 
-                        label: 'Latest Score %', 
-                        data: percentages, 
-                        backgroundColor: backgroundColors,
-                        borderRadius: 8,
-                        barPercentage: 0.65,
-                        categoryPercentage: 0.8,
-                        borderWidth: 2,
-                        borderColor: 'white'
-                    }] 
-                },
-                options: { 
-                    responsive: true, 
-                    maintainAspectRatio: true,
-                    plugins: { 
-                        datalabels: { 
-                            anchor: 'end', 
-                            align: 'top', 
-                            formatter: (v)=>v+'%',
-                            color: '#002147',
-                            font: { weight: 'bold', size: 11 }
-                        },
-                        tooltip: {
-                            backgroundColor: '#002147',
-                            titleColor: '#FFD700',
-                            bodyColor: 'white',
-                            borderColor: '#FFD700',
-                            borderWidth: 2
-                        }
-                    }, 
-                    scales: { 
-                        y: { 
-                            max: 100,
-                            grid: { color: 'rgba(0,33,71,0.1)' },
-                            ticks: { stepSize: 20 }
-                        },
-                        x: {
-                            grid: { display: false },
-                            ticks: { font: { size: 12, weight: 'bold' } }
-                        }
-                    } 
-                }
-            });
-        }
+ // Subject-wise Results Chart with Average Calculation
+if (resultsChart) resultsChart.destroy();
+let ctx = document.getElementById('resultsChart').getContext('2d');
 
+if(marks.length === 0) {
+    document.getElementById('noChartData').classList.remove('hidden');
+    document.getElementById('resultsChart').classList.add('hidden');
+} else {
+    document.getElementById('noChartData').classList.add('hidden');
+    document.getElementById('resultsChart').classList.remove('hidden');
+    
+    // Group marks by subject and calculate average
+    let subjectAverages = {};
+    marks.forEach(m => {
+        let subject = m.subject;
+        let percentage = parseFloat(m.percentage) || 0;
+        
+        if (!subjectAverages[subject]) {
+            subjectAverages[subject] = {
+                total: percentage,
+                count: 1
+            };
+        } else {
+            subjectAverages[subject].total += percentage;
+            subjectAverages[subject].count += 1;
+        }
+    });
+    
+    // Calculate averages and prepare data
+    let subjects = Object.keys(subjectAverages);
+    let percentages = subjects.map(s => {
+        let avg = subjectAverages[s].total / subjectAverages[s].count;
+        return Math.round(avg * 100) / 100; // Round to 2 decimal places
+    });
+    
+    // Create beautiful gradient colors based on average performance
+    const backgroundColors = percentages.map(p => {
+        if (p >= 80) return '#22c55e';
+        if (p >= 70) return '#3b82f6';
+        if (p >= 60) return '#8b5cf6';
+        if (p >= 50) return '#f59e0b';
+        if (p >= 40) return '#f97316';
+        return '#ef4444';
+    });
+    
+    resultsChart = new Chart(ctx, {
+        type: 'bar',
+        data: { 
+            labels: subjects, 
+            datasets: [{ 
+                label: 'Average Score %', 
+                data: percentages, 
+                backgroundColor: backgroundColors,
+                borderRadius: 8,
+                barPercentage: 0.65,
+                categoryPercentage: 0.8,
+                borderWidth: 2,
+                borderColor: 'white'
+            }] 
+        },
+        options: { 
+            responsive: true, 
+            maintainAspectRatio: true,
+            plugins: { 
+                datalabels: { 
+                    anchor: 'end', 
+                    align: 'top', 
+                    formatter: (v)=>v+'%',
+                    color: '#002147',
+                    font: { weight: 'bold', size: 11 }
+                },
+                tooltip: {
+                    backgroundColor: '#002147',
+                    titleColor: '#FFD700',
+                    bodyColor: 'white',
+                    borderColor: '#FFD700',
+                    borderWidth: 2,
+                    callbacks: {
+                        label: function(context) {
+                            let subject = context.label;
+                            let avg = context.raw;
+                            let count = subjectAverages[subject].count;
+                            return `Average: ${avg}% (based on ${count} test${count > 1 ? 's' : ''})`;
+                        }
+                    }
+                }
+            }, 
+            scales: { 
+                y: { 
+                    max: 100,
+                    grid: { color: 'rgba(0,33,71,0.1)' },
+                    ticks: { stepSize: 20 }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { font: { size: 12, weight: 'bold' } }
+                }
+            } 
+        }
+    });
+}
         // Marks Table with Beautiful Grade Badges
         let sortedMarks = [...marks].sort((a, b) => new Date(b.date) - new Date(a.date));
         let marksHtml = '';
@@ -3312,51 +3333,88 @@
         document.getElementById(panelId)?.classList.remove('hidden');
     }
 
-    // ===== SINGLE PAGE REPORT CARD with Subject-wise Performance =====
-    function downloadOfficialReportCard() {
-        if (!currentUser) return showToast('Please login first', 'warning');
-        let student = appData.students.find(s => s.roll === currentUser.roll);
-        let marks = appData.marks.filter(m => m.roll === currentUser.roll);
-        let attendance = appData.attendance.filter(a => a.roll === currentUser.roll);
-        let presCount = attendance.filter(a => a.status === 'Present').length;
-        let attPercent = attendance.length ? ((presCount / attendance.length) * 100).toFixed(1) : 0;
+// ===== SINGLE PAGE REPORT CARD with Subject-wise Performance =====
+function downloadOfficialReportCard() {
+    if (!currentUser) return showToast('Please login first', 'warning');
+    let student = appData.students.find(s => s.roll === currentUser.roll);
+    let marks = appData.marks.filter(m => m.roll === currentUser.roll);
+    let attendance = appData.attendance.filter(a => a.roll === currentUser.roll);
+    let presCount = attendance.filter(a => a.status === 'Present').length;
+    let attPercent = attendance.length ? ((presCount / attendance.length) * 100).toFixed(1) : 0;
+    
+    // Group marks by subject and calculate average
+    let subjectAverages = {};
+    marks.forEach(m => {
+        let subject = m.subject;
+        let percentage = parseFloat(m.percentage) || 0;
         
-        // Get latest marks for each subject
-        let subjectMap = {};
-        marks.forEach(m => {
-            if (!subjectMap[m.subject] || new Date(m.date) > new Date(subjectMap[m.subject].date)) {
-                subjectMap[m.subject] = m;
-            }
-        });
+        if (!subjectAverages[subject]) {
+            subjectAverages[subject] = {
+                total: percentage,
+                count: 1,
+                // Store one sample for exam type display (optional)
+                sampleExam: m.exam_type,
+                sampleDate: m.date
+            };
+        } else {
+            subjectAverages[subject].total += percentage;
+            subjectAverages[subject].count += 1;
+        }
+    });
+    
+    // Calculate averages and prepare data
+    let subjects = Object.keys(subjectAverages);
+    let percentages = subjects.map(s => {
+        let avg = subjectAverages[s].total / subjectAverages[s].count;
+        return Math.round(avg * 100) / 100; // Round to 2 decimal places
+    });
+    let avgMarks = percentages.length ? (percentages.reduce((a,b) => a + b, 0) / percentages.length).toFixed(1) : 0;
+    
+    // Generate subject-wise performance table with averages
+    let subjectRows = '';
+    subjects.forEach((subject, index) => {
+        let perc = percentages[index];
+        let count = subjectAverages[subject].count;
+        let grade = perc >= 80 ? 'A+' : perc >= 70 ? 'A' : perc >= 60 ? 'B' : perc >= 50 ? 'C' : perc >= 40 ? 'D' : 'F';
+        let barColor = perc >= 80 ? '#22c55e' : perc >= 70 ? '#3b82f6' : perc >= 60 ? '#8b5cf6' : perc >= 50 ? '#f59e0b' : perc >= 40 ? '#f97316' : '#ef4444';
         
-        let subjects = Object.keys(subjectMap);
-        let percentages = subjects.map(s => parseFloat(subjectMap[s].percentage) || 0);
-        let avgMarks = percentages.length ? (percentages.reduce((a,b) => a + b, 0) / percentages.length).toFixed(1) : 0;
-        
-        // Generate subject-wise performance table
-        let subjectRows = '';
-        subjects.forEach((subject, index) => {
-            let perc = percentages[index];
-            let grade = perc >= 80 ? 'A+' : perc >= 70 ? 'A' : perc >= 60 ? 'B' : perc >= 50 ? 'C' : perc >= 40 ? 'D' : 'F';
-            let barColor = perc >= 80 ? '#22c55e' : perc >= 70 ? '#3b82f6' : perc >= 60 ? '#8b5cf6' : perc >= 50 ? '#f59e0b' : perc >= 40 ? '#f97316' : '#ef4444';
-            
-            subjectRows += `
-                <tr>
-                    <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e2e8f0;">${subject}</td>
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">
-                        <div style="display: flex; align-items: center; gap: 10px;">
-                            <div style="flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px;">
-                                <div style="width: ${perc}%; height: 100%; background: ${barColor}; border-radius: 4px;"></div>
-                            </div>
-                            <span style="min-width: 45px; font-weight: 600;">${perc}%</span>
+        subjectRows += `
+            <tr>
+                <td style="padding: 12px; font-weight: 600; border-bottom: 1px solid #e2e8f0;">
+                    ${subject}
+                    <span style="display: block; font-size: 11px; color: #666; font-weight: normal;">
+                        (based on ${count} test${count > 1 ? 's' : ''})
+                    </span>
+                </td>
+                <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <div style="flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px;">
+                            <div style="width: ${perc}%; height: 100%; background: ${barColor}; border-radius: 4px;"></div>
                         </div>
-                    </td>
-                    <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: center;">
-                        <span style="background: ${barColor}; color: white; padding: 4px 12px; border-radius: 20px; font-weight: 600;">${grade}</span>
-                    </td>
-                </tr>
+                        <span style="min-width: 45px; font-weight: 600;">${perc}%</span>
+                    </div>
+                </td>
+                <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: center;">
+                    <span style="background: ${barColor}; color: white; padding: 4px 12px; border-radius: 20px; font-weight: 600;">${grade}</span>
+                </td>
+            </tr>
+        `;
+    });
+    
+    // Optional: Add a note explaining the averages
+    let avgNote = '';
+    if (subjects.length > 0) {
+        let totalTests = marks.length;
+        let uniqueSubjects = subjects.length;
+        if (totalTests > uniqueSubjects) {
+            avgNote = `
+                <div style="margin-top: 15px; padding: 10px; background: #f0f9ff; border-radius: 8px; font-size: 12px; color: #0369a1; text-align: center;">
+                    <i class="fas fa-info-circle" style="margin-right: 5px;"></i>
+                    Showing average scores across ${totalTests} total tests (${uniqueSubjects} subjects)
+                </div>
             `;
-        });
+        }
+    }
 
         let printWindow = window.open('', '_blank');
         printWindow.document.write(`
@@ -3607,7 +3665,7 @@
                             Subject-wise Performance Analysis
                         </div>
                         
-                        <table class="subject-table">
+                                               <table class="subject-table">
                             <thead>
                                 <tr>
                                     <th>Subject</th>
@@ -3619,6 +3677,7 @@
                                 ${subjectRows || '<tr><td colspan="3" style="text-align: center; padding: 30px;">No exam results available</td></tr>'}
                             </tbody>
                         </table>
+                        ${avgNote || ''}
                     </div>
 
                     <div class="footer">
