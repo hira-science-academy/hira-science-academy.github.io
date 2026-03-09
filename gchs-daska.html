@@ -907,6 +907,20 @@
             opacity: 0.5;
         }
     }
+	/* Back to Top Button */
+#backToTopBtn {
+    transition: all 0.3s ease-in-out;
+    transform: translateY(0);
+}
+#backToTopBtn.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+#backToTopBtn:hover {
+    transform: translateY(-5px);
+    background: #003366;
+    box-shadow: 0 8px 15px rgba(0,33,71,0.4);
+}
     </style>
 </head>
 <body class="bg-[#0b1e3c] font-sans antialiased">
@@ -1856,7 +1870,10 @@
         <div class="flex gap-3"><button onclick="startWhatsAppQueue()" class="bg-green-500 text-white flex-1 py-2 rounded-lg"><i class="fab fa-whatsapp mr-2"></i>Start</button><button onclick="toggleModal('whatsappConfirmModal')" class="bg-gray-200 flex-1 py-2 rounded-lg">Cancel</button></div>
     </div>
 </div>
-
+<!-- Back to Top Button -->
+<button id="backToTopBtn" class="fixed bottom-6 right-6 bg-navy text-white w-12 h-12 rounded-full shadow-lg hover:bg-opacity-90 transition-all duration-300 flex items-center justify-center z-50 opacity-0 invisible" aria-label="Back to Top">
+    <i class="fas fa-arrow-up text-xl"></i>
+</button>
 <script>
     // Chart.js plugin
     Chart.register(ChartDataLabels);
@@ -3709,6 +3726,7 @@ function downloadOfficialReportCard() {
                         window.print();
                     }
                 </` + `script>
+
             </body>
             </html>
         `);
@@ -3801,7 +3819,25 @@ function downloadOfficialReportCard() {
         document.getElementById('diaryDate').value = new Date().toISOString().split('T')[0];
         loadData();
     };
+// ===== BACK TO TOP BUTTON =====
+const backToTopBtn = document.getElementById('backToTopBtn');
 
+// Show button when page is scrolled down
+window.addEventListener('scroll', function() {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.classList.add('visible');
+    } else {
+        backToTopBtn.classList.remove('visible');
+    }
+});
+
+// Scroll to top when button is clicked
+backToTopBtn.addEventListener('click', function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
     // ===== LANGUAGE TOGGLE & MODAL =====
     document.addEventListener("DOMContentLoaded", function () {
         const modal = document.getElementById("imageModal");
