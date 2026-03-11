@@ -3,479 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="language" content="en" />
   <meta name="author" content="Hira Science Academy" />
-
-  <title>Class 9 Physics MCQs Practice | Hira Science Academy</title>
-  <meta name="description" content="Practice 217 Class 9 Physics MCQs based on PECTAA 2025 syllabus. Interactive test with instant results and PDF report." />
-  <meta name="keywords" content="Class 9 Physics MCQs, Physics Practice Test, PECTAA 2025, Punjab Board, Online Test, MCQs Practice" />
-  <link rel="canonical" href="https://hiraacademy.online/Physics-9th-MCQs.html" />
+  <title>Class 9 Physics Chapter-wise MCQs | Hira Science Academy</title>
   
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="en_PK" />
-  <meta property="og:title" content="Class 9 Physics MCQs Practice Test | PECTAA 2025" />
-  <meta property="og:description" content="Interactive MCQ test for Class 9 Physics with 217 questions based on PECTAA/PCTB syllabus." />
-  <meta property="og:url" content="https://hiraacademy.online/Physics-9th-MCQs.html" />
-  <meta property="og:site_name" content="Hira Science Academy" />
-  <meta property="og:image" content="https://hiraacademy.online/images/physics-mcqs-practice.jpg" />
-  
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Class 9 Physics MCQs Practice | Hira Science Academy" />
-  <meta name="twitter:description" content="Complete MCQ test for Class 9 Physics with 217 questions, instant results and performance analysis." />
-  <meta name="twitter:image" content="https://hiraacademy.online/images/physics-mcqs-practice.jpg" />
-
-  <!-- Icons -->
-  <link rel="icon" href="https://hiraacademy.online/images/physics-favicon.ico" type="image/x-icon" />
-  <link rel="icon" type="image/png" sizes="32x32" href="https://hiraacademy.online/images/physics-icon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="https://hiraacademy.online/images/physics-icon-16x16.png" />
-
-  <meta name="theme-color" content="#0d6efd" />
-
-  <!-- Google Analytics -->
-  <script defer src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
-  <script defer>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-9CK25HVFYZ');
-  </script>
-
-  <!-- Fonts -->
+  <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  </noscript>
-
-  <!-- Tailwind CSS -->
-  <script defer src="https://cdn.tailwindcss.com"></script>
-
-  <!-- MathJax for LaTeX - UPDATED -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- MathJax -->
   <script>
     window.MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']],
-        displayMath: [['$$', '$$'], ['\\[', '\\]']],
-        processEscapes: true,
-        processEnvironments: true
-      },
-      options: {
-        skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
-        ignoreHtmlClass: 'tex2jax_ignore'
-      }
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], displayMath: [['$$', '$$'], ['\\[', '\\]']], processEscapes: true },
+      options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'] }
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-
-  <!-- jsPDF for PDF generation -->
+  
+  <!-- jsPDF -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
+  
   <style>
-    body { 
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); scroll-behavior: smooth; }
+    .mcq-card { background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; transition: all 0.3s; }
+    .mcq-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
     
-    .mcq-card {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 1px solid #e2e8f0;
-    }
+    .option { background: white; border: 2px solid #e2e8f0; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.875rem; cursor: pointer; transition: all 0.25s; }
+    .option:hover { background: #f0f9ff; border-color: #3b82f6; transform: translateX(5px); }
+    .option.selected { background: #dbeafe; border-color: #3b82f6; color: #1e40af; }
+    .option.correct-review { background: #d1fae5; border-color: #10b981; }
+    .option.wrong-review { background: #fee2e2; border-color: #ef4444; }
     
-    .mcq-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
-    }
+    .btn { padding: 0.875rem 1.75rem; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 140px; }
+    .btn-primary { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; box-shadow: 0 4px 15px rgba(59,130,246,0.3); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(59,130,246,0.4); }
+    .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+    .btn-danger { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+    .btn-outline { background: white; border: 2px solid #3b82f6; color: #3b82f6; }
     
-    .option {
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-      border: 2px solid #e2e8f0;
-      border-radius: 12px;
-      padding: 1rem 1.25rem;
-      margin-bottom: 0.875rem;
-      cursor: pointer;
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+    .progress-bar { height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 1.5rem 0; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 6px; transition: width 0.5s; }
     
-    .option:hover {
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-      border-color: #3b82f6;
-      transform: translateX(5px);
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-    }
+    .question-number-btn { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 600; cursor: pointer; transition: all 0.2s; border: 2px solid; font-size: 0.875rem; }
+    .question-number-btn.not-visited { background: #f8fafc; border-color: #cbd5e1; color: #64748b; }
+    .question-number-btn.visited { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; }
+    .question-number-btn.answered { background: #3b82f6; border-color: #2563eb; color: white; }
+    .question-number-btn.marked { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
+    .question-number-btn.current { border-color: #1e40af; box-shadow: 0 0 0 3px rgba(59,130,246,0.4); transform: scale(1.1); }
     
-    .option.selected {
-      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
-      border-color: #3b82f6;
-      color: #1e40af;
-      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
-    }
+    .chapter-card { background: white; border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.3s; border: 2px solid #e2e8f0; text-align: center; }
+    .chapter-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
     
-    .option.correct {
-      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-      border-color: #10b981;
-      color: #065f46;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
-    }
+    .form-input { background: white; border: 2px solid #e2e8f0; border-radius: 10px; padding: 0.875rem 1.25rem; font-size: 1rem; transition: all 0.3s; width: 100%; }
+    .form-input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.2); outline: none; }
     
-    .option.wrong {
-      background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-      border-color: #ef4444;
-      color: #7f1d1d;
-      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15);
-    }
+    .test-header { background: linear-gradient(135deg, #1e3a8a, #0c4a6e); color: white; padding: 3rem 1rem; text-align: center; }
+    .test-controls { background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); border-top: 1px solid #e2e8f0; box-shadow: 0 -5px 25px rgba(0,0,0,0.1); }
     
-    .btn {
-      padding: 0.875rem 1.75rem;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      border: none;
-      font-size: 1rem;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-width: 140px;
-    }
+    .wrong-answer-card { background: white; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .wrong-question-title { color: #dc2626; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
     
-    .btn-primary {
-      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-      color: white;
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-    }
-    
-    .btn-primary:hover {
-      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
-    }
-    
-    .btn-success {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      color: white;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-    }
-    
-    .btn-success:hover {
-      background: linear-gradient(135deg, #059669 0%, #047857 100%);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
-    }
-    
-    .btn-danger {
-      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-      color: white;
-      box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
-    }
-    
-    .btn-danger:hover {
-      background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
-    }
-    
-    .btn-outline {
-      background: white;
-      border: 2px solid #3b82f6;
-      color: #3b82f6;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    
-    .btn-outline:hover {
-      background: #3b82f6;
-      color: white;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
-    }
-    
-    .progress-bar {
-      height: 12px;
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-      border-radius: 6px;
-      overflow: hidden;
-      margin: 1.5rem 0;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%);
-      border-radius: 6px;
-      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
-    }
-    
-    .score-circle {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      font-weight: bold;
-      font-size: 2.25rem;
-      position: relative;
-      background: conic-gradient(
-        var(--score-color) calc(var(--percentage) * 3.6deg),
-        #f1f5f9 0deg
-      );
-      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    }
-    
-    .score-circle::before {
-      content: '';
-      position: absolute;
-      width: 130px;
-      height: 130px;
-      background: white;
-      border-radius: 50%;
-      z-index: 1;
-    }
-    
-    .score-circle span {
-      position: relative;
-      z-index: 2;
-      font-weight: 700;
-    }
-    
-    .score-excellent { --score-color: #10b981; }
-    .score-good { --score-color: #f59e0b; }
-    .score-average { --score-color: #f97316; }
-    .score-poor { --score-color: #ef4444; }
+    .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 56px; height: 56px; background: #0d6efd; color: white; border-radius: 50%; border: none; font-size: 22px; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(0,0,0,0.25); }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { transform: translateY(-5px); background: #0b5ed7; }
     
     .hidden { display: none !important; }
-    
-    .question-number-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-      border: 2px solid;
-      font-size: 0.875rem;
-      position: relative;
-    }
-    
-    .question-number-btn.not-visited {
-      background: #f8fafc;
-      border-color: #cbd5e1;
-      color: #64748b;
-    }
-    
-    .question-number-btn.visited {
-      background: #e0f2fe;
-      border-color: #7dd3fc;
-      color: #0369a1;
-    }
-    
-    .question-number-btn.answered {
-      background: #3b82f6;
-      border-color: #2563eb;
-      color: white;
-      box-shadow: 0 3px 10px rgba(59, 130, 246, 0.3);
-    }
-    
-    .question-number-btn.marked {
-      background: #fef3c7;
-      border-color: #f59e0b;
-      color: #92400e;
-      box-shadow: 0 3px 10px rgba(245, 158, 11, 0.3);
-    }
-    
-    .question-number-btn.current {
-      border-color: #1e40af;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.4);
-      transform: scale(1.1);
-    }
-    
-    .back-to-top {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 56px;
-      height: 56px;
-      background: linear-gradient(135deg, #0d6efd, #0b5ed7);
-      color: white;
-      border-radius: 50%;
-      border: none;
-      font-size: 22px;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.25);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 40;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .back-to-top.show {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .back-to-top:hover {
-      background: linear-gradient(135deg, #0b5ed7, #0a58ca);
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-    }
-    
-    .physics-equation {
-      font-size: 1.125rem;
-      line-height: 1.6;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      padding: 1.5rem;
-      border-radius: 12px;
-      border-left: 5px solid #3b82f6;
-      margin: 1.5rem 0;
-      font-family: 'Cambria Math', 'Times New Roman', serif;
-    }
-    
-    /* Test Controls */
-    .test-controls {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(226, 232, 240, 0.8);
-      box-shadow: 0 -5px 25px rgba(0,0,0,0.1);
-    }
-    
-    /* Form Styles */
-    .form-input {
-      background: white;
-      border: 2px solid #e2e8f0;
-      border-radius: 10px;
-      padding: 0.875rem 1.25rem;
-      font-size: 1rem;
-      transition: all 0.3s;
-      width: 100%;
-    }
-    
-    .form-input:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-      outline: none;
-    }
-    
-    /* Header Styles */
-    .test-header {
-      background: linear-gradient(135deg, #1e3a8a 0%, #0c4a6e 100%);
-      color: white;
-      padding: 3rem 1rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    /* Results Section */
-    .result-card {
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-      border-radius: 20px;
-      border: 1px solid #e2e8f0;
-    }
-    
-    /* Mobile Optimization */
-    @media (max-width: 768px) {
-      .question-number-btn {
-        width: 36px;
-        height: 36px;
-        font-size: 0.75rem;
-      }
-      
-      .score-circle {
-        width: 120px;
-        height: 120px;
-        font-size: 1.75rem;
-      }
-      
-      .score-circle::before {
-        width: 100px;
-        height: 100px;
-      }
-      
-      .btn {
-        padding: 0.75rem 1.5rem;
-        min-width: 120px;
-      }
-    }
-    
-    /* Success Message */
-    .success-message {
-      background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-      border: 2px solid #10b981;
-      color: #065f46;
-      padding: 1rem;
-      border-radius: 10px;
-      margin: 1rem 0;
-      display: none;
-    }
-    
-    /* Wrong Answers Section */
-    .wrong-answer-card {
-      background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid #e2e8f0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    
-    .wrong-question-title {
-      color: #dc2626;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 1rem;
-    }
-    
-    .wrong-answer-option {
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 0.5rem;
-    }
-    /* Wrong Answers Section */
-.wrong-answer-card {
-  background: white;
-  border-radius: 16px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.wrong-question-title {
-  color: #dc2626;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 1rem;
-}
-
-.wrong-answer-option {
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  margin-bottom: 0.5rem;
-}
-    @media (max-width: 768px) {
+@media (max-width: 768px) {
       /* 1. Ensure the desktop links are definitely hidden */
       .md\:flex.space-x-8 {
         display: none !important;
@@ -503,9 +97,9 @@
     }
   </style>
 </head>
-
 <body class="text-gray-800 antialiased">
 
+<!-- Navigation -->
  <!-- Navigation Bar -->
 <nav class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -559,2377 +153,962 @@
   </div>
 </nav>
 
-  <!-- Header -->
-  <header class="test-header">
-    <div class="max-w-4xl mx-auto relative z-10">
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">Class 9 Physics MCQs</h1>
-      <p class="text-lg text-blue-100 mb-6">217 MCQs | PECTAA 2025 Syllabus | Interactive Test with Instant Results</p>
-      <div class="flex flex-wrap justify-center gap-2">
-        <span class="bg-blue-800/40 px-3 py-1 rounded-full text-sm">📚 Complete Syllabus</span>
-        <span class="bg-blue-800/40 px-3 py-1 rounded-full text-sm">⚡ Instant Results</span>
-        <span class="bg-blue-800/40 px-3 py-1 rounded-full text-sm">📊 Performance Analysis</span>
-        <span class="bg-blue-800/40 px-3 py-1 rounded-full text-sm">📥 PDF Certificate</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- Success Message -->
-  <div id="success-message" class="success-message max-w-2xl mx-auto mt-6 px-6" style="display: none;">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center">
-        <span class="text-2xl mr-3">✅</span>
-        <span class="font-semibold">Data submitted successfully to Formspree!</span>
-      </div>
-      <button onclick="document.getElementById('success-message').style.display='none'" class="text-green-700 hover:text-green-900">
-        ✕
-      </button>
-    </div>
+<!-- Header -->
+<header class="test-header">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">Class 9 Physics MCQs</h1>
+    <p class="text-lg text-blue-100">217 MCQs • 9 Chapters • Exercise & Additional Sections</p>
   </div>
+</header>
 
-  <!-- Student Information Form -->
-  <section id="student-info" class="max-w-2xl mx-auto px-6 mt-10 mb-8">
-    <div class="mcq-card p-8">
-      <div class="text-center mb-8">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-          <span class="text-2xl">📝</span>
-        </div>
-        <h2 class="text-2xl font-bold text-blue-800">Student Information</h2>
-        <p class="text-gray-600 mt-2">Please fill in your details to start the test</p>
+<!-- Success Message -->
+<div id="success-message" class="hidden max-w-2xl mx-auto mt-6 px-6 py-4 bg-green-100 border-2 border-green-500 text-green-700 rounded-lg text-center font-semibold"></div>
+
+<!-- Student Information Form -->
+<section id="student-info" class="max-w-2xl mx-auto px-6 mt-10 mb-8">
+  <div class="mcq-card p-8">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+        <span class="text-2xl">📝</span>
       </div>
+      <h2 class="text-2xl font-bold text-blue-800">Student Information</h2>
+      <p class="text-gray-600 mt-2">Please fill in your details to start</p>
+    </div>
+    
+    <form id="studentForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+      <input type="hidden" name="access_key" value="f12ad588-c26d-4f2e-bf13-24e2babefc1e">
+      <input type="hidden" name="subject" value="Physics MCQ Test Registration - Hira Academy">
+      <input type="hidden" name="from_name" value="Hira Science Academy">
+      <input type="hidden" name="redirect" value="https://hiraacademy.online/thank-you">
+      <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
       
-      <!-- Main Form for Web3Forms -->
-      <form id="studentForm" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-        <!-- Web3Forms Required Fields -->
-        <input type="hidden" name="access_key" value="f12ad588-c26d-4f2e-bf13-24e2babefc1e">
-        <input type="hidden" name="subject" value="Physics MCQ Test Registration - Hira Academy">
-        <input type="hidden" name="from_name" value="Hira Science Academy">
-        <input type="hidden" name="redirect" value="https://hiraacademy.online/thank-you">
-        
-        <!-- Honeypot for spam protection -->
-        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label for="studentName" class="block text-sm font-medium text-gray-700 mb-2">
-              Student Name <span class="text-red-500">*</span>
-            </label>
-            <input type="text" id="studentName" name="name" required 
-                   class="form-input"
-                   placeholder="Enter your full name">
-          </div>
-          <div>
-            <label for="schoolName" class="block text-sm font-medium text-gray-700 mb-2">
-              School Name <span class="text-red-500">*</span>
-            </label>
-            <input type="text" id="schoolName" name="school" required 
-                   class="form-input"
-                   placeholder="Enter your school name">
-          </div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label for="contact" class="block text-sm font-medium text-gray-700 mb-2">
-              Contact Number <span class="text-red-500">*</span>
-            </label>
-            <input type="tel" id="contact" name="contact" required 
-                   class="form-input"
-                   placeholder="03XX-XXXXXXX">
-          </div>
-          <div>
-            <label for="rollNumber" class="block text-sm font-medium text-gray-700 mb-2">Roll Number (Optional)</label>
-            <input type="text" id="rollNumber" name="roll_number"
-                   class="form-input"
-                   placeholder="Enter roll number">
-          </div>
-        </div>
-        
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address (Optional)</label>
-          <input type="email" id="email" name="email"
-                 class="form-input"
-                 placeholder="example@email.com">
+          <label for="studentName" class="block text-sm font-medium text-gray-700 mb-2">Student Name <span class="text-red-500">*</span></label>
+          <input type="text" id="studentName" name="name" required class="form-input" placeholder="Enter your full name">
         </div>
-        
-        <!-- Test Results Fields (will be populated by JavaScript) -->
-        <input type="hidden" id="testScore" name="test_score" value="">
-        <input type="hidden" id="testPercentage" name="test_percentage" value="">
-        <input type="hidden" id="testTime" name="test_time" value="">
-        <input type="hidden" id="testDate" name="test_date" value="">
-        <input type="hidden" id="testStatus" name="test_status" value="Registered">
-        <input type="hidden" name="message" id="formMessage" value="Student registered for Class 9 Physics MCQ Test">
-        
-        <div class="text-center pt-4">
-          <button type="submit" class="btn btn-primary px-10 py-3 text-lg">
-            <span>🚀</span> Start MCQs Test
-          </button>
-          <p class="text-sm text-gray-500 mt-4">
-            Your data will be submitted and you'll be redirected to the test
-          </p>
-        </div>
-      </form>
-    </div>
-  </section>
-
-  <!-- Test Instructions -->
-  <section id="instructions" class="max-w-4xl mx-auto px-6 mb-8 hidden">
-    <div class="mcq-card p-8">
-      <div class="text-center mb-8">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-          <span class="text-2xl">📋</span>
-        </div>
-        <h2 class="text-2xl font-bold text-blue-800">Test Instructions</h2>
-      </div>
-      
-      <div class="space-y-4 mb-8">
-        <div class="flex items-start p-4 bg-blue-50 rounded-xl">
-          <span class="text-blue-600 text-xl mr-3 mt-1">✓</span>
-          <div>
-            <h4 class="font-semibold text-gray-800">Test Structure</h4>
-            <p class="text-gray-600">217 multiple-choice questions from Class 9 Physics (PECTAA 2025)</p>
-          </div>
-        </div>
-        
-        <div class="flex items-start p-4 bg-blue-50 rounded-xl">
-          <span class="text-blue-600 text-xl mr-3 mt-1">✓</span>
-          <div>
-            <h4 class="font-semibold text-gray-800">Question Format</h4>
-            <p class="text-gray-600">Each question has 4 options - select only one correct answer</p>
-          </div>
-        </div>
-        
-        <div class="flex items-start p-4 bg-blue-50 rounded-xl">
-          <span class="text-blue-600 text-xl mr-3 mt-1">✓</span>
-          <div>
-            <h4 class="font-semibold text-gray-800">Time Management</h4>
-            <p class="text-gray-600">Self-paced: Complete the test at your own pace (timer for reference)</p>
-          </div>
-        </div>
-        
-        <div class="flex items-start p-4 bg-blue-50 rounded-xl">
-          <span class="text-blue-600 text-xl mr-3 mt-1">✓</span>
-          <div>
-            <h4 class="font-semibold text-gray-800">Navigation</h4>
-            <p class="text-gray-600">Use Previous/Next buttons or jump to any question using the question grid</p>
-          </div>
-        </div>
-        
-        <div class="flex items-start p-4 bg-blue-50 rounded-xl">
-          <span class="text-blue-600 text-xl mr-3 mt-1">✓</span>
-          <div>
-            <h4 class="font-semibold text-gray-800">Results & Certificate</h4>
-            <p class="text-gray-600">Instant scoring with percentage, performance analysis, and downloadable PDF certificate</p>
-          </div>
+        <div>
+          <label for="schoolName" class="block text-sm font-medium text-gray-700 mb-2">School Name <span class="text-red-500">*</span></label>
+          <input type="text" id="schoolName" name="school" required class="form-input" placeholder="Enter your school name">
         </div>
       </div>
       
-      <div class="text-center">
-        <button id="start-test-btn" class="btn btn-primary px-10 py-3 text-lg">
-          <span>🎯</span> Begin Test Now
-        </button>
-        <p class="text-sm text-gray-500 mt-3">You can pause and resume the test anytime</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label for="contact" class="block text-sm font-medium text-gray-700 mb-2">Contact Number <span class="text-red-500">*</span></label>
+          <input type="tel" id="contact" name="contact" required class="form-input" placeholder="03XX-XXXXXXX">
+        </div>
+        <div>
+          <label for="rollNumber" class="block text-sm font-medium text-gray-700 mb-2">Roll Number (Optional)</label>
+          <input type="text" id="rollNumber" name="roll_number" class="form-input" placeholder="Enter roll number">
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Test Container -->
-  <main id="test-container" class="max-w-5xl mx-auto px-6 pb-24 hidden">
-    <!-- Test Header -->
-    <div class="flex flex-col md:flex-row justify-between items-center mb-8 p-6 bg-white rounded-2xl shadow-md">
+      
       <div>
-        <h2 class="text-xl font-bold text-blue-800">Class 9 Physics MCQs Test</h2>
-        <p class="text-gray-600 mt-1" id="student-info-display"></p>
+        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address (Optional)</label>
+        <input type="email" id="email" name="email" class="form-input" placeholder="example@email.com">
       </div>
-      <div class="flex items-center space-x-6 mt-4 md:mt-0">
-        <div class="text-center">
-          <div class="text-2xl font-bold text-blue-700" id="timer">00:00</div>
-          <div class="text-sm text-gray-500">Time</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold text-blue-700" id="progress-count">0/217</div>
-          <div class="text-sm text-gray-500">Progress</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Progress Bar -->
-    <div class="mb-8">
-      <div class="flex justify-between items-center mb-3">
-        <div class="flex items-center gap-3">
-          <span class="text-gray-700 font-medium">Question <span id="current-question" class="text-blue-600">1</span> of 217</span>
-          <span class="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full" id="answered-count">0 answered</span>
-        </div>
-        <div class="text-sm text-gray-500">
-          <span id="marked-questions">0 marked</span>
-        </div>
-      </div>
-      <div class="progress-bar">
-        <div id="progress-fill" class="progress-fill" style="width: 0.5%"></div>
-      </div>
-    </div>
-
-    <!-- Question Display -->
-    <div id="question-display" class="mb-8">
-      <!-- Questions loaded dynamically -->
-    </div>
-
-    <!-- Navigation Buttons -->
-    <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-12">
-      <button id="prev-btn" class="btn bg-gray-700 text-white hover:bg-gray-800 w-full sm:w-auto">
-        <span>◀</span> Previous
-      </button>
-      <div class="flex gap-4">
-        <button id="mark-btn" class="btn bg-yellow-500 text-white hover:bg-yellow-600">
-          <span id="mark-icon">⭐</span>
-          <span id="mark-text">Mark</span>
-        </button>
-        <button id="next-btn" class="btn btn-primary w-full sm:w-auto">
-          Next <span>▶</span>
+      
+      <input type="hidden" id="testScore" name="test_score" value="">
+      <input type="hidden" id="testPercentage" name="test_percentage" value="">
+      <input type="hidden" id="testTime" name="test_time" value="">
+      <input type="hidden" id="testDate" name="test_date" value="">
+      <input type="hidden" id="testStatus" name="test_status" value="Registered">
+      <input type="hidden" name="message" id="formMessage" value="Student registered">
+      
+      <div class="text-center pt-4">
+        <button type="submit" class="btn btn-primary px-10 py-3 text-lg">
+          <span>🚀</span> Register & Continue
         </button>
       </div>
-    </div>
+    </form>
+  </div>
+</section>
 
-    <!-- Question Numbers Grid -->
-    <div class="mb-8">
-      <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-semibold text-gray-700">Jump to Question:</h3>
-        <div class="flex gap-2 text-sm">
-          <div class="flex items-center gap-1">
-            <div class="w-3 h-3 bg-blue-500 rounded"></div>
-            <span>Answered</span>
-          </div>
-          <div class="flex items-center gap-1">
-            <div class="w-3 h-3 bg-yellow-500 rounded"></div>
-            <span>Marked</span>
-          </div>
-          <div class="flex items-center gap-1">
-            <div class="w-3 h-3 border-2 border-blue-300 rounded"></div>
-            <span>Visited</span>
-          </div>
-        </div>
+<!-- Simple Chapter Selection -->
+<section id="chapter-dashboard" class="max-w-6xl mx-auto px-6 mt-10 mb-8 hidden">
+  <div class="mcq-card p-8">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
+        <span class="text-2xl">📚</span>
       </div>
-      <div id="question-numbers" class="grid grid-cols-11 gap-2">
-        <!-- Question numbers loaded dynamically -->
+      <h2 class="text-2xl font-bold text-blue-800">Select a Chapter</h2>
+      <p class="text-gray-600 mt-2">Click on any chapter to choose Exercise or Additional MCQs</p>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="chapters-grid"></div>
+    
+    <div id="section-choice" class="mt-8 text-center hidden">
+      <hr class="my-6">
+      <h3 class="text-xl font-semibold mb-4" id="selected-chapter-title">Physical Quantities</h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        <button id="take-exercise" class="btn btn-primary"><span>📘</span> Exercise MCQs</button>
+        <button id="take-additional" class="btn bg-purple-600 text-white hover:bg-purple-700"><span>📑</span> Additional MCQs</button>
+        <button id="back-to-chapters" class="btn btn-outline">← Back to Chapters</button>
       </div>
     </div>
-  </main>
+  </div>
+</section>
 
-  <!-- Test Controls Footer -->
-  <div class="test-controls fixed bottom-0 left-0 right-0 p-4 z-40 hidden" id="test-controls-footer">
-    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div class="text-gray-700 font-medium">
-        <span id="answered-controls" class="text-blue-600">0</span>/217 answered • 
-        <span id="marked-controls" class="text-yellow-600">0</span> marked •
-        <span id="remaining-controls">217</span> remaining
+<!-- Test Container -->
+<main id="test-container" class="max-w-5xl mx-auto px-6 pb-24 hidden">
+  <div class="flex flex-col md:flex-row justify-between items-center mb-8 p-6 bg-white rounded-2xl shadow-md">
+    <div>
+      <h2 class="text-xl font-bold text-blue-800" id="test-header-title">Physics MCQs</h2>
+      <p class="text-gray-600 mt-1" id="student-info-display"></p>
+    </div>
+    <div class="flex items-center space-x-6 mt-4 md:mt-0">
+      <div class="text-center">
+        <div class="text-2xl font-bold text-blue-700" id="timer">00:00</div>
+        <div class="text-sm text-gray-500">Time</div>
       </div>
-      <div class="flex flex-wrap justify-center gap-3">
-        <button id="pause-btn" class="btn btn-outline">
-          <span id="pause-icon">⏸️</span>
-          <span id="pause-text">Pause</span>
-        </button>
-        <button id="end-test-btn" class="btn btn-danger">
-          <span>⏹️</span> End Test
-        </button>
-        <button id="submit-test-btn" class="btn btn-success">
-          <span>✅</span> Submit Test
-        </button>
+      <div class="text-center">
+        <div class="text-2xl font-bold text-blue-700" id="progress-count">0/0</div>
+        <div class="text-sm text-gray-500">Progress</div>
       </div>
     </div>
   </div>
 
-  <!-- Results Section -->
-  <section id="results-section" class="max-w-4xl mx-auto px-6 py-10 hidden">
-    <div class="result-card p-8">
-      <!-- Student Info in Results -->
-      <div class="text-center mb-8 p-6 bg-gradient-to-r from-blue-50 to-cyan-50 rounded-2xl">
-        <div class="inline-flex items-center justify-center w-20 h-20 bg-white rounded-full shadow-md mb-4">
-          <span class="text-3xl">👤</span>
-        </div>
-        <h3 class="text-xl font-bold text-blue-800" id="result-student-name"></h3>
-        <p class="text-gray-600" id="result-school-name"></p>
-        <p class="text-gray-500 text-sm mt-2">
-          Test Completed • <span id="test-date-display"></span> • 
-          Duration: <span id="test-duration"></span>
-        </p>
-      </div>
+  <div class="mb-8">
+    <div class="flex justify-between items-center mb-3">
+      <span class="text-gray-700 font-medium">Question <span id="current-question" class="text-blue-600">1</span> of <span id="total-questions-span">0</span></span>
+      <span class="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full" id="answered-count">0 answered</span>
+    </div>
+    <div class="progress-bar">
+      <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
+    </div>
+  </div>
 
-      <!-- Score Summary -->
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-bold text-blue-800 mb-8">
-          <span class="inline-block mr-3">📊</span> Test Results
-        </h2>
-        
-        <div class="mb-8">
-          <div id="score-circle" class="score-circle score-excellent mx-auto mb-6">
-            <span id="score-percentage">0%</span>
-          </div>
-          
-          <!-- Performance Badge -->
-          <div id="performance-badge" class="inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-blue-500 to-cyan-500 shadow-lg">
-            Loading...
-          </div>
-        </div>
-        
-        <!-- Score Statistics -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
-            <p class="text-sm text-gray-600 mb-1">Total Questions</p>
-            <p class="text-3xl font-bold text-blue-700">217</p>
-          </div>
-          <div class="bg-green-50 p-5 rounded-xl border border-green-100">
-            <p class="text-sm text-gray-600 mb-1">Correct</p>
-            <p id="correct-count" class="text-3xl font-bold text-green-700">0</p>
-          </div>
-          <div class="bg-red-50 p-5 rounded-xl border border-red-100">
-            <p class="text-sm text-gray-600 mb-1">Wrong</p>
-            <p id="wrong-count" class="text-3xl font-bold text-red-700">0</p>
-          </div>
-          <div class="bg-purple-50 p-5 rounded-xl border border-purple-100">
-            <p class="text-sm text-gray-600 mb-1">Percentage</p>
-            <p id="percentage" class="text-3xl font-bold text-purple-700">0%</p>
-          </div>
-        </div>
-        
-        <!-- Performance Comments -->
-        <div id="performance-comments" class="max-w-2xl mx-auto mb-8">
-          <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200">
-            <h4 class="font-bold text-lg text-gray-800 mb-4 flex items-center">
-              <span class="mr-2">📈</span> Performance Analysis
-            </h4>
-            <p id="performance-text" class="text-gray-700 leading-relaxed"></p>
-            <div id="improvement-tips" class="mt-4 p-4 bg-yellow-50 rounded-lg border border-yellow-100 hidden">
-              <h5 class="font-semibold text-yellow-800 mb-2 flex items-center">
-                <span class="mr-2">📚</span> Improvement Tips:
-              </h5>
-              <ul class="text-yellow-700 text-sm space-y-1">
-                <li>• Review chapters with low scores</li>
-                <li>• Practice more MCQs from difficult topics</li>
-                <li>• Focus on understanding concepts rather than memorization</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Action Buttons -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-          <button id="download-certificate" class="btn btn-success">
-            <span>📥</span> Download Certificate
-          </button>
-          <button id="show-wrong-answers" class="btn bg-orange-500 text-white hover:bg-orange-600">
-            <span>📝</span> Review Wrong Answers
-          </button>
-          <button id="retake-test" class="btn btn-primary">
-            <span>🔄</span> Retake Test
-          </button>
-          <a href="Physics-9th.html" class="btn bg-gray-700 text-white hover:bg-gray-800">
-            <span>📚</span> Back to Notes
-          </a>
-        </div>
-      </div>
-      
-      <!-- Wrong Answers Section - Hidden by default -->
-      <div id="wrong-answers-section" class="hidden mt-10">
-        <div class="text-center mb-8">
-          <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4">
-            <span class="text-2xl">📝</span>
-          </div>
-          <h2 class="text-2xl font-bold text-red-800">Review Wrong Answers</h2>
-          <p class="text-gray-600 mt-2">Review the questions you answered incorrectly along with correct answers</p>
-        </div>
-        
-        <div id="wrong-answers-container">
-          <!-- Wrong answers will be loaded here -->
-        </div>
-        
-        <div class="text-center mt-8">
-          <button id="hide-wrong-answers" class="btn bg-gray-600 text-white hover:bg-gray-700">
-            <span>⬆️</span> Back to Results Summary
-          </button>
-        </div>
+  <div id="question-display" class="mb-8"></div>
+
+  <div class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-12">
+    <button id="prev-btn" class="btn bg-gray-700 text-white hover:bg-gray-800 w-full sm:w-auto" disabled>◀ Previous</button>
+    <div class="flex gap-4">
+      <button id="mark-btn" class="btn bg-yellow-500 text-white hover:bg-yellow-600"><span id="mark-icon">⭐</span> <span id="mark-text">Mark</span></button>
+      <button id="next-btn" class="btn btn-primary w-full sm:w-auto">Next ▶</button>
+    </div>
+  </div>
+
+  <div class="mb-8">
+    <div class="flex justify-between items-center mb-4">
+      <h3 class="text-lg font-semibold">Jump to Question:</h3>
+      <div class="flex gap-2 text-sm">
+        <div class="flex items-center gap-1"><div class="w-3 h-3 bg-blue-500 rounded"></div><span>Answered</span></div>
+        <div class="flex items-center gap-1"><div class="w-3 h-3 bg-yellow-500 rounded"></div><span>Marked</span></div>
+        <div class="flex items-center gap-1"><div class="w-3 h-3 border-2 border-blue-300 rounded"></div><span>Visited</span></div>
       </div>
     </div>
-  </section>
-  <!-- Minimal Footer -->
-  <footer class="bg-blue-900 text-gray-100 py-6 mt-8">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <div class="mb-4">
-        <a href="index.html" class="inline-flex items-center justify-center gap-2">
-          <span class="text-lg font-bold text-cyan-300">Hira Science Academy</span>
-        </a>
-      </div>
-      
-      <div class="flex flex-wrap justify-center gap-4 mb-4 text-sm">
-        <a href="Physics-9th.html" class="text-gray-300 hover:text-white">Physics Notes</a>
-        <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
-        <a href="index.html#contact" class="text-gray-300 hover:text-white">Contact</a>
-      </div>
-      
-      <p class="text-gray-400 text-xs">
-        &copy; 2025 Class 9 Physics MCQs Test • PECTAA 2025 Syllabus • 217 Questions
-      </p>
+    <div id="question-numbers" class="grid grid-cols-11 gap-2"></div>
+  </div>
+</main>
+
+<!-- Test Controls Footer -->
+<div class="test-controls fixed bottom-0 left-0 right-0 p-4 z-40 hidden" id="test-controls-footer">
+  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="text-gray-700 font-medium">
+      <span id="answered-controls">0</span>/<span id="total-controls">0</span> answered • 
+      <span id="marked-controls">0</span> marked
     </div>
-  </footer>
-  <!-- Back to Top Button -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+    <div class="flex gap-3">
+      <button id="pause-btn" class="btn btn-outline"><span id="pause-icon">⏸️</span> <span id="pause-text">Pause</span></button>
+      <button id="end-test-btn" class="btn btn-danger">⏹️ End Test</button>
+      <button id="submit-test-btn" class="btn btn-success">✅ Submit</button>
+    </div>
+  </div>
+</div>
 
-  <!-- JavaScript -->
-  <script>
-    // Mobile menu toggle - FIXED
-    document.getElementById('mobile-menu-button').addEventListener('click', function(e) {
-      e.stopPropagation();
-      const mobileMenu = document.getElementById('mobile-menu');
-      mobileMenu.classList.toggle('hidden');
-    });
+<!-- Results Section -->
+<section id="results-section" class="max-w-4xl mx-auto px-6 py-10 hidden">
+  <div class="bg-white rounded-2xl shadow-lg p-8">
+    <div class="text-center mb-8">
+      <h2 class="text-3xl font-bold text-blue-800 mb-2">📊 Test Results</h2>
+      <p class="text-gray-600" id="result-student"></p>
+    </div>
+    
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="bg-blue-50 p-5 rounded-xl text-center">
+        <p class="text-sm text-gray-600 mb-1">Correct</p>
+        <p id="correct-count" class="text-3xl font-bold text-blue-700">0</p>
+      </div>
+      <div class="bg-red-50 p-5 rounded-xl text-center">
+        <p class="text-sm text-gray-600 mb-1">Wrong</p>
+        <p id="wrong-count" class="text-3xl font-bold text-red-700">0</p>
+      </div>
+      <div class="bg-green-50 p-5 rounded-xl text-center">
+        <p class="text-sm text-gray-600 mb-1">Percentage</p>
+        <p id="percentage" class="text-3xl font-bold text-green-700">0%</p>
+      </div>
+      <div class="bg-purple-50 p-5 rounded-xl text-center">
+        <p class="text-sm text-gray-600 mb-1">Time Taken</p>
+        <p id="time-taken" class="text-3xl font-bold text-purple-700">00:00</p>
+      </div>
+    </div>
+    
+    <div class="flex flex-wrap justify-center gap-4">
+      <button id="download-certificate" class="btn btn-success">📥 Download Certificate</button>
+      <button id="show-wrong-answers" class="btn bg-orange-500 text-white hover:bg-orange-600">📝 Review Wrong Answers</button>
+      <button id="retake-test" class="btn btn-primary">🔄 Take Another Test</button>
+    </div>
+    
+    <!-- Wrong Answers Section -->
+    <div id="wrong-answers-section" class="hidden mt-8">
+      <hr class="my-6">
+      <h3 class="text-2xl font-bold text-red-800 mb-6 text-center">❌ Wrong Answers Review</h3>
+      <div id="wrong-answers-container"></div>
+      <div class="text-center mt-6">
+        <button id="hide-wrong-answers" class="btn bg-gray-600 text-white hover:bg-gray-700">⬆️ Back to Results</button>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Close mobile menu when clicking outside - FIXED
-    document.addEventListener('click', function(event) {
-      const mobileMenu = document.getElementById('mobile-menu');
-      const menuButton = document.getElementById('mobile-menu-button');
-      const isClickInsideMenu = mobileMenu.contains(event.target);
-      const isClickOnMenuButton = menuButton.contains(event.target);
-      
-      if (!isClickInsideMenu && !isClickOnMenuButton && !mobileMenu.classList.contains('hidden')) {
-        mobileMenu.classList.add('hidden');
-      }
-    });
+<!-- Footer -->
+<footer class="bg-blue-900 text-gray-100 py-6 mt-8">
+  <div class="max-w-4xl mx-auto text-center">
+    <p class="text-gray-400 text-xs">© 2025 Class 9 Physics MCQs • 217 Questions • PECTAA 2025 Syllabus</p>
+  </div>
+</footer>
 
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('#mobile-menu a').forEach(link => {
-      link.addEventListener('click', function() {
-        document.getElementById('mobile-menu').classList.add('hidden');
-      });
-    });
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">↑</button>
 
-    // Back to Top Button
-    const backToTopButton = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) {
-        backToTopButton.classList.add('show');
-      } else {
-        backToTopButton.classList.remove('show');
-      }
-    });
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // MCQ Data - MERGED: 51 Existing MCQs + 166 Additional MCQs = 217 MCQs
-    const mcqData = [
-      // === EXISTING 51 MCQs ===
-      {
-        question: "The instrument that is most suitable for measuring the thickness of a few sheets of cardboard is:",
-        options: ["metre rule", "measuring tape", "Vernier Callipers", "micrometer screw gauge"],
-        correct: 3
-      },
-      {
-        question: "One femtometre is equal to:",
-        options: ["$10^{-9}\\ m$", "$10^{-15}\\ m$", "$10^{9}\\ m$", "$10^{15}\\ m$"],
-        correct: 1
-      },
-      {
-        question: "Which one is a non-physical quantity?",
-        options: ["distance", "density", "colour", "temperature"],
-        correct: 2
-      },
-      {
-        question: "When using a measuring cylinder, one precaution to take is to:",
-        options: ["check for the zero error", "look at the meniscus from below the level of the water surface", "take several readings by looking from more than one direction", "position the eye in line with the bottom of the meniscus"],
-        correct: 3
-      },
-      {
-        question: "A displacement can be used to measure:",
-        options: ["mass of a liquid", "mass of a solid", "volume of a liquid", "volume of a solid"],
-        correct: 3
-      },
-      {
-        question: "Four students measure the diameter of a cylinder with Vernier Callipers. Which of the following readings is correct?",
-        options: ["$3.4\\ cm$", "$3.475\\ cm$", "$3.47\\ cm$", "$3.5\\ cm$"],
-        correct: 2
-      },
-      {
-        question: "Which of the following measures are likely to represent the thickness of a sheet of this book?",
-        options: ["$6\\times10^{-25}\\ m$", "$1\\times10^{-4}\\ m$", "$1.2\\times10^{-15}\\ m$", "$4\\times10^{-2}\\ m$"],
-        correct: 1
-      },
-      {
-        question: "The numerical ratio of displacement to distance is:",
-        options: ["always less than one", "always equal to one", "always greater than one", "equal to or less than one"],
-        correct: 3
-      },
-      {
-        question: "If a body does not change its position with respect to some fixed point, then it will be in a state of:",
-        options: ["rest", "motion", "uniform motion", "variable motion"],
-        correct: 0
-      },
-      {
-        question: "A ball is dropped from the top of a tower, the distance covered by it in the first second is:",
-        options: ["$5\\ m$", "$10\\ m$", "$50\\ m$", "$100\\ m$"],
-        correct: 0
-      },
-      {
-        question: "A body accelerates from rest to a velocity of 144 $kmh^{-1}$ in $20\\ seconds$. The distance covered by it is:",
-        options: ["$100\\ m$", "$400\\ m$", "$1400\\ m$", "$1440\\ m$"],
-        correct: 1
-      },
-      {
-        question: "The area under the speed-time graph is numerically equal to:",
-        options: ["velocity", "uniform velocity", "acceleration", "distance covered"],
-        correct: 3
-      },
-      {
-        question: "When we kick a stone, we get hurt. This is due to:",
-        options: ["inertia", "velocity", "momentum", "reaction"],
-        correct: 3
-      },
-      {
-        question: "An object will continue its motion with constant acceleration until:",
-        options: ["the resultant force on it begins to decrease", "the resultant force on it is zero", "the resultant force on it begins to increase", "the resultant force is at right angle to its tangential velocity"],
-        correct: 1
-      },
-      {
-        question: "Which of the following is a non-contact force?",
-        options: ["Friction", "Air resistance", "Electrostatic force", "Tension in the string"],
-        correct: 2
-      },
-      {
-        question: "A particle of mass $m$ moving with velocity $v$ collides with another particle of the same mass at rest. The velocity of the first particle after collision is:",
-        options: ["$v$", "$-v$", "$0$", "$-\\frac{1}{2}$"],
-        correct: 2
-      },
-      {
-        question: "Conservation of linear momentum is equivalent to:",
-        options: ["Newton's first law of motion", "Newton's second law of motion", "Newton's third law of motion", "None of these"],
-        correct: 2
-      },
-      {
-        question: "A lubricant is usually introduced between two surfaces to decrease friction. The lubricant:",
-        options: ["decreases temperature", "acts as ball bearings", "prevents direct contact of the surfaces", "provides rolling friction"],
-        correct: 2
-      },
-      {
-        question: "A particle is simultaneously acted upon by two forces of $4$ and $3$ newtons. The net force on the particle is:",
-        options: ["$1\\ N$", "between $1\\ N$ and $7\\ N$", "$5\\ N$", "$7\\ N$"],
-        correct: 1
-      },
-      {
-        question: "A force $F$ is making an angle of $60^{\\circ}$ with $x$-$axis$. Its $y$-$component$ is equal to:",
-        options: ["$F$", "$F\\sin 60^{\\circ}$", "$F\\cos 60^{\\circ}$", "$F\\tan 60^{\\circ}$"],
-        correct: 1
-      },
-      {
-        question: "Moment of force is called:",
-        options: ["moment arm", "couple", "couple arm", "torque"],
-        correct: 3
-      },
-      {
-        question: "In stable equilibrium the centre of gravity of the body lies:",
-        options: ["at the highest position", "at the lowest position", "at any position", "outside the body"],
-        correct: 1
-      },
-      {
-        question: "A cylinder resting on its circular base is in:",
-        options: ["stable equilibrium", "unstable equilibrium", "neutral equilibrium", "none of these"],
-        correct: 0
-      },
-      {
-        question: "Centripetal force is given by:",
-        options: ["$rF$", "$rF\\cos\\theta$", "$\\frac{mv^{2}}{r}$", "$\\frac{mv}{r}$"],
-        correct: 2
-      },
-      {
-        question: "Work done is maximum when the angle between the force $F$ and the displacement $d$ is:",
-        options: ["$0^{\\circ}$", "$30^{\\circ}$", "$60^{\\circ}$", "$90^{\\circ}$"],
-        correct: 0
-      },
-      {
-        question: "The SI unit of power is:",
-        options: ["joule", "newton", "watt", "second"],
-        correct: 2
-      },
-      {
-        question: "A bullet of mass $0.05\\ kg$ has a speed of $300\\ ms^{-1}$. Its kinetic energy will be:",
-        options: ["$2250\\ J$", "$4500\\ J$", "$1500\\ J$", "$1125\\ J$"],
-        correct: 0
-      },
-      {
-        question: "If a car doubles its speed, its kinetic energy will be:",
-        options: ["the same", "doubled", "increased to three times", "increased to four times"],
-        correct: 3
-      },
-      {
-        question: "The magnitude of momentum of an object is doubled, the kinetic energy of the object will:",
-        options: ["double", "increase to four times", "reduce to one-half", "remain the same"],
-        correct: 1
-      },
-      {
-        question: "Which of the following is not renewable energy source?",
-        options: ["Hydroelectric energy", "Fossil fuels", "Wind energy", "Solar energy"],
-        correct: 1
-      },
-      {
-        question: "A wire is stretched by a weight $w$. If the diameter of the wire is reduced to half of its previous value, the extension will become:",
-        options: ["one half", "double", "one fourth", "four times"],
-        correct: 3
-      },
-      {
-        question: "Two metal plates of area $2$ and $3$ square metres are placed in a liquid at the same depth. The ratio of pressures on the two plates is:",
-        options: ["$1:1$", "$\\sqrt{2}:\\sqrt{3}$", "$2:3$", "$4:9$"],
-        correct: 0
-      },
-      {
-        question: "The principle of a hydraulic press is based on:",
-        options: ["Hooke's law", "Pascal's law", "Principle of conservation of energy", "Principle of conservation of momentum"],
-        correct: 1
-      },
-      {
-        question: "When a spring is compressed, what form of energy does it possess?",
-        options: ["Kinetic", "Potential", "Internal", "Heat"],
-        correct: 1
-      },
-      {
-        question: "What is the force exerted by the atmosphere on a rectangular block surface of length $50\\ cm$ and breadth $40\\ cm$? The atmospheric pressure is $100\\ kPa$.",
-        options: ["$20\\ kN$", "$100\\ kN$", "$200\\ kN$", "$500\\ kN$"],
-        correct: 0
-      },
-      {
-        question: "Temperature of a substance is:",
-        options: ["the total amount of heat contained in it", "the total number of molecules in it", "degree of hotness or coldness", "dependent upon the intermolecular distance"],
-        correct: 2
-      },
-      {
-        question: "Heat is the:",
-        options: ["total kinetic energy of the molecules", "the internal energy", "work done by the molecules", "the energy in transit"],
-        correct: 3
-      },
-      {
-        question: "In Kelvin scale, the temperature corresponding to melting point of ice is:",
-        options: ["zero", "$32$", "$-273$", "$+273$"],
-        correct: 3
-      },
-      {
-        question: "The temperature which has the same value on Celsius and Fahrenheit scale is:",
-        options: ["$-40$", "$+40$", "$+45$", "$-45$"],
-        correct: 0
-      },
-      {
-        question: "One disadvantage of using alcohol in a liquid-in-glass thermometer:",
-        options: ["it has large expansivity", "it has low freezing point $(-112℃)$", "it wets the glass tube", "its expansion is linear"],
-        correct: 2
-      },
-      {
-        question: "Water is not used as a thermometric liquid mainly due to:",
-        options: ["colourless", "a bad conductor of heat", "non-linear expansion", "a low boiling point $(100℃)$"],
-        correct: 2
-      },
-      {
-        question: "Which one of the following is not a magnetic material?",
-        options: ["Cobalt", "Iron", "Aluminium", "Nickel"],
-        correct: 2
-      },
-      {
-        question: "Magnetic lines of force:",
-        options: ["are always directed in a straight line", "cross one another", "enter into the north pole", "enter into the south pole"],
-        correct: 3
-      },
-      {
-        question: "A common method used to magnetise a material is:",
-        options: ["stroking", "hitting", "heating", "placing inside a solenoid having $A.C$ current"],
-        correct: 0
-      },
-      {
-        question: "Physics is a branch of:",
-        options: ["Social science", "Life science", "Physical science", "Biological science"],
-        correct: 2
-      },
-      {
-        question: "Which branch of science plays vital role in technology and engineering?",
-        options: ["Biology", "Chemistry", "Geology", "Physics"],
-        correct: 3
-      },
-      {
-        question: "Automobile technology is based on:",
-        options: ["acoustics", "electromagnetism", "optics", "thermodynamics"],
-        correct: 3
-      },
-      {
-        question: "What is the ultimate truth of a scientific method?",
-        options: ["Hypothesis", "Experimentation", "Theory", "Law"],
-        correct: 3
-      },
-      {
-        question: "Which of the following are methods of investigation?",
-        options: ["Observation", "Experimentation", "Research", "All of these"],
-        correct: 3
-      },
-      {
-        question: "A hypothesis:",
-        options: ["may or may not be testable", "is supported by evidence", "is a possible answer to a question", "all of these"],
-        correct: 3
-      },
-      {
-        question: "A graph of an organized data is an example of:",
-        options: ["collecting data", "forming a hypothesis", "asking question", "analyzing data"],
-        correct: 3
-      },
-
-      // === ADDITIONAL 166 MCQs from DOCX ===
-      {
-        question: "Which of the following is a base quantity?",
-        options: ["Temperature", "Speed", "Density", "Volume"],
-        correct: 0
-      },
-      {
-        question: "The SI unit of intensity of light is",
-        options: ["Candela", "Ampere", "Kelvin", "Mole"],
-        correct: 0
-      },
-      {
-        question: "The number of base units in SI are",
-        options: ["5", "3", "7", "9"],
-        correct: 2
-      },
-      {
-        question: "The SI unit of plane angle is",
-        options: ["Radian", "Degree", "Steradian", "None"],
-        correct: 0
-      },
-      {
-        question: "Pascal is the SI unit of",
-        options: ["Tension", "Force", "Pressure", "Speed"],
-        correct: 2
-      },
-      {
-        question: "The unit of volume is",
-        options: ["Pascal", "Meter", "Cubic meter", "Second"],
-        correct: 2
-      },
-      {
-        question: "$3.3\\ GHz$ is equal to",
-        options: ["$3.3 \\times 10^{6}\\ Hz$", "$3.3 \\times 10^{-6}\\ Hz$", "$3.3 \\times 10^{9}\\ Hz$", "$3.3 \\times 10^{-9}\\ Hz$"],
-        correct: 2
-      },
-      {
-        question: "Diameter of a hydrogen atom approximately",
-        options: ["$10^{-5}\\ m$", "$10^{-10}\\ m$", "$10^{-15}\\ m$", "$10^{-20}\\ m$"],
-        correct: 1
-      },
-      {
-        question: "The least count of Vernier Callipers is",
-        options: ["$0.01\\ mm$", "$0.1\\ mm$", "$0.01\\ cm$", "$0.001\\ cm$"],
-        correct: 2
-      },
-      {
-        question: "SF in $1.35 \\times 10^{-6}$",
-        options: ["1", "2", "3", "4"],
-        correct: 2
-      },
-      {
-        question: "If a body is thrown upward, its velocity at the highest point is",
-        options: ["10 $ms^{-1}$", "Maximum", "Zero", "Constant"],
-        correct: 2
-      },
-      {
-        question: "Falcon can fly at a speed of",
-        options: ["$100\\ kmh^{-1}$", "$200\\ kmh^{-1}$", "$300\\ kmh^{-1}$", "$400\\ kmh^{-1}$"],
-        correct: 1
-      },
-      {
-        question: "Instantaneous speed is shown by a vehicle's",
-        options: ["Odometer", "Speedometer", "Accelerometer", "GPS"],
-        correct: 1
-      },
-      {
-        question: "Value of gravitational acceleration $g$ is approximately",
-        options: ["$10\\ ms^{-2}$", "$1.6\\ ms^{-2}$", "$98\\ ms^{-2}$", "$\\infty$"],
-        correct: 0
-      },
-      {
-        question: "Newton's 1st law is also known as",
-        options: ["Law of inertia", "Law of momentum", "Law of gravitation", "Law of force"],
-        correct: 0
-      },
-      {
-        question: "Formula for Newton's second Law",
-        options: ["$F = \\frac{m}{a}$", "$a = \\frac{F}{m}$", "$F = \\frac{a}{m}$", "$a = Fm$"],
-        correct: 1
-      },
-      {
-        question: "Product of mass and velocity",
-        options: ["Power", "Force", "Torque", "Momentum"],
-        correct: 3
-      },
-      {
-        question: "Rate of change of momentum equals",
-        options: ["Energy", "Torque", "Force", "Velocity"],
-        correct: 2
-      },
-      {
-        question: "Turning effect of a force",
-        options: ["Torque", "Momentum", "Pressure", "Work"],
-        correct: 0
-      },
-      {
-        question: "Measuring cylinder is used for",
-        options: ["Volume", "Mass", "Area", "Level of liquid"],
-        correct: 0
-      },
-      {
-        question: "Smallest lengths can be measured with",
-        options: ["Micrometer Screw Gauge", "Meter rule", "Measuring tape", "Vernier calipers"],
-        correct: 0
-      },
-      {
-        question: "Least count of a measuring tape",
-        options: ["$0.1\\ mm$", "$1\\ mm$", "$0.01\\ mm$", "$0.001\\ mm$"],
-        correct: 1
-      },
-      {
-        question: "Least count of micrometer screw gauge",
-        options: ["$0.01\\ mm$", "$1\\ mm$", "$0.1\\ mm$", "$0.001\\ mm$"],
-        correct: 0
-      },
-      {
-        question: "Least count of meter rod",
-        options: ["0.1 mm", "1 mm", "1 cm", "10 cm"],
-        correct: 1
-      },
-      {
-        question: "Least count of Vernier Callipers",
-        options: ["0.01 cm", "0.1 mm", "0.001 cm", "1 mm"],
-        correct: 0
-      },
-      {
-        question: "Range of Vernier Callipers",
-        options: ["$0.1\\ mm$ to $15\\ cm$", "$0.01\\ mm$ to $2.5\\ cm$", "0.1 mm", "0.01 mm"],
-        correct: 0
-      },
-      {
-        question: "Significant figures in 0.000125 km",
-        options: ["4", "3", "5", "6"],
-        correct: 1
-      },
-      {
-        question: "Which of the following is a vector?",
-        options: ["Frequency", "Speed", "Weight", "Work"],
-        correct: 2
-      },
-      {
-        question: "Numerical ratio of displacement to distance always",
-        options: ["$= 1$", "$\\leq 1$", "$< 1$", "$> 1$"],
-        correct: 1
-      },
-      {
-        question: "Change in position is called",
-        options: ["Displacement", "Distance", "Speed", "Velocity"],
-        correct: 0
-      },
-      {
-        question: "The fastest land mammal (cheetah) and the fastest fish (sailfish) have the same highest recorded speed of about",
-        options: ["$100\\ kmh^{-1}$", "$110\\ kmh^{-1}$", "$120\\ kmh^{-1}$", "$130\\ kmh^{-1}$"],
-        correct: 1
-      },
-      {
-        question: "Mount St. Helens erupted in 1980, expelling volcanic rocks at velocities up to",
-        options: ["$100\\ kmh^{-1}$", "$200\\ kmh^{-1}$", "$300\\ kmh^{-1}$", "$400\\ kmh^{-1}$"],
-        correct: 3
-      },
-      {
-        question: "Velocity of ball at highest point",
-        options: ["Zero", "$10\\ ms^{-1}$", "$20\\ ms^{-1}$", "$\\infty$"],
-        correct: 0
-      },
-      {
-        question: "A train is moving at a speed of $36\\ kmh^{-1}$. Its speed expressed in $ms^{-1}$ is",
-        options: ["$10\\ ms^{-1}$", "$20\\ ms^{-1}$", "$25\\ ms^{-1}$", "$30\\ ms^{-1}$"],
-        correct: 0
-      },
-      {
-        question: "A car starts from rest. It acquires a speed of $25\\ ms^{-1}$ after $20\\ s$. The distance moved by the car during this time is",
-        options: ["$32.25\\ m$", "$250\\ m$", "$500\\ m$", "$5000\\ m$"],
-        correct: 1
-      },
-      {
-        question: "Convert $54\\ kmh^{-1}$ into $ms^{-1}$",
-        options: ["$5\\ ms^{-1}$", "$10\\ ms^{-1}$", "$15\\ ms^{-1}$", "$20\\ ms^{-1}$"],
-        correct: 2
-      },
-      {
-        question: "Convert $20\\ ms^{-1}$ to $kmh^{-1}$",
-        options: ["$3.6\\ kmh^{-1}$", "$5.5\\ kmh^{-1}$", "$72\\ kmh^{-1}$", "$36\\ kmh^{-1}$"],
-        correct: 2
-      },
-      {
-        question: "A boy completes 100 m race in 12 s, his average speed",
-        options: ["$8.33\\ ms^{-1}$", "$12\\ ms^{-1}$", "$8\\ ms^{-1}$", "$100\\ ms^{-1}$"],
-        correct: 0
-      },
-      {
-        question: "Acceleration is negative if velocity",
-        options: ["Decreases", "Increases", "Remains constant", "Becomes zero"],
-        correct: 0
-      },
-      {
-        question: "If velocity is uniform, acceleration is",
-        options: ["Negative", "Positive", "Zero", "Constant"],
-        correct: 2
-      },
-      {
-        question: "$1\\ ms^{-2} = \\_\\_\\_\\_\\_ kmh^{-2}$ is",
-        options: ["12960", "3600", "5400", "3.6"],
-        correct: 0
-      },
-      {
-        question: "Area under speed-time graph represents",
-        options: ["Acceleration", "Distance", "Velocity", "Time"],
-        correct: 1
-      },
-      {
-        question: "Slope of speed-time graph shows",
-        options: ["Distance", "Acceleration", "Speed", "Displacement"],
-        correct: 1
-      },
-      {
-        question: "3rd equation of motion is",
-        options: ["$S = v_{i}t + \\frac{1}{2}at^{2}$", "$2aS = v_{f}^{2} - v_{i}^{2}$", "$S = vt$", "$v_{f} = v_{i} + at$"],
-        correct: 1
-      },
-      {
-        question: "The universal speed limit is approximately",
-        options: ["$2 \\times 10^{8}\\ ms^{-1}$", "$2 \\times 10^{-8}\\ ms^{-1}$", "$3 \\times 10^{-8}\\ ms^{-1}$", "$3 \\times 10^{8}\\ ms^{-1}$"],
-        correct: 3
-      },
-      {
-        question: "Which is a non-contact force?",
-        options: ["Air resistance", "Friction", "Magnetic force", "Tension"],
-        correct: 2
-      },
-      {
-        question: "Rolling friction is approximately how many times smaller than sliding friction?",
-        options: ["10", "50", "100", "1000"],
-        correct: 2
-      },
-      {
-        question: "Which is a contact force?",
-        options: ["Magnetic", "Friction", "Electrostatic", "Gravitational"],
-        correct: 1
-      },
-      {
-        question: "Major types of forces",
-        options: ["Three", "Two", "Four", "Five"],
-        correct: 1
-      },
-      {
-        question: "The value of $G$ is",
-        options: ["$6.673 \\times 10^{11}\\ Nm^{2}kg^{-2}$", "$6.673 \\times 10^{-11}\\ Nm^{2}kg^{-2}$", "$6.673 \\times 10^{12}\\ Nm^{2}kg^{-2}$", "$6.673 \\times 10^{-12}\\ Nm^{2}kg^{-2}$"],
-        correct: 1
-      },
-      {
-        question: "According to the Law of gravitation $F$ is equal to",
-        options: ["$G\\frac{m_{1}m_{2}}{d^{4}}$", "$G\\frac{m_{1}m_{2}}{d^{3}}$", "$G\\frac{m_{1}m_{2}}{d^{2}}$", "$G\\frac{m_{1}m_{2}}{d}$"],
-        correct: 2
-      },
-      {
-        question: "Getting hurt kicking a stone is due to",
-        options: ["Velocity", "Inertia", "Momentum", "Reaction"],
-        correct: 3
-      },
-      {
-        question: "Object continues with constant velocity until",
-        options: ["Weight acts", "Net force acts", "Friction acts", "Air resistance"],
-        correct: 1
-      },
-      {
-        question: "Newton's first law also known as",
-        options: ["Law of inertia", "Law of momentum", "Law of gravity", "Law of force"],
-        correct: 0
-      },
-      {
-        question: "$1\\ N =$",
-        options: ["$1\\ kgms^{-2}$", "$1\\ kgms^{-1}$", "$kgm^{2}s^{-1}$", "$kg^{2}ms^{-2}$"],
-        correct: 0
-      },
-      {
-        question: "Law of inertia is",
-        options: ["Second law", "First law", "Third law", "Law of gravity"],
-        correct: 1
-      },
-      {
-        question: "Sir Isaac Newton was born in Lincolnshire on January 4, 1643. The name of his famous book is",
-        options: ["Principia Physics", "Principia Mathematica", "Principia Chemistry", "Principia Science"],
-        correct: 1
-      },
-      {
-        question: "The formula of momentum",
-        options: ["$p = \\frac{m}{v}$", "$p = mv^{2}$", "$p = mv$", "$p = (mv)^{2}$"],
-        correct: 2
-      },
-      {
-        question: "Weight 'w' is equal to",
-        options: ["$\\frac{m}{g}$", "$mg$", "$\\frac{g}{m}$", "$\\frac{1}{mg}$"],
-        correct: 1
-      },
-      {
-        question: "SI unit of Force is",
-        options: ["Newton", "Joule", "Pascal", "Ampere"],
-        correct: 0
-      },
-      {
-        question: "Rocket works on",
-        options: ["2nd Law", "1st Law", "3rd Law", "Law of gravity"],
-        correct: 2
-      },
-      {
-        question: "Mass $20\\ kg$ pulled upward, weight approximately",
-        options: ["$100\\ N$", "$200\\ N$", "$150\\ N$", "$20\\ N$"],
-        correct: 1
-      },
-      {
-        question: "SI unit of mass is",
-        options: ["Gram", "Kilogram", "Pound", "Newton"],
-        correct: 1
-      },
-      {
-        question: "The weight of $100\\ g$ mass is",
-        options: ["$10\\ N$", "$100\\ N$", "$1000\\ N$", "$1\\ N$"],
-        correct: 3
-      },
-      {
-        question: "The value of gravitational field strength near the surface of earth is",
-        options: ["$10\\ ms^{-2}$", "$10\\ Nm$", "$10\\ Nkg^{-1}$", "$0\\ Nkg^{-1}$"],
-        correct: 2
-      },
-      {
-        question: "Change in momentum is called",
-        options: ["Force", "Impulse", "Torque", "Acceleration"],
-        correct: 1
-      },
-      {
-        question: "Which of the following is the unit of momentum?",
-        options: ["$Nm$", "$kg\\ ms^{-2}$", "$Ns$", "$Ns^{-1}$"],
-        correct: 2
-      },
-      {
-        question: "Change in momentum is equal to",
-        options: ["Mass x Time", "Force x Time", "Force x Velocity", "Mass x Force"],
-        correct: 1
-      },
-      {
-        question: "Net force on book lying on table",
-        options: ["$5\\ N$", "$0\\ N$", "$50\\ N$", "$10\\ N$"],
-        correct: 1
-      },
-      {
-        question: "SI unit of Impulse is",
-        options: ["$Nm$", "$Ns$", "$\\frac{N}{s}$", "$kgms^{-2}$"],
-        correct: 1
-      },
-      {
-        question: "Moment of force is called",
-        options: ["Momentum", "Torque", "Couple", "Work"],
-        correct: 1
-      },
-      {
-        question: "Steering wheel of vehicle example",
-        options: ["Torque", "Couple", "Force", "Momentum"],
-        correct: 1
-      },
-      {
-        question: "Formula of torque $\\tau$ is",
-        options: ["$F \\times m$", "$F \\times v$", "$F \\times a$", "$F \\times L$"],
-        correct: 3
-      },
-      {
-        question: "Turning effect of force is",
-        options: ["Force", "Torque", "Momentum", "Work"],
-        correct: 1
-      },
-      {
-        question: "SI unit of torque is",
-        options: ["$Ns$", "$Nm$", "$Nm^{-1}$", "$Ns^{-2}$"],
-        correct: 1
-      },
-      {
-        question: "If $F_{x} = 4\\ N$ and $F_{y} = 3\\ N$, what is magnitude of resultant force?",
-        options: ["$5\\ N$", "$7\\ N$", "$12\\ N$", "$10\\ N$"],
-        correct: 0
-      },
-      {
-        question: "The direction of force $F$ with $x-axis$ is given by",
-        options: ["$\\theta = \\tan^{-1}\\left( \\frac{F_{y}}{F_{x}} \\right)$", "$\\theta = \\tan^{-1}\\left( \\frac{F_{x}}{F_{y}} \\right)$", "$\\theta = \\sin^{-1}\\left( \\frac{F_{y}}{F_{x}} \\right)$", "$\\theta = \\sin^{-1}\\left( \\frac{F_{x}}{F_{y}} \\right)$"],
-        correct: 0
-      },
-      {
-        question: "Steering wheel of a car is example of",
-        options: ["Force", "Net force", "Couple", "Momentum"],
-        correct: 2
-      },
-      {
-        question: "Torque depends on",
-        options: ["Force and mass", "Mass and velocity", "Force and velocity", "Force and moment arm"],
-        correct: 3
-      },
-      {
-        question: "Body in equilibrium if it has no",
-        options: ["Acceleration", "Velocity", "Speed", "Torque"],
-        correct: 0
-      },
-      {
-        question: "A body in equilibrium must not have",
-        options: ["Momentum", "Velocity", "Quantity of motion", "Acceleration"],
-        correct: 3
-      },
-      {
-        question: "How many types of equilibrium?",
-        options: ["Two", "One", "Three", "Four"],
-        correct: 0
-      },
-      {
-        question: "Paratrooper with terminal velocity",
-        options: ["Dynamic", "Static", "Unstable", "Neutral"],
-        correct: 0
-      },
-      {
-        question: "Bulb hanging from ceiling",
-        options: ["Static", "Dynamic", "Unstable", "Neutral"],
-        correct: 0
-      },
-      {
-        question: "Vector sum of all torques on a body",
-        options: ["Equal", "Zero", "Maximum", "Minimum"],
-        correct: 1
-      },
-      {
-        question: "Conditions of equilibrium",
-        options: ["1", "2", "3", "4"],
-        correct: 1
-      },
-      {
-        question: "Angular acceleration is zero when OR Second condition of equilibrium",
-        options: ["$\\sum F = 0$", "$\\sum\\tau = 0$", "$\\sum F_{x} = 0$", "$\\sum F_{y} = 0$"],
-        correct: 1
-      },
-      {
-        question: "Linear acceleration is zero when OR First condition of equilibrium",
-        options: ["$\\sum F = 0$", "$\\sum\\tau = 0$", "$\\sum F_{x} = 0$", "$\\sum F_{y} = 0$"],
-        correct: 0
-      },
-      {
-        question: "The number of forces that can be added by head to tail rule are",
-        options: ["2", "3", "4", "any number"],
-        correct: 3
-      },
-      {
-        question: "The number of perpendicular components of a force are",
-        options: ["1", "2", "3", "4"],
-        correct: 1
-      },
-      {
-        question: "The work done will be zero when the angle between the force and the distance is",
-        options: ["$45^{\\circ}$", "$60^{\\circ}$", "$90^{\\circ}$", "$180^{\\circ}$"],
-        correct: 2
-      },
-      {
-        question: "The unit of energy is",
-        options: ["Newton $(N)$", "Meter $(m)$", "Joule $(J)$", "Second $(s)$"],
-        correct: 2
-      },
-      {
-        question: "Combination of K.E. and P.E. is",
-        options: ["Electrical", "Mechanical", "Nuclear", "Geothermal"],
-        correct: 1
-      },
-      {
-        question: "The work done by the single beat of human heart is",
-        options: ["$0.5\\ J$", "$1.5\\ J$", "$2.5\\ J$", "$100\\ J$"],
-        correct: 0
-      },
-      {
-        question: "The energy output of a power station in one year is",
-        options: ["$10^{4}\\ J$", "$10^{8}\\ J$", "$10^{16}\\ J$", "$10^{32}\\ J$"],
-        correct: 2
-      },
-      {
-        question: "The energy content of the nuclear bomb dropped on Hiroshima, Japan, in the Second World War was approximately",
-        options: ["$8.0 \\times 10^{11}\\ J$", "$8.0 \\times 10^{12}\\ J$", "$8.0 \\times 10^{13}\\ J$", "$8.0 \\times 10^{14}\\ J$"],
-        correct: 2
-      },
-      {
-        question: "Which is not a renewable energy source?",
-        options: ["Fossil fuels", "Hydro", "Wind", "Solar"],
-        correct: 0
-      },
-      {
-        question: "Power is equal to",
-        options: ["$W \\times t$", "$\\frac{W}{t^{2}}$", "$\\frac{W^{2}}{t}$", "$\\frac{W}{t}$"],
-        correct: 3
-      },
-      {
-        question: "SI unit of work is",
-        options: ["Newton $(N)$", "Watt $(W)$", "Joule $(J)$", "Pascal $(Pa)$"],
-        correct: 2
-      },
-      {
-        question: "Power for $100\\ J$ in $5\\ s$",
-        options: ["$20\\ W$", "$10\\ W$", "$105\\ W$", "$500\\ W$"],
-        correct: 0
-      },
-      {
-        question: "The SI unit of power is",
-        options: ["$W$", "$J$", "$N$", "$E$"],
-        correct: 0
-      },
-      {
-        question: "Power of an electric fan approximately",
-        options: ["80", "40", "100", "200"],
-        correct: 0
-      },
-      {
-        question: "Power of air conditioner approximately?",
-        options: ["$1200\\ W$", "$1000\\ W$", "$2500\\ W$", "$3000\\ W$"],
-        correct: 2
-      },
-      {
-        question: "One watt is equal to",
-        options: ["$1\\ Js^{-1}$", "$1\\ Js$", "$1\\ Js^{-2}$", "$1\\ J^{-1}s^{-1}$"],
-        correct: 0
-      },
-      {
-        question: "SI unit of spring constant is",
-        options: ["$Nm$", "$Nm^{-1}$", "$Nm^{-2}$", "$Ns$"],
-        correct: 2
-      },
-      {
-        question: "Spring constant $k$ is equal to",
-        options: ["$\\frac{x}{F}$", "$\\frac{F}{x}$", "$F$", "$\\frac{1}{kx}$"],
-        correct: 1
-      },
-      {
-        question: "Formula of Hooke's law is",
-        options: ["$k = \\frac{F}{x}$", "$F = kx$", "$x = \\frac{F}{k}$", "$F = \\frac{1}{kx}$"],
-        correct: 1
-      },
-      {
-        question: "In SI unit of density is",
-        options: ["$kgm$", "$kgm^{-1}$", "$kgm^{-2}$", "$kgm^{-3}$"],
-        correct: 3
-      },
-      {
-        question: "Density of ice is",
-        options: ["$900\\ kgm^{-3}$", "$1000\\ kgm^{-3}$", "$920\\ kgm^{-3}$", "$910\\ kgm^{-3}$"],
-        correct: 2
-      },
-      {
-        question: "In SI unit of pressure is",
-        options: ["$Nm$", "$kgK^{-1}$", "$Nm^{-2}$", "$kgm^{-3}$"],
-        correct: 2
-      },
-      {
-        question: "Liquid pressure at depth $h$ is",
-        options: ["$\\rho gh$", "$\\rho gh^{2}$", "$\\rho gh^{3}$", "$\\rho glh$"],
-        correct: 0
-      },
-      {
-        question: "Density of water is",
-        options: ["$100\\ kgm^{-3}$", "$1000\\ kgm^{-3}$", "$100\\ kgm^{3}$", "$1000\\ kgm^{3}$"],
-        correct: 1
-      },
-      {
-        question: "Force exerted perpendicularly on unit area is called",
-        options: ["Pressure", "Density", "Elasticity", "Force"],
-        correct: 0
-      },
-      {
-        question: "One Pascal is equal to",
-        options: ["$Nm$", "$kgK^{-1}$", "$Nm^{-2}$", "$kgm^{-3}$"],
-        correct: 2
-      },
-      {
-        question: "If area of contact between feet and ground is reduced, pressure",
-        options: ["Decreases", "Remains same", "Increases", "Becomes double"],
-        correct: 2
-      },
-      {
-        question: "Pressure of liquids in a container increases with",
-        options: ["Volume", "Base", "Depth", "Mass"],
-        correct: 2
-      },
-      {
-        question: "Liquid pressure \"$P$\" at depth \"$h$\" is calculated by",
-        options: ["$\\rho gh$", "$\\rho gh^{2}$", "$\\rho gh^{3}$", "$\\rho glh$"],
-        correct: 0
-      },
-      {
-        question: "Atmospheric pressure extends up to a height of about",
-        options: ["$1000\\ km$", "$100\\ km$", "$500\\ km$", "Several hundred km (None)"],
-        correct: 1
-      },
-      {
-        question: "The principle of a hydraulic press is based on",
-        options: ["Pascal's law", "Hooke's law", "Archimedes' principle", "Conservation of energy"],
-        correct: 0
-      },
-      {
-        question: "Unit of heat is",
-        options: ["Metre per second", "Kelvin", "Joule", "Joule per second"],
-        correct: 2
-      },
-      {
-        question: "Intensity of an object's heat or cold is",
-        options: ["Thermal energy", "Heat", "Temperature", "Kinetic energy"],
-        correct: 2
-      },
-      {
-        question: "Atmospheric pressure at sea level is about",
-        options: ["$10\\ kPa$", "$55\\ kPa$", "$101.3\\ kPa$", "$200\\ kPa$"],
-        correct: 2
-      },
-      {
-        question: "On kelvin scale value of absolute zero is",
-        options: ["$373\\ K$", "$-373K$", "$0\\ K$ OR $-273℃$", "$-273.15\\ K$"],
-        correct: 2
-      },
-      {
-        question: "Normal temperature of human body is",
-        options: ["273 K", "98.6 K", "$37℃$", "$98.6℃$"],
-        correct: 2
-      },
-      {
-        question: "The SI unit of spring constant 'k' is",
-        options: ["$Nm$", "$\\frac{N}{m}$", "$\\frac{N}{m^{-2}}$", "Joule"],
-        correct: 1
-      },
-      {
-        question: "A freely suspended magnet point",
-        options: ["East-West", "Randomly", "Up-Down", "North-South"],
-        correct: 3
-      },
-      {
-        question: "Pascal's law applies to",
-        options: ["Solids only", "Enclosed fluids", "Vacuum", "Gases only"],
-        correct: 1
-      },
-      {
-        question: "Like magnetic poles",
-        options: ["Attract", "Repel", "Neutralize", "Rotate"],
-        correct: 1
-      },
-      {
-        question: "The real test of a magnet is",
-        options: ["Attraction", "Repulsion", "Induction", "Conduction"],
-        correct: 1
-      },
-      {
-        question: "Soft iron is used to make",
-        options: ["Permanent magnets", "Temporary magnets", "Steel alloys", "Compass needles"],
-        correct: 1
-      },
-      {
-        question: "Magnetic field lines originate from",
-        options: ["South pole", "North pole", "Center", "Everywhere"],
-        correct: 1
-      },
-      {
-        question: "A neutral point in a magnetic field has",
-        options: ["Maximum field", "Zero net field", "North polarity", "South polarity"],
-        correct: 1
-      },
-      {
-        question: "Magnetic strips on refrigerators use",
-        options: ["Electromagnets", "Permanent magnets", "Temporary magnets", "Iron filings"],
-        correct: 1
-      },
-      {
-        question: "A Maglev train is",
-        options: ["Driven by steam", "Magnetically levitated", "Driven by coal", "Friction-heavy"],
-        correct: 1
-      },
-      {
-        question: "Magnetic domains are found in",
-        options: ["Paramagnetic", "Diamagnetic", "Ferromagnetic", "All materials"],
-        correct: 2
-      },
-      {
-        question: "Demagnetization can be done by",
-        options: ["Cooling", "Hammering", "Stroking", "Polishing"],
-        correct: 1
-      },
-      {
-        question: "Magnetic recording tapes are coated with",
-        options: ["Copper", "Aluminum", "Iron oxide", "Plastic"],
-        correct: 2
-      },
-      {
-        question: "Soft iron is used for magnetic",
-        options: ["Strength", "Shielding", "Decoration", "Conductivity"],
-        correct: 1
-      },
-      {
-        question: "The study of non-living things is",
-        options: ["Biological science", "Physical science", "Life science", "Social science"],
-        correct: 1
-      },
-      {
-        question: "The study of motion and its effects is",
-        options: ["Acoustics", "Optics", "Mechanics", "Thermodynamics"],
-        correct: 2
-      },
-      {
-        question: "Biophysics is an example of",
-        options: ["Isolated science", "Interdisciplinary nature", "Engineering", "Non-physical science"],
-        correct: 1
-      },
-      {
-        question: "Geophysics deals with the study of",
-        options: ["Sound", "Earth's internal structure", "Light", "Stars"],
-        correct: 1
-      },
-      {
-        question: "The first step of the scientific method is",
-        options: ["Hypothesis", "Law", "Theory", "Observation"],
-        correct: 3
-      },
-      {
-        question: "A guess work/propose explanation is called",
-        options: ["Observation", "Hypothesis", "Experiment", "Law"],
-        correct: 1
-      },
-      {
-        question: "A theory that is tested and accepted becomes a",
-        options: ["Hypothesis", "Prediction", "Law", "Falsification"],
-        correct: 2
-      },
-      {
-        question: "Radar technology is based on",
-        options: ["Sound", "Thermodynamics", "Electromagnetic waves", "Nuclear physics"],
-        correct: 2
-      },
-      {
-        question: "Laser technology is based on",
-        options: ["Atomic physics", "Mechanics", "Geophysics", "Heat"],
-        correct: 0
-      },
-      {
-        question: "The concept that a theory must be potentially provable false is",
-        options: ["Verifiability", "Falsifiability", "Reliability", "Predictability"],
-        correct: 1
-      },
-      {
-        question: "The study of subatomic particles is called",
-        options: ["Nuclear physics", "Particle physics", "Quantum mechanics", "Solid state physics"],
-        correct: 1
-      },
-      {
-        question: "The real test to identify a magnet is",
-        options: ["Attraction", "Induction", "Repulsion", "Conduction"],
-        correct: 2
-      },
-      {
-        question: "Isolated magnetic poles are",
-        options: ["Possible", "Not possible", "Found in nature", "Made in labs"],
-        correct: 1
-      },
-      {
-        question: "Temporary magnets work only in the presence of a",
-        options: ["Electric field", "Vacuum", "Magnetic field", "Gravitational field"],
-        correct: 2
-      },
-      {
-        question: "The material usually used to make temporary magnets is",
-        options: ["Steel", "Soft iron", "Cobalt", "Alnico"],
-        correct: 1
-      },
-      {
-        question: "The region around a magnet where a magnetic object experiences a force is the",
-        options: ["Magnetic field", "Magnetic line", "Neutral point", "Domain"],
-        correct: 0
-      },
-      {
-        question: "Magnetic field lines originate from the",
-        options: ["South pole", "Centre", "North pole", "Thimble"],
-        correct: 2
-      },
-      {
-        question: "A neutral point is a point where the resultant magnetic field is",
-        options: ["Maximum", "Zero", "North", "South"],
-        correct: 1
-      },
-      {
-        question: "In ferromagnetic materials, highly magnetized regions are called",
-        options: ["Atoms", "Magnetic domains", "Dipoles", "Poles"],
-        correct: 1
-      },
-      {
-        question: "A magnet can be demagnetized by",
-        options: ["Cooling", "Stroking", "Heating or hammering", "Painting"],
-        correct: 2
-      },
-      {
-        question: "Sensitive electronic devices can be shielded from magnetic fields using",
-        options: ["Copper", "Soft iron", "Wood", "Aluminium"],
-        correct: 1
-      },
-      {
-        question: "Biological sciences deal with living things, whereas physical sciences deal with",
-        options: ["Non-living things", "Human behavior", "Plants only", "Social interactions"],
-        correct: 0
-      },
-      {
-        question: "The fundamental science that deals with matter, energy, space, and time is",
-        options: ["Chemistry", "Biology", "Physics", "Geology"],
-        correct: 2
-      },
-      {
-        question: "The branch of physics based on Newton's laws of motion and gravitation is",
-        options: ["Optics", "Mechanics", "Acoustics", "Nuclear physics"],
-        correct: 1
-      },
-      {
-        question: "Astrophysics deals with the physical properties and processes of",
-        options: ["Living cells", "Celestial bodies", "Earth's interior", "Weather"],
-        correct: 1
-      },
-      {
-        question: "A proposed explanation or guess work in the scientific method is a",
-        options: ["Theory", "Law", "Hypothesis", "Prediction"],
-        correct: 2
-      },
-      {
-        question: "A theory that is tested many times and generally accepted as true is called a",
-        options: ["Hypothesis", "Law", "Observation", "Prediction"],
-        correct: 1
-      },
-      {
-        question: "Automobile technology is based on the principles of",
-        options: ["Acoustics", "Thermodynamics", "Optics", "Nuclear physics"],
-        correct: 1
-      }
-    ];
-
-    // Total questions: 217
-    const TOTAL_QUESTIONS = mcqData.length;
-
-    // Test State Management
-    const testState = {
-      studentName: '',
-      schoolName: '',
-      contact: '',
-      rollNumber: '',
-      email: '',
-      currentQuestion: 0,
-      answers: new Array(TOTAL_QUESTIONS).fill(null),
-      marked: new Array(TOTAL_QUESTIONS).fill(false),
-      startTime: null,
-      timeSpent: 0,
-      submitted: false,
-      visited: new Array(TOTAL_QUESTIONS).fill(false),
-      isPaused: false,
-      pausedTime: 0,
-      formSubmitted: false
-    };
-
-    // DOM Elements
-    const studentInfoSection = document.getElementById('student-info');
-    const instructionsSection = document.getElementById('instructions');
-    const testContainer = document.getElementById('test-container');
-    const resultsSection = document.getElementById('results-section');
-    const questionDisplay = document.getElementById('question-display');
-    const studentForm = document.getElementById('studentForm');
-    const startTestBtn = document.getElementById('start-test-btn');
-    const progressFill = document.getElementById('progress-fill');
-    const answeredCountSpan = document.getElementById('answered-count');
-    const progressCount = document.getElementById('progress-count');
-    const answeredControls = document.getElementById('answered-controls');
-    const markedControls = document.getElementById('marked-controls');
-    const testControlsFooter = document.getElementById('test-controls-footer');
-    const successMessage = document.getElementById('success-message');
-    const wrongAnswersSection = document.getElementById('wrong-answers-section');
-    const wrongAnswersContainer = document.getElementById('wrong-answers-container');
-
-    // Handle student form submission to Web3Forms
-    studentForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      // Collect form data
-      testState.studentName = document.getElementById('studentName').value.trim();
-      testState.schoolName = document.getElementById('schoolName').value.trim();
-      testState.contact = document.getElementById('contact').value.trim();
-      testState.rollNumber = document.getElementById('rollNumber').value.trim();
-      testState.email = document.getElementById('email').value.trim();
-      
-      if (!testState.studentName || !testState.schoolName || !testState.contact) {
-        alert('Please enter your name, school name, and contact number.');
-        return;
-      }
-      
-      // Update student info display
-      document.getElementById('student-info-display').textContent = 
-        `${testState.studentName} | ${testState.schoolName}`;
-      
-      // Show loading
-      const submitBtn = studentForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = '<span>⏳</span> Submitting...';
-      submitBtn.disabled = true;
-      
-      try {
-        // Submit to Web3Forms using Fetch API
-        const formData = new FormData(studentForm);
-        
-        // Set test results as "Registered" initially
-        formData.set('test_score', 'Not taken yet');
-        formData.set('test_percentage', 'Not taken yet');
-        formData.set('test_time', 'Not taken yet');
-        formData.set('test_date', new Date().toLocaleDateString('en-PK'));
-        formData.set('test_status', 'Registered for test');
-        formData.set('message', `${testState.studentName} from ${testState.schoolName} registered for Class 9 Physics MCQ Test. Contact: ${testState.contact}`);
-        
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok && result.success) {
-          // Show success message
-          successMessage.style.display = 'block';
-          successMessage.innerHTML = `
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <span class="text-2xl mr-3">✅</span>
-                <span class="font-semibold">Registration successful! Redirecting to test...</span>
-              </div>
-              <button onclick="document.getElementById('success-message').style.display='none'" class="text-green-700 hover:text-green-900">
-                ✕
-              </button>
-            </div>
-          `;
-          testState.formSubmitted = true;
-          
-          // Hide form and show instructions after 2 seconds
-          setTimeout(() => {
-            studentInfoSection.classList.add('hidden');
-            instructionsSection.classList.remove('hidden');
-            successMessage.style.display = 'none';
-          }, 2000);
-        } else {
-          throw new Error(result.message || 'Form submission failed');
-        }
-      } catch (error) {
-        console.error('Web3Forms submission error:', error);
-        // Even if Web3Forms fails, continue with test
-        alert('Test starting... (Note: Form submission had an issue)');
-        studentInfoSection.classList.add('hidden');
-        instructionsSection.classList.remove('hidden');
-      } finally {
-        // Reset button
-        submitBtn.innerHTML = originalText;
-        submitBtn.disabled = false;
-      }
-    });
-
-    // Start test button
-    startTestBtn.addEventListener('click', function() {
-      instructionsSection.classList.add('hidden');
-      testContainer.classList.remove('hidden');
-      testControlsFooter.classList.remove('hidden');
-      initTest();
-    });
-
-    // Initialize the test
-    function initTest() {
-      testState.startTime = Date.now();
-      testState.isPaused = false;
-      updateTimer();
-      window.testTimerInterval = setInterval(updateTimer, 1000);
-      
-      renderQuestion(testState.currentQuestion);
-      updateProgress();
-      renderQuestionNumbers();
-      
-      // Mark first question as visited
-      testState.visited[0] = true;
-      
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Render a single question
-    function renderQuestion(index) {
-      const question = mcqData[index];
-      testState.visited[index] = true;
-      
-      questionDisplay.innerHTML = `
-        <div class="mcq-card p-6 md:p-8">
-          <div class="flex justify-between items-start mb-8">
-            <div>
-              <h3 class="text-xl font-bold text-blue-800">Question ${index + 1}</h3>
-              <div class="flex items-center gap-3 mt-2">
-                ${testState.marked[index] ? 
-                  '<span class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full flex items-center gap-1"><span>⭐</span>Marked</span>' : ''}
-                <span class="text-sm text-gray-500">Marks: 1</span>
-              </div>
-            </div>
-          </div>
-          
-          <div class="physics-equation mb-8">
-            ${question.question}
-          </div>
-          
-          <div id="options-container" class="space-y-4">
-            ${question.options.map((option, optIndex) => `
-              <div class="option ${testState.answers[index] === optIndex ? 'selected' : ''}" 
-                   data-index="${optIndex}">
-                <div class="flex items-center">
-                  <span class="mr-4 font-bold w-10 h-10 flex items-center justify-center rounded-full 
-                    ${testState.answers[index] === optIndex ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 border border-gray-200'} 
-                    transition-all">
-                    ${String.fromCharCode(65 + optIndex)}
-                  </span>
-                  <span class="text-lg">${option}</span>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `;
-      
-      document.getElementById('current-question').textContent = index + 1;
-      const markBtn = document.getElementById('mark-btn');
-      const markIcon = document.getElementById('mark-icon');
-      const markText = document.getElementById('mark-text');
-      
-      if (testState.marked[index]) {
-        markIcon.textContent = '❌';
-        markText.textContent = 'Unmark';
-        markBtn.classList.remove('bg-yellow-500');
-        markBtn.classList.add('bg-red-500');
-      } else {
-        markIcon.textContent = '⭐';
-        markText.textContent = 'Mark';
-        markBtn.classList.remove('bg-red-500');
-        markBtn.classList.add('bg-yellow-500');
-      }
-      
-      updateNavigationButtons();
-      updateQuestionNumbers();
-      
-      // Add event listeners to options
-      document.querySelectorAll('.option').forEach(option => {
-        option.addEventListener('click', function() {
-          const selectedIndex = parseInt(this.getAttribute('data-index'));
-          selectAnswer(index, selectedIndex);
-        });
-      });
-      
-      // Re-render MathJax for new content
-      if (window.MathJax) {
-        MathJax.typesetPromise();
-      }
-    }
-
-    // Select answer
-    function selectAnswer(questionIndex, optionIndex) {
-      const options = document.querySelectorAll('.option');
-      options.forEach(opt => {
-        opt.classList.remove('selected');
-        opt.querySelector('span:first-child').className = 
-          'mr-4 font-bold w-10 h-10 flex items-center justify-center rounded-full bg-gray-100 text-gray-700 border border-gray-200 transition-all';
-      });
-      
-      const selectedOption = document.querySelector(`.option[data-index="${optionIndex}"]`);
-      if (selectedOption) {
-        selectedOption.classList.add('selected');
-        selectedOption.querySelector('span:first-child').className = 
-          'mr-4 font-bold w-10 h-10 flex items-center justify-center rounded-full bg-blue-600 text-white transition-all';
-      }
-      
-      testState.answers[questionIndex] = optionIndex;
-      updateProgress();
-    }
-
-    // Mark question
-    document.getElementById('mark-btn').addEventListener('click', function() {
-      const index = testState.currentQuestion;
-      testState.marked[index] = !testState.marked[index];
-      
-      const markIcon = document.getElementById('mark-icon');
-      const markText = document.getElementById('mark-text');
-      
-      if (testState.marked[index]) {
-        markIcon.textContent = '❌';
-        markText.textContent = 'Unmark';
-        this.classList.remove('bg-yellow-500');
-        this.classList.add('bg-red-500');
-      } else {
-        markIcon.textContent = '⭐';
-        markText.textContent = 'Mark';
-        this.classList.remove('bg-red-500');
-        this.classList.add('bg-yellow-500');
-      }
-      
-      updateProgress();
-    });
-
-    // Update progress
-    function updateProgress() {
-      const answered = testState.answers.filter(answer => answer !== null).length;
-      const marked = testState.marked.filter(mark => mark).length;
-      const progressPercentage = (answered / TOTAL_QUESTIONS) * 100;
-      
-      progressFill.style.width = `${progressPercentage}%`;
-      answeredCountSpan.textContent = `${answered} answered`;
-      progressCount.textContent = `${answered}/${TOTAL_QUESTIONS}`;
-      if (answeredControls) answeredControls.textContent = answered;
-      if (markedControls) markedControls.textContent = marked;
-      if (document.getElementById('remaining-controls')) {
-        document.getElementById('remaining-controls').textContent = TOTAL_QUESTIONS - answered;
-      }
-      if (document.getElementById('marked-questions')) {
-        document.getElementById('marked-questions').textContent = `${marked} marked`;
-      }
-      
-      updateQuestionNumbers();
-    }
-
-    // Update navigation buttons
-    function updateNavigationButtons() {
-      const prevBtn = document.getElementById('prev-btn');
-      const nextBtn = document.getElementById('next-btn');
-      
-      if (prevBtn) prevBtn.disabled = testState.currentQuestion === 0;
-      if (nextBtn) nextBtn.disabled = testState.currentQuestion === TOTAL_QUESTIONS - 1;
-    }
-
-    // Navigate questions
-    document.getElementById('next-btn').addEventListener('click', function() {
-      if (testState.currentQuestion < TOTAL_QUESTIONS - 1) {
-        testState.currentQuestion++;
-        renderQuestion(testState.currentQuestion);
-      }
-    });
-
-    document.getElementById('prev-btn').addEventListener('click', function() {
-      if (testState.currentQuestion > 0) {
-        testState.currentQuestion--;
-        renderQuestion(testState.currentQuestion);
-      }
-    });
-
-    // Timer
-    function updateTimer() {
-      if (!testState.startTime || testState.submitted || testState.isPaused) return;
-      
-      const now = Date.now();
-      testState.timeSpent = Math.floor((now - testState.startTime) / 1000);
-      
-      const minutes = Math.floor(testState.timeSpent / 60);
-      const seconds = testState.timeSpent % 60;
-      const timeString = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      
-      document.getElementById('timer').textContent = timeString;
-    }
-
-    // Pause/Resume functionality
-    document.getElementById('pause-btn').addEventListener('click', function() {
-      const pauseIcon = document.getElementById('pause-icon');
-      const pauseText = document.getElementById('pause-text');
-      
-      if (testState.isPaused) {
-        // Resume test
-        testState.isPaused = false;
-        testState.startTime = Date.now() - (testState.timeSpent * 1000);
-        pauseIcon.textContent = '⏸️';
-        pauseText.textContent = 'Pause';
-        this.classList.remove('bg-green-500', 'text-white');
-        this.classList.add('btn-outline');
-      } else {
-        // Pause test
-        testState.isPaused = true;
-        pauseIcon.textContent = '▶️';
-        pauseText.textContent = 'Resume';
-        this.classList.remove('btn-outline');
-        this.classList.add('bg-green-500', 'text-white');
-      }
-    });
-
-    // Render question numbers
-    function renderQuestionNumbers() {
-      const container = document.getElementById('question-numbers');
-      if (!container) return;
-      
-      container.innerHTML = '';
-      
-      for (let i = 0; i < TOTAL_QUESTIONS; i++) {
-        const button = document.createElement('button');
-        button.className = 'question-number-btn';
-        button.textContent = i + 1;
-        
-        updateQuestionNumberButton(button, i);
-        
-        button.addEventListener('click', () => {
-          testState.currentQuestion = i;
-          renderQuestion(i);
-        });
-        
-        container.appendChild(button);
-      }
-    }
-
-    // Update question number button
-    function updateQuestionNumberButton(button, index) {
-      button.className = 'question-number-btn';
-      
-      if (testState.marked[index]) {
-        button.classList.add('marked');
-      } else if (testState.answers[index] !== null) {
-        button.classList.add('answered');
-      } else if (testState.visited[index]) {
-        button.classList.add('visited');
-      } else {
-        button.classList.add('not-visited');
-      }
-      
-      if (index === testState.currentQuestion) {
-        button.classList.add('current');
-      }
-    }
-
-    // Update all question numbers
-    function updateQuestionNumbers() {
-      const buttons = document.querySelectorAll('#question-numbers button');
-      buttons.forEach((button, i) => {
-        updateQuestionNumberButton(button, i);
-      });
-    }
-
-    // End test
-    document.getElementById('end-test-btn').addEventListener('click', function() {
-      if (confirm('Are you sure you want to end the test? You will see your results immediately.')) {
-        submitTest();
-      }
-    });
-
-    // Submit test
-    document.getElementById('submit-test-btn').addEventListener('click', function() {
-      const answered = testState.answers.filter(answer => answer !== null).length;
-      
-      if (answered < TOTAL_QUESTIONS) {
-        if (!confirm(`You have answered ${answered} out of ${TOTAL_QUESTIONS} questions. Submit anyway?`)) {
-          return;
-        }
-      }
-      
-      submitTest();
-    });
-
-    async function submitTest() {
-      testState.submitted = true;
-      clearInterval(window.testTimerInterval);
-      
-      // Hide test controls
-      testControlsFooter.classList.add('hidden');
-      
-      calculateResults();
-      showResults();
-      
-      // Submit test results to Web3Forms
-      await submitTestResults();
-    }
-
-    // Submit test results to Web3Forms
-    async function submitTestResults() {
-      try {
-        // Calculate score
-        let correct = 0;
-        for (let i = 0; i < TOTAL_QUESTIONS; i++) {
-          if (testState.answers[i] === mcqData[i].correct) {
-            correct++;
-          }
-        }
-        const percentage = Math.round((correct / TOTAL_QUESTIONS) * 100);
-        
-        // Create form data for Web3Forms
-        const formData = new FormData();
-        formData.append('access_key', 'f12ad588-c26d-4f2e-bf13-24e2babefc1e');
-        formData.append('subject', `Physics MCQ Test Results - ${testState.studentName} (${percentage}%)`);
-        formData.append('from_name', 'Hira Science Academy');
-        formData.append('name', testState.studentName);
-        formData.append('school', testState.schoolName);
-        formData.append('contact', testState.contact);
-        formData.append('roll_number', testState.rollNumber || 'Not provided');
-        formData.append('email', testState.email || 'Not provided');
-        formData.append('test_score', `${correct}/${TOTAL_QUESTIONS}`);
-        formData.append('test_percentage', `${percentage}%`);
-        formData.append('test_time', formatTime(testState.timeSpent));
-        formData.append('test_date', new Date().toLocaleDateString('en-PK'));
-        formData.append('test_status', 'Completed');
-        formData.append('message', 
-          `${testState.studentName} from ${testState.schoolName} completed the Class 9 Physics MCQ Test with score: ${correct}/${TOTAL_QUESTIONS} (${percentage}%). ` +
-          `Test duration: ${formatTime(testState.timeSpent)}. ` +
-          `Contact: ${testState.contact}${testState.email ? `, Email: ${testState.email}` : ''}`
-        );
-        
-        // Submit to Web3Forms
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        const result = await response.json();
-        
-        if (response.ok && result.success) {
-          console.log('Test results submitted to Web3Forms successfully');
-          // Show success message
-          const successMsg = document.createElement('div');
-          successMsg.className = 'success-message max-w-2xl mx-auto mt-4 px-6';
-          successMsg.innerHTML = `
-            <div class="flex items-center">
-              <span class="text-2xl mr-3">✅</span>
-              <span class="font-semibold">Test results submitted successfully!</span>
-            </div>
-          `;
-          document.querySelector('#results-section .result-card').prepend(successMsg);
-          
-          // Auto-remove after 5 seconds
-          setTimeout(() => {
-            successMsg.remove();
-          }, 5000);
-        }
-      } catch (error) {
-        console.error('Error submitting test results:', error);
-      }
-    }
-
-    // Format time for display
-    function formatTime(seconds) {
-      const minutes = Math.floor(seconds / 60);
-      const secs = seconds % 60;
-      return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-    }
-
-    // Calculate results
-    function calculateResults() {
-      let correct = 0;
-      let wrong = 0;
-      
-      for (let i = 0; i < TOTAL_QUESTIONS; i++) {
-        if (testState.answers[i] === mcqData[i].correct) {
-          correct++;
-        } else if (testState.answers[i] !== null) {
-          wrong++;
-        }
-      }
-      
-      const percentage = Math.round((correct / TOTAL_QUESTIONS) * 100);
-      
-      // Update results display
-      document.getElementById('correct-count').textContent = correct;
-      document.getElementById('wrong-count').textContent = wrong;
-      document.getElementById('percentage').textContent = `${percentage}%`;
-      document.getElementById('score-percentage').textContent = `${percentage}%`;
-      
-      // Update score circle
-      const scoreCircle = document.getElementById('score-circle');
-      scoreCircle.style.setProperty('--percentage', percentage);
-      
-      scoreCircle.className = 'score-circle ';
-      let performanceText = '';
-      let showTips = false;
-      
-      if (percentage >= 80) {
-        scoreCircle.classList.add('score-excellent');
-        document.getElementById('performance-badge').textContent = 'Excellent 🎉';
-        document.getElementById('performance-badge').className = 'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-green-500 to-emerald-600 shadow-lg';
-        performanceText = 'Outstanding performance! You have mastered Class 9 Physics concepts. Keep up the excellent work!';
-      } else if (percentage >= 60) {
-        scoreCircle.classList.add('score-good');
-        document.getElementById('performance-badge').textContent = 'Good 👍';
-        document.getElementById('performance-badge').className = 'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-yellow-500 to-orange-500 shadow-lg';
-        performanceText = 'Good job! You have a solid understanding of most topics. Review the questions you missed for even better results.';
-        showTips = true;
-      } else if (percentage >= 40) {
-        scoreCircle.classList.add('score-average');
-        document.getElementById('performance-badge').textContent = 'Average 📚';
-        document.getElementById('performance-badge').className = 'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-orange-500 to-red-500 shadow-lg';
-        performanceText = 'Fair performance. Focus on reviewing key concepts and practicing more to improve your score.';
-        showTips = true;
-      } else {
-        scoreCircle.classList.add('score-poor');
-        document.getElementById('performance-badge').textContent = 'Needs Improvement 🎯';
-        document.getElementById('performance-badge').className = 'inline-block px-6 py-3 rounded-full font-bold text-white mb-6 bg-gradient-to-r from-red-500 to-pink-500 shadow-lg';
-        performanceText = 'You need to focus more on core concepts. Review the Class 9 Physics notes and try the test again.';
-        showTips = true;
-      }
-      
-      document.getElementById('performance-text').textContent = performanceText;
-      
-      if (showTips) {
-        document.getElementById('improvement-tips').classList.remove('hidden');
-      }
-      
-      // Update student info in results
-      document.getElementById('result-student-name').textContent = testState.studentName;
-      document.getElementById('result-school-name').textContent = testState.schoolName;
-      document.getElementById('test-date-display').textContent = new Date().toLocaleDateString('en-PK');
-      document.getElementById('test-duration').textContent = formatTime(testState.timeSpent);
-    }
-
-    // Show wrong answers
-function showWrongAnswers() {
-  // Clear previous content
-  wrongAnswersContainer.innerHTML = '';
+<script>
+// ==================== COMPLETE 217 MCQs ====================
+const mcqData = [
+  // CHAPTER 1: PHYSICAL QUANTITIES (26)
+  { question: "The instrument that is most suitable for measuring the thickness of a few sheets of cardboard is:", options: ["metre rule", "measuring tape", "Vernier Callipers", "micrometer screw gauge"], correct: 3, chapter: 1, type: "exercise" },
+  { question: "One femtometre is equal to:", options: ["$10^{-9}\\ m$", "$10^{-15}\\ m$", "$10^{9}\\ m$", "$10^{15}\\ m$"], correct: 1, chapter: 1, type: "exercise" },
+  { question: "Which one is a non-physical quantity?", options: ["distance", "density", "colour", "temperature"], correct: 2, chapter: 1, type: "exercise" },
+  { question: "When using a measuring cylinder, one precaution is to:", options: ["check zero error", "look from below", "take readings from multiple directions", "position eye with meniscus bottom"], correct: 3, chapter: 1, type: "exercise" },
+  { question: "A displacement can be used to measure:", options: ["mass of liquid", "mass of solid", "volume of liquid", "volume of solid"], correct: 3, chapter: 1, type: "exercise" },
+  { question: "Four students measure diameter with Vernier Callipers. Which reading is correct?", options: ["$3.4\\ cm$", "$3.475\\ cm$", "$3.47\\ cm$", "$3.5\\ cm$"], correct: 2, chapter: 1, type: "exercise" },
+  { question: "Which measure likely represents thickness of a book sheet?", options: ["$6\\times10^{-25}\\ m$", "$1\\times10^{-4}\\ m$", "$1.2\\times10^{-15}\\ m$", "$4\\times10^{-2}\\ m$"], correct: 1, chapter: 1, type: "exercise" },
+  { question: "Physics is a branch of:", options: ["Social science", "Life science", "Physical science", "Biological science"], correct: 2, chapter: 1, type: "exercise" },
+  { question: "Which of the following is a base quantity?", options: ["Temperature", "Speed", "Density", "Volume"], correct: 0, chapter: 1, type: "additional" },
+  { question: "The SI unit of intensity of light is", options: ["Candela", "Ampere", "Kelvin", "Mole"], correct: 0, chapter: 1, type: "additional" },
+  { question: "The number of base units in SI are", options: ["5", "3", "7", "9"], correct: 2, chapter: 1, type: "additional" },
+  { question: "The SI unit of plane angle is", options: ["Radian", "Degree", "Steradian", "None"], correct: 0, chapter: 1, type: "additional" },
+  { question: "Pascal is the SI unit of", options: ["Tension", "Force", "Pressure", "Speed"], correct: 2, chapter: 1, type: "additional" },
+  { question: "The unit of volume is", options: ["Pascal", "Meter", "Cubic meter", "Second"], correct: 2, chapter: 1, type: "additional" },
+  { question: "$3.3\\ GHz$ is equal to", options: ["$3.3 \\times 10^{6}\\ Hz$", "$3.3 \\times 10^{-6}\\ Hz$", "$3.3 \\times 10^{9}\\ Hz$", "$3.3 \\times 10^{-9}\\ Hz$"], correct: 2, chapter: 1, type: "additional" },
+  { question: "Diameter of a hydrogen atom approximately", options: ["$10^{-5}\\ m$", "$10^{-10}\\ m$", "$10^{-15}\\ m$", "$10^{-20}\\ m$"], correct: 1, chapter: 1, type: "additional" },
+  { question: "The least count of Vernier Callipers is", options: ["$0.01\\ mm$", "$0.1\\ mm$", "$0.01\\ cm$", "$0.001\\ cm$"], correct: 2, chapter: 1, type: "additional" },
+  { question: "SF in $1.35 \\times 10^{-6}$", options: ["1", "2", "3", "4"], correct: 2, chapter: 1, type: "additional" },
+  { question: "Measuring cylinder is used for", options: ["Volume", "Mass", "Area", "Level of liquid"], correct: 0, chapter: 1, type: "additional" },
+  { question: "Smallest lengths can be measured with", options: ["Micrometer Screw Gauge", "Meter rule", "Measuring tape", "Vernier calipers"], correct: 0, chapter: 1, type: "additional" },
+  { question: "Least count of a measuring tape", options: ["$0.1\\ mm$", "$1\\ mm$", "$0.01\\ mm$", "$0.001\\ mm$"], correct: 1, chapter: 1, type: "additional" },
+  { question: "Least count of micrometer screw gauge", options: ["$0.01\\ mm$", "$1\\ mm$", "$0.1\\ mm$", "$0.001\\ mm$"], correct: 0, chapter: 1, type: "additional" },
+  { question: "Least count of meter rod", options: ["0.1 mm", "1 mm", "1 cm", "10 cm"], correct: 1, chapter: 1, type: "additional" },
+  { question: "Least count of Vernier Callipers", options: ["0.01 cm", "0.1 mm", "0.001 cm", "1 mm"], correct: 0, chapter: 1, type: "additional" },
+  { question: "Range of Vernier Callipers", options: ["$0.1\\ mm$ to $15\\ cm$", "$0.01\\ mm$ to $2.5\\ cm$", "0.1 mm", "0.01 mm"], correct: 0, chapter: 1, type: "additional" },
+  { question: "Significant figures in 0.000125 km", options: ["4", "3", "5", "6"], correct: 1, chapter: 1, type: "additional" },
   
-  let hasWrongAnswers = false;
+  // CHAPTER 2: KINEMATICS (27)
+  { question: "The numerical ratio of displacement to distance is:", options: ["always less than one", "always equal to one", "always greater than one", "equal to or less than one"], correct: 3, chapter: 2, type: "exercise" },
+  { question: "If a body does not change its position with respect to some fixed point, then it will be in a state of:", options: ["rest", "motion", "uniform motion", "variable motion"], correct: 0, chapter: 2, type: "exercise" },
+  { question: "A ball is dropped from the top of a tower, the distance covered by it in the first second is:", options: ["$5\\ m$", "$10\\ m$", "$50\\ m$", "$100\\ m$"], correct: 0, chapter: 2, type: "exercise" },
+  { question: "A body accelerates from rest to a velocity of 144 $kmh^{-1}$ in $20\\ seconds$. The distance covered by it is:", options: ["$100\\ m$", "$400\\ m$", "$1400\\ m$", "$1440\\ m$"], correct: 1, chapter: 2, type: "exercise" },
+  { question: "The area under the speed-time graph is numerically equal to:", options: ["velocity", "uniform velocity", "acceleration", "distance covered"], correct: 3, chapter: 2, type: "exercise" },
+  { question: "A force $F$ is making an angle of $60^{\\circ}$ with $x$-$axis$. Its $y$-$component$ is equal to:", options: ["$F$", "$F\\sin 60^{\\circ}$", "$F\\cos 60^{\\circ}$", "$F\\tan 60^{\\circ}$"], correct: 1, chapter: 2, type: "exercise" },
+  { question: "Centripetal force is given by:", options: ["$rF$", "$rF\\cos\\theta$", "$\\frac{mv^{2}}{r}$", "$\\frac{mv}{r}$"], correct: 2, chapter: 2, type: "exercise" },
+  { question: "If a body is thrown upward, its velocity at the highest point is", options: ["10 $ms^{-1}$", "Maximum", "Zero", "Constant"], correct: 2, chapter: 2, type: "additional" },
+  { question: "Falcon can fly at a speed of", options: ["$100\\ kmh^{-1}$", "$200\\ kmh^{-1}$", "$300\\ kmh^{-1}$", "$400\\ kmh^{-1}$"], correct: 1, chapter: 2, type: "additional" },
+  { question: "Instantaneous speed is shown by a vehicle's", options: ["Odometer", "Speedometer", "Accelerometer", "GPS"], correct: 1, chapter: 2, type: "additional" },
+  { question: "Which of the following is a vector?", options: ["Frequency", "Speed", "Weight", "Work"], correct: 2, chapter: 2, type: "additional" },
+  { question: "Numerical ratio of displacement to distance always", options: ["$= 1$", "$\\leq 1$", "$< 1$", "$> 1$"], correct: 1, chapter: 2, type: "additional" },
+  { question: "Change in position is called", options: ["Displacement", "Distance", "Speed", "Velocity"], correct: 0, chapter: 2, type: "additional" },
+  { question: "The fastest land mammal (cheetah) and the fastest fish (sailfish) have the same highest recorded speed of about", options: ["$100\\ kmh^{-1}$", "$110\\ kmh^{-1}$", "$120\\ kmh^{-1}$", "$130\\ kmh^{-1}$"], correct: 1, chapter: 2, type: "additional" },
+  { question: "Mount St. Helens erupted in 1980, expelling volcanic rocks at velocities up to", options: ["$100\\ kmh^{-1}$", "$200\\ kmh^{-1}$", "$300\\ kmh^{-1}$", "$400\\ kmh^{-1}$"], correct: 3, chapter: 2, type: "additional" },
+  { question: "Velocity of ball at highest point", options: ["Zero", "$10\\ ms^{-1}$", "$20\\ ms^{-1}$", "$\\infty$"], correct: 0, chapter: 2, type: "additional" },
+  { question: "A train is moving at a speed of $36\\ kmh^{-1}$. Its speed expressed in $ms^{-1}$ is", options: ["$10\\ ms^{-1}$", "$20\\ ms^{-1}$", "$25\\ ms^{-1}$", "$30\\ ms^{-1}$"], correct: 0, chapter: 2, type: "additional" },
+  { question: "A car starts from rest. It acquires a speed of $25\\ ms^{-1}$ after $20\\ s$. The distance moved by the car during this time is", options: ["$32.25\\ m$", "$250\\ m$", "$500\\ m$", "$5000\\ m$"], correct: 1, chapter: 2, type: "additional" },
+  { question: "Convert $54\\ kmh^{-1}$ into $ms^{-1}$", options: ["$5\\ ms^{-1}$", "$10\\ ms^{-1}$", "$15\\ ms^{-1}$", "$20\\ ms^{-1}$"], correct: 2, chapter: 2, type: "additional" },
+  { question: "Convert $20\\ ms^{-1}$ to $kmh^{-1}$", options: ["$3.6\\ kmh^{-1}$", "$5.5\\ kmh^{-1}$", "$72\\ kmh^{-1}$", "$36\\ kmh^{-1}$"], correct: 2, chapter: 2, type: "additional" },
+  { question: "A boy completes 100 m race in 12 s, his average speed", options: ["$8.33\\ ms^{-1}$", "$12\\ ms^{-1}$", "$8\\ ms^{-1}$", "$100\\ ms^{-1}$"], correct: 0, chapter: 2, type: "additional" },
+  { question: "Acceleration is negative if velocity", options: ["Decreases", "Increases", "Remains constant", "Becomes zero"], correct: 0, chapter: 2, type: "additional" },
+  { question: "If velocity is uniform, acceleration is", options: ["Negative", "Positive", "Zero", "Constant"], correct: 2, chapter: 2, type: "additional" },
+  { question: "$1\\ ms^{-2} = \\_\\_\\_\\_\\_ kmh^{-2}$ is", options: ["12960", "3600", "5400", "3.6"], correct: 0, chapter: 2, type: "additional" },
+  { question: "Area under speed-time graph represents", options: ["Acceleration", "Distance", "Velocity", "Time"], correct: 1, chapter: 2, type: "additional" },
+  { question: "Slope of speed-time graph shows", options: ["Distance", "Acceleration", "Speed", "Displacement"], correct: 1, chapter: 2, type: "additional" },
+  { question: "3rd equation of motion is", options: ["$S = v_{i}t + \\frac{1}{2}at^{2}$", "$2aS = v_{f}^{2} - v_{i}^{2}$", "$S = vt$", "$v_{f} = v_{i} + at$"], correct: 1, chapter: 2, type: "additional" },
+  { question: "The universal speed limit is approximately", options: ["$2 \\times 10^{8}\\ ms^{-1}$", "$2 \\times 10^{-8}\\ ms^{-1}$", "$3 \\times 10^{-8}\\ ms^{-1}$", "$3 \\times 10^{8}\\ ms^{-1}$"], correct: 3, chapter: 2, type: "additional" },
+
+  // CHAPTER 3: DYNAMICS (33)
+  { question: "When we kick a stone, we get hurt. This is due to:", options: ["inertia", "velocity", "momentum", "reaction"], correct: 3, chapter: 3, type: "exercise" },
+  { question: "An object will continue its motion with constant acceleration until:", options: ["resultant force decreases", "resultant force is zero", "resultant force increases", "resultant force at right angle"], correct: 1, chapter: 3, type: "exercise" },
+  { question: "Which of the following is a non-contact force?", options: ["Friction", "Air resistance", "Electrostatic force", "Tension"], correct: 2, chapter: 3, type: "exercise" },
+  { question: "A particle of mass $m$ moving with velocity $v$ collides with another particle of the same mass at rest. The velocity of the first particle after collision is:", options: ["$v$", "$-v$", "$0$", "$-\\frac{1}{2}$"], correct: 2, chapter: 3, type: "exercise" },
+  { question: "Conservation of linear momentum is equivalent to:", options: ["Newton's first law", "Newton's second law", "Newton's third law", "None"], correct: 2, chapter: 3, type: "exercise" },
+  { question: "A lubricant is usually introduced between two surfaces to decrease friction. The lubricant:", options: ["decreases temperature", "acts as ball bearings", "prevents direct contact", "provides rolling friction"], correct: 2, chapter: 3, type: "exercise" },
+  { question: "A particle is simultaneously acted upon by two forces of $4$ and $3$ newtons. The net force on the particle is:", options: ["$1\\ N$", "between $1\\ N$ and $7\\ N$", "$5\\ N$", "$7\\ N$"], correct: 1, chapter: 3, type: "exercise" },
+  { question: "Newton's 1st law is also known as", options: ["Law of inertia", "Law of momentum", "Law of gravitation", "Law of force"], correct: 0, chapter: 3, type: "exercise" },
+  { question: "Value of gravitational acceleration $g$ is approximately", options: ["$10\\ ms^{-2}$", "$1.6\\ ms^{-2}$", "$98\\ ms^{-2}$", "$\\infty$"], correct: 0, chapter: 3, type: "additional" },
+  { question: "Formula for Newton's second Law", options: ["$F = \\frac{m}{a}$", "$a = \\frac{F}{m}$", "$F = \\frac{a}{m}$", "$a = Fm$"], correct: 1, chapter: 3, type: "additional" },
+  { question: "Product of mass and velocity", options: ["Power", "Force", "Torque", "Momentum"], correct: 3, chapter: 3, type: "additional" },
+  { question: "Rate of change of momentum equals", options: ["Energy", "Torque", "Force", "Velocity"], correct: 2, chapter: 3, type: "additional" },
+  { question: "Which is a non-contact force?", options: ["Air resistance", "Friction", "Magnetic force", "Tension"], correct: 2, chapter: 3, type: "additional" },
+  { question: "Rolling friction is approximately how many times smaller than sliding friction?", options: ["10", "50", "100", "1000"], correct: 2, chapter: 3, type: "additional" },
+  { question: "Which is a contact force?", options: ["Magnetic", "Friction", "Electrostatic", "Gravitational"], correct: 1, chapter: 3, type: "additional" },
+  { question: "Major types of forces", options: ["Three", "Two", "Four", "Five"], correct: 1, chapter: 3, type: "additional" },
+  { question: "The value of $G$ is", options: ["$6.673 \\times 10^{11}\\ Nm^{2}kg^{-2}$", "$6.673 \\times 10^{-11}\\ Nm^{2}kg^{-2}$", "$6.673 \\times 10^{12}\\ Nm^{2}kg^{-2}$", "$6.673 \\times 10^{-12}\\ Nm^{2}kg^{-2}$"], correct: 1, chapter: 3, type: "additional" },
+  { question: "According to the Law of gravitation $F$ is equal to", options: ["$G\\frac{m_{1}m_{2}}{d^{4}}$", "$G\\frac{m_{1}m_{2}}{d^{3}}$", "$G\\frac{m_{1}m_{2}}{d^{2}}$", "$G\\frac{m_{1}m_{2}}{d}$"], correct: 2, chapter: 3, type: "additional" },
+  { question: "Getting hurt kicking a stone is due to", options: ["Velocity", "Inertia", "Momentum", "Reaction"], correct: 3, chapter: 3, type: "additional" },
+  { question: "Object continues with constant velocity until", options: ["Weight acts", "Net force acts", "Friction acts", "Air resistance"], correct: 1, chapter: 3, type: "additional" },
+  { question: "$1\\ N =$", options: ["$1\\ kgms^{-2}$", "$1\\ kgms^{-1}$", "$kgm^{2}s^{-1}$", "$kg^{2}ms^{-2}$"], correct: 0, chapter: 3, type: "additional" },
+  { question: "Law of inertia is", options: ["Second law", "First law", "Third law", "Law of gravity"], correct: 1, chapter: 3, type: "additional" },
+  { question: "Sir Isaac Newton was born in Lincolnshire on January 4, 1643. The name of his famous book is", options: ["Principia Physics", "Principia Mathematica", "Principia Chemistry", "Principia Science"], correct: 1, chapter: 3, type: "additional" },
+  { question: "The formula of momentum", options: ["$p = \\frac{m}{v}$", "$p = mv^{2}$", "$p = mv$", "$p = (mv)^{2}$"], correct: 2, chapter: 3, type: "additional" },
+  { question: "Weight 'w' is equal to", options: ["$\\frac{m}{g}$", "$mg$", "$\\frac{g}{m}$", "$\\frac{1}{mg}$"], correct: 1, chapter: 3, type: "additional" },
+  { question: "SI unit of Force is", options: ["Newton", "Joule", "Pascal", "Ampere"], correct: 0, chapter: 3, type: "additional" },
+  { question: "Rocket works on", options: ["2nd Law", "1st Law", "3rd Law", "Law of gravity"], correct: 2, chapter: 3, type: "additional" },
+  { question: "Mass $20\\ kg$ pulled upward, weight approximately", options: ["$100\\ N$", "$200\\ N$", "$150\\ N$", "$20\\ N$"], correct: 1, chapter: 3, type: "additional" },
+  { question: "SI unit of mass is", options: ["Gram", "Kilogram", "Pound", "Newton"], correct: 1, chapter: 3, type: "additional" },
+  { question: "The weight of $100\\ g$ mass is", options: ["$10\\ N$", "$100\\ N$", "$1000\\ N$", "$1\\ N$"], correct: 3, chapter: 3, type: "additional" },
+  { question: "The value of gravitational field strength near the surface of earth is", options: ["$10\\ ms^{-2}$", "$10\\ Nm$", "$10\\ Nkg^{-1}$", "$0\\ Nkg^{-1}$"], correct: 2, chapter: 3, type: "additional" },
+  { question: "Change in momentum is called", options: ["Force", "Impulse", "Torque", "Acceleration"], correct: 1, chapter: 3, type: "additional" },
+  { question: "Which of the following is the unit of momentum?", options: ["$Nm$", "$kg\\ ms^{-2}$", "$Ns$", "$Ns^{-1}$"], correct: 2, chapter: 3, type: "additional" },
+  { question: "Change in momentum is equal to", options: ["Mass x Time", "Force x Time", "Force x Velocity", "Mass x Force"], correct: 1, chapter: 3, type: "additional" },
+
+  // CHAPTER 4: TURNING EFFECT (23)
+  { question: "Moment of force is called:", options: ["moment arm", "couple", "couple arm", "torque"], correct: 3, chapter: 4, type: "exercise" },
+  { question: "In stable equilibrium the centre of gravity of the body lies:", options: ["at highest position", "at lowest position", "at any position", "outside the body"], correct: 1, chapter: 4, type: "exercise" },
+  { question: "A cylinder resting on its circular base is in:", options: ["stable equilibrium", "unstable equilibrium", "neutral equilibrium", "none"], correct: 0, chapter: 4, type: "exercise" },
+  { question: "Steering wheel of vehicle example", options: ["Torque", "Couple", "Force", "Momentum"], correct: 1, chapter: 4, type: "exercise" },
+  { question: "Formula of torque $\\tau$ is", options: ["$F \\times m$", "$F \\times v$", "$F \\times a$", "$F \\times L$"], correct: 3, chapter: 4, type: "exercise" },
+  { question: "Turning effect of force is", options: ["Force", "Torque", "Momentum", "Work"], correct: 1, chapter: 4, type: "exercise" },
+  { question: "SI unit of torque is", options: ["$Ns$", "$Nm$", "$Nm^{-1}$", "$Ns^{-2}$"], correct: 1, chapter: 4, type: "additional" },
+  { question: "If $F_{x} = 4\\ N$ and $F_{y} = 3\\ N$, what is magnitude of resultant force?", options: ["$5\\ N$", "$7\\ N$", "$12\\ N$", "$10\\ N$"], correct: 0, chapter: 4, type: "additional" },
+  { question: "The direction of force $F$ with $x-axis$ is given by", options: ["$\\theta = \\tan^{-1}\\left( \\frac{F_{y}}{F_{x}} \\right)$", "$\\theta = \\tan^{-1}\\left( \\frac{F_{x}}{F_{y}} \\right)$", "$\\theta = \\sin^{-1}\\left( \\frac{F_{y}}{F_{x}} \\right)$", "$\\theta = \\sin^{-1}\\left( \\frac{F_{x}}{F_{y}} \\right)$"], correct: 0, chapter: 4, type: "additional" },
+  { question: "Torque depends on", options: ["Force and mass", "Mass and velocity", "Force and velocity", "Force and moment arm"], correct: 3, chapter: 4, type: "additional" },
+  { question: "Body in equilibrium if it has no", options: ["Acceleration", "Velocity", "Speed", "Torque"], correct: 0, chapter: 4, type: "additional" },
+  { question: "A body in equilibrium must not have", options: ["Momentum", "Velocity", "Quantity of motion", "Acceleration"], correct: 3, chapter: 4, type: "additional" },
+  { question: "How many types of equilibrium?", options: ["Two", "One", "Three", "Four"], correct: 0, chapter: 4, type: "additional" },
+  { question: "Paratrooper with terminal velocity", options: ["Dynamic", "Static", "Unstable", "Neutral"], correct: 0, chapter: 4, type: "additional" },
+  { question: "Bulb hanging from ceiling", options: ["Static", "Dynamic", "Unstable", "Neutral"], correct: 0, chapter: 4, type: "additional" },
+  { question: "Vector sum of all torques on a body", options: ["Equal", "Zero", "Maximum", "Minimum"], correct: 1, chapter: 4, type: "additional" },
+  { question: "Conditions of equilibrium", options: ["1", "2", "3", "4"], correct: 1, chapter: 4, type: "additional" },
+  { question: "Angular acceleration is zero when", options: ["$\\sum F = 0$", "$\\sum\\tau = 0$", "$\\sum F_{x} = 0$", "$\\sum F_{y} = 0$"], correct: 1, chapter: 4, type: "additional" },
+  { question: "Linear acceleration is zero when", options: ["$\\sum F = 0$", "$\\sum\\tau = 0$", "$\\sum F_{x} = 0$", "$\\sum F_{y} = 0$"], correct: 0, chapter: 4, type: "additional" },
+  { question: "The number of forces that can be added by head to tail rule are", options: ["2", "3", "4", "any number"], correct: 3, chapter: 4, type: "additional" },
+  { question: "The number of perpendicular components of a force are", options: ["1", "2", "3", "4"], correct: 1, chapter: 4, type: "additional" },
+  { question: "Net force on book lying on table", options: ["$5\\ N$", "$0\\ N$", "$50\\ N$", "$10\\ N$"], correct: 1, chapter: 4, type: "additional" },
+  { question: "SI unit of Impulse is", options: ["$Nm$", "$Ns$", "$\\frac{N}{s}$", "$kgms^{-2}$"], correct: 1, chapter: 4, type: "additional" },
+
+  // CHAPTER 5: WORK AND ENERGY (22)
+  { question: "Work done is maximum when the angle between the force $F$ and the displacement $d$ is:", options: ["$0^{\\circ}$", "$30^{\\circ}$", "$60^{\\circ}$", "$90^{\\circ}$"], correct: 0, chapter: 5, type: "exercise" },
+  { question: "The SI unit of power is:", options: ["joule", "newton", "watt", "second"], correct: 2, chapter: 5, type: "exercise" },
+  { question: "A bullet of mass $0.05\\ kg$ has a speed of $300\\ ms^{-1}$. Its kinetic energy will be:", options: ["$2250\\ J$", "$4500\\ J$", "$1500\\ J$", "$1125\\ J$"], correct: 0, chapter: 5, type: "exercise" },
+  { question: "If a car doubles its speed, its kinetic energy will be:", options: ["the same", "doubled", "increased to three times", "increased to four times"], correct: 3, chapter: 5, type: "exercise" },
+  { question: "The magnitude of momentum of an object is doubled, the kinetic energy of the object will:", options: ["double", "increase to four times", "reduce to one-half", "remain the same"], correct: 1, chapter: 5, type: "exercise" },
+  { question: "Which of the following is not renewable energy source?", options: ["Hydroelectric energy", "Fossil fuels", "Wind energy", "Solar energy"], correct: 1, chapter: 5, type: "exercise" },
+  { question: "When a spring is compressed, what form of energy does it possess?", options: ["Kinetic", "Potential", "Internal", "Heat"], correct: 1, chapter: 5, type: "exercise" },
+  { question: "The work done will be zero when the angle between the force and the distance is", options: ["$45^{\\circ}$", "$60^{\\circ}$", "$90^{\\circ}$", "$180^{\\circ}$"], correct: 2, chapter: 5, type: "additional" },
+  { question: "The unit of energy is", options: ["Newton", "Meter", "Joule", "Second"], correct: 2, chapter: 5, type: "additional" },
+  { question: "Combination of K.E. and P.E. is", options: ["Electrical", "Mechanical", "Nuclear", "Geothermal"], correct: 1, chapter: 5, type: "additional" },
+  { question: "The work done by the single beat of human heart is", options: ["$0.5\\ J$", "$1.5\\ J$", "$2.5\\ J$", "$100\\ J$"], correct: 0, chapter: 5, type: "additional" },
+  { question: "The energy output of a power station in one year is", options: ["$10^{4}\\ J$", "$10^{8}\\ J$", "$10^{16}\\ J$", "$10^{32}\\ J$"], correct: 2, chapter: 5, type: "additional" },
+  { question: "The energy content of the nuclear bomb dropped on Hiroshima was approximately", options: ["$8.0 \\times 10^{11}\\ J$", "$8.0 \\times 10^{12}\\ J$", "$8.0 \\times 10^{13}\\ J$", "$8.0 \\times 10^{14}\\ J$"], correct: 2, chapter: 5, type: "additional" },
+  { question: "Which is not a renewable energy source?", options: ["Fossil fuels", "Hydro", "Wind", "Solar"], correct: 0, chapter: 5, type: "additional" },
+  { question: "Power is equal to", options: ["$W \\times t$", "$\\frac{W}{t^{2}}$", "$\\frac{W^{2}}{t}$", "$\\frac{W}{t}$"], correct: 3, chapter: 5, type: "additional" },
+  { question: "SI unit of work is", options: ["Newton", "Watt", "Joule", "Pascal"], correct: 2, chapter: 5, type: "additional" },
+  { question: "Power for $100\\ J$ in $5\\ s$", options: ["$20\\ W$", "$10\\ W$", "$105\\ W$", "$500\\ W$"], correct: 0, chapter: 5, type: "additional" },
+  { question: "The SI unit of power is", options: ["$W$", "$J$", "$N$", "$E$"], correct: 0, chapter: 5, type: "additional" },
+  { question: "Power of an electric fan approximately", options: ["80", "40", "100", "200"], correct: 0, chapter: 5, type: "additional" },
+  { question: "Power of air conditioner approximately?", options: ["$1200\\ W$", "$1000\\ W$", "$2500\\ W$", "$3000\\ W$"], correct: 2, chapter: 5, type: "additional" },
+  { question: "One watt is equal to", options: ["$1\\ Js^{-1}$", "$1\\ Js$", "$1\\ Js^{-2}$", "$1\\ J^{-1}s^{-1}$"], correct: 0, chapter: 5, type: "additional" },
+  { question: "SI unit of spring constant is", options: ["$Nm$", "$Nm^{-1}$", "$Nm^{-2}$", "$Ns$"], correct: 2, chapter: 5, type: "additional" },
+
+  // CHAPTER 6: MECHANICAL PROPERTIES (21)
+  { question: "A wire is stretched by a weight $w$. If the diameter of the wire is reduced to half of its previous value, the extension will become:", options: ["one half", "double", "one fourth", "four times"], correct: 3, chapter: 6, type: "exercise" },
+  { question: "Two metal plates of area $2$ and $3$ square metres are placed in a liquid at the same depth. The ratio of pressures on the two plates is:", options: ["$1:1$", "$\\sqrt{2}:\\sqrt{3}$", "$2:3$", "$4:9$"], correct: 0, chapter: 6, type: "exercise" },
+  { question: "The principle of a hydraulic press is based on:", options: ["Hooke's law", "Pascal's law", "Conservation of energy", "Conservation of momentum"], correct: 1, chapter: 6, type: "exercise" },
+  { question: "What is the force exerted by the atmosphere on a rectangular block surface of length $50\\ cm$ and breadth $40\\ cm$? The atmospheric pressure is $100\\ kPa$.", options: ["$20\\ kN$", "$100\\ kN$", "$200\\ kN$", "$500\\ kN$"], correct: 0, chapter: 6, type: "exercise" },
+  { question: "SI unit of spring constant 'k' is", options: ["$Nm$", "$\\frac{N}{m}$", "$\\frac{N}{m^{-2}}$", "Joule"], correct: 1, chapter: 6, type: "additional" },
+  { question: "Spring constant $k$ is equal to", options: ["$\\frac{x}{F}$", "$\\frac{F}{x}$", "$F$", "$\\frac{1}{kx}$"], correct: 1, chapter: 6, type: "additional" },
+  { question: "Formula of Hooke's law is", options: ["$k = \\frac{F}{x}$", "$F = kx$", "$x = \\frac{F}{k}$", "$F = \\frac{1}{kx}$"], correct: 1, chapter: 6, type: "additional" },
+  { question: "In SI unit of density is", options: ["$kgm$", "$kgm^{-1}$", "$kgm^{-2}$", "$kgm^{-3}$"], correct: 3, chapter: 6, type: "additional" },
+  { question: "Density of ice is", options: ["$900\\ kgm^{-3}$", "$1000\\ kgm^{-3}$", "$920\\ kgm^{-3}$", "$910\\ kgm^{-3}$"], correct: 2, chapter: 6, type: "additional" },
+  { question: "In SI unit of pressure is", options: ["$Nm$", "$kgK^{-1}$", "$Nm^{-2}$", "$kgm^{-3}$"], correct: 2, chapter: 6, type: "additional" },
+  { question: "Liquid pressure at depth $h$ is", options: ["$\\rho gh$", "$\\rho gh^{2}$", "$\\rho gh^{3}$", "$\\rho glh$"], correct: 0, chapter: 6, type: "additional" },
+  { question: "Density of water is", options: ["$100\\ kgm^{-3}$", "$1000\\ kgm^{-3}$", "$100\\ kgm^{3}$", "$1000\\ kgm^{3}$"], correct: 1, chapter: 6, type: "additional" },
+  { question: "Force exerted perpendicularly on unit area is called", options: ["Pressure", "Density", "Elasticity", "Force"], correct: 0, chapter: 6, type: "additional" },
+  { question: "One Pascal is equal to", options: ["$Nm$", "$kgK^{-1}$", "$Nm^{-2}$", "$kgm^{-3}$"], correct: 2, chapter: 6, type: "additional" },
+  { question: "If area of contact between feet and ground is reduced, pressure", options: ["Decreases", "Remains same", "Increases", "Becomes double"], correct: 2, chapter: 6, type: "additional" },
+  { question: "Pressure of liquids in a container increases with", options: ["Volume", "Base", "Depth", "Mass"], correct: 2, chapter: 6, type: "additional" },
+  { question: "Liquid pressure \"$P$\" at depth \"$h$\" is calculated by", options: ["$\\rho gh$", "$\\rho gh^{2}$", "$\\rho gh^{3}$", "$\\rho glh$"], correct: 0, chapter: 6, type: "additional" },
+  { question: "Atmospheric pressure extends up to a height of about", options: ["$1000\\ km$", "$100\\ km$", "$500\\ km$", "Several hundred km"], correct: 1, chapter: 6, type: "additional" },
+  { question: "Atmospheric pressure at sea level is about", options: ["$10\\ kPa$", "$55\\ kPa$", "$101.3\\ kPa$", "$200\\ kPa$"], correct: 2, chapter: 6, type: "additional" },
+  { question: "Pascal's law applies to", options: ["Solids only", "Enclosed fluids", "Vacuum", "Gases only"], correct: 1, chapter: 6, type: "additional" },
+  { question: "The principle of a hydraulic press is based on", options: ["Pascal's law", "Hooke's law", "Archimedes' principle", "Conservation of energy"], correct: 0, chapter: 6, type: "additional" },
+
+  // CHAPTER 7: THERMAL PROPERTIES (24)
+  { question: "Temperature of a substance is:", options: ["total heat contained", "total molecules", "degree of hotness", "intermolecular distance"], correct: 2, chapter: 7, type: "exercise" },
+  { question: "Heat is the:", options: ["total KE of molecules", "internal energy", "work done by molecules", "energy in transit"], correct: 3, chapter: 7, type: "exercise" },
+  { question: "In Kelvin scale, the temperature corresponding to melting point of ice is:", options: ["zero", "$32$", "$-273$", "$+273$"], correct: 3, chapter: 7, type: "exercise" },
+  { question: "The temperature which has the same value on Celsius and Fahrenheit scale is:", options: ["$-40$", "$+40$", "$+45$", "$-45$"], correct: 0, chapter: 7, type: "exercise" },
+  { question: "One disadvantage of using alcohol in a liquid-in-glass thermometer:", options: ["large expansivity", "low freezing point", "wets the glass tube", "linear expansion"], correct: 2, chapter: 7, type: "exercise" },
+  { question: "Water is not used as a thermometric liquid mainly due to:", options: ["colourless", "bad conductor", "non-linear expansion", "low boiling point"], correct: 2, chapter: 7, type: "additional" },
+  { question: "Unit of heat is", options: ["Metre per second", "Kelvin", "Joule", "Joule per second"], correct: 2, chapter: 7, type: "additional" },
+  { question: "Intensity of an object's heat or cold is", options: ["Thermal energy", "Heat", "Temperature", "Kinetic energy"], correct: 2, chapter: 7, type: "additional" },
+  { question: "On kelvin scale value of absolute zero is", options: ["$373\\ K$", "$-373K$", "$0\\ K$ OR $-273℃$", "$-273.15\\ K$"], correct: 2, chapter: 7, type: "additional" },
+  { question: "Normal temperature of human body is", options: ["273 K", "98.6 K", "$37℃$", "$98.6℃$"], correct: 2, chapter: 7, type: "additional" },
+  { question: "Which of the following is a base quantity?", options: ["Temperature", "Speed", "Density", "Volume"], correct: 0, chapter: 7, type: "additional" },
+  { question: "The SI unit of intensity of light is", options: ["Candela", "Ampere", "Kelvin", "Mole"], correct: 0, chapter: 7, type: "additional" },
+  { question: "The number of base units in SI are", options: ["5", "3", "7", "9"], correct: 2, chapter: 7, type: "additional" },
+  { question: "The SI unit of plane angle is", options: ["Radian", "Degree", "Steradian", "None"], correct: 0, chapter: 7, type: "additional" },
+  { question: "Pascal is the SI unit of", options: ["Tension", "Force", "Pressure", "Speed"], correct: 2, chapter: 7, type: "additional" },
+  { question: "The unit of volume is", options: ["Pascal", "Meter", "Cubic meter", "Second"], correct: 2, chapter: 7, type: "additional" },
+  { question: "$3.3\\ GHz$ is equal to", options: ["$3.3 \\times 10^{6}\\ Hz$", "$3.3 \\times 10^{-6}\\ Hz$", "$3.3 \\times 10^{9}\\ Hz$", "$3.3 \\times 10^{-9}\\ Hz$"], correct: 2, chapter: 7, type: "additional" },
+  { question: "Diameter of a hydrogen atom approximately", options: ["$10^{-5}\\ m$", "$10^{-10}\\ m$", "$10^{-15}\\ m$", "$10^{-20}\\ m$"], correct: 1, chapter: 7, type: "additional" },
+  { question: "The least count of Vernier Callipers is", options: ["$0.01\\ mm$", "$0.1\\ mm$", "$0.01\\ cm$", "$0.001\\ cm$"], correct: 2, chapter: 7, type: "additional" },
+  { question: "SF in $1.35 \\times 10^{-6}$", options: ["1", "2", "3", "4"], correct: 2, chapter: 7, type: "additional" },
+  { question: "Measuring cylinder is used for", options: ["Volume", "Mass", "Area", "Level of liquid"], correct: 0, chapter: 7, type: "additional" },
+  { question: "Smallest lengths can be measured with", options: ["Micrometer Screw Gauge", "Meter rule", "Measuring tape", "Vernier calipers"], correct: 0, chapter: 7, type: "additional" },
+  { question: "Least count of a measuring tape", options: ["$0.1\\ mm$", "$1\\ mm$", "$0.01\\ mm$", "$0.001\\ mm$"], correct: 1, chapter: 7, type: "additional" },
+  { question: "Least count of micrometer screw gauge", options: ["$0.01\\ mm$", "$1\\ mm$", "$0.1\\ mm$", "$0.001\\ mm$"], correct: 0, chapter: 7, type: "additional" },
+
+  // CHAPTER 8: MAGNETISM (27)
+  { question: "Which one of the following is not a magnetic material?", options: ["Cobalt", "Iron", "Aluminium", "Nickel"], correct: 2, chapter: 8, type: "exercise" },
+  { question: "Magnetic lines of force:", options: ["always straight", "cross one another", "enter north pole", "enter south pole"], correct: 3, chapter: 8, type: "exercise" },
+  { question: "A common method used to magnetise a material is:", options: ["stroking", "hitting", "heating", "placing inside solenoid with AC"], correct: 0, chapter: 8, type: "exercise" },
+  { question: "A freely suspended magnet point", options: ["East-West", "Randomly", "Up-Down", "North-South"], correct: 3, chapter: 8, type: "additional" },
+  { question: "Like magnetic poles", options: ["Attract", "Repel", "Neutralize", "Rotate"], correct: 1, chapter: 8, type: "additional" },
+  { question: "The real test of a magnet is", options: ["Attraction", "Repulsion", "Induction", "Conduction"], correct: 1, chapter: 8, type: "additional" },
+  { question: "Soft iron is used to make", options: ["Permanent magnets", "Temporary magnets", "Steel alloys", "Compass needles"], correct: 1, chapter: 8, type: "additional" },
+  { question: "Magnetic field lines originate from", options: ["South pole", "North pole", "Center", "Everywhere"], correct: 1, chapter: 8, type: "additional" },
+  { question: "A neutral point in a magnetic field has", options: ["Maximum field", "Zero net field", "North polarity", "South polarity"], correct: 1, chapter: 8, type: "additional" },
+  { question: "Magnetic strips on refrigerators use", options: ["Electromagnets", "Permanent magnets", "Temporary magnets", "Iron filings"], correct: 1, chapter: 8, type: "additional" },
+  { question: "A Maglev train is", options: ["Driven by steam", "Magnetically levitated", "Driven by coal", "Friction-heavy"], correct: 1, chapter: 8, type: "additional" },
+  { question: "Magnetic domains are found in", options: ["Paramagnetic", "Diamagnetic", "Ferromagnetic", "All materials"], correct: 2, chapter: 8, type: "additional" },
+  { question: "Demagnetization can be done by", options: ["Cooling", "Hammering", "Stroking", "Polishing"], correct: 1, chapter: 8, type: "additional" },
+  { question: "Magnetic recording tapes are coated with", options: ["Copper", "Aluminum", "Iron oxide", "Plastic"], correct: 2, chapter: 8, type: "additional" },
+  { question: "Soft iron is used for magnetic", options: ["Strength", "Shielding", "Decoration", "Conductivity"], correct: 1, chapter: 8, type: "additional" },
+  { question: "The real test to identify a magnet is", options: ["Attraction", "Induction", "Repulsion", "Conduction"], correct: 2, chapter: 8, type: "additional" },
+  { question: "Isolated magnetic poles are", options: ["Possible", "Not possible", "Found in nature", "Made in labs"], correct: 1, chapter: 8, type: "additional" },
+  { question: "Temporary magnets work only in the presence of a", options: ["Electric field", "Vacuum", "Magnetic field", "Gravitational field"], correct: 2, chapter: 8, type: "additional" },
+  { question: "The material usually used to make temporary magnets is", options: ["Steel", "Soft iron", "Cobalt", "Alnico"], correct: 1, chapter: 8, type: "additional" },
+  { question: "The region around a magnet where a magnetic object experiences a force is the", options: ["Magnetic field", "Magnetic line", "Neutral point", "Domain"], correct: 0, chapter: 8, type: "additional" },
+  { question: "Magnetic field lines originate from the", options: ["South pole", "Centre", "North pole", "Thimble"], correct: 2, chapter: 8, type: "additional" },
+  { question: "A neutral point is a point where the resultant magnetic field is", options: ["Maximum", "Zero", "North", "South"], correct: 1, chapter: 8, type: "additional" },
+  { question: "In ferromagnetic materials, highly magnetized regions are called", options: ["Atoms", "Magnetic domains", "Dipoles", "Poles"], correct: 1, chapter: 8, type: "additional" },
+  { question: "A magnet can be demagnetized by", options: ["Cooling", "Stroking", "Heating or hammering", "Painting"], correct: 2, chapter: 8, type: "additional" },
+  { question: "Sensitive electronic devices can be shielded from magnetic fields using", options: ["Copper", "Soft iron", "Wood", "Aluminium"], correct: 1, chapter: 8, type: "additional" },
+  { question: "Biological sciences deal with living things, whereas physical sciences deal with", options: ["Non-living things", "Human behavior", "Plants only", "Social interactions"], correct: 0, chapter: 8, type: "additional" },
+  { question: "The fundamental science that deals with matter, energy, space, and time is", options: ["Chemistry", "Biology", "Physics", "Geology"], correct: 2, chapter: 8, type: "additional" },
+
+  // CHAPTER 9: NATURE OF SCIENCE (14)
+  { question: "Which branch of science plays vital role in technology and engineering?", options: ["Biology", "Chemistry", "Geology", "Physics"], correct: 3, chapter: 9, type: "exercise" },
+  { question: "Automobile technology is based on:", options: ["acoustics", "electromagnetism", "optics", "thermodynamics"], correct: 3, chapter: 9, type: "exercise" },
+  { question: "What is the ultimate truth of a scientific method?", options: ["Hypothesis", "Experimentation", "Theory", "Law"], correct: 3, chapter: 9, type: "exercise" },
+  { question: "Which of the following are methods of investigation?", options: ["Observation", "Experimentation", "Research", "All of these"], correct: 3, chapter: 9, type: "exercise" },
+  { question: "A hypothesis:", options: ["may or may not be testable", "is supported by evidence", "is a possible answer to a question", "all of these"], correct: 3, chapter: 9, type: "exercise" },
+  { question: "A graph of an organized data is an example of:", options: ["collecting data", "forming a hypothesis", "asking question", "analyzing data"], correct: 3, chapter: 9, type: "exercise" },
+  { question: "The first step of the scientific method is", options: ["Hypothesis", "Law", "Theory", "Observation"], correct: 3, chapter: 9, type: "additional" },
+  { question: "A guess work/propose explanation is called", options: ["Observation", "Hypothesis", "Experiment", "Law"], correct: 1, chapter: 9, type: "additional" },
+  { question: "A theory that is tested and accepted becomes a", options: ["Hypothesis", "Prediction", "Law", "Falsification"], correct: 2, chapter: 9, type: "additional" },
+  { question: "Radar technology is based on", options: ["Sound", "Thermodynamics", "Electromagnetic waves", "Nuclear physics"], correct: 2, chapter: 9, type: "additional" },
+  { question: "Laser technology is based on", options: ["Atomic physics", "Mechanics", "Geophysics", "Heat"], correct: 0, chapter: 9, type: "additional" },
+  { question: "The concept that a theory must be potentially provable false is", options: ["Verifiability", "Falsifiability", "Reliability", "Predictability"], correct: 1, chapter: 9, type: "additional" },
+  { question: "The study of subatomic particles is called", options: ["Nuclear physics", "Particle physics", "Quantum mechanics", "Solid state physics"], correct: 1, chapter: 9, type: "additional" },
+  { question: "Geophysics deals with the study of", options: ["Sound", "Earth's internal structure", "Light", "Stars"], correct: 1, chapter: 9, type: "additional" }
+];
+
+// Chapter information
+const chapters = [
+  { id: 1, name: "Physical Quantities", icon: "📗", exercise: 8, additional: 18 },
+  { id: 2, name: "Kinematics", icon: "📙", exercise: 7, additional: 20 },
+  { id: 3, name: "Dynamics", icon: "📕", exercise: 8, additional: 25 },
+  { id: 4, name: "Turning Effect", icon: "📔", exercise: 6, additional: 17 },
+  { id: 5, name: "Work & Energy", icon: "📒", exercise: 7, additional: 15 },
+  { id: 6, name: "Mechanical Properties", icon: "📚", exercise: 4, additional: 17 },
+  { id: 7, name: "Thermal Properties", icon: "📖", exercise: 5, additional: 19 },
+  { id: 8, name: "Magnetism", icon: "🧲", exercise: 3, additional: 24 },
+  { id: 9, name: "Nature of Science", icon: "🔬", exercise: 6, additional: 8 }
+];
+
+// ==================== APPLICATION STATE ====================
+let appState = {
+  student: { name: '', school: '', contact: '', roll: '', email: '' },
+  currentChapter: null,
+  currentSection: null,
+  filteredQuestions: [],
+  answers: [],
+  marked: [],
+  visited: [],
+  currentIndex: 0,
+  startTime: null,
+  timeSpent: 0,
+  submitted: false,
+  isPaused: false
+};
+
+// DOM Elements
+const studentForm = document.getElementById('studentForm');
+const studentInfoSec = document.getElementById('student-info');
+const dashboardSec = document.getElementById('chapter-dashboard');
+const chaptersGrid = document.getElementById('chapters-grid');
+const sectionChoice = document.getElementById('section-choice');
+const selectedChapterTitle = document.getElementById('selected-chapter-title');
+const testContainer = document.getElementById('test-container');
+const testControls = document.getElementById('test-controls-footer');
+const resultsSec = document.getElementById('results-section');
+const successMsg = document.getElementById('success-message');
+const wrongAnswersContainer = document.getElementById('wrong-answers-container');
+const wrongAnswersSection = document.getElementById('wrong-answers-section');
+
+// Mobile menu and back to top
+document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+window.addEventListener('scroll', () => {
+  document.getElementById('backToTop').classList.toggle('show', window.pageYOffset > 300);
+});
+
+// Render chapter cards
+chapters.forEach(ch => {
+  const card = document.createElement('div');
+  card.className = 'chapter-card';
+  card.dataset.chapter = ch.id;
+  card.innerHTML = `
+    <div class="text-4xl mb-3">${ch.icon}</div>
+    <h3 class="font-semibold text-lg mb-2">${ch.name}</h3>
+    <div class="flex justify-center gap-3 text-sm">
+      <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded">📘 ${ch.exercise}</span>
+      <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded">📑 ${ch.additional}</span>
+    </div>
+  `;
+  card.addEventListener('click', () => selectChapter(ch.id));
+  chaptersGrid.appendChild(card);
+});
+
+// Student form submission
+studentForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const name = document.getElementById('studentName').value.trim();
+  const school = document.getElementById('schoolName').value.trim();
+  const contact = document.getElementById('contact').value.trim();
   
-  for (let i = 0; i < TOTAL_QUESTIONS; i++) {
-    if (testState.answers[i] !== null && testState.answers[i] !== mcqData[i].correct) {
-      hasWrongAnswers = true;
-      const question = mcqData[i];
-      const userAnswer = testState.answers[i];
-      const correctAnswer = question.correct;
-      
-      const wrongAnswerCard = document.createElement('div');
-      wrongAnswerCard.className = 'wrong-answer-card';
-      
-      // Create options HTML with proper color coding
-      let optionsHTML = '';
-      for (let j = 0; j < question.options.length; j++) {
-        let optionClass = 'bg-gray-50 border-gray-200';
-        let badgeClass = 'bg-gray-200 text-gray-700';
-        let badgeText = '';
-        
-        if (j === userAnswer) {
-          optionClass = 'bg-red-100 border-red-300';
-          badgeClass = 'bg-red-500 text-white';
-          badgeText = '<span class="ml-auto text-red-600 font-semibold">✗ Your Answer</span>';
-        }
-        
-        if (j === correctAnswer) {
-          optionClass = 'bg-green-100 border-green-300';
-          badgeClass = 'bg-green-500 text-white';
-          badgeText = '<span class="ml-auto text-green-600 font-semibold">✓ Correct Answer</span>';
-        }
-        
-        // If an option is both user's wrong answer AND correct answer (shouldn't happen but just in case)
-        if (j === userAnswer && j === correctAnswer) {
-          optionClass = 'bg-yellow-100 border-yellow-300';
-          badgeClass = 'bg-yellow-500 text-white';
-          badgeText = '<span class="ml-auto text-yellow-600 font-semibold">Both</span>';
-        }
-        
-        optionsHTML += `
-          <div class="wrong-answer-option ${optionClass} border p-3 rounded-lg mb-2">
+  if (!name || !school || !contact) {
+    alert('Please fill all required fields');
+    return;
+  }
+  
+  appState.student = {
+    name, school, contact,
+    roll: document.getElementById('rollNumber').value,
+    email: document.getElementById('email').value
+  };
+  
+  document.getElementById('student-info-display').textContent = `${name} | ${school}`;
+  document.getElementById('result-student').textContent = `${name} | ${school}`;
+  
+  try {
+    const formData = new FormData(studentForm);
+    formData.set('test_score', 'Registered');
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    successMsg.style.display = 'block';
+    successMsg.innerHTML = '✅ Registration successful!';
+    setTimeout(() => successMsg.style.display = 'none', 3000);
+  } catch (err) {
+    console.warn('Web3Forms error:', err);
+  }
+  
+  studentInfoSec.classList.add('hidden');
+  dashboardSec.classList.remove('hidden');
+});
+
+function selectChapter(chapterId) {
+  appState.currentChapter = chapterId;
+  const chapter = chapters.find(c => c.id === chapterId);
+  selectedChapterTitle.textContent = chapter.name;
+  sectionChoice.classList.remove('hidden');
+}
+
+document.getElementById('back-to-chapters').addEventListener('click', () => {
+  sectionChoice.classList.add('hidden');
+  appState.currentChapter = null;
+});
+
+// Load questions
+function loadQuestions(type) {
+  appState.currentSection = type;
+  appState.filteredQuestions = mcqData.filter(q => q.chapter === appState.currentChapter && q.type === type);
+  
+  const count = appState.filteredQuestions.length;
+  appState.answers = new Array(count).fill(null);
+  appState.marked = new Array(count).fill(false);
+  appState.visited = new Array(count).fill(false);
+  appState.visited[0] = true;
+  appState.currentIndex = 0;
+  appState.startTime = Date.now();
+  appState.timeSpent = 0;
+  appState.submitted = false;
+  appState.isPaused = false;
+  
+  const chapter = chapters.find(c => c.id === appState.currentChapter);
+  document.getElementById('test-header-title').textContent = `${chapter.name} - ${type === 'exercise' ? 'Exercise' : 'Additional'} MCQs`;
+  document.getElementById('total-questions-span').textContent = count;
+  document.getElementById('total-controls').textContent = count;
+  
+  dashboardSec.classList.add('hidden');
+  testContainer.classList.remove('hidden');
+  testControls.classList.remove('hidden');
+  
+  renderQuestion();
+  renderQuestionNumbers();
+  updateProgress();
+  
+  if (window.testTimer) clearInterval(window.testTimer);
+  window.testTimer = setInterval(updateTimer, 1000);
+}
+
+document.getElementById('take-exercise').addEventListener('click', () => loadQuestions('exercise'));
+document.getElementById('take-additional').addEventListener('click', () => loadQuestions('additional'));
+
+// Render question
+function renderQuestion() {
+  const q = appState.filteredQuestions[appState.currentIndex];
+  const container = document.getElementById('question-display');
+  
+  container.innerHTML = `
+    <div class="mcq-card p-6">
+      <div class="flex justify-between items-start mb-4">
+        <h3 class="text-xl font-bold text-blue-800">Question ${appState.currentIndex + 1}</h3>
+        ${appState.marked[appState.currentIndex] ? '<span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">⭐ Marked</span>' : ''}
+      </div>
+      <div class="physics-equation">${q.question}</div>
+      <div class="space-y-3 mt-4">
+        ${q.options.map((opt, idx) => `
+          <div class="option ${appState.answers[appState.currentIndex] === idx ? 'selected' : ''}" data-index="${idx}">
             <div class="flex items-center">
-              <span class="mr-4 font-bold w-8 h-8 flex items-center justify-center rounded-full ${badgeClass}">
-                ${String.fromCharCode(65 + j)}
+              <span class="mr-4 font-bold w-10 h-10 flex items-center justify-center rounded-full 
+                ${appState.answers[appState.currentIndex] === idx ? 'bg-blue-600 text-white' : 'bg-gray-100'}">
+                ${String.fromCharCode(65 + idx)}
               </span>
-              <span class="flex-1">${question.options[j]}</span>
-              ${badgeText}
+              <span>${opt}</span>
             </div>
           </div>
-        `;
-      }
-      
-      wrongAnswerCard.innerHTML = `
-        <div class="wrong-question-title">
-          <span>❌</span> Question ${i + 1}
-        </div>
-        <div class="physics-equation mb-4">
-          ${question.question}
-        </div>
-        <div class="space-y-3">
-          ${optionsHTML}
-        </div>
-      `;
-      
-      wrongAnswersContainer.appendChild(wrongAnswerCard);
-    }
-  }
-  
-  if (!hasWrongAnswers) {
-    wrongAnswersContainer.innerHTML = `
-      <div class="text-center py-10">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-4">
-          <span class="text-3xl">🎉</span>
-        </div>
-        <h3 class="text-xl font-bold text-green-800 mb-2">No Wrong Answers!</h3>
-        <p class="text-gray-600">Perfect! You answered all questions correctly. Excellent performance!</p>
+        `).join('')}
       </div>
-    `;
+    </div>
+  `;
+  
+  document.getElementById('current-question').textContent = appState.currentIndex + 1;
+  
+  const markBtn = document.getElementById('mark-btn');
+  const markIcon = document.getElementById('mark-icon');
+  const markText = document.getElementById('mark-text');
+  
+  if (appState.marked[appState.currentIndex]) {
+    markIcon.textContent = '❌';
+    markText.textContent = 'Unmark';
+    markBtn.classList.remove('bg-yellow-500');
+    markBtn.classList.add('bg-red-500');
+  } else {
+    markIcon.textContent = '⭐';
+    markText.textContent = 'Mark';
+    markBtn.classList.remove('bg-red-500');
+    markBtn.classList.add('bg-yellow-500');
   }
   
-  // Show wrong answers section
-  wrongAnswersSection.classList.remove('hidden');
+  document.getElementById('prev-btn').disabled = appState.currentIndex === 0;
+  document.getElementById('next-btn').disabled = appState.currentIndex === appState.filteredQuestions.length - 1;
   
-  // Scroll to wrong answers section
-  wrongAnswersSection.scrollIntoView({ behavior: 'smooth' });
+  document.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', function() {
+      selectAnswer(parseInt(this.dataset.index));
+    });
+  });
   
-  // IMPORTANT: Render MathJax equations in the wrong answers section
-  if (window.MathJax) {
-    MathJax.typesetPromise();
+  if (window.MathJax) MathJax.typesetPromise();
+}
+
+function selectAnswer(optIdx) {
+  appState.answers[appState.currentIndex] = optIdx;
+  updateProgress();
+  renderQuestion();
+}
+
+function updateProgress() {
+  const answered = appState.answers.filter(a => a !== null).length;
+  const marked = appState.marked.filter(m => m).length;
+  const total = appState.filteredQuestions.length;
+  const percent = (answered / total) * 100;
+  
+  document.getElementById('progress-fill').style.width = `${percent}%`;
+  document.getElementById('answered-count').textContent = `${answered} answered`;
+  document.getElementById('progress-count').textContent = `${answered}/${total}`;
+  document.getElementById('answered-controls').textContent = answered;
+  document.getElementById('marked-controls').textContent = marked;
+  updateQuestionNumbers();
+}
+
+function updateTimer() {
+  if (appState.submitted || appState.isPaused || !appState.startTime) return;
+  appState.timeSpent = Math.floor((Date.now() - appState.startTime) / 1000);
+  const m = Math.floor(appState.timeSpent / 60);
+  const s = appState.timeSpent % 60;
+  document.getElementById('timer').textContent = `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+}
+
+document.getElementById('next-btn').addEventListener('click', () => {
+  if (appState.currentIndex < appState.filteredQuestions.length - 1) {
+    appState.currentIndex++;
+    appState.visited[appState.currentIndex] = true;
+    renderQuestion();
+  }
+});
+
+document.getElementById('prev-btn').addEventListener('click', () => {
+  if (appState.currentIndex > 0) {
+    appState.currentIndex--;
+    renderQuestion();
+  }
+});
+
+document.getElementById('mark-btn').addEventListener('click', () => {
+  const idx = appState.currentIndex;
+  appState.marked[idx] = !appState.marked[idx];
+  updateProgress();
+  renderQuestion();
+});
+
+document.getElementById('pause-btn').addEventListener('click', function() {
+  appState.isPaused = !appState.isPaused;
+  this.querySelector('#pause-icon').textContent = appState.isPaused ? '▶️' : '⏸️';
+  this.querySelector('#pause-text').textContent = appState.isPaused ? 'Resume' : 'Pause';
+});
+
+// Question numbers
+function renderQuestionNumbers() {
+  const grid = document.getElementById('question-numbers');
+  grid.innerHTML = '';
+  for (let i = 0; i < appState.filteredQuestions.length; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'question-number-btn';
+    btn.textContent = i + 1;
+    btn.addEventListener('click', () => {
+      appState.currentIndex = i;
+      appState.visited[i] = true;
+      renderQuestion();
+    });
+    updateNumberButton(btn, i);
+    grid.appendChild(btn);
   }
 }
-    // Show results
-    function showResults() {
-      testContainer.classList.add('hidden');
-      testControlsFooter.classList.add('hidden');
-      resultsSection.classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
 
-    // Show wrong answers button
-    document.getElementById('show-wrong-answers').addEventListener('click', showWrongAnswers);
+function updateNumberButton(btn, i) {
+  btn.className = 'question-number-btn';
+  if (appState.marked[i]) btn.classList.add('marked');
+  else if (appState.answers[i] !== null) btn.classList.add('answered');
+  else if (appState.visited[i]) btn.classList.add('visited');
+  else btn.classList.add('not-visited');
+  if (i === appState.currentIndex) btn.classList.add('current');
+}
 
-    // Hide wrong answers button
-    document.getElementById('hide-wrong-answers').addEventListener('click', function() {
-      wrongAnswersSection.classList.add('hidden');
-      // Scroll back to top of results
-      document.getElementById('results-section').scrollIntoView({ behavior: 'smooth' });
+function updateQuestionNumbers() {
+  document.querySelectorAll('#question-numbers button').forEach((btn, i) => updateNumberButton(btn, i));
+}
+
+// Submit test
+async function submitTest() {
+  appState.submitted = true;
+  clearInterval(window.testTimer);
+  testControls.classList.add('hidden');
+  testContainer.classList.add('hidden');
+  
+  let correct = 0;
+  appState.answers.forEach((ans, i) => {
+    if (ans === appState.filteredQuestions[i].correct) correct++;
+  });
+  const total = appState.filteredQuestions.length;
+  const percent = Math.round((correct / total) * 100);
+  
+  document.getElementById('correct-count').textContent = correct;
+  document.getElementById('wrong-count').textContent = total - correct;
+  document.getElementById('percentage').textContent = percent + '%';
+  document.getElementById('time-taken').textContent = formatTime(appState.timeSpent);
+  
+  resultsSec.classList.remove('hidden');
+  
+  try {
+    const formData = new FormData();
+    formData.append('access_key', 'f12ad588-c26d-4f2e-bf13-24e2babefc1e');
+    formData.append('subject', `Physics Test Results - ${appState.student.name}`);
+    formData.append('name', appState.student.name);
+    formData.append('school', appState.student.school);
+    formData.append('contact', appState.student.contact);
+    formData.append('test_score', `${correct}/${total}`);
+    formData.append('test_percentage', `${percent}%`);
+    formData.append('test_time', formatTime(appState.timeSpent));
+    
+    await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
     });
+  } catch (err) {
+    console.warn('Results submission error:', err);
+  }
+}
 
-    // Download certificate
-    document.getElementById('download-certificate').addEventListener('click', function() {
-      generateCertificate();
-    });
+document.getElementById('submit-test-btn').addEventListener('click', () => {
+  if (confirm('Submit test?')) submitTest();
+});
 
-    // Generate certificate PDF (Professional & Minimal)
-    function generateCertificate() {
-      const { jsPDF } = window.jspdf;
-      const doc = new jsPDF('landscape');
+document.getElementById('end-test-btn').addEventListener('click', () => {
+  if (confirm('End test?')) submitTest();
+});
 
-      // Soft background (off-white)
-      doc.setFillColor(248, 250, 252);
-      doc.rect(0, 0, 297, 210, 'F');
+// Retake test
+document.getElementById('retake-test').addEventListener('click', () => {
+  if (confirm('Start new test?')) {
+    resultsSec.classList.add('hidden');
+    dashboardSec.classList.remove('hidden');
+    sectionChoice.classList.add('hidden');
+    wrongAnswersSection.classList.add('hidden');
+  }
+});
 
-      // Top accent line
-      doc.setDrawColor(37, 99, 235);
-      doc.setLineWidth(3);
-      doc.line(20, 20, 277, 20);
-
-      // Bottom accent line
-      doc.setLineWidth(1);
-      doc.setDrawColor(203, 213, 225);
-      doc.line(20, 190, 277, 190);
-
-      // Title
-      doc.setFontSize(34);
-      doc.setTextColor(15, 23, 42);
-      doc.text("Certificate of Achievement", 148.5, 50, { align: "center" });
-
-      // Subtitle
-      doc.setFontSize(14);
-      doc.setTextColor(100, 116, 139);
-      doc.text("This certificate is proudly presented to", 148.5, 65, { align: "center" });
-
-      // Student Name
-      doc.setFontSize(30);
-      doc.setTextColor(37, 99, 235);
-      doc.text(testState.studentName, 148.5, 85, { align: "center" });
-
-      // School Name
-      doc.setFontSize(15);
-      doc.setTextColor(71, 85, 105);
-      doc.text(testState.schoolName, 148.5, 98, { align: "center" });
-
-      // Description
-      doc.setFontSize(14);
-      doc.setTextColor(51, 65, 85);
-      doc.text(
-        "for successfully completing the assessment",
-        148.5,
-        115,
-        { align: "center" }
-      );
-
-      // Test Name
-      doc.setFontSize(20);
-      doc.setTextColor(15, 23, 42);
-      doc.text("Class 9 Physics MCQ Test", 148.5, 130, { align: "center" });
-
-      // Score section (clean, no box)
-      const correct = parseInt(document.getElementById('correct-count').textContent);
-      const percentage = document.getElementById('percentage').textContent;
-
-      doc.setFontSize(18);
-      doc.setTextColor(22, 101, 52);
-      doc.text(`Score: ${correct}/${TOTAL_QUESTIONS} (${percentage})`, 148.5, 150, { align: "center" });
-
-      // Performance
-      const performance = document.getElementById('performance-badge').textContent;
-      doc.setFontSize(14);
-      doc.setTextColor(71, 85, 105);
-      doc.text(`Performance Level: ${performance}`, 148.5, 165, { align: "center" });
-
-      // Date
-      doc.setFontSize(12);
-      doc.setTextColor(100, 116, 139);
-      doc.text(`Issued on: ${new Date().toLocaleDateString('en-PK')}`, 30, 185);
-
-      // Authority / Academy
-      doc.text("Authorized by", 247, 175, { align: "right" });
-      doc.setFontSize(13);
-      doc.setTextColor(15, 23, 42);
-      doc.text("Hira Science Academy", 247, 185, { align: "right" });
-
-      // Footer
-      doc.setFontSize(11);
-      doc.setTextColor(100, 116, 139);
-      doc.text(
-        "Hira Science Academy | PECTAA 2025 Syllabus | www.hiraacademy.online",
-        148.5,
-        200,
-        { align: "center" }
-      );
-
-      // Save PDF
-      doc.save(
-        `Certificate-${testState.studentName.replace(/\s+/g, '-')}-Class9-Physics.pdf`
-      );
+// Show wrong answers
+document.getElementById('show-wrong-answers').addEventListener('click', function() {
+  wrongAnswersContainer.innerHTML = '';
+  let hasWrong = false;
+  
+  appState.answers.forEach((ans, i) => {
+    if (ans !== null && ans !== appState.filteredQuestions[i].correct) {
+      hasWrong = true;
+      const q = appState.filteredQuestions[i];
+      const card = document.createElement('div');
+      card.className = 'wrong-answer-card';
+      
+      let optionsHtml = '';
+      q.options.forEach((opt, idx) => {
+        let optClass = 'bg-gray-50';
+        if (idx === q.correct) optClass = 'correct-review';
+        else if (idx === ans) optClass = 'wrong-review';
+        
+        optionsHtml += `
+          <div class="${optClass} border p-3 rounded-lg mb-2 flex items-center">
+            <span class="mr-4 font-bold w-8 h-8 flex items-center justify-center rounded-full bg-gray-200">${String.fromCharCode(65 + idx)}</span>
+            <span class="flex-1">${opt}</span>
+            ${idx === q.correct ? '<span class="text-green-600 font-semibold ml-2">✓ Correct</span>' : ''}
+            ${idx === ans && idx !== q.correct ? '<span class="text-red-600 font-semibold ml-2">✗ Your Answer</span>' : ''}
+          </div>
+        `;
+      });
+      
+      card.innerHTML = `
+        <div class="wrong-question-title">❌ Question ${i + 1}</div>
+        <div class="physics-equation mb-4">${q.question}</div>
+        <div class="space-y-2">${optionsHtml}</div>
+      `;
+      wrongAnswersContainer.appendChild(card);
     }
+  });
+  
+  if (!hasWrong) {
+    wrongAnswersContainer.innerHTML = '<div class="text-center py-10 text-green-600 font-semibold">🎉 Perfect! No wrong answers!</div>';
+  }
+  
+  wrongAnswersSection.classList.remove('hidden');
+  wrongAnswersSection.scrollIntoView({ behavior: 'smooth' });
+  if (window.MathJax) MathJax.typesetPromise();
+});
 
-    // Retake test
-    document.getElementById('retake-test').addEventListener('click', function() {
-      if (confirm('Start a new test? Your current answers will be lost.')) {
-        // Reset test state
-        testState.currentQuestion = 0;
-        testState.answers = new Array(TOTAL_QUESTIONS).fill(null);
-        testState.marked = new Array(TOTAL_QUESTIONS).fill(false);
-        testState.startTime = Date.now();
-        testState.timeSpent = 0;
-        testState.submitted = false;
-        testState.visited = new Array(TOTAL_QUESTIONS).fill(false);
-        testState.isPaused = false;
-        
-        // Reset UI
-        resultsSection.classList.add('hidden');
-        wrongAnswersSection.classList.add('hidden');
-        testContainer.classList.remove('hidden');
-        studentInfoSection.classList.remove('hidden');
-        testControlsFooter.classList.add('hidden');
-        
-        // Reset progress
-        updateProgress();
-        
-        // Clear timer
-        clearInterval(window.testTimerInterval);
-        document.getElementById('timer').textContent = '00:00';
-        
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    });
+document.getElementById('hide-wrong-answers').addEventListener('click', function() {
+  wrongAnswersSection.classList.add('hidden');
+});
 
-    // Initialize MathJax
-    if (window.MathJax) {
-      MathJax.typesetPromise();
-    }
-  </script>
+// Download certificate - IMPROVED DESIGN
+document.getElementById('download-certificate').addEventListener('click', function() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF('landscape', 'mm', 'a4');
+  
+  // Background with gradient effect
+  doc.setFillColor(240, 248, 255);
+  doc.rect(0, 0, 297, 210, 'F');
+  
+  // Decorative border
+  doc.setDrawColor(59, 130, 246);
+  doc.setLineWidth(2);
+  doc.rect(10, 10, 277, 190);
+  
+  // Inner border
+  doc.setDrawColor(59, 130, 246);
+  doc.setLineWidth(0.5);
+  doc.rect(15, 15, 267, 180);
+  
+  // Top decoration
+  doc.setFillColor(59, 130, 246);
+  doc.rect(0, 0, 297, 20, 'F');
+  doc.setFillColor(37, 99, 235);
+  doc.rect(0, 190, 297, 20, 'F');
+  
+  // Gold seal effect
+  doc.setFillColor(255, 215, 0);
+  doc.circle(260, 160, 20, 'F');
+  doc.setFillColor(255, 193, 7);
+  doc.circle(260, 160, 18, 'F');
+  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(24);
+  doc.text('★', 260, 167, { align: 'center' });
+  
+  // Main title
+  doc.setFontSize(40);
+  doc.setTextColor(37, 99, 235);
+  doc.text('Certificate of Achievement', 148.5, 60, { align: 'center' });
+  
+  // Student name
+  doc.setFontSize(28);
+  doc.setTextColor(0, 0, 0);
+  doc.text(appState.student.name, 148.5, 90, { align: 'center' });
+  
+  // School
+  doc.setFontSize(16);
+  doc.setTextColor(71, 85, 105);
+  doc.text(appState.student.school, 148.5, 105, { align: 'center' });
+  
+  // Test details
+  const correct = document.getElementById('correct-count').textContent;
+  const total = appState.filteredQuestions.length;
+  const percent = document.getElementById('percentage').textContent;
+  const chapter = chapters.find(c => c.id === appState.currentChapter);
+  
+  doc.setFontSize(18);
+  doc.setTextColor(22, 101, 52);
+  doc.text(`Score: ${correct}/${total} (${percent})`, 148.5, 130, { align: 'center' });
+  
+  doc.setFontSize(16);
+  doc.setTextColor(37, 99, 235);
+  doc.text(`${chapter.name} - ${appState.currentSection === 'exercise' ? 'Exercise' : 'Additional'} MCQs`, 148.5, 145, { align: 'center' });
+  
+  // Date
+  doc.setFontSize(12);
+  doc.setTextColor(100, 116, 139);
+  const today = new Date().toLocaleDateString('en-PK');
+  doc.text(`Issued on: ${today}`, 30, 175);
+  
+  // Signature line
+  doc.line(210, 170, 270, 170);
+  doc.setFontSize(10);
+  doc.text('Authorized Signature', 240, 177, { align: 'center' });
+  
+  // Footer
+  doc.setFontSize(10);
+  doc.setTextColor(100, 116, 139);
+  doc.text('Hira Science Academy | PECTAA 2025 Syllabus', 148.5, 195, { align: 'center' });
+  
+  doc.save(`Certificate-${appState.student.name.replace(/\s+/g, '-')}.pdf`);
+});
+
+function formatTime(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  return `${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+}
+</script>
 </body>
 </html>
