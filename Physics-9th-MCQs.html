@@ -9,7 +9,7 @@
   <!-- Fonts & Styles -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- MathJax -->
@@ -25,51 +25,58 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   
   <style>
-    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); scroll-behavior: smooth; }
-    .mcq-card { background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; transition: all 0.3s; }
-    .mcq-card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.12); }
+    body { font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); scroll-behavior: smooth; }
     
-    .option { background: white; border: 2px solid #e2e8f0; border-radius: 12px; padding: 1rem 1.25rem; margin-bottom: 0.875rem; cursor: pointer; transition: all 0.25s; }
-    .option:hover { background: #f0f9ff; border-color: #3b82f6; transform: translateX(5px); }
-    .option.selected { background: #dbeafe; border-color: #3b82f6; color: #1e40af; }
-    .option.correct-review { background: #d1fae5; border-color: #10b981; }
-    .option.wrong-review { background: #fee2e2; border-color: #ef4444; }
+    .mcq-card { background: white; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(10px); transition: all 0.3s; }
+    .mcq-card:hover { transform: translateY(-5px); box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
     
-    .btn { padding: 0.875rem 1.75rem; border-radius: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-width: 140px; }
-    .btn-primary { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; box-shadow: 0 4px 15px rgba(59,130,246,0.3); }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(59,130,246,0.4); }
+    .option { background: white; border: 2px solid #e0e7ff; border-radius: 16px; padding: 1rem 1.5rem; margin-bottom: 1rem; cursor: pointer; transition: all 0.25s; font-weight: 500; }
+    .option:hover { background: linear-gradient(135deg, #6366f1, #8b5cf6); border-color: transparent; color: white; transform: translateX(8px); box-shadow: 0 10px 20px rgba(99,102,241,0.3); }
+    .option.selected { background: linear-gradient(135deg, #4f46e5, #7c3aed); border-color: transparent; color: white; box-shadow: 0 10px 20px rgba(79,70,229,0.4); }
+    .option.correct-review { background: #10b981; color: white; border-color: #059669; }
+    .option.wrong-review { background: #ef4444; color: white; border-color: #dc2626; }
+    
+    .btn { padding: 0.875rem 2rem; border-radius: 50px; font-weight: 600; cursor: pointer; transition: all 0.3s; border: none; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-width: 160px; letter-spacing: 0.5px; }
+    .btn-primary { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; box-shadow: 0 10px 20px rgba(79,70,229,0.3); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(79,70,229,0.4); }
     .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: white; }
     .btn-danger { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
-    .btn-outline { background: white; border: 2px solid #3b82f6; color: #3b82f6; }
+    .btn-outline { background: white; border: 2px solid #4f46e5; color: #4f46e5; }
     
-    .progress-bar { height: 12px; background: #e2e8f0; border-radius: 6px; overflow: hidden; margin: 1.5rem 0; }
-    .progress-fill { height: 100%; background: linear-gradient(90deg, #3b82f6, #60a5fa); border-radius: 6px; transition: width 0.5s; }
+    .progress-bar { height: 12px; background: #e0e7ff; border-radius: 6px; overflow: hidden; margin: 1.5rem 0; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #4f46e5, #7c3aed); border-radius: 6px; transition: width 0.5s; }
     
-    .question-number-btn { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 600; cursor: pointer; transition: all 0.2s; border: 2px solid; font-size: 0.875rem; }
+    .question-number-btn { width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 600; cursor: pointer; transition: all 0.2s; border: 2px solid; font-size: 0.9rem; }
     .question-number-btn.not-visited { background: #f8fafc; border-color: #cbd5e1; color: #64748b; }
-    .question-number-btn.visited { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; }
-    .question-number-btn.answered { background: #3b82f6; border-color: #2563eb; color: white; }
+    .question-number-btn.visited { background: #dbeafe; border-color: #3b82f6; color: #1e40af; }
+    .question-number-btn.answered { background: linear-gradient(135deg, #4f46e5, #7c3aed); border-color: #4f46e5; color: white; }
     .question-number-btn.marked { background: #fef3c7; border-color: #f59e0b; color: #92400e; }
-    .question-number-btn.current { border-color: #1e40af; box-shadow: 0 0 0 3px rgba(59,130,246,0.4); transform: scale(1.1); }
+    .question-number-btn.current { border-color: #4f46e5; box-shadow: 0 0 0 4px rgba(79,70,229,0.3); transform: scale(1.1); }
     
-    .chapter-card { background: white; border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.3s; border: 2px solid #e2e8f0; text-align: center; }
-    .chapter-card:hover { border-color: #3b82f6; transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .chapter-card { background: white; border-radius: 20px; padding: 1.5rem; cursor: pointer; transition: all 0.3s; border: 3px solid transparent; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .chapter-card:hover { transform: translateY(-8px); border-color: #4f46e5; box-shadow: 0 20px 40px rgba(79,70,229,0.3); }
     
-    .form-input { background: white; border: 2px solid #e2e8f0; border-radius: 10px; padding: 0.875rem 1.25rem; font-size: 1rem; transition: all 0.3s; width: 100%; }
-    .form-input:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,0.2); outline: none; }
+    .form-input { background: white; border: 2px solid #e0e7ff; border-radius: 16px; padding: 0.875rem 1.5rem; font-size: 1rem; transition: all 0.3s; width: 100%; }
+    .form-input:focus { border-color: #4f46e5; box-shadow: 0 0 0 4px rgba(79,70,229,0.2); outline: none; }
     
-    .test-header { background: linear-gradient(135deg, #1e3a8a, #0c4a6e); color: white; padding: 3rem 1rem; text-align: center; }
-    .test-controls { background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); border-top: 1px solid #e2e8f0; box-shadow: 0 -5px 25px rgba(0,0,0,0.1); }
+    .test-header { background: linear-gradient(135deg, #1e1b4b, #312e81, #3730a3); color: white; padding: 4rem 1rem; text-align: center; position: relative; overflow: hidden; }
+    .test-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,...') center/cover; opacity: 0.1; }
     
-    .wrong-answer-card { background: white; border-radius: 16px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #e2e8f0; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .wrong-question-title { color: #dc2626; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
+    .test-controls { background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); border-top: 1px solid #e0e7ff; box-shadow: 0 -10px 30px rgba(0,0,0,0.1); }
     
-    .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 56px; height: 56px; background: #0d6efd; color: white; border-radius: 50%; border: none; font-size: 22px; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(0,0,0,0.25); }
+    .wrong-answer-card { background: white; border-radius: 20px; padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #fee2e2; box-shadow: 0 10px 20px rgba(239,68,68,0.1); }
+    .wrong-question-title { color: #dc2626; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 1rem; font-size: 1.2rem; }
+    
+    .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; border-radius: 50%; border: none; font-size: 24px; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 40; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(79,70,229,0.4); }
     .back-to-top.show { opacity: 1; visibility: visible; }
-    .back-to-top:hover { transform: translateY(-5px); background: #0b5ed7; }
+    .back-to-top:hover { transform: translateY(-5px) scale(1.1); }
     
     .hidden { display: none !important; }
-@media (max-width: 768px) {
+    
+    .chapter-option-btn { background: linear-gradient(135deg, #f8fafc, #f1f5f9); border: 2px solid #e0e7ff; border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: all 0.3s; text-align: center; }
+    .chapter-option-btn:hover { transform: translateY(-5px); border-color: #4f46e5; box-shadow: 0 15px 30px rgba(79,70,229,0.2); }
+    
+   @media (max-width: 768px) {
       /* 1. Ensure the desktop links are definitely hidden */
       .md\:flex.space-x-8 {
         display: none !important;
@@ -99,6 +106,7 @@
 </head>
 <body class="text-gray-800 antialiased">
 
+<!-- Navigation -->
 <!-- Navigation -->
  <!-- Navigation Bar -->
 <nav class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
@@ -155,23 +163,28 @@
 
 <!-- Header -->
 <header class="test-header">
-  <div class="max-w-4xl mx-auto">
-    <h1 class="text-3xl md:text-4xl font-bold mb-4">Class 9 Physics MCQs</h1>
-    <p class="text-lg text-blue-100">217 MCQs • 9 Chapters • Exercise & Additional Sections</p>
+  <div class="max-w-4xl mx-auto relative z-10">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">⚡ Class 9 Physics MCQs</h1>
+    <p class="text-xl text-indigo-200">217 MCQs • 9 Chapters • Exercise & Additional Sections</p>
+    <div class="flex flex-wrap justify-center gap-3 mt-6">
+      <span class="bg-indigo-800/40 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">📚 Complete Coverage</span>
+      <span class="bg-indigo-800/40 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">⚡ Instant Results</span>
+      <span class="bg-indigo-800/40 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur-sm">📊 Performance Analysis</span>
+    </div>
   </div>
 </header>
 
 <!-- Success Message -->
-<div id="success-message" class="hidden max-w-2xl mx-auto mt-6 px-6 py-4 bg-green-100 border-2 border-green-500 text-green-700 rounded-lg text-center font-semibold"></div>
+<div id="success-message" class="hidden max-w-2xl mx-auto mt-6 px-6 py-4 bg-green-100 border-2 border-green-500 text-green-700 rounded-xl text-center font-semibold"></div>
 
 <!-- Student Information Form -->
 <section id="student-info" class="max-w-2xl mx-auto px-6 mt-10 mb-8">
   <div class="mcq-card p-8">
     <div class="text-center mb-8">
-      <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-        <span class="text-2xl">📝</span>
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full mb-4">
+        <span class="text-3xl">📝</span>
       </div>
-      <h2 class="text-2xl font-bold text-blue-800">Student Information</h2>
+      <h2 class="text-3xl font-bold text-indigo-800">Student Information</h2>
       <p class="text-gray-600 mt-2">Please fill in your details to start</p>
     </div>
     
@@ -225,45 +238,35 @@
   </div>
 </section>
 
-<!-- Simple Chapter Selection -->
-<section id="chapter-dashboard" class="max-w-6xl mx-auto px-6 mt-10 mb-8 hidden">
+<!-- Chapter Selection Dashboard -->
+<section id="chapter-dashboard" class="max-w-7xl mx-auto px-6 mt-10 mb-8 hidden">
   <div class="mcq-card p-8">
     <div class="text-center mb-8">
-      <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4">
-        <span class="text-2xl">📚</span>
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-full mb-4">
+        <span class="text-3xl">📚</span>
       </div>
-      <h2 class="text-2xl font-bold text-blue-800">Select a Chapter</h2>
-      <p class="text-gray-600 mt-2">Click on any chapter to choose Exercise or Additional MCQs</p>
+      <h2 class="text-3xl font-bold text-indigo-800">Select a Chapter</h2>
+      <p class="text-gray-600 mt-2">Click on any chapter to see Exercise and Additional options</p>
     </div>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="chapters-grid"></div>
-    
-    <div id="section-choice" class="mt-8 text-center hidden">
-      <hr class="my-6">
-      <h3 class="text-xl font-semibold mb-4" id="selected-chapter-title">Physical Quantities</h3>
-      <div class="flex flex-wrap justify-center gap-4">
-        <button id="take-exercise" class="btn btn-primary"><span>📘</span> Exercise MCQs</button>
-        <button id="take-additional" class="btn bg-purple-600 text-white hover:bg-purple-700"><span>📑</span> Additional MCQs</button>
-        <button id="back-to-chapters" class="btn btn-outline">← Back to Chapters</button>
-      </div>
-    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="chapters-grid"></div>
   </div>
 </section>
 
 <!-- Test Container -->
-<main id="test-container" class="max-w-5xl mx-auto px-6 pb-24 hidden">
-  <div class="flex flex-col md:flex-row justify-between items-center mb-8 p-6 bg-white rounded-2xl shadow-md">
+<main id="test-container" class="max-w-6xl mx-auto px-6 pb-24 hidden">
+  <div class="flex flex-col md:flex-row justify-between items-center mb-8 p-6 bg-white rounded-2xl shadow-xl">
     <div>
-      <h2 class="text-xl font-bold text-blue-800" id="test-header-title">Physics MCQs</h2>
+      <h2 class="text-2xl font-bold text-indigo-800" id="test-header-title">Physics MCQs</h2>
       <p class="text-gray-600 mt-1" id="student-info-display"></p>
     </div>
-    <div class="flex items-center space-x-6 mt-4 md:mt-0">
+    <div class="flex items-center space-x-8 mt-4 md:mt-0">
       <div class="text-center">
-        <div class="text-2xl font-bold text-blue-700" id="timer">00:00</div>
+        <div class="text-3xl font-bold text-indigo-700" id="timer">00:00</div>
         <div class="text-sm text-gray-500">Time</div>
       </div>
       <div class="text-center">
-        <div class="text-2xl font-bold text-blue-700" id="progress-count">0/0</div>
+        <div class="text-3xl font-bold text-indigo-700" id="progress-count">0/0</div>
         <div class="text-sm text-gray-500">Progress</div>
       </div>
     </div>
@@ -271,8 +274,8 @@
 
   <div class="mb-8">
     <div class="flex justify-between items-center mb-3">
-      <span class="text-gray-700 font-medium">Question <span id="current-question" class="text-blue-600">1</span> of <span id="total-questions-span">0</span></span>
-      <span class="text-sm bg-blue-100 text-blue-800 px-3 py-1 rounded-full" id="answered-count">0 answered</span>
+      <span class="text-gray-700 font-medium">Question <span id="current-question" class="text-indigo-600 text-xl">1</span> of <span id="total-questions-span" class="text-xl">0</span></span>
+      <span class="text-sm bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full font-semibold" id="answered-count">0 answered</span>
     </div>
     <div class="progress-bar">
       <div id="progress-fill" class="progress-fill" style="width: 0%"></div>
@@ -291,11 +294,11 @@
 
   <div class="mb-8">
     <div class="flex justify-between items-center mb-4">
-      <h3 class="text-lg font-semibold">Jump to Question:</h3>
-      <div class="flex gap-2 text-sm">
-        <div class="flex items-center gap-1"><div class="w-3 h-3 bg-blue-500 rounded"></div><span>Answered</span></div>
-        <div class="flex items-center gap-1"><div class="w-3 h-3 bg-yellow-500 rounded"></div><span>Marked</span></div>
-        <div class="flex items-center gap-1"><div class="w-3 h-3 border-2 border-blue-300 rounded"></div><span>Visited</span></div>
+      <h3 class="text-xl font-semibold">Jump to Question:</h3>
+      <div class="flex gap-3 text-sm">
+        <div class="flex items-center gap-2"><div class="w-4 h-4 bg-indigo-600 rounded"></div><span>Answered</span></div>
+        <div class="flex items-center gap-2"><div class="w-4 h-4 bg-yellow-500 rounded"></div><span>Marked</span></div>
+        <div class="flex items-center gap-2"><div class="w-4 h-4 border-3 border-indigo-300 rounded"></div><span>Visited</span></div>
       </div>
     </div>
     <div id="question-numbers" class="grid grid-cols-11 gap-2"></div>
@@ -304,8 +307,8 @@
 
 <!-- Test Controls Footer -->
 <div class="test-controls fixed bottom-0 left-0 right-0 p-4 z-40 hidden" id="test-controls-footer">
-  <div class="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-    <div class="text-gray-700 font-medium">
+  <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+    <div class="text-gray-700 font-medium text-lg">
       <span id="answered-controls">0</span>/<span id="total-controls">0</span> answered • 
       <span id="marked-controls">0</span> marked
     </div>
@@ -319,28 +322,28 @@
 
 <!-- Results Section -->
 <section id="results-section" class="max-w-4xl mx-auto px-6 py-10 hidden">
-  <div class="bg-white rounded-2xl shadow-lg p-8">
+  <div class="bg-white rounded-3xl shadow-2xl p-8">
     <div class="text-center mb-8">
-      <h2 class="text-3xl font-bold text-blue-800 mb-2">📊 Test Results</h2>
-      <p class="text-gray-600" id="result-student"></p>
+      <h2 class="text-4xl font-bold text-indigo-800 mb-2">📊 Test Results</h2>
+      <p class="text-gray-600 text-lg" id="result-student"></p>
     </div>
     
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-      <div class="bg-blue-50 p-5 rounded-xl text-center">
-        <p class="text-sm text-gray-600 mb-1">Correct</p>
-        <p id="correct-count" class="text-3xl font-bold text-blue-700">0</p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+      <div class="bg-indigo-50 p-6 rounded-2xl text-center">
+        <p class="text-sm text-indigo-600 mb-1">Correct</p>
+        <p id="correct-count" class="text-4xl font-bold text-indigo-700">0</p>
       </div>
-      <div class="bg-red-50 p-5 rounded-xl text-center">
-        <p class="text-sm text-gray-600 mb-1">Wrong</p>
-        <p id="wrong-count" class="text-3xl font-bold text-red-700">0</p>
+      <div class="bg-red-50 p-6 rounded-2xl text-center">
+        <p class="text-sm text-red-600 mb-1">Wrong</p>
+        <p id="wrong-count" class="text-4xl font-bold text-red-700">0</p>
       </div>
-      <div class="bg-green-50 p-5 rounded-xl text-center">
-        <p class="text-sm text-gray-600 mb-1">Percentage</p>
-        <p id="percentage" class="text-3xl font-bold text-green-700">0%</p>
+      <div class="bg-green-50 p-6 rounded-2xl text-center">
+        <p class="text-sm text-green-600 mb-1">Percentage</p>
+        <p id="percentage" class="text-4xl font-bold text-green-700">0%</p>
       </div>
-      <div class="bg-purple-50 p-5 rounded-xl text-center">
-        <p class="text-sm text-gray-600 mb-1">Time Taken</p>
-        <p id="time-taken" class="text-3xl font-bold text-purple-700">00:00</p>
+      <div class="bg-purple-50 p-6 rounded-2xl text-center">
+        <p class="text-sm text-purple-600 mb-1">Time Taken</p>
+        <p id="time-taken" class="text-4xl font-bold text-purple-700">00:00</p>
       </div>
     </div>
     
@@ -363,9 +366,9 @@
 </section>
 
 <!-- Footer -->
-<footer class="bg-blue-900 text-gray-100 py-6 mt-8">
+<footer class="bg-indigo-900 text-white py-8 mt-8">
   <div class="max-w-4xl mx-auto text-center">
-    <p class="text-gray-400 text-xs">© 2025 Class 9 Physics MCQs • 217 Questions • PECTAA 2025 Syllabus</p>
+    <p class="text-indigo-200 text-sm">© 2025 Class 9 Physics MCQs • 217 Questions • PECTAA 2025 Syllabus</p>
   </div>
 </footer>
 
@@ -373,9 +376,21 @@
 <button class="back-to-top" id="backToTop">↑</button>
 
 <script>
+// Mobile menu
+document.getElementById('mobile-menu-button')?.addEventListener('click', function(e) {
+  e.stopPropagation();
+  document.getElementById('mobile-menu')?.classList.toggle('hidden');
+});
+
+// Back to top
+document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+window.addEventListener('scroll', () => {
+  document.getElementById('backToTop').classList.toggle('show', window.pageYOffset > 300);
+});
+
 // ==================== COMPLETE 217 MCQs ====================
 const mcqData = [
-  // CHAPTER 1: PHYSICAL QUANTITIES (26)
+  // CHAPTER 1: PHYSICAL QUANTITIES (8 Exercise + 18 Additional = 26)
   { question: "The instrument that is most suitable for measuring the thickness of a few sheets of cardboard is:", options: ["metre rule", "measuring tape", "Vernier Callipers", "micrometer screw gauge"], correct: 3, chapter: 1, type: "exercise" },
   { question: "One femtometre is equal to:", options: ["$10^{-9}\\ m$", "$10^{-15}\\ m$", "$10^{9}\\ m$", "$10^{15}\\ m$"], correct: 1, chapter: 1, type: "exercise" },
   { question: "Which one is a non-physical quantity?", options: ["distance", "density", "colour", "temperature"], correct: 2, chapter: 1, type: "exercise" },
@@ -402,8 +417,8 @@ const mcqData = [
   { question: "Least count of Vernier Callipers", options: ["0.01 cm", "0.1 mm", "0.001 cm", "1 mm"], correct: 0, chapter: 1, type: "additional" },
   { question: "Range of Vernier Callipers", options: ["$0.1\\ mm$ to $15\\ cm$", "$0.01\\ mm$ to $2.5\\ cm$", "0.1 mm", "0.01 mm"], correct: 0, chapter: 1, type: "additional" },
   { question: "Significant figures in 0.000125 km", options: ["4", "3", "5", "6"], correct: 1, chapter: 1, type: "additional" },
-  
-  // CHAPTER 2: KINEMATICS (27)
+
+  // CHAPTER 2: KINEMATICS (7 Exercise + 20 Additional = 27)
   { question: "The numerical ratio of displacement to distance is:", options: ["always less than one", "always equal to one", "always greater than one", "equal to or less than one"], correct: 3, chapter: 2, type: "exercise" },
   { question: "If a body does not change its position with respect to some fixed point, then it will be in a state of:", options: ["rest", "motion", "uniform motion", "variable motion"], correct: 0, chapter: 2, type: "exercise" },
   { question: "A ball is dropped from the top of a tower, the distance covered by it in the first second is:", options: ["$5\\ m$", "$10\\ m$", "$50\\ m$", "$100\\ m$"], correct: 0, chapter: 2, type: "exercise" },
@@ -433,7 +448,7 @@ const mcqData = [
   { question: "3rd equation of motion is", options: ["$S = v_{i}t + \\frac{1}{2}at^{2}$", "$2aS = v_{f}^{2} - v_{i}^{2}$", "$S = vt$", "$v_{f} = v_{i} + at$"], correct: 1, chapter: 2, type: "additional" },
   { question: "The universal speed limit is approximately", options: ["$2 \\times 10^{8}\\ ms^{-1}$", "$2 \\times 10^{-8}\\ ms^{-1}$", "$3 \\times 10^{-8}\\ ms^{-1}$", "$3 \\times 10^{8}\\ ms^{-1}$"], correct: 3, chapter: 2, type: "additional" },
 
-  // CHAPTER 3: DYNAMICS (33)
+  // CHAPTER 3: DYNAMICS (8 Exercise + 25 Additional = 33)
   { question: "When we kick a stone, we get hurt. This is due to:", options: ["inertia", "velocity", "momentum", "reaction"], correct: 3, chapter: 3, type: "exercise" },
   { question: "An object will continue its motion with constant acceleration until:", options: ["resultant force decreases", "resultant force is zero", "resultant force increases", "resultant force at right angle"], correct: 1, chapter: 3, type: "exercise" },
   { question: "Which of the following is a non-contact force?", options: ["Friction", "Air resistance", "Electrostatic force", "Tension"], correct: 2, chapter: 3, type: "exercise" },
@@ -469,7 +484,7 @@ const mcqData = [
   { question: "Which of the following is the unit of momentum?", options: ["$Nm$", "$kg\\ ms^{-2}$", "$Ns$", "$Ns^{-1}$"], correct: 2, chapter: 3, type: "additional" },
   { question: "Change in momentum is equal to", options: ["Mass x Time", "Force x Time", "Force x Velocity", "Mass x Force"], correct: 1, chapter: 3, type: "additional" },
 
-  // CHAPTER 4: TURNING EFFECT (23)
+  // CHAPTER 4: TURNING EFFECT (6 Exercise + 17 Additional = 23)
   { question: "Moment of force is called:", options: ["moment arm", "couple", "couple arm", "torque"], correct: 3, chapter: 4, type: "exercise" },
   { question: "In stable equilibrium the centre of gravity of the body lies:", options: ["at highest position", "at lowest position", "at any position", "outside the body"], correct: 1, chapter: 4, type: "exercise" },
   { question: "A cylinder resting on its circular base is in:", options: ["stable equilibrium", "unstable equilibrium", "neutral equilibrium", "none"], correct: 0, chapter: 4, type: "exercise" },
@@ -494,7 +509,7 @@ const mcqData = [
   { question: "Net force on book lying on table", options: ["$5\\ N$", "$0\\ N$", "$50\\ N$", "$10\\ N$"], correct: 1, chapter: 4, type: "additional" },
   { question: "SI unit of Impulse is", options: ["$Nm$", "$Ns$", "$\\frac{N}{s}$", "$kgms^{-2}$"], correct: 1, chapter: 4, type: "additional" },
 
-  // CHAPTER 5: WORK AND ENERGY (22)
+  // CHAPTER 5: WORK AND ENERGY (7 Exercise + 15 Additional = 22)
   { question: "Work done is maximum when the angle between the force $F$ and the displacement $d$ is:", options: ["$0^{\\circ}$", "$30^{\\circ}$", "$60^{\\circ}$", "$90^{\\circ}$"], correct: 0, chapter: 5, type: "exercise" },
   { question: "The SI unit of power is:", options: ["joule", "newton", "watt", "second"], correct: 2, chapter: 5, type: "exercise" },
   { question: "A bullet of mass $0.05\\ kg$ has a speed of $300\\ ms^{-1}$. Its kinetic energy will be:", options: ["$2250\\ J$", "$4500\\ J$", "$1500\\ J$", "$1125\\ J$"], correct: 0, chapter: 5, type: "exercise" },
@@ -518,7 +533,7 @@ const mcqData = [
   { question: "One watt is equal to", options: ["$1\\ Js^{-1}$", "$1\\ Js$", "$1\\ Js^{-2}$", "$1\\ J^{-1}s^{-1}$"], correct: 0, chapter: 5, type: "additional" },
   { question: "SI unit of spring constant is", options: ["$Nm$", "$Nm^{-1}$", "$Nm^{-2}$", "$Ns$"], correct: 2, chapter: 5, type: "additional" },
 
-  // CHAPTER 6: MECHANICAL PROPERTIES (21)
+  // CHAPTER 6: MECHANICAL PROPERTIES (4 Exercise + 17 Additional = 21)
   { question: "A wire is stretched by a weight $w$. If the diameter of the wire is reduced to half of its previous value, the extension will become:", options: ["one half", "double", "one fourth", "four times"], correct: 3, chapter: 6, type: "exercise" },
   { question: "Two metal plates of area $2$ and $3$ square metres are placed in a liquid at the same depth. The ratio of pressures on the two plates is:", options: ["$1:1$", "$\\sqrt{2}:\\sqrt{3}$", "$2:3$", "$4:9$"], correct: 0, chapter: 6, type: "exercise" },
   { question: "The principle of a hydraulic press is based on:", options: ["Hooke's law", "Pascal's law", "Conservation of energy", "Conservation of momentum"], correct: 1, chapter: 6, type: "exercise" },
@@ -541,7 +556,7 @@ const mcqData = [
   { question: "Pascal's law applies to", options: ["Solids only", "Enclosed fluids", "Vacuum", "Gases only"], correct: 1, chapter: 6, type: "additional" },
   { question: "The principle of a hydraulic press is based on", options: ["Pascal's law", "Hooke's law", "Archimedes' principle", "Conservation of energy"], correct: 0, chapter: 6, type: "additional" },
 
-  // CHAPTER 7: THERMAL PROPERTIES (24)
+  // CHAPTER 7: THERMAL PROPERTIES (5 Exercise + 19 Additional = 24)
   { question: "Temperature of a substance is:", options: ["total heat contained", "total molecules", "degree of hotness", "intermolecular distance"], correct: 2, chapter: 7, type: "exercise" },
   { question: "Heat is the:", options: ["total KE of molecules", "internal energy", "work done by molecules", "energy in transit"], correct: 3, chapter: 7, type: "exercise" },
   { question: "In Kelvin scale, the temperature corresponding to melting point of ice is:", options: ["zero", "$32$", "$-273$", "$+273$"], correct: 3, chapter: 7, type: "exercise" },
@@ -567,7 +582,7 @@ const mcqData = [
   { question: "Least count of a measuring tape", options: ["$0.1\\ mm$", "$1\\ mm$", "$0.01\\ mm$", "$0.001\\ mm$"], correct: 1, chapter: 7, type: "additional" },
   { question: "Least count of micrometer screw gauge", options: ["$0.01\\ mm$", "$1\\ mm$", "$0.1\\ mm$", "$0.001\\ mm$"], correct: 0, chapter: 7, type: "additional" },
 
-  // CHAPTER 8: MAGNETISM (27)
+  // CHAPTER 8: MAGNETISM (3 Exercise + 24 Additional = 27)
   { question: "Which one of the following is not a magnetic material?", options: ["Cobalt", "Iron", "Aluminium", "Nickel"], correct: 2, chapter: 8, type: "exercise" },
   { question: "Magnetic lines of force:", options: ["always straight", "cross one another", "enter north pole", "enter south pole"], correct: 3, chapter: 8, type: "exercise" },
   { question: "A common method used to magnetise a material is:", options: ["stroking", "hitting", "heating", "placing inside solenoid with AC"], correct: 0, chapter: 8, type: "exercise" },
@@ -596,13 +611,13 @@ const mcqData = [
   { question: "Biological sciences deal with living things, whereas physical sciences deal with", options: ["Non-living things", "Human behavior", "Plants only", "Social interactions"], correct: 0, chapter: 8, type: "additional" },
   { question: "The fundamental science that deals with matter, energy, space, and time is", options: ["Chemistry", "Biology", "Physics", "Geology"], correct: 2, chapter: 8, type: "additional" },
 
-  // CHAPTER 9: NATURE OF SCIENCE (14)
+  // CHAPTER 9: NATURE OF SCIENCE (3 Exercise + 11 Additional = 14)
   { question: "Which branch of science plays vital role in technology and engineering?", options: ["Biology", "Chemistry", "Geology", "Physics"], correct: 3, chapter: 9, type: "exercise" },
   { question: "Automobile technology is based on:", options: ["acoustics", "electromagnetism", "optics", "thermodynamics"], correct: 3, chapter: 9, type: "exercise" },
   { question: "What is the ultimate truth of a scientific method?", options: ["Hypothesis", "Experimentation", "Theory", "Law"], correct: 3, chapter: 9, type: "exercise" },
-  { question: "Which of the following are methods of investigation?", options: ["Observation", "Experimentation", "Research", "All of these"], correct: 3, chapter: 9, type: "exercise" },
-  { question: "A hypothesis:", options: ["may or may not be testable", "is supported by evidence", "is a possible answer to a question", "all of these"], correct: 3, chapter: 9, type: "exercise" },
-  { question: "A graph of an organized data is an example of:", options: ["collecting data", "forming a hypothesis", "asking question", "analyzing data"], correct: 3, chapter: 9, type: "exercise" },
+  { question: "Which of the following are methods of investigation?", options: ["Observation", "Experimentation", "Research", "All of these"], correct: 3, chapter: 9, type: "additional" },
+  { question: "A hypothesis:", options: ["may or may not be testable", "is supported by evidence", "is a possible answer to a question", "all of these"], correct: 3, chapter: 9, type: "additional" },
+  { question: "A graph of an organized data is an example of:", options: ["collecting data", "forming a hypothesis", "asking question", "analyzing data"], correct: 3, chapter: 9, type: "additional" },
   { question: "The first step of the scientific method is", options: ["Hypothesis", "Law", "Theory", "Observation"], correct: 3, chapter: 9, type: "additional" },
   { question: "A guess work/propose explanation is called", options: ["Observation", "Hypothesis", "Experiment", "Law"], correct: 1, chapter: 9, type: "additional" },
   { question: "A theory that is tested and accepted becomes a", options: ["Hypothesis", "Prediction", "Law", "Falsification"], correct: 2, chapter: 9, type: "additional" },
@@ -615,15 +630,15 @@ const mcqData = [
 
 // Chapter information
 const chapters = [
-  { id: 1, name: "Physical Quantities", icon: "📗", exercise: 8, additional: 18 },
-  { id: 2, name: "Kinematics", icon: "📙", exercise: 7, additional: 20 },
-  { id: 3, name: "Dynamics", icon: "📕", exercise: 8, additional: 25 },
-  { id: 4, name: "Turning Effect", icon: "📔", exercise: 6, additional: 17 },
-  { id: 5, name: "Work & Energy", icon: "📒", exercise: 7, additional: 15 },
-  { id: 6, name: "Mechanical Properties", icon: "📚", exercise: 4, additional: 17 },
-  { id: 7, name: "Thermal Properties", icon: "📖", exercise: 5, additional: 19 },
-  { id: 8, name: "Magnetism", icon: "🧲", exercise: 3, additional: 24 },
-  { id: 9, name: "Nature of Science", icon: "🔬", exercise: 6, additional: 8 }
+  { id: 1, name: "Physical Quantities", icon: "📗", exercise: 8, additional: 18, color: "from-indigo-500 to-blue-500" },
+  { id: 2, name: "Kinematics", icon: "📙", exercise: 7, additional: 20, color: "from-purple-500 to-pink-500" },
+  { id: 3, name: "Dynamics", icon: "📕", exercise: 8, additional: 25, color: "from-red-500 to-orange-500" },
+  { id: 4, name: "Turning Effect", icon: "📔", exercise: 6, additional: 17, color: "from-green-500 to-teal-500" },
+  { id: 5, name: "Work & Energy", icon: "📒", exercise: 7, additional: 15, color: "from-yellow-500 to-amber-500" },
+  { id: 6, name: "Mechanical Properties", icon: "📚", exercise: 4, additional: 17, color: "from-indigo-500 to-purple-500" },
+  { id: 7, name: "Thermal Properties", icon: "📖", exercise: 5, additional: 19, color: "from-orange-500 to-red-500" },
+  { id: 8, name: "Magnetism", icon: "🧲", exercise: 3, additional: 24, color: "from-blue-500 to-cyan-500" },
+  { id: 9, name: "Nature of Science", icon: "🔬", exercise: 6, additional: 8, color: "from-pink-500 to-rose-500" }
 ];
 
 // ==================== APPLICATION STATE ====================
@@ -647,8 +662,6 @@ const studentForm = document.getElementById('studentForm');
 const studentInfoSec = document.getElementById('student-info');
 const dashboardSec = document.getElementById('chapter-dashboard');
 const chaptersGrid = document.getElementById('chapters-grid');
-const sectionChoice = document.getElementById('section-choice');
-const selectedChapterTitle = document.getElementById('selected-chapter-title');
 const testContainer = document.getElementById('test-container');
 const testControls = document.getElementById('test-controls-footer');
 const resultsSec = document.getElementById('results-section');
@@ -656,28 +669,79 @@ const successMsg = document.getElementById('success-message');
 const wrongAnswersContainer = document.getElementById('wrong-answers-container');
 const wrongAnswersSection = document.getElementById('wrong-answers-section');
 
-// Mobile menu and back to top
-document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-window.addEventListener('scroll', () => {
-  document.getElementById('backToTop').classList.toggle('show', window.pageYOffset > 300);
-});
-
-// Render chapter cards
+// Render chapter cards with click handler
 chapters.forEach(ch => {
   const card = document.createElement('div');
-  card.className = 'chapter-card';
-  card.dataset.chapter = ch.id;
+  card.className = `chapter-card bg-gradient-to-br ${ch.color} text-white`;
   card.innerHTML = `
-    <div class="text-4xl mb-3">${ch.icon}</div>
-    <h3 class="font-semibold text-lg mb-2">${ch.name}</h3>
-    <div class="flex justify-center gap-3 text-sm">
-      <span class="bg-blue-100 text-blue-700 px-2 py-1 rounded">📘 ${ch.exercise}</span>
-      <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded">📑 ${ch.additional}</span>
+    <div class="text-5xl mb-3">${ch.icon}</div>
+    <h3 class="font-bold text-xl mb-3">${ch.name}</h3>
+    <div class="flex justify-center gap-3">
+      <span class="bg-white/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">📘 ${ch.exercise}</span>
+      <span class="bg-white/30 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold">📑 ${ch.additional}</span>
     </div>
+    <div class="mt-4 text-sm opacity-90">Click to select</div>
   `;
-  card.addEventListener('click', () => selectChapter(ch.id));
+  
+  card.addEventListener('click', () => showChapterOptions(ch));
   chaptersGrid.appendChild(card);
 });
+
+// Show chapter options (Exercise/Additional)
+function showChapterOptions(chapter) {
+  appState.currentChapter = chapter.id;
+  
+  // Create modal-like overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4';
+  overlay.id = 'chapter-options-overlay';
+  
+  overlay.innerHTML = `
+    <div class="bg-white rounded-3xl max-w-md w-full p-8 shadow-2xl">
+      <div class="text-center mb-6">
+        <div class="text-6xl mb-4">${chapter.icon}</div>
+        <h2 class="text-2xl font-bold text-gray-800">${chapter.name}</h2>
+      </div>
+      <div class="space-y-4">
+        <button id="select-exercise" class="chapter-option-btn w-full flex items-center justify-between p-6">
+          <div class="flex items-center gap-4">
+            <span class="text-3xl">📘</span>
+            <div class="text-left">
+              <div class="font-bold text-xl">Exercise MCQs</div>
+              <div class="text-gray-600">${chapter.exercise} questions</div>
+            </div>
+          </div>
+          <span class="text-2xl">→</span>
+        </button>
+        <button id="select-additional" class="chapter-option-btn w-full flex items-center justify-between p-6">
+          <div class="flex items-center gap-4">
+            <span class="text-3xl">📑</span>
+            <div class="text-left">
+              <div class="font-bold text-xl">Additional MCQs</div>
+              <div class="text-gray-600">${chapter.additional} questions</div>
+            </div>
+          </div>
+          <span class="text-2xl">→</span>
+        </button>
+        <button id="close-options" class="btn btn-outline w-full mt-4">Cancel</button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(overlay);
+  
+  document.getElementById('select-exercise').addEventListener('click', () => {
+    overlay.remove();
+    loadQuestions('exercise');
+  });
+  
+  document.getElementById('select-additional').addEventListener('click', () => {
+    overlay.remove();
+    loadQuestions('additional');
+  });
+  
+  document.getElementById('close-options').addEventListener('click', () => overlay.remove());
+}
 
 // Student form submission
 studentForm.addEventListener('submit', async function(e) {
@@ -691,11 +755,7 @@ studentForm.addEventListener('submit', async function(e) {
     return;
   }
   
-  appState.student = {
-    name, school, contact,
-    roll: document.getElementById('rollNumber').value,
-    email: document.getElementById('email').value
-  };
+  appState.student = { name, school, contact, roll: document.getElementById('rollNumber').value, email: document.getElementById('email').value };
   
   document.getElementById('student-info-display').textContent = `${name} | ${school}`;
   document.getElementById('result-student').textContent = `${name} | ${school}`;
@@ -703,32 +763,14 @@ studentForm.addEventListener('submit', async function(e) {
   try {
     const formData = new FormData(studentForm);
     formData.set('test_score', 'Registered');
-    await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
+    await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
     successMsg.style.display = 'block';
     successMsg.innerHTML = '✅ Registration successful!';
     setTimeout(() => successMsg.style.display = 'none', 3000);
-  } catch (err) {
-    console.warn('Web3Forms error:', err);
-  }
+  } catch (err) {}
   
   studentInfoSec.classList.add('hidden');
   dashboardSec.classList.remove('hidden');
-});
-
-function selectChapter(chapterId) {
-  appState.currentChapter = chapterId;
-  const chapter = chapters.find(c => c.id === chapterId);
-  selectedChapterTitle.textContent = chapter.name;
-  sectionChoice.classList.remove('hidden');
-}
-
-document.getElementById('back-to-chapters').addEventListener('click', () => {
-  sectionChoice.classList.add('hidden');
-  appState.currentChapter = null;
 });
 
 // Load questions
@@ -752,6 +794,7 @@ function loadQuestions(type) {
   document.getElementById('total-questions-span').textContent = count;
   document.getElementById('total-controls').textContent = count;
   
+  document.getElementById('chapter-options-overlay')?.remove();
   dashboardSec.classList.add('hidden');
   testContainer.classList.remove('hidden');
   testControls.classList.remove('hidden');
@@ -764,30 +807,27 @@ function loadQuestions(type) {
   window.testTimer = setInterval(updateTimer, 1000);
 }
 
-document.getElementById('take-exercise').addEventListener('click', () => loadQuestions('exercise'));
-document.getElementById('take-additional').addEventListener('click', () => loadQuestions('additional'));
-
 // Render question
 function renderQuestion() {
   const q = appState.filteredQuestions[appState.currentIndex];
   const container = document.getElementById('question-display');
   
   container.innerHTML = `
-    <div class="mcq-card p-6">
-      <div class="flex justify-between items-start mb-4">
-        <h3 class="text-xl font-bold text-blue-800">Question ${appState.currentIndex + 1}</h3>
-        ${appState.marked[appState.currentIndex] ? '<span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full">⭐ Marked</span>' : ''}
+    <div class="mcq-card p-8">
+      <div class="flex justify-between items-start mb-6">
+        <h3 class="text-2xl font-bold text-indigo-800">Question ${appState.currentIndex + 1}</h3>
+        ${appState.marked[appState.currentIndex] ? '<span class="bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full font-semibold">⭐ Marked</span>' : ''}
       </div>
-      <div class="physics-equation">${q.question}</div>
-      <div class="space-y-3 mt-4">
+      <div class="physics-equation text-xl mb-6">${q.question}</div>
+      <div class="space-y-3">
         ${q.options.map((opt, idx) => `
           <div class="option ${appState.answers[appState.currentIndex] === idx ? 'selected' : ''}" data-index="${idx}">
             <div class="flex items-center">
-              <span class="mr-4 font-bold w-10 h-10 flex items-center justify-center rounded-full 
-                ${appState.answers[appState.currentIndex] === idx ? 'bg-blue-600 text-white' : 'bg-gray-100'}">
+              <span class="mr-4 font-bold w-12 h-12 flex items-center justify-center rounded-full text-lg
+                ${appState.answers[appState.currentIndex] === idx ? 'bg-white/30 text-white' : 'bg-indigo-100 text-indigo-800'}">
                 ${String.fromCharCode(65 + idx)}
               </span>
-              <span>${opt}</span>
+              <span class="text-lg">${opt}</span>
             </div>
           </div>
         `).join('')}
@@ -944,14 +984,8 @@ async function submitTest() {
     formData.append('test_percentage', `${percent}%`);
     formData.append('test_time', formatTime(appState.timeSpent));
     
-    await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
-  } catch (err) {
-    console.warn('Results submission error:', err);
-  }
+    await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+  } catch (err) {}
 }
 
 document.getElementById('submit-test-btn').addEventListener('click', () => {
@@ -967,7 +1001,6 @@ document.getElementById('retake-test').addEventListener('click', () => {
   if (confirm('Start new test?')) {
     resultsSec.classList.add('hidden');
     dashboardSec.classList.remove('hidden');
-    sectionChoice.classList.add('hidden');
     wrongAnswersSection.classList.add('hidden');
   }
 });
@@ -986,23 +1019,23 @@ document.getElementById('show-wrong-answers').addEventListener('click', function
       
       let optionsHtml = '';
       q.options.forEach((opt, idx) => {
-        let optClass = 'bg-gray-50';
+        let optClass = 'bg-gray-50 border-gray-200';
         if (idx === q.correct) optClass = 'correct-review';
         else if (idx === ans) optClass = 'wrong-review';
         
         optionsHtml += `
-          <div class="${optClass} border p-3 rounded-lg mb-2 flex items-center">
-            <span class="mr-4 font-bold w-8 h-8 flex items-center justify-center rounded-full bg-gray-200">${String.fromCharCode(65 + idx)}</span>
-            <span class="flex-1">${opt}</span>
-            ${idx === q.correct ? '<span class="text-green-600 font-semibold ml-2">✓ Correct</span>' : ''}
-            ${idx === ans && idx !== q.correct ? '<span class="text-red-600 font-semibold ml-2">✗ Your Answer</span>' : ''}
+          <div class="${optClass} border p-4 rounded-xl mb-2 flex items-center">
+            <span class="mr-4 font-bold w-10 h-10 flex items-center justify-center rounded-full bg-white/30 text-white">${String.fromCharCode(65 + idx)}</span>
+            <span class="flex-1 text-lg">${opt}</span>
+            ${idx === q.correct ? '<span class="text-white font-semibold ml-2 bg-green-600 px-3 py-1 rounded-full text-sm">✓ Correct</span>' : ''}
+            ${idx === ans && idx !== q.correct ? '<span class="text-white font-semibold ml-2 bg-red-600 px-3 py-1 rounded-full text-sm">✗ Your Answer</span>' : ''}
           </div>
         `;
       });
       
       card.innerHTML = `
-        <div class="wrong-question-title">❌ Question ${i + 1}</div>
-        <div class="physics-equation mb-4">${q.question}</div>
+        <div class="wrong-question-title text-xl">❌ Question ${i + 1}</div>
+        <div class="physics-equation mb-4 text-lg">${q.question}</div>
         <div class="space-y-2">${optionsHtml}</div>
       `;
       wrongAnswersContainer.appendChild(card);
@@ -1010,7 +1043,7 @@ document.getElementById('show-wrong-answers').addEventListener('click', function
   });
   
   if (!hasWrong) {
-    wrongAnswersContainer.innerHTML = '<div class="text-center py-10 text-green-600 font-semibold">🎉 Perfect! No wrong answers!</div>';
+    wrongAnswersContainer.innerHTML = '<div class="text-center py-10 text-green-600 font-bold text-2xl">🎉 Perfect! No wrong answers!</div>';
   }
   
   wrongAnswersSection.classList.remove('hidden');
@@ -1022,53 +1055,48 @@ document.getElementById('hide-wrong-answers').addEventListener('click', function
   wrongAnswersSection.classList.add('hidden');
 });
 
-// Download certificate - IMPROVED DESIGN
+// Download certificate - CLEAN PROFESSIONAL DESIGN
 document.getElementById('download-certificate').addEventListener('click', function() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF('landscape', 'mm', 'a4');
   
-  // Background with gradient effect
-  doc.setFillColor(240, 248, 255);
+  // Clean white background
+  doc.setFillColor(255, 255, 255);
   doc.rect(0, 0, 297, 210, 'F');
   
-  // Decorative border
-  doc.setDrawColor(59, 130, 246);
-  doc.setLineWidth(2);
+  // Light gray border
+  doc.setDrawColor(200, 200, 200);
+  doc.setLineWidth(1);
   doc.rect(10, 10, 277, 190);
   
-  // Inner border
-  doc.setDrawColor(59, 130, 246);
+  // Top and bottom subtle lines
+  doc.setDrawColor(100, 100, 100);
   doc.setLineWidth(0.5);
-  doc.rect(15, 15, 267, 180);
-  
-  // Top decoration
-  doc.setFillColor(59, 130, 246);
-  doc.rect(0, 0, 297, 20, 'F');
-  doc.setFillColor(37, 99, 235);
-  doc.rect(0, 190, 297, 20, 'F');
-  
-  // Gold seal effect
-  doc.setFillColor(255, 215, 0);
-  doc.circle(260, 160, 20, 'F');
-  doc.setFillColor(255, 193, 7);
-  doc.circle(260, 160, 18, 'F');
-  doc.setTextColor(0, 0, 0);
-  doc.setFontSize(24);
-  doc.text('★', 260, 167, { align: 'center' });
+  doc.line(20, 30, 277, 30);
+  doc.line(20, 180, 277, 180);
   
   // Main title
-  doc.setFontSize(40);
-  doc.setTextColor(37, 99, 235);
-  doc.text('Certificate of Achievement', 148.5, 60, { align: 'center' });
+  doc.setFontSize(36);
+  doc.setTextColor(50, 50, 50);
+  doc.setFont('helvetica', 'bold');
+  doc.text('Certificate of Achievement', 148.5, 50, { align: 'center' });
+  
+  // Subtitle
+  doc.setFontSize(16);
+  doc.setTextColor(100, 100, 100);
+  doc.setFont('helvetica', 'normal');
+  doc.text('This is to certify that', 148.5, 70, { align: 'center' });
   
   // Student name
-  doc.setFontSize(28);
-  doc.setTextColor(0, 0, 0);
+  doc.setFontSize(32);
+  doc.setTextColor(79, 70, 229); // Indigo
+  doc.setFont('helvetica', 'bold');
   doc.text(appState.student.name, 148.5, 90, { align: 'center' });
   
   // School
-  doc.setFontSize(16);
-  doc.setTextColor(71, 85, 105);
+  doc.setFontSize(14);
+  doc.setTextColor(80, 80, 80);
+  doc.setFont('helvetica', 'normal');
   doc.text(appState.student.school, 148.5, 105, { align: 'center' });
   
   // Test details
@@ -1077,28 +1105,33 @@ document.getElementById('download-certificate').addEventListener('click', functi
   const percent = document.getElementById('percentage').textContent;
   const chapter = chapters.find(c => c.id === appState.currentChapter);
   
-  doc.setFontSize(18);
-  doc.setTextColor(22, 101, 52);
-  doc.text(`Score: ${correct}/${total} (${percent})`, 148.5, 130, { align: 'center' });
-  
   doc.setFontSize(16);
-  doc.setTextColor(37, 99, 235);
-  doc.text(`${chapter.name} - ${appState.currentSection === 'exercise' ? 'Exercise' : 'Additional'} MCQs`, 148.5, 145, { align: 'center' });
+  doc.setTextColor(50, 50, 50);
+  doc.text(`has successfully completed the`, 148.5, 125, { align: 'center' });
+  
+  doc.setFontSize(20);
+  doc.setTextColor(79, 70, 229);
+  doc.setFont('helvetica', 'bold');
+  doc.text(`${chapter.name} - ${appState.currentSection === 'exercise' ? 'Exercise' : 'Additional'} MCQs`, 148.5, 140, { align: 'center' });
+  
+  doc.setFontSize(18);
+  doc.setTextColor(16, 185, 129); // Green
+  doc.text(`Score: ${correct}/${total} (${percent})`, 148.5, 155, { align: 'center' });
   
   // Date
-  doc.setFontSize(12);
-  doc.setTextColor(100, 116, 139);
+  doc.setFontSize(11);
+  doc.setTextColor(120, 120, 120);
   const today = new Date().toLocaleDateString('en-PK');
-  doc.text(`Issued on: ${today}`, 30, 175);
+  doc.text(`Issued on: ${today}`, 30, 170);
   
-  // Signature line
-  doc.line(210, 170, 270, 170);
+  // Computer Generated text (no signature)
   doc.setFontSize(10);
-  doc.text('Authorized Signature', 240, 177, { align: 'center' });
+  doc.setTextColor(150, 150, 150);
+  doc.text('This is a computer-generated certificate - no signature required', 148.5, 185, { align: 'center' });
   
   // Footer
   doc.setFontSize(10);
-  doc.setTextColor(100, 116, 139);
+  doc.setTextColor(120, 120, 120);
   doc.text('Hira Science Academy | PECTAA 2025 Syllabus', 148.5, 195, { align: 'center' });
   
   doc.save(`Certificate-${appState.student.name.replace(/\s+/g, '-')}.pdf`);
