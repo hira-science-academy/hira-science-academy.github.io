@@ -17,8 +17,8 @@
     <script>
       window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
-  gtag(&#39;js&#39;, new Date());
-  gtag(&#39;config&#39;, &#39;G-9CK25HVFYZ&#39;);
+  gtag('js', new Date());
+  gtag('config', 'G-9CK25HVFYZ');
     </script>
     <script async="" src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-4029002473204443" crossorigin="anonymous">
     </script>
@@ -1881,7 +1881,7 @@
     // ===== CONFIG =====
     const SPREADSHEET_ID = '1vYIBSOfb6P41qswMIhYWd_SjiE0t3vGqA5meSFTU_t8';
     const BASE_URL = 'https://opensheet.elk.sh';
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby_1yoq7m0-OWIQq1J0lbY_iT_NHZiyXx2dlQh-OT9G9e3QoflHOhVx08G2SXGuRFWC/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCWa0W_ZbD2VqsySoNvEueMdJPPUuXKTxEhzPD1rlj0Z4ijvDTtLhdbOlh47Ejj59Y/exec';
     const PORTAL_LINK = 'https://hiraacademy.online/gchs-daska.html';
 
     // Data structure
@@ -1907,124 +1907,212 @@
     let attendanceChart = null;
     let currentMonth = new Date();
 
-    // ===== UPDATED DELETE FUNCTION WITH PROPER RESPONSE HANDLING =====
-    async function performDelete(sheetName, params, buttonElement) {
+    // ===== ENHANCED DELETE FUNCTION WITH PROPER PARAMETER EXTRACTION =====
+    async function enhancedDelete(sheetName, buttonElement) {
         if (!confirm(`⚠️ Are you sure you want to permanently delete this record? This action cannot be undone.`)) {
             return;
         }
         
-        // Store original button HTML for restoration
-        const originalButtonHtml = buttonElement.innerHTML;
-        const originalButtonDisabled = buttonElement.disabled;
+        const row = buttonElement.closest('tr');
+        if (!row) {
+            showToast('Could not find record row', 'error');
+            return;
+        }
         
-        // Show loading state on the button
+        // Store original button state
+        const originalHtml = buttonElement.innerHTML;
         buttonElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
         buttonElement.disabled = true;
         
-        showLoading(true, 'Deleting record from database...');
+        showLoading(true, 'Deleting record...');
         
         try {
-            const action = (sheetName === 'students') ? 'delete_permanent' : 'delete';
+            // Extract parameters based on sheet type with better extraction
+            let params = { sheet: sheetName, action: 'delete_permanent' };
+            const cells = row.cells;
             
-            // Prepare delete parameters based on sheet type
-            let deleteParams = { sheet: sheetName, action };
+            console.log(`Attempting to delete from ${sheetName}`, { row, cells });
             
-            if (sheetName === 'notices') {
-                deleteParams.title = params.title;
-                deleteParams.date = params.date;
-            } else if (sheetName === 'Feedback') {
-                deleteParams.suggestion = params.suggestion;
-                deleteParams.date = params.date;
-                deleteParams.user = params.user || 'guest';
-            } else if (sheetName === 'students') {
-                deleteParams.roll = params.roll;
-            } else if (sheetName === 'teachers') {
-                deleteParams.email = params.email;
-            } else if (sheetName === 'library') {
-                deleteParams.title = params.title;
-                deleteParams.link = params.link;
-            } else if (sheetName === 'syllabus') {
-                deleteParams.subject = params.subject;
-                deleteParams.class = params.class;
-                deleteParams.file_link = params.file_link;
-            } else if (sheetName === 'homework') {
-                deleteParams.class = params.class;
-                deleteParams.section = params.section;
-                deleteParams.subject = params.subject;
-                deleteParams.assignment = params.assignment;
-            } else if (sheetName === 'diary') {
-                deleteParams.date = params.date;
-                deleteParams.class = params.class;
-                deleteParams.section = params.section;
-                deleteParams.subject = params.subject;
-                deleteParams.entry = params.entry;
-            } else if (sheetName === 'date_sheets') {
-                deleteParams.exam_type = params.exam_type;
-                deleteParams.class = params.class;
-            } else if (sheetName === 'marks') {
-                deleteParams.roll = params.roll;
-                deleteParams.subject = params.subject;
-                deleteParams.exam_type = params.exam_type;
-            } else if (sheetName === 'attendance') {
-                deleteParams.roll = params.roll;
-                deleteParams.date = params.date;
+            switch(sheetName) {
+                case 'students':
+                    // Get roll number from the first cell
+                    params.roll = cells[0]?.innerText?.trim() || '';
+                    console.log('Student params:', params);
+                    
+                    // Validate roll number
+                    if (!params.roll) {
+                        // Try to get from data attribute
+                        params.roll = row.dataset?.roll || '';
+                    }
+                    break;
+                    
+                case 'teachers':
+                    params.email = cells[1]?.innerText?.trim() || '';
+                    console.log('Teacher params:', params);
+                    break;
+                    
+                case 'notices':
+                    params.title = cells[0]?.innerText?.trim() || '';
+                    params.date = cells[1]?.innerText?.trim() || '';
+                    console.log('Notice params:', params);
+                    break;
+                    
+                case 'diary':
+                    params.date = cells[0]?.innerText?.trim() || '';
+                    params.class = cells[1]?.innerText?.trim() || '';
+                    params.section = cells[2]?.innerText?.trim() || '';
+                    params.subject = cells[3]?.innerText?.trim() || '';
+                    params.entry = cells[4]?.innerText?.trim() || '';
+                    console.log('Diary params:', params);
+                    break;
+                    
+                case 'homework':
+                    params.class = cells[0]?.innerText?.trim() || '';
+                    params.section = cells[1]?.innerText?.trim() || '';
+                    params.subject = cells[2]?.innerText?.trim() || '';
+                    params.assignment = cells[3]?.innerText?.trim() || '';
+                    console.log('Homework params:', params);
+                    break;
+                    
+                case 'marks':
+                    // For marks, we need to find the student roll from student name
+                    const studentName = cells[0]?.innerText?.trim() || '';
+                    const student = appData.students.find(s => s.name === studentName);
+                    params.roll = student?.roll || '';
+                    params.subject = cells[1]?.innerText?.trim() || '';
+                    params.exam_type = cells[2]?.innerText?.trim() || '';
+                    console.log('Marks params:', params);
+                    break;
+                    
+                case 'attendance':
+                    params.roll = row.dataset?.roll || '';
+                    params.date = document.getElementById('attDate')?.value || '';
+                    console.log('Attendance params:', params);
+                    break;
+                    
+                case 'library':
+                    params.title = cells[0]?.innerText?.trim() || '';
+                    // Extract link from anchor tag
+                    const linkElement = cells[1]?.querySelector('a');
+                    params.link = linkElement?.href || '';
+                    console.log('Library params:', params);
+                    break;
+                    
+                case 'syllabus':
+                    params.subject = cells[0]?.innerText?.trim() || '';
+                    params.class = cells[1]?.innerText?.trim() || '';
+                    const fileLinkElement = cells[3]?.querySelector('a');
+                    params.file_link = fileLinkElement?.href || '';
+                    console.log('Syllabus params:', params);
+                    break;
+                    
+                case 'date_sheets':
+                    params.exam_type = cells[0]?.innerText?.trim() || '';
+                    params.class = cells[1]?.innerText?.trim() || '';
+                    console.log('Date sheet params:', params);
+                    break;
+                    
+                case 'Feedback':
+                    params.suggestion = cells[0]?.innerText?.trim() || '';
+                    params.date = cells[1]?.innerText?.trim() || '';
+                    params.user = cells[2]?.innerText?.trim() || 'guest';
+                    console.log('Feedback params:', params);
+                    break;
             }
             
-            console.log('Sending delete request:', deleteParams);
+            // Validate required parameters
+            const missingParams = validateParams(sheetName, params);
+            if (missingParams.length > 0) {
+                showToast(`Missing required fields: ${missingParams.join(', ')}`, 'error');
+                buttonElement.innerHTML = originalHtml;
+                buttonElement.disabled = false;
+                showLoading(false);
+                return;
+            }
             
-            // Send request to Apps Script
+            // Send delete request
             const response = await fetch(APPS_SCRIPT_URL, {
                 method: 'POST',
-                body: new URLSearchParams(deleteParams)
+                body: new URLSearchParams(params)
             });
             
             const result = await response.json();
+            console.log('Delete response:', result);
             
             if (result.status === 'success') {
-                showToast('Record deleted successfully from database', 'success');
+                showToast('Record deleted successfully', 'success');
                 
-                // Only remove the row from UI after successful deletion
-                const row = buttonElement.closest('tr');
-                if (row) {
-                    // Add a fade-out effect
-                    row.style.transition = 'opacity 0.3s';
-                    row.style.opacity = '0';
-                    setTimeout(() => {
+                // Animate row removal
+                row.style.transition = 'opacity 0.3s';
+                row.style.opacity = '0';
+                setTimeout(() => {
+                    if (row.parentNode) {
                         row.remove();
-                    }, 300);
-                }
+                        
+                        // Update student count if in students tab
+                        if (sheetName === 'students') {
+                            const studentCount = document.querySelectorAll('#studentsTableBody tr').length;
+                            document.getElementById('studentCount').innerText = studentCount;
+                        }
+                    }
+                }, 300);
                 
-                // Refresh data after a short delay
+                // Refresh data
                 setTimeout(async () => {
                     await loadData();
-                    
-                    // Refresh current tab
                     const activeTab = document.querySelector('.tab-content.active')?.id;
                     if (activeTab) {
                         refreshTab(activeTab);
                     }
-                    
-                    if (currentUser && currentUser.roll) {
-                        refreshUserDashboard(currentUser.roll);
-                    }
                 }, 1000);
             } else {
-                showToast('Error deleting record: ' + (result.message || 'Unknown error'), 'error');
-                console.error('Delete error response:', result);
-                // Restore button
-                buttonElement.innerHTML = originalButtonHtml;
-                buttonElement.disabled = originalButtonDisabled;
+                showToast(`Delete failed: ${result.message || 'Unknown error'}`, 'error');
+                console.error('Delete error details:', result);
+                buttonElement.innerHTML = originalHtml;
+                buttonElement.disabled = false;
             }
             
         } catch (error) {
             console.error('Delete error:', error);
-            showToast('Network error while deleting: ' + error.message, 'error');
-            // Restore button
-            buttonElement.innerHTML = originalButtonHtml;
-            buttonElement.disabled = originalButtonDisabled;
+            showToast(`Error: ${error.message}`, 'error');
+            buttonElement.innerHTML = originalHtml;
+            buttonElement.disabled = false;
         } finally {
             showLoading(false);
         }
+    }
+
+    // Validate required parameters for each sheet type
+    function validateParams(sheetName, params) {
+        const required = {
+            'students': ['roll'],
+            'teachers': ['email'],
+            'notices': ['title', 'date'],
+            'diary': ['date', 'class', 'section', 'subject', 'entry'],
+            'homework': ['class', 'section', 'subject', 'assignment'],
+            'marks': ['roll', 'subject', 'exam_type'],
+            'attendance': ['roll', 'date'],
+            'library': ['title', 'link'],
+            'syllabus': ['subject', 'class', 'file_link'],
+            'date_sheets': ['exam_type', 'class'],
+            'Feedback': ['suggestion', 'date']
+        };
+        
+        const missing = [];
+        (required[sheetName] || []).forEach(field => {
+            if (!params[field] || params[field].trim() === '') {
+                missing.push(field);
+            }
+        });
+        
+        return missing;
+    }
+
+    // Override the existing delete function calls
+    async function performDelete(sheetName, params, buttonElement) {
+        // This function is now replaced by enhancedDelete
+        // But we keep it for backward compatibility
+        return enhancedDelete(sheetName, buttonElement);
     }
 
     // Helper function to refresh specific tab
@@ -2069,102 +2157,84 @@
         return mapping[tabId] || tabId.replace('tab', '').toLowerCase();
     }
 
-    // ===== UPDATED EVENT DELEGATION FOR DELETE BUTTONS =====
+    // ===== EVENT DELEGATION FOR DELETE BUTTONS =====
     document.addEventListener('click', function(e) {
-        // Find delete button - look for both class and onclick attributes
         const deleteBtn = e.target.closest('.delete-btn, [onclick*="delete"]');
         if (!deleteBtn) return;
         
-        // Don't interfere with specific delete functions that have their own handlers
-        if (deleteBtn.hasAttribute('onclick') && 
-            (deleteBtn.getAttribute('onclick').includes('deleteStudent') || 
-             deleteBtn.getAttribute('onclick').includes('deleteTeacher'))) {
-            return;
-        }
-        
         e.preventDefault();
         
-        const row = deleteBtn.closest('tr');
-        if (!row) return;
+        // Check if it's a marks delete button or other specific delete functions
+        if (deleteBtn.hasAttribute('onclick')) {
+            const onclickAttr = deleteBtn.getAttribute('onclick');
+            
+            // If it's a student delete button, let the onclick handler work
+            if (onclickAttr.includes('deleteStudent(')) {
+                return; // Let the specific deleteStudent function handle it
+            }
+            
+            if (onclickAttr.includes('sendResultWhatsApp') || 
+                onclickAttr.includes('deleteTeacher')) {
+                return;
+            }
+        }
         
         const activeTab = document.querySelector('.tab-content.active')?.id;
         if (!activeTab) return;
         
-        let params = {};
-        let sheetName = getSheetNameFromTab(activeTab);
-        
-        // Extract data based on active tab
+        // Don't handle student tab deletions here - they're handled by deleteStudent function
         if (activeTab === 'tabStudents') {
-            const roll = row.cells[0]?.innerText?.trim();
-            if (roll) params = { roll };
-            else return;
-        }
-        else if (activeTab === 'tabTeachers') {
-            const email = row.cells[1]?.innerText?.trim();
-            if (email) params = { email };
-            else return;
-        }
-        else if (activeTab === 'tabLibrary') {
-            const title = row.cells[0]?.innerText?.trim();
-            const link = row.cells[1]?.querySelector('a')?.href || '';
-            if (title) params = { title, link };
-            else return;
-        }
-        else if (activeTab === 'tabNotices') {
-            const title = row.cells[0]?.innerText?.trim();
-            const date = row.cells[1]?.innerText?.trim();
-            if (title && date) params = { title, date };
-            else return;
-        }
-        else if (activeTab === 'tabSyllabus') {
-            const subject = row.cells[0]?.innerText?.trim();
-            const className = row.cells[1]?.innerText?.trim();
-            const fileLink = row.cells[3]?.querySelector('a')?.href || '';
-            if (subject && className) params = { subject, class: className, file_link: fileLink };
-            else return;
-        }
-        else if (activeTab === 'tabHomework') {
-            const className = row.cells[0]?.innerText?.trim();
-            const section = row.cells[1]?.innerText?.trim();
-            const subject = row.cells[2]?.innerText?.trim();
-            const assignment = row.cells[3]?.innerText?.trim();
-            if (className && section && subject && assignment) {
-                params = { class: className, section, subject, assignment };
-            } else return;
-        }
-        else if (activeTab === 'tabDiary') {
-            const date = row.cells[0]?.innerText?.trim();
-            const className = row.cells[1]?.innerText?.trim();
-            const section = row.cells[2]?.innerText?.trim();
-            const subject = row.cells[3]?.innerText?.trim();
-            const entry = row.cells[4]?.innerText?.trim();
-            if (date && className && section && subject && entry) {
-                params = { date, class: className, section, subject, entry };
-            } else return;
-        }
-        else if (activeTab === 'tabDateSheets') {
-            const examType = row.cells[0]?.innerText?.trim();
-            const className = row.cells[1]?.innerText?.trim();
-            if (examType && className) {
-                params = { exam_type: examType, class: className };
-            } else return;
-        }
-        else if (activeTab === 'tabFeedback') {
-            const suggestion = row.cells[0]?.innerText?.trim();
-            const date = row.cells[1]?.innerText?.trim();
-            const user = row.cells[2]?.innerText?.trim() || 'guest';
-            if (suggestion && date) {
-                params = { suggestion, date, user };
-            } else return;
-        }
-        else if (activeTab === 'tabMarks') {
-            // For marks table, we need more complex logic
-            return; // Let the existing onclick handler work
+            return;
         }
         
-        // Call the updated performDelete with the button reference
-        performDelete(sheetName, params, deleteBtn);
+        const sheetName = getSheetNameFromTab(activeTab);
+        enhancedDelete(sheetName, deleteBtn);
     });
+
+    // ===== STUDENT CRUD - FIXED VERSION =====
+    function editStudent(roll) {
+        const student = appData.students.find(s => s.roll === roll);
+        if (!student) return;
+        document.getElementById('studentName').value = student.name || '';
+        document.getElementById('studentClass').value = student.class || '9';
+        document.getElementById('studentSection').value = student.section || 'A';
+        document.getElementById('studentParentMobile').value = student.parent_mobile || '';
+        document.getElementById('studentMobile').value = student.mobile || '';
+        currentEditRoll = roll;
+        document.querySelector('#addStudentModal h3').innerText = 'Edit Student';
+        document.querySelector('#addStudentModal button[type="submit"]').innerHTML = '<i class="fas fa-save mr-2"></i>Update';
+        toggleModal('addStudentModal');
+    }
+
+    // Fixed delete student function
+    async function deleteStudent(roll) {
+        if (!confirm(`⚠️ Are you sure you want to permanently delete student with roll number ${roll}? This action cannot be undone.`)) {
+            return;
+        }
+        
+        // Find the row containing this student
+        const rows = document.querySelectorAll('#studentsTableBody tr');
+        let targetRow = null;
+        let deleteButton = null;
+        
+        for (let row of rows) {
+            const firstCell = row.cells[0]?.innerText?.trim();
+            if (firstCell === roll) {
+                targetRow = row;
+                // Find the delete button within this row
+                deleteButton = row.querySelector('.btn-action-delete');
+                break;
+            }
+        }
+        
+        if (!targetRow) {
+            showToast('Could not find student row', 'error');
+            return;
+        }
+        
+        // Call enhancedDelete with the found button
+        await enhancedDelete('students', deleteButton || targetRow.querySelector('.delete-btn'));
+    }
 
     // ===== UPDATED SEND TO SHEET FUNCTION =====
     async function sendToSheet(data) {
@@ -2504,45 +2574,67 @@
         showToast(isPrivacyMode?'Privacy ON':'Privacy OFF','info'); 
     }
 
-    // ===== STUDENT CRUD =====
-    function editStudent(roll) {
-        const student = appData.students.find(s => s.roll === roll);
-        if (!student) return;
-        document.getElementById('studentName').value = student.name || '';
-        document.getElementById('studentClass').value = student.class || '9';
-        document.getElementById('studentSection').value = student.section || 'A';
-        document.getElementById('studentParentMobile').value = student.parent_mobile || '';
-        document.getElementById('studentMobile').value = student.mobile || '';
-        currentEditRoll = roll;
-        document.querySelector('#addStudentModal h3').innerText = 'Edit Student';
-        document.querySelector('#addStudentModal button[type="submit"]').innerHTML = '<i class="fas fa-save mr-2"></i>Update';
-        toggleModal('addStudentModal');
-    }
-    
-    async function deleteStudent(roll) {
-        const row = document.querySelector(`tr[data-roll="${roll}"]`);
-        await performDelete('students', { roll }, row);
-    }
-
     // ===== POPULATE ADMIN TABLES =====
     function populateAdminTables() {
-        let active = appData.students.filter(s=>s.status!=='inactive');
+        let active = appData.students.filter(s => s.status !== 'inactive');
         document.getElementById('studentCount').innerText = active.length;
-        document.getElementById('studentsTableBody').innerHTML = active.map(s=>{
-            let parent = isPrivacyMode ? '<span class="privacy-mask"><i class="fas fa-eye-slash mr-1"></i>Hidden</span>' : (s.parent_mobile||'');
-            return `<tr data-roll="${s.roll}"><td>${s.roll}</td><td>${s.name}</td><td>${s.class}</td><td>${s.section}</td><td>${parent}</td><td><div class="flex gap-2"><button onclick="editStudent('${s.roll}')" class="btn-action-edit text-blue-600"><i class="fas fa-edit"></i></button><button onclick="deleteStudent('${s.roll}')" class="btn-action-delete text-red-600"><i class="fas fa-trash"></i></button><button onclick="sendWhatsAppToParent('${s.roll}')" class="btn-action-whatsapp text-green-600"><i class="fab fa-whatsapp"></i></button><button onclick="sendRollNumberWhatsApp('${s.roll}')" class="btn-action-roll text-amber-600"><i class="fas fa-id-card"></i></button></div></td></tr>`;
-        }).join('') || '<tr><td colspan="6">No students</td></tr>';
         
-        document.getElementById('teachersTableBody').innerHTML = appData.teachers.map((t, index) => `<tr><td>${t.name}</td><td>${t.email}</td><td>${t.created_at||''}</td><td><button onclick="deleteTeacher('${index}')" class="delete-btn"><i class="fas fa-trash"></i></button></td></tr>`).join('')||'<tr><td colspan="4">No teachers</td></tr>';
+        document.getElementById('studentsTableBody').innerHTML = active.map(s => {
+            let parent = isPrivacyMode ? '<span class="privacy-mask"><i class="fas fa-eye-slash mr-1"></i>Hidden</span>' : (s.parent_mobile || '');
+            return `<tr data-roll="${s.roll}">
+                <td>${s.roll}</td>
+                <td>${s.name}</td>
+                <td>${s.class}</td>
+                <td>${s.section}</td>
+                <td>${parent}</td>
+                <td>
+                    <div class="flex gap-2">
+                        <button onclick="editStudent('${s.roll}')" class="btn-action-edit text-blue-600" title="Edit Student">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button onclick="deleteStudent('${s.roll}')" class="btn-action-delete text-red-600 delete-btn" title="Delete Student">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                        <button onclick="sendWhatsAppToParent('${s.roll}')" class="btn-action-whatsapp text-green-600" title="Send WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </button>
+                        <button onclick="sendRollNumberWhatsApp('${s.roll}')" class="btn-action-roll text-amber-600" title="Send Roll Number">
+                            <i class="fas fa-id-card"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>`;
+        }).join('') || '<tr><td colspan="6" class="text-center py-4">No students found</td></tr>';
+        
+        document.getElementById('teachersTableBody').innerHTML = appData.teachers.map((t, index) => 
+            `<tr><td>${t.name}</td><td>${t.email}</td><td>${t.created_at || ''}</td>
+            <td><button onclick="deleteTeacher('${index}')" class="delete-btn text-red-600 hover:bg-red-50 p-2 rounded-lg transition">
+            <i class="fas fa-trash"></i></button></td></tr>`
+        ).join('') || '<tr><td colspan="4" class="text-center py-4">No teachers</td></tr>';
         
         let markSelect = document.getElementById('markStudent');
-        if(markSelect) markSelect.innerHTML = '<option value="">Select</option>'+active.map(s=>`<option value="${s.roll}">${s.roll} - ${s.name}</option>`).join('');
+        if (markSelect) markSelect.innerHTML = '<option value="">Select Student</option>' + active.map(s => 
+            `<option value="${s.roll}">${s.roll} - ${s.name}</option>`
+        ).join('');
         
-        document.getElementById('marksTableBody').innerHTML = appData.marks.map(m=>{
-            let st = active.find(s=>s.roll===m.roll); if(!st) return '';
-            let perc = parseFloat(m.percentage)||0;
-            return `<tr><td>${st.name}</td><td>${m.subject}</td><td>${m.exam_type}</td><td>${m.obtained}/${m.total}</td><td>${perc}%</td><td><button onclick="sendResultWhatsApp('${m.roll}','${m.subject}','${m.exam_type}',${m.obtained},${m.total},'${st.name}')" class="btn-action-whatsapp text-green-600"><i class="fab fa-whatsapp"></i></button></td></tr>`;
-        }).join('') || '<tr><td colspan="6">No results</td></tr>';
+        document.getElementById('marksTableBody').innerHTML = appData.marks.map(m => {
+            let st = active.find(s => s.roll === m.roll); 
+            if (!st) return '';
+            let perc = parseFloat(m.percentage) || 0;
+            return `<tr>
+                <td>${st.name}</td>
+                <td>${m.subject}</td>
+                <td>${m.exam_type}</td>
+                <td>${m.obtained}/${m.total}</td>
+                <td>${perc}%</td>
+                <td>
+                    <button onclick="sendResultWhatsApp('${m.roll}','${m.subject}','${m.exam_type}',${m.obtained},${m.total},'${st.name}')" 
+                        class="text-green-600 hover:text-green-800 transition p-2 rounded-lg hover:bg-green-50" title="Send Result via WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </button>
+                </td>
+            </tr>`;
+        }).join('') || '<tr><td colspan="6" class="text-center py-4">No results found</td></tr>';
     }
 
     // ===== TEACHER MANAGEMENT =====
@@ -2560,7 +2652,7 @@
     function deleteTeacher(index) {
         let teacher = appData.teachers[index];
         const row = document.querySelector(`#teachersTableBody tr:nth-child(${index + 1})`);
-        performDelete('teachers', { email: teacher.email }, row);
+        enhancedDelete('teachers', row.querySelector('.delete-btn'));
     }
 
     // ===== LIBRARY MANAGEMENT =====
@@ -2583,7 +2675,7 @@
     function deleteLibraryItem(index) {
         let item = appData.library[index];
         const row = document.querySelector(`#libraryTableBody tr:nth-child(${index + 1})`);
-        performDelete('library', { title: item.title, link: item.link }, row);
+        enhancedDelete('library', row.querySelector('.delete-btn'));
     }
 
     // ===== NOTICES MANAGEMENT =====
@@ -2605,7 +2697,7 @@
     function deleteNoticeItem(index) {
         let item = appData.notices[index];
         const row = document.querySelector(`#noticesTableBody tr:nth-child(${index + 1})`);
-        performDelete('notices', { title: item.title, date: item.date }, row);
+        enhancedDelete('notices', row.querySelector('.delete-btn'));
     }
 
     // ===== SYLLABUS MANAGEMENT =====
@@ -2628,7 +2720,7 @@
     function deleteSyllabusItem(index) {
         let item = appData.syllabus[index];
         const row = document.querySelector(`#syllabusTableBody tr:nth-child(${index + 1})`);
-        performDelete('syllabus', { subject: item.subject, class: item.class, file_link: item.file_link }, row);
+        enhancedDelete('syllabus', row.querySelector('.delete-btn'));
     }
 
     // ===== HOMEWORK MANAGEMENT =====
@@ -2706,12 +2798,7 @@
     function deleteHomeworkItem(index) {
         let item = appData.homework[index];
         const row = document.querySelector(`#homeworkTableBody tr:nth-child(${index + 1})`);
-        performDelete('homework', { 
-            class: item.class, 
-            section: item.section, 
-            subject: item.subject, 
-            assignment: item.assignment 
-        }, row);
+        enhancedDelete('homework', row.querySelector('.delete-btn'));
     }
 
     // ===== DAILY DIARY MANAGEMENT =====
@@ -2812,13 +2899,7 @@
     function deleteDiaryItem(index) {
         let item = appData.diary[index];
         const row = document.querySelector(`#diaryTableBody tr:nth-child(${index + 1})`);
-        performDelete('diary', { 
-            date: item.date, 
-            class: item.class, 
-            section: item.section, 
-            subject: item.subject, 
-            entry: item.entry 
-        }, row);
+        enhancedDelete('diary', row.querySelector('.delete-btn'));
     }
 
     // ===== DATE SHEETS MANAGEMENT =====
@@ -2840,10 +2921,7 @@
     function deleteDateSheetItem(index) {
         let item = appData.dateSheets[index];
         const row = document.querySelector(`#dateSheetsTableBody tr:nth-child(${index + 1})`);
-        performDelete('date_sheets', { 
-            exam_type: item.exam_type, 
-            class: item.class
-        }, row);
+        enhancedDelete('date_sheets', row.querySelector('.delete-btn'));
     }
 
     // ===== FEEDBACK MANAGEMENT =====
@@ -2855,7 +2933,7 @@
     function deleteFeedbackItem(index) {
         let item = appData.feedback[index];
         const row = document.querySelector(`#feedbackTableBody tr:nth-child(${index + 1})`);
-        performDelete('Feedback', { suggestion: item.suggestion, date: item.date }, row);
+        enhancedDelete('Feedback', row.querySelector('.delete-btn'));
     }
 
     // ===== BATCH MARKS FUNCTIONS =====
