@@ -30,7 +30,7 @@
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Hira Science Academy" />
     
-    <title>Student Portal | Hira Science Academy - Attendance, Results & Reports</title>
+    <title>Student Portal | Hira Science Academy</title>
     <meta name="description" content="Access attendance, exam results, and academic performance at the official Hira Science Academy Student Portal.">
 
     <link rel="canonical" href="https://hiraacademy.online/student-portal.html">
@@ -1742,7 +1742,7 @@
                 </div>
             </div>
 
-            <!-- Attendance Tab - With improved date display -->
+            <!-- Attendance Tab -->
             <div id="tab-attendance" class="tab-content">
                 <div class="portal-card p-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-6">Attendance Management</h3>
@@ -1990,7 +1990,7 @@
                 </div>
             </div>
 
-            <!-- Notices Tab - FIXED with Content column -->
+            <!-- Notices Tab -->
             <div id="tab-notices" class="tab-content">
                 <div class="portal-card p-6">
                     <h3 class="text-xl font-bold text-gray-800 mb-6">📢 Notice Board</h3>
@@ -2142,7 +2142,7 @@
                 </div>
             </div>
 
-            <!-- Notice Board for Parents - FIXED -->
+            <!-- Notice Board for Parents -->
             <div class="portal-card p-6 mb-8 border-l-4 border-yellow-400">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-lg font-bold text-gray-800 flex items-center">
@@ -2208,7 +2208,7 @@
 
             <!-- Two Column Layout: Attendance Calendar + Performance Chart -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-                <!-- Left: Attendance Calendar - Professional design -->
+                <!-- Left: Attendance Calendar -->
                 <div class="portal-card p-6">
                     <div class="flex items-center justify-between mb-5">
                         <h3 class="text-lg font-bold text-gray-800 flex items-center">
@@ -2289,7 +2289,7 @@
     </main>
 
     <!-- Modals -->
-    <!-- Add Student Modal - With Email, Address and Other Class option -->
+    <!-- Add Student Modal -->
     <div id="addStudentModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
         <div class="portal-card w-full max-w-md">
             <div class="p-6">
@@ -2354,7 +2354,7 @@
         </div>
     </div>
 
-    <!-- Edit Student Modal - With Email, Address and Other Class option -->
+    <!-- Edit Student Modal -->
     <div id="editStudentModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
         <div class="portal-card w-full max-w-md">
             <div class="p-6">
@@ -2637,10 +2637,10 @@
         // Register Chart.js plugin
         Chart.register(ChartDataLabels);
 
-        // CONFIGURATION - Updated with your new Apps Script URL
+        // CONFIGURATION
         const SHEET_ID = '1iyNR7BnpLjTnOcI43PlpQ-2V0JdxCj7r_pTyOe67gWo';
         const BASE_URL = 'https://opensheet.elk.sh';
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxzYQbB-uPQRMExXQUurMxcxGn-WvMbTpMoKnSC6kla967MRtw3rNsDye09KYZAOrAt_w/exec';
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwMovF9YAjV9ahHRVeNgbyLLDQB8ay2KPuTshqdVPCDlVoydRGCA-K4ta160MQ4p4G9mw/exec';
         const PORTAL_URL = 'https://hiraacademy.online/student-portal.html';
 
         const SUBJECTS = {
@@ -2867,7 +2867,7 @@
                     notices: notices || []
                 };
                 
-                console.log('Loaded notices:', appData.notices); // Debug log
+                console.log('Loaded notices:', appData.notices);
                 
                 if (currentUser?.type === 'teacher') {
                     populateAdminTables();
@@ -2897,7 +2897,7 @@
             }
         }
 
-        // ===== NOTICES FUNCTIONS - COMPLETELY FIXED =====
+        // ===== NOTICES FUNCTIONS - FIXED =====
         document.getElementById('noticeForm').onsubmit = async (e) => {
             e.preventDefault();
             
@@ -2914,7 +2914,6 @@
             
             showLoading(true, 'Publishing notice...');
             
-            // Create FormData directly for better compatibility
             const formData = new FormData();
             formData.append('sheet', 'notices');
             formData.append('title', title);
@@ -2969,14 +2968,19 @@
                                      notice.priority === 'Normal' ? 'bg-blue-100 text-blue-800' : 
                                      'bg-gray-100 text-gray-800';
                 
-                return `<tr data-notice-id="${index}" data-notice-title="${notice.title}" data-notice-date="${notice.date}">
+                // Escape single quotes in title for the onclick function
+                const escapedTitle = notice.title.replace(/'/g, "\\'");
+                
+                return `<tr data-notice-title="${notice.title}" data-notice-date="${notice.date}">
                     <td class="font-medium">${notice.title || ''}</td>
                     <td>${notice.content ? notice.content.substring(0, 50) + (notice.content.length > 50 ? '...' : '') : ''}</td>
                     <td>${notice.date || ''}</td>
                     <td><span class="px-2 py-1 rounded-full text-xs ${priorityColor}">${notice.priority || 'Normal'}</span></td>
                     <td>${notice.target_class || 'All'}</td>
                     <td>
-                        <button onclick="deleteNotice('${notice.title}', '${notice.date}')" class="btn-action-delete text-red-600" title="Delete Notice">
+                        <button onclick="deleteNotice('${escapedTitle}', '${notice.date}')" 
+                                class="btn-action-delete text-red-600 hover:bg-red-50 p-2 rounded-lg transition-all" 
+                                title="Permanently Delete Notice">
                             <i class="fas fa-trash"></i>
                         </button>
                     </td>
@@ -2984,40 +2988,57 @@
             }).join('');
         }
 
+        // ===== FIXED NOTICE DELETION FUNCTION =====
         async function deleteNotice(title, date) {
-            if (!confirm(`Are you sure you want to delete notice "${title}"?`)) return;
+            if (!confirm(`Are you sure you want to permanently delete notice "${title}"?`)) return;
+            
+            // Normalize date to YYYY-MM-DD format
+            let normalizedDate = date;
+            try {
+                normalizedDate = new Date(date).toISOString().split('T')[0];
+            } catch (e) {
+                console.warn('Date normalization failed, using original:', date);
+            }
+            
+            console.log('Deleting notice:', { title, originalDate: date, normalizedDate });
             
             // Find the row for animation
-            const rows = document.querySelectorAll('#noticesTableBody tr');
             let targetRow = null;
+            const rows = document.querySelectorAll('#noticesTableBody tr');
             
             for (let row of rows) {
-                const rowTitle = row.getAttribute('data-notice-title') || row.cells[0]?.innerText?.trim();
-                const rowDate = row.getAttribute('data-notice-date') || row.cells[2]?.innerText?.trim();
-                
-                if (rowTitle === title && rowDate === date) {
-                    targetRow = row;
-                    break;
+                const cells = row.cells;
+                if (cells.length >= 3) {
+                    const cellTitle = cells[0]?.innerText?.trim();
+                    const cellDate = cells[2]?.innerText?.trim();
+                    if (cellTitle === title && cellDate === date) {
+                        targetRow = row;
+                        break;
+                    }
                 }
             }
             
             showLoading(true, 'Deleting notice...');
             
-            // Create FormData for delete
+            // Create FormData with correct parameters
             const formData = new FormData();
             formData.append('sheet', 'notices');
             formData.append('action', 'delete_permanent');
-            formData.append('title', title);
-            formData.append('date', date);
+            formData.append('title', title.trim());
+            formData.append('date', normalizedDate);
+            formData.append('timestamp', new Date().toISOString());
             
             try {
-                await fetch(SCRIPT_URL, {
+                const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
                     body: formData
                 });
                 
-                showToast('Notice deleted', 'success');
+                console.log('Delete request sent for notice:', { title, date: normalizedDate });
+                
+                // Show success message
+                showToast('Notice deleted successfully', 'success');
                 
                 // Animate row removal
                 if (targetRow) {
@@ -3027,26 +3048,39 @@
                     setTimeout(() => {
                         if (targetRow.parentNode) {
                             targetRow.remove();
-                            // If no rows left, show empty state
-                            if (document.querySelectorAll('#noticesTableBody tr').length === 0) {
-                                document.getElementById('noticesTableBody').innerHTML = `<tr>
-                                    <td colspan="6" class="text-center py-8 text-gray-500">
-                                        <div class="empty-state">
-                                            <i class="fas fa-bullhorn"></i>
-                                            <p class="text-lg font-medium">No notices published</p>
-                                            <p class="text-sm mt-1">Add your first notice using the form above</p>
-                                        </div>
-                                    </td>
-                                </tr>`;
+                            
+                            // Check if table is empty
+                            const remainingRows = document.querySelectorAll('#noticesTableBody tr').length;
+                            if (remainingRows === 0) {
+                                document.getElementById('noticesTableBody').innerHTML = `
+                                    <tr>
+                                        <td colspan="6" class="text-center py-8 text-gray-500">
+                                            <div class="empty-state">
+                                                <i class="fas fa-bullhorn"></i>
+                                                <p class="text-lg font-medium">No notices published</p>
+                                                <p class="text-sm mt-1">Add your first notice using the form above</p>
+                                            </div>
+                                        </td>
+                                    </tr>`;
                             }
                         }
                     }, 300);
                 }
                 
-                setTimeout(() => loadData(), 1000);
+                // Update appData by removing the notice
+                appData.notices = appData.notices.filter(n => 
+                    !(n.title && n.title.trim() === title.trim() && 
+                      new Date(n.date).toISOString().split('T')[0] === normalizedDate)
+                );
+                
+                // Reload notices after 1 second to ensure sync
+                setTimeout(() => {
+                    loadData();
+                }, 1000);
+                
             } catch (error) {
                 console.error('Error deleting notice:', error);
-                showToast('Failed to delete notice', 'error');
+                showToast('Failed to delete notice. Please try again.', 'error');
             } finally {
                 showLoading(false);
             }
@@ -3175,7 +3209,7 @@
                             <button onclick="deleteStudent('${roll}')" class="btn-action-delete text-red-600 delete-btn" title="Delete">
                                 <i class="fas fa-trash"></i>
                             </button>
-                            <button onclick="sendRollNumberWhatsApp('${roll}')" class="btn-action-roll text-amber-600" title="Send Roll Number & Login Details">
+                            <button onclick="sendRollNumberWhatsApp('${roll}')" class="btn-action-roll text-amber-600" title="Send Roll Number">
                                 <i class="fas fa-id-card"></i>
                             </button>
                             <button onclick="sendLoginDetailsWhatsApp('${roll}')" class="btn-action-whatsapp text-green-600" title="Send Complete Login Details">
@@ -3433,7 +3467,6 @@
             }
         };
 
-        // FIXED: Permanent delete function
         function deleteStudent(roll) {
             const student = appData.students.find(s => (s.roll_number || s.roll) === roll);
             if (!student) {
@@ -3441,7 +3474,6 @@
                 return;
             }
             
-            // Find the row for animation
             const row = document.querySelector(`tr[data-roll="${roll}"]`);
             
             document.getElementById('deleteRoll').value = roll;
@@ -3456,7 +3488,6 @@
             
             const roll = document.getElementById('deleteRoll').value;
             
-            // Find the row for animation
             const row = document.querySelector(`tr[data-roll="${roll}"]`);
             
             toggleModal('deleteStudentModal');
@@ -3472,7 +3503,6 @@
             if (result) {
                 showToast(`Student permanently deleted`, 'success');
                 
-                // Animate row removal
                 if (row) {
                     row.style.transition = 'opacity 0.3s, transform 0.3s';
                     row.style.opacity = '0';
@@ -3480,7 +3510,6 @@
                     setTimeout(() => {
                         if (row.parentNode) {
                             row.remove();
-                            // Update student count
                             const activeStudents = appData.students.filter(s => s.status !== 'inactive');
                             document.getElementById('studentCount').innerText = activeStudents.length;
                         }
@@ -4146,7 +4175,13 @@
             
             // Marks stats
             const marks = appData.marks.filter(m => m.roll_number === roll);
-            const avg = marks.length ? (marks.reduce((a, m) => a + (parseFloat(m.percentage) || 0), 0) / marks.length).toFixed(1) : 0;
+            
+            // Calculate average across all subjects
+            let avg = 0;
+            if (marks.length > 0) {
+                const totalPerc = marks.reduce((sum, m) => sum + (parseFloat(m.percentage) || 0), 0);
+                avg = (totalPerc / marks.length).toFixed(1);
+            }
             
             document.getElementById('dashboardAvgMarks').innerText = avg;
             document.getElementById('totalExamsCount').innerText = marks.length;
@@ -4184,7 +4219,7 @@
             // Render calendar
             renderCalendar(roll);
             
-            // Results chart
+            // Results chart - Show subject averages
             if (resultsChart) resultsChart.destroy();
             
             const ctx = document.getElementById('resultsChart')?.getContext('2d');
@@ -4197,6 +4232,7 @@
                 document.getElementById('noChartData').classList.add('hidden');
                 document.getElementById('resultsChart').classList.remove('hidden');
                 
+                // Group marks by subject and calculate average
                 const subjectAverages = {};
                 marks.forEach(m => {
                     const subject = m.subject;
@@ -4260,7 +4296,7 @@
                 });
             }
             
-            // Marks table
+            // Marks table - Show individual results
             const sortedMarks = [...marks].sort((a, b) => new Date(b.date) - new Date(a.date));
             let marksHtml = '';
             
@@ -4346,7 +4382,7 @@
             if (currentUser) renderCalendar(currentUser.roll);
         }
 
-        // ===== PROFESSIONAL REPORT CARD FUNCTION =====
+        // ===== PROFESSIONAL REPORT CARD FUNCTION - WITH SUBJECT AVERAGES =====
         function downloadAcademicReport() {
             if (!currentUser || currentUser.type !== 'teacher') {
                 showToast('Please login as teacher', 'warning');
@@ -4487,7 +4523,7 @@
             
             const marks = appData.marks.filter(m => m.roll_number === roll);
             
-            // Group marks by subject to show average
+            // Group marks by subject to show averages
             const subjectAverages = {};
             marks.forEach(m => {
                 const subject = m.subject;
@@ -4556,34 +4592,31 @@
                 
                 <div class="report-card-section">
                     <div class="report-card-section-title">
-                        <i class="fas fa-chart-line"></i> Subject-wise Performance
+                        <i class="fas fa-chart-line"></i> Subject-wise Performance (Averages)
                     </div>
                     <table class="report-card-table">
                         <thead>
                             <tr>
                                 <th>Subject</th>
-                                <th>Exam</th>
-                                <th>Date</th>
-                                <th>Marks</th>
-                                <th>Percentage</th>
+                                <th>Tests Taken</th>
+                                <th>Average Percentage</th>
                                 <th>Grade</th>
                             </tr>
                         </thead>
                         <tbody>
-                            ${marks.slice(0, 12).map(m => {
-                                const perc = parseFloat(m.percentage) || 0;
-                                const grade = getGrade(perc);
+                            ${Object.keys(subjectAverages).map(subject => {
+                                const data = subjectAverages[subject];
+                                const avgPerc = (data.total / data.count).toFixed(1);
+                                const grade = getGrade(avgPerc);
                                 return `<tr>
-                                    <td><strong>${m.subject || 'N/A'}</strong></td>
-                                    <td>${m.exam_type || 'N/A'}</td>
-                                    <td>${m.date || 'N/A'}</td>
-                                    <td>${m.obtained_marks || 0}/${m.total_marks || 100}</td>
+                                    <td><strong>${subject}</strong></td>
+                                    <td>${data.count}</td>
                                     <td>
                                         <div style="display: flex; align-items: center; gap: 10px;">
-                                            <div class="report-card-progress" style="width: 80px;">
-                                                <div class="report-card-progress-bar" style="width: ${perc}%; background: ${grade.class === 'grade-a-plus' ? '#22c55e' : grade.class === 'grade-a' ? '#3b82f6' : grade.class === 'grade-b' ? '#8b5cf6' : grade.class === 'grade-c' ? '#f59e0b' : '#ef4444'};"></div>
+                                            <div class="report-card-progress" style="width: 150px;">
+                                                <div class="report-card-progress-bar" style="width: ${avgPerc}%; background: ${grade.class === 'grade-a-plus' ? '#22c55e' : grade.class === 'grade-a' ? '#3b82f6' : grade.class === 'grade-b' ? '#8b5cf6' : grade.class === 'grade-c' ? '#f59e0b' : '#ef4444'};"></div>
                                             </div>
-                                            <span style="font-weight: 600; min-width: 45px;">${perc}%</span>
+                                            <span style="font-weight: 600; min-width: 45px;">${avgPerc}%</span>
                                         </div>
                                     </td>
                                     <td><span class="report-card-grade" style="background: ${grade.class === 'grade-a-plus' ? '#22c55e' : grade.class === 'grade-a' ? '#3b82f6' : grade.class === 'grade-b' ? '#8b5cf6' : grade.class === 'grade-c' ? '#f59e0b' : '#ef4444'};">${grade.grade}</span></td>
@@ -4594,7 +4627,7 @@
                 </div>
                 
                 <div class="report-card-footer">
-                    <p>This is a computer-generated report card. Valid without signature.</p>
+                    <p>This is a computer-generated report card showing subject averages. Valid without signature.</p>
                     <p style="margin-top: 10px;">© Hira Science Academy - All Rights Reserved</p>
                 </div>
                 <div class="report-card-watermark">HSA • ${student.roll_number || student.roll}</div>
@@ -4613,6 +4646,16 @@
                 showToast('Report card downloaded successfully!', 'success');
             });
         }
+
+        // ===== DEBUG FUNCTION =====
+        window.debugNotices = function() {
+            console.log('Current appData.notices:', appData.notices);
+            showToast(`Found ${appData.notices.length} notices in memory`, 'info');
+            
+            if (appData.notices.length > 0) {
+                alert(`Sample notice:\nTitle: ${appData.notices[0].title}\nDate: ${appData.notices[0].date}\nContent: ${appData.notices[0].content}`);
+            }
+        };
 
         // ===== INIT =====
         window.onload = () => {
@@ -4647,6 +4690,10 @@
             });
             
             loadData();
+            
+            setTimeout(() => {
+                console.log('Debug: Type "debugNotices()" in console to see notices data');
+            }, 2000);
         };
     </script>
 </body>
