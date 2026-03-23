@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Under Construction | Hira Science Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background: radial-gradient(circle at 20% 20%, #0d9488, #022c22);
+  min-height:100vh;
+  overflow:hidden;
+}
+
+/* Animated border glow */
+.card-wrap{
+  padding:2px;
+  border-radius:30px;
+  background:linear-gradient(270deg,#14b8a6,#06b6d4,#14b8a6);
+  background-size:400% 400%;
+  animation:gradientMove 6s ease infinite;
+}
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.glass{
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(20px);
+  border-radius:28px;
+}
+
+/* Loader */
+.loader{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:6px solid #e5e7eb;
+  border-top:6px solid #14b8a6;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{
+  to{transform:rotate(360deg);}
+}
+
+/* floating */
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+}
+.float{animation:float 4s ease-in-out infinite;}
+
+/* buttons */
+.btn{
+  transition:all .3s ease;
+}
+.btn:hover{
+  transform:translateY(-4px) scale(1.03);
+}
+
+/* particles */
+.particle{
+  position:absolute;
+  background:white;
+  border-radius:50%;
+  opacity:.2;
+}
+</style>
+</head>
+
+<body class="flex items-center justify-center relative">
+
+<div id="particles"></div>
+
+<div class="card-wrap max-w-xl w-full">
+<div class="glass p-8 text-center">
+
+<!-- ICON -->
+<div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-2xl bg-teal-500/20 float">
+<i class="fas fa-microscope text-3xl text-teal-600"></i>
+</div>
+
+<h1 class="text-4xl font-extrabold text-gray-800">Under Construction 🚧</h1>
+<p class="text-gray-500 mt-2">We are crafting something amazing</p>
+
+<!-- PAGE NAME -->
+<div class="mt-4 text-sm font-semibold text-teal-600" id="pageName"></div>
+
+<!-- AUTHOR -->
+<p class="mt-4 text-gray-800 font-bold text-lg">Muhammad Tayyab</p>
+<p class="text-sm text-gray-500">Math & Physics Specialist</p>
+
+<!-- SCHOOL BADGE -->
+<div class="mt-3 flex justify-center">
+  <span class="bg-teal-50 text-teal-700 px-4 py-1.5 rounded-full text-xs font-semibold border border-teal-200 shadow-sm">
+    🏫 Govt. Christian High School Daska
+  </span>
+</div>
+
+<!-- LOADER -->
+<div class="flex justify-center mt-6">
+  <div class="loader"></div>
+</div>
+
+<!-- PROGRESS -->
+<div class="mt-4">
+  <div class="w-full bg-gray-200 rounded-full h-2">
+    <div id="bar" class="bg-teal-500 h-2 rounded-full" style="width:0%"></div>
+  </div>
+  <p class="text-sm text-gray-600 mt-1">
+    <span id="percent">0</span>% • Redirecting in <span id="time">10</span>s
+  </p>
+</div>
+
+<!-- BUTTONS -->
+<div class="grid grid-cols-2 gap-4 mt-6">
+
+<a href="https://hiraacademy.online/"
+class="btn bg-teal-600 text-white py-3 rounded-xl font-bold">
+<i class="fas fa-home"></i> Home
+</a>
+
+<button onclick="stopRedirect()" id="stayBtn"
+class="btn border-2 border-teal-300 text-teal-700 py-3 rounded-xl font-bold">
+Stay Here
+</button>
+
+</div>
+
+</div>
+</div>
+
+<script>
+// PAGE NAME AUTO DETECT
+let name = window.location.pathname.split('/').pop().replace('.html','').replace(/-/g,' ');
+document.getElementById('pageName').innerText = name || "Under Construction";
+
+// PROGRESS SYSTEM
+let total=10;
+let time=10;
+let percent=0;
+
+let interval=setInterval(()=>{
+  time--;
+  percent+=10;
+
+  document.getElementById('time').innerText=time;
+  document.getElementById('percent').innerText=percent;
+  document.getElementById('bar').style.width=percent+"%";
+
+  if(time<=0){
+    clearInterval(interval);
+    window.location.href="https://hiraacademy.online/";
+  }
+
+},1000);
+
+// STOP BUTTON
+function stopRedirect(){
+  clearInterval(interval);
+  document.getElementById('time').innerText="∞";
+  document.getElementById('percent').innerText="Paused";
+  document.getElementById('stayBtn').innerHTML="Paused ✔";
+}
+
+// PARTICLES SYSTEM
+function particles(){
+  let container=document.getElementById('particles');
+  for(let i=0;i<30;i++){
+    let p=document.createElement('div');
+    p.className='particle';
+
+    let size=Math.random()*5+2;
+    p.style.width=size+"px";
+    p.style.height=size+"px";
+    p.style.left=Math.random()*100+"vw";
+    p.style.top=Math.random()*100+"vh";
+
+    container.appendChild(p);
+
+    p.animate([
+      {transform:'translateY(0)'},
+      {transform:'translateY(-120px)'}
+    ],{
+      duration:3000+Math.random()*3000,
+      iterations:Infinity
+    });
+  }
+}
+particles();
+</script>
+
+</body>
+</html>
