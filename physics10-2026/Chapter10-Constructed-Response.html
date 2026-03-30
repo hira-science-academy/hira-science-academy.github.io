@@ -213,6 +213,50 @@
       50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
       100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
     }
+    /* Progress bar styles */
+    .reading-progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #e2e8f0;
+      z-index: 1001;
+    }
+    .reading-progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #0f766e;
+      transition: width 0.1s ease-out;
+    }
+    @media (max-width: 768px) {
+      .reading-progress-container { top: 64px; }
+    }
+    /* answer toggle styles */
+    .answer-content {
+      display: none;
+      margin-top: 1rem;
+    }
+    .answer-content.show {
+      display: block;
+    }
+    .toggle-answer-btn {
+      margin-top: 0.75rem;
+      background-color: #e2e8f0;
+      color: #1e293b;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .toggle-answer-btn:hover {
+      background-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
   </style>
 
   <!-- Structured Data: Article -->
@@ -262,6 +306,11 @@
 </head>
 <body class="text-gray-800">
 
+  <!-- Reading Progress Bar (fixed below nav) -->
+  <div class="reading-progress-container">
+    <div class="reading-progress-bar" id="readingProgressBar"></div>
+  </div>
+
   <!-- Navigation Bar -->
   <nav class="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -309,7 +358,20 @@
     </p>
   </header>
 
-  <main class="max-w-4xl mx-auto px-4 py-12 bg-white rounded-2xl shadow-lg mt-8 mb-16 border border-gray-100">
+  <!-- Breadcrumb Navigation -->
+  <div class="max-w-4xl mx-auto px-4 pt-6 text-sm text-gray-500">
+    <nav class="flex flex-wrap items-center gap-1" aria-label="Breadcrumb">
+      <a href="https://hiraacademy.online/" class="hover:text-teal-600 transition">Home</a>
+      <span class="mx-1">›</span>
+      <a href="https://hiraacademy.online/Physics-10th-New-2026.html" class="hover:text-teal-600 transition">Physics 10</a>
+      <span class="mx-1">›</span>
+      <a href="#" class="hover:text-teal-600 transition">Chapter 10</a>
+      <span class="mx-1">›</span>
+      <span class="text-gray-700 font-medium">Constructed Response</span>
+    </nav>
+  </div>
+
+  <main class="max-w-4xl mx-auto px-4 py-8 bg-white rounded-2xl shadow-lg mt-4 mb-16 border border-gray-100">
     <div class="text-center mb-8">
       <p class="text-teal-700 font-semibold text-xl mb-2">✏️ Chapter 10: Thermal Physics – Constructed Response Questions</p>
       <p class="mt-2 text-gray-600 text-center max-w-3xl mx-auto">Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska. Based on <strong>PECTAA 2026 syllabus (National Curriculum 2023)</strong>.</p>
@@ -317,6 +379,8 @@
         <p class="text-gray-700 text-justify"><span class="font-semibold text-teal-700">📖 What's Inside:</span> This section covers <strong>constructed response questions</strong> from the official PECTAA 2026 curriculum: thermal expansion of bridges vs. glass jars, specific heat capacity comparison, evaporation in dry air, latent heat and phase change during ice melting, and thermal expansion of electric transmission wires. Each answer is presented in the exact exam-ready format.</p>
       </div>
     </div>
+
+
 
     <!-- Embedded PDF (Google Drive) -->
     <div class="flex justify-center mb-12">
@@ -331,7 +395,13 @@
         ></iframe>
       </div>
     </div>
-
+    <!-- DOWNLOAD PDF BUTTON (added before iframe) -->
+    <div class="flex justify-center mb-5">
+      <a href="https://drive.google.com/uc?export=download&id=1e-Wnb1URqs0wIERf6X83CXiRbfSisZxl" 
+         class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
+        ⬇️ Download PDF (Constructed Response Questions)
+      </a>
+    </div>
     <!-- Related Resources -->
     <div class="text-center mt-8 mb-12">
       <p class="font-bold mb-4 text-teal-600 text-lg">📚 Related Resources – Chapter 10: Thermal Physics</p>
@@ -357,33 +427,48 @@
       </div>
     </div>
 
-    <!-- Constructed Response Questions Content (exact from PDF) -->
+    <!-- Constructed Response Questions Content with Show/Hide Answers -->
     <div class="content-section" id="questions-section">
-      <h2>✏️ Constructed Response Questions & Answers – Exact PDF Wording (PECTAA 2026)</h2>
+      <h2>✏️ Constructed Response Questions & Answers (PECTAA 2026)</h2>
 
       <div id="cr1" class="definition-box text-justify">
-        <strong>10.1 Why do bridges need expansion joints but glass jars with metal lids do not, even though both experience temperature changes? Discuss in terms of the nature of thermal expansion.</strong><br><br>
-        Bridges need expansion joints to allow them to expand and contract with temperature changes without cracking or deforming. Glass jars with metal lids do not require joints because the metal lid can expand slightly when heated (e.g., with warm water) to loosen it. The difference arises from different coefficients of linear expansion and the practical design of the structures.
+        <strong>10.1 Why do bridges need expansion joints but glass jars with metal lids do not, even though both experience temperature changes? Discuss in terms of the nature of thermal expansion.</strong>
+        <div class="answer-content" id="answer1">
+          <br>Bridges need expansion joints to allow them to expand and contract with temperature changes without cracking or deforming. Glass jars with metal lids do not require joints because the metal lid can expand slightly when heated (e.g., with warm water) to loosen it. The difference arises from different coefficients of linear expansion and the practical design of the structures.
+        </div>
+        <button class="toggle-answer-btn" data-target="answer1">Show Answer</button>
       </div>
 
       <div id="cr2" class="definition-box text-justify">
-        <strong>10.2 If two liquids are heated under same conditions, but one of them heats up faster, what does this indicate about the specific heat capacity?</strong><br><br>
-        The liquid that heats up faster has a lower specific heat capacity. Substances with lower specific heat require less heat energy to raise their temperature, so they heat and cool more quickly.
+        <strong>10.2 If two liquids are heated under same conditions, but one of them heats up faster, what does this indicate about the specific heat capacity?</strong>
+        <div class="answer-content" id="answer2">
+          <br>The liquid that heats up faster has a lower specific heat capacity. Substances with lower specific heat require less heat energy to raise their temperature, so they heat and cool more quickly.
+        </div>
+        <button class="toggle-answer-btn" data-target="answer2">Show Answer</button>
       </div>
 
       <div id="cr3" class="definition-box text-justify">
-        <strong>10.3 Why does a liquid evaporate faster when the air is dry?</strong><br><br>
-        Evaporation is faster in dry air because dry air can absorb more water vapour. If the air is already humid, it slows down evaporation since the air is closer to saturation.
+        <strong>10.3 Why does a liquid evaporate faster when the air is dry?</strong>
+        <div class="answer-content" id="answer3">
+          <br>Evaporation is faster in dry air because dry air can absorb more water vapour. If the air is already humid, it slows down evaporation since the air is closer to saturation.
+        </div>
+        <button class="toggle-answer-btn" data-target="answer3">Show Answer</button>
       </div>
 
       <div id="cr4" class="definition-box text-justify">
-        <strong>10.4 When a piece of ice melts, the temperature does not increase even though heat is supplied. Where does the energy go, and why is this important in phase change?</strong><br><br>
-        The supplied heat is used to break the strong bonds between solid particles, allowing them to move freely as a liquid. This is important because the energy goes into changing the state of the substance, not raising its temperature. The temperature remains constant until the entire ice melts.
+        <strong>10.4 When a piece of ice melts, the temperature does not increase even though heat is supplied. Where does the energy go, and why is this important in phase change?</strong>
+        <div class="answer-content" id="answer4">
+          <br>The supplied heat is used to break the strong bonds between solid particles, allowing them to move freely as a liquid. This is important because the energy goes into changing the state of the substance, not raising its temperature. The temperature remains constant until the entire ice melts.
+        </div>
+        <button class="toggle-answer-btn" data-target="answer4">Show Answer</button>
       </div>
 
       <div id="cr5" class="definition-box text-justify">
-        <strong>10.5 Why do electric transmission wires sag in summer and tighten in winter?</strong><br><br>
-        In summer, heat increases the kinetic energy of particles, causing the wire to <strong>expand and sag</strong>. In winter, cooling reduces particle movement, causing the wire to <strong>contract and tighten</strong>.
+        <strong>10.5 Why do electric transmission wires sag in summer and tighten in winter?</strong>
+        <div class="answer-content" id="answer5">
+          <br>In summer, heat increases the kinetic energy of particles, causing the wire to <strong>expand and sag</strong>. In winter, cooling reduces particle movement, causing the wire to <strong>contract and tighten</strong>.
+        </div>
+        <button class="toggle-answer-btn" data-target="answer5">Show Answer</button>
       </div>
     </div>
 
@@ -460,17 +545,21 @@
     </div>
   </main>
 
-  <!-- 🧭 Internal Linking Section for SEO & Navigation -->
-  <section class="max-w-7xl mx-auto px-6 py-14">
-    <div class="bg-gradient-to-br from-teal-50 via-white to-cyan-50 rounded-3xl shadow-xl p-10 border border-gray-200">
-      <h2 class="text-3xl font-bold text-center text-teal-800 mb-6 tracking-wide">
+<!-- 📚 Internal Linking Section -->
+<section class="max-w-7xl mx-auto px-6 pb-14">
+  <details class="bg-gradient-to-br from-teal-50 via-white to-cyan-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
+ <summary class="text-2xl md:text-3xl font-bold text-teal-800 cursor-pointer hover:text-teal-600 list-none flex items-center justify-center gap-3 text-center">
+      <span class="text-3xl">📚</span> Explore Complete Learning Resources (Class 9, 10 & More)
+    </summary>
+
+    <div class="mt-8">
+      <h2 class="text-2xl font-bold text-center text-teal-800 mb-3 tracking-wide">
         Explore Learning Resources Across All Grades
       </h2>
-      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">
+      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">
         From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.
       </p>
 
-      <!-- Resource Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
         <!-- Class 9 Resources -->
@@ -479,13 +568,13 @@
             <span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources
           </h3>
           <nav>
-            <ul class="space-y-4">
+            <ul class="space-y-4 text-sm">
               <li><a href="https://hiraacademy.online/Mathematics-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
               <li><a href="https://hiraacademy.online/Physics-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
               <li><a href="https://hiraacademy.online/Chemistry-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
               <li><a href="https://hiraacademy.online/Biology-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
               <li><a href="https://hiraacademy.online/Islamiat-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li>
-              <li><a href="https://hiraacademy.online/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li>
+              <li><a href="https://hiraacademy.online/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li>
             </ul>
           </nav>
         </article>
@@ -496,7 +585,7 @@
             <span class="bg-emerald-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources
           </h3>
           <nav>
-            <ul class="space-y-4">
+            <ul class="space-y-4 text-sm">
               <li><a href="https://hiraacademy.online/Mathematics-10th-New-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
               <li><a href="https://hiraacademy.online/Physics-10th-New-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
               <li><a href="https://hiraacademy.online/Chemistry-10th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
@@ -511,12 +600,12 @@
           <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
             <span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources
           </h3>
-          <ul class="space-y-4">
+          <ul class="space-y-4 text-sm">
             <li><a href="https://hiraacademy.online/fsc-entry-test.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li>
             <li><a href="https://hiraacademy.online/physics-numericals.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li>
             <li><a href="https://hiraacademy.online/math-mistakes.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li>
             <li><a href="https://hiraacademy.online/physics-formulas.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li>
-            <li><a href="https://hiraacademy.online/blog.html" class="text-teal-600 font-semibold hover:text-teal-700 flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li>
+            <li><a href="https://hiraacademy.online/blog.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li>
           </ul>
         </article>
 
@@ -525,12 +614,12 @@
           <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
             <span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links
           </h3>
-          <ul class="space-y-4">
+          <ul class="space-y-4 text-sm">
             <li><a href="https://hiraacademy.online/courses-details.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li>
             <li><a href="https://hiraacademy.online/contact.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li>
             <li><a href="https://hiraacademy.online/about.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li>
             <li><a href="https://hiraacademy.online/career-services.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li>
-            <li><a href="https://hiraacademy.online/student-portal.html" class="text-teal-600 font-semibold hover:text-teal-700 flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li>
+            <li><a href="https://hiraacademy.online/student-portal.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li>
           </ul>
         </article>
 
@@ -539,12 +628,12 @@
           <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
             <span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources
           </h3>
-          <ul class="space-y-4">
+          <ul class="space-y-4 text-sm">
             <li><a href="https://hiraacademy.online/Math-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li>
             <li><a href="https://hiraacademy.online/Physics-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li>
             <li><a href="https://hiraacademy.online/grade9-math-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li>
             <li><a href="https://hiraacademy.online/grade9-physics-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li>
-            <li><a href="https://hiraacademy.online/grade9-mathematics-model-paper-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li>
+            <li><a href="https://hiraacademy.online/grade9-mathematics-model-paper-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li>
           </ul>
         </article>
 
@@ -553,27 +642,28 @@
           <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center">
             <span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies
           </h3>
-          <ul class="space-y-4">
+          <ul class="space-y-4 text-sm">
             <li><a href="https://hiraacademy.online/terms.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li>
             <li><a href="https://hiraacademy.online/privacy-policy.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li>
             <li><a href="https://hiraacademy.online/refund-policy.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li>
             <li><a href="https://hiraacademy.online/accessibility.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li>
-            <li><a href="https://hiraacademy.online/mission.html" class="text-teal-600 font-semibold hover:text-teal-700 flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li>
+            <li><a href="https://hiraacademy.online/mission.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li>
           </ul>
         </article>
 
       </div>
 
       <!-- CTA -->
-      <div class="mt-12 text-center">
+      <div class="mt-10 text-center">
         <a href="https://hiraacademy.online/index.html" class="inline-flex items-center bg-teal-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-teal-700 hover:shadow-xl transition-all">
           <span class="mr-3">🏠</span>Return to Homepage
         </a>
       </div>
     </div>
-  </section>
+  </details>
+</section>
 
-  <!-- Footer -->
+<!-- Footer -->
   <footer class="bg-teal-900 text-gray-100 shadow-xl relative z-10">
     <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
@@ -632,24 +722,52 @@
 
   <script>
     (function(){
+      // Mobile menu toggle
       const menuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       if(menuButton && mobileMenu) {
         menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
       }
+      // Back to top
       const backToTopButton = document.getElementById('backToTop');
       window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) backToTopButton.classList.add('show');
         else backToTopButton.classList.remove('show');
       });
       backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      // Chapters toggle
       const toggleBtn = document.getElementById('toggleChapters');
       const chaptersList = document.getElementById('chaptersList');
       if(toggleBtn && chaptersList){
-        toggleBtn.addEventListener('click', () => {
-          chaptersList.classList.toggle('hidden');
-        });
+        toggleBtn.addEventListener('click', () => chaptersList.classList.toggle('hidden'));
       }
+      
+      // Reading Progress Bar
+      const progressBar = document.getElementById('readingProgressBar');
+      function updateProgressBar() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const winHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        const maxScroll = docHeight - winHeight;
+        const scrollPercent = (scrollTop / maxScroll) * 100;
+        if (progressBar) progressBar.style.width = scrollPercent + '%';
+      }
+      window.addEventListener('scroll', updateProgressBar);
+      window.addEventListener('resize', updateProgressBar);
+      updateProgressBar();
+      
+      // Show/Hide answer toggles
+      const toggleBtns = document.querySelectorAll('.toggle-answer-btn');
+      toggleBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('data-target');
+          const answerDiv = document.getElementById(targetId);
+          if (answerDiv) {
+            answerDiv.classList.toggle('show');
+            this.textContent = answerDiv.classList.contains('show') ? 'Hide Answer' : 'Show Answer';
+          }
+        });
+      });
     })();
   </script>
 </body>
