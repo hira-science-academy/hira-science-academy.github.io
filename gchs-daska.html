@@ -1,17 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <script type="text/javascript">
   (function() {
-    var oldHost = "hira-science-academy.github.io";
-    var newHost = "hiraacademy.online";
-    if (window.location.hostname === oldHost) {
-      var newUrl = "https://" + newHost + window.location.pathname + window.location.search + window.location.hash;
-      window.location.replace(newUrl);
-    }
+    // REDIRECT REMOVED: No redirect logic remains.
   })();
-</script>
 </script>
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ">
     </script>
@@ -28,17 +21,17 @@
     <title>Student Portal | Govt. Christian High School Daska</title>
     <meta name="title" content="Student Portal | Govt. Christian High School Daska">
     <meta name="description" content="Official Student Information Portal for GCHS Daska (EMIS: 34310007). Access real-time results, attendance, and academic records.">
-    <link rel="canonical" href="https://hiraacademy.online/gchs-daska.html">
+    <link rel="canonical" href="https://hira-science-academy.github.io/gchs-daska.html">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://hiraacademy.online/gchs-daska.html">
+    <meta property="og:url" content="https://hira-science-academy.github.io/gchs-daska.html">
     <meta property="og:title" content="GCHS Daska - Student Information Portal">
     <meta property="og:description" content="Digital access to student records, attendance, and exam results for Govt. Christian High School Daska.">
-    <meta property="og:image" content="https://hiraacademy.online/images/gchs-portal-og.webp">
+    <meta property="og:image" content="https://hira-science-academy.github.io/images/gchs-portal-og.webp">
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://hiraacademy.online/gchs-daska.html">
+    <meta property="twitter:url" content="https://hira-science-academy.github.io/gchs-daska.html">
     <meta property="twitter:title" content="GCHS Daska - Student Information Portal">
     <meta property="twitter:description" content="Digital access to student records, attendance, and exam results for Govt. Christian High School Daska.">
-    <meta property="twitter:image" content="https://hiraacademy.online/images/gchs-portal-og.webp">
+    <meta property="twitter:image" content="https://hira-science-academy.github.io/images/gchs-portal-og.webp">
     <meta name="theme-color" content="#1e3a8a">
     <link rel="icon" href="images/gchs_logo.webp" type="image/png" />
     
@@ -1872,7 +1865,7 @@
     const SPREADSHEET_ID = '1vYIBSOfb6P41qswMIhYWd_SjiE0t3vGqA5meSFTU_t8';
     const BASE_URL = 'https://opensheet.elk.sh';
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCWa0W_ZbD2VqsySoNvEueMdJPPUuXKTxEhzPD1rlj0Z4ijvDTtLhdbOlh47Ejj59Y/exec';
-    const PORTAL_LINK = 'https://hiraacademy.online/gchs-daska.html';
+    const PORTAL_LINK = 'https://hira-science-academy.github.io/gchs-daska.html';
 
     // Data structure
     let appData = { 
@@ -2112,7 +2105,7 @@
             case 'tabTeachers': 
                 document.getElementById('teachersTableBody').innerHTML = appData.teachers.map((t, index) => 
                     `<tr><td>${t.name}</td><td>${t.email}</td><td>${t.created_at||''}</td>
-                    <td><button onclick="deleteTeacher('${index}')" class="delete-btn">
+                     <td><button onclick="deleteTeacher('${index}')" class="delete-btn">
                     <i class="fas fa-trash"></i></button></td></tr>`
                 ).join('') || '<tr><td colspan="4">No teachers</td></tr>';
                 break;
@@ -2598,7 +2591,7 @@
         
         document.getElementById('teachersTableBody').innerHTML = appData.teachers.map((t, index) => 
             `<tr><td>${t.name}</td><td>${t.email}</td><td>${t.created_at || ''}</td>
-            <td><button onclick="deleteTeacher('${index}')" class="delete-btn text-red-600 hover:bg-red-50 p-2 rounded-lg transition">
+             <td><button onclick="deleteTeacher('${index}')" class="delete-btn text-red-600 hover:bg-red-50 p-2 rounded-lg transition">
             <i class="fas fa-trash"></i></button></td></tr>`
         ).join('') || '<tr><td colspan="4" class="text-center py-4">No teachers</td></tr>';
         
@@ -2896,7 +2889,7 @@
     function loadDateSheetsTable() {
         let tbody = document.getElementById('dateSheetsTableBody');
         if(!tbody) return;
-        tbody.innerHTML = appData.dateSheets.map((item, index) => `<tr><td>${item.exam_type}</td><td>${item.class}</td><td><a href="${item.file_link}" target="_blank" class="text-blue-600">View</a></td><td><button onclick="deleteDateSheetItem('${index}')" class="delete-btn"><i class="fas fa-trash"></i></button></td></tr>`).join('');
+        tbody.innerHTML = appData.dateSheets.map((item, index) => `<td><td>${item.exam_type}</td><td>${item.class}</td><td><a href="${item.file_link}" target="_blank" class="text-blue-600">View</a></td><td><button onclick="deleteDateSheetItem('${index}')" class="delete-btn"><i class="fas fa-trash"></i></button></td></tr>`).join('');
     }
     document.getElementById('dateSheetsForm').onsubmit = async (e) => {
         e.preventDefault();
@@ -3488,7 +3481,7 @@ function downloadOfficialReportCard() {
                     <span style="display: block; font-size: 11px; color: #666; font-weight: normal;">
                         (based on ${count} test${count > 1 ? 's' : ''})
                     </span>
-                </td>
+                 </td>
                 <td style="padding: 12px; border-bottom: 1px solid #e2e8f0;">
                     <div style="display: flex; align-items: center; gap: 10px;">
                         <div style="flex: 1; height: 8px; background: #e2e8f0; border-radius: 4px;">
@@ -3496,10 +3489,10 @@ function downloadOfficialReportCard() {
                         </div>
                         <span style="min-width: 45px; font-weight: 600;">${perc}%</span>
                     </div>
-                </td>
+                 </td>
                 <td style="padding: 12px; border-bottom: 1px solid #e2e8f0; text-align: center;">
                     <span style="background: ${barColor}; color: white; padding: 4px 12px; border-radius: 20px; font-weight: 600;">${grade}</span>
-                </td>
+                 </td>
             </tr>
         `;
     });
@@ -3793,7 +3786,7 @@ function downloadOfficialReportCard() {
                     window.onload = function() {
                         window.print();
                     }
-                </` + `script>
+                <\/script>
 
             </body>
             </html>
