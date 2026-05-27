@@ -318,6 +318,48 @@ if (location.protocol === "http:" && location.hostname === "hiraacademy.online")
   color: #fde047;
   text-decoration: underline;
 }
+
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.marquee-content {
+  display: inline-flex;
+  width: max-content;
+  animation: smoothMarquee 55s linear infinite;
+  will-change: transform;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes smoothMarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.announcement-link {
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Better readability on mobile */
+@media (max-width: 640px) {
+  .marquee-content {
+    animation-duration: 70s;
+  }
+
+  #announcement-bar {
+    font-size: 13px;
+  }
+}
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
@@ -386,41 +428,110 @@ if (location.protocol === "http:" && location.hostname === "hiraacademy.online")
   </div>
 </nav>
 
-  <!-- 📢 Stylish Announcements Bar -->
-  <div id="announcement-bar" class="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white text-sm sm:text-base font-medium overflow-hidden shadow-lg fixed top-20 left-0 right-0 z-40 transition-transform duration-300 rounded-b-2xl backdrop-blur-md">
-    <div class="relative py-3 pl-44 pr-6">
+<!-- 📢 Smooth Stylish Announcements Bar -->
+<div id="announcement-bar" class="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white text-sm sm:text-base font-medium shadow-lg fixed top-20 left-0 right-0 z-40 rounded-b-2xl backdrop-blur-md overflow-hidden">
+  
+  <div class="relative flex items-center h-14">
 
-      <!-- Label -->
-      <div class="absolute left-0 top-0 bottom-0 flex items-center bg-white/20 backdrop-blur-md px-5 font-bold uppercase tracking-wide text-xs sm:text-sm z-10 rounded-r-xl shadow-md border-r border-white/30">
-        📢 Announcements
-      </div>
+    <!-- Fixed Label -->
+    <div class="absolute left-0 top-0 bottom-0 flex items-center bg-white/20 backdrop-blur-md px-5 font-bold uppercase tracking-wide text-xs sm:text-sm z-20 rounded-r-xl shadow-md border-r border-white/30">
+      📢 Announcements
+    </div>
 
-      <!-- Scrolling Area -->
-      <div class="overflow-hidden whitespace-nowrap">
-        <div class="scrolling-text text-white/90">
+    <!-- Marquee Wrapper -->
+    <div class="marquee-wrapper ml-40 overflow-hidden whitespace-nowrap w-full">
+      
+      <div class="marquee-content flex items-center">
 
-          <!-- NEW ANNOUNCEMENT for Class 10 Physics Chapter 10 -->
-          <span class="mx-10">🔥 <a href="Chapter10-Short-Questions.html" class="announcement-link font-bold underline decoration-yellow-300 underline-offset-2">NEW: Class 10 Physics Chapter 10 (Thermal Physics) Short Questions with Answers – Based on PECTAA 2026 Syllabus – View Now!</a></span>
+        <!-- ORIGINAL ITEMS -->
+        <span class="mx-12 inline-flex items-center">
+          🌡️
+          <a href="https://hiraacademy.online/physics10-2026/Chapter-10-Thermal-Physics.html"
+             target="_blank"
+             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200">
+            NEW: Class 10 Physics Chapter 10 – Thermal Physics Notes with PDF, MCQs, Numericals & Long Questions
+          </a>
+        </span>
 
-          <span class="mx-10">📘 <a href="https://hiraacademy.online/Physics-10th-New-2026.html" target="_blank" class="announcement-link">Class 10 Physics (New 2026 PECTAA): Complete chapter-wise notes, short questions, long questions, numericals, and MCQs – All Units 10-21 available!</a></span>
+        <span class="mx-12 inline-flex items-center">
+          🔥
+          <a href="https://hiraacademy.online/physics10-2026/Chapter-11-Transfer-of-Thermal-Energy.html"
+             target="_blank"
+             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200">
+            Chapter 11 – Transfer of Thermal Energy complete notes now available with solved exercises & MCQs
+          </a>
+        </span>
 
-          <span class="mx-10">⭐ <a href="https://hiraacademy.online/Physics-9th.html" target="_blank" class="announcement-link">Physics 9th Class: Complete chapter-wise notes, solved numerical problems, MCQs, and definitions are now available – View Online</a></span>
+        <span class="mx-12 inline-flex items-center">
+          🌊
+          <a href="https://hiraacademy.online/physics10-2026/Chapter-12-Waves.html"
+             target="_blank"
+             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200">
+            NEW: Physics Chapter 12 – Waves uploaded with Numericals, MCQs & Exam Preparation Material
+          </a>
+        </span>
 
-          <span class="mx-10">🎯 <a href="https://hiraacademy.online/Mathematics-9th-MCQs.html" target="_blank" class="announcement-link">NEW: Class 9 Mathematics Chapter-wise MCQs Practice Test with instant results & review – Try Now!</a></span>
+        <span class="mx-12 inline-flex items-center">
+          ➗
+          <a href="https://hiraacademy.online/math10-2026/Unit1-Exercise1.1-M-Tayyab.html"
+             target="_blank"
+             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200">
+            Mathematics 10th (2026): Unit 1 – Complex Numbers Notes with solved exercises available now
+          </a>
+        </span>
 
-          <span class="mx-10">📗 <a href="https://hiraacademy.online/Mathematics-10th.html" target="_blank" class="announcement-link">Mathematics 10th Class: Complete notes for all chapters – Definitions, solved exercises, MCQs – Download Now!</a></span>
+        <span class="mx-12 inline-flex items-center">
+          📈
+          <a href="https://hiraacademy.online/math10-2026/Unit4-Exercise4.1-M-Tayyab.html"
+             target="_blank"
+             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200">
+            Unit 4 – Functions & Graphs Notes uploaded with graphing techniques & scientific applications
+          </a>
+        </span>
 
-          <span class="mx-10">✅ <a href="https://hiraacademy.online/grade9-math-pairing-scheme-2026.html" target="_blank" class="announcement-link">Class 9 & 10 Pairing Schemes 2026 – Download latest exam pattern and paper schemes</a></span>
+        <span class="mx-12 inline-flex items-center">
+          📚
+          <a href="https://hiraacademy.online/math10-2026/"
+             target="_blank"
+             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
+            Class 10 Mathematics (New 2026 PECTAA Syllabus) complete notes for all Punjab Boards
+          </a>
+        </span>
 
-          <!-- Repeat for seamless loop -->
-          <span class="mx-10">🔥 <a href="Chapter10-Short-Questions.html" class="announcement-link font-bold underline decoration-yellow-300 underline-offset-2">NEW: Class 10 Physics Chapter 10 (Thermal Physics) Short Questions with Answers – Based on PECTAA 2026 Syllabus – View Now!</a></span>
+        <!-- DUPLICATE ITEMS FOR PERFECT LOOP -->
 
-          <span class="mx-10">📘 <a href="https://hiraacademy.online/Physics-10th-New-2026.html" target="_blank" class="announcement-link">Class 10 Physics (New 2026 PECTAA): Complete chapter-wise notes, short questions, long questions, numericals, and MCQs – All Units 10-21 available!</a></span>
+        <span class="mx-12 inline-flex items-center">
+          🌡️
+          <a href="https://hiraacademy.online/physics10-2026/Chapter-10-Thermal-Physics.html"
+             target="_blank"
+             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200">
+            NEW: Class 10 Physics Chapter 10 – Thermal Physics Notes with PDF, MCQs, Numericals & Long Questions
+          </a>
+        </span>
 
-        </div>
+        <span class="mx-12 inline-flex items-center">
+          🔥
+          <a href="https://hiraacademy.online/physics10-2026/Chapter-11-Transfer-of-Thermal-Energy.html"
+             target="_blank"
+             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200">
+            Chapter 11 – Transfer of Thermal Energy complete notes now available with solved exercises & MCQs
+          </a>
+        </span>
+
+        <span class="mx-12 inline-flex items-center">
+          🌊
+          <a href="https://hiraacademy.online/physics10-2026/Chapter-12-Waves.html"
+             target="_blank"
+             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200">
+            NEW: Physics Chapter 12 – Waves uploaded with Numericals, MCQs & Exam Preparation Material
+          </a>
+        </span>
+
       </div>
     </div>
   </div>
+</div>
+
 
 
 
