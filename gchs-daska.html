@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2377,13 +2378,26 @@
         if(tabId==='tabDateSheets') loadDateSheetsTable();
         if(tabId==='tabFeedback') loadFeedbackTable();
     }
-    function formatPhoneNumber(phone) { 
-        if(!phone) return null; 
-        let n = phone.replace(/\D/g,''); 
-        if(n.startsWith('0')) n='92'+n.substring(1); 
-        if(!n.startsWith('92')) n='92'+n; 
-        return n; 
+    function formatPhoneNumber(phone) {
+    if (!phone) return null;
+
+    let n = phone.replace(/\D/g, '');
+
+    if (n.startsWith('00')) {
+        n = n.substring(2);
     }
+
+    if (n.startsWith('0')) {
+        return '92' + n.substring(1);
+    }
+
+    // Already has a country code
+    if (n.length >= 11) {
+        return n;
+    }
+
+    return '92' + n;
+}
     
     function generateRollNumber(classNum, section) {
         const classSection = classNum + section;
