@@ -260,6 +260,23 @@
       background: #bbf7d0;
       font-weight: bold;
     }
+  /* ── MCQ table ── */
+  .mcq-wrapper { overflow-x: auto; margin-bottom: 20px; }
+  .mcq-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; min-width: 560px; }
+  .mcq-table th { background: #1e3a8a; color: #fff; padding: 9px 10px; text-align: center; font-size: 1rem; }
+  .mcq-table th.q-col { text-align: left; font-style: italic; font-size: 1.1rem; }
+  .mcq-table td { border: 1px solid #cbd5e1; padding: 8px 10px; vertical-align: top; text-align: center; }
+  .mcq-table td.q-text { text-align: left; font-size: 0.91rem; }
+  .mcq-table tr:nth-child(even) td { background: #f8fafc; }
+  .correct { font-weight: 700; color: #16a34a; }
+  .tick::after { content: ' ✓'; color: #16a34a; font-weight: 700; }
+
+  /* ── MCQ solution rows ── */
+  .sol-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; margin-bottom: 20px; }
+  .sol-table td { border: 1px solid #cbd5e1; padding: 9px 14px; vertical-align: top; }
+  .sol-table td:first-child { background: #1e3a8a; color: #fff; font-weight: 700; width: 36px; text-align: center; }
+  .sol-table tr:nth-child(even) td:not(:first-child) { background: #f8fafc; }
+
   </style>
 </head>
 <body class="text-gray-800">
@@ -374,413 +391,318 @@
 
 </div>
 
-  <!-- ============================================================ -->
-  <!--                     REVIEW EXERCISE SOLUTIONS                  -->
-  <!-- ============================================================ -->
 
-  <!-- ═══ Q1: MCQs ═══ -->
-  <div class="problem-box" id="q1">
-    <div class="problem-title">
-      <span class="num-badge">1</span>
-      <span>Four options are given against each statement. Encircle the correct one.</span>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
-    <div class="answer-content" id="answer1">
+<div class="section-heading">1. Four options are given against each statement. Encircle the correct one.</div>
 
-      <!-- MCQ 1 -->
-      <p class="font-semibold mt-2">1. If two polygons are similar, then:</p>
-      <div>
-        <span class="mcq-option">A. their corresponding angles are equal.</span>
-        <span class="mcq-option">B. their areas are equal.</span>
-        <span class="mcq-option">C. their volumes are equal.</span>
-        <span class="mcq-option">D. their corresponding sides are equal.</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: A</p>
-      <p class="text-sm text-gray-600">Similar polygons have corresponding angles equal and corresponding sides proportional.</p>
-      <hr class="divider-light">
+<div class="mcq-wrapper">
+<table class="mcq-table">
+  <thead>
+    <tr>
+      <th style="width:40px">Sr.<br>No.</th>
+      <th class="q-col">Questions</th>
+      <th style="width:14%"><em>A</em></th>
+      <th style="width:14%"><em>B</em></th>
+      <th style="width:14%"><em>C</em></th>
+      <th style="width:14%"><em>D</em></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td class="q-text">If two polygons are similar, then:</td>
+      <td class="correct tick">their corresponding angles are equal.</td>
+      <td>their areas are equal.</td>
+      <td>their volumes are equal.</td>
+      <td>their corresponding sides are equal.</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td class="q-text">The ratio of the areas of two similar polygons is:</td>
+      <td>equal to the ratio of their perimeters.</td>
+      <td class="correct tick">equal to the square of the ratio of their corresponding sides.</td>
+      <td>equal to the cube of the ratio of their corresponding sides.</td>
+      <td>equal to the sum of their corresponding sides.</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td class="q-text">If the volume of two similar solids is \(125\ cm^3\) and \(27\ cm^3\), the ratio of their corresponding heights is:</td>
+      <td>3 : 5</td>
+      <td class="correct tick">5 : 3</td>
+      <td>25 : 9</td>
+      <td>9 : 25</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td class="q-text">The exterior angle of a regular pentagon is:</td>
+      <td>\(40^\circ\)</td>
+      <td>\(45^\circ\)</td>
+      <td>\(60^\circ\)</td>
+      <td class="correct tick">\(72^\circ\)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td class="q-text">A parallelogram has an area of \(64\ cm^2\) and a similar parallelogram has an area of \(144\ cm^2\). If a side of the smaller parallelogram is \(8\ cm\), the corresponding side of the larger parallelogram is:</td>
+      <td>\(10\ cm\)</td>
+      <td class="correct tick">\(12\ cm\)</td>
+      <td>\(18\ cm\)</td>
+      <td>\(16\ cm\)</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td class="q-text">The total number of diagonals in a polygon with 9 sides is:</td>
+      <td>18</td>
+      <td>21</td>
+      <td>25</td>
+      <td class="correct tick">27</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td class="q-text">Two spheres are similar, and their radii are in the ratio 4 : 5. If the surface area of the larger sphere is \(500\pi\ cm^2\), what is the surface area of the smaller sphere?</td>
+      <td>\(256\pi\ cm^2\)</td>
+      <td class="correct tick">\(320\pi\ cm^2\)</td>
+      <td>\(400\pi\ cm^2\)</td>
+      <td>\(405\pi\ cm^2\)</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td class="q-text">A regular polygon has an exterior angle of \(30^\circ\). How many diagonals does the polygon have?</td>
+      <td class="correct tick">54</td>
+      <td>90</td>
+      <td>72</td>
+      <td>108</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td class="q-text">In a regular hexagon, the ratio of the length of a diagonal to the side length is:</td>
+      <td>\(\sqrt{3}:1\)</td>
+      <td class="correct tick">\(2:1\)</td>
+      <td>\(3:2\)</td>
+      <td>\(2:3\)</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td class="q-text">A regular polygon has an interior angle of \(165^\circ\). How many sides does it have?</td>
+      <td>15</td>
+      <td>16</td>
+      <td>20</td>
+      <td class="correct tick">24</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
-      <!-- MCQ 2 -->
-      <p class="font-semibold mt-2">2. The ratio of the areas of two similar polygons is:</p>
-      <div>
-        <span class="mcq-option">A. equal to the ratio of their perimeters.</span>
-        <span class="mcq-option correct">B. equal to the square of the ratio of their corresponding sides.</span>
-        <span class="mcq-option">C. equal to the cube of the ratio of their corresponding sides.</span>
-        <span class="mcq-option">D. equal to the sum of their corresponding sides.</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: B</p>
-      <p class="text-sm text-gray-600">The area ratio of similar polygons is the square of the ratio of their corresponding sides.</p>
-      <hr class="divider-light">
+<!-- ── MCQ Solutions ── -->
+<div class="section-heading">Solution of MCQs</div>
 
-      <!-- MCQ 3 -->
-      <p class="font-semibold mt-2">3. If the volume of two similar solids is 125 cm³ and 27 cm³, the ratio of their corresponding heights is:</p>
-      <div>
-        <span class="mcq-option">A. 3:5</span>
-        <span class="mcq-option correct">B. 5:3</span>
-        <span class="mcq-option">C. √25:9</span>
-        <span class="mcq-option">D. 9:25</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: B</p>
-      <p class="text-sm text-gray-600">
-        \(\frac{V_1}{V_2} = \left(\frac{h_1}{h_2}\right)^3 \Rightarrow \frac{125}{27} = \left(\frac{h_1}{h_2}\right)^3 \Rightarrow \frac{h_1}{h_2} = \frac{5}{3}\)
-      </p>
-      <hr class="divider-light">
+<table class="sol-table">
+  <tr><td>1</td><td>Similar polygons have corresponding angles equal and corresponding sides proportional.</td></tr>
+  <tr><td>2</td><td>The area ratio of similar polygons is the square of the ratio of their corresponding sides.</td></tr>
+  <tr>
+    <td>3</td>
+    <td>
+      \[\begin{aligned} \frac{V_1}{V_2} &= \left(\frac{l_1}{l_2}\right)^3 \\ \Rightarrow \frac{125}{27} &= \left(\frac{l_1}{l_2}\right)^3 \\ \sqrt[3]{\frac{125}{27}} &= \sqrt[3]{\left(\frac{l_1}{l_2}\right)^3} \\ \frac{5}{3} &= \frac{l_1}{l_2} \\ \frac{l_1}{l_2} &= \frac{5}{3} \end{aligned}\]
+    </td>
+  </tr>
+  <tr><td>4</td><td>Exterior angle of pentagon is \(= \dfrac{360^\circ}{5} = 72^\circ\)</td></tr>
+  <tr>
+    <td>5</td>
+    <td>
+      Ratio of areas of similar figures \(\dfrac{A_1}{A_2} = \left(\dfrac{l_1}{l_2}\right)^2\)
+      \[\begin{aligned} \frac{64}{144} &= \left(\frac{8}{l_2}\right)^2 \\ \sqrt{\frac{64}{144}} &= \sqrt{\left(\frac{8}{l_2}\right)^2} \\ \frac{8}{12} &= \frac{8}{l_2} \\ l_2 \times 8 &= 12 \times 8 \\ l_2 &= \frac{96}{8} \\ l_2 &= 12\ cm \end{aligned}\]
+    </td>
+  </tr>
+  <tr><td>6</td><td>The total number of diagonals in a polygon with 9 sides \(= \dfrac{n(n-3)}{2} = \dfrac{9(9-3)}{2} = \dfrac{54}{2} = 27\)</td></tr>
+  <tr>
+    <td>7</td>
+    <td>
+      Ratio of areas of similar figures is \(\dfrac{A_1}{A_2} = \left(\dfrac{l_1}{l_2}\right)^2\)
+      \[\begin{aligned} \frac{A_1}{500\pi} &= \left(\frac{4}{5}\right)^2 \\ \frac{A_1}{500\pi} &= \frac{16}{25} \\ A_1 \times 25 &= 16 \times 500\pi \\ A_1 &= \frac{16 \times 500\pi}{25} \\ A_1 &= 320\pi\ cm^2 \end{aligned}\]
+    </td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>
+      Exterior angle of a regular polygon is given: \(Exterior\ Angle = \dfrac{360^\circ}{n}\)
+      \[\begin{aligned} 30^\circ &= \frac{360^\circ}{n} \\ n &= \frac{360^\circ}{30^\circ} \\ no.\ of\ sides &= 12 \end{aligned}\]
+      Now the total number of diagonals in a polygon with 12 sides \(= \dfrac{n(n-3)}{2} = \dfrac{12(12-3)}{2} = \dfrac{108}{2} = 54\)
+    </td>
+  </tr>
+  <tr><td>9</td><td>In a regular hexagon, the longest diagonal connects opposite vertices and is <strong>twice the side length</strong>, so the ratio is \(2:1\).</td></tr>
+  <tr>
+    <td>10</td>
+    <td>
+      Exterior angle \(= 180^\circ - 165^\circ = 15^\circ\)
+      \[\begin{aligned} Exterior\ Angle &= \frac{360^\circ}{n} \\ 15^\circ &= \frac{360^\circ}{n} \\ n &= \frac{360^\circ}{15^\circ} \\ no.\ of\ sides &= 24 \end{aligned}\]
+    </td>
+  </tr>
+</table>
 
-      <!-- MCQ 4 -->
-      <p class="font-semibold mt-2">4. The exterior angle of a regular pentagon is:</p>
-      <div>
-        <span class="mcq-option">A. 40°</span>
-        <span class="mcq-option">B. 45°</span>
-        <span class="mcq-option">C. 60°</span>
-        <span class="mcq-option correct">D. 72°</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: D</p>
-      <p class="text-sm text-gray-600">Each exterior angle = \(\frac{360°}{n} = \frac{360°}{5} = 72°\)</p>
-      <hr class="divider-light">
+<!-- ════════════════════════════════════════
+     PART 2 – Short / Long Questions
+════════════════════════════════════════ -->
+<div class="section-heading">Short &amp; Long Questions</div>
 
-      <!-- MCQ 5 -->
-      <p class="font-semibold mt-2">5. A parallelogram has an area of 64 cm² and a similar parallelogram has an area of 144 cm². If a side of the smaller parallelogram is 8 cm, the corresponding side of the larger parallelogram is:</p>
-      <div>
-        <span class="mcq-option">A. 10 cm</span>
-        <span class="mcq-option correct">B. 12 cm</span>
-        <span class="mcq-option">C. 18 cm</span>
-        <span class="mcq-option">D. 16 cm</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: B</p>
-      <p class="text-sm text-gray-600">
-        \(\frac{A_1}{A_2} = \left(\frac{s_1}{s_2}\right)^2 \Rightarrow \frac{64}{144} = \left(\frac{8}{s_2}\right)^2 \Rightarrow \frac{8}{12} = \frac{8}{s_2} \Rightarrow s_2 = 12\)
-      </p>
-      <hr class="divider-light">
-
-      <!-- MCQ 6 -->
-      <p class="font-semibold mt-2">6. The total number of diagonals in a polygon with 9 sides is:</p>
-      <div>
-        <span class="mcq-option">A. 8</span>
-        <span class="mcq-option">B. 18</span>
-        <span class="mcq-option correct">C. 27</span>
-        <span class="mcq-option">D. 21</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: C</p>
-      <p class="text-sm text-gray-600">Number of diagonals = \(\frac{n(n-3)}{2} = \frac{9(6)}{2} = 27\)</p>
-      <hr class="divider-light">
-
-      <!-- MCQ 7 -->
-      <p class="font-semibold mt-2">7. Two spheres are similar, and their radii are in the ratio 4:5. If the surface area of the larger sphere is 500π cm², what is the surface area of the smaller sphere?</p>
-      <div>
-        <span class="mcq-option correct">A. 256π cm²</span>
-        <span class="mcq-option">B. 320π cm²</span>
-        <span class="mcq-option">C. 400π cm²</span>
-        <span class="mcq-option">D. 405π cm²</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: A</p>
-      <p class="text-sm text-gray-600">
-        \(\frac{A_1}{A_2} = \left(\frac{r_1}{r_2}\right)^2 = \left(\frac{4}{5}\right)^2 = \frac{16}{25} \Rightarrow A_1 = \frac{16}{25} \times 500\pi = 320\pi\)
-        <br><span class="text-red-500">Note: The PDF solution says 256π but the calculation gives 320π. The correct calculation is 320π.</span>
-      </p>
-      <hr class="divider-light">
-
-      <!-- MCQ 8 -->
-      <p class="font-semibold mt-2">8. A regular polygon has an exterior angle of 30°. How many diagonals does the polygon have?</p>
-      <div>
-        <span class="mcq-option">A. 12</span>
-        <span class="mcq-option">B. 12:1</span>
-        <span class="mcq-option">C. √3:2</span>
-        <span class="mcq-option correct">D. 54</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: D</p>
-      <p class="text-sm text-gray-600">
-        \(n = \frac{360°}{30°} = 12\). Diagonals = \(\frac{12(12-3)}{2} = \frac{12 \times 9}{2} = 54\)
-      </p>
-      <hr class="divider-light">
-
-      <!-- MCQ 9 -->
-      <p class="font-semibold mt-2">9. In a regular hexagon, the ratio of the length of a diagonal to the side length is:</p>
-      <div>
-        <span class="mcq-option correct">A. √3:1</span>
-        <span class="mcq-option">B. 2:1</span>
-        <span class="mcq-option">C. √3:2</span>
-        <span class="mcq-option">D. 2:3</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: A</p>
-      <p class="text-sm text-gray-600">In a regular hexagon, the long diagonal is twice the side length, so the ratio of diagonal to side is 2:1. However, the √3:1 ratio is for the shorter diagonal.</p>
-      <hr class="divider-light">
-
-      <!-- MCQ 10 -->
-      <p class="font-semibold mt-2">10. A regular polygon has an interior angle of 165°. How many sides does it have?</p>
-      <div>
-        <span class="mcq-option">A. 15</span>
-        <span class="mcq-option">B. 16</span>
-        <span class="mcq-option correct">C. 24</span>
-        <span class="mcq-option">D. 20</span>
-      </div>
-      <p class="text-green-700 font-semibold">✅ Correct: C</p>
-      <p class="text-sm text-gray-600">
-        Interior angle = \(\frac{(n-2)180°}{n} = 165° \Rightarrow 180n - 360 = 165n \Rightarrow 15n = 360 \Rightarrow n = 24\)
-      </p>
-
-    </div>
+<!-- Q2 -->
+<div class="problem-box" id="q2">
+  <div class="problem-title"><span class="num-badge">2</span><span>If the sum of the interior angles of a polygon is \(1080^\circ\), how many sides does the polygon have?</span></div>
+  <button class="toggle-answer-btn" data-target="ans2">Show Solution</button>
+  <div class="answer-content" id="ans2">
+    <div class="given-line">\(Sum\ of\ the\ interior\ angles\ of\ a\ polygon = 1080^\circ\)</div>
+    <div class="given-line">\(Number\ of\ sides = n = ?\)</div>
+    <p class="note">We know that</p>
+    \[\begin{aligned} Sum\ of\ interior\ angles &= 180^\circ(n-2) \\ 1080^\circ &= 180^\circ(n-2) \\ \frac{1080^\circ}{180^\circ} &= n-2 \\ 6 &= n-2 \\ 6+2 &= n \\ 8 &= n \\ \boldsymbol{n} &= \boldsymbol{8} \end{aligned}\]
+    <div class="conclusion">Thus, the polygon has <strong>8 sides</strong>.</div>
   </div>
+</div>
 
-  <!-- ═══ Q2 ═══ -->
-  <div class="problem-box" id="q2">
-    <div class="problem-title">
-      <span class="num-badge">2</span>
-      <span>If the sum of the interior angles of a polygon is \(1080^\circ\), how many sides does the polygon have?</span>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
-    <div class="answer-content" id="answer2">
-      <p class="given-line">Sum of the interior angles of a polygon = \(1080^\circ\)</p>
-      <p class="given-line">Number of sides = \(n = ?\)</p>
-      <p class="note">We know that:</p>
-      \[
-      \text{Sum of interior angles} = 180^\circ(n - 2)
-      \]
-      \[
-      1080^\circ = 180^\circ(n - 2)
-      \]
-      \[
-      \frac{1080^\circ}{180^\circ} = n - 2
-      \]
-      \[
-      6 = n - 2
-      \]
-      \[
-      6 + 2 = n
-      \]
-      \[
-      8 = n
-      \]
-      <div class="conclusion">The polygon has <strong>8 sides</strong>.</div>
-    </div>
+<!-- Q3 -->
+<div class="problem-box" id="q3">
+  <div class="problem-title"><span class="num-badge">3</span><span>Two similar bottles are such that one is twice as high as the other. What is the ratio of their surface areas and their capacities?</span></div>
+  <button class="toggle-answer-btn" data-target="ans3">Show Solution</button>
+  <div class="answer-content" id="ans3">
+    <p class="note">Let</p>
+    <div class="given-line">\(Height\ of\ second\ bottle = h_2 = h\)</div>
+    <div class="given-line">\(Height\ of\ first\ bottle = h_1 = 2h\)</div>
+    <p class="note">If \(A_1\) and \(A_2\) be the surface areas of first and second bottles respectively. Using formula of area for similar solids</p>
+    \[\begin{aligned} \frac{A_1}{A_2} &= \left(\frac{h_1}{h_2}\right)^2 \\ \frac{A_1}{A_2} &= \left(\frac{2h}{h}\right)^2 \\ \frac{A_1}{A_2} &= \left(\frac{2}{1}\right)^2 \\ \frac{A_1}{A_2} &= \frac{4}{1} \\ \boldsymbol{A_1 : A_2} &= \boldsymbol{4:1} \end{aligned}\]
+    <p class="note">Let \(C_1\) and \(C_2\) be the capacities (volumes) of these bottles. Using formula of volumes for similar solids.</p>
+    \[\begin{aligned} \frac{C_1}{C_2} &= \left(\frac{h_1}{h_2}\right)^3 \\ \frac{C_1}{C_2} &= \left(\frac{2h}{h}\right)^3 \\ \frac{C_1}{C_2} &= \left(\frac{2}{1}\right)^3 \\ \frac{C_1}{C_2} &= \frac{8}{1} \\ \boldsymbol{C_1 : C_2} &= \boldsymbol{8:1} \end{aligned}\]
+    <div class="conclusion">Ratio of surface areas \(= \mathbf{4:1}\) &nbsp;|&nbsp; Ratio of capacities \(= \mathbf{8:1}\)</div>
   </div>
+</div>
 
-  <!-- ═══ Q3 ═══ -->
-  <div class="problem-box" id="q3">
-    <div class="problem-title">
-      <span class="num-badge">3</span>
-      <span>Two similar bottles are such that one is twice as high as the other. What is the ratio of their surface areas and their capacities?</span>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
-    <div class="answer-content" id="answer3">
-      <p class="given-line">Height of first bottle = \(h_1 = 2h\)</p>
-      <p class="given-line">Height of second bottle = \(h_2 = h\)</p>
-      <p class="note">Let \(A_1\) and \(A_2\) be the surface areas of first and second bottles respectively.</p>
-      <p class="note">Using formula of areas for similar solids:</p>
-      \[
-      \frac{A_1}{A_2} = \left(\frac{h_1}{h_2}\right)^2 = \left(\frac{2h}{h}\right)^2 = \left(\frac{2}{1}\right)^2 = \frac{4}{1}
-      \]
-      <p class="note">Let \(C_1\) and \(C_2\) be the capacities (volumes) of these bottles. Using formula of volumes for similar solids:</p>
-      \[
-      \frac{C_1}{C_2} = \left(\frac{h_1}{h_2}\right)^3 = \left(\frac{2h}{h}\right)^3 = \left(\frac{2}{1}\right)^3 = \frac{8}{1}
-      \]
-      <div class="conclusion">Surface area ratio = <strong>4:1</strong> &nbsp;|&nbsp; Capacity ratio = <strong>8:1</strong></div>
-    </div>
+<!-- Q4 -->
+<div class="problem-box" id="q4">
+  <div class="problem-title"><span class="num-badge">4</span><span>Each dimension of a model car is \(\dfrac{1}{10}\) of the corresponding car dimension. Find the ratio of:</span></div>
+  <button class="toggle-answer-btn" data-target="ans4">Show Solution</button>
+  <div class="answer-content" id="ans4">
+    \[Linear\ scale\ factor = k = \frac{Model\ dimension}{Actual\ dimension} = \frac{1}{10}\]
+
+    <div class="sub-label">(a) the areas of their windscreens</div>
+    <p class="note">Let \(A_1\) and \(A_2\) be the areas of model and actual car's windscreens. Using formula of areas for similar solids.</p>
+    \[\begin{aligned} \frac{A_1}{A_2} &= k^2 \\ \frac{A_1}{A_2} &= \left(\frac{1}{10}\right)^2 \\ \frac{A_1}{A_2} &= \frac{1}{100} \\ \boldsymbol{A_1 : A_2} &= \boldsymbol{1:100} \end{aligned}\]
+
+    <hr class="part-div">
+    <div class="sub-label">(b) the capacities of their boots</div>
+    <p class="note">Let \(C_1\) and \(C_2\) be the capacities (volumes) of their boots. Using formula of volumes for similar solids.</p>
+    \[\begin{aligned} \frac{C_1}{C_2} &= k^3 \\ \frac{C_1}{C_2} &= \left(\frac{1}{10}\right)^3 \\ \frac{C_1}{C_2} &= \frac{1}{1000} \\ \boldsymbol{C_1 : C_2} &= \boldsymbol{1:1000} \end{aligned}\]
+
+    <hr class="part-div">
+    <div class="sub-label">(c) the widths of the cars</div>
+    <p class="note">Let \(W_1\) and \(W_2\) be the widths of model and actual car</p>
+    \[\begin{aligned} \frac{W_1}{W_2} &= k \\ \frac{W_1}{W_2} &= \frac{1}{10} \\ \boldsymbol{W_1 : W_2} &= \boldsymbol{1:10} \end{aligned}\]
+
+    <hr class="part-div">
+    <div class="sub-label">(d) the number of wheels they have</div>
+    \[\begin{aligned} No.\ of\ wheels\ of\ model\ car &= 4 \\ No.\ of\ wheels\ of\ actual\ car &= 4 \\ Ratio\ of\ no.\ of\ wheels &= 4:4 \\ &= \boldsymbol{1:1} \end{aligned}\]
   </div>
+</div>
 
-  <!-- ═══ Q4 ═══ -->
-  <div class="problem-box" id="q4">
-    <div class="problem-title">
-      <span class="num-badge">4</span>
-      <span>Each dimension of a model car is \(\frac{1}{10}\) of the corresponding car dimension. Find the ratio of:</span>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
-    <div class="answer-content" id="answer4">
-      <p class="given-line">Linear scale factor = \(k = \frac{\text{Model dimension}}{\text{Actual dimension}} = \frac{1}{10}\)</p>
+<!-- Q5 -->
+<div class="problem-box" id="q5">
+  <div class="problem-title"><span class="num-badge">5</span><span>Three similar jugs have heights 8 cm, 12 cm and 16 cm. If the smallest jug holds \(\dfrac{1}{2}\) litre, find the capacities of the other two.</span></div>
+  <button class="toggle-answer-btn" data-target="ans5">Show Solution</button>
+  <div class="answer-content" id="ans5">
+    <div class="given-line">\(Height\ of\ first\ jug = h_1 = 8\ cm\)</div>
+    <div class="given-line">\(Height\ of\ second\ jug = h_2 = 12\ cm\)</div>
+    <div class="given-line">\(Height\ of\ third\ jug = h_3 = 16\ cm\)</div>
+    <div class="given-line">\(Volume\ of\ first\ jug = V_1 = \dfrac{1}{2}\ litre\)</div>
+    <div class="given-line">\(Volume\ of\ second\ jug = V_2 = ?\)</div>
+    <div class="given-line">\(Volume\ of\ third\ jug = V_3 = ?\)</div>
 
-      <p class="sub-label">(a) the areas of their windscreens</p>
-      <p class="note">Let \(A_1\) and \(A_2\) be the areas of model and actual car's windscreens.</p>
-      \[
-      \frac{A_1}{A_2} = k^2 = \left(\frac{1}{10}\right)^2 = \frac{1}{100}
-      \]
-      <div class="conclusion">\(A_1:A_2 = 1:100\)</div>
+    <p class="note">For volume of second jug \(V_2\) using formula of volumes for similar solids.</p>
+    \[\begin{aligned} \frac{V_1}{V_2} &= \left(\frac{h_1}{h_2}\right)^3 \\ \frac{\frac{1}{2}}{V_2} &= \left(\frac{8}{12}\right)^3 \\ \frac{1}{2V_2} &= \frac{512}{1728} \\ (1)(1728) &= (512)(2V_2) \\ 1728 &= 1024V_2 \\ V_2 &= \frac{1728}{1024} \\ V_2 &= 1.69 \\ \boldsymbol{V_2} &= \boldsymbol{1.69\ litre} \end{aligned}\]
 
-      <p class="sub-label">(b) the capacities of their boots</p>
-      <p class="note">Let \(C_1\) and \(C_2\) be the capacities (volumes) of their boots.</p>
-      \[
-      \frac{C_1}{C_2} = k^3 = \left(\frac{1}{10}\right)^3 = \frac{1}{1000}
-      \]
-      <div class="conclusion">\(C_1:C_2 = 1:1000\)</div>
-
-      <p class="sub-label">(c) the widths of the cars</p>
-      <p class="note">Let \(W_1\) and \(W_2\) be the widths of model and actual car.</p>
-      <div class="conclusion">\(W_1:W_2 = 1:10\)</div>
-
-      <p class="sub-label">(d) the number of wheels they have</p>
-      <p class="note">Number of wheels of model car = 4, Number of wheels of actual car = 4</p>
-      <div class="conclusion">Ratio of number of wheels = \(4:4 = 1:1\)</div>
-    </div>
+    <p class="note">For volume of third jug \(V_3\) using formula of volumes for similar solids.</p>
+    \[\begin{aligned} \frac{V_1}{V_3} &= \left(\frac{h_1}{h_3}\right)^3 \\ \frac{\frac{1}{2}}{V_3} &= \left(\frac{8}{16}\right)^3 \\ \frac{1}{2V_3} &= \frac{512}{4096} \\ (1)(4096) &= (512)(2V_3) \\ 4096 &= 1024V_3 \\ V_3 &= \frac{4096}{1024} \\ \boldsymbol{V_3} &= \boldsymbol{4\ litre} \end{aligned}\]
+    <div class="conclusion">Capacity of second jug \(= \mathbf{1.69\ litre}\) &nbsp;|&nbsp; Capacity of third jug \(= \mathbf{4\ litres}\)</div>
   </div>
+</div>
 
-  <!-- ═══ Q5 ═══ -->
-  <div class="problem-box" id="q5">
-    <div class="problem-title">
-      <span class="num-badge">5</span>
-      <span>Three similar jugs have heights \(8\text{ cm}\), \(12\text{ cm}\) and \(16\text{ cm}\). If the smallest jug holds \(\frac{1}{2}\) litre, find the capacities of the other two.</span>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
-    <div class="answer-content" id="answer5">
-      <p class="given-line">Height of first jug = \(h_1 = 8\text{ cm}\)</p>
-      <p class="given-line">Height of second jug = \(h_2 = 12\text{ cm}\)</p>
-      <p class="given-line">Height of third jug = \(h_3 = 16\text{ cm}\)</p>
-      <p class="given-line">Volume of first jug = \(V_1 = \frac{1}{2}\text{ litre}\)</p>
+<!-- Q6 -->
+<div class="problem-box" id="q6">
+  <div class="problem-title"><span class="num-badge">6</span><span>Three similar drinking glasses have heights 7.5 cm, 9 cm and 10.5 cm. If the tallest glass holds 343 millilitres, find the capacities of the other two.</span></div>
+  <button class="toggle-answer-btn" data-target="ans6">Show Solution</button>
+  <div class="answer-content" id="ans6">
+    <div class="given-line">\(Height\ of\ first\ glass = h_1 = 7.5\ cm\)</div>
+    <div class="given-line">\(Height\ of\ second\ glass = h_2 = 9\ cm\)</div>
+    <div class="given-line">\(Height\ of\ third\ glass = h_3 = 10.5\ cm\)</div>
+    <div class="given-line">\(Volume\ (capacity)\ of\ third\ glass = V_3 = 343\ ml\)</div>
+    <div class="given-line">\(Volume\ of\ first\ glass = V_1 = ?\)</div>
+    <div class="given-line">\(Volume\ of\ second\ glass = V_2 = ?\)</div>
 
-      <p class="sub-label">For volume of second jug \(V_2\):</p>
-      \[
-      \frac{V_2}{V_1} = \left(\frac{h_2}{h_1}\right)^3 = \left(\frac{12}{8}\right)^3 = \left(\frac{3}{2}\right)^3 = \frac{27}{8}
-      \]
-      \[
-      V_2 = \frac{27}{8} \times \frac{1}{2} = \frac{27}{16} = 1.6875\text{ litres}
-      \]
+    <p class="note">For capacity of first glass \(V_1\) using formula of volumes for similar solids.</p>
+    \[\begin{aligned} \frac{V_1}{V_3} &= \left(\frac{h_1}{h_3}\right)^3 \\ \frac{V_1}{343} &= \left(\frac{7.5}{10.5}\right)^3 \\ \frac{V_1}{343} &= \frac{421.875}{1157.625} \\ (V_1)(1157.625) &= (421.875)(343) \\ 1157.625V_1 &= 144703.125 \\ V_1 &= \frac{144703.125}{1157.625} \\ \boldsymbol{V_1} &= \boldsymbol{125\ ml} \end{aligned}\]
 
-      <p class="sub-label">For volume of third jug \(V_3\):</p>
-      \[
-      \frac{V_3}{V_1} = \left(\frac{h_3}{h_1}\right)^3 = \left(\frac{16}{8}\right)^3 = \left(\frac{2}{1}\right)^3 = \frac{8}{1}
-      \]
-      \[
-      V_3 = 8 \times \frac{1}{2} = 4\text{ litres}
-      \]
-
-      <div class="conclusion">Capacity of second jug = <strong>1.6875 litres</strong> &nbsp;|&nbsp; Capacity of third jug = <strong>4 litres</strong></div>
-    </div>
+    <p class="note">For capacity of second glass \(V_2\) using formula of volumes for similar solids.</p>
+    \[\begin{aligned} \frac{V_2}{V_3} &= \left(\frac{h_2}{h_3}\right)^3 \\ \frac{V_2}{343} &= \left(\frac{9}{10.5}\right)^3 \\ \frac{V_2}{343} &= \frac{729}{1157.625} \\ (V_2)(1157.625) &= (729)(343) \\ 1157.625V_2 &= 250047 \\ V_2 &= \frac{250047}{1157.625} \\ \boldsymbol{V_2} &= \boldsymbol{216\ ml} \end{aligned}\]
+    <div class="conclusion">Capacity of first glass \(= \mathbf{125\ ml}\) &nbsp;|&nbsp; Capacity of second glass \(= \mathbf{216\ ml}\)</div>
   </div>
+</div>
 
-  <!-- ═══ Q6 ═══ -->
-  <div class="problem-box" id="q6">
-    <div class="problem-title">
-      <span class="num-badge">6</span>
-      <span>Two similar cylinders have heights of 9 cm and 10.5 cm. If the smaller cylinder has a capacity of 343 ml, find the capacity of the larger cylinder.</span>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
-    <div class="answer-content" id="answer6">
-      <p class="given-line">Height of smaller cylinder = \(h_1 = 9\text{ cm}\)</p>
-      <p class="given-line">Height of larger cylinder = \(h_2 = 10.5\text{ cm}\)</p>
-      <p class="given-line">Volume of smaller cylinder = \(V_1 = 343\text{ ml}\)</p>
+<!-- Q7 -->
+<div class="problem-box" id="q7">
+  <div class="problem-title"><span class="num-badge">7</span><span>A toy manufacturer produces model cars similar to actual cars. The ratio of door area (model to actual) is \(1 : 2500\). Find:</span></div>
+  <button class="toggle-answer-btn" data-target="ans7">Show Solution</button>
+  <div class="answer-content" id="ans7">
+    <p class="note">Ratio of areas of doors of model and actual cars: \(A_1 : A_2 = 1 : 2500\)</p>
 
-      <p class="note">Using formula of volumes for similar solids:</p>
-      \[
-      \frac{V_2}{V_1} = \left(\frac{h_2}{h_1}\right)^3 = \left(\frac{10.5}{9}\right)^3 = \left(\frac{7}{6}\right)^3 = \frac{343}{216}
-      \]
-      \[
-      V_2 = \frac{343}{216} \times 343 = \frac{343 \times 343}{216} = \frac{117649}{216} \approx 544.67\text{ ml}
-      \]
+    <div class="sub-label">(a) the ratio of their lengths</div>
+    <p class="note">Let \(l_1\) and \(l_2\) be the lengths of model and actual cars respectively. So,</p>
+    \[\begin{aligned} \frac{A_1}{A_2} &= \left(\frac{l_1}{l_2}\right)^2 \\ \frac{1}{2500} &= \left(\frac{l_1}{l_2}\right)^2 \\ \sqrt{\left(\frac{l_1}{l_2}\right)^2} &= \sqrt{\frac{1}{2500}} \\ \frac{l_1}{l_2} &= \frac{1}{50} \\ \boldsymbol{l_1 : l_2} &= \boldsymbol{1:50} \end{aligned}\]
 
-      <div class="conclusion">Capacity of larger cylinder = <strong>544.67 ml</strong> (approximately 545 ml)</div>
-    </div>
+    <hr class="part-div">
+    <div class="sub-label">(b) the ratio of the capacities of their petrol tanks</div>
+    <p class="note">Let \(V_1\) and \(V_2\) be the capacities (volumes) of petrol tanks. Using formula of volumes for similar solids.</p>
+    \[\begin{aligned} \frac{V_1}{V_2} &= \left(\frac{l_1}{l_2}\right)^3 \\ \frac{V_1}{V_2} &= \left(\frac{1}{50}\right)^3 \\ \frac{V_1}{V_2} &= \frac{1}{125000} \\ \boldsymbol{V_1 : V_2} &= \boldsymbol{1:125000} \end{aligned}\]
+
+    <hr class="part-div">
+    <div class="sub-label">(c) the width of the model, if the actual car is 150 cm wide</div>
+    <p class="note">Let \(W_1\) and \(W_2 = 150\ cm\) be the widths of model and actual car</p>
+    \[\begin{aligned} \frac{W_1}{W_2} &= \frac{l_1}{l_2} \\ \frac{W_1}{150} &= \frac{1}{50} \\ W_1 &= \frac{1}{50} \times 150 \\ \boldsymbol{W_1} &= \boldsymbol{3\ cm} \end{aligned}\]
+
+    <hr class="part-div">
+    <div class="sub-label">(d) the area of the rear window of the actual car, if the area of the rear window of the model is \(3\ cm^2\)</div>
+    <p class="note">Let \(A_1 = 3\ cm^2\) and \(A_2\) be the areas of windows of model and actual cars respectively. So,</p>
+    \[\begin{aligned} \frac{A_1}{A_2} &= \left(\frac{l_1}{l_2}\right)^2 \\ \frac{3}{A_2} &= \left(\frac{1}{50}\right)^2 \\ \frac{3}{A_2} &= \frac{1}{2500} \\ \frac{A_2}{3} &= \frac{2500}{1} \\ A_2 &= \frac{2500}{1} \times 3 \\ \boldsymbol{A_2} &= \boldsymbol{7500\ cm^2} \end{aligned}\]
   </div>
+</div>
 
-  <!-- ═══ Q7 ═══ -->
-  <div class="problem-box" id="q7">
-    <div class="problem-title">
-      <span class="num-badge">7</span>
-      <span>A toy manufacturer produces model cars which are similar in every way to the actual cars. If the ratio of the door area of the model to the door area of the car is \(1:2500\), find:</span>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer7">Show Solution</button>
-    <div class="answer-content" id="answer7">
-      <p class="given-line">Ratio of areas of doors of model and actual cars: \(A_1:A_2 = 1:2500\)</p>
+<!-- Q8 -->
+<div class="problem-box" id="q8">
+  <div class="problem-title"><span class="num-badge">8</span><span>The ratio of the areas of two similar labels on two similar jars of coffee is \(144:169\). Find the ratio of:</span></div>
+  <button class="toggle-answer-btn" data-target="ans8">Show Solution</button>
+  <div class="answer-content" id="ans8">
+    <p class="note">Ratio of areas of two similar jars: \(A_1 : A_2 = 144 : 169\)</p>
 
-      <p class="sub-label">(a) the ratio of their lengths</p>
-      <p class="note">Let \(l_1\) and \(l_2\) be the lengths of model and actual cars respectively.</p>
-      \[
-      \frac{A_1}{A_2} = \left(\frac{l_1}{l_2}\right)^2 \Rightarrow \frac{1}{2500} = \left(\frac{l_1}{l_2}\right)^2 \Rightarrow \frac{l_1}{l_2} = \frac{1}{50}
-      \]
-      <div class="conclusion">\(l_1:l_2 = 1:50\)</div>
+    <div class="sub-label">(a) the heights of the two jars</div>
+    <p class="note">Let \(h_1\) and \(h_2\) be the heights of two jars respectively</p>
+    \[\begin{aligned} \frac{A_1}{A_2} &= \left(\frac{h_1}{h_2}\right)^2 \\ \left(\frac{h_1}{h_2}\right)^2 &= \frac{144}{169} \\ \sqrt{\left(\frac{h_1}{h_2}\right)^2} &= \sqrt{\frac{144}{169}} \\ \frac{h_1}{h_2} &= \frac{12}{13} \\ \boldsymbol{h_1 : h_2} &= \boldsymbol{12:13} \end{aligned}\]
 
-      <p class="sub-label">(b) the ratio of the capacities of their petrol tanks</p>
-      <p class="note">Let \(V_1\) and \(V_2\) be the capacities (volumes) of petrol tanks.</p>
-      \[
-      \frac{V_1}{V_2} = \left(\frac{l_1}{l_2}\right)^3 = \left(\frac{1}{50}\right)^3 = \frac{1}{125000}
-      \]
-      <div class="conclusion">\(V_1:V_2 = 1:125000\)</div>
-
-      <p class="sub-label">(c) the width of the model, if the actual car is \(150\text{ cm}\) wide</p>
-      <p class="note">Let \(W_1\) and \(W_2 = 150\text{ cm}\) be the widths of model and actual car.</p>
-      \[
-      \frac{W_1}{W_2} = \frac{l_1}{l_2} = \frac{1}{50} \Rightarrow W_1 = \frac{150}{50} = 3\text{ cm}
-      \]
-      <div class="conclusion">Width of model = <strong>3 cm</strong></div>
-
-      <p class="sub-label">(d) the area of the rear window of the actual car if the area of the rear window of the model is \(3\text{ cm}^2\)</p>
-      <p class="note">Let \(A_1 = 3\text{ cm}^2\) and \(A_2\) be the areas of windows of model and actual cars respectively.</p>
-      \[
-      \frac{A_1}{A_2} = \left(\frac{l_1}{l_2}\right)^2 = \left(\frac{1}{50}\right)^2 = \frac{1}{2500} \Rightarrow \frac{3}{A_2} = \frac{1}{2500} \Rightarrow A_2 = 3 \times 2500 = 7500\text{ cm}^2
-      \]
-      <div class="conclusion">Area of actual rear window = <strong>7500 cm²</strong></div>
-    </div>
+    <hr class="part-div">
+    <div class="sub-label">(b) their capacities</div>
+    <p class="note">Let \(V_1\) and \(V_2\) be the capacities (volumes) of jars. Using formula of volumes for similar solids.</p>
+    \[\begin{aligned} \frac{V_1}{V_2} &= \left(\frac{h_1}{h_2}\right)^3 \\ \frac{V_1}{V_2} &= \left(\frac{12}{13}\right)^3 \\ \frac{V_1}{V_2} &= \frac{1728}{2197} \\ \boldsymbol{V_1 : V_2} &= \boldsymbol{1728:2197} \end{aligned}\]
+    <div class="conclusion">Height ratio \(= \mathbf{12:13}\) &nbsp;|&nbsp; Capacity ratio \(= \mathbf{1728:2197}\)</div>
   </div>
+</div>
 
-  <!-- ═══ Q8 ═══ -->
-  <div class="problem-box" id="q8">
-    <div class="problem-title">
-      <span class="num-badge">8</span>
-      <span>The ratio of the areas of two similar labels on two similar jars of coffee is \(144:169\). Find the ratio of:</span>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer8">Show Solution</button>
-    <div class="answer-content" id="answer8">
-      <p class="given-line">Ratio of areas of two similar jars: \(A_1:A_2 = 144:169\)</p>
-
-      <p class="sub-label">(a) the heights of the two jars</p>
-      <p class="note">Let \(h_1\) and \(h_2\) be the heights of two jars respectively.</p>
-      \[
-      \frac{A_1}{A_2} = \left(\frac{h_1}{h_2}\right)^2 \Rightarrow \frac{144}{169} = \left(\frac{h_1}{h_2}\right)^2 \Rightarrow \frac{h_1}{h_2} = \frac{12}{13}
-      \]
-      <div class="conclusion">\(h_1:h_2 = 12:13\)</div>
-
-      <p class="sub-label">(b) their capacities</p>
-      <p class="note">Let \(V_1\) and \(V_2\) be the capacities (volumes) of jars.</p>
-      \[
-      \frac{V_1}{V_2} = \left(\frac{h_1}{h_2}\right)^3 = \left(\frac{12}{13}\right)^3 = \frac{1728}{2197}
-      \]
-      <div class="conclusion">\(V_1:V_2 = 1728:2197\)</div>
-    </div>
+<!-- Q9 -->
+<div class="problem-box" id="q9">
+  <div class="problem-title"><span class="num-badge">9</span><span>A tessellation of tiles on a floor uses a repeating pattern of 1 regular hexagon, 6 squares and 6 equilateral triangles. Find the total area of a single pattern with side length \(\dfrac{1}{2}\) metre of each polygon.</span></div>
+  <button class="toggle-answer-btn" data-target="ans9">Show Solution</button>
+  <div class="answer-content" id="ans9">
+    <p class="note">Given 1 regular hexagon, 6 equilateral triangles, and 6 squares.</p>
+    <div class="given-line">\(Side\ length\ of\ each\ polygon = s = \dfrac{1}{2}\ m\)</div>
+    <p class="note">Now</p>
+    \[\begin{aligned} Area\ of\ hexagon &= \frac{3\sqrt{3}}{2} \cdot s^2 \\ &= \frac{3\sqrt{3}}{2} \cdot \left(\frac{1}{2}\right)^2 \\ &= \frac{3\sqrt{3}}{8} \\ \boldsymbol{A_{hexagon}} &= \boldsymbol{0.65\ m^2} \end{aligned}\]
+    \[\begin{aligned} Area\ of\ equilateral\ triangle &= \frac{\sqrt{3}}{4} \cdot s^2 \\ &= \frac{\sqrt{3}}{4} \cdot \left(\frac{1}{2}\right)^2 \\ &= \frac{\sqrt{3}}{16} \\ \boldsymbol{A_{triangle}} &= \boldsymbol{0.108\ m^2} \end{aligned}\]
+    \[\begin{aligned} Area\ of\ square &= s^2 \\ &= \left(\frac{1}{2}\right)^2 \\ &= \frac{1}{4} \\ \boldsymbol{A_{square}} &= \boldsymbol{0.25\ m^2} \end{aligned}\]
+    \[\begin{aligned} Total\ area &= A_{hexagon} + 6A_{triangle} + 6A_{square} \\ &= 0.65 + 6(0.108) + 6(0.25) \\ &= \boldsymbol{2.8\ m^2} \end{aligned}\]
+    <div class="conclusion">Thus, \(\mathbf{2.8\ m^2}\) is the total area of a single pattern.</div>
   </div>
+</div>
 
-  <!-- ═══ Q9 ═══ -->
-  <div class="problem-box" id="q9">
-    <div class="problem-title">
-      <span class="num-badge">9</span>
-      <span>A tessellation of tiles on a floor has been made using a repeating pattern of a regular hexagon, six squares and six equilateral triangles. Find the total area of a single pattern with side length \(\frac{1}{2}\) metre of each polygon.</span>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer9">Show Solution</button>
-    <div class="answer-content" id="answer9">
-      <p class="given-line">Side length of each polygon = \(s = \frac{1}{2}\text{ m}\)</p>
-      <p class="given-line">Pattern consists of: 1 regular hexagon, 6 squares, 6 equilateral triangles</p>
-
-      <p class="sub-label">Area of regular hexagon:</p>
-      \[
-      A_{\text{hexagon}} = \frac{3\sqrt{3}}{2} \cdot s^2 = \frac{3\sqrt{3}}{2} \cdot \left(\frac{1}{2}\right)^2 = \frac{3\sqrt{3}}{2} \cdot \frac{1}{4} = \frac{3\sqrt{3}}{8}
-      \]
-
-      <p class="sub-label">Area of one square:</p>
-      \[
-      A_{\text{square}} = s^2 = \left(\frac{1}{2}\right)^2 = \frac{1}{4}
-      \]
-      <p class="note">Total area of 6 squares:</p>
-      \[
-      6 \times A_{\text{square}} = 6 \times \frac{1}{4} = \frac{3}{2}
-      \]
-
-      <p class="sub-label">Area of one equilateral triangle:</p>
-      \[
-      A_{\text{triangle}} = \frac{\sqrt{3}}{4} \cdot s^2 = \frac{\sqrt{3}}{4} \cdot \left(\frac{1}{2}\right)^2 = \frac{\sqrt{3}}{4} \cdot \frac{1}{4} = \frac{\sqrt{3}}{16}
-      \]
-      <p class="note">Total area of 6 triangles:</p>
-      \[
-      6 \times A_{\text{triangle}} = 6 \times \frac{\sqrt{3}}{16} = \frac{3\sqrt{3}}{8}
-      \]
-
-      <p class="sub-label">Total area of the pattern:</p>
-      \[
-      \text{Total Area} = A_{\text{hexagon}} + 6A_{\text{square}} + 6A_{\text{triangle}}
-      \]
-      \[
-      = \frac{3\sqrt{3}}{8} + \frac{3}{2} + \frac{3\sqrt{3}}{8}
-      \]
-      \[
-      = \frac{3\sqrt{3}}{4} + \frac{3}{2} = \frac{3\sqrt{3} + 6}{4} \text{ m}^2
-      \]
-
-      <div class="conclusion">Total area = \(\frac{3\sqrt{3} + 6}{4} \approx 2.799\text{ m}^2\)</div>
-    </div>
-  </div>
 
   <!-- Key Concepts summary -->
   <div class="mt-12 bg-teal-50 p-5 rounded-2xl">
