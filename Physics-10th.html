@@ -1,21 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script type="text/javascript">
-  (function() {
-    var oldHost = "hira-science-academy.github.io";
-    var newHost = "hiraacademy.online";
-    
-    // Check if the user is visiting via the old GitHub URL
-    if (window.location.hostname === oldHost) {
-      // Construct the new URL preserving the path (e.g., /Mathematics-9th.html)
-      var newUrl = "https://" + newHost + window.location.pathname + window.location.search + window.location.hash;
-      
-      // Use replace so the 'Back' button doesn't get stuck in a loop
-      window.location.replace(newUrl);
-    }
-  })();
-</script>
   <!-- ✅ Character Encoding & Viewport -->
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -171,65 +156,50 @@
 
 <body class="text-gray-800">
 
-  <!-- Improved Navigation Bar with Scroll-Spy -->
+<!-- Improved Navigation Bar with Scroll-Spy -->
 <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
-      <!-- Logo -->
       <div class="flex-shrink-0 flex items-center">
         <a href="index.html" class="flex items-center gap-3 group transition duration-300">
-          <img 
-            src="https://www.hiraacademy.online/images/logo.webp" 
-            alt="Hira Science Academy"
-            class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-          
-          <!-- FIXED: Added fallback color and proper gradient text -->
-          <span class="text-2xl font-bold text-primary-600 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
+          <img src="https://hira-science-academy.github.io/images/logo.webp" alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
+          <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
             Hira Science Academy
           </span>
         </a>
       </div>
-
-      <!-- Desktop Navigation -->
-      <div class="hidden md:ml-10 md:flex md:space-x-8">
-        <a href="index.html#home" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
-        <a href="index.html#notes" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Notes</a>
-        <a href="index.html#courses" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Courses</a>
-        <a href="index.html#features" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Why Us</a>
-        <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Testimonials</a>
-        <a href="index.html#contact" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Contact</a>
-        <a href="index.html#blog-preview" class="nav-link text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium transition-colors">Blog</a>
+      <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+        <a href="index.html#home" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Home</a>
+        <a href="index.html#notes" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Notes</a>
+        <a href="index.html#courses" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Courses</a>
+        <a href="index.html#features" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Features</a>
+        <a href="index.html#testimonials" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Testimonials</a>
+        <a href="index.html#blog-preview" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Blog</a>
+        <a href="index.html#contact" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Contact</a>
+        <a href="student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105">🎓 Student Portal</a>
       </div>
-
-      <!-- Mobile menu button -->
-      <div class="-mr-2 flex items-center md:hidden">
-        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <div class="flex items-center md:hidden">
+        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none">
           <span class="sr-only">Open main menu</span>
-          <svg class="block h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-          <svg class="hidden h-6 w-6" id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-          </svg>
+          <svg class="block h-6 w-6" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+          <svg class="hidden h-6 w-6" id="menu-icon-close" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
       </div>
     </div>
   </div>
-
-  <!-- Mobile menu -->
-  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg rounded-lg mx-4 mt-2 py-2 transition-all duration-300 ease-in-out">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="index.html#home" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Home</a>
-      <a href="index.html#notes" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Notes</a>
-      <a href="index.html#courses" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Courses</a>
-      <a href="index.html#features" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Why Us</a>
-      <a href="index.html#testimonials" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Testimonials</a>
-      <a href="index.html#contact" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Contact</a>
-      <a href="index.html#blog-preview" class="nav-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 transition-colors">Blog</a>
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
+    <div class="px-4 pt-2 pb-6 space-y-1">
+      <a href="index.html#home" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Home</a>
+      <a href="index.html#notes" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Notes</a>
+      <a href="index.html#courses" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Courses</a>
+      <a href="index.html#features" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Features</a>
+      <a href="index.html#testimonials" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Testimonials</a>
+      <a href="index.html#blog-preview" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Blog</a>
+      <a href="index.html#contact" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Contact</a>
+      <div class="pt-4"><a href="student-portal.html" class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400">🎓 Student Portal</a></div>
     </div>
   </div>
-</nav>
-  
+</nav>  
   <!-- Header -->
 <header class="bg-gradient-to-r from-blue-900 to-cyan-700 text-white py-12 text-center shadow-lg">
   <h1 class="text-3xl font-bold">Class 10 Physics Notes</h1>
@@ -294,7 +264,7 @@
         <h2 class="text-2xl font-bold mb-2">Ready to Test Your Physics Knowledge?</h2>
         <p class="text-teal-100">Take our interactive MCQs test with 264 questions and instant results.</p>
       </div>
-      <a href="Physics-10th-MCQs.html" 
+      <a href="https://hira-science-academy.github.io/Physics-10th-MCQs.html" 
          class="bg-white text-teal-700 hover:bg-teal-50 font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition duration-300 inline-flex items-center">
         <span class="mr-2">🚀</span> Start Physics Practice Test
       </a>
@@ -615,9 +585,9 @@
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
         <!-- Logo & Description -->
         <div class="md:col-span-1 text-center md:text-left">
-          <a href="index.html" class="flex flex-col md:flex-row items-center md:items-start gap-3 group transition duration-300">
+          <a href="https://hira-science-academy.github.io/index.html" class="flex flex-col md:flex-row items-center md:items-start gap-3 group transition duration-300">
             <img
-              src="images/logo.webp"
+              src="https://hira-science-academy.github.io/images/logo.webp"
               alt="Hira Science Academy"
               class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
             <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mt-2 md:mt-0">
@@ -633,10 +603,10 @@
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
           <ul class="space-y-2">
-            <li><a href="courses-details.html#class9" class="hover:text-cyan-400 transition-colors">9th Class</a></li>
-            <li><a href="courses-details.html#class10" class="hover:text-cyan-400 transition-colors">10th Class</a></li>
-            <li><a href="courses-details.html#fsc" class="hover:text-cyan-400 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
-            <li><a href="fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">Entry Test Preparation</a></li>
+            <li><a href="https://hira-science-academy.github.io/courses-details.html#class9" class="hover:text-cyan-400 transition-colors">9th Class</a></li>
+            <li><a href="https://hira-science-academy.github.io/courses-details.html#class10" class="hover:text-cyan-400 transition-colors">10th Class</a></li>
+            <li><a href="https://hira-science-academy.github.io/courses-details.html#fsc" class="hover:text-cyan-400 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+            <li><a href="https://hira-science-academy.github.io/fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">Entry Test Preparation</a></li>
           </ul>
         </div>
 
