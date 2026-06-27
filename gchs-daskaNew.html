@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, text-size-adjust=100%">
+<title>Student Portal | Govt. Christian High School Daska</title>
+<meta name="description" content="Official Student Information Portal for GCHS Daska (EMIS: 34310007). Access real-time results, attendance, and academic records.">
+<link rel="canonical" href="https://hiraacademy.com.pk/gchs-daska.html">
+<meta property="og:title" content="GCHS Daska - Student Information Portal">
+<meta property="og:description" content="Digital access to student records, attendance, and exam results.">
+<meta name="theme-color" content="#1e3a8a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23002147'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='%23FFD700' font-size='50' font-family='Arial'%3EG%3C/text%3E%3C/svg%3E">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    :root { --navy: #002147; --gold: #FFD700; --success: #10b981; --warning: #f59e0b; --danger: #ef4444; }
+    body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); min-height: 100vh; }
+    .portal-card { background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,33,71,0.08); border: 1px solid #e2e8f0; transition: all 0.3s ease; }
+    .portal-card:hover { box-shadow: 0 8px 30px rgba(0,33,71,0.12); transform: translateY(-2px); }
+    .tab-content { display: none; animation: fadeIn 0.3s ease; }
+    .tab-content.active { display: block; }
+    .tab-btn { padding: 12px 20px; font-weight: 500; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.3s; cursor: pointer; }
+    .tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); font-weight: 600; }
+    .btn-navy { background: var(--navy); color: white; transition: 0.3s; }
+    .btn-navy:hover { background: #003366; box-shadow: 0 4px 12px rgba(0,33,71,0.3); }
+    .btn-gold { background: var(--gold); color: var(--navy); font-weight: 600; }
+    .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: white; }
+    .btn-success { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+    .form-input { width: 100%; padding: 12px 16px; border: 1px solid #cbd5e1; border-radius: 12px; transition: all 0.3s; }
+    .form-input:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(0,33,71,0.1); }
+    .data-table { width: 100%; border-collapse: collapse; }
+    .data-table th { background: #f8fafc; padding: 14px; text-align: left; font-weight: 600; color: #475569; border-bottom: 2px solid #e2e8f0; }
+    .data-table td { padding: 14px; border-bottom: 1px solid #f1f5f9; }
+    .data-table tr:hover { background: #f8fafc; }
+    .toast { position: fixed; top: 20px; right: 20px; padding: 12px 24px; border-radius: 12px; color: white; font-weight: 500; z-index: 9999; animation: slideIn 0.3s ease; display: flex; align-items: center; gap: 10px; }
+    .toast-success { background: linear-gradient(135deg, #10b981, #059669); }
+    .toast-error { background: linear-gradient(135deg, #ef4444, #dc2626); }
+    .toast-warning { background: linear-gradient(135deg, #f59e0b, #d97706); }
+    @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    .loading-spinner { width: 40px; height: 40px; border: 4px solid #e2e8f0; border-top-color: var(--navy); border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .privacy-mask { background: #f1f5f9; color: #64748b; font-style: italic; padding: 4px 10px; border-radius: 6px; font-size: 0.85rem; }
+    .marks-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr 0.5fr; gap: 1px; background: #e5e7eb; border-radius: 12px; overflow-x: auto; }
+    .marks-grid-header { background: #002147; color: white; padding: 12px; font-weight: 600; text-align: center; }
+    .marks-grid-cell { background: white; padding: 12px; display: flex; align-items: center; justify-content: center; }
+    .marks-input { width: 100%; padding: 8px; border: 2px solid #d1d5db; border-radius: 8px; text-align: center; }
+    .absent-checkbox { width: 20px; height: 20px; cursor: pointer; }
+    .grade-badge { padding: 4px 12px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; display: inline-block; }
+    .grade-a-plus { background: #22c55e; color: white; }
+    .grade-a { background: #3b82f6; color: white; }
+    .grade-b { background: #8b5cf6; color: white; }
+    .grade-c { background: #f59e0b; color: white; }
+    .grade-f { background: #ef4444; color: white; }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; background: #f8fafc; padding: 12px; border-radius: 16px; }
+    .calendar-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; background: white; border-radius: 10px; font-weight: 500; border: 2px solid #e2e8f0; }
+    .calendar-cell.present { background: #10b981; color: white; border-color: #059669; }
+    .calendar-cell.absent { background: #ef4444; color: white; border-color: #b91c1c; }
+    .calendar-cell.late { background: #f59e0b; color: white; }
+    .calendar-cell.today { border: 3px solid var(--navy); transform: scale(1.02); }
+    .calendar-day-header { text-align: center; font-weight: 600; padding: 8px; color: var(--navy); }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+    .legend-dot.present { background: #10b981; }
+    .legend-dot.absent { background: #ef4444; }
+    .legend-dot.late { background: #f59e0b; }
+    .resource-card { border-left: 4px solid var(--navy); padding: 12px; background: #f8fafc; border-radius: 8px; margin-bottom: 8px; }
+    .dashboard-category-card { background: white; border-radius: 16px; padding: 20px 12px; text-align: center; cursor: pointer; transition: all 0.25s; }
+    .dashboard-category-card:hover { transform: scale(1.05); border-color: var(--gold); }
+    .category-icon-wrapper { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; font-size: 1.8rem; }
+    .category-academic { background: rgba(0,33,71,0.08); color: #002147; }
+    .category-attendance { background: rgba(16,185,129,0.1); color: #0b5e42; }
+    .category-library { background: rgba(245,158,11,0.1); color: #b45309; }
+    .category-notices { background: rgba(239,68,68,0.1); color: #b91c1c; }
+    .uniform-card { height: 500px; overflow-y: auto; padding: 20px; }
+    .chart-container { min-height: 300px; }
+    .whatsapp-progress-item { display: flex; align-items: center; gap: 10px; padding: 10px; border-bottom: 1px solid #e5e7eb; }
+    .whatsapp-progress-item.sent { background: #f0fdf4; }
+    .progress-bar { height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--navy), #3b82f6); transition: width 0.3s; }
+    @media (max-width: 768px) { .tab-btn { padding: 8px 12px; font-size: 0.85rem; } .marks-grid { min-width: 600px; } }
+    .hidden-section { display: none; }
+    #backToTopBtn { position: fixed; bottom: 20px; right: 20px; background: #002147; color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 100; }
+    #backToTopBtn.visible { opacity: 1; visibility: visible; }
+    .watermark-bg { position: relative; isolation: isolate; }
+    .watermark-bg::before { content: "GCHS ✦ 1882 ✦ 1915"; position: absolute; inset: 0; font-size: clamp(2rem, 10vw, 6rem); font-weight: 700; color: rgba(234,179,8,0.04); white-space: pre; transform: rotate(-15deg); pointer-events: none; display: flex; align-items: center; justify-content: center; z-index: 0; }
+    .watermark-bg > * { position: relative; z-index: 1; }
+    .old-english { font-family: 'Old English Text MT', serif; }
+    .urdu-text { font-family: 'Noto Nastaliq Urdu', serif; direction: rtl; text-align: right; }
+    .student-photo { width: 64px; height: 64px; border-radius: 50%; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--navy); border: 3px solid var(--gold); }
+</style>
+</head>
+<body class="bg-[#0b1e3c] font-sans">
+
+<div id="toastContainer" class="fixed top-4 right-4 z-50 space-y-2"></div>
+<div id="loading" class="fixed inset-0 bg-white/90 z-50 flex flex-col items-center justify-center hidden"><div class="loading-spinner mb-4"></div><p id="loadingText" class="font-medium">Loading...</p></div>
+
+<!-- WhatsApp Progress Modal -->
+<div id="whatsappProgressModal" class="hidden fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div class="portal-card max-w-lg w-full p-6">
+        <div class="flex justify-between mb-4"><h3 class="font-bold text-navy">WhatsApp Queue</h3><button onclick="closeWhatsAppProgress()" class="text-gray-400">&times;</button></div>
+        <div class="whatsapp-control-panel bg-green-700 text-white p-3 rounded-lg mb-3"><span id="waStatusText">Ready</span></div>
+        <div id="whatsappProgressList" class="max-h-96 overflow-y-auto"></div>
+        <div class="progress-bar mt-4"><div id="whatsappProgressFill" class="progress-fill" style="width:0%"></div></div>
+        <button onclick="sendNextInQueue()" class="btn-success w-full mt-4 py-2 rounded-lg" id="sendNextBtn">Send Next</button>
+    </div>
+</div>
+
+<!-- Notification Panel -->
+<div id="notificationPanel" class="hidden fixed top-20 right-4 w-80 bg-white rounded-xl shadow-xl z-50"><div class="p-3 bg-navy text-white rounded-t-xl"><h3 class="font-bold">Announcements</h3></div><div id="announcementList" class="p-3 max-h-96 overflow-y-auto"></div></div>
+
+<main class="max-w-7xl mx-auto px-4 py-6">
+
+<!-- Header -->
+<div class="flex flex-wrap justify-between items-center mb-6 pb-3 border-b-2 border-amber-200">
+    <div class="flex items-center gap-4"><img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23002147'/%3E%3Ctext x='50' y='67' text-anchor='middle' fill='%23FFD700' font-size='50' font-family='Arial'%3EG%3C/text%3E%3C/svg%3E" class="h-14 w-14 rounded-full"><div><h1 class="text-2xl md:text-3xl font-bold text-navy old-english">Govt. Christian High School Daska</h1><p class="text-gray-600 text-sm"><i class="far fa-calendar-alt"></i> Est. 1882 | EMIS 34310007 | Old Kachehri Road, Daska</p></div></div>
+    <div class="flex gap-2"><button onclick="toggleNotificationPanel()" class="bg-navy text-white p-2 rounded-full relative"><i class="fas fa-bell"></i><span id="notificationBadge" class="absolute -top-1 -right-1 bg-red-500 text-xs rounded-full w-4 h-4 flex items-center justify-center">0</span></button></div>
+</div>
+
+<!-- Login Screen -->
+<div id="loginScreen">
+    <div class="text-center mb-8"><h2 class="text-2xl font-bold text-navy">Student Information Portal</h2><p class="text-gray-600">Secure access to attendance, results, and academic progress</p></div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+        <div onclick="showSection('teacherForm')" class="portal-card p-8 cursor-pointer text-center"><div class="h-16 w-16 rounded-full bg-navy/10 flex items-center justify-center text-navy text-2xl mx-auto mb-4"><i class="fas fa-chalkboard-teacher"></i></div><h3 class="text-xl font-bold text-navy">Teacher Login</h3><p class="text-gray-600 text-sm">Admin panel</p></div>
+        <div onclick="showSection('parentForm')" class="portal-card p-8 cursor-pointer text-center"><div class="h-16 w-16 rounded-full bg-gold/20 flex items-center justify-center text-amber-600 text-2xl mx-auto mb-4"><i class="fas fa-user-friends"></i></div><h3 class="text-xl font-bold text-navy">Parent Login</h3><p class="text-gray-600 text-sm">Monitor child's progress</p></div>
+        <div onclick="showSection('studentForm')" class="portal-card p-8 cursor-pointer text-center"><div class="h-16 w-16 rounded-full bg-navy/5 flex items-center justify-center text-navy text-2xl mx-auto mb-4"><i class="fas fa-user-graduate"></i></div><h3 class="text-xl font-bold text-navy">Student Login</h3><p class="text-gray-600 text-sm">View dashboard</p></div>
+    </div>
+    <!-- Legacy Section -->
+    <div class="mt-8 bg-gradient-to-br from-[#0b1e3c] to-[#13294b] text-white rounded-2xl p-6 watermark-bg">
+        <h2 class="text-2xl font-bold text-yellow-400 text-center">Historical Legacy of GCHS Daska</h2>
+        <p class="text-center text-yellow-200 text-sm mb-4">Established 1882 | An Anchor of Education in Punjab</p>
+        <p class="text-gray-300 text-sm text-justify">Established in 1882, Govt. Christian High School Daska is one of the oldest educational institutions in Pakistan. Founded as Daska Mission High School under the Church of Scotland, it has served as a beacon of education for over 140 years. The historic foundation stone was laid on 26 March 1915 by E.R. Abbott, Deputy Commissioner.</p>
+    </div>
+    <div class="text-center text-gray-400 text-sm mt-6"><i class="fas fa-shield-alt mr-2"></i>SSL Secured</div>
+</div>
+
+<!-- Teacher Login Form -->
+<div id="teacherForm" class="hidden max-w-md mx-auto"><div class="portal-card p-8"><button onclick="showSection('loginScreen')" class="text-navy mb-4"><i class="fas fa-arrow-left"></i> Back</button><h2 class="text-2xl font-bold text-navy mb-6">Teacher Login</h2><form id="teacherLoginForm"><input type="email" id="teacherEmail" class="form-input mb-4" placeholder="Email" required><input type="password" id="teacherPass" class="form-input mb-6" placeholder="Password" required><button type="submit" class="btn-navy w-full py-3 rounded-xl font-semibold">Login</button></form></div></div>
+<div id="parentForm" class="hidden max-w-md mx-auto"><div class="portal-card p-8"><button onclick="showSection('loginScreen')" class="text-navy mb-4"><i class="fas fa-arrow-left"></i> Back</button><h2 class="text-2xl font-bold text-navy mb-6">Parent Login</h2><form id="parentLoginForm"><input type="text" id="parentRoll" class="form-input mb-4" placeholder="Roll Number" required><input type="tel" id="parentMobile" class="form-input mb-6" placeholder="Mobile Number" required><button type="submit" class="btn-gold w-full py-3 rounded-xl font-semibold">View Dashboard</button></form></div></div>
+<div id="studentForm" class="hidden max-w-md mx-auto"><div class="portal-card p-8"><button onclick="showSection('loginScreen')" class="text-navy mb-4"><i class="fas fa-arrow-left"></i> Back</button><h2 class="text-2xl font-bold text-navy mb-6">Student Login</h2><form id="studentLoginForm"><input type="text" id="studentRoll" class="form-input mb-6" placeholder="Roll Number" required><button type="submit" class="btn-navy w-full py-3 rounded-xl font-semibold">Access Dashboard</button></form></div></div>
+
+<!-- Admin Panel -->
+<div id="adminPanel" class="hidden">
+    <div class="portal-card p-6 mb-6 flex flex-wrap justify-between items-center"><div><h2 class="text-2xl font-bold text-navy">Teacher Admin Panel</h2><p>Welcome, <span id="adminUser"></span></p><div class="text-xs mt-1"><i class="fas fa-eye-slash"></i> Privacy Mode <button onclick="togglePrivacyMode()" class="text-navy underline">Toggle</button></div></div><div class="flex gap-2"><button onclick="openAddStudentModal()" class="btn-navy px-3 py-2 rounded-lg text-sm"><i class="fas fa-user-plus"></i> Add Student</button><button onclick="logout()" class="bg-gray-200 px-3 py-2 rounded-lg text-sm">Logout</button></div></div>
+    <div class="flex overflow-x-auto border-b mb-6">
+        <button class="tab-btn active" onclick="openTab(event,'tabStudents')">Students</button>
+        <button class="tab-btn" onclick="openTab(event,'tabAttendance')">Attendance</button>
+        <button class="tab-btn" onclick="openTab(event,'tabMarks')">Exam Marks</button>
+        <button class="tab-btn" onclick="openTab(event,'tabBatchMarks')">Batch Entry</button>
+        <button class="tab-btn" onclick="openTab(event,'tabLessonPrep')"><i class="fas fa-chalkboard"></i> Lesson Prep</button>
+        <button class="tab-btn" onclick="openTab(event,'tabLibrary')">Library</button>
+        <button class="tab-btn" onclick="openTab(event,'tabNotices')">Notices</button>
+        <button class="tab-btn" onclick="openTab(event,'tabHomework')">Homework</button>
+        <button class="tab-btn" onclick="openTab(event,'tabDiary')">Diary</button>
+        <button class="tab-btn" onclick="openTab(event,'tabFeedback')">Feedback</button>
+    </div>
+
+    <!-- Students Tab -->
+    <div id="tabStudents" class="tab-content active"><div class="portal-card p-6"><h3 class="text-xl font-bold mb-4">Student Records</h3><div class="flex gap-3 mb-4 flex-wrap"><input type="text" id="studentSearch" placeholder="Search" class="form-input flex-1" onkeyup="filterStudents()"><select id="studentClassFilter" class="form-input w-32" onchange="filterStudents()"><option value="">All Classes</option><option value="9">9th</option><option value="10">10th</option></select><select id="studentSectionFilter" class="form-input w-32" onchange="filterStudents()"><option value="">All Sections</option><option>A</option><option>B</option><option>C</option></select><button onclick="loadData()" class="btn-navy px-4 py-2 rounded-lg"><i class="fas fa-sync-alt"></i> Sync</button></div><div class="overflow-x-auto"><table class="data-table"><thead><tr><th>Roll</th><th>Name</th><th>Class</th><th>Section</th><th>Parent Mobile</th><th>Actions</th></tr></thead><tbody id="studentsTableBody"></tbody></table></div></div></div>
+
+    <!-- Attendance Tab with Custom Class -->
+    <div id="tabAttendance" class="tab-content"><div class="portal-card p-6"><h3 class="text-xl font-bold mb-4">Attendance Management</h3><div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4"><input type="date" id="attDate" class="form-input"><div><select id="attClass" class="form-input" onchange="toggleAttClassCustom()"><option value="9">9th</option><option value="10">10th</option><option value="custom">Custom</option></select><input type="text" id="attClassCustom" class="form-input mt-2 hidden" placeholder="Enter class" onchange="loadAttendanceStudents()"></div><select id="attSection" class="form-input" onchange="loadAttendanceStudents()"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div class="flex gap-2"><button onclick="markAllPresent()" class="bg-green-600 text-white px-3 py-2 rounded-lg text-sm">All Present</button><button onclick="markAllAbsent()" class="bg-red-600 text-white px-3 py-2 rounded-lg text-sm">All Absent</button></div></div><div id="attendanceContainer" class="space-y-2 max-h-96 overflow-y-auto"></div><div class="flex justify-between mt-4"><span>Marked: <span id="markedCount">0</span>/<span id="totalCount">0</span></span><button onclick="saveAttendance()" class="btn-navy px-6 py-2 rounded-lg">Save Attendance</button></div></div></div>
+
+    <!-- Exam Marks Tab -->
+    <div id="tabMarks" class="tab-content"><div class="portal-card p-6"><h3 class="text-xl font-bold mb-4">Exam Results Entry</h3><form id="marksForm" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6"><select id="markStudent" class="form-input" required></select><select id="markSubject" class="form-input"><option>Math</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>English</option><option>Urdu</option><option>Pak Studies</option><option>Islamiat</option><option>Computer Science</option></select><select id="markExamType" class="form-input"><option>Midterm</option><option>Final</option><option>Unit Test</option><option>Annual</option></select><input type="number" id="markObtained" placeholder="Obtained" class="form-input" required><input type="number" id="markTotal" placeholder="Total" class="form-input" value="100" required><button type="submit" class="btn-navy col-span-2 md:col-span-1 py-2">Add</button></form><div class="overflow-x-auto"><table class="data-table"><thead><tr><th>Student</th><th>Subject</th><th>Exam</th><th>Marks</th><th>%</th><th>WhatsApp</th></tr></thead><tbody id="marksTableBody"></tbody></table></div></div></div>
+
+    <!-- Batch Marks Tab with Custom Class & Subject -->
+    <div id="tabBatchMarks" class="tab-content"><div class="portal-card p-6"><h3 class="text-xl font-bold mb-4">Batch Marks Entry</h3><div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4"><div><select id="batchClass" class="form-input" onchange="toggleBatchClassCustom()"><option value="">Select</option><option value="9">9th</option><option value="10">10th</option><option value="custom">Custom</option></select><input type="text" id="batchClassCustom" class="form-input mt-2 hidden" placeholder="Enter class" onchange="loadBatchStudents()"></div><select id="batchSection" class="form-input" onchange="loadBatchStudents()"><option value="">All Sections</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select><div><select id="batchSubjectSelect" class="form-input" onchange="toggleBatchSubjectCustom()"><option>Math</option><option>Physics</option><option>Chemistry</option><option>English</option><option>Urdu</option><option>__custom__</option></select><input type="text" id="batchSubjectCustom" class="form-input mt-2 hidden" placeholder="Custom subject"></div><select id="batchExamType" class="form-input"><option>Midterm</option><option>Final</option><option>Unit Test</option></select><input type="number" id="globalTotalMarks" class="form-input" value="100" placeholder="Total Marks"></div><div class="global-marks-header bg-navy text-white p-3 rounded-lg mb-4 flex justify-between"><span>Exam Date:</span><input type="date" id="batchExamDate" class="px-3 py-1 rounded"></div><div id="batchMarksGrid" class="marks-grid mb-4"></div><button onclick="saveBatchMarks()" class="btn-success px-6 py-2 rounded-lg">Save All Marks</button></div></div>
+
+    <!-- ===== LESSON PREPARATION TAB (ENHANCED) ===== -->
+    <div id="tabLessonPrep" class="tab-content">
+        <div class="portal-card p-6">
+            <div class="flex flex-wrap justify-between items-center mb-6"><h3 class="text-xl font-bold text-navy"><i class="fas fa-chalkboard mr-2"></i>Lesson Preparation Tracking</h3><div class="flex gap-3"><button onclick="markAllPrepared()" class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm"><i class="fas fa-check-circle"></i> All Prepared</button><button onclick="markAllNeedsRevision()" class="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm"><i class="fas fa-exclamation-triangle"></i> All Needs Revision</button></div></div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div><select id="lessonClass" class="form-input" onchange="toggleLessonClassCustom()"><option value="9">9th</option><option value="10">10th</option><option value="custom">Custom</option></select><input type="text" id="lessonClassCustom" class="form-input mt-2 hidden" placeholder="Enter class" onchange="loadLessonStudents()"></div>
+                <div><select id="lessonSection" class="form-input" onchange="loadLessonStudents()"><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option></select></div>
+                <div><input type="text" id="lessonTopic" class="form-input" placeholder="Topic / Lesson Name" value="Today's Lesson"></div>
+                <div><input type="date" id="lessonDate" class="form-input"></div>
+            </div>
+            <div class="bg-gradient-to-r from-navy/5 to-gold/5 p-4 rounded-xl mb-6 flex flex-wrap justify-between items-center">
+                <div><span class="text-gray-600">Preparation:</span><span id="lessonPercent" class="text-3xl font-bold text-navy ml-2">0%</span></div>
+                <div><span id="lessonStatusBadge" class="px-4 py-2 rounded-full font-semibold bg-gray-200">--</span></div>
+                <div><button onclick="sendLessonWhatsApp()" class="btn-whatsapp px-4 py-2 rounded-lg text-sm"><i class="fab fa-whatsapp mr-2"></i>Send Alerts</button></div>
+                <div><button onclick="saveLessonPreparation()" class="btn-navy px-4 py-2 rounded-lg text-sm"><i class="fas fa-save mr-2"></i>Save to Sheet</button></div>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2.5 mb-6"><div id="lessonProgressFill" class="bg-green-600 h-2.5 rounded-full" style="width:0%"></div></div>
+            <div class="overflow-x-auto"><table class="data-table w-full"><thead><tr><th>Roll No</th><th>Student Name</th><th>Status</th><th>Action</th></tr></thead><tbody id="lessonTableBody"></tbody></table></div>
+        </div>
+    </div>
+
+    <!-- Library Tab -->
+    <div id="tabLibrary" class="tab-content"><div class="portal-card p-6"><h3 class="text-xl font-bold mb-4">Library Resources</h3><form id="libraryForm" class="grid grid-cols-1 md:grid-cols-4 gap-3 mb-6"><input type="text" id="libraryTitle" placeholder="Title" class="form-input" required><input type="url" id="libraryLink" placeholder="Link" class="form-input" required><input type="text" id="libraryDescription" placeholder="Description" class="form-input"><input type="text" id="libraryClass" placeholder="Class (9/10/ALL)" class="form-input"><button type="submit" class="btn-navy md:col-span-4 py-2">Add Resource</button></form><div id="libraryList"></div></div></div>
+
+    <!-- Notices Tab -->
+    <div id="tabNotices" class="tab-content"><div class="portal-card p-6"><h3 class="text-xl font-bold mb-4">Notices</h3><form id="noticesForm" class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6"><input type="text" id="noticeTitle" placeholder="Title" class="form-input" required><input type="date" id="noticeDate" class="form-input"><select id="noticePriority" class="form-input"><option>High</option><option>Normal</option><option>Low</option></select><button type="submit" class="btn-navy md:col-span-3 py-2">Add Notice</button></form><div id="noticesList"></div></div></div>
+
+    <!-- Homework Tab -->
+    <div id="tabHomework" class="tab-content"><div class="portal-card p-6"><h3 class="text-xl font-bold mb-4">Homework</h3><form id="homeworkForm" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-6"><select id="homeworkClass" class="form-input"><option>9</option><option>10</option></select><select id="homeworkSection" class="form-input"><option>A</option><option>B</option><option>C</option></select><select id="homeworkSubject" class="form-input"><option>Math</option><option>Physics</option><option>English</option><option>Urdu</option></select><input type="text" id="homeworkAssignment" placeholder="Assignment" class="form-input" required><input type="date" id="homeworkDueDate" class="form-input"><button type="submit" class="btn-navy md:col-span-5 py-2">Add Homework</button></form><div id="homeworkList"></div></div></div>
+
+    <!-- Diary Tab -->
+    <div id="tabDiary" class="tab-content"><div class="portal-card p-6"><h3 class="text-xl font-bold mb-4">Daily Diary</h3><form id="diaryForm" class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6"><select id="diaryClass" class="form-input"><option>9</option><option>10</option></select><select id="diarySection" class="form-input"><option>A</option><option>B</option><option>C</option></select><input type="text" id="diarySubject" placeholder="Subject" class="form-input"><input type="date" id="diaryDate" class="form-input"><textarea id="diaryEntry" placeholder="Entry" class="form-input md:col-span-4" rows="2"></textarea><button type="submit" class="btn-navy md:col-span-4 py-2">Add Diary Entry</button></form><div id="diaryList"></div></div></div>
+
+    <!-- Feedback Tab -->
+    <div id="tabFeedback" class="tab-content"><div class="portal-card p-6"><h3 class="text-xl font-bold mb-4">Feedback</h3><div id="feedbackList"></div></div></div>
+</div>
+
+<!-- User Dashboard -->
+<div id="userDashboard" class="hidden">
+    <div class="portal-card p-6 bg-gradient-to-r from-navy/5 to-gold/5 mb-6 flex flex-wrap justify-between items-center"><div class="flex items-center gap-4"><div class="student-photo"><i class="fas fa-user-circle text-4xl"></i></div><div><h2 class="text-2xl font-bold text-navy" id="studentNameHeader"></h2><p id="studentDetails"></p></div></div><button onclick="logout()" class="bg-gray-200 px-4 py-2 rounded-lg">Logout</button></div>
+    
+    <!-- 4 Category Cards -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div onclick="showDashboardCategory('academic')" class="dashboard-category-card"><div class="category-icon-wrapper category-academic"><i class="fas fa-book-open"></i></div><h4 class="font-bold">Academic</h4></div>
+        <div onclick="showDashboardCategory('attendance')" class="dashboard-category-card"><div class="category-icon-wrapper category-attendance"><i class="fas fa-calendar-alt"></i></div><h4 class="font-bold">Attendance</h4></div>
+        <div onclick="showDashboardCategory('library')" class="dashboard-category-card"><div class="category-icon-wrapper category-library"><i class="fas fa-book"></i></div><h4 class="font-bold">Library</h4></div>
+        <div onclick="showDashboardCategory('notices')" class="dashboard-category-card"><div class="category-icon-wrapper category-notices"><i class="fas fa-bullhorn"></i></div><h4 class="font-bold">Notices</h4></div>
+    </div>
+
+    <!-- Category Panels -->
+    <div id="dashboardAcademicPanel" class="hidden portal-card p-4 mb-6"><h4 class="font-bold mb-2">Academic Resources</h4><div id="academicResourcesList"></div></div>
+    <div id="dashboardAttendancePanel" class="hidden portal-card p-4 mb-6"><h4 class="font-bold mb-2">Attendance Stats</h4><div id="detailedAttendanceStats"></div><canvas id="attendanceMonthlyChart" height="150"></canvas></div>
+    <div id="dashboardLibraryPanel" class="hidden portal-card p-4 mb-6"><h4 class="font-bold mb-2">Library</h4><div id="userLibraryResources"></div></div>
+    <div id="dashboardNoticesPanel" class="hidden portal-card p-4 mb-6"><h4 class="font-bold mb-2">Notices</h4><div id="userNotices"></div><textarea id="dashboardSuggestion" class="form-input w-full text-sm mt-3" rows="2" placeholder="Suggestions?"></textarea><button onclick="submitSuggestion()" class="btn-navy mt-2 px-3 py-1 rounded-lg text-sm">Submit</button></div>
+
+    <!-- Summary Cards -->
+    <div class="grid md:grid-cols-3 gap-4 mb-6">
+        <div class="portal-card p-4 text-center"><i class="fas fa-calendar-check text-3xl text-navy"></i><p class="text-2xl font-bold"><span id="dashboardAttPercent">0</span>%</p><p>Attendance</p></div>
+        <div class="portal-card p-4 text-center"><i class="fas fa-chart-line text-3xl text-gold"></i><p class="text-2xl font-bold"><span id="dashboardAvgMarks">0</span>%</p><p>Average Marks</p></div>
+        <div class="portal-card p-4 text-center"><i class="fas fa-lightbulb text-3xl text-amber-500"></i><p id="performanceInsight" class="text-sm">Loading...</p></div>
+    </div>
+
+    <!-- Charts -->
+    <div class="grid lg:grid-cols-2 gap-6 mb-6">
+        <div class="portal-card uniform-card"><h3 class="font-bold mb-3">Subject-wise Performance</h3><div class="chart-container"><canvas id="resultsChart"></canvas></div></div>
+        <div class="portal-card uniform-card"><h3 class="font-bold mb-3">Attendance Calendar</h3><div id="calendarGrid" class="calendar-grid"></div><div class="flex justify-center gap-4 mt-4"><span><span class="legend-dot present"></span> Present</span><span><span class="legend-dot absent"></span> Absent</span><span><span class="legend-dot late"></span> Late</span></div></div>
+    </div>
+
+    <!-- Marks Table -->
+    <div class="portal-card p-4"><h3 class="font-bold mb-3">Subject-wise Marks</h3><div class="overflow-x-auto"><table class="data-table"><thead><tr><th>Date</th><th>Subject</th><th>Exam</th><th>Marks</th><th>%</th><th>Grade</th></thead><tbody id="userMarksTableBody"></tbody></table></div></div>
+</div>
+</main>
+
+<!-- Add Student Modal -->
+<div id="addStudentModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50"><div class="portal-card max-w-md w-full p-6"><h3 class="text-xl font-bold mb-4">Add Student</h3><form id="addStudentForm"><input type="text" id="studentName" placeholder="Full Name" class="form-input mb-3" required><div class="grid grid-cols-2 gap-3 mb-3"><select id="studentClass" class="form-input"><option>9</option><option>10</option></select><select id="studentSection" class="form-input"><option>A</option><option>B</option><option>C</option></select></div><input type="tel" id="studentParentMobile" placeholder="Parent Mobile" class="form-input mb-4" required><div class="flex gap-3"><button type="submit" class="btn-navy flex-1 py-2 rounded-lg">Save</button><button type="button" onclick="toggleModal('addStudentModal')" class="bg-gray-200 flex-1 py-2 rounded-lg">Cancel</button></div></form></div></div>
+
+<script>
+// ===== CONFIGURATION =====
+const SPREADSHEET_ID = '1vYIBSOfb6P41qswMIhYWd_SjiE0t3vGqA5meSFTU_t8';
+const BASE_URL = 'https://opensheet.elk.sh';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzCWa0W_ZbD2VqsySoNvEueMdJPPUuXKTxEhzPD1rlj0Z4ijvDTtLhdbOlh47Ejj59Y/exec';
+const PORTAL_LINK = 'https://hiraacademy.com.pk/gchs-daska.html';
+
+let appData = { students: [], teachers: [], attendance: [], marks: [], library: [], notices: [], syllabus: [], homework: [], diary: [], feedback: [], lesson_prep: [] };
+let currentUser = null;
+let isPrivacyMode = true;
+let batchMarksData = { students: [], marks: {} };
+let lessonPrepStatus = {};
+let resultsChart = null, attendanceChart = null, currentMonth = new Date();
+let whatsAppQueue = [], currentQueueIndex = 0;
+
+// Helper functions
+function showToast(msg, type) { let t=document.createElement('div'); t.className=`toast toast-${type}`; t.innerHTML=`<i class="fas ${type==='success'?'fa-check-circle':'fa-exclamation-circle'}"></i>${msg}<button onclick="this.parentElement.remove()" class="ml-4">&times;</button>`; document.getElementById('toastContainer').appendChild(t); setTimeout(()=>t.remove(),3000); }
+function showLoading(show, text='Loading...') { document.getElementById('loadingText').innerText = text; document.getElementById('loading').classList.toggle('hidden',!show); }
+function showSection(id) { ['loginScreen','teacherForm','parentForm','studentForm','adminPanel','userDashboard'].forEach(s=>document.getElementById(s)?.classList.add('hidden')); document.getElementById(id)?.classList.remove('hidden'); }
+function toggleModal(id) { document.getElementById(id)?.classList.toggle('hidden'); }
+function logout() { currentUser=null; showSection('loginScreen'); showToast('Logged out','info'); }
+function formatPhone(p){ let n=p.replace(/\D/g,''); if(n.startsWith('0')) n='92'+n.substring(1); if(!n.startsWith('92')) n='92'+n; return n; }
+async function sendToSheet(data) { showLoading(true,'Saving...'); try { let r=await fetch(APPS_SCRIPT_URL,{method:'POST',body:new URLSearchParams(data)}); let j=await r.json(); showToast(j.status==='success'?'Saved successfully':'Error: '+j.message,j.status==='success'?'success':'error'); return j.status==='success'; } catch(e){showToast('Network error: '+e.message,'error'); return false;} finally{showLoading(false);} }
+
+async function loadData() { showLoading(true,'Fetching...'); try { let [students,teachers,attendance,marks,library,notices,syllabus,homework,diary,feedback,lesson_prep]=await Promise.all([fetch(`${BASE_URL}/${SPREADSHEET_ID}/students`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/teachers`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/attendance`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/marks`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/library`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/notices`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/syllabus`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/homework`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/diary`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/Feedback`).then(r=>r.ok?r.json():[]),fetch(`${BASE_URL}/${SPREADSHEET_ID}/lesson_prep`).then(r=>r.ok?r.json():[])]); appData={students,teachers,attendance,marks,library,notices,syllabus,homework,diary,feedback,lesson_prep}; lesson_prep.forEach(l=>{if(l.roll) lessonPrepStatus[l.roll]=l.status;}); document.getElementById('notificationBadge').innerText=notices.filter(n=>new Date(n.date)>new Date(Date.now()-7*86400000)).length||'0'; if(currentUser?.type==='teacher'){ populateAdminTables(); loadLibraryList(); loadNoticesList(); loadHomeworkList(); loadDiaryList(); loadFeedbackList(); } else if(currentUser?.roll) refreshUserDashboard(currentUser.roll); showToast('Data synced','success'); } catch(e){showToast('Sync failed','error');} finally{showLoading(false);} }
+
+function populateAdminTables() { let active=appData.students.filter(s=>s.status!=='inactive'); document.getElementById('studentsTableBody').innerHTML=active.map(s=>`<tr data-roll="${s.roll}"><td>${s.roll}</td><td>${s.name}</td><td>${s.class}</td><td>${s.section}</td><td>${isPrivacyMode?'<span class="privacy-mask"><i class="fas fa-eye-slash"></i> Hidden</span>':s.parent_mobile}</td><td><button onclick="sendRollNumberWhatsApp('${s.roll}')" class="text-green-600 mr-2"><i class="fab fa-whatsapp"></i></button><button onclick="deleteStudent('${s.roll}')" class="text-red-600"><i class="fas fa-trash"></i></button></td></tr>`).join('')||'<tr><td colspan="6" class="text-center">No students</td></tr>'; let markSelect=document.getElementById('markStudent'); if(markSelect) markSelect.innerHTML='<option value="">Select Student</option>'+active.map(s=>`<option value="${s.roll}">${s.roll} - ${s.name}</option>`).join(''); document.getElementById('marksTableBody').innerHTML=appData.marks.map(m=>{let s=active.find(s=>s.roll===m.roll);return s?`<tr><td>${s.name}</td><td>${m.subject}</td><td>${m.exam_type}</td><td>${m.obtained}/${m.total}</td><td>${parseFloat(m.percentage||0).toFixed(1)}%</td><td><button onclick="sendResultWhatsApp('${m.roll}','${m.subject}','${m.exam_type}',${m.obtained},${m.total})" class="text-green-600"><i class="fab fa-whatsapp"></i></button></td></tr>`:''}).join(''); }
+
+// ===== ENHANCED WHATSAPP CREDENTIALS =====
+function sendRollNumberWhatsApp(roll) { let s=appData.students.find(s=>s.roll===roll); if(!s?.parent_mobile){showToast('No parent mobile','error');return;} let storedPass=localStorage.getItem(`student_pass_${roll}`)||'gchs1234'; let msg=`Assalam-o-Alaikum!\nHere are your login details for GCHS Daska Portal:\n\nRoll No: ${s.roll}\nUsername: ${s.roll}\nPassword: ${storedPass}\n\nAccess Portal: ${PORTAL_LINK}`; window.open(`https://wa.me/${formatPhone(s.parent_mobile)}?text=${encodeURIComponent(msg)}`,'_blank'); showToast(`Credentials sent for ${s.name}`,'success'); }
+function sendResultWhatsApp(roll,subj,exam,obt,tot){ let s=appData.students.find(s=>s.roll===roll); if(s?.parent_mobile){let perc=((obt/tot)*100).toFixed(1); let grade=perc>=80?'A+':perc>=70?'A':perc>=60?'B':perc>=50?'C':'F'; let msg=`📝 ${exam} Result\nSubject: ${subj}\nMarks: ${obt}/${tot}\nPercentage: ${perc}%\nGrade: ${grade}`; window.open(`https://wa.me/${formatPhone(s.parent_mobile)}?text=${encodeURIComponent(msg)}`,'_blank');}}
+
+// ===== LESSON PREPARATION TRACKING =====
+function toggleLessonClassCustom(){ let v=document.getElementById('lessonClass').value; let c=document.getElementById('lessonClassCustom'); if(v==='custom') c.classList.remove('hidden'); else c.classList.add('hidden'); loadLessonStudents(); }
+function getLessonClass(){ let v=document.getElementById('lessonClass').value; if(v==='custom') return document.getElementById('lessonClassCustom').value; return v; }
+function loadLessonStudents(){ let classVal=getLessonClass(); let section=document.getElementById('lessonSection').value; let students=appData.students.filter(s=>s.class==classVal && s.section===section && s.status!=='inactive'); let tbody=document.getElementById('lessonTableBody'); if(!students.length){tbody.innerHTML='<tr><td colspan="4" class="text-center py-4">No students</td></tr>'; updateLessonStats(); return;} tbody.innerHTML=students.map(s=>{let status=lessonPrepStatus[s.roll]||'Pending'; return `<tr data-roll="${s.roll}"><td>${s.roll}</td><td>${s.name}</td><td><span class="px-3 py-1 rounded-full text-xs ${status==='Prepared'?'bg-green-100 text-green-700':status==='Needs Revision'?'bg-orange-100 text-orange-700':'bg-gray-100'}">${status}</span></td><td><button onclick="setLessonStatus('${s.roll}','Prepared')" class="bg-green-600 text-white px-3 py-1 rounded-lg text-sm mr-2">Prepared</button><button onclick="setLessonStatus('${s.roll}','Needs Revision')" class="bg-orange-500 text-white px-3 py-1 rounded-lg text-sm">Needs Revision</button></td></tr>`;}).join(''); updateLessonStats(); }
+function setLessonStatus(roll,status){ lessonPrepStatus[roll]=status; loadLessonStudents(); }
+function markAllPrepared(){ document.querySelectorAll('#lessonTableBody tr[data-roll]').forEach(r=>{let roll=r.dataset.roll; if(roll) lessonPrepStatus[roll]='Prepared';}); loadLessonStudents(); }
+function markAllNeedsRevision(){ document.querySelectorAll('#lessonTableBody tr[data-roll]').forEach(r=>{let roll=r.dataset.roll; if(roll) lessonPrepStatus[roll]='Needs Revision';}); loadLessonStudents(); }
+function updateLessonStats(){ let rows=document.querySelectorAll('#lessonTableBody tr[data-roll]'); let total=rows.length; let prepared=Array.from(rows).filter(r=>lessonPrepStatus[r.dataset.roll]==='Prepared').length; let percent=total?Math.round((prepared/total)*100):0; document.getElementById('lessonPercent').innerText=percent+'%'; document.getElementById('lessonProgressFill').style.width=percent+'%'; let badge=document.getElementById('lessonStatusBadge'); if(percent>=90) badge.innerHTML='🏆 Excellent'; else if(percent>=75) badge.innerHTML='✅ Good'; else if(percent>=50) badge.innerHTML='⚠️ Average'; else badge.innerHTML='🔥 Needs Improvement'; }
+async function saveLessonPreparation(){ let classVal=getLessonClass(); let section=document.getElementById('lessonSection').value; let topic=document.getElementById('lessonTopic').value; let date=document.getElementById('lessonDate').value||new Date().toISOString().split('T')[0]; let students=appData.students.filter(s=>s.class==classVal && s.section===section && s.status!=='inactive'); if(!students.length){showToast('No students to save','warning');return;} showLoading(true,'Saving lesson prep...'); let success=true; for(let s of students){ let status=lessonPrepStatus[s.roll]; if(status && status!=='Pending'){ let ok=await sendToSheet({sheet:'lesson_prep',roll:s.roll,name:s.name,class:classVal,section:section,topic:topic,date:date,status:status,saved_by:currentUser?.name||'Admin'}); if(!ok) success=false; } } if(success) showToast('Lesson preparation saved to Google Sheet!','success'); else showToast('Some entries failed','warning'); showLoading(false); }
+function sendLessonWhatsApp(){ let topic=document.getElementById('lessonTopic').value||'Today\'s Lesson'; let list=[]; document.querySelectorAll('#lessonTableBody tr[data-roll]').forEach(row=>{ let roll=row.dataset.roll; let status=lessonPrepStatus[roll]; if(!status) return; let s=appData.students.find(s=>s.roll===roll); if(s?.parent_mobile){ let msg=`📘 Lesson Update: "${topic}"\nStudent: ${s.name}\nStatus: ${status==='Prepared'?'✅ The lesson was prepared.':'⚠️ The lesson was NOT prepared. Needs revision.'}\nLogin: ${PORTAL_LINK}`; list.push({name:s.name,phone:s.parent_mobile,message:msg}); } }); if(!list.length){showToast('No parent numbers found','warning');return;} list.forEach(l=>window.open(`https://wa.me/${formatPhone(l.phone)}?text=${encodeURIComponent(l.message)}`,'_blank')); showToast(`Opened WhatsApp for ${list.length} parents`,'success'); }
+
+// ===== ATTENDANCE FUNCTIONS =====
+function toggleAttClassCustom(){ let v=document.getElementById('attClass').value; let c=document.getElementById('attClassCustom'); if(v==='custom') c.classList.remove('hidden'); else c.classList.add('hidden'); loadAttendanceStudents(); }
+function loadAttendanceStudents(){ let cls=document.getElementById('attClass').value; if(cls==='custom') cls=document.getElementById('attClassCustom').value; let sec=document.getElementById('attSection').value; let date=document.getElementById('attDate').value||new Date().toISOString().split('T')[0]; let students=appData.students.filter(s=>s.class==cls && s.section===sec && s.status!=='inactive'); document.getElementById('totalCount').innerText=students.length; if(!students.length){document.getElementById('attendanceContainer').innerHTML='<p class="text-gray-500">No students</p>';return;} let marked=0; let html=students.map(s=>{let exist=appData.attendance.find(a=>a.roll===s.roll && a.date===date); if(exist) marked++; return `<div class="attendance-row flex justify-between items-center p-3 bg-gray-50 rounded-lg" data-roll="${s.roll}"><div><span class="font-medium">${s.name}</span> (${s.roll})</div><div class="flex gap-4"><label><input type="radio" name="att_${s.roll}" value="Present" ${exist?.status==='Present'?'checked':''}> Present</label><label><input type="radio" name="att_${s.roll}" value="Absent" ${exist?.status==='Absent'?'checked':''}> Absent</label><label><input type="radio" name="att_${s.roll}" value="Late" ${exist?.status==='Late'?'checked':''}> Late</label></div></div>`;}).join(''); document.getElementById('attendanceContainer').innerHTML=html; document.getElementById('markedCount').innerText=marked; }
+function markAllPresent(){ document.querySelectorAll('input[type="radio"][value="Present"]').forEach(r=>r.checked=true); document.getElementById('markedCount').innerText=document.querySelectorAll('input[type="radio"]:checked').length; }
+function markAllAbsent(){ document.querySelectorAll('input[type="radio"][value="Absent"]').forEach(r=>r.checked=true); document.getElementById('markedCount').innerText=document.querySelectorAll('input[type="radio"]:checked').length; }
+async function saveAttendance(){ let date=document.getElementById('attDate').value||new Date().toISOString().split('T')[0]; let cls=document.getElementById('attClass').value; if(cls==='custom') cls=document.getElementById('attClassCustom').value; let sec=document.getElementById('attSection').value; let students=appData.students.filter(s=>s.class==cls && s.section===sec && s.status!=='inactive'); for(let s of students){ let status=document.querySelector(`input[name="att_${s.roll}"]:checked`)?.value||'Absent'; await sendToSheet({sheet:'attendance',roll:s.roll,date,status,class:cls,section:sec,marked_by:currentUser?.name||'Admin'}); } showToast('Attendance saved','success'); loadData(); }
+
+// ===== BATCH MARKS =====
+function toggleBatchClassCustom(){ let v=document.getElementById('batchClass').value; let c=document.getElementById('batchClassCustom'); if(v==='custom') c.classList.remove('hidden'); else c.classList.add('hidden'); loadBatchStudents(); }
+function toggleBatchSubjectCustom(){ let v=document.getElementById('batchSubjectSelect').value; let c=document.getElementById('batchSubjectCustom'); if(v==='__custom__') c.classList.remove('hidden'); else c.classList.add('hidden'); }
+function getBatchSubject(){ let v=document.getElementById('batchSubjectSelect').value; if(v==='__custom__') return document.getElementById('batchSubjectCustom').value; return v; }
+function loadBatchStudents(){ let cls=document.getElementById('batchClass').value; if(cls==='custom') cls=document.getElementById('batchClassCustom').value; let sec=document.getElementById('batchSection').value; let students=appData.students.filter(s=>s.class==cls && (sec?s.section===sec:true) && s.status!=='inactive'); batchMarksData={students,marks:{}}; let grid=document.getElementById('batchMarksGrid'); if(!students.length){grid.innerHTML='<div class="p-4 text-center">No students found</div>';return;} let html=`<div class="marks-grid-header">Name</div><div class="marks-grid-header">Roll</div><div class="marks-grid-header">Obtained</div><div class="marks-grid-header">%</div><div class="marks-grid-header">Absent</div><div class="marks-grid-header">WhatsApp</div>`; students.forEach(s=>{html+=`<div class="marks-grid-cell">${s.name}</div><div class="marks-grid-cell">${s.roll}</div><div class="marks-grid-cell"><input type="number" id="obt_${s.roll}" class="marks-input" onchange="updateBatchPerc('${s.roll}')" min="0" max="${document.getElementById('globalTotalMarks').value}"></div><div class="marks-grid-cell"><span id="perc_${s.roll}">0%</span></div><div class="marks-grid-cell"><input type="checkbox" id="abs_${s.roll}" class="absent-checkbox" onchange="toggleBatchAbsent('${s.roll}')"></div><div class="marks-grid-cell">${s.parent_mobile?`<i class="fab fa-whatsapp text-green-600 cursor-pointer text-xl" onclick="sendBatchWhatsApp('${s.roll}')"></i>`:'—'}</div>`;}); grid.innerHTML=html; }
+function updateBatchPerc(roll){ let total=parseFloat(document.getElementById('globalTotalMarks').value)||100; let val=parseFloat(document.getElementById(`obt_${roll}`).value)||0; let perc=total>0?((val/total)*100).toFixed(1):0; document.getElementById(`perc_${roll}`).innerText=perc+'%'; if(val>0) batchMarksData.marks[roll]={obtained:val,total,percentage:perc}; else delete batchMarksData.marks[roll]; }
+function toggleBatchAbsent(roll){ let chk=document.getElementById(`abs_${roll}`); let inp=document.getElementById(`obt_${roll}`); if(chk.checked){ inp.disabled=true; inp.value=''; delete batchMarksData.marks[roll]; document.getElementById(`perc_${roll}`).innerText='ABSENT'; } else { inp.disabled=false; updateBatchPerc(roll); } }
+function sendBatchWhatsApp(roll){ let s=appData.students.find(s=>s.roll===roll); if(!s?.parent_mobile) return; let obt=parseFloat(document.getElementById(`obt_${roll}`).value)||0; let total=parseFloat(document.getElementById('globalTotalMarks').value)||100; let subj=getBatchSubject(); let exam=document.getElementById('batchExamType').value; let perc=total>0?((obt/total)*100).toFixed(1):0; let msg=`📝 ${exam} Result\nSubject: ${subj}\nMarks: ${obt}/${total}\nPercentage: ${perc}%`; window.open(`https://wa.me/${formatPhone(s.parent_mobile)}?text=${encodeURIComponent(msg)}`,'_blank'); }
+async function saveBatchMarks(){ let subj=getBatchSubject(); let exam=document.getElementById('batchExamType').value; let total=parseFloat(document.getElementById('globalTotalMarks').value)||100; let date=document.getElementById('batchExamDate').value||new Date().toISOString().split('T')[0]; for(let [roll,data] of Object.entries(batchMarksData.marks)){ await sendToSheet({sheet:'marks',roll,subject:subj,exam_type:exam,obtained:data.obtained,total,percentage:data.percentage,date,entered_by:currentUser?.name||'Admin'}); } showToast('Batch saved','success'); loadData(); }
+
+// ===== LIBRARY, NOTICES, HOMEWORK, DIARY, FEEDBACK =====
+function loadLibraryList(){ let html=appData.library.map((item,i)=>`<div class="resource-card flex justify-between"><div><strong>${item.title}</strong><p class="text-xs">${item.description||''}</p></div><a href="${item.link}" target="_blank" class="text-blue-600"><i class="fas fa-download"></i> Download</a></div>`).join('')||'<p>No resources</p>'; document.getElementById('libraryList').innerHTML=html; }
+function loadNoticesList(){ let html=appData.notices.map((item,i)=>`<div class="border-b py-2"><span class="font-medium">${item.title}</span><span class="text-xs text-gray-500 ml-2">${item.date}</span><span class="text-xs ${item.priority==='High'?'text-red-500':''}">${item.priority}</span></div>`).join('')||'<p>No notices</p>'; document.getElementById('noticesList').innerHTML=html; }
+function loadHomeworkList(){ let html=appData.homework.map((item,i)=>`<div class="resource-card"><strong>${item.subject}</strong> - ${item.assignment}<span class="text-xs text-gray-500 ml-2">Due: ${item.due_date}</span><span class="text-xs">Class ${item.class}-${item.section}</span></div>`).join('')||'<p>No homework</p>'; document.getElementById('homeworkList').innerHTML=html; }
+function loadDiaryList(){ let html=appData.diary.map((item,i)=>`<div class="resource-card"><strong>${item.date}</strong> - ${item.subject}<p class="text-sm">${item.entry}</p></div>`).join('')||'<p>No diary entries</p>'; document.getElementById('diaryList').innerHTML=html; }
+function loadFeedbackList(){ let html=appData.feedback.map((item,i)=>`<div class="border-b py-2"><p>${item.suggestion}</p><p class="text-xs text-gray-500">${item.date} - ${item.user||'guest'}</p></div>`).join('')||'<p>No feedback</p>'; document.getElementById('feedbackList').innerHTML=html; }
+
+// ===== DASHBOARD FUNCTIONS =====
+function refreshUserDashboard(roll){ let s=appData.students.find(s=>s.roll===roll); if(!s) return; document.getElementById('studentNameHeader').innerText=s.name; document.getElementById('studentDetails').innerHTML=`${s.roll} | Class ${s.class} - ${s.section}`; let att=appData.attendance.filter(a=>a.roll===roll); let pres=att.filter(a=>a.status==='Present').length; let attPerc=att.length?Math.round((pres/att.length)*100):0; document.getElementById('dashboardAttPercent').innerText=attPerc; document.getElementById('dashboardAttPresent')?.innerText=pres; document.getElementById('dashboardAttTotal')?.innerText=att.length; let marks=appData.marks.filter(m=>m.roll===roll); let avg=marks.length?marks.reduce((a,m)=>a+parseFloat(m.percentage||0),0)/marks.length:0; document.getElementById('dashboardAvgMarks').innerText=avg.toFixed(1); document.getElementById('performanceInsight').innerText=avg>=80?'🎉 Excellent':avg>=60?'✅ Good':'⚠️ Needs attention'; let ctx=document.getElementById('resultsChart')?.getContext('2d'); if(ctx && marks.length){ let subjMap={}; marks.forEach(m=>{let p=parseFloat(m.percentage||0); if(subjMap[m.subject]) subjMap[m.subject]=(subjMap[m.subject]+p)/2; else subjMap[m.subject]=p;}); if(resultsChart) resultsChart.destroy(); resultsChart=new Chart(ctx,{type:'bar',data:{labels:Object.keys(subjMap),datasets:[{label:'Average Score %',data:Object.values(subjMap),backgroundColor:'#002147',borderRadius:8}]},options:{plugins:{datalabels:{anchor:'end',align:'top',formatter:v=>v+'%'}},scales:{y:{max:100}}}});} let months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']; let monthlyData=months.map(m=>{let monthAtt=att.filter(a=>new Date(a.date).toLocaleString('default',{month:'short'})===m); let monthPres=monthAtt.filter(a=>a.status==='Present').length; return monthAtt.length?((monthPres/monthAtt.length)*100).toFixed(1):0;}); let ctxAtt=document.getElementById('attendanceMonthlyChart')?.getContext('2d'); if(ctxAtt){ if(attendanceChart) attendanceChart.destroy(); attendanceChart=new Chart(ctxAtt,{type:'bar',data:{labels:months,datasets:[{label:'Attendance %',data:monthlyData,backgroundColor:'#002147'}]},options:{plugins:{datalabels:{formatter:v=>v+'%'}},scales:{y:{max:100}}}});} renderCalendar(roll); loadAcademicResources(s.class,s.section); loadUserLibrary(); loadUserNotices(); let marksHtml=marks.sort((a,b)=>new Date(b.date)-new Date(a.date)).map(m=>{let perc=parseFloat(m.percentage||0); let grade=perc>=80?'A+':perc>=70?'A':perc>=60?'B':perc>=50?'C':'F'; let gradeClass=grade==='A+'?'grade-a-plus':grade==='A'?'grade-a':grade==='B'?'grade-b':grade==='C'?'grade-c':'grade-f'; return `<tr><td>${m.date}</td><td>${m.subject}</td><td>${m.exam_type}</td><td>${m.obtained}/${m.total}</td><td>${perc}%</td><td><span class="grade-badge ${gradeClass}">${grade}</span></td></tr>`;}).join('')||'<tr><td colspan="6" class="text-center">No results</td></tr>'; document.getElementById('userMarksTableBody').innerHTML=marksHtml; }
+function loadAcademicResources(className,section){ let container=document.getElementById('academicResourcesList'); if(!container) return; let syllabus=appData.syllabus.filter(s=>s.class==className); let homework=appData.homework.filter(h=>h.class==className); let html=syllabus.map(s=>`<div class="resource-card">📘 ${s.subject} - <a href="${s.file_link}" target="_blank">Download</a></div>`).join('')||'<div>No syllabus</div>'; html+=homework.map(h=>`<div class="resource-card">📝 ${h.subject}: ${h.assignment} (Due: ${h.due_date})</div>`).join(''); container.innerHTML=html; }
+function loadUserLibrary(){ let libDiv=document.getElementById('userLibraryResources'); if(libDiv) libDiv.innerHTML=appData.library.map(b=>`<div class="resource-card">📚 ${b.title} - <a href="${b.link}" target="_blank">View</a></div>`).join('')||'<p>No resources</p>'; }
+function loadUserNotices(){ let noticeDiv=document.getElementById('userNotices'); if(noticeDiv) noticeDiv.innerHTML=appData.notices.map(n=>`<div class="resource-card border-l-4 ${n.priority==='High'?'border-red-500':''}">📢 ${n.title} (${n.date})</div>`).join('')||'<p>No notices</p>'; }
+function renderCalendar(roll){ if(!currentUser) return; let year=currentMonth.getFullYear(), month=currentMonth.getMonth(); document.getElementById('calendarMonthYear')?.innerText=currentMonth.toLocaleString('default',{month:'long',year:'numeric'}); let firstDay=new Date(year,month,1).getDay(); firstDay=firstDay===0?6:firstDay-1; let daysInMonth=new Date(year,month+1,0).getDate(); let calendarHTML=''; ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d=>calendarHTML+=`<div class="calendar-day-header">${d}</div>`); for(let i=0;i<firstDay;i++) calendarHTML+=`<div class="calendar-cell empty"></div>`; let studentAtt=appData.attendance.filter(a=>a.roll===roll && new Date(a.date).getMonth()===month && new Date(a.date).getFullYear()===year); let today=new Date(); for(let d=1;d<=daysInMonth;d++){ let dateStr=`${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`; let att=studentAtt.find(a=>a.date===dateStr); let statusClass=att?(att.status==='Present'?'present':att.status==='Absent'?'absent':'late'):''; let isToday=today.getDate()===d && today.getMonth()===month && today.getFullYear()===year; calendarHTML+=`<div class="calendar-cell ${statusClass} ${isToday?'today':''}"><span>${d}</span></div>`; } document.getElementById('calendarGrid').innerHTML=calendarHTML; }
+function showDashboardCategory(cat){ ['academic','attendance','library','notices'].forEach(c=>{let el=document.getElementById(`dashboard${c.charAt(0).toUpperCase()+c.slice(1)}Panel`);if(el) el.classList.add('hidden');}); let panel=document.getElementById(`dashboard${cat.charAt(0).toUpperCase()+cat.slice(1)}Panel`); if(panel) panel.classList.remove('hidden'); }
+function submitSuggestion(){ let text=document.getElementById('dashboardSuggestion')?.value; if(!text){showToast('Please enter suggestion','warning');return;} sendToSheet({sheet:'Feedback',suggestion:text,date:new Date().toISOString().split('T')[0],user:currentUser?.roll||'guest'}); document.getElementById('dashboardSuggestion').value=''; showToast('Thank you for feedback','success'); loadData(); }
+function filterStudents(){ let search=document.getElementById('studentSearch')?.value.toLowerCase()||'', classF=document.getElementById('studentClassFilter')?.value||'', secF=document.getElementById('studentSectionFilter')?.value||''; document.querySelectorAll('#studentsTableBody tr').forEach(r=>{if(r.cells.length>1){ let txt=r.innerText.toLowerCase(); let match=(!search||txt.includes(search)) && (!classF||txt.includes(classF.toLowerCase())) && (!secF||txt.includes(secF.toLowerCase())); r.style.display=match?'':'none';}}); }
+function deleteStudent(roll){ if(confirm('Delete student permanently?')){ sendToSheet({sheet:'students',action:'delete_permanent',roll}); loadData(); } }
+function togglePrivacyMode(){ isPrivacyMode=!isPrivacyMode; populateAdminTables(); showToast(isPrivacyMode?'Privacy ON':'Privacy OFF','info'); }
+function openAddStudentModal(){ toggleModal('addStudentModal'); }
+function toggleNotificationPanel(){ let p=document.getElementById('notificationPanel'); p.classList.toggle('hidden'); if(!p.classList.contains('hidden')){ let notices=appData.notices||[]; document.getElementById('announcementList').innerHTML=notices.map(n=>`<div class="border-b py-2"><b>${n.title}</b><br><span class="text-xs">${n.date}</span></div>`).join(''); } }
+function openTab(ev,tabId){ document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active')); document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.getElementById(tabId).classList.add('active'); if(ev) ev.currentTarget.classList.add('active'); if(tabId==='tabAttendance') loadAttendanceStudents(); else if(tabId==='tabBatchMarks') loadBatchStudents(); else if(tabId==='tabLessonPrep') loadLessonStudents(); else if(tabId==='tabLibrary') loadLibraryList(); else if(tabId==='tabNotices') loadNoticesList(); else if(tabId==='tabHomework') loadHomeworkList(); else if(tabId==='tabDiary') loadDiaryList(); else if(tabId==='tabFeedback') loadFeedbackList(); }
+function closeWhatsAppProgress(){ document.getElementById('whatsappProgressModal').classList.add('hidden'); }
+function sendNextInQueue(){ if(currentQueueIndex<whatsAppQueue.length){ let m=whatsAppQueue[currentQueueIndex]; window.open(`https://wa.me/${formatPhone(m.phone)}?text=${encodeURIComponent(m.message)}`,'_blank'); currentQueueIndex++; document.getElementById('whatsappProgressFill').style.width=(currentQueueIndex/whatsAppQueue.length*100)+'%'; if(currentQueueIndex>=whatsAppQueue.length) document.getElementById('sendNextBtn').disabled=true; } }
+
+// ===== FORM SUBMITS =====
+document.getElementById('teacherLoginForm').onsubmit=async(e)=>{e.preventDefault(); let email=document.getElementById('teacherEmail').value; let pass=document.getElementById('teacherPass').value; await loadData(); let t=appData.teachers?.find(t=>t.email===email && t.password===pass); if(t){currentUser={type:'teacher',name:t.name}; showSection('adminPanel'); document.getElementById('adminUser').innerText=t.name; populateAdminTables(); showToast('Welcome','success');} else showToast('Invalid credentials','error');};
+document.getElementById('studentLoginForm').onsubmit=async(e)=>{e.preventDefault(); let roll=document.getElementById('studentRoll').value; await loadData(); let s=appData.students.find(s=>s.roll===roll); if(s){localStorage.setItem(`student_pass_${roll}`,'gchs1234'); currentUser={type:'student',roll,name:s.name}; showSection('userDashboard'); refreshUserDashboard(roll); showToast(`Welcome ${s.name}`,'success');} else showToast('Student not found','error');};
+document.getElementById('parentLoginForm').onsubmit=async(e)=>{e.preventDefault(); let roll=document.getElementById('parentRoll').value; let mob=document.getElementById('parentMobile').value; await loadData(); let s=appData.students.find(s=>s.roll===roll && s.parent_mobile===mob); if(s){currentUser={type:'parent',roll,name:s.name}; showSection('userDashboard'); refreshUserDashboard(roll); showToast(`Viewing ${s.name}`,'success');} else showToast('Roll or mobile mismatch','error');};
+document.getElementById('addStudentForm').onsubmit=async(e)=>{e.preventDefault(); toggleModal('addStudentModal'); let name=document.getElementById('studentName').value; let cls=document.getElementById('studentClass').value; let sec=document.getElementById('studentSection').value; let mob=document.getElementById('studentParentMobile').value; let roll=`GCHS-${cls}${sec}-${Math.floor(Math.random()*99)+10}`; await sendToSheet({sheet:'students',roll,name,class:cls,section:sec,parent_mobile:mob,status:'active'}); loadData();};
+document.getElementById('marksForm').onsubmit=async(e)=>{e.preventDefault(); let roll=document.getElementById('markStudent').value; let subj=document.getElementById('markSubject').value; let exam=document.getElementById('markExamType').value; let obt=document.getElementById('markObtained').value; let tot=document.getElementById('markTotal').value; let perc=((obt/tot)*100).toFixed(2); await sendToSheet({sheet:'marks',roll,subject:subj,exam_type:exam,obtained:obt,total:tot,percentage:perc}); loadData();};
+document.getElementById('libraryForm').onsubmit=async(e)=>{e.preventDefault(); await sendToSheet({sheet:'library',title:document.getElementById('libraryTitle').value,link:document.getElementById('libraryLink').value,description:document.getElementById('libraryDescription').value,class:document.getElementById('libraryClass').value}); loadData();};
+document.getElementById('noticesForm').onsubmit=async(e)=>{e.preventDefault(); await sendToSheet({sheet:'notices',title:document.getElementById('noticeTitle').value,date:document.getElementById('noticeDate').value,priority:document.getElementById('noticePriority').value}); loadData();};
+document.getElementById('homeworkForm').onsubmit=async(e)=>{e.preventDefault(); await sendToSheet({sheet:'homework',class:document.getElementById('homeworkClass').value,section:document.getElementById('homeworkSection').value,subject:document.getElementById('homeworkSubject').value,assignment:document.getElementById('homeworkAssignment').value,due_date:document.getElementById('homeworkDueDate').value}); loadData();};
+document.getElementById('diaryForm').onsubmit=async(e)=>{e.preventDefault(); await sendToSheet({sheet:'diary',class:document.getElementById('diaryClass').value,section:document.getElementById('diarySection').value,subject:document.getElementById('diarySubject').value,date:document.getElementById('diaryDate').value,entry:document.getElementById('diaryEntry').value}); loadData();};
+
+// ===== INIT =====
+window.onload=()=>{ document.getElementById('attDate').value=new Date().toISOString().split('T')[0]; document.getElementById('batchExamDate').value=new Date().toISOString().split('T')[0]; document.getElementById('lessonDate').value=new Date().toISOString().split('T')[0]; loadData(); let btn=document.getElementById('backToTopBtn'); window.addEventListener('scroll',()=>{if(window.scrollY>300) btn.classList.add('visible'); else btn.classList.remove('visible');}); if(btn) btn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'}); };
+</script>
+<button id="backToTopBtn"><i class="fas fa-arrow-up"></i></button>
+</body>
+</html>
