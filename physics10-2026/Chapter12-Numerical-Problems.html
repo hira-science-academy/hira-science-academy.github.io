@@ -437,15 +437,38 @@
     <div class="content-section" id="questions-section">
       <h2>📖 Numerical Problems & Solutions (PECTAA 2026)</h2>
 
+      <!-- ── shared inner styles for LaTeX solution layout ── -->
+      <style>
+        .block-lbl { font-weight: 700; color: #0f766e; margin: 10px 0 4px; font-size: 0.97rem; }
+        .given-grid { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; margin: 4px 0 10px 8px; font-style: italic; font-size: 0.95rem; }
+        .tofind-line { font-style: italic; margin: 3px 0 3px 8px; font-size: 0.95rem; }
+        .sol-text { margin: 7px 0; text-align: justify; font-size: 0.95rem; }
+        .ans-box { background: linear-gradient(135deg,#f0fdf4,#dcfce7); border: 2px solid #0f766e; border-radius: 10px; padding: 9px 16px; margin: 12px 0 2px; font-weight: 700; color: #15803d; font-size: 1rem; }
+        .sub-lbl { font-weight: 700; color: #1e40af; margin: 12px 0 3px; background: #eff6ff; padding: 4px 10px; border-left: 3px solid #3b82f6; border-radius: 0 4px 4px 0; display: block; font-size: 0.93rem; }
+        .inner-hr { border: none; border-top: 1px dashed #cbd5e1; margin: 12px 0; }
+        .num-sol-wrap { margin-top: 1rem; }
+      </style>
+
       <!-- Problem 12.1 -->
       <div id="num12-1" class="numerical-box">
         <div class="problem-title"><span class="num-badge">12.1</span> Wave Speed from Wavelength and Frequency</div>
         <p><strong>The wavelength of a wave is 2 metres and its frequency is 5 Hz. What is the speed of the wave?</strong></p>
         <div class="answer-content" id="answerNum1">
-          <div class="given-data"><strong>📊 Given Data:</strong><br>λ = 2 m, f = 5 Hz</div>
-          <div class="equation">\[ v = f \lambda \]</div>
-          <div class="equation">\[ v = 5 \times 2 = 10 \text{ m/s} \]</div>
-          <p><strong>✅ Answer:</strong> 10 m/s</p>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Wavelength\)</span><span>\(= \lambda = 2\ \text{m}\)</span>
+              <span>\(Frequency\)</span><span>\(= f = 5\ \text{Hz}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Wave\ speed = v = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned} v &= f\lambda \\ v &= (5)(2) \\ \boldsymbol{v} &= \boldsymbol{10\ \text{ms}^{-1}} \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(v = 10\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answerNum1">Show Solution</button>
       </div>
@@ -453,12 +476,23 @@
       <!-- Problem 12.2 -->
       <div id="num12-2" class="numerical-box">
         <div class="problem-title"><span class="num-badge">12.2</span> Frequency from Wave Speed and Wavelength</div>
-        <p><strong>A wave travels at a speed of 300 m/s and has a wavelength of 3 metres. Calculate its frequency.</strong></p>
+        <p><strong>A wave travels at a speed of \(300\ \text{ms}^{-1}\) and has a wavelength of 3 metres. Calculate its frequency.</strong></p>
         <div class="answer-content" id="answerNum2">
-          <div class="given-data"><strong>📊 Given Data:</strong><br>v = 300 m/s, λ = 3 m</div>
-          <div class="equation">\[ v = f\lambda \implies f = \frac{v}{\lambda} \]</div>
-          <div class="equation">\[ f = \frac{300}{3} = 100 \text{ Hz} \]</div>
-          <p><strong>✅ Answer:</strong> 100 Hz</p>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Wave\ speed\)</span><span>\(= v = 300\ \text{ms}^{-1}\)</span>
+              <span>\(Wavelength\)</span><span>\(= \lambda = 3\ \text{m}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Frequency = f = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned} v &= f\lambda \\ 300 &= f \times 3 \\ \frac{300}{3} &= f \\ 100 &= f \\ \boldsymbol{f} &= \boldsymbol{100\ \text{Hz}} \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(f = 100\ \text{Hz}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answerNum2">Show Solution</button>
       </div>
@@ -466,12 +500,23 @@
       <!-- Problem 12.3 -->
       <div id="num12-3" class="numerical-box">
         <div class="problem-title"><span class="num-badge">12.3</span> Wavelength from Frequency and Speed</div>
-        <p><strong>A sound wave has a frequency of 250 Hz and a speed of 340 m/s. Find its wavelength.</strong></p>
+        <p><strong>A sound wave has a frequency of 250 Hz and a speed of \(340\ \text{ms}^{-1}\). Find its wavelength.</strong></p>
         <div class="answer-content" id="answerNum3">
-          <div class="given-data"><strong>📊 Given Data:</strong><br>f = 250 Hz, v = 340 m/s</div>
-          <div class="equation">\[ v = f\lambda \implies \lambda = \frac{v}{f} \]</div>
-          <div class="equation">\[ \lambda = \frac{340}{250} = 1.36 \text{ m} \]</div>
-          <p><strong>✅ Answer:</strong> 1.36 m</p>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Frequency\)</span><span>\(= f = 250\ \text{Hz}\)</span>
+              <span>\(Speed\)</span><span>\(= v = 340\ \text{ms}^{-1}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Wavelength = \lambda = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned} v &= f\lambda \\ 340 &= 250 \times \lambda \\ \frac{340}{250} &= \lambda \\ 1.36 &= \lambda \\ \boldsymbol{\lambda} &= \boldsymbol{1.36\ \text{m}} \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(\lambda = 1.36\ \text{m}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answerNum3">Show Solution</button>
       </div>
@@ -481,10 +526,20 @@
         <div class="problem-title"><span class="num-badge">12.4</span> Time Period from Frequency</div>
         <p><strong>A wave has a frequency of 50 Hz. How much time does it take to complete one wave?</strong></p>
         <div class="answer-content" id="answerNum4">
-          <div class="given-data"><strong>📊 Given Data:</strong><br>f = 50 Hz</div>
-          <div class="equation">\[ T = \frac{1}{f} \]</div>
-          <div class="equation">\[ T = \frac{1}{50} = 0.02 \text{ s} \]</div>
-          <p><strong>✅ Answer:</strong> 0.02 seconds</p>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Frequency\)</span><span>\(= f = 50\ \text{Hz}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Time\ period\ (Time\ for\ one\ wave) = T = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the formula for time period:</p>
+            <div class="equation">
+              \[\begin{aligned} T &= \frac{1}{f} \\ T &= \frac{1}{50} \\ \boldsymbol{T} &= \boldsymbol{0.02\ \text{s}} \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(T = 0.02\ \text{s}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answerNum4">Show Solution</button>
       </div>
@@ -494,10 +549,21 @@
         <div class="problem-title"><span class="num-badge">12.5</span> Wave Speed from Wavelength and Frequency</div>
         <p><strong>A wave has a wavelength of 0.5 m and frequency of 200 Hz. Calculate the speed of the wave.</strong></p>
         <div class="answer-content" id="answerNum5">
-          <div class="given-data"><strong>📊 Given Data:</strong><br>λ = 0.5 m, f = 200 Hz</div>
-          <div class="equation">\[ v = f \lambda \]</div>
-          <div class="equation">\[ v = 200 \times 0.5 = 100 \text{ m/s} \]</div>
-          <p><strong>✅ Answer:</strong> 100 m/s</p>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Wavelength\)</span><span>\(= \lambda = 0.5\ \text{m}\)</span>
+              <span>\(Frequency\)</span><span>\(= f = 200\ \text{Hz}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Wave\ speed = v = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned} v &= f\lambda \\ v &= (0.5)(200) \\ \boldsymbol{v} &= \boldsymbol{100\ \text{ms}^{-1}} \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(v = 100\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answerNum5">Show Solution</button>
       </div>
@@ -507,13 +573,57 @@
         <div class="problem-title"><span class="num-badge">12.6</span> Frequency from Time Period</div>
         <p><strong>The time period of a wave is 0.02 seconds. Calculate the frequency of the wave.</strong></p>
         <div class="answer-content" id="answerNum6">
-          <div class="given-data"><strong>📊 Given Data:</strong><br>T = 0.02 s</div>
-          <div class="equation">\[ f = \frac{1}{T} \]</div>
-          <div class="equation">\[ f = \frac{1}{0.02} = 50 \text{ Hz} \]</div>
-          <p><strong>✅ Answer:</strong> 50 Hz</p>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Time\ period\)</span><span>\(= T = 0.02\ \text{s}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Frequency = f = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the formula for frequency:</p>
+            <div class="equation">
+              \[\begin{aligned} f &= \frac{1}{T} \\ f &= \frac{1}{0.02} \\ \boldsymbol{f} &= \boldsymbol{50\ \text{Hz}} \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(f = 50\ \text{Hz}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answerNum6">Show Solution</button>
       </div>
+
+      <!-- Example 12.1 -->
+      <div id="num12-ex1" class="numerical-box" style="border-left-color:#0f766e; background: linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);">
+        <div class="problem-title" style="color:#0f766e;"><span class="num-badge" style="background:#0f766e;">Ex 12.1</span> Frequency and Speed from Cycles and Time</div>
+        <p><strong>A wave takes 5 seconds to complete 10 cycles. If the wavelength of the wave is 1.2 metres, calculate: (a) frequency of the wave &nbsp; (b) speed of the wave.</strong></p>
+        <div class="answer-content" id="answerEx1">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Number\ of\ cycles\)</span><span>\(= n = 10\)</span>
+              <span>\(Time\)</span><span>\(= t = 5\ \text{s}\)</span>
+              <span>\(Wavelength\)</span><span>\(= \lambda = 1.2\ \text{m}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Frequency = f = ?\)</div>
+            <div class="tofind-line">\(Wave\ speed = v = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <span class="sub-lbl">(a) Frequency of the wave</span>
+            <p class="sol-text">By using the formula for frequency:</p>
+            <div class="equation">
+              \[\begin{aligned} f &= \frac{n}{t} \\ f &= \frac{10}{5} \\ \boldsymbol{f} &= \boldsymbol{2\ \text{Hz}} \end{aligned}\]
+            </div>
+            <hr class="inner-hr">
+            <span class="sub-lbl">(b) Speed of the wave</span>
+            <p class="sol-text">Now, by using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned} v &= f\lambda \\ v &= (2)(1.2) \\ \boldsymbol{v} &= \boldsymbol{2.4\ \text{ms}^{-1}} \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(f = 2\ \text{Hz}\) &nbsp;|&nbsp; \(v = 2.4\ \text{ms}^{-1}\)</div>
+          </div>
+        </div>
+        <button class="toggle-answer-btn" data-target="answerEx1" style="background:#0f766e;">Show Solution</button>
+      </div>
+
     </div>
 
     <!-- Key Formulas Section -->
