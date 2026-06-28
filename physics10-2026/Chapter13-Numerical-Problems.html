@@ -50,6 +50,16 @@
   <meta name="twitter:description" content="Free numerical problems for Sound chapter. 2026 syllabus notes by Muhammad Tayyab.">
   <meta name="twitter:image" content="https://hiraacademy.com.pk/images/physics-10th-new-2026-pectaa.webp">
 
+<link rel="icon" href="https://hiraacademy.com.pk/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/png" sizes="16x16" href="https://hiraacademy.com.pk/images/favicon-16x16.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="https://hiraacademy.com.pk/images/favicon-32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.com.pk/images/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="https://hiraacademy.com.pk/images/android-chrome-192x192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="https://hiraacademy.com.pk/images/android-chrome-512x512.png" />
+  <link rel="manifest" href="https://hiraacademy.com.pk/images/site.webmanifest" />
+
+  <meta name="theme-color" content="#0f766e" />
+
   <!-- Preconnect & Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -250,6 +260,203 @@ MathJax = {
       border-left: 3px solid #0f766e;
     }
   </style>
+ <style>
+    :root {
+      --primary-color: #0f766e;
+      --primary-hover: #115e59;
+      --bg-light: #f8fafc;
+      --text-main: #334155;
+      --text-dark: #0f172a;
+      --accent-blue: #2563eb;
+      --accent-bg-blue: #f0fdfa;
+      --border-color: #e2e8f0;
+    }
+
+    .numerical-box {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--primary-color);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .numerical-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+    }
+
+    .problem-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .num-badge {
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
+      color: #ffffff;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(15, 118, 110, 0.2);
+    }
+
+    /* Justified Question Text styling */
+    .numerical-box p {
+      color: var(--text-main);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    .answer-content {
+      background-color: var(--bg-light);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 14px;
+      border: 1px solid #f1f5f9;
+    }
+
+    .block-lbl {
+      font-weight: 700;
+      color: var(--primary-color);
+      margin: 14px 0 6px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .block-lbl::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, #cbd5e1, transparent);
+    }
+
+    .given-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 20px;
+      margin: 6px 0 14px 4px;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+    }
+
+    .given-grid span:nth-child(odd) {
+      font-weight: 600;
+      color: #64748b;
+    }
+
+    .tofind-line {
+      margin: 4px 0 4px 12px;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+      font-weight: 500;
+      position: relative;
+    }
+    
+    .tofind-line::before {
+      content: "•";
+      color: var(--accent-blue);
+      font-weight: bold;
+      display: inline-block; 
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .sol-text {
+      margin: 8px 0;
+      text-align: justify;
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .equation {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #f1f5f9;
+      margin: 10px 0;
+      overflow-x: auto;
+    }
+
+    .ans-box {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 1.5px solid #16a34a;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-top: 16px;
+      font-weight: 700;
+      color: #14532d;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(22, 163, 74, 0.05);
+    }
+
+    .note-box {
+      background: #fefce8;
+      border-left: 4px solid #eab308;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.93rem;
+      color: #713f12;
+      line-height: 1.5;
+    }
+
+    .toggle-answer-btn {
+      background: var(--primary-color);
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .toggle-answer-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .toggle-answer-btn:active {
+      transform: scale(0.98);
+    }
+
+    /* Example specific variations */
+    .example-box {
+      border-left-color: #3b82f6 !important;
+    }
+    .example-badge {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;
+    }
+    .example-btn {
+      background: #3b82f6 !important;
+    }
+    .example-btn:hover {
+      background: #2563eb !important;
+    }
+  </style>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -420,34 +627,234 @@ MathJax = {
       </div>
     </div>
 
-    <!-- Numerical Problems: 6 problems with Show/Hide Answer buttons -->
     <div class="content-section" id="questions-section">
-      <h2>📐 Numerical Problems & Solutions (PECTAA 2026)</h2>
-      
-      <div id="q1" class="definition-box text-justify"><strong>13.1 At a particular temperature, the speed of sound in air is 333 ms⁻¹. If the wavelength of a sound wave is 3 cm, calculate the frequency of the sound wave. Is this frequency in the audible range of the human ear?</strong><div class="answer-content" id="answer1"><br><strong>Given Data:</strong><br>Wave speed = v = 333 ms⁻¹<br>Wavelength = λ = 3 cm = 3 × 10⁻² m = 0.03 m<br><br><strong>To Find:</strong><br>Frequency = f = ?<br>Audibility of wave = ?<br><br><strong>Solution:</strong><br>By using the wave equation:<br>v = fλ<br>333 = (f)(0.03)<br>f = 333/0.03<br>f = 11000 Hz<br>f = 11 × 10³ Hz<br><strong>f = 11 kHz</strong><br><br>Since the audible frequency range for human ears is 20 Hz to 20 kHz, the calculated frequency of 11 kHz lies within this range.<br><br><strong>Answer:</strong> f = 11 kHz, Audible</div><button class="toggle-answer-btn" data-target="answer1">Show Answer</button></div>
-      
-      <div id="q2" class="definition-box text-justify"><strong>13.2 A clock chimes 48 times in 1 minute. Calculate the frequency and period of the chimes.</strong><div class="answer-content" id="answer2"><br><strong>Given Data:</strong><br>Number of chimes = n = 48<br>Time = t = 1 minute = 60 s<br><br><strong>To Find:</strong><br>Frequency = f = ?<br>Time period = T = ?<br><br><strong>Solution:</strong><br>By using the formula for frequency:<br>f = n/t<br>f = 48/60<br>f = 0.8 Hz<br><br>Now, by using the formula for time period:<br>T = 1/f<br>T = 1/0.8<br><strong>T = 1.25 s</strong><br><br><strong>Answer:</strong> f = 0.8 Hz, T = 1.25 s</div><button class="toggle-answer-btn" data-target="answer2">Show Answer</button></div>
-      
-      <div id="q3" class="definition-box text-justify"><strong>13.3 A car horn emits a sound with a wavelength of 0.5 m. If the speed of sound in air is 340 ms⁻¹, calculate the frequency of the sound produced by the car's horn.</strong><div class="answer-content" id="answer3"><br><strong>Given Data:</strong><br>Wavelength = λ = 0.5 m<br>Speed of sound = v = 340 ms⁻¹<br><br><strong>To Find:</strong><br>Frequency = f = ?<br><br><strong>Solution:</strong><br>By using the wave equation:<br>v = fλ<br>340 = (f)(0.5)<br>f = 340/0.5<br><strong>f = 680 Hz</strong><br><br><strong>Answer:</strong> f = 680 Hz</div><button class="toggle-answer-btn" data-target="answer3">Show Answer</button></div>
-      
-      <div id="q4" class="definition-box text-justify"><strong>13.4 A wave travels with a speed of 500 ms⁻¹ and has a wavelength of 2 metres. Calculate the time period of the wave.</strong><div class="answer-content" id="answer4"><br><strong>Given Data:</strong><br>Wave speed = v = 500 ms⁻¹<br>Wavelength = λ = 2 m<br><br><strong>To Find:</strong><br>Time period = T = ?<br><br><strong>Solution:</strong><br>By using the wave equation:<br>v = fλ<br>500 = (f)(2)<br>f = 500/2<br>f = 250 Hz<br><br>Now, by using the formula for time period:<br>T = 1/f<br>T = 1/250<br>T = 4 × 10⁻³ s<br><strong>T = 0.004 s</strong><br><br><strong>Answer:</strong> T = 0.004 s</div><button class="toggle-answer-btn" data-target="answer4">Show Answer</button></div>
-      
-      <div id="q5" class="definition-box text-justify"><strong>13.5 A research boat sends a sound wave straight to the seabed and receives the echo 2 seconds later. The speed of sound in seawater is 1600 ms⁻¹. Find the depth of the sea at this position.</strong><div class="answer-content" id="answer5"><br><strong>Given Data:</strong><br>Total time for echo = t = 2 s<br>Speed of sound in water = v = 1600 ms⁻¹<br><br><strong>To Find:</strong><br>Depth of the sea = d = ?<br><br><strong>Solution:</strong><br>By using the SONAR distance formula:<br>Distance = (Speed of Sound × Time)/2<br>d = (1600 × 2)/2<br><strong>d = 1600 m</strong><br><br><strong>Answer:</strong> d = 1600 m</div><button class="toggle-answer-btn" data-target="answer5">Show Answer</button></div>
-      
-      <div id="q6" class="definition-box text-justify"><strong>13.6 A person claps his hands near a mountain and hears the echo after 6 seconds. If the speed of sound is 343 ms⁻¹, what is the distance of the mountain from the person?</strong><div class="answer-content" id="answer6"><br><strong>Given Data:</strong><br>Total time for echo = t = 6 s<br>Speed of sound in air = v = 343 ms⁻¹<br><br><strong>To Find:</strong><br>Distance of the mountain = d = ?<br><br><strong>Solution:</strong><br>By using the single-way distance formula:<br>Distance = (Speed of Sound × Time)/2<br>d = (343 × 6)/2<br>d = 2058/2<br><strong>d = 1029 m</strong><br><br><strong>Answer:</strong> d = 1029 m</div><button class="toggle-answer-btn" data-target="answer6">Show Answer</button></div>
-    </div>
+  <h2>📐 Numerical Problems & Solutions (PECTAA 2026)</h2>
 
-    <!-- Examples Section -->
-    <div class="content-section" id="examples-section">
-      <h2>📘 Examples with Solutions</h2>
-      
-      <div id="ex1" class="definition-box text-justify"><strong>Example 13.1: Calculate the frequency of a sound wave of speed 340 ms⁻¹ and wavelength 2.0 m.</strong><div class="answer-content" id="answer7"><br><strong>Given Data:</strong><br>Speed of sound = v = 340 ms⁻¹<br>Wavelength = λ = 2.0 m<br><br><strong>To Find:</strong><br>Frequency = f = ?<br><br><strong>Solution:</strong><br>By using the wave equation:<br>v = fλ<br>340 = (f)(2.0)<br>f = 340/2.0<br><strong>f = 170 Hz</strong><br><br><strong>Answer:</strong> f = 170 Hz</div><button class="toggle-answer-btn" data-target="answer7">Show Answer</button></div>
-      
-      <div id="ex2" class="definition-box text-justify"><strong>Example 13.2: A flash of lightning is seen 2 seconds before the thunder is heard. How far away is the cloud in which the flash has occurred? (Speed of sound = 332 ms⁻¹)</strong><div class="answer-content" id="answer8"><br><strong>Given Data:</strong><br>Time = t = 2 s<br>Speed of sound = v = 332 ms⁻¹<br><br><strong>To Find:</strong><br>Distance of the cloud = S = ?<br><br><strong>Solution:</strong><br>By using the distance formula:<br>S = vt<br>S = (332)(2)<br><strong>S = 664 m</strong><br><br><strong>Answer:</strong> S = 664 m</div><button class="toggle-answer-btn" data-target="answer8">Show Answer</button></div>
-      
-      <div id="ex3" class="definition-box text-justify"><strong>Example 13.3: A sonar device on a ship sends out a sound pulse that returns after 3.2 seconds. If the speed of sound in water is 1600 ms⁻¹, what is the distance from the ship to the seafloor?</strong><div class="answer-content" id="answer9"><br><strong>Given Data:</strong><br>Time for the sound pulse to return = t = 3.2 s<br>Speed of sound in water = v = 1600 ms⁻¹<br><br><strong>To Find:</strong><br>Distance from the ship to the seafloor = d = ?<br><br><strong>Solution:</strong><br>By using the SONAR distance formula:<br>Distance = (Speed of Sound × Time)/2<br>d = (1600 × 3.2)/2<br>d = 5120/2<br><strong>d = 2560 m</strong><br><br><strong>Answer:</strong> d = 2560 m</div><button class="toggle-answer-btn" data-target="answer9">Show Answer</button></div>
+ 
+  <div id="q1" class="numerical-box">
+    <div class="problem-title"><span class="num-badge">13.1</span> Frequency from Wave Speed and Wavelength (Audibility Check)</div>
+    <p><strong>At a particular temperature, the speed of sound in air is 333 ms⁻¹. If the wavelength of a sound wave is 3 cm, calculate the frequency of the sound wave. Is this frequency in the audible range of the human ear?</strong></p>
+    <div class="answer-content" id="answer1">
+      <div class="num-sol-wrap">
+        <div class="block-lbl">Given Data</div>
+        <div class="given-grid">
+          <span>\(Wave\ speed\)</span><span>\(= v = 333\ \text{ms}^{-1}\)</span>
+          <span>\(Wavelength\)</span><span>\(= \lambda = 3\ \text{cm} = 3 \times 10^{-2}\ \text{m} = 0.03\ \text{m}\)</span>
+        </div>
+        <div class="block-lbl">To Find</div>
+        <div class="tofind-line">\(Frequency = f = ?\)</div>
+        <div class="tofind-line">\(Audibility\ of\ wave = ?\)</div>
+        <div class="block-lbl">Solution</div>
+        <p class="sol-text">By using the wave equation:</p>
+        <div class="equation">
+          \[\begin{aligned} v &= f\lambda \\ 333 &= f \times 0.03 \\ \frac{333}{0.03} &= f \\ 11000 &= f \\ f &= 11000\ \text{Hz} \\ f &= 11 \times 10^{3}\ \text{Hz} \\ \boldsymbol{f} &= \boldsymbol{11\ \text{kHz}} \end{aligned}\]
+        </div>
+        <div class="note-box">Since the audible frequency range for human ears is \(20\ \text{Hz}\) to \(20\ \text{kHz}\), the calculated frequency of \(11\ \text{kHz}\) <strong>lies within this range</strong> and is audible.</div>
+        <div class="ans-box">✅ \(f = 11\ \text{kHz}\) — Audible</div>
+      </div>
     </div>
+    <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
+  </div>
 
+  <div id="q2" class="numerical-box">
+    <div class="problem-title"><span class="num-badge">13.2</span> Frequency and Time Period from Chimes</div>
+    <p><strong>A clock chimes 48 times in 1 minute. Calculate the frequency and period of the chimes.</strong></p>
+    <div class="answer-content" id="answer2">
+      <div class="num-sol-wrap">
+        <div class="block-lbl">Given Data</div>
+        <div class="given-grid">
+          <span>\(Number\ of\ chimes\)</span><span>\(= n = 48\)</span>
+          <span>\(Time\)</span><span>\(= t = 1\ \text{minute} = 60\ \text{s}\)</span>
+        </div>
+        <div class="block-lbl">To Find</div>
+        <div class="tofind-line">\(Frequency = f = ?\)</div>
+        <div class="tofind-line">\(Time\ period = T = ?\)</div>
+        <div class="block-lbl">Solution</div>
+        <p class="sol-text">By using the formula for frequency:</p>
+        <div class="equation">
+          \[\begin{aligned} f &= \frac{n}{t} \\ f &= \frac{48}{60} \\ f &= 0.8\ \text{Hz} \end{aligned}\]
+        </div>
+        <p class="sol-text">Now, by using the formula for time period:</p>
+        <div class="equation">
+          \[\begin{aligned} T &= \frac{1}{f} \\ T &= \frac{1}{0.8} \\ \boldsymbol{T} &= \boldsymbol{1.25\ \text{s}} \end{aligned}\]
+        </div>
+        <div class="ans-box">✅ \(f = 0.8\ \text{Hz}\) &nbsp;|&nbsp; \(T = 1.25\ \text{s}\)</div>
+      </div>
+    </div>
+    <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
+  </div>
+
+  <div id="q3" class="numerical-box">
+    <div class="problem-title"><span class="num-badge">13.3</span> Frequency of Car Horn</div>
+    <p><strong>A car horn emits a sound with a wavelength of 0.5 m. If the speed of sound in air is 340 ms⁻¹, calculate the frequency of the sound produced by the car's horn.</strong></p>
+    <div class="answer-content" id="answer3">
+      <div class="num-sol-wrap">
+        <div class="block-lbl">Given Data</div>
+        <div class="given-grid">
+          <span>\(Wavelength\)</span><span>\(= \lambda = 0.5\ \text{m}\)</span>
+          <span>\(Speed\ of\ sound\)</span><span>\(= v = 340\ \text{ms}^{-1}\)</span>
+        </div>
+        <div class="block-lbl">To Find</div>
+        <div class="tofind-line">\(Frequency = f = ?\)</div>
+        <div class="block-lbl">Solution</div>
+        <p class="sol-text">By using the wave equation:</p>
+        <div class="equation">
+          \[\begin{aligned} v &= f\lambda \\ 340 &= f \times 0.5 \\ \frac{340}{0.5} &= f \\ 680 &= f \\ \boldsymbol{f} &= \boldsymbol{680\ \text{Hz}} \end{aligned}\]
+        </div>
+        <div class="ans-box">✅ \(f = 680\ \text{Hz}\)</div>
+      </div>
+    </div>
+    <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
+  </div>
+
+  <div id="q4" class="numerical-box">
+    <div class="problem-title"><span class="num-badge">13.4</span> Time Period from Wave Speed and Wavelength</div>
+    <p><strong>A wave travels with a speed of 500 ms⁻¹ and has a wavelength of 2 metres. Calculate the time period of the wave.</strong></p>
+    <div class="answer-content" id="answer4">
+      <div class="num-sol-wrap">
+        <div class="block-lbl">Given Data</div>
+        <div class="given-grid">
+          <span>\(Wave\ speed\)</span><span>\(= v = 500\ \text{ms}^{-1}\)</span>
+          <span>\(Wavelength\)</span><span>\(= \lambda = 2\ \text{m}\)</span>
+        </div>
+        <div class="block-lbl">To Find</div>
+        <div class="tofind-line">\(Time\ period = T = ?\)</div>
+        <div class="block-lbl">Solution</div>
+        <p class="sol-text">By using the wave equation:</p>
+        <div class="equation">
+          \[\begin{aligned} v &= f\lambda \\ 500 &= f \times 2 \\ \frac{500}{2} &= f \\ 250 &= f \\ f &= 250\ \text{Hz} \end{aligned}\]
+        </div>
+        <p class="sol-text">Now, by using the formula for time period:</p>
+        <div class="equation">
+          \[\begin{aligned} T &= \frac{1}{f} \\ T &= \frac{1}{250} \\ T &= 4 \times 10^{-3}\ \text{s} \\ \boldsymbol{T} &= \boldsymbol{0.004\ \text{s}} \end{aligned}\]
+        </div>
+        <div class="ans-box">✅ \(T = 0.004\ \text{s}\)</div>
+      </div>
+    </div>
+    <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
+  </div>
+
+  <div id="q5" class="numerical-box">
+    <div class="problem-title"><span class="num-badge">13.5</span> SONAR – Depth of Sea from Echo Time</div>
+    <p><strong>A research boat sends a sound wave straight to the seabed and receives the echo 2 seconds later. The speed of sound in seawater is 1600 ms⁻¹. Find the depth of the sea at this position.</strong></p>
+    <div class="answer-content" id="answer5">
+      <div class="num-sol-wrap">
+        <div class="block-lbl">Given Data</div>
+        <div class="given-grid">
+          <span>\(Total\ time\ for\ echo\)</span><span>\(= t = 2\ \text{s}\)</span>
+          <span>\(Speed\ of\ sound\ in\ water\)</span><span>\(= v = 1600\ \text{ms}^{-1}\)</span>
+        </div>
+        <div class="block-lbl">To Find</div>
+        <div class="tofind-line">\(Depth\ of\ the\ sea = d = ?\)</div>
+        <div class="block-lbl">Solution</div>
+        <p class="sol-text">By using the SONAR distance formula:</p>
+        <div class="equation">
+          \[\begin{aligned} Distance &= \frac{Speed\ of\ Sound \times Time}{2} \\[6pt] d &= \frac{1600 \times 2}{2} \\[4pt] \boldsymbol{d} &= \boldsymbol{1600\ \text{m}} \end{aligned}\]
+        </div>
+        <div class="ans-box">✅ \(d = 1600\ \text{m}\)</div>
+      </div>
+    </div>
+    <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
+  </div>
+
+  <div id="q6" class="numerical-box">
+    <div class="problem-title"><span class="num-badge">13.6</span> Echo – Distance of Mountain</div>
+    <p><strong>A person claps his hands near a mountain and hears the echo after 6 seconds. If the speed of sound is 343 ms⁻¹, what is the distance of the mountain from the person?</strong></p>
+    <div class="answer-content" id="answer6">
+      <div class="num-sol-wrap">
+        <div class="block-lbl">Given Data</div>
+        <div class="given-grid">
+          <span>\(Total\ time\ for\ echo\)</span><span>\(= t = 6\ \text{s}\)</span>
+          <span>\(Speed\ of\ sound\ in\ air\)</span><span>\(= v = 343\ \text{ms}^{-1}\)</span>
+        </div>
+        <div class="block-lbl">To Find</div>
+        <div class="tofind-line">\(Distance\ of\ the\ mountain = d = ?\)</div>
+        <div class="block-lbl">Solution</div>
+        <p class="sol-text">By using the single-way distance formula:</p>
+        <div class="equation">
+          \[\begin{aligned} Distance &= \frac{Speed\ of\ Sound \times Time}{2} \\[6pt] d &= \frac{343 \times 6}{2} \\[6pt] d &= \frac{2058}{2} \\[4pt] \boldsymbol{d} &= \boldsymbol{1029\ \text{m}} \end{aligned}\]
+        </div>
+        <div class="ans-box">✅ \(d = 1029\ \text{m}\)</div>
+      </div>
+    </div>
+    <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
+  </div>
+
+</div>
+
+<div class="content-section" id="examples-section">
+  <h2>📘 Examples with Solutions</h2>
+
+  <div id="ex1" class="numerical-box example-box">
+    <div class="problem-title"><span class="num-badge example-badge">Ex 13.1</span> Frequency from Speed and Wavelength</div>
+    <p><strong>Calculate the frequency of a sound wave of speed 340 ms⁻¹ and wavelength 2.0 m.</strong></p>
+    <div class="answer-content" id="answer7">
+      <div class="num-sol-wrap">
+        <div class="block-lbl">Given Data</div>
+        <div class="given-grid">
+          <span>\(Speed\ of\ sound\)</span><span>\(= v = 340\ \text{ms}^{-1}\)</span>
+          <span>\(Wavelength\)</span><span>\(= \lambda = 2.0\ \text{m}\)</span>
+        </div>
+        <div class="block-lbl">To Find</div>
+        <div class="tofind-line">\(Frequency = f = ?\)</div>
+        <div class="block-lbl">Solution</div>
+        <p class="sol-text">By using the wave equation:</p>
+        <div class="equation">
+          \[\begin{aligned} v &= f\lambda \\ 340 &= f \times 2.0 \\ \frac{340}{2.0} &= f \\ 170 &= f \\ \boldsymbol{f} &= \boldsymbol{170\ \text{Hz}} \end{aligned}\]
+        </div>
+        <div class="ans-box">✅ \(f = 170\ \text{Hz}\)</div>
+      </div>
+    </div>
+    <button class="toggle-answer-btn example-btn" data-target="answer7">Show Solution</button>
+  </div>
+
+  <div id="ex2" class="numerical-box example-box">
+    <div class="problem-title"><span class="num-badge example-badge">Ex 13.2</span> Distance of Lightning Cloud</div>
+    <p><strong>A flash of lightning is seen 2 seconds before the thunder is heard. How far away is the cloud in which the flash has occurred? (Speed of sound = 332 ms⁻¹)</strong></p>
+    <div class="answer-content" id="answer8">
+      <div class="num-sol-wrap">
+        <div class="block-lbl">Given Data</div>
+        <div class="given-grid">
+          <span>\(Time\)</span><span>\(= t = 2\ \text{s}\)</span>
+          <span>\(Speed\ of\ sound\)</span><span>\(= v = 332\ \text{ms}^{-1}\)</span>
+        </div>
+        <div class="block-lbl">To Find</div>
+        <div class="tofind-line">\(Distance\ of\ the\ cloud = S = ?\)</div>
+        <div class="block-lbl">Solution</div>
+        <p class="sol-text">By using the distance formula:</p>
+        <div class="equation">
+          \[\begin{aligned} S &= vt \\ S &= (332)(2) \\ \boldsymbol{S} &= \boldsymbol{664\ \text{m}} \end{aligned}\]
+        </div>
+        <div class="ans-box">✅ \(S = 664\ \text{m}\)</div>
+      </div>
+    </div>
+    <button class="toggle-answer-btn example-btn" data-target="answer8">Show Solution</button>
+  </div>
+
+  <div id="ex3" class="numerical-box example-box">
+    <div class="problem-title"><span class="num-badge example-badge">Ex 13.3</span> SONAR – Distance to Seafloor</div>
+    <p><strong>A sonar device on a ship sends out a sound pulse that returns after 3.2 seconds. If the speed of sound in water is 1600 ms⁻¹, what is the distance from the ship to the seafloor?</strong></p>
+    <div class="answer-content" id="answer9">
+      <div class="num-sol-wrap">
+        <div class="block-lbl">Given Data</div>
+        <div class="given-grid">
+          <span>\(Time\ for\ sound\ pulse\ to\ return\)</span><span>\(= t = 3.2\ \text{s}\)</span>
+          <span>\(Speed\ of\ sound\ in\ water\)</span><span>\(= v = 1600\ \text{ms}^{-1}\)</span>
+        </div>
+        <div class="block-lbl">To Find</div>
+        <div class="tofind-line">\(Distance\ from\ ship\ to\ seafloor = d = ?\)</div>
+        <div class="block-lbl">Solution</div>
+        <p class="sol-text">By using the SONAR distance formula:</p>
+        <div class="equation">
+          \[\begin{aligned} Distance &= \frac{Speed\ of\ Sound \times Time}{2} \\[6pt] d &= \frac{1600 \times 3.2}{2} \\[6pt] d &= \frac{5120}{2} \\[4pt] \boldsymbol{d} &= \boldsymbol{2560\ \text{m}} \end{aligned}\]
+        </div>
+        <div class="ans-box">✅ \(d = 2560\ \text{m}\)</div>
+      </div>
+    </div>
+    <button class="toggle-answer-btn example-btn" data-target="answer9">Show Solution</button>
+  </div>
+
+</div>
     <!-- Key Formulas Section -->
     <div class="content-section">
       <h2>📐 Key Formulas – Sound</h2>
