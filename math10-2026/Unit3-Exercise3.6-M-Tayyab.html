@@ -1,196 +1,1340 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>Under Construction | Hira Science Academy</title>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443" crossorigin="anonymous"></script>
 
-<script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="language" content="en">
+  <meta name="author" content="Muhammad Tayyab, Govt Christian High School Daska | Hira Science Academy">
+  <meta name="copyright" content="Muhammad Tayyab, Hira Science Academy">
+  <meta name="last-modified" content="2026-03-30">
 
-<style>
-body{
-  font-family:'Plus Jakarta Sans',sans-serif;
-  background: radial-gradient(circle at 20% 20%, #0d9488, #022c22);
-  min-height:100vh;
-  overflow:hidden;
-}
+  <title>Unit 3 – Matrices and Determinants | Exercise 3.6 | Class 10 Mathematics 2026 PECTAA | Hira Science Academy</title>
+  <meta name="description" content="Class 10 Mathematics Unit 3 Exercise 3.6 – Matrix inversion method and Cramer's rule for solving linear systems. Applications in electrical circuits, forces, beams, 2D game worlds, ages, cyclists, fractions. Prepared by Muhammad Tayyab, Subject Specialist Mathematics. Based on PECTAA 2026 syllabus.">
+  <meta name="keywords" content="Class 10 Math Exercise 3.6, Matrix Inversion Method, Cramer's Rule, Matrices and Determinants, 10th Math Unit 3, PECTAA 2026, Punjab Boards Math Notes, Hira Science Academy">
 
-/* Animated border glow */
-.card-wrap{
-  padding:2px;
-  border-radius:30px;
-  background:linear-gradient(270deg,#14b8a6,#06b6d4,#14b8a6);
-  background-size:400% 400%;
-  animation:gradientMove 6s ease infinite;
-}
-@keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://hiraacademy.com.pk/math10-2026/Unit3-Exercise3.6-M-Tayyab.html">
 
-.glass{
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:blur(20px);
-  border-radius:28px;
-}
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="en_PK">
+  <meta property="og:title" content="Unit 3 – Matrices and Determinants | Exercise 3.6 | Class 10 Mathematics 2026 PECTAA">
+  <meta property="og:description" content="Complete solved exercise for matrix inversion and Cramer's rule: linear systems, electrical circuits, forces, beams, 2D game intersection, ages, cyclists, fractions.">
+  <meta property="og:url" content="https://hiraacademy.com.pk/math10-2026/Unit3-Exercise3.6-M-Tayyab.html">
+  <meta property="og:site_name" content="Hira Science Academy">
+  <meta property="og:image" content="https://hiraacademy.com.pk/images/math-10th-new-2026-pectaa.jpg">
+  <meta property="og:image:alt" content="Class 10 Math Matrices and Determinants Exercise 3.6">
 
-/* Loader ring */
-.loader{
-  width:90px;
-  height:90px;
-  border-radius:50%;
-  border:6px solid #e5e7eb;
-  border-top:6px solid #14b8a6;
-  animation:spin 1s linear infinite;
-}
-@keyframes spin{
-  to{transform:rotate(360deg);}
-}
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Unit 3 – Matrices and Determinants Exercise 3.6 | Class 10 Math 2026">
+  <meta name="twitter:description" content="Free solved notes for matrix inversion and Cramer's rule. PECTAA 2026 syllabus. By Muhammad Tayyab.">
+  <meta name="twitter:image" content="https://hiraacademy.com.pk/images/math-10th-new-2026-pectaa.jpg">
 
-/* floating */
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-12px);}
-}
-.float{animation:float 4s ease-in-out infinite;}
+  <!-- Icons -->
+  <link rel="icon" href="https://hiraacademy.com.pk/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://hiraacademy.com.pk/images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://hiraacademy.com.pk/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.com.pk/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://hiraacademy.com.pk/images/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://hiraacademy.com.pk/images/android-chrome-512x512.png">
+  <link rel="manifest" href="https://hiraacademy.com.pk/images/site.webmanifest">
 
-/* buttons */
-.btn{
-  transition:all .3s ease;
-}
-.btn:hover{
-  transform:translateY(-4px) scale(1.03);
-}
+  <meta name="theme-color" content="#0f766e">
 
-/* particles */
-.particle{
-  position:absolute;
-  background:white;
-  border-radius:50%;
-  opacity:.2;
-}
-</style>
+  <!-- Preconnect & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Poppins', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+            secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- MathJax -->
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', 'Poppins', sans-serif;
+      background-color: #f9fafb;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .problem-box {
+      scroll-margin-top: 85px;
+    }
+    .content-section {
+      margin-bottom: 2.5rem;
+    }
+    .content-section h2 {
+      color: #b45309;
+      border-bottom: 3px solid #b45309;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      font-size: 1.75rem;
+    }
+    .problem-box {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border-left: 5px solid #b45309;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 4px 12px rgba(180,83,9,0.1);
+      transition: all 0.2s;
+    }
+    .problem-box:hover {
+      transform: translateX(4px);
+    }
+    .equation {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 12px;
+      text-align: center;
+      font-family: 'Cambria Math', 'Times New Roman', serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+      overflow-x: auto;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+      border: 2px solid #b45309;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      box-shadow: 0 4px 12px rgba(180,83,9,0.3);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    .back-to-top:hover {
+      transform: translateY(-3px);
+    }
+    .back-to-top.show {
+      display: flex;
+    }
+    .btn-view {
+      background-color: #b45309;
+      color: white;
+      padding: 0.5rem 0.9rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 5px rgba(180,83,9,0.2);
+      text-decoration: none;
+    }
+    .btn-view:hover {
+      background-color: #d97706;
+      transform: translateY(-2px);
+      color: white;
+    }
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+      gap: 0.7rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 768px) {
+      .resources-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    iframe {
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .student-portal-blink {
+      animation: portalPulse 1.8s infinite ease-in-out;
+    }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .reading-progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #e2e8f0;
+      z-index: 1001;
+    }
+    .reading-progress-bar {
+      width: 0%;
+      height: 100%;
+      background-color: #b45309;
+      transition: width 0.1s ease-out;
+    }
+    @media (max-width: 768px) {
+      .reading-progress-container { top: 64px; }
+    }
+    .answer-content {
+      display: none;
+      margin-top: 1rem;
+    }
+    .answer-content.show {
+      display: block;
+    }
+    .toggle-answer-btn {
+      margin-top: 0.75rem;
+      background-color: #e2e8f0;
+      color: #1e293b;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .toggle-answer-btn:hover {
+      background-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+    .problem-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #b45309;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .problem-title .num-badge {
+      background: #b45309;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+    }
+  </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Unit 3 – Matrices and Determinants Exercise 3.6 | Class 10 Mathematics 2026 | PECTAA Syllabus",
+    "description": "Complete solved exercise for matrix inversion and Cramer's rule: linear systems, electrical circuits, forces, beams, 2D game intersection, ages, cyclists, fractions.",
+    "author": {
+      "@type": "Person",
+      "name": "Muhammad Tayyab",
+      "jobTitle": "Subject Specialist Mathematics",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Govt Christian High School Daska"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hira Science Academy",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hiraacademy.com.pk/images/logo.webp"
+      }
+    },
+    "url": "https://hiraacademy.com.pk/math10-2026/Unit3-Exercise3.6-M-Tayyab.html",
+    "datePublished": "2026-01-30",
+    "dateModified": "2026-03-30",
+    "educationalUse": "study guide, exam preparation",
+    "educationalLevel": "secondary education",
+    "keywords": "Matrices, Determinants, Matrix Inversion, Cramer's Rule, Systems of Equations"
+  }
+  </script>
 </head>
+<body class="text-gray-800">
 
-<body class="flex items-center justify-center relative">
-
-<div id="particles"></div>
-
-<div class="card-wrap max-w-xl w-full">
-<div class="glass p-8 text-center">
-
-<!-- ICON -->
-<div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-2xl bg-teal-500/20 float">
-<i class="fas fa-microscope text-3xl text-teal-600"></i>
-</div>
-
-<h1 class="text-4xl font-extrabold text-gray-800">Under Construction 🚧</h1>
-<p class="text-gray-500 mt-2">We are crafting something amazing</p>
-
-<!-- PAGE NAME -->
-<div class="mt-4 text-sm font-semibold text-teal-600" id="pageName"></div>
-
-<!-- AUTHOR -->
-<p class="mt-4 text-gray-700 font-semibold">Muhammad Tayyab</p>
-<p class="text-sm text-gray-500">Math & Physics Specialist</p>
-
-<!-- LOADER -->
-<div class="flex justify-center mt-6">
-  <div class="loader"></div>
-</div>
-
-<!-- PROGRESS -->
-<div class="mt-4">
-  <div class="w-full bg-gray-200 rounded-full h-2">
-    <div id="bar" class="bg-teal-500 h-2 rounded-full" style="width:0%"></div>
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-container">
+    <div class="reading-progress-bar" id="readingProgressBar"></div>
   </div>
-  <p class="text-sm text-gray-600 mt-1">
-    <span id="percent">0</span>% • Redirecting in <span id="time">10</span>s
-  </p>
-</div>
 
-<!-- BUTTONS -->
-<div class="grid grid-cols-2 gap-4 mt-6">
+  <!-- Navigation Bar -->
+  <nav class="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a href="https://hiraacademy.com.pk/" class="flex items-center gap-3 group transition duration-300">
+            <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition">
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a href="https://hiraacademy.com.pk/#home" class="text-gray-900 hover:text-amber-600 px-2 py-2 text-sm font-medium">Home</a>
+          <a href="https://hiraacademy.com.pk/#notes" class="text-gray-900 hover:text-amber-600 px-2 py-2 text-sm font-medium">Notes</a>
+          <a href="https://hiraacademy.com.pk/#courses" class="text-gray-900 hover:text-amber-600 px-2 py-2 text-sm font-medium">Courses</a>
+          <a href="https://hiraacademy.com.pk/#features" class="text-gray-900 hover:text-amber-600 px-2 py-2 text-sm font-medium">Features</a>
+          <a href="https://hiraacademy.com.pk/#testimonials" class="text-gray-900 hover:text-amber-600 px-2 py-2 text-sm font-medium">Testimonials</a>
+          <a href="https://hiraacademy.com.pk/#contact" class="text-gray-900 hover:text-amber-600 px-2 py-2 text-sm font-medium">Contact</a>
+          <a href="https://hiraacademy.com.pk/student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105">🎓 Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-amber-600 hover:bg-gray-100">
+            <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a href="https://hiraacademy.com.pk/#home" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50">Home</a>
+        <a href="https://hiraacademy.com.pk/#notes" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50">Notes</a>
+        <a href="https://hiraacademy.com.pk/#courses" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50">Courses</a>
+        <a href="https://hiraacademy.com.pk/#features" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50">Features</a>
+        <a href="https://hiraacademy.com.pk/#testimonials" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50">Testimonials</a>
+        <a href="https://hiraacademy.com.pk/#contact" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-amber-600 hover:bg-gray-50">Contact</a>
+        <div class="pt-4"><a href="https://hiraacademy.com.pk/student-portal.html" class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
 
-<a href="https://hiraacademy.com.pk/"
-class="btn bg-teal-600 text-white py-3 rounded-xl font-bold">
-Home
-</a>
+  <header class="bg-gradient-to-r from-amber-700 to-orange-800 text-white py-8 text-center shadow-xl">
+    <h1 class="text-3xl font-bold mb-3">Unit 3: Matrices and Determinants – Exercise 3.6</h1>
+    <p class="text-lg opacity-90">
+      <a href="https://hiraacademy.com.pk/Mathematics-10th-New-2026.html" class="text-amber-200 hover:text-amber-100 transition-colors duration-300 font-medium">Class 10 Mathematics Notes (New 2026)</a> | Unit 3 – Exercise 3.6 | Matrix Inversion & Cramer's Rule
+    </p>
+  </header>
 
-<button onclick="stopRedirect()" id="stayBtn"
-class="btn border-2 border-teal-300 text-teal-700 py-3 rounded-xl font-bold">
-Stay Here
-</button>
+  <!-- Breadcrumb Navigation -->
+  <div class="max-w-4xl mx-auto px-4 pt-6 text-sm text-gray-500">
+    <nav class="flex flex-wrap items-center gap-1" aria-label="Breadcrumb">
+      <a href="https://hiraacademy.com.pk/" class="hover:text-amber-600 transition">Home</a>
+      <span class="mx-1">›</span>
+      <a href="https://hiraacademy.com.pk/Mathematics-10th-New-2026.html" class="hover:text-amber-600 transition">Math 10</a>
+      <span class="mx-1">›</span>
+      <a href="#" class="hover:text-amber-600 transition">Unit 3</a>
+      <span class="mx-1">›</span>
+      <span class="text-gray-700 font-medium">Exercise 3.6</span>
+    </nav>
+  </div>
 
-</div>
+  <main class="max-w-4xl mx-auto px-4 py-8 bg-white rounded-2xl shadow-lg mt-4 mb-16 border border-gray-100">
+    <div class="text-center mb-8">
+      <p class="text-amber-700 font-semibold text-xl mb-2">📙 Unit 3: Matrices and Determinants – Exercise 3.6 (Solved)</p>
+      <p class="mt-2 text-gray-600 text-center max-w-3xl mx-auto">Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist Mathematics, Govt Christian High School Daska. Based on <strong>PECTAA 2026 syllabus (National Curriculum 2023)</strong>.</p>
+      <div class="mt-3 max-w-3xl mx-auto bg-amber-50 rounded-lg p-3 border border-amber-200">
+        <p class="text-gray-700 text-justify"><span class="font-semibold text-amber-700">📖 What's Inside:</span> This exercise covers <strong>Matrix Inversion Method</strong> and <strong>Cramer's Rule</strong> for solving systems of linear equations, with applications in electrical circuits, forces, beams, 2D game worlds, ages, cyclists, and fractions. Perfect for Punjab Boards exam preparation.</p>
+      </div>
+    </div>
 
-</div>
-</div>
+    <!-- Embedded PDF (Google Drive) -->
+    <div class="flex justify-center mb-8">
+      <div class="w-full" style="height: 80vh; max-height: 700px;">
+        <iframe loading="lazy"
+          src="https://drive.google.com/file/d/1XWztGLZk5czbqejGLxmRBt5lJEt8s9v0/preview"
+          width="100%"
+          height="100%"
+          allow="autoplay"
+          style="border-radius: 16px; border: none;"
+          title="Class 10 Mathematics Unit 3 Exercise 3.6 Matrices and Determinants PDF"
+        ></iframe>
+      </div>
+    </div>
 
-<script>
-// PAGE NAME
-let name = window.location.pathname.split('/').pop().replace('.html','').replace(/-/g,' ');
-document.getElementById('pageName').innerText = name || "Under Construction";
+    <!-- DOWNLOAD PDF BUTTON -->
+    <div class="flex justify-center mb-10">
+      <a href="https://drive.google.com/uc?export=download&id=1XWztGLZk5czbqejGLxmRBt5lJEt8s9v0" 
+         class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
+        ⬇️ Download PDF (Exercise 3.6)
+      </a>
+    </div>
 
-// PROGRESS SYSTEM
-let total=10;
-let time=10;
-let percent=0;
+    <!-- Related Resources -->
+    <div class="text-center mt-4 mb-10">
+      <p class="font-bold mb-4 text-amber-600 text-lg">📚 Related Resources – Unit 3: Matrices and Determinants</p>
+      <div class="resources-grid" style="max-width: 800px; margin: 0 auto;">
+        <a href="Unit3-Exercise3.1-M-Tayyab.html" class="btn-view">🔢 Exercise 3.1</a>
+        <a href="Unit3-Exercise3.2-M-Tayyab.html" class="btn-view">🔢 Exercise 3.2</a>
+        <a href="Unit3-Exercise3.3-M-Tayyab.html" class="btn-view">🔢 Exercise 3.3</a>
+        <a href="Unit3-Exercise3.4-M-Tayyab.html" class="btn-view">🔢 Exercise 3.4</a>
+        <a href="Unit3-Exercise3.5-M-Tayyab.html" class="btn-view">🔢 Exercise 3.5</a>
+        <a href="Unit3-Review3-M-Tayyab.html" class="btn-view">🔄 Review Exercise 3</a>
+      </div>
+    </div>
 
-let interval=setInterval(()=>{
-  time--;
-  percent+=10;
+    <!-- Quick Jump -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-amber-700 mb-5">📑 Problems (1–9)</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        <a href="#q1" class="flex items-center justify-center bg-gray-100 hover:bg-amber-600 hover:text-white text-gray-700 font-medium px-4 py-2 rounded-xl text-center transition">Q1 (i-iv)</a>
+        <a href="#q2" class="flex items-center justify-center bg-gray-100 hover:bg-amber-600 hover:text-white text-gray-700 font-medium px-4 py-2 rounded-xl text-center transition">Q2 (i-iv)</a>
+        <a href="#q3" class="flex items-center justify-center bg-gray-100 hover:bg-amber-600 hover:text-white text-gray-700 font-medium px-4 py-2 rounded-xl text-center transition">Q3 (Circuit)</a>
+        <a href="#q4" class="flex items-center justify-center bg-gray-100 hover:bg-amber-600 hover:text-white text-gray-700 font-medium px-4 py-2 rounded-xl text-center transition">Q4 (Forces)</a>
+        <a href="#q5" class="flex items-center justify-center bg-gray-100 hover:bg-amber-600 hover:text-white text-gray-700 font-medium px-4 py-2 rounded-xl text-center transition">Q5 (Beams)</a>
+        <a href="#q6" class="flex items-center justify-center bg-gray-100 hover:bg-amber-600 hover:text-white text-gray-700 font-medium px-4 py-2 rounded-xl text-center transition">Q6 (Game world)</a>
+        <a href="#q7" class="flex items-center justify-center bg-gray-100 hover:bg-amber-600 hover:text-white text-gray-700 font-medium px-4 py-2 rounded-xl text-center transition">Q7 (Ages)</a>
+        <a href="#q8" class="flex items-center justify-center bg-gray-100 hover:bg-amber-600 hover:text-white text-gray-700 font-medium px-4 py-2 rounded-xl text-center transition">Q8 (Cyclists)</a>
+        <a href="#q9" class="flex items-center justify-center bg-gray-100 hover:bg-amber-600 hover:text-white text-gray-700 font-medium px-4 py-2 rounded-xl text-center transition">Q9 (Fraction)</a>
+      </div>
+    </div>
 
-  document.getElementById('time').innerText=time;
-  document.getElementById('percent').innerText=percent;
-  document.getElementById('bar').style.width=percent+"%";
+     <!-- ============================================================ -->
+    <!-- QUESTION 1  (Matrix inversion)                                -->
+    <!-- ============================================================ -->
+    <div class="problem-box" id="q1">
+        <div class="problem-title">
+            <span class="num-badge">1</span>
+            Solve by matrix inversion method, if possible
+        </div>
+        <p><strong>(i)</strong> \(2x + 5y = 19\) ; \(4x - 3y = -1\)</p>
+        <p><strong>(ii)</strong> \(3x + 2y = 7\) ; \(5x - y = 16\)</p>
+        <p><strong>(iii)</strong> \(x - 2y = 9\) ; \(2x + 7y = -4\)</p>
+        <p><strong>(iv)</strong> \(3x + 2y = 2\) ; \(x - 2y = -2\)</p>
 
-  if(time<=0){
-    clearInterval(interval);
-    window.location.href="https://hiraacademy.com.pk/";
-  }
+        <div class="answer-content" id="answer1">
+            <!-- (i) solution -->
+            <p><strong>(i)</strong> \(2x+5y=19\) ; \(4x-3y=-1\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 2 & 5 \\ 4 & -3 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 19 \\ -1 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            AX = B, \qquad X = A^{-1}B \quad \dots (i)
+            \]
+            <p>Now</p>
+            \[
+            A = \begin{bmatrix} 2 & 5 \\ 4 & -3 \end{bmatrix}
+            \]
+            \[
+            |A| = (2)(-3) - (5)(4) = -6 - 20 = -26
+            \]
+            <p>\(|A| \neq 0\), A is non singular matrix, so \(A^{-1}\) exist</p>
+            <p>Therefore</p>
+            \[
+            A^{-1} = \frac{1}{|A|} \operatorname{Adj} A
+            \]
+            \[
+            \operatorname{Adj} A = \begin{bmatrix} -3 & -5 \\ -4 & 2 \end{bmatrix}
+            \]
+            \[
+            A^{-1} = \frac{1}{-26} \begin{bmatrix} -3 & -5 \\ -4 & 2 \end{bmatrix}
+            \]
+            <p>From equation \((i)\)</p>
+            \[
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \frac{1}{-26}
+            \begin{bmatrix} -3 & -5 \\ -4 & 2 \end{bmatrix}
+            \begin{bmatrix} 19 \\ -1 \end{bmatrix}
+            \]
+            \[
+            =
+            \frac{1}{-26}
+            \begin{bmatrix}
+            (-3)(19)+(-5)(-1) \\
+            (-4)(19)+(2)(-1)
+            \end{bmatrix}
+            =
+            \frac{1}{-26}
+            \begin{bmatrix} -57+5 \\ -76-2 \end{bmatrix}
+            =
+            \frac{1}{-26}
+            \begin{bmatrix} -52 \\ -78 \end{bmatrix}
+            \]
+            \[
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} \frac{-52}{-26} \\ \frac{-78}{-26} \end{bmatrix}
+            =
+            \begin{bmatrix} 2 \\ 3 \end{bmatrix}
+            \]
+            <p>Thus \(x=2\) and \(y=3\)</p>
+            <p>\(S.S = \{(2,3)\}\)</p>
+            <hr>
 
-},1000);
+            <!-- (ii) solution -->
+            <p><strong>(ii)</strong> \(3x+2y=7\) ; \(5x-y=16\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 3 & 2 \\ 5 & -1 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 7 \\ 16 \end{bmatrix}
+            \]
+            <p>Let \(AX=B\), \(X=A^{-1}B \dots (i)\)</p>
+            <p>Now</p>
+            \[
+            A = \begin{bmatrix} 3 & 2 \\ 5 & -1 \end{bmatrix}
+            \]
+            \[
+            |A| = (3)(-1) - (2)(5) = -3 - 10 = -13
+            \]
+            <p>\(|A| \neq 0\), A is non singular, so \(A^{-1}\) exist</p>
+            \[
+            \operatorname{Adj} A = \begin{bmatrix} -1 & -2 \\ -5 & 3 \end{bmatrix}
+            \]
+            <p>Therefore</p>
+            \[
+            A^{-1} = \frac{1}{-13} \begin{bmatrix} -1 & -2 \\ -5 & 3 \end{bmatrix}
+            \]
+            <p>From equation (i)</p>
+            \[
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \frac{1}{-13}
+            \begin{bmatrix} -1 & -2 \\ -5 & 3 \end{bmatrix}
+            \begin{bmatrix} 7 \\ 16 \end{bmatrix}
+            =
+            \frac{1}{-13}
+            \begin{bmatrix} (-1)(7)+(-2)(16) \\ (-5)(7)+(3)(16) \end{bmatrix}
+            =
+            \frac{1}{-13}
+            \begin{bmatrix} -7-32 \\ -35+48 \end{bmatrix}
+            =
+            \frac{1}{-13}
+            \begin{bmatrix} -39 \\ 13 \end{bmatrix}
+            \]
+            \[
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 3 \\ -1 \end{bmatrix}
+            \]
+            <p>Thus \(x=3\) and \(y=-1\)</p>
+            <p>\(S.S = \{(3,-1)\}\)</p>
+            <hr>
 
-// STOP
-function stopRedirect(){
-  clearInterval(interval);
-  document.getElementById('time').innerText="∞";
-  document.getElementById('percent').innerText="Paused";
-  document.getElementById('stayBtn').innerText="Paused ✔";
-}
+            <!-- (iii) -->
+            <p><strong>(iii)</strong> \(x-2y=9\) ; \(2x+7y=-4\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 1 & -2 \\ 2 & 7 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 9 \\ -4 \end{bmatrix}
+            \]
+            <p>Let \(AX=B\), \(X=A^{-1}B \dots (i)\)</p>
+            <p>Now</p>
+            \[
+            A = \begin{bmatrix} 1 & -2 \\ 2 & 7 \end{bmatrix},
+            \quad
+            |A| = (1)(7) - (-2)(2) = 7 - (-4) = 11
+            \]
+            <p>\(|A| \neq 0\), so \(A^{-1}\) exists</p>
+            \[
+            \operatorname{Adj} A = \begin{bmatrix} 7 & 2 \\ -2 & 1 \end{bmatrix}
+            \]
+            \[
+            A^{-1} = \frac{1}{11} \begin{bmatrix} 7 & 2 \\ -2 & 1 \end{bmatrix}
+            \]
+            <p>From (i)</p>
+            \[
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \frac{1}{11}
+            \begin{bmatrix} 7 & 2 \\ -2 & 1 \end{bmatrix}
+            \begin{bmatrix} 9 \\ -4 \end{bmatrix}
+            =
+            \frac{1}{11}
+            \begin{bmatrix} 63 + (-8) \\ -18 + (-4) \end{bmatrix}
+            =
+            \frac{1}{11}
+            \begin{bmatrix} 55 \\ -22 \end{bmatrix}
+            =
+            \begin{bmatrix} 5 \\ -2 \end{bmatrix}
+            \]
+            <p>Thus \(x=5\) and \(y=-2\)</p>
+            <p>\(S.S = \{(5,-2)\}\)</p>
+            <hr>
 
-// PARTICLES
-function particles(){
-  let container=document.getElementById('particles');
-  for(let i=0;i<30;i++){
-    let p=document.createElement('div');
-    p.className='particle';
+            <!-- (iv) -->
+            <p><strong>(iv)</strong> \(3x+2y=2\) ; \(x-2y=-2\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 3 & 2 \\ 1 & -2 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 2 \\ -2 \end{bmatrix}
+            \]
+            <p>Let \(AX=B\), \(X=A^{-1}B \dots (i)\)</p>
+            <p>Now</p>
+            \[
+            A = \begin{bmatrix} 3 & 2 \\ 1 & -2 \end{bmatrix},
+            \quad
+            |A| = (3)(-2) - (2)(1) = -6 - 2 = -8
+            \]
+            <p>\(|A| \neq 0\), so \(A^{-1}\) exists</p>
+            \[
+            \operatorname{Adj} A = \begin{bmatrix} -2 & -2 \\ -1 & 3 \end{bmatrix}
+            \]
+            \[
+            A^{-1} = \frac{1}{-8} \begin{bmatrix} -2 & -2 \\ -1 & 3 \end{bmatrix}
+            \]
+            <p>From (i)</p>
+            \[
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \frac{1}{-8}
+            \begin{bmatrix} -2 & -2 \\ -1 & 3 \end{bmatrix}
+            \begin{bmatrix} 2 \\ -2 \end{bmatrix}
+            =
+            \frac{1}{-8}
+            \begin{bmatrix} (-2)(2)+(-2)(-2) \\ (-1)(2)+(3)(-2) \end{bmatrix}
+            =
+            \frac{1}{-8}
+            \begin{bmatrix} -4+4 \\ -2-6 \end{bmatrix}
+            =
+            \frac{1}{-8}
+            \begin{bmatrix} 0 \\ -8 \end{bmatrix}
+            =
+            \begin{bmatrix} 0 \\ 1 \end{bmatrix}
+            \]
+            <p>Thus \(x=0\) and \(y=1\)</p>
+            <p>\(S.S = \{(0,1)\}\)</p>
+        </div>
+        <button class="toggle-answer-btn" data-target="answer1">Show Solutions</button>
+    </div>
 
-    let size=Math.random()*5+2;
-    p.style.width=size+"px";
-    p.style.height=size+"px";
-    p.style.left=Math.random()*100+"vw";
-    p.style.top=Math.random()*100+"vh";
+    <!-- ============================================================ -->
+    <!-- QUESTION 2  (Cramer's rule)                                   -->
+    <!-- ============================================================ -->
+    <div class="problem-box" id="q2">
+        <div class="problem-title">
+            <span class="num-badge">2</span>
+            Use Cramer's rule to solve the following pair of linear equations, if possible
+        </div>
+        <p><strong>(i)</strong> \(x+4y=4\) ; \(2x-y=5\)</p>
+        <!-- (ii) missing in PDF? it shows A= 1 2 etc but no explicit (ii) text. We include as per PDF:   -->
+        <p><strong>(ii)</strong> (as given in PDF: \(x+2y=7\) ; \(3x-2y=1\) )</p>
+        <p><strong>(iii)</strong> \(2x-5y=-6\) ; \(4x-5y=-2\)</p>
+        <p><strong>(iv)</strong> \(3x+2y=-1\) ; \(5x+6y=5\)</p>
 
-    container.appendChild(p);
+        <div class="answer-content" id="answer2">
+            <!-- (i) Cramer's -->
+            <p><strong>(i)</strong> \(x+4y=4\) ; \(2x-y=5\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 1 & 4 \\ 2 & -1 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 4 \\ 5 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 1 & 4 \\ 2 & -1 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} 4 & 4 \\ 5 & -1 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 1 & 4 \\ 2 & -1 \end{bmatrix}
+            \]
+            \[
+            |A| = (1)(-1) - (4)(2) = -1 - 8 = -9
+            \]
+            \[
+            |A_x| = (4)(-1) - (4)(5) = -4 - 20 = -24
+            \]
+            <p>Now</p>
+            \[
+            x = \frac{|A_x|}{|A|} = \frac{-24}{-9} = \frac{8}{3}
+            \]
+            <p>\(A_y = \begin{bmatrix} 1 & 4 \\ 2 & 5 \end{bmatrix}\) &nbsp; (as per PDF, corrected)</p>
+            \[
+            |A_y| = (1)(5) - (4)(2) = 5 - 8 = -3
+            \]
+            \[
+            y = \frac{|A_y|}{|A|} = \frac{-3}{-9} = \frac{1}{3}
+            \]
+            <p>Hence \(x = \frac{8}{3}\), \(y = \frac{1}{3}\)</p>
+            <hr>
 
-    p.animate([
-      {transform:'translateY(0)'},
-      {transform:'translateY(-120px)'}
-    ],{
-      duration:3000+Math.random()*3000,
-      iterations:Infinity
-    });
-  }
-}
-particles();
-</script>
+            <!-- (ii) Cramer's from PDF:  x+2y=7 ; 3x-2y=1  -->
+            <p><strong>(ii)</strong> \(x+2y=7\) ; \(3x-2y=1\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 1 & 2 \\ 3 & -2 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 7 \\ 1 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 1 & 2 \\ 3 & -2 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} 7 & 2 \\ 1 & -2 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 1 & 7 \\ 3 & 1 \end{bmatrix}
+            \]
+            \[
+            |A| = (1)(-2) - (2)(3) = -2 - 6 = -8
+            \]
+            \[
+            |A_x| = (7)(-2) - (2)(1) = -14 - 2 = -16
+            \]
+            \[
+            x = \frac{-16}{-8} = 2
+            \]
+            \[
+            |A_y| = (1)(1) - (7)(3) = 1 - 21 = -20
+            \]
+            \[
+            y = \frac{-20}{-8} = \frac{5}{2}
+            \]
+            <p>Hence \(S.S = \{(2, \frac{5}{2})\}\)</p>
+            <hr>
 
+            <!-- (iii) 2x-5y=-6 ; 4x-5y=-2 -->
+            <p><strong>(iii)</strong> \(2x-5y=-6\) ; \(4x-5y=-2\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 2 & -5 \\ 4 & -5 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} -6 \\ -2 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 2 & -5 \\ 4 & -5 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} -6 & -5 \\ -2 & -5 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 2 & -6 \\ 4 & -2 \end{bmatrix}
+            \]
+            \[
+            |A| = (2)(-5) - (-5)(4) = -10 + 20 = 10
+            \]
+            \[
+            |A_x| = (-6)(-5) - (-5)(-2) = 30 - 10 = 20
+            \]
+            \[
+            x = \frac{20}{10} = 2
+            \]
+            \[
+            |A_y| = (2)(-2) - (-6)(4) = -4 + 24 = 20
+            \]
+            \[
+            y = \frac{20}{10} = 2
+            \]
+            <p>Hence \(S.S = \{(2,2)\}\)</p>
+            <hr>
+
+            <!-- (iv) 3x+2y=-1 ; 5x+6y=5 -->
+            <p><strong>(iv)</strong> \(3x+2y=-1\) ; \(5x+6y=5\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 3 & 2 \\ 5 & 6 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} -1 \\ 5 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 3 & 2 \\ 5 & 6 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} -1 & 2 \\ 5 & 6 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 3 & -1 \\ 5 & 5 \end{bmatrix}
+            \]
+            \[
+            |A| = (3)(6) - (2)(5) = 18 - 10 = 8
+            \]
+            \[
+            |A_x| = (-1)(6) - (2)(5) = -6 - 10 = -16
+            \]
+            \[
+            x = \frac{-16}{8} = -2
+            \]
+            \[
+            |A_y| = (3)(5) - (-1)(5) = 15 + 5 = 20
+            \]
+            \[
+            y = \frac{20}{8} = \frac{5}{2}
+            \]
+            <p>Hence \(S.S = \{(-2, \frac{5}{2})\}\)</p>
+        </div>
+        <button class="toggle-answer-btn" data-target="answer2">Show Solutions</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- QUESTION 3  (electrical circuit)                              -->
+    <!-- ============================================================ -->
+    <div class="problem-box" id="q3">
+        <div class="problem-title">
+            <span class="num-badge">3</span>
+            Electrical circuit – current in branches
+        </div>
+        <p>An electrical engineer wants to determine the current in two branches \(A\) and \(B\) of a simple electrical circuit. The system of the equations is:</p>
+        <p>\[ x+y=7 \] \[ 2x-y=2 \]</p>
+        <p>where \(x\) is the current in branch \(A\) and \(y\) is the current in branch \(B\). Find \(x\) and \(y\) by using matrices.</p>
+
+        <div class="answer-content" id="answer3">
+            <p>\(x+y=7\)</p>
+            <p>\(2x-y=2\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 1 & 1 \\ 2 & -1 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 7 \\ 2 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 1 & 1 \\ 2 & -1 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} 7 & 1 \\ 2 & -1 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 1 & 7 \\ 2 & 2 \end{bmatrix}
+            \]
+            \[
+            |A| = (1)(-1) - (1)(2) = -1 - 2 = -3
+            \]
+            \[
+            |A_x| = (7)(-1) - (1)(2) = -7 - 2 = -9
+            \]
+            \[
+            x = \frac{|A_x|}{|A|} = \frac{-9}{-3} = 3
+            \]
+            \[
+            |A_y| = (1)(2) - (7)(2) = 2 - 14 = -12
+            \]
+            \[
+            y = \frac{-12}{-3} = 4
+            \]
+            <p>Hence</p>
+            <p>Current in branch \(A = x = 3\)</p>
+            <p>Current in branch \(B = y = 4\)</p>
+        </div>
+        <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- QUESTION 4  (forces equilibrium)                              -->
+    <!-- ============================================================ -->
+    <div class="problem-box" id="q4">
+        <div class="problem-title">
+            <span class="num-badge">4</span>
+            Forces in equilibrium
+        </div>
+        <p>Three forces act on a particle and must be in equilibrium i.e. \(F_1 + F_2 + F_3 = 0\), where \(F_1 = \begin{bmatrix} 8 \\ x \end{bmatrix}\), \(F_2 = \begin{bmatrix} -2 \\ -7 \end{bmatrix}\), \(F_3 = \begin{bmatrix} y \\ -1 \end{bmatrix}\). Find the value of \(x\) and \(y\).</p>
+
+        <div class="answer-content" id="answer4">
+            <p>Since</p>
+            \[
+            F_1 + F_2 + F_3 = 0
+            \]
+            \[
+            \begin{bmatrix} 8 \\ x \end{bmatrix}
+            +
+            \begin{bmatrix} -2 \\ -7 \end{bmatrix}
+            +
+            \begin{bmatrix} y \\ -1 \end{bmatrix}
+            =
+            \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+            \]
+            \[
+            \begin{bmatrix} 6+y \\ x-8 \end{bmatrix}
+            =
+            \begin{bmatrix} 0 \\ 0 \end{bmatrix}
+            \]
+            <p>By comparing</p>
+            <p>\(6+y = 0 \quad \Rightarrow y = -6\)</p>
+            <p>\(x-8 = 0 \quad \Rightarrow x = 8\)</p>
+            <p>Hence \(x=8\), \(y=-6\)</p>
+        </div>
+        <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- QUESTION 5  (support beams)                                   -->
+    <!-- ============================================================ -->
+    <div class="problem-box" id="q5">
+        <div class="problem-title">
+            <span class="num-badge">5</span>
+            Support beams load
+        </div>
+        <p>Two support beams, \(A\) and \(B\) are holding up a combined load of \(100\,kN\). Twice the load on beam A and three times the load on beam B equals \(240\,kN\). Find the load of beam A and beam B by using matrices.</p>
+
+        <div class="answer-content" id="answer5">
+            <p>Let</p>
+            <p>The load on beam \(A = x\,kN\)</p>
+            <p>The load on beam \(B = y\,kN\)</p>
+            <p>According to first condition</p>
+            <p>\(x+y=100\)</p>
+            <p>According to second condition</p>
+            <p>\(2x+3y=240\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 1 & 1 \\ 2 & 3 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 100 \\ 240 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 1 & 1 \\ 2 & 3 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} 100 & 1 \\ 240 & 3 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 1 & 100 \\ 2 & 240 \end{bmatrix}
+            \]
+            \[
+            |A| = (1)(3) - (1)(2) = 3 - 2 = 1
+            \]
+            \[
+            |A_x| = (100)(3) - (1)(240) = 300 - 240 = 60
+            \]
+            \[
+            x = \frac{60}{1} = 60
+            \]
+            \[
+            |A_y| = (1)(240) - (100)(2) = 240 - 200 = 40
+            \]
+            \[
+            y = \frac{40}{1} = 40
+            \]
+            <p>Hence</p>
+            <p>Load on beam \(A = x = 60\,kN\)</p>
+            <p>Load on beam \(B = y = 40\,kN\)</p>
+        </div>
+        <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- QUESTION 6  (2D game world)                                   -->
+    <!-- ============================================================ -->
+    <div class="problem-box" id="q6">
+        <div class="problem-title">
+            <span class="num-badge">6</span>
+            2D game world – point of intersection
+        </div>
+        <p>In a 2D game world, two characters are moving along straight paths. One character moves along a line where the total of twice their horizontal position and vertical position is 5, while the other moves along a line where their horizontal position is one more than their vertical position. Find their point of intersection by using matrices.</p>
+
+        <div class="answer-content" id="answer6">
+            <p>Let</p>
+            <p>The horizontal position \(= x\)</p>
+            <p>The vertical position \(= y\)</p>
+            <p>According to first condition</p>
+            <p>\(2x+y=5\)</p>
+            <p>According to second condition</p>
+            <p>\(x = y+1 \quad \Rightarrow \quad x-y = 1\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 5 \\ 1 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} 5 & 1 \\ 1 & -1 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 2 & 5 \\ 1 & 1 \end{bmatrix}
+            \]
+            \[
+            |A| = (2)(-1) - (1)(1) = -2 - 1 = -3
+            \]
+            \[
+            |A_x| = (5)(-1) - (1)(1) = -5 - 1 = -6
+            \]
+            \[
+            x = \frac{-6}{-3} = 2
+            \]
+            \[
+            |A_y| = (2)(1) - (5)(1) = 2 - 5 = -3
+            \]
+            \[
+            y = \frac{-3}{-3} = 1
+            \]
+            <p>Hence point of intersection \((x,y) = (2,1)\)</p>
+        </div>
+        <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- QUESTION 7  (ages)                                            -->
+    <!-- ============================================================ -->
+    <div class="problem-box" id="q7">
+        <div class="problem-title">
+            <span class="num-badge">7</span>
+            Present ages (father & son)
+        </div>
+        <p>Two years ago a man was 5 times as old as his son was. After 6 years he will be 3 times as old as his son. Find their present ages by using matrices.</p>
+        <p>Let</p>
+        <p>The present age of the man \(= x\) years</p>
+        <p>The present age of the son \(= y\) years</p>
+
+        <div class="answer-content" id="answer7">
+            <p>According to first condition (two years ago):</p>
+            <p>\(x-2 = 5(y-2)\)</p>
+            <p>\(x-2 = 5y - 10 \quad \Rightarrow \quad x - 5y = -8\)</p>
+            <p>According to second condition (after 6 years):</p>
+            <p>\(x+6 = 3(y+6)\)</p>
+            <p>\(x+6 = 3y + 18 \quad \Rightarrow \quad x - 3y = 12\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 1 & -5 \\ 1 & -3 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} -8 \\ 12 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 1 & -5 \\ 1 & -3 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} -8 & -5 \\ 12 & -3 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 1 & -8 \\ 1 & 12 \end{bmatrix}
+            \]
+            \[
+            |A| = (1)(-3) - (-5)(1) = -3 + 5 = 2
+            \]
+            \[
+            |A_x| = (-8)(-3) - (-5)(12) = 24 - (-60) = 84
+            \]
+            \[
+            x = \frac{84}{2} = 42
+            \]
+            \[
+            |A_y| = (1)(12) - (-8)(1) = 12 + 8 = 20
+            \]
+            \[
+            y = \frac{20}{2} = 10
+            \]
+            <p>Hence present age of man \(= 42\) years, son \(= 10\) years.</p>
+        </div>
+        <button class="toggle-answer-btn" data-target="answer7">Show Solution</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- QUESTION 8  (cyclists)                                        -->
+    <!-- ============================================================ -->
+    <div class="problem-box" id="q8">
+        <div class="problem-title">
+            <span class="num-badge">8</span>
+            Two cyclists – speeds
+        </div>
+        <p>Two cyclists are 44 km apart and start out at the same time. If they go towards one another they meet in 2 hours, but if they go in the same direction the faster overtakes the slower in \(7\frac{1}{2}\) hours. Find their speeds by using matrices.</p>
+
+        <div class="answer-content" id="answer8">
+            <p>Let</p>
+            <p>The speed of the faster cyclist \(= x\,kmh^{-1}\)</p>
+            <p>The speed of the slower cyclist \(= y\,kmh^{-1}\)</p>
+            <p>According to first condition (moving towards one another):</p>
+            <p>Distance = Speed × Time</p>
+            <p>\(44 = (x+y) \times 2 \quad \Rightarrow \quad x+y = 22\)</p>
+            <p>According to second condition (same direction, faster overtakes):</p>
+            <p>\(44 = (x-y) \times \frac{15}{2}\)</p>
+            <p>\(44 \times 2 = (x-y) \times 15 \quad \Rightarrow \quad 88 = 15x - 15y\)</p>
+            <p>\(15x - 15y = 88\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 1 & 1 \\ 15 & -15 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} 22 \\ 88 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 1 & 1 \\ 15 & -15 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} 22 & 1 \\ 88 & -15 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 1 & 22 \\ 15 & 88 \end{bmatrix}
+            \]
+            \[
+            |A| = (1)(-15) - (1)(15) = -15 - 15 = -30
+            \]
+            \[
+            |A_x| = (22)(-15) - (1)(88) = -330 - 88 = -418
+            \]
+            \[
+            x = \frac{-418}{-30} = \frac{209}{15} \approx 13.93
+            \]
+            \[
+            |A_y| = (1)(88) - (22)(15) = 88 - 330 = -242
+            \]
+            \[
+            y = \frac{-242}{-30} = \frac{121}{15} \approx 8.07
+            \]
+            <p>Hence speeds: faster \(= \frac{209}{15}\,kmh^{-1}\), slower \(= \frac{121}{15}\,kmh^{-1}\)</p>
+            <p>(or \(13\frac{14}{15}\) and \(8\frac{1}{15}\) respectively)</p>
+        </div>
+        <button class="toggle-answer-btn" data-target="answer8">Show Solution</button>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- QUESTION 9  (fraction)                                        -->
+    <!-- ============================================================ -->
+    <div class="problem-box" id="q9">
+        <div class="problem-title">
+            <span class="num-badge">9</span>
+            Fraction problem
+        </div>
+        <p>The numerator of a fraction is 7 less than the denominator. If the numerator is increased by 3, the new fraction can be cancelled down to \(\frac{3}{4}\). Find the original fraction by using matrices.</p>
+
+        <div class="answer-content" id="answer9">
+            <p>Let</p>
+            <p>The numerator of the fraction \(= x\)</p>
+            <p>The denominator of the fraction \(= y\)</p>
+            <p>The original fraction \(= \frac{x}{y}\)</p>
+            <p>According to first condition: numerator is 7 less than denominator.</p>
+            <p>\(x = y-7 \quad \Rightarrow \quad x - y = -7\)</p>
+            <p>According to second condition: if numerator increased by 3,</p>
+            <p>\(\frac{x+3}{y} = \frac{3}{4}\)</p>
+            <p>\(4(x+3) = 3y \quad \Rightarrow \quad 4x + 12 = 3y \quad \Rightarrow \quad 4x - 3y = -12\)</p>
+            <p>In matrix form</p>
+            \[
+            \begin{bmatrix} 1 & -1 \\ 4 & -3 \end{bmatrix}
+            \begin{bmatrix} x \\ y \end{bmatrix}
+            =
+            \begin{bmatrix} -7 \\ -12 \end{bmatrix}
+            \]
+            <p>Let</p>
+            \[
+            A = \begin{bmatrix} 1 & -1 \\ 4 & -3 \end{bmatrix},
+            \quad
+            A_x = \begin{bmatrix} -7 & -1 \\ -12 & -3 \end{bmatrix},
+            \quad
+            A_y = \begin{bmatrix} 1 & -7 \\ 4 & -12 \end{bmatrix}
+            \]
+            \[
+            |A| = (1)(-3) - (-1)(4) = -3 + 4 = 1
+            \]
+            \[
+            |A_x| = (-7)(-3) - (-1)(-12) = 21 - 12 = 9
+            \]
+            \[
+            x = \frac{9}{1} = 9
+            \]
+            \[
+            |A_y| = (1)(-12) - (-7)(4) = -12 + 28 = 16
+            \]
+            \[
+            y = \frac{16}{1} = 16
+            \]
+            <p>Hence original fraction \(= \frac{9}{16}\)</p>
+        </div>
+        <button class="toggle-answer-btn" data-target="answer9">Show Solution</button>
+    </div>
+
+    <!-- Key Formulas -->
+    <div class="content-section mt-8">
+      <h2>📐 Key Concepts – Matrix Inversion & Cramer's Rule</h2>
+      <div class="equation"><strong>Matrix Inversion:</strong> \(X = A^{-1}B\), where \(A^{-1} = \frac{1}{|A|}\text{Adj}(A)\)</div>
+      <div class="equation"><strong>Cramer's Rule:</strong> \(x = \frac{|A_x|}{|A|}\), \(y = \frac{|A_y|}{|A|}\) for \(2\times2\) systems.</div>
+      <div class="equation"><strong>Applications:</strong> Electrical circuits, forces, beams, game worlds, ages, cyclists, fractions.</div>
+    </div>
+
+    <!-- Other Chapters Dropdown -->
+    <div class="text-center mt-10 mb-16">
+      <button id="toggleChapters" class="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-xl shadow-xl hover:from-amber-600 hover:to-orange-700 transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
+        📚 Explore Other Math Units (1–12)
+      </button>
+      <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
+        <a href="Unit1-Exercise1.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 1</span><span>✨ Complex Numbers</span></a>
+        <a href="Unit2-Exercise2.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 2</span><span>Quadratic Equations</span></a>
+        <a href="Unit3-Exercise3.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-amber-600 to-orange-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold"><span>Unit 3</span><span>📙 Matrices (Current)</span></a>
+        <a href="Unit4-Exercise4.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-rose-600 to-pink-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 4</span><span>📗 Functions</span></a>
+        <a href="Unit5-Exercise5.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 5</span><span>Algebraic Fractions</span></a>
+        <a href="Unit6-Exercise6.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 6</span><span>Vectors in Plane</span></a>
+        <a href="Unit7-Exercise7.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 7</span><span>Trigonometry</span></a>
+        <a href="Unit8-Exercise8.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 8</span><span>Chords & Arcs</span></a>
+        <a href="Unit9-Exercise9.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 9</span><span>Tangent & Angles</span></a>
+        <a href="Unit10-Exercise10.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 10</span><span>Practical Geometry</span></a>
+        <a href="Unit11-Exercise11.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 11</span><span>Information Handling</span></a>
+        <a href="Unit12-Exercise12.1-M-Tayyab.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg font-semibold"><span>Unit 12</span><span>Probability</span></a>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center text-gray-600">
+      <p class="mb-2">Created by <strong class="text-amber-700">Hira Science Academy</strong> | Aligned with <strong class="text-amber-700">PECTAA 2026 Syllabus</strong></p>
+      <p class="mt-6"><a href="https://hiraacademy.com.pk/Mathematics-10th-New-2026.html" class="inline-block px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-600 text-white font-semibold rounded-full shadow-lg hover:from-amber-600 hover:to-orange-700 transition-all duration-300 transform hover:-translate-y-1">← Back to Class 10 Mathematics Notes</a></p>
+    </div>
+  </main>
+
+  <!-- Internal Linking Section (same as A.txt) -->
+  <section class="max-w-7xl mx-auto px-6 pb-14">
+    <details class="bg-gradient-to-br from-amber-50 via-white to-orange-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
+      <summary class="text-2xl md:text-3xl font-bold text-amber-800 cursor-pointer hover:text-amber-600 list-none flex items-center justify-center gap-3 text-center">
+        <span class="text-3xl">📚</span> Explore Complete Learning Resources (Class 9, 10 & More)
+      </summary>
+      <div class="mt-8">
+        <h2 class="text-2xl font-bold text-center text-amber-800 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
+        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center"><span class="bg-amber-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
+            <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🔢</span> Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">⚛️</span> Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-9th.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🧪</span> Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-9th.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🧬</span> Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/Islamiat-9th.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">📿</span> Islamiat Notes</a></li><li><a href="https://hiraacademy.com.pk/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-amber-600 font-semibold hover:text-amber-700 inline-flex items-center mt-2"><span class="mr-2">📋</span> Smart Reduced Syllabus</a></li></ul></nav>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center"><span class="bg-emerald-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
+            <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-10th-New-2026.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🔢</span> Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">⚛️</span> Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-10th.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🧪</span> Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-10th.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🧬</span> Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/PakistanStudies-10th.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span> Pakistan Studies</a></li></ul></nav>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center"><span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🎯</span> FSC Entry Test Prep</a></li><li><a href="https://hiraacademy.com.pk/physics-numericals.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">📊</span> Physics Numericals</a></li><li><a href="https://hiraacademy.com.pk/math-mistakes.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">⚠️</span> Common Math Mistakes</a></li><li><a href="https://hiraacademy.com.pk/physics-formulas.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">📝</span> Physics Formulas</a></li><li><a href="https://hiraacademy.com.pk/blog.html" class="text-amber-600 font-semibold hover:text-amber-700 inline-flex items-center mt-2"><span class="mr-2">📚</span> Study Blog</a></li></ul>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center"><span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/courses-details.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🎓</span> Courses Overview</a></li><li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">📞</span> Contact Us</a></li><li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span> About Us</a></li><li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">💼</span> Career Services</a></li><li><a href="https://hiraacademy.com.pk/student-portal.html" class="text-amber-600 font-semibold hover:text-amber-700 inline-flex items-center mt-2"><span class="mr-2">🚪</span> Student Portal</a></li></ul>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center"><span class="bg-amber-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources</h3>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">📘</span> Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">⚛️</span> Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">📋</span> Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">📋</span> Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-amber-600 font-semibold hover:text-amber-700 inline-flex items-center mt-2"><span class="mr-2">📄</span> Model Paper 2026</a></li></ul>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-amber-700 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies</h3>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">📜</span> Terms of Service</a></li><li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">🔒</span> Privacy Policy</a></li><li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">💳</span> Refund Policy</a></li><li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-amber-600 transition inline-flex items-center"><span class="mr-2">♿</span> Accessibility</a></li><li><a href="https://hiraacademy.com.pk/mission.html" class="text-amber-600 font-semibold hover:text-amber-700 inline-flex items-center mt-2"><span class="mr-2">🎯</span> Our Mission</a></li></ul>
+          </article>
+        </div>
+        <div class="mt-10 text-center"><a href="https://hiraacademy.com.pk/index.html" class="inline-flex items-center bg-amber-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-amber-700 hover:shadow-xl transition-all"><span class="mr-3">🏠</span> Return to Homepage</a></div>
+      </div>
+    </details>
+  </section>
+
+  <!-- Footer (Centered on Mobile, Columns on Desktop) -->
+  <footer class="bg-amber-900 text-gray-100 shadow-xl relative z-10">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      
+      <!-- Changed grid alignment to center items by default on mobile -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+        
+        <!-- Column 1: Brand & Bio -->
+        <div class="flex flex-col items-center md:items-start">
+          <a href="https://hiraacademy.com.pk/" class="flex flex-col md:flex-row items-center md:items-start gap-3">
+            <img src="https://hiraacademy.com.pk/images/logo.webp" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20">
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-300 to-teal-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 max-w-sm mx-auto md:mx-0">
+            Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry) – serving students of all 10 BISE Punjab boards.
+          </p>
+        </div>
+
+        <!-- Column 2: Programs -->
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/courses-details.html#class9" class="hover:text-cyan-300 transition">9th Class</a></li>
+            <li><a href="https://hiraacademy.com.pk/courses-details.html#class10" class="hover:text-cyan-300 transition">10th Class</a></li>
+            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/blog.html" class="hover:text-cyan-300 transition">Study Tips & Blog</a></li>
+            <li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-cyan-300 transition">Career Guidance</a></li>
+            <li><a href="https://hiraacademy.com.pk/student-portal.html" class="hover:text-cyan-300 transition">Student Portal</a></li>
+            <li><a href="https://hiraacademy.com.pk/alumni-network.html" class="hover:text-cyan-300 transition">Alumni Network</a></li>
+            <li><a href="https://hiraacademy.com.pk/events.html" class="hover:text-cyan-300 transition">Events & Workshops</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Legal -->
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-cyan-300 transition">Terms of Service</a></li>
+            <li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-cyan-300 transition">Privacy Policy</a></li>
+            <li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-cyan-300 transition">Refund Policy</a></li>
+            <li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-cyan-300 transition">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: About -->
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-cyan-300 transition">About Hira Academy</a></li>
+            <li><a href="https://hiraacademy.com.pk/mission.html" class="hover:text-cyan-300 transition">Our Mission</a></li>
+            <li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-cyan-300 transition">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Copyright & Credits Section -->
+      <div class="mt-12 border-t border-teal-700 pt-6 text-center">
+        <p class="text-base text-gray-200">&copy; 2025-2026 Hira Science Academy. All rights reserved. | Class 10 Mathematics Notes 2026 PECTAA Syllabus</p>
+        <p class="text-sm text-gray-300 mt-2">✍️ Prepared by <strong class="text-yellow-200">Muhammad Tayyab</strong>, Subject Specialist Mathematics, Govt Christian High School Daska</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop">↑</button>
+
+  <script>
+    (function(){
+      const menuBtn = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if(menuBtn && mobileMenu) menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      const backTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => window.pageYOffset > 300 ? backTop.classList.add('show') : backTop.classList.remove('show'));
+      backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      const toggleChapters = document.getElementById('toggleChapters');
+      const chaptersList = document.getElementById('chaptersList');
+      if(toggleChapters && chaptersList) toggleChapters.addEventListener('click', () => chaptersList.classList.toggle('hidden'));
+      const progressBar = document.getElementById('readingProgressBar');
+      function updateProgress() { const st = window.pageYOffset, wh = window.innerHeight, dh = document.documentElement.scrollHeight, max = dh - wh, perc = (st / max) * 100; if(progressBar) progressBar.style.width = perc + '%'; }
+      window.addEventListener('scroll', updateProgress); window.addEventListener('resize', updateProgress); updateProgress();
+      document.querySelectorAll('.toggle-answer-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+          const target = document.getElementById(this.getAttribute('data-target'));
+          if(target) { target.classList.toggle('show'); this.textContent = target.classList.contains('show') ? 'Hide Solution' : 'Show Solution'; }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
