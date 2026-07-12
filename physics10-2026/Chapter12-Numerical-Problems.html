@@ -38,7 +38,7 @@
   <meta property="og:type" content="article">
   <meta property="og:locale" content="en_PK">
   <meta property="og:title" content="Chapter 12 – Waves | Numerical Problems | Class 10 Physics 2026 PECTAA">
-  <meta property="og:description" content="Complete numerical problems for Chapter 12 Waves. Step-by-step solutions as per PECTAA 2026. Prepared by Muhammad Tayyab.">
+  <meta property="og:description" content="Complete numerical problems for Chapter 12 Waves. Step-by-step solutions. Prepared by Muhammad Tayyab, Subject Specialist Physics. Based on PECTAA 2026 syllabus.">
   <meta property="og:url" content="https://hiraacademy.com.pk/physics10-2026/Chapter12-Numerical-Problems.html">
   <meta property="og:site_name" content="Hira Science Academy">
   <meta property="og:image" content="https://hiraacademy.com.pk/images/physics-10th-new-2026-pectaa.webp">
@@ -50,7 +50,7 @@
   <meta name="twitter:description" content="Free numerical problems for Waves chapter. 2026 syllabus notes by Muhammad Tayyab.">
   <meta name="twitter:image" content="https://hiraacademy.com.pk/images/physics-10th-new-2026-pectaa.webp">
 
-<link rel="icon" href="https://hiraacademy.com.pk/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://hiraacademy.com.pk/images/favicon.ico" type="image/x-icon" />
   <link rel="icon" type="image/png" sizes="16x16" href="https://hiraacademy.com.pk/images/favicon-16x16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="https://hiraacademy.com.pk/images/favicon-32x32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.com.pk/images/apple-touch-icon.png" />
@@ -84,7 +84,13 @@
   </script>
 
   <!-- MathJax for LaTeX equations -->
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 
   <style>
     body {
@@ -109,28 +115,183 @@
       font-size: 1.75rem;
     }
     .numerical-box {
-      background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
-      border-left: 5px solid #3b82f6;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 0 12px 12px 0;
-      box-shadow: 0 4px 12px rgba(59,130,246,0.1);
-      transition: all 0.2s;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #0f766e;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .numerical-box:hover {
-      transform: translateX(4px);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+    }
+    .problem-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .num-badge {
+      background: linear-gradient(135deg, #0f766e, #115e59);
+      color: #ffffff;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(15, 118, 110, 0.2);
+    }
+    .numerical-box p {
+      color: #334155;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+    .answer-content {
+      background-color: #f8fafc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 14px;
+      border: 1px solid #f1f5f9;
+      display: none;
+    }
+    .answer-content.show {
+      display: block;
+    }
+    .block-lbl {
+      font-weight: 700;
+      color: #0f766e;
+      margin: 14px 0 6px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .block-lbl::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, #cbd5e1, transparent);
+    }
+    .given-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 20px;
+      margin: 6px 0 14px 4px;
+      font-size: 0.95rem;
+      color: #334155;
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+    }
+    .given-grid span:nth-child(odd) {
+      font-weight: 600;
+      color: #64748b;
+    }
+    .tofind-line {
+      margin: 4px 0 4px 12px;
+      font-size: 0.95rem;
+      color: #0f172a;
+      font-weight: 500;
+      position: relative;
+    }
+    .tofind-line::before {
+      content: "•";
+      color: #2563eb;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    .sol-text {
+      margin: 8px 0;
+      text-align: justify;
+      font-size: 0.95rem;
+      color: #334155;
+    }
+    .equation {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #f1f5f9;
+      margin: 10px 0;
+      overflow-x: auto;
+      text-align: center;
+    }
+    .ans-box {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 1.5px solid #16a34a;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-top: 16px;
+      font-weight: 700;
+      color: #14532d;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(22, 163, 74, 0.05);
+    }
+    .note-box {
+      background: #fefce8;
+      border-left: 4px solid #eab308;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.93rem;
+      color: #713f12;
+      line-height: 1.5;
+    }
+    .toggle-answer-btn {
+      background: #0f766e;
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin-top: 0.75rem;
+    }
+    .toggle-answer-btn:hover {
+      background: #115e59;
+    }
+    .toggle-answer-btn:active {
+      transform: scale(0.98);
+    }
+    .example-box {
+      border-left-color: #3b82f6 !important;
+    }
+    .example-badge {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;
+    }
+    .example-btn {
+      background: #3b82f6 !important;
+    }
+    .example-btn:hover {
+      background: #2563eb !important;
     }
     .equation {
       background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      padding: 1rem;
-      margin: 1rem 0;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
       border-radius: 12px;
       text-align: center;
       font-family: 'Cambria Math', 'Times New Roman', serif;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
       border: 1px solid #e2e8f0;
-      overflow-x: auto;
-      font-size: 1rem;
     }
     .highlight-box {
       background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
@@ -222,265 +383,8 @@
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
     }
-    .answer-content {
-      display: none;
-      margin-top: 1rem;
-    }
-    .answer-content.show {
-      display: block;
-    }
-    .toggle-answer-btn {
-      margin-top: 0.75rem;
-      background-color: #3b82f6;
-      color: white;
-      border: none;
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: inline-block;
-    }
-    .toggle-answer-btn:hover {
-      background-color: #2563eb;
-      transform: translateY(-1px);
-    }
-    .given-data {
-      background: #f1f5f9;
-      padding: 1rem;
-      border-radius: 10px;
-      margin: 1rem 0;
-      font-size: 0.95rem;
-    }
-    .given-data strong {
-      color: #0f766e;
-    }
-    .problem-title {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #1e40af;
-      margin-bottom: 0.75rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .problem-title .num-badge {
-      background: #3b82f6;
-      color: white;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-    }
   </style>
-  <style>
-    :root {
-      --primary-color: #0f766e;
-      --primary-hover: #115e59;
-      --bg-light: #f8fafc;
-      --text-main: #334155;
-      --text-dark: #0f172a;
-      --accent-blue: #2563eb;
-      --accent-bg-blue: #f0fdfa;
-      --border-color: #e2e8f0;
-    }
 
-    .numerical-box {
-      background: #ffffff;
-      border: 1px solid var(--border-color);
-      border-left: 5px solid var(--primary-color);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .numerical-box:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
-    }
-
-    .problem-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .num-badge {
-      background: linear-gradient(135deg, var(--primary-color), var(--primary-hover));
-      color: #ffffff;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      box-shadow: 0 2px 4px rgba(15, 118, 110, 0.2);
-    }
-
-    /* Justified Question Text styling */
-    .numerical-box p {
-      color: var(--text-main);
-      line-height: 1.6;
-      margin-bottom: 16px;
-      text-align: justify;
-    }
-
-    .answer-content {
-      background-color: var(--bg-light);
-      border-radius: 8px;
-      padding: 16px;
-      margin-top: 14px;
-      border: 1px solid #f1f5f9;
-    }
-
-    .block-lbl {
-      font-weight: 700;
-      color: var(--primary-color);
-      margin: 14px 0 6px;
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .block-lbl::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, #cbd5e1, transparent);
-    }
-
-    .given-grid {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 6px 20px;
-      margin: 6px 0 14px 4px;
-      font-size: 0.95rem;
-      color: var(--text-main);
-      background: #ffffff;
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid #f1f5f9;
-    }
-
-    .given-grid span:nth-child(odd) {
-      font-weight: 600;
-      color: #64748b;
-    }
-
-    .tofind-line {
-      margin: 4px 0 4px 12px;
-      font-size: 0.95rem;
-      color: var(--text-dark);
-      font-weight: 500;
-      position: relative;
-    }
-    
-    .tofind-line::before {
-      content: "•";
-      color: var(--accent-blue);
-      font-weight: bold;
-      display: inline-block; 
-      width: 1em;
-      margin-left: -1em;
-    }
-
-    .sol-text {
-      margin: 8px 0;
-      text-align: justify;
-      font-size: 0.95rem;
-      color: var(--text-main);
-    }
-
-    .equation {
-      background: #ffffff;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #f1f5f9;
-      margin: 10px 0;
-      overflow-x: auto;
-    }
-
-    .ans-box {
-      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-      border: 1.5px solid #16a34a;
-      border-radius: 8px;
-      padding: 12px 18px;
-      margin-top: 16px;
-      font-weight: 700;
-      color: #14532d;
-      font-size: 1.05rem;
-      display: inline-flex;
-      align-items: center;
-      box-shadow: 0 2px 4px rgba(22, 163, 74, 0.05);
-    }
-
-    .sub-lbl {
-      font-weight: 700;
-      color: #1e40af;
-      margin: 16px 0 6px;
-      background: #eff6ff;
-      padding: 6px 12px;
-      border-left: 3px solid #3b82f6;
-      border-radius: 0 4px 4px 0;
-      display: block;
-      font-size: 0.93rem;
-    }
-
-    .inner-hr {
-      border: none;
-      border-top: 1px dashed #cbd5e1;
-      margin: 16px 0;
-    }
-
-    .toggle-answer-btn {
-      background: var(--primary-color);
-      color: #ffffff;
-      border: none;
-      padding: 8px 18px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    }
-
-    .toggle-answer-btn:hover {
-      background: var(--primary-hover);
-    }
-
-    .toggle-answer-btn:active {
-      transform: scale(0.98);
-    }
-
-    /* Example specific variations */
-    .example-box {
-      border-left-color: #3b82f6 !important;
-    }
-    .example-badge {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
-      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;
-    }
-    .example-btn {
-      background: #3b82f6 !important;
-    }
-    .example-btn:hover {
-      background: #2563eb !important;
-    }
-  </style>
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -508,17 +412,16 @@
       "url": "https://hiraacademy.com.pk"
     },
     "url": "https://hiraacademy.com.pk/physics10-2026/Chapter12-Numerical-Problems.html",
-    "datePublished": "2026-05-06",
+    "datePublished": "2026-01-15",
     "dateModified": "2026-05-06",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://hiraacademy.com.pk/physics10-2026/Chapter12-Numerical-Problems.html"
+    },
     "inLanguage": "en-PK",
-    "educationalUse": "practice problems, exam preparation",
+    "educationalUse": "study guide, exam preparation",
     "educationalLevel": "secondary education",
-    "keywords": "Waves Numericals, Wave Speed, Frequency, Wavelength, Time Period, Class 10 Physics",
-    "about": {
-      "@type": "Thing",
-      "name": "Waves Numerical Problems",
-      "description": "Numerical problems covering wave speed, frequency, wavelength, and time period using wave equation v = fλ"
-    }
+    "keywords": "Waves, Class 10 Physics, Numerical Problems, PECTAA 2026, Punjab Boards"
   }
   </script>
 </head>
@@ -570,7 +473,7 @@
   </nav>
 
   <header class="bg-gradient-to-r from-teal-700 to-teal-800 text-white py-8 text-center shadow-xl">
-    <h1 class="text-3xl font-bold mb-3">Unit 12: Waves – Numerical Problems</h1>
+    <h1 class="text-3xl font-bold mb-3">Unit 12: Waves – Numerical Problems & Solutions</h1>
     <p class="text-lg opacity-90">
       <a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="text-amber-300 hover:text-amber-200 transition-colors duration-300 font-medium">Class 10 Physics Notes (New 2026)</a> | Unit 12 – Numerical Problems | PECTAA Syllabus
     </p>
@@ -591,14 +494,14 @@
 
   <main class="max-w-4xl mx-auto px-4 py-8 bg-white rounded-2xl shadow-lg mt-4 mb-16 border border-gray-100">
     <div class="text-center mb-8">
-      <p class="text-teal-700 font-semibold text-xl mb-2">📐 Chapter 12: Waves – Numerical Problems</p>
+      <p class="text-teal-700 font-semibold text-xl mb-2">🌊 Chapter 12: Waves – Numerical Problems</p>
       <p class="mt-2 text-gray-600 text-center max-w-3xl mx-auto">Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska. Based on <strong>PECTAA 2026 syllabus (National Curriculum 2023)</strong>.</p>
       <div class="mt-3 max-w-3xl mx-auto bg-teal-50 rounded-lg p-3 border border-teal-200">
-        <p class="text-gray-700 text-justify"><span class="font-semibold text-teal-700">📖 What's Inside:</span> This section covers <strong>numerical problems</strong> from the official PECTAA 2026 curriculum: wave speed calculation from wavelength & frequency, frequency from speed & wavelength, wavelength from frequency & speed, time period from frequency, and frequency from time period. Each problem includes step-by-step solutions using the wave equation \( v = f\lambda \).</p>
+        <p class="text-gray-700 text-justify"><span class="font-semibold text-teal-700">📖 What's Inside:</span> This section covers numerical problems from Chapter 12 Waves including <strong>wave speed, frequency, wavelength, and time period</strong> using the wave equation \(v = f\lambda\). Each problem is presented with <strong>Given Data, To Find, and step-by-step Solution</strong> as per the official PECTAA 2026 Physics curriculum. Perfect for Punjab Boards (Lahore, Gujranwala, Multan, etc.) and all BISE boards across Pakistan.</p>
       </div>
     </div>
 
-    <!-- Embedded PDF (Google Drive - Chapter 12 Numericals) -->
+    <!-- Embedded PDF (Google Drive) -->
     <div class="flex justify-center mb-12">
       <div class="w-full" style="height: 80vh; max-height: 700px;">
         <iframe loading="lazy"
@@ -630,215 +533,250 @@
         <a href="Chapter12-Long-Questions.html" class="btn-view">📖 Long Questions</a>
         <a href="Chapter12-MCQs.html" class="btn-view">✅ MCQs</a>
       </div>
-      <p class="text-sm text-gray-500 mt-3">Practice numerical problems to master wave equation calculations for board exams.</p>
+      <p class="text-sm text-gray-500 mt-3">Waves covers wave motion, types of waves, wave characteristics, speed, frequency, wavelength, and time period. Includes solved examples and numerical problems.</p>
     </div>
 
-    <!-- Quick Jump to Problems -->
+    <!-- Table of Contents -->
     <div class="mb-8">
       <h2 class="text-2xl font-bold text-teal-700 mb-4">📑 Quick Jump to Problems</h2>
-      <div class="flex flex-wrap gap-2">
-        <a href="#num12-1" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">12.1</a>
-        <a href="#num12-2" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">12.2</a>
-        <a href="#num12-3" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">12.3</a>
-        <a href="#num12-4" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">12.4</a>
-        <a href="#num12-5" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">12.5</a>
-        <a href="#num12-6" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">12.6</a>
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+        <a href="#q1" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">12.1</a>
+        <a href="#q2" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">12.2</a>
+        <a href="#q3" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">12.3</a>
+        <a href="#q4" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">12.4</a>
+        <a href="#q5" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">12.5</a>
+        <a href="#q6" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">12.6</a>
+      </div>
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 mt-2">
+        <a href="#ex1" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">Ex 12.1</a>
       </div>
     </div>
 
     <div class="content-section" id="questions-section">
-  <h2>📐 Numerical Problems & Solutions (PECTAA 2026)</h2>
+      <h2>📐 Numerical Problems & Solutions (PECTAA 2026)</h2>
 
-
-  <div id="q1" class="numerical-box">
-    <div class="problem-title"><span class="num-badge">12.1</span> Wave Speed from Wavelength and Frequency</div>
-    <p><strong>The wavelength of a wave is 2 metres and its frequency is 5 Hz. What is the speed of the wave?</strong></p>
-    <div class="answer-content" id="answer1">
-      <div class="num-sol-wrap">
-        <div class="block-lbl">Given Data</div>
-        <div class="given-grid">
-          <span>\(Wavelength\)</span><span>\(= \lambda = 2\ \text{m}\)</span>
-          <span>\(Frequency\)</span><span>\(= f = 5\ \text{Hz}\)</span>
+      <!-- Problem 12.1 -->
+      <div id="q1" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">12.1</span> Wave Speed from Wavelength and Frequency</div>
+        <p><strong>The wavelength of a wave is 2 metres and its frequency is 5 Hz. What is the speed of the wave?</strong></p>
+        <div class="answer-content" id="answer1">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Wavelength\)</span><span>\(= \lambda = 2\ \text{m}\)</span>
+              <span>\(Frequency\)</span><span>\(= f = 5\ \text{Hz}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Wave\ speed = v = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v &= f\lambda \\
+              v &= (5)(2) \\
+              \boldsymbol{v} &= \boldsymbol{10\ \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(v = 10\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
-        <div class="block-lbl">To Find</div>
-        <div class="tofind-line">\(Wave\ speed = v = ?\)</div>
-        <div class="block-lbl">Solution</div>
-        <p class="sol-text">By using the wave equation:</p>
-        <div class="equation">
-          \[\begin{aligned} v &= f\lambda \\ v &= (5)(2) \\ \boldsymbol{v} &= \boldsymbol{10\ \text{ms}^{-1}} \end{aligned}\]
-        </div>
-        <div class="ans-box">✅ \(v = 10\ \text{ms}^{-1}\)</div>
+        <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
       </div>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
-  </div>
 
-  <div id="q2" class="numerical-box">
-    <div class="problem-title"><span class="num-badge">12.2</span> Frequency from Wave Speed and Wavelength</div>
-    <p><strong>A wave travels at a speed of \(300\ \text{ms}^{-1}\) and has a wavelength of 3 metres. Calculate its frequency.</strong></p>
-    <div class="answer-content" id="answer2">
-      <div class="num-sol-wrap">
-        <div class="block-lbl">Given Data</div>
-        <div class="given-grid">
-          <span>\(Wave\ speed\)</span><span>\(= v = 300\ \text{ms}^{-1}\)</span>
-          <span>\(Wavelength\)</span><span>\(= \lambda = 3\ \text{m}\)</span>
+      <!-- Problem 12.2 -->
+      <div id="q2" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">12.2</span> Frequency from Wave Speed and Wavelength</div>
+        <p><strong>A wave travels at a speed of \(300\ \text{ms}^{-1}\) and has a wavelength of 3 metres. Calculate its frequency.</strong></p>
+        <div class="answer-content" id="answer2">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Wave\ speed\)</span><span>\(= v = 300\ \text{ms}^{-1}\)</span>
+              <span>\(Wavelength\)</span><span>\(= \lambda = 3\ \text{m}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Frequency = f = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v &= f\lambda \\
+              300 &= f \times 3 \\
+              \frac{300}{3} &= f \\
+              100 &= f \\
+              \boldsymbol{f} &= \boldsymbol{100\ \text{Hz}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(f = 100\ \text{Hz}\)</div>
+          </div>
         </div>
-        <div class="block-lbl">To Find</div>
-        <div class="tofind-line">\(Frequency = f = ?\)</div>
-        <div class="block-lbl">Solution</div>
-        <p class="sol-text">By using the wave equation:</p>
-        <div class="equation">
-          \[\begin{aligned} v &= f\lambda \\ 300 &= f \times 3 \\ \frac{300}{3} &= f \\ 100 &= f \\ \boldsymbol{f} &= \boldsymbol{100\ \text{Hz}} \end{aligned}\]
-        </div>
-        <div class="ans-box">✅ \(f = 100\ \text{Hz}\)</div>
+        <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
       </div>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
-  </div>
 
-  <div id="q3" class="numerical-box">
-    <div class="problem-title"><span class="num-badge">12.3</span> Wavelength from Frequency and Speed</div>
-    <p><strong>A sound wave has a frequency of 250 Hz and a speed of \(340\ \text{ms}^{-1}\). Find its wavelength.</strong></p>
-    <div class="answer-content" id="answer3">
-      <div class="num-sol-wrap">
-        <div class="block-lbl">Given Data</div>
-        <div class="given-grid">
-          <span>\(Frequency\)</span><span>\(= f = 250\ \text{Hz}\)</span>
-          <span>\(Speed\)</span><span>\(= v = 340\ \text{ms}^{-1}\)</span>
+      <!-- Problem 12.3 -->
+      <div id="q3" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">12.3</span> Wavelength from Frequency and Speed</div>
+        <p><strong>A sound wave has a frequency of 250 Hz and a speed of \(340\ \text{ms}^{-1}\). Find its wavelength.</strong></p>
+        <div class="answer-content" id="answer3">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Frequency\)</span><span>\(= f = 250\ \text{Hz}\)</span>
+              <span>\(Speed\)</span><span>\(= v = 340\ \text{ms}^{-1}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Wavelength = \lambda = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v &= f\lambda \\
+              340 &= 250 \times \lambda \\
+              \frac{340}{250} &= \lambda \\
+              1.36 &= \lambda \\
+              \boldsymbol{\lambda} &= \boldsymbol{1.36\ \text{m}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(\lambda = 1.36\ \text{m}\)</div>
+          </div>
         </div>
-        <div class="block-lbl">To Find</div>
-        <div class="tofind-line">\(Wavelength = \lambda = ?\)</div>
-        <div class="block-lbl">Solution</div>
-        <p class="sol-text">By using the wave equation:</p>
-        <div class="equation">
-          \[\begin{aligned} v &= f\lambda \\ 340 &= 250 \times \lambda \\ \frac{340}{250} &= \lambda \\ 1.36 &= \lambda \\ \boldsymbol{\lambda} &= \boldsymbol{1.36\ \text{m}} \end{aligned}\]
-        </div>
-        <div class="ans-box">✅ \(\lambda = 1.36\ \text{m}\)</div>
+        <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
       </div>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
-  </div>
 
-  <div id="q4" class="numerical-box">
-    <div class="problem-title"><span class="num-badge">12.4</span> Time Period from Frequency</div>
-    <p><strong>A wave has a frequency of 50 Hz. How much time does it take to complete one wave?</strong></p>
-    <div class="answer-content" id="answer4">
-      <div class="num-sol-wrap">
-        <div class="block-lbl">Given Data</div>
-        <div class="given-grid">
-          <span>\(Frequency\)</span><span>\(= f = 50\ \text{Hz}\)</span>
+      <!-- Problem 12.4 -->
+      <div id="q4" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">12.4</span> Time Period from Frequency</div>
+        <p><strong>A wave has a frequency of 50 Hz. How much time does it take to complete one wave?</strong></p>
+        <div class="answer-content" id="answer4">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Frequency\)</span><span>\(= f = 50\ \text{Hz}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Time\ period\ (Time\ for\ one\ wave) = T = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the formula for time period:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              T &= \frac{1}{f} \\
+              T &= \frac{1}{50} \\
+              \boldsymbol{T} &= \boldsymbol{0.02\ \text{s}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(T = 0.02\ \text{s}\)</div>
+          </div>
         </div>
-        <div class="block-lbl">To Find</div>
-        <div class="tofind-line">\(Time\ period\ (Time\ for\ one\ wave) = T = ?\)</div>
-        <div class="block-lbl">Solution</div>
-        <p class="sol-text">By using the formula for time period:</p>
-        <div class="equation">
-          \[\begin{aligned} T &= \frac{1}{f} \\ T &= \frac{1}{50} \\ \boldsymbol{T} &= \boldsymbol{0.02\ \text{s}} \end{aligned}\]
-        </div>
-        <div class="ans-box">✅ \(T = 0.02\ \text{s}\)</div>
+        <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
       </div>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
-  </div>
 
-  <div id="q5" class="numerical-box">
-    <div class="problem-title"><span class="num-badge">12.5</span> Wave Speed from Wavelength and Frequency</div>
-    <p><strong>A wave has a wavelength of 0.5 m and frequency of 200 Hz. Calculate the speed of the wave.</strong></p>
-    <div class="answer-content" id="answer5">
-      <div class="num-sol-wrap">
-        <div class="block-lbl">Given Data</div>
-        <div class="given-grid">
-          <span>\(Wavelength\)</span><span>\(= \lambda = 0.5\ \text{m}\)</span>
-          <span>\(Frequency\)</span><span>\(= f = 200\ \text{Hz}\)</span>
+      <!-- Problem 12.5 -->
+      <div id="q5" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">12.5</span> Wave Speed from Wavelength and Frequency</div>
+        <p><strong>A wave has a wavelength of 0.5 m and frequency of 200 Hz. Calculate the speed of the wave.</strong></p>
+        <div class="answer-content" id="answer5">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Wavelength\)</span><span>\(= \lambda = 0.5\ \text{m}\)</span>
+              <span>\(Frequency\)</span><span>\(= f = 200\ \text{Hz}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Wave\ speed = v = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v &= f\lambda \\
+              v &= (200)(0.5) \\
+              \boldsymbol{v} &= \boldsymbol{100\ \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(v = 100\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
-        <div class="block-lbl">To Find</div>
-        <div class="tofind-line">\(Wave\ speed = v = ?\)</div>
-        <div class="block-lbl">Solution</div>
-        <p class="sol-text">By using the wave equation:</p>
-        <div class="equation">
-          \[\begin{aligned} v &= f\lambda \\ v &= (0.5)(200) \\ \boldsymbol{v} &= \boldsymbol{100\ \text{ms}^{-1}} \end{aligned}\]
-        </div>
-        <div class="ans-box">✅ \(v = 100\ \text{ms}^{-1}\)</div>
+        <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
       </div>
-    </div>
-    <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
-  </div>
 
-  <div id="q6" class="numerical-box">
-    <div class="problem-title"><span class="num-badge">12.6</span> Frequency from Time Period</div>
-    <p><strong>The time period of a wave is 0.02 seconds. Calculate the frequency of the wave.</strong></p>
-    <div class="answer-content" id="answer6">
-      <div class="num-sol-wrap">
-        <div class="block-lbl">Given Data</div>
-        <div class="given-grid">
-          <span>\(Time\ period\)</span><span>\(= T = 0.02\ \text{s}\)</span>
+      <!-- Problem 12.6 -->
+      <div id="q6" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">12.6</span> Frequency from Time Period</div>
+        <p><strong>The time period of a wave is 0.02 seconds. Calculate the frequency of the wave.</strong></p>
+        <div class="answer-content" id="answer6">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Time\ period\)</span><span>\(= T = 0.02\ \text{s}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Frequency = f = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the formula for frequency:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              f &= \frac{1}{T} \\
+              f &= \frac{1}{0.02} \\
+              \boldsymbol{f} &= \boldsymbol{50\ \text{Hz}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(f = 50\ \text{Hz}\)</div>
+          </div>
         </div>
-        <div class="block-lbl">To Find</div>
-        <div class="tofind-line">\(Frequency = f = ?\)</div>
-        <div class="block-lbl">Solution</div>
-        <p class="sol-text">By using the formula for frequency:</p>
-        <div class="equation">
-          \[\begin{aligned} f &= \frac{1}{T} \\ f &= \frac{1}{0.02} \\ \boldsymbol{f} &= \boldsymbol{50\ \text{Hz}} \end{aligned}\]
-        </div>
-        <div class="ans-box">✅ \(f = 50\ \text{Hz}\)</div>
+        <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
       </div>
+
     </div>
-    <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
-  </div>
 
-</div>
+    <!-- Examples Section -->
+    <div class="content-section" id="examples-section">
+      <h2>📘 Examples with Solutions</h2>
 
-<div class="content-section" id="examples-section">
-  <h2>📘 Examples with Solutions</h2>
-
-  <div id="ex1" class="numerical-box example-box">
-    <div class="problem-title"><span class="num-badge example-badge">Ex 12.1</span> Frequency and Speed from Cycles and Time</div>
-    <p><strong>A wave takes 5 seconds to complete 10 cycles. If the wavelength of the wave is 1.2 metres, calculate: (a) frequency of the wave &nbsp; (b) speed of the wave.</strong></p>
-    <div class="answer-content" id="answer7">
-      <div class="num-sol-wrap">
-        <div class="block-lbl">Given Data</div>
-        <div class="given-grid">
-          <span>\(Number\ of\ cycles\)</span><span>\(= n = 10\)</span>
-          <span>\(Time\)</span><span>\(= t = 5\ \text{s}\)</span>
-          <span>\(Wavelength\)</span><span>\(= \lambda = 1.2\ \text{m}\)</span>
+      <!-- Example 12.1 -->
+      <div id="ex1" class="numerical-box example-box">
+        <div class="problem-title"><span class="num-badge example-badge">Ex 12.1</span> Frequency and Speed from Cycles and Time</div>
+        <p><strong>A wave takes 5 seconds to complete 10 cycles. If the wavelength of the wave is 1.2 metres, calculate: (a) frequency of the wave &nbsp; (b) speed of the wave.</strong></p>
+        <div class="answer-content" id="answer7">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Number\ of\ cycles\)</span><span>\(= n = 10\)</span>
+              <span>\(Time\)</span><span>\(= t = 5\ \text{s}\)</span>
+              <span>\(Wavelength\)</span><span>\(= \lambda = 1.2\ \text{m}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Frequency = f = ?\)</div>
+            <div class="tofind-line">\(Wave\ speed = v = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using the formula for frequency:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              f &= \frac{n}{t} \\
+              f &= \frac{10}{5} \\
+              \boldsymbol{f} &= \boldsymbol{2\ \text{Hz}}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Now, by using the wave equation:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v &= f\lambda \\
+              v &= (2)(1.2) \\
+              \boldsymbol{v} &= \boldsymbol{2.4\ \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(f = 2\ \text{Hz}\) &nbsp;|&nbsp; \(v = 2.4\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
-        <div class="block-lbl">To Find</div>
-        <div class="tofind-line">\(Frequency = f = ?\)</div>
-        <div class="tofind-line">\(Wave\ speed = v = ?\)</div>
-        <div class="block-lbl">Solution</div>
-        
-        <span class="sub-lbl">(a) Frequency of the wave</span>
-        <p class="sol-text">By using the formula for frequency:</p>
-        <div class="equation">
-          \[\begin{aligned} f &= \frac{n}{t} \\ f &= \frac{10}{5} \\ \boldsymbol{f} &= \boldsymbol{2\ \text{Hz}} \end{aligned}\]
-        </div>
-        
-        <hr class="inner-hr">
-        
-        <span class="sub-lbl">(b) Speed of the wave</span>
-        <p class="sol-text">Now, by using the wave equation:</p>
-        <div class="equation">
-          \[\begin{aligned} v &= f\lambda \\ v &= (2)(1.2) \\ \boldsymbol{v} &= \boldsymbol{2.4\ \text{ms}^{-1}} \end{aligned}\]
-        </div>
-        <div class="ans-box">✅ \(f = 2\ \text{Hz}\) &nbsp;|&nbsp; \(v = 2.4\ \text{ms}^{-1}\)</div>
+        <button class="toggle-answer-btn example-btn" data-target="answer7">Show Solution</button>
       </div>
-    </div>
-    <button class="toggle-answer-btn example-btn" data-target="answer7">Show Solution</button>
-  </div>
 
-</div>    <!-- Key Formulas Section -->
+    </div>
+
+    <!-- Key Formulas Section -->
     <div class="content-section">
       <h2>📐 Key Formulas – Waves</h2>
       <div class="equation"><strong>Wave Equation:</strong> \( v = f \lambda \)</div>
       <div class="equation"><strong>Time Period:</strong> \( T = \frac{1}{f} \) &nbsp;&nbsp; or &nbsp;&nbsp; \( f = \frac{1}{T} \)</div>
       <div class="equation"><strong>Wave Speed:</strong> \( v = \frac{\lambda}{T} \)</div>
-    </div>
-
-    <div class="highlight-box">
-      <p class="font-semibold text-lg mb-2 text-justify">💡 Exam Tip:</p>
-      <p class="text-justify">
-        For numerical problems on waves, always remember the wave equation \( v = f\lambda \). Frequency is measured in Hertz (Hz), wavelength in metres (m), and speed in metres per second (m/s). Time period (T) is the time for one complete wave cycle. These problems follow the PECTAA 2026 pattern and are prepared by Subject Specialist Muhammad Tayyab.
-      </p>
     </div>
 
     <!-- Other Chapters Dropdown (Units 10–21) -->

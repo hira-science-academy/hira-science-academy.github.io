@@ -25,10 +25,10 @@
   <meta name="language" content="en">
   <meta name="author" content="Muhammad Tayyab, Govt Christian High School Daska | Hira Science Academy">
   <meta name="copyright" content="Muhammad Tayyab, Hira Science Academy">
-  <meta name="last-modified" content="2026-03-27">
+  <meta name="last-modified" content="2026-04-02">
 
   <title>Chapter 14 – Light | Numerical Problems | Class 10 Physics 2026 PECTAA | Hira Science Academy</title>
-  <meta name="description" content="Class 10 Physics Chapter 14 Light Numerical Problems with step-by-step solutions. Based on PECTAA 2026 syllabus. Prepared by Muhammad Tayyab, Subject Specialist Physics, Govt Christian High School Daska. Includes refractive index, Snell's law, critical angle, mirror & lens formula, magnification & more.">
+  <meta name="description" content="Class 10 Physics Chapter 14 Light Numerical Problems with step-by-step solutions. Based on PECTAA 2026 syllabus. Prepared by Muhammad Tayyab, Subject Specialist Physics. Includes refractive index, Snell's law, critical angle, mirror & lens formula, magnification & more.">
   <meta name="keywords" content="Class 10 Physics Chapter 14, Light Numerical Problems, 10th Physics Chapter 14 Notes, PECTAA 2026 Syllabus, Physics Numericals Class 10, Refractive Index, Snell's Law, Critical Angle, Mirror Formula, Lens Formula, Magnification, Hira Science Academy, Muhammad Tayyab Physics">
 
   <!-- Canonical URL -->
@@ -50,7 +50,7 @@
   <meta name="twitter:description" content="Free numerical problems for Light chapter. 2026 syllabus notes by Muhammad Tayyab.">
   <meta name="twitter:image" content="https://hiraacademy.com.pk/images/physics-10th-new-2026-pectaa.webp">
 
-<link rel="icon" href="https://hiraacademy.com.pk/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://hiraacademy.com.pk/images/favicon.ico" type="image/x-icon" />
   <link rel="icon" type="image/png" sizes="16x16" href="https://hiraacademy.com.pk/images/favicon-16x16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="https://hiraacademy.com.pk/images/favicon-32x32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.com.pk/images/apple-touch-icon.png" />
@@ -84,7 +84,13 @@
   </script>
 
   <!-- MathJax for LaTeX equations -->
-  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre'] }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 
   <style>
     body {
@@ -94,7 +100,7 @@
     html {
       scroll-behavior: smooth;
     }
-    .definition-box {
+    .numerical-box {
       scroll-margin-top: 85px;
     }
     .content-section {
@@ -108,17 +114,174 @@
       font-weight: 700;
       font-size: 1.75rem;
     }
-    .definition-box {
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    .numerical-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
       border-left: 5px solid #0f766e;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 0 12px 12px 0;
-      box-shadow: 0 4px 12px rgba(15,118,110,0.1);
-      transition: all 0.2s;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .definition-box:hover {
-      transform: translateX(4px);
+    .numerical-box:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
+    }
+    .problem-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .num-badge {
+      background: linear-gradient(135deg, #0f766e, #115e59);
+      color: #ffffff;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 4px rgba(15, 118, 110, 0.2);
+    }
+    .numerical-box p {
+      color: #334155;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+    .answer-content {
+      background-color: #f8fafc;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 14px;
+      border: 1px solid #f1f5f9;
+      display: none;
+    }
+    .answer-content.show {
+      display: block;
+    }
+    .block-lbl {
+      font-weight: 700;
+      color: #0f766e;
+      margin: 14px 0 6px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .block-lbl::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, #cbd5e1, transparent);
+    }
+    .given-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 20px;
+      margin: 6px 0 14px 4px;
+      font-size: 0.95rem;
+      color: #334155;
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+    }
+    .given-grid span:nth-child(odd) {
+      font-weight: 600;
+      color: #64748b;
+    }
+    .tofind-line {
+      margin: 4px 0 4px 12px;
+      font-size: 0.95rem;
+      color: #0f172a;
+      font-weight: 500;
+      position: relative;
+    }
+    .tofind-line::before {
+      content: "•";
+      color: #2563eb;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    .sol-text {
+      margin: 8px 0;
+      text-align: justify;
+      font-size: 0.95rem;
+      color: #334155;
+    }
+    .equation {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #f1f5f9;
+      margin: 10px 0;
+      overflow-x: auto;
+      text-align: center;
+    }
+    .ans-box {
+      background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+      border: 1.5px solid #16a34a;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin-top: 16px;
+      font-weight: 700;
+      color: #14532d;
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(22, 163, 74, 0.05);
+    }
+    .note-box {
+      background: #fefce8;
+      border-left: 4px solid #eab308;
+      padding: 12px 16px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.93rem;
+      color: #713f12;
+      line-height: 1.5;
+    }
+    .toggle-answer-btn {
+      background: #0f766e;
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin-top: 0.75rem;
+    }
+    .toggle-answer-btn:hover {
+      background: #115e59;
+    }
+    .toggle-answer-btn:active {
+      transform: scale(0.98);
+    }
+    .example-box {
+      border-left-color: #3b82f6 !important;
+    }
+    .example-badge {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;
+    }
+    .example-btn {
+      background: #3b82f6 !important;
+    }
+    .example-btn:hover {
+      background: #2563eb !important;
     }
     .equation {
       background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
@@ -220,30 +383,6 @@
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
     }
-    .answer-content {
-      display: none;
-      margin-top: 1rem;
-    }
-    .answer-content.show {
-      display: block;
-    }
-    .toggle-answer-btn {
-      margin-top: 0.75rem;
-      background-color: #e2e8f0;
-      color: #1e293b;
-      border: none;
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: inline-block;
-    }
-    .toggle-answer-btn:hover {
-      background-color: #cbd5e1;
-      transform: translateY(-1px);
-    }
   </style>
 
   <!-- Structured Data -->
@@ -274,7 +413,7 @@
     },
     "url": "https://hiraacademy.com.pk/physics10-2026/Chapter14-Numerical-Problems.html",
     "datePublished": "2026-01-15",
-    "dateModified": "2026-03-27",
+    "dateModified": "2026-04-02",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://hiraacademy.com.pk/physics10-2026/Chapter14-Numerical-Problems.html"
@@ -282,12 +421,7 @@
     "inLanguage": "en-PK",
     "educationalUse": "study guide, exam preparation",
     "educationalLevel": "secondary education",
-    "keywords": "Light, Class 10 Physics, Numerical Problems, PECTAA 2026, Punjab Boards",
-    "about": {
-      "@type": "Thing",
-      "name": "Light",
-      "description": "Numerical problems on refractive index, Snell's law, critical angle, mirrors, lenses, and magnification"
-    }
+    "keywords": "Light, Class 10 Physics, Numerical Problems, PECTAA 2026, Punjab Boards"
   }
   </script>
 </head>
@@ -339,7 +473,7 @@
   </nav>
 
   <header class="bg-gradient-to-r from-teal-700 to-teal-800 text-white py-8 text-center shadow-xl">
-    <h1 class="text-3xl font-bold mb-3">Unit 14: Light – Numerical Problems</h1>
+    <h1 class="text-3xl font-bold mb-3">Unit 14: Light – Numerical Problems & Solutions</h1>
     <p class="text-lg opacity-90">
       <a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="text-amber-300 hover:text-amber-200 transition-colors duration-300 font-medium">Class 10 Physics Notes (New 2026)</a> | Unit 14 – Numerical Problems | PECTAA Syllabus
     </p>
@@ -363,7 +497,7 @@
       <p class="text-teal-700 font-semibold text-xl mb-2">💡 Chapter 14: Light – Numerical Problems</p>
       <p class="mt-2 text-gray-600 text-center max-w-3xl mx-auto">Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska. Based on <strong>PECTAA 2026 syllabus (National Curriculum 2023)</strong>.</p>
       <div class="mt-3 max-w-3xl mx-auto bg-teal-50 rounded-lg p-3 border border-teal-200">
-        <p class="text-gray-700 text-justify"><span class="font-semibold text-teal-700">📖 What's Inside:</span> This chapter covers <strong>refractive index, Snell's law, critical angle, mirror and lens formula, magnification, and power of lens</strong> through step-by-step numerical problems. Each problem is presented with the <strong>exact exam-ready solution</strong> as per the official PECTAA 2026 Physics curriculum.</p>
+        <p class="text-gray-700 text-justify"><span class="font-semibold text-teal-700">📖 What's Inside:</span> This section covers numerical problems from Chapter 14 Light including <strong>refractive index, Snell's law, critical angle, mirror and lens formula, magnification, and power of lens</strong>. Each problem is presented with <strong>Given Data, To Find, and step-by-step Solution</strong> as per the official PECTAA 2026 Physics curriculum. Perfect for Punjab Boards (Lahore, Gujranwala, Multan, etc.) and all BISE boards across Pakistan.</p>
       </div>
     </div>
 
@@ -399,13 +533,13 @@
         <a href="Chapter14-Long-Questions.html" class="btn-view">📖 Long Questions</a>
         <a href="Chapter14-MCQs.html" class="btn-view">✅ MCQs</a>
       </div>
-      <p class="text-sm text-gray-500 mt-3">Light covers reflection, refraction, total internal reflection, optical fibres, lenses, prisms, dispersion, and optical instruments.</p>
+      <p class="text-sm text-gray-500 mt-3">Light covers reflection, refraction, total internal reflection, optical fibres, lenses, prisms, dispersion, and optical instruments. Includes solved examples and numerical problems.</p>
     </div>
 
     <!-- Table of Contents -->
     <div class="mb-8">
       <h2 class="text-2xl font-bold text-teal-700 mb-4">📑 Quick Jump to Problems</h2>
-      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-2">
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
         <a href="#q1" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.1</a>
         <a href="#q2" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.2</a>
         <a href="#q3" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.3</a>
@@ -418,221 +552,475 @@
       </div>
     </div>
 
-   
-
-    <!-- Numerical Problems with Answers -->
     <div class="content-section" id="questions-section">
-      <h2>📖 Numerical Problems & Solutions (PECTAA 2026)</h2>
+      <h2>📐 Numerical Problems & Solutions (PECTAA 2026)</h2>
 
       <!-- Problem 14.1 -->
-      <div id="q1" class="definition-box text-justify">
-        <strong>14.1 The speed of light in water is 2.25 × 10<sup>8</sup> ms<sup>−1</sup>. Calculate the refractive index of water.</strong>
+      <div id="q1" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">14.1</span> Refractive Index of Water</div>
+        <p><strong>The speed of light in water is \(2.25 \times 10^8 \, \text{ms}^{-1}\). Calculate the refractive index of water.</strong></p>
         <div class="answer-content" id="answer1">
-          <br><strong>Given Data:</strong><br>
-          Speed of light in air = c = 3 × 10<sup>8</sup> ms<sup>−1</sup><br>
-          Speed of light in water = v = 2.25 × 10<sup>8</sup> ms<sup>−1</sup><br><br>
-          <strong>To Find:</strong><br>
-          Refractive index of water = n = ?<br><br>
-          <strong>Solution:</strong><br>
-          By using formula of refractive index:<br>
-          \[ n = \frac{c}{v} \]<br>
-          \[ n = \frac{3 \times 10^{8}}{2.25 \times 10^{8}} \]<br>
-          \[ n = 1.33 \]
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Speed\ of\ light\ in\ air\)</span><span>\(= c = 3 \times 10^8 \, \text{ms}^{-1}\)</span>
+              <span>\(Speed\ of\ light\ in\ water\)</span><span>\(= v = 2.25 \times 10^8 \, \text{ms}^{-1}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Refractive\ index\ of\ water = n = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using formula of refractive index:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              n &= \frac{c}{v} \\
+              n &= \frac{3 \times 10^8}{2.25 \times 10^8} \\
+              \boldsymbol{n} &= \boldsymbol{1.33}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(n = 1.33\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
       </div>
 
       <!-- Problem 14.2 -->
-      <div id="q2" class="definition-box text-justify">
-        <strong>14.2 A light ray in air (n<sub>1</sub> = 1.0) strikes a glass surface (n<sub>2</sub> = 1.5) at an angle of incidence 30°. Find the angle of refraction inside the glass.</strong>
+      <div id="q2" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">14.2</span> Angle of Refraction (Snell's Law)</div>
+        <p><strong>A light ray in air (\(n_1 = 1.0\)) strikes a glass surface (\(n_2 = 1.5\)) at an angle of incidence \(30^\circ\). Find the angle of refraction inside the glass.</strong></p>
         <div class="answer-content" id="answer2">
-          <br><strong>Given Data:</strong><br>
-          Refractive index of air = n<sub>1</sub> = 1.0<br>
-          Refractive index of glass = n<sub>2</sub> = 1.5<br>
-          Angle of incidence = i = 30°<br><br>
-          <strong>To Find:</strong><br>
-          Angle of refraction = r = ?<br><br>
-          <strong>Solution:</strong><br>
-          By using Snell's law:<br>
-          \[ n_1 \sin i = n_2 \sin r \]<br>
-          \[ (1.0) \sin 30° = (1.5) \sin r \]<br>
-          \[ (1.0)(0.5) = (1.5) \sin r \]<br>
-          \[ 0.5 = (1.5) \sin r \]<br>
-          \[ \sin r = \frac{0.5}{1.5} = \frac{1}{3} \]<br>
-          \[ r = \sin^{-1} \left( \frac{1}{3} \right) \]<br>
-          \[ r = 19.47° \approx 19.5° \]
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Refractive\ index\ of\ air\)</span><span>\(= n_1 = 1.0\)</span>
+              <span>\(Refractive\ index\ of\ glass\)</span><span>\(= n_2 = 1.5\)</span>
+              <span>\(Angle\ of\ incidence\)</span><span>\(= i = 30^\circ\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Angle\ of\ refraction = r = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using Snell's law:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              n_1 \sin i &= n_2 \sin r \\
+              (1.0) \sin 30^\circ &= (1.5) \sin r \\
+              (1.0)(0.5) &= (1.5) \sin r \\
+              0.5 &= (1.5) \sin r \\
+              \sin r &= \frac{0.5}{1.5} = \frac{1}{3} \\
+              r &= \sin^{-1}\left(\frac{1}{3}\right) \\
+              \boldsymbol{r} &= \boldsymbol{19.5^\circ}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(r = 19.5^\circ\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
       </div>
 
       <!-- Problem 14.3 -->
-      <div id="q3" class="definition-box text-justify">
-        <strong>14.3 A beam of light in air hits a glass slab at an incidence angle of 40°. Find the angle of refraction inside the glass.</strong>
+      <div id="q3" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">14.3</span> Refraction Through Glass Slab</div>
+        <p><strong>A beam of light in air hits a glass slab at an incidence angle of \(40^\circ\). Find the angle of refraction inside the glass.</strong></p>
         <div class="answer-content" id="answer3">
-          <br><strong>Given Data:</strong><br>
-          Angle of incidence = i = 40°<br>
-          Refractive index of air = n<sub>1</sub> = 1.0<br>
-          Refractive index of glass = n<sub>2</sub> = 1.5<br><br>
-          <strong>To Find:</strong><br>
-          Angle of refraction = r = ?<br><br>
-          <strong>Solution:</strong><br>
-          By using Snell's law:<br>
-          \[ n_1 \sin i = n_2 \sin r \]<br>
-          \[ (1.0) \sin 40° = (1.5) \sin r \]<br>
-          \[ (1.0)(0.6428) = (1.5) \sin r \]<br>
-          \[ 0.6428 = (1.5) \sin r \]<br>
-          \[ \sin r = \frac{0.6428}{1.5} = 0.4285 \]<br>
-          \[ r = \sin^{-1} (0.4285) \]<br>
-          \[ r = 25.37° \approx 25° \]
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Angle\ of\ incidence\)</span><span>\(= i = 40^\circ\)</span>
+              <span>\(Refractive\ index\ of\ air\)</span><span>\(= n_1 = 1.0\)</span>
+              <span>\(Refractive\ index\ of\ glass\)</span><span>\(= n_2 = 1.5\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Angle\ of\ refraction = r = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using Snell's law:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              n_1 \sin i &= n_2 \sin r \\
+              (1.0) \sin 40^\circ &= (1.5) \sin r \\
+              (1.0)(0.6428) &= (1.5) \sin r \\
+              0.6428 &= (1.5) \sin r \\
+              \sin r &= \frac{0.6428}{1.5} = 0.4285 \\
+              r &= \sin^{-1}(0.4285) \\
+              \boldsymbol{r} &= \boldsymbol{25.4^\circ}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(r = 25.4^\circ\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
       </div>
 
       <!-- Problem 14.4 -->
-      <div id="q4" class="definition-box text-justify">
-        <strong>14.4 A ray of light travels from air into an unknown liquid. The angle of incidence in air is 45°, and the angle of refraction in the liquid is 30°. Calculate the refractive index of the liquid.</strong>
+      <div id="q4" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">14.4</span> Refractive Index of Unknown Liquid</div>
+        <p><strong>A ray of light travels from air into an unknown liquid. The angle of incidence in air is \(45^\circ\), and the angle of refraction in the liquid is \(30^\circ\). Calculate the refractive index of the liquid.</strong></p>
         <div class="answer-content" id="answer4">
-          <br><strong>Given Data:</strong><br>
-          Angle of incidence = i = 45°<br>
-          Angle of refraction = r = 30°<br><br>
-          <strong>To Find:</strong><br>
-          Refractive index of liquid = n = ?<br><br>
-          <strong>Solution:</strong><br>
-          By using Snell's law:<br>
-          \[ n = \frac{\sin i}{\sin r} \]<br>
-          \[ n = \frac{\sin 45°}{\sin 30°} \]<br>
-          \[ n = \frac{0.7071}{0.5} \]<br>
-          \[ n = 1.41 \]
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Angle\ of\ incidence\)</span><span>\(= i = 45^\circ\)</span>
+              <span>\(Angle\ of\ refraction\)</span><span>\(= r = 30^\circ\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Refractive\ index\ of\ liquid = n = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using Snell's law:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              n &= \frac{\sin i}{\sin r} \\
+              n &= \frac{\sin 45^\circ}{\sin 30^\circ} \\
+              n &= \frac{0.7071}{0.5} \\
+              \boldsymbol{n} &= \boldsymbol{1.41}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(n = 1.41\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
       </div>
 
       <!-- Problem 14.5 -->
-      <div id="q5" class="definition-box text-justify">
-        <strong>14.5 A ray of light passes from air into a liquid. The angle of incidence in air is 50°, and the angle of refraction inside the liquid is 32°. Calculate: (a) the refractive index of the liquid (b) the speed of light in the liquid.</strong>
+      <div id="q5" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">14.5</span> Refractive Index and Speed of Light in Liquid</div>
+        <p><strong>A ray of light passes from air into a liquid. The angle of incidence in air is \(50^\circ\), and the angle of refraction inside the liquid is \(32^\circ\). Calculate: (a) the refractive index of the liquid (b) the speed of light in the liquid.</strong></p>
         <div class="answer-content" id="answer5">
-          <br><strong>Given Data:</strong><br>
-          Angle of incidence = i = 50°<br>
-          Angle of refraction = r = 32°<br>
-          Speed of light in air = c = 3 × 10<sup>8</sup> ms<sup>−1</sup><br><br>
-          <strong>To Find:</strong><br>
-          Refractive index of liquid = n = ?<br>
-          Speed of light in liquid = v = ?<br><br>
-          <strong>Solution:</strong><br>
-          By using Snell's law:<br>
-          \[ n = \frac{\sin i}{\sin r} \]<br>
-          \[ n = \frac{\sin 50°}{\sin 32°} \]<br>
-          \[ n = \frac{0.7660}{0.5299} = 1.45 \]<br><br>
-          By using formula of refractive index:<br>
-          \[ n = \frac{c}{v} \]<br>
-          \[ v = \frac{c}{n} \]<br>
-          \[ v = \frac{3 \times 10^{8}}{1.45} \]<br>
-          \[ v = 2.07 \times 10^{8} \text{ ms}^{-1} \]
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Angle\ of\ incidence\)</span><span>\(= i = 50^\circ\)</span>
+              <span>\(Angle\ of\ refraction\)</span><span>\(= r = 32^\circ\)</span>
+              <span>\(Speed\ of\ light\ in\ air\)</span><span>\(= c = 3 \times 10^8 \, \text{ms}^{-1}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Refractive\ index\ of\ liquid = n = ?\)</div>
+            <div class="tofind-line">\(Speed\ of\ light\ in\ liquid = v = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using Snell's law:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              n &= \frac{\sin i}{\sin r} \\
+              n &= \frac{\sin 50^\circ}{\sin 32^\circ} \\
+              n &= \frac{0.7660}{0.5299} = 1.45
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">By using formula of refractive index:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              n &= \frac{c}{v} \\
+              v &= \frac{c}{n} \\
+              v &= \frac{3 \times 10^8}{1.45} \\
+              \boldsymbol{v} &= \boldsymbol{2.07 \times 10^8 \, \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(n = 1.45\) &nbsp;|&nbsp; \(v = 2.07 \times 10^8 \, \text{ms}^{-1}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
       </div>
 
       <!-- Problem 14.6 -->
-      <div id="q6" class="definition-box text-justify">
-        <strong>14.6 Light travels inside a glass block of refractive index n = 1.6. It strikes the glass-air boundary. Calculate the critical angle for total internal reflection.</strong>
+      <div id="q6" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">14.6</span> Critical Angle for Total Internal Reflection</div>
+        <p><strong>Light travels inside a glass block of refractive index \(n = 1.6\). It strikes the glass-air boundary. Calculate the critical angle for total internal reflection.</strong></p>
         <div class="answer-content" id="answer6">
-          <br><strong>Given Data:</strong><br>
-          Refractive index of glass = n = 1.6<br><br>
-          <strong>To Find:</strong><br>
-          Critical angle = C = ?<br><br>
-          <strong>Solution:</strong><br>
-          By using formula of critical angle when light travels from a denser medium (glass) to air (or vacuum):<br>
-          \[ C = \sin^{-1} \left( \frac{1}{n} \right) \]<br>
-          \[ C = \sin^{-1} \left( \frac{1}{1.6} \right) \]<br>
-          \[ C = 38.68° \]
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Refractive\ index\ of\ glass\)</span><span>\(= n = 1.6\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Critical\ angle = C = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using formula of critical angle:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              C &= \sin^{-1}\left(\frac{1}{n}\right) \\
+              C &= \sin^{-1}\left(\frac{1}{1.6}\right) \\
+              \boldsymbol{C} &= \boldsymbol{38.7^\circ}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(C = 38.7^\circ\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
       </div>
 
       <!-- Problem 14.7 -->
-      <div id="q7" class="definition-box text-justify">
-        <strong>14.7 An object is placed 15.0 cm in front of a convex mirror, forming a virtual image 7.5 cm behind the mirror. What is the focal length of the mirror?</strong>
+      <div id="q7" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">14.7</span> Focal Length of Convex Mirror</div>
+        <p><strong>An object is placed 15.0 cm in front of a convex mirror, forming a virtual image 7.5 cm behind the mirror. What is the focal length of the mirror?</strong></p>
         <div class="answer-content" id="answer7">
-          <br><strong>Given Data:</strong><br>
-          Object distance = p = 15 cm<br>
-          Image distance = q = −7.5 cm (image behind the mirror)<br><br>
-          <strong>To Find:</strong><br>
-          Focal length = f = ?<br><br>
-          <strong>Solution:</strong><br>
-          By using mirror formula:<br>
-          \[ \frac{1}{f} = \frac{1}{p} + \frac{1}{q} \]<br>
-          \[ \frac{1}{f} = \frac{1}{15} + \frac{1}{-7.5} \]<br>
-          \[ \frac{1}{f} = \frac{1}{15} - \frac{1}{7.5} \]<br>
-          \[ \frac{1}{f} = \frac{7.5 - 15}{(15)(7.5)} \]<br>
-          \[ \frac{1}{f} = \frac{-7.5}{112.5} \]<br>
-          \[ f = -\frac{112.5}{7.5} = -15 \text{ cm} \]
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Object\ distance\)</span><span>\(= p = 15 \, \text{cm}\)</span>
+              <span>\(Image\ distance\)</span><span>\(= q = -7.5 \, \text{cm (virtual, behind mirror)}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Focal\ length = f = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using mirror formula:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              \frac{1}{f} &= \frac{1}{p} + \frac{1}{q} \\
+              \frac{1}{f} &= \frac{1}{15} + \frac{1}{-7.5} \\
+              \frac{1}{f} &= \frac{1}{15} - \frac{1}{7.5} \\
+              \frac{1}{f} &= \frac{7.5 - 15}{(15)(7.5)} \\
+              \frac{1}{f} &= \frac{-7.5}{112.5} \\
+              \boldsymbol{f} &= \boldsymbol{-15 \, \text{cm}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(f = -15 \, \text{cm}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer7">Show Solution</button>
       </div>
 
       <!-- Problem 14.8 -->
-      <div id="q8" class="definition-box text-justify">
-        <strong>14.8 An object 30 cm tall is located 10.5 cm from a concave mirror with focal length 16 cm. (a) Where is the image located? (b) How high is it?</strong>
+      <div id="q8" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">14.8</span> Image Location and Height (Concave Mirror)</div>
+        <p><strong>An object 30 cm tall is located 10.5 cm from a concave mirror with focal length 16 cm. (a) Where is the image located? (b) How high is it?</strong></p>
         <div class="answer-content" id="answer8">
-          <br><strong>Given Data:</strong><br>
-          Object height = h<sub>o</sub> = 30 cm<br>
-          Object distance = p = 10.5 cm<br>
-          Focal length = f = 16 cm<br><br>
-          <strong>To Find:</strong><br>
-          Image distance = q = ?<br>
-          Image height = h<sub>i</sub> = ?<br><br>
-          <strong>Solution:</strong><br>
-          By using mirror formula:<br>
-          \[ \frac{1}{f} = \frac{1}{p} + \frac{1}{q} \]<br>
-          \[ \frac{1}{q} = \frac{1}{f} - \frac{1}{p} \]<br>
-          \[ \frac{1}{q} = \frac{1}{16} - \frac{1}{10.5} \]<br>
-          \[ \frac{1}{q} = \frac{10.5 - 16}{(16)(10.5)} \]<br>
-          \[ \frac{1}{q} = \frac{-5.5}{168} \]<br>
-          \[ q = -\frac{168}{5.5} = -30.54 \text{ cm} \]<br>
-          Negative sign shows that the image is virtual and located behind the mirror.<br><br>
-          Now by using formula of magnification:<br>
-          \[ M = \frac{h_i}{h_o} = \frac{|q|}{p} \]<br>
-          \[ h_i = \frac{|q|}{p} \times h_o \]<br>
-          \[ h_i = \frac{30.54}{10.5} \times 30 \]<br>
-          \[ h_i = 87.3 \text{ cm} \]
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Object\ height\)</span><span>\(= h_o = 30 \, \text{cm}\)</span>
+              <span>\(Object\ distance\)</span><span>\(= p = 10.5 \, \text{cm}\)</span>
+              <span>\(Focal\ length\)</span><span>\(= f = 16 \, \text{cm}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Image\ distance = q = ?\)</div>
+            <div class="tofind-line">\(Image\ height = h_i = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using mirror formula:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              \frac{1}{f} &= \frac{1}{p} + \frac{1}{q} \\
+              \frac{1}{q} &= \frac{1}{f} - \frac{1}{p} \\
+              \frac{1}{q} &= \frac{1}{16} - \frac{1}{10.5} \\
+              \frac{1}{q} &= \frac{10.5 - 16}{(16)(10.5)} \\
+              \frac{1}{q} &= \frac{-5.5}{168} \\
+              q &= -\frac{168}{5.5} = -30.54 \, \text{cm}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Negative sign shows that the image is virtual and located behind the mirror.</p>
+            <p class="sol-text">Now by using formula of magnification:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              M &= \frac{h_i}{h_o} = \frac{|q|}{p} \\
+              h_i &= \frac{|q|}{p} \times h_o \\
+              h_i &= \frac{30.54}{10.5} \times 30 \\
+              \boldsymbol{h_i} &= \boldsymbol{87.3 \, \text{cm}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(q = -30.5 \, \text{cm}\) &nbsp;|&nbsp; \(h_i = 87.3 \, \text{cm}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer8">Show Solution</button>
       </div>
 
       <!-- Problem 14.9 -->
-      <div id="q9" class="definition-box text-justify">
-        <strong>14.9 An object is placed at 30 cm to the left of a concave lens with focal length −15 cm. Find the image distance and describe the image.</strong>
+      <div id="q9" class="numerical-box">
+        <div class="problem-title"><span class="num-badge">14.9</span> Image Distance for Concave Lens</div>
+        <p><strong>An object is placed at 30 cm to the left of a concave lens with focal length \(-15\) cm. Find the image distance and describe the image.</strong></p>
         <div class="answer-content" id="answer9">
-          <br><strong>Given Data:</strong><br>
-          Object distance = p = 30 cm<br>
-          Focal length = f = −15 cm (for concave lens −ve f)<br><br>
-          <strong>To Find:</strong><br>
-          Image distance = q = ?<br>
-          Nature of image = ?<br><br>
-          <strong>Solution:</strong><br>
-          By using lens formula:<br>
-          \[ \frac{1}{f} = \frac{1}{p} + \frac{1}{q} \]<br>
-          \[ \frac{1}{q} = \frac{1}{f} - \frac{1}{p} \]<br>
-          \[ \frac{1}{q} = \frac{1}{-15} - \frac{1}{30} \]<br>
-          \[ \frac{1}{q} = \frac{-1}{15} - \frac{1}{30} \]<br>
-          \[ \frac{1}{q} = \frac{-2 - 1}{30} = \frac{-3}{30} \]<br>
-          \[ q = -\frac{30}{3} = -10 \text{ cm} \]<br>
-          Since q is negative, the image is virtual, upright, and formed at a distance of 10 cm on the same side of the object.<br><br>
-          <strong>Note:</strong> The textbook solution key mentions −30 cm as a typo, but the actual step-by-step mathematical proof derives −10 cm.
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Object\ distance\)</span><span>\(= p = 30 \, \text{cm}\)</span>
+              <span>\(Focal\ length\)</span><span>\(= f = -15 \, \text{cm (concave lens)}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Image\ distance = q = ?\)</div>
+            <div class="tofind-line">\(Nature\ of\ image = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using lens formula:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              \frac{1}{f} &= \frac{1}{p} + \frac{1}{q} \\
+              \frac{1}{q} &= \frac{1}{f} - \frac{1}{p} \\
+              \frac{1}{q} &= \frac{1}{-15} - \frac{1}{30} \\
+              \frac{1}{q} &= \frac{-1}{15} - \frac{1}{30} \\
+              \frac{1}{q} &= \frac{-2 - 1}{30} = \frac{-3}{30} \\
+              q &= -\frac{30}{3} = -10 \, \text{cm}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Since \(q\) is negative, the image is <strong>virtual, upright</strong>, and formed at a distance of 10 cm on the same side of the object.</p>
+            <div class="note-box"><strong>Note:</strong> The textbook solution key mentions \(-30\) cm as a typo. The mathematically precise answer is \(-10\) cm.</div>
+            <div class="ans-box">✅ \(q = -10 \, \text{cm}\) (Virtual, Upright)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer9">Show Solution</button>
       </div>
+
     </div>
- <!-- Important Formulas -->
+
+    <!-- Examples Section -->
+    <div class="content-section" id="examples-section">
+      <h2>📘 Examples with Solutions</h2>
+
+      <!-- Example 14.1 -->
+      <div id="ex1" class="numerical-box example-box">
+        <div class="problem-title"><span class="num-badge example-badge">Ex 14.1</span> Refraction from Air to Water</div>
+        <p><strong>A ray of light enters from air into water. The angle of incidence is \(40^\circ\) and the refractive index of water is 1.33. Find the angle of refraction.</strong></p>
+        <div class="answer-content" id="answer10">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Angle\ of\ incidence\)</span><span>\(= i = 40^\circ\)</span>
+              <span>\(Refractive\ index\ of\ water\)</span><span>\(= n = 1.33\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Angle\ of\ refraction = r = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using Snell's law:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              \frac{\sin i}{\sin r} &= n \\
+              \sin r &= \frac{\sin i}{n} \\
+              \sin r &= \frac{\sin 40^\circ}{1.33} \\
+              \sin r &= \frac{0.6428}{1.33} = 0.4833 \\
+              r &= \sin^{-1}(0.4833) \\
+              \boldsymbol{r} &= \boldsymbol{28.9^\circ}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(r = 28.9^\circ\)</div>
+          </div>
+        </div>
+        <button class="toggle-answer-btn example-btn" data-target="answer10">Show Solution</button>
+      </div>
+
+      <!-- Example 14.2 -->
+      <div id="ex2" class="numerical-box example-box">
+        <div class="problem-title"><span class="num-badge example-badge">Ex 14.2</span> Speed of Light in Water</div>
+        <p><strong>The refractive index of water is 1.33. Find the speed of light in water.</strong></p>
+        <div class="answer-content" id="answer11">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Refractive\ index\ of\ water\)</span><span>\(= n = 1.33\)</span>
+              <span>\(Speed\ of\ light\ in\ air\)</span><span>\(= c = 3 \times 10^8 \, \text{ms}^{-1}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Speed\ of\ light\ in\ water = v = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using formula of refractive index:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              n &= \frac{c}{v} \\
+              v &= \frac{c}{n} \\
+              v &= \frac{3 \times 10^8}{1.33} \\
+              \boldsymbol{v} &= \boldsymbol{2.26 \times 10^8 \, \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(v = 2.26 \times 10^8 \, \text{ms}^{-1}\)</div>
+          </div>
+        </div>
+        <button class="toggle-answer-btn example-btn" data-target="answer11">Show Solution</button>
+      </div>
+
+      <!-- Example 14.3 -->
+      <div id="ex3" class="numerical-box example-box">
+        <div class="problem-title"><span class="num-badge example-badge">Ex 14.3</span> Critical Angle for Water</div>
+        <p><strong>Find the value of critical angle for water. The refractive index of water is 1.33 and that of air is 1.0.</strong></p>
+        <div class="answer-content" id="answer12">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Refractive\ index\ of\ water\)</span><span>\(= n_1 = 1.33\)</span>
+              <span>\(Refractive\ index\ of\ air\)</span><span>\(= n_2 = 1.0\)</span>
+              <span>\(Refracted\ angle\)</span><span>\(= r = 90^\circ\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Critical\ angle = C = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using Snell's law (for critical angle, \(i = C\) and \(r = 90^\circ\)):</p>
+            <div class="equation">
+              \[\begin{aligned}
+              n_1 \sin C &= n_2 \sin 90^\circ \\
+              (1.33) \sin C &= (1.0)(1) \\
+              \sin C &= \frac{1}{1.33} \\
+              C &= \sin^{-1}\left(\frac{1}{1.33}\right) \\
+              \boldsymbol{C} &= \boldsymbol{48.8^\circ}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ \(C = 48.8^\circ\)</div>
+          </div>
+        </div>
+        <button class="toggle-answer-btn example-btn" data-target="answer12">Show Solution</button>
+      </div>
+
+      <!-- Example 14.4 -->
+      <div id="ex4" class="numerical-box example-box">
+        <div class="problem-title"><span class="num-badge example-badge">Ex 14.4</span> Power of Concave Lens</div>
+        <p><strong>A concave lens has a focal length of \(-25\) cm. Find its power.</strong></p>
+        <div class="answer-content" id="answer13">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Focal\ length\)</span><span>\(= f = -25 \, \text{cm} = -0.25 \, \text{m}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Power\ of\ lens = P = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using formula of power:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              P &= \frac{1}{f \, (\text{in metres})} \\
+              P &= \frac{1}{-0.25} \\
+              \boldsymbol{P} &= \boldsymbol{-4 \, \text{D}}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Negative sign shows that it is a concave lens.</p>
+            <div class="ans-box">✅ \(P = -4 \, \text{D}\)</div>
+          </div>
+        </div>
+        <button class="toggle-answer-btn example-btn" data-target="answer13">Show Solution</button>
+      </div>
+
+      <!-- Example 14.5 -->
+      <div id="ex5" class="numerical-box example-box">
+        <div class="problem-title"><span class="num-badge example-badge">Ex 14.5</span> Magnification and Image Height</div>
+        <p><strong>An object 8 cm tall is placed in front of a concave mirror. The linear magnification is \(-2\). Find the height of the image.</strong></p>
+        <div class="answer-content" id="answer14">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Object\ height\)</span><span>\(= h_o = 8 \, \text{cm}\)</span>
+              <span>\(Magnification\)</span><span>\(= M = -2\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Image\ height = h_i = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using magnification formula:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              M &= \frac{h_i}{h_o} \\
+              h_i &= M \times h_o \\
+              h_i &= -2 \times 8 \\
+              \boldsymbol{h_i} &= \boldsymbol{-16 \, \text{cm}}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Negative sign shows that the image is inverted and twice the size of the object.</p>
+            <div class="ans-box">✅ \(h_i = -16 \, \text{cm}\) (Inverted, 2×)</div>
+          </div>
+        </div>
+        <button class="toggle-answer-btn example-btn" data-target="answer14">Show Solution</button>
+      </div>
+
+    </div>
+
+    <!-- Key Formulas Section -->
     <div class="content-section">
-      <h2>📐 Important Formulas</h2>
-      <div class="equation"><strong>Mirror Formula:</strong> \( \frac{1}{f} = \frac{1}{p} + \frac{1}{q} \)</div>
-      <div class="equation"><strong>Magnification:</strong> \( M = \frac{h_i}{h_o} = \frac{|q|}{p} \)</div>
+      <h2>📐 Key Formulas – Light</h2>
       <div class="equation"><strong>Refractive Index:</strong> \( n = \frac{c}{v} \)</div>
-      <div class="equation"><strong>Snell's Law:</strong> \( n = \frac{\sin i}{\sin r} \) or \( n_1 \sin i = n_2 \sin r \)</div>
-      <div class="equation"><strong>Critical Angle:</strong> \( C = \sin^{-1} \left( \frac{1}{n} \right) \)</div>
-      <div class="equation"><strong>Power of Lens:</strong> \( P = \frac{1}{f \text{ (in metres)}} \)</div>
+      <div class="equation"><strong>Snell's Law:</strong> \( n_1 \sin i = n_2 \sin r \)</div>
+      <div class="equation"><strong>Critical Angle:</strong> \( C = \sin^{-1}\left(\frac{1}{n}\right) \)</div>
+      <div class="equation"><strong>Mirror Formula:</strong> \( \frac{1}{f} = \frac{1}{p} + \frac{1}{q} \)</div>
+      <div class="equation"><strong>Lens Formula:</strong> \( \frac{1}{f} = \frac{1}{p} + \frac{1}{q} \)</div>
+      <div class="equation"><strong>Magnification:</strong> \( M = \frac{h_i}{h_o} = \frac{|q|}{p} \)</div>
+      <div class="equation"><strong>Power of Lens:</strong> \( P = \frac{1}{f \, (\text{in metres})} \)</div>
     </div>
+
     <!-- Other Chapters Dropdown (Units 10–21) -->
     <div class="text-center mt-10 mb-16">
       <button id="toggleChapters" class="px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-xl shadow-xl hover:from-teal-600 hover:to-cyan-700 transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
@@ -695,7 +1083,7 @@
     <div class="highlight-box">
       <p class="font-semibold text-lg mb-2 text-justify">💡 Exam Tip:</p>
       <p class="text-justify">
-        For numerical problems, write the given data clearly, use the correct formula, show each step of calculation, and state the final answer with proper units. These problems follow the PECTAA 2026 pattern and are prepared by Subject Specialist Muhammad Tayyab.
+        For numerical problems, always write Given Data, To Find, and step-by-step Solution with formulas. Pay attention to units and sign conventions (especially for mirrors and lenses). These problems follow the PECTAA 2026 pattern and are prepared by Subject Specialist Muhammad Tayyab.
       </p>
     </div>
 
@@ -763,75 +1151,61 @@
   </section>
 
   <!-- Footer -->
-<footer class="bg-teal-900 text-gray-100 shadow-xl relative z-10">
-  <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
-    
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
-      
-      <!-- Column 1: Brand & Bio -->
-      <div class="flex flex-col items-center md:items-start">
-        <a href="https://hiraacademy.com.pk/" class="flex flex-col md:flex-row items-center md:items-start gap-3">
-          <img src="https://hiraacademy.com.pk/images/logo.webp" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" alt="Hira Science Academy Logo">
-          <span class="text-xl font-bold bg-gradient-to-r from-cyan-300 to-teal-400 bg-clip-text text-transparent">Hira Science Academy</span>
-        </a>
-        <p class="mt-4 text-sm text-gray-200 max-w-sm mx-auto md:mx-0">
-          Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry) – serving students of all 10 BISE Punjab boards.
-        </p>
+  <footer class="bg-teal-900 text-gray-100 shadow-xl relative z-10">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+        <div class="flex flex-col items-center md:items-start">
+          <a href="https://hiraacademy.com.pk/" class="flex flex-col md:flex-row items-center md:items-start gap-3">
+            <img src="https://hiraacademy.com.pk/images/logo.webp" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" alt="Hira Science Academy Logo">
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-300 to-teal-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 max-w-sm mx-auto md:mx-0">
+            Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry) – serving students of all 10 BISE Punjab boards.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/courses-details.html#class9" class="hover:text-cyan-300 transition">9th Class</a></li>
+            <li><a href="https://hiraacademy.com.pk/courses-details.html#class10" class="hover:text-cyan-300 transition">10th Class</a></li>
+            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/blog.html" class="hover:text-cyan-300 transition">Study Tips &amp; Blog</a></li>
+            <li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-cyan-300 transition">Career Guidance</a></li>
+            <li><a href="https://hiraacademy.com.pk/student-portal.html" class="hover:text-cyan-300 transition">Student Portal</a></li>
+            <li><a href="https://hiraacademy.com.pk/alumni-network.html" class="hover:text-cyan-300 transition">Alumni Network</a></li>
+            <li><a href="https://hiraacademy.com.pk/events.html" class="hover:text-cyan-300 transition">Events &amp; Workshops</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-cyan-300 transition">Terms of Service</a></li>
+            <li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-cyan-300 transition">Privacy Policy</a></li>
+            <li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-cyan-300 transition">Refund Policy</a></li>
+            <li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-cyan-300 transition">Accessibility</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-cyan-300 transition">About Hira Academy</a></li>
+            <li><a href="https://hiraacademy.com.pk/mission.html" class="hover:text-cyan-300 transition">Our Mission</a></li>
+            <li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-cyan-300 transition">Contact Us</a></li>
+          </ul>
+        </div>
       </div>
-
-      <!-- Column 2: Programs -->
-      <div>
-        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
-        <ul class="space-y-2">
-          <li><a href="https://hiraacademy.com.pk/courses-details.html#class9" class="hover:text-cyan-300 transition">9th Class</a></li>
-          <li><a href="https://hiraacademy.com.pk/courses-details.html#class10" class="hover:text-cyan-300 transition">10th Class</a></li>
-          <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
-          <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">Entry Test Preparation</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 3: Resources -->
-      <div>
-        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
-        <ul class="space-y-2">
-          <li><a href="https://hiraacademy.com.pk/blog.html" class="hover:text-cyan-300 transition">Study Tips &amp; Blog</a></li>
-          <li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-cyan-300 transition">Career Guidance</a></li>
-          <li><a href="https://hiraacademy.com.pk/student-portal.html" class="hover:text-cyan-300 transition">Student Portal</a></li>
-          <li><a href="https://hiraacademy.com.pk/alumni-network.html" class="hover:text-cyan-300 transition">Alumni Network</a></li>
-          <li><a href="https://hiraacademy.com.pk/events.html" class="hover:text-cyan-300 transition">Events &amp; Workshops</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 4: Legal -->
-      <div>
-        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
-        <ul class="space-y-2">
-          <li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-cyan-300 transition">Terms of Service</a></li>
-          <li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-cyan-300 transition">Privacy Policy</a></li>
-          <li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-cyan-300 transition">Refund Policy</a></li>
-          <li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-cyan-300 transition">Accessibility</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 5: About -->
-      <div>
-        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
-        <ul class="space-y-2">
-          <li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-cyan-300 transition">About Hira Academy</a></li>
-          <li><a href="https://hiraacademy.com.pk/mission.html" class="hover:text-cyan-300 transition">Our Mission</a></li>
-          <li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-cyan-300 transition">Contact Us</a></li>
-        </ul>
+      <div class="mt-12 border-t border-teal-700 pt-6 text-center">
+        <p class="text-base text-gray-200">&copy; 2025-2026 Hira Science Academy. All rights reserved. | Class 10 Physics Notes 2026 PECTAA Syllabus</p>
+        <p class="text-sm text-gray-300 mt-2">✍️ Prepared by <strong class="text-yellow-200">Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska</p>
       </div>
     </div>
-
-    <!-- Bottom Copyright & Credits Section -->
-    <div class="mt-12 border-t border-teal-700 pt-6 text-center">
-      <p class="text-base text-gray-200">&copy; 2025-2026 Hira Science Academy. All rights reserved. | Class 10 Physics Notes 2026 PECTAA Syllabus</p>
-      <p class="text-sm text-gray-300 mt-2">✍️ Prepared by <strong class="text-yellow-200">Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska</p>
-    </div>
-
-  </div>
-</footer>
+  </footer>
 
   <button class="back-to-top" id="backToTop">↑</button>
 
@@ -872,7 +1246,7 @@
       window.addEventListener('resize', updateProgressBar);
       updateProgressBar();
 
-      // Show/Hide solution toggles
+      // Show/Hide answer toggles
       const toggleBtns = document.querySelectorAll('.toggle-answer-btn');
       toggleBtns.forEach(btn => {
         btn.addEventListener('click', function(e) {
