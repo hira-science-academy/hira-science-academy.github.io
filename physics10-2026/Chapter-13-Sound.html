@@ -88,7 +88,8 @@
   <style>
     body {
       font-family: 'Inter', 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      background: #f9fafb;
+      color: #1f2937;
     }
     html {
       scroll-behavior: smooth;
@@ -101,48 +102,54 @@
       box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.2);
       border-color: #0d9488;
     }
-    /* ENHANCED HERO SECTION - Premium Glassmorphism */
+    /* ENHANCED HERO SECTION - Dark Glassmorphism + Neon Accents */
     .gradient-hero {
-      background: linear-gradient(135deg, #0a5c54 0%, #0d9488 50%, #14b8a6 100%);
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #042f2e 100%);
       position: relative;
       overflow: hidden;
     }
     .gradient-hero::before {
       content: '';
       position: absolute;
-      top: -30%;
-      left: -20%;
-      width: 140%;
-      height: 140%;
-      background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0) 60%);
-      animation: heroGlow 8s ease-in-out infinite;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(20, 184, 166, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.08), transparent 50%);
       pointer-events: none;
     }
-    @keyframes heroGlow {
-      0% { transform: translate(0%, 0%) scale(1); opacity: 0.3; }
-      50% { transform: translate(5%, 5%) scale(1.1); opacity: 0.6; }
-      100% { transform: translate(0%, 0%) scale(1); opacity: 0.3; }
+    .gradient-hero::after {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -80px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: rgba(20, 184, 166, 0.05);
+      pointer-events: none;
     }
     .glass-badge {
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      background: rgba(13, 148, 136, 0.25);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       transition: all 0.3s ease;
     }
     .glass-badge:hover {
-      background: rgba(255, 255, 255, 0.3);
+      background: rgba(13, 148, 136, 0.35);
       transform: scale(1.05);
     }
     .hero-title {
-      text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
     .hero-tag {
       transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      color: #e2e8f0;
     }
     .hero-tag:hover {
-      background: rgba(255, 255, 255, 0.35);
+      background: rgba(20, 184, 166, 0.15);
       transform: translateY(-2px);
+      border-color: rgba(20, 184, 166, 0.4);
     }
     .resource-card {
       scroll-margin-top: 90px;
@@ -161,7 +168,7 @@
       right: 30px;
       width: 50px;
       height: 50px;
-      background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
+      background: linear-gradient(135deg, #0f172a, #0d9488);
       color: white;
       border: none;
       border-radius: 50%;
@@ -170,12 +177,15 @@
       align-items: center;
       justify-content: center;
       font-size: 20px;
-      box-shadow: 0 4px 12px rgba(15,118,110,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      border: 1px solid rgba(20, 184, 166, 0.2);
       transition: all 0.3s ease;
       z-index: 1000;
     }
     .back-to-top:hover {
       transform: translateY(-3px);
+      background: linear-gradient(135deg, #0f172a, #0f766e);
+      box-shadow: 0 6px 25px rgba(13, 148, 136, 0.3);
     }
     .back-to-top.show {
       display: flex;
@@ -192,7 +202,7 @@
     .reading-progress-bar {
       width: 0%;
       height: 100%;
-      background-color: #0d9488;
+      background: linear-gradient(90deg, #0d9488, #059669);
       transition: width 0.1s ease-out;
     }
     @media (max-width: 768px) {
@@ -223,49 +233,28 @@
     padding: 3px 10px;
     border-radius: 99px;
     margin-bottom: 8px;
-  }
-  .gradient-hero {
-    background: linear-gradient(135deg, #085041 0%, #0F6E56 45%, #1D9E75 100%);
-    position: relative;
-    overflow: hidden;
-  }
-  .gradient-hero::before {
-    content: '';
-    position: absolute;
-    top: -80px; right: -80px;
-    width: 300px; height: 300px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-    pointer-events: none;
-  }
-  .gradient-hero::after {
-    content: '';
-    position: absolute;
-    bottom: -100px; left: -60px;
-    width: 360px; height: 360px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-    pointer-events: none;
+    background: rgba(13, 148, 136, 0.15);
+    color: #0d9488;
   }
   .hero-syllabus-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255,255,255,0.12);
-    border: 1px solid rgba(255,255,255,0.22);
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(20, 184, 166, 0.25);
     border-radius: 99px;
     padding: 5px 18px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #E1F5EE;
+    color: #9FE1CB;
     margin-bottom: 20px;
   }
   .hero-badge-dot {
     width: 7px; height: 7px;
     border-radius: 50%;
-    background: #9FE1CB;
+    background: #14b8a6;
     display: inline-block;
   }
   .hero-chapter-label {
@@ -278,33 +267,15 @@
   }
   .hero-divider {
     width: 48px; height: 2px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(20, 184, 166, 0.4);
     border-radius: 99px;
     margin: 0 auto 24px;
-  }
-  .hero-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: rgba(255,255,255,0.10);
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 99px;
-    padding: 7px 16px;
-    font-size: 13px;
-    color: #E1F5EE;
-    font-weight: 500;
-    transition: background 0.2s, transform 0.2s;
-    cursor: default;
-  }
-  .hero-tag:hover {
-    background: rgba(255,255,255,0.18);
-    transform: translateY(-2px);
   }
   .hero-stats {
     display: flex;
     justify-content: center;
     margin-top: 36px;
-    border-top: 1px solid rgba(255,255,255,0.12);
+    border-top: 1px solid rgba(255,255,255,0.06);
     padding-top: 28px;
   }
   .hero-stat {
@@ -314,13 +285,15 @@
     padding: 0 20px;
   }
   .hero-stat + .hero-stat {
-    border-left: 1px solid rgba(255,255,255,0.12);
+    border-left: 1px solid rgba(255,255,255,0.06);
   }
   .hero-stat-num {
     display: block;
     font-size: 26px;
     font-weight: 800;
-    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff, #9FE1CB);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .hero-stat-lbl {
     display: block;
@@ -329,6 +302,27 @@
     text-transform: uppercase;
     letter-spacing: 0.07em;
     margin-top: 3px;
+  }
+  .resource-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(13, 148, 136, 0.15);
+    transition: all 0.3s ease;
+  }
+  .resource-card:hover {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: rgba(13, 148, 136, 0.4);
+    box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
+  }
+  .resource-card .icon-wrapper {
+    background: rgba(13, 148, 136, 0.08);
+    transition: all 0.3s ease;
+  }
+  .resource-card:hover .icon-wrapper {
+    background: rgba(13, 148, 136, 0.2);
+  }
+  .resource-card .icon-wrapper svg {
+    color: #0d9488;
   }
   </style>
 
@@ -377,20 +371,20 @@
         <div class="flex-shrink-0 flex items-center">
           <a href="https://hiraacademy.com.pk/" class="flex items-center gap-3 group transition duration-300">
             <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition">
-            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Hira Science Academy</span>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-teal-700 to-emerald-700 bg-clip-text text-transparent">Hira Science Academy</span>
           </a>
         </div>
         <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
-          <a href="https://hiraacademy.com.pk/#home" class="text-gray-900 hover:text-teal-600 px-2 py-2 text-sm font-medium">Home</a>
-          <a href="https://hiraacademy.com.pk/#notes" class="text-gray-900 hover:text-teal-600 px-2 py-2 text-sm font-medium">Notes</a>
-          <a href="https://hiraacademy.com.pk/#courses" class="text-gray-900 hover:text-teal-600 px-2 py-2 text-sm font-medium">Courses</a>
-          <a href="https://hiraacademy.com.pk/#features" class="text-gray-900 hover:text-teal-600 px-2 py-2 text-sm font-medium">Features</a>
-          <a href="https://hiraacademy.com.pk/#testimonials" class="text-gray-900 hover:text-teal-600 px-2 py-2 text-sm font-medium">Testimonials</a>
-          <a href="https://hiraacademy.com.pk/#contact" class="text-gray-900 hover:text-teal-600 px-2 py-2 text-sm font-medium">Contact</a>
+          <a href="https://hiraacademy.com.pk/#home" class="text-gray-900 hover:text-teal-700 px-2 py-2 text-sm font-medium">Home</a>
+          <a href="https://hiraacademy.com.pk/#notes" class="text-gray-900 hover:text-teal-700 px-2 py-2 text-sm font-medium">Notes</a>
+          <a href="https://hiraacademy.com.pk/#courses" class="text-gray-900 hover:text-teal-700 px-2 py-2 text-sm font-medium">Courses</a>
+          <a href="https://hiraacademy.com.pk/#features" class="text-gray-900 hover:text-teal-700 px-2 py-2 text-sm font-medium">Features</a>
+          <a href="https://hiraacademy.com.pk/#testimonials" class="text-gray-900 hover:text-teal-700 px-2 py-2 text-sm font-medium">Testimonials</a>
+          <a href="https://hiraacademy.com.pk/#contact" class="text-gray-900 hover:text-teal-700 px-2 py-2 text-sm font-medium">Contact</a>
           <a href="https://hiraacademy.com.pk/student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105">🎓 Student Portal</a>
         </div>
         <div class="flex items-center md:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-teal-600 hover:bg-gray-100">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-teal-700 hover:bg-gray-100">
             <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
@@ -399,76 +393,105 @@
     </div>
     <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
       <div class="px-4 pt-2 pb-6 space-y-1">
-        <a href="https://hiraacademy.com.pk/#home" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Home</a>
-        <a href="https://hiraacademy.com.pk/#notes" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Notes</a>
-        <a href="https://hiraacademy.com.pk/#courses" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Courses</a>
-        <a href="https://hiraacademy.com.pk/#features" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Features</a>
-        <a href="https://hiraacademy.com.pk/#testimonials" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Testimonials</a>
-        <a href="https://hiraacademy.com.pk/#contact" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-600 hover:bg-gray-50">Contact</a>
+        <a href="https://hiraacademy.com.pk/#home" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-700 hover:bg-gray-50">Home</a>
+        <a href="https://hiraacademy.com.pk/#notes" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-700 hover:bg-gray-50">Notes</a>
+        <a href="https://hiraacademy.com.pk/#courses" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-700 hover:bg-gray-50">Courses</a>
+        <a href="https://hiraacademy.com.pk/#features" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-700 hover:bg-gray-50">Features</a>
+        <a href="https://hiraacademy.com.pk/#testimonials" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-700 hover:bg-gray-50">Testimonials</a>
+        <a href="https://hiraacademy.com.pk/#contact" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-teal-700 hover:bg-gray-50">Contact</a>
         <div class="pt-4"><a href="https://hiraacademy.com.pk/student-portal.html" class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400">🎓 Student Portal</a></div>
       </div>
     </div>
   </nav>
 
- <section class="gradient-hero text-white py-16 md:py-20 text-center shadow-xl relative">
-  <div class="max-w-4xl mx-auto px-4 relative z-10">
+<!-- Hero Section (Dark Glassmorphic + Neon Accents) -->
+<header class="bg-slate-950 text-white relative py-20 md:py-28 overflow-hidden text-center shadow-lg">
+  <!-- Dark Background Base Gradient -->
+  <div class="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950"></div>
 
-    <!-- Syllabus badge -->
-    <div class="hero-syllabus-badge">
-      <span class="hero-badge-dot"></span>
-      PECTAA 2026 Syllabus
+  <!-- Neon Glow Orbs -->
+  <div class="absolute top-0 left-0 w-80 h-80 bg-teal-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/15 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+  
+  <!-- Clean Grid Pattern Overlay -->
+  <div class="absolute inset-0 pointer-events-none" 
+       style="
+         background-image: 
+           linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+           linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+         background-size: 40px 40px;
+       ">
+  </div>
+
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <!-- Syllabus Badge (Glass Tag) -->
+    <div class="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md border border-teal-500/30 px-4 py-1.5 rounded-full mb-6 shadow-md">
+      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span class="text-xs md:text-sm font-semibold tracking-wide text-teal-200 uppercase">PECTAA 2026 Syllabus</span>
     </div>
 
-    <!-- Chapter label -->
-    <p class="hero-chapter-label">Class 10 · Physics</p>
-
-    <!-- Title -->
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
-      Chapter 13: <span class="text-yellow-300">Sound</span>
-    </h1>
-
-    <!-- Divider line -->
-    <div class="hero-divider"></div>
-
-    <!-- Description -->
-    <p class="text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-8" style="color:#9FE1CB;">
-      Complete study resources — short questions, long questions, numericals, MCQs &amp; more.
-      Prepared by <strong class="font-semibold text-white">Muhammad Tayyab</strong>, Subject Specialist Physics.
+    <!-- Chapter Breadcrumb/Label -->
+    <p class="text-sm md:text-base font-semibold text-teal-400 tracking-wider uppercase mb-2">
+      Class 10 · Physics
     </p>
 
-    <!-- Topic tags -->
-    <div class="flex flex-wrap justify-center gap-3">
-      <span class="hero-tag">🔊 Sound Waves</span>
-      <span class="hero-tag">📢 Echo &amp; Reflection</span>
-      <span class="hero-tag">🧬 Ultrasound &amp; SONAR</span>
-      <span class="hero-tag">🎵 Pitch &amp; Loudness</span>
+    <!-- Main Title -->
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight leading-tight">
+      <span class="text-white">Chapter 13: </span>
+      <span class="bg-gradient-to-r from-amber-300 via-teal-200 to-emerald-300 bg-clip-text text-transparent">
+        Sound
+      </span>
+    </h1>
+    
+    <!-- Subtitle / Description -->
+    <p class="text-lg md:text-xl text-emerald-300/80 max-w-3xl mx-auto mb-6 leading-relaxed">
+      Complete study resources — short questions, long questions, numericals, MCQs &amp; more.
+    </p>
+
+    <!-- Author Badge (Glass) -->
+    <div class="inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md border border-teal-500/30 px-5 py-2.5 rounded-full mb-8 shadow-xl">
+      <span class="text-xl">✍️</span>
+      <span class="font-semibold text-slate-100">Prepared by <span class="text-amber-300 font-bold text-lg">Muhammad Tayyab</span></span>
+      <span class="text-teal-300/70 text-sm border-l border-teal-500/30 pl-2 ml-1 hidden sm:inline">Subject Specialist Physics</span>
     </div>
 
-    <!-- Stats row -->
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="hero-stat-num">6</span>
-        <span class="hero-stat-lbl">Resource types</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">39+</span>
-        <span class="hero-stat-lbl">Short Q&As</span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num">100%</span>
-        <span class="hero-stat-lbl">Exam-focused</span>
-      </div>
+    <!-- Topic Tags -->
+    <div class="flex flex-wrap justify-center gap-2.5 mb-10">
+      <span class="bg-slate-900/60 backdrop-blur-sm border border-teal-500/20 px-3.5 py-1.5 rounded-lg text-sm text-teal-200 shadow-sm">🔊 Sound Waves</span>
+      <span class="bg-slate-900/60 backdrop-blur-sm border border-teal-500/20 px-3.5 py-1.5 rounded-lg text-sm text-teal-200 shadow-sm">📢 Echo &amp; Reflection</span>
+      <span class="bg-slate-900/60 backdrop-blur-sm border border-teal-500/20 px-3.5 py-1.5 rounded-lg text-sm text-teal-200 shadow-sm">🧬 Ultrasound &amp; SONAR</span>
+      <span class="bg-slate-900/60 backdrop-blur-sm border border-teal-500/20 px-3.5 py-1.5 rounded-lg text-sm text-teal-200 shadow-sm">🎵 Pitch &amp; Loudness</span>
     </div>
 
+    <!-- Stats Grid (Glass Cards) -->
+    <div class="grid grid-cols-3 gap-3 md:gap-6 max-w-2xl mx-auto">
+      <div class="bg-slate-900/70 backdrop-blur-md border border-teal-500/25 rounded-2xl p-3 md:p-4 shadow-lg">
+        <span class="block text-2xl md:text-3xl font-extrabold text-amber-300">6</span>
+        <span class="text-xs md:text-sm text-teal-200/80 font-medium">Resource Types</span>
+      </div>
+      <div class="bg-slate-900/70 backdrop-blur-md border border-teal-500/25 rounded-2xl p-3 md:p-4 shadow-lg">
+        <span class="block text-2xl md:text-3xl font-extrabold text-amber-300">39+</span>
+        <span class="text-xs md:text-sm text-teal-200/80 font-medium">Short Q&amp;As</span>
+      </div>
+      <div class="bg-slate-900/70 backdrop-blur-md border border-teal-500/25 rounded-2xl p-3 md:p-4 shadow-lg">
+        <span class="block text-2xl md:text-3xl font-extrabold text-amber-300">100%</span>
+        <span class="text-xs md:text-sm text-teal-200/80 font-medium">Exam-Focused</span>
+      </div>
+    </div>
   </div>
-</section>
+
+  <!-- Bottom Wave Divider -->
+  <svg class="absolute bottom-0 left-0 w-full text-white" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <path fill="currentColor" d="M0,32 C240,60 480,0 720,16 C960,32 1200,60 1440,24 L1440,60 L0,60 Z"></path>
+  </svg>
+</header>
 
   <!-- Breadcrumb Navigation (updated to GitHub Pages) -->
   <div class="max-w-7xl mx-auto px-4 pt-6 text-sm text-gray-500">
     <nav class="flex flex-wrap items-center gap-1" aria-label="Breadcrumb">
-      <a href="https://hiraacademy.com.pk/" class="hover:text-teal-600 transition">Home</a>
+      <a href="https://hiraacademy.com.pk/" class="hover:text-teal-700 transition">Home</a>
       <span class="mx-1">›</span>
-      <a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="hover:text-teal-600 transition">Physics 10</a>
+      <a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="hover:text-teal-700 transition">Physics 10</a>
       <span class="mx-1">›</span>
       <span class="text-gray-700 font-medium">Chapter 13: Sound Hub</span>
     </nav>
@@ -477,15 +500,15 @@
   <!-- Main Content: Card Grid -->
   <main class="max-w-7xl mx-auto px-4 py-12 md:py-16">
     <!-- Chapter Overview Banner -->
-    <div class="bg-white rounded-2xl shadow-md p-6 mb-12 border-l-8 border-teal-500">
+    <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-teal-500/20 p-6 mb-12 border-l-8 border-teal-500">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
           <h2 class="text-2xl md:text-3xl font-bold text-teal-700">📚 Complete Resource Hub</h2>
           <p class="text-gray-600 mt-1">Select any resource below to access detailed notes and exam preparation material.</p>
         </div>
         <div class="flex gap-2">
-          <span class="bg-teal-100 text-teal-700 px-3 py-1 rounded-full text-sm font-semibold">6 Resources</span>
-          <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-sm font-semibold">PDF Download</span>
+          <span class="bg-teal-100/80 text-teal-700 px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm">6 Resources</span>
+          <span class="bg-green-100/80 text-green-700 px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm">PDF Download</span>
         </div>
       </div>
     </div>
@@ -495,12 +518,12 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
   <!-- Card 1: Short Questions -->
-  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Short-Questions.html" class="resource-card group block bg-white rounded-2xl shadow-sm border border-gray-200 card-hover overflow-hidden">
+  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Short-Questions.html" class="resource-card group block bg-white/85 backdrop-blur-sm rounded-2xl shadow-sm border border-teal-500/10 card-hover overflow-hidden">
     <div class="resource-card-top">
-      <div class="w-13 h-13 w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-teal-500 transition-colors duration-300">
-        <svg class="w-6 h-6 text-teal-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      <div class="icon-wrapper w-12 h-12 bg-teal-100/40 rounded-xl flex items-center justify-center mb-4 group-hover:bg-teal-100/70 transition-colors duration-300">
+        <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
       </div>
-      <span class="card-badge bg-teal-100 text-teal-700">Q&A</span>
+      <span class="card-badge">Q&A</span>
       <h3 class="text-base font-bold text-gray-800 group-hover:text-teal-600 transition-colors">Short Questions</h3>
     </div>
     <div class="p-5">
@@ -513,12 +536,12 @@
   </a>
 
   <!-- Card 2: Exercise Short Questions -->
-  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Exercise-Short-Questions.html" class="resource-card group block bg-white rounded-2xl shadow-sm border border-gray-200 card-hover overflow-hidden">
+  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Exercise-Short-Questions.html" class="resource-card group block bg-white/85 backdrop-blur-sm rounded-2xl shadow-sm border border-teal-500/10 card-hover overflow-hidden">
     <div class="resource-card-top">
-      <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-500 transition-colors duration-300">
-        <svg class="w-6 h-6 text-purple-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+      <div class="icon-wrapper w-12 h-12 bg-purple-100/40 rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-100/70 transition-colors duration-300">
+        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
       </div>
-      <span class="card-badge bg-purple-100 text-purple-700">Exercise</span>
+      <span class="card-badge">Exercise</span>
       <h3 class="text-base font-bold text-gray-800 group-hover:text-purple-600 transition-colors">Exercise Short Questions</h3>
     </div>
     <div class="p-5">
@@ -531,12 +554,12 @@
   </a>
 
   <!-- Card 3: Long Questions -->
-  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Long-Questions.html" class="resource-card group block bg-white rounded-2xl shadow-sm border border-gray-200 card-hover overflow-hidden">
+  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Long-Questions.html" class="resource-card group block bg-white/85 backdrop-blur-sm rounded-2xl shadow-sm border border-teal-500/10 card-hover overflow-hidden">
     <div class="resource-card-top">
-      <div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-amber-500 transition-colors duration-300">
-        <svg class="w-6 h-6 text-amber-700 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+      <div class="icon-wrapper w-12 h-12 bg-amber-100/40 rounded-xl flex items-center justify-center mb-4 group-hover:bg-amber-100/70 transition-colors duration-300">
+        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
       </div>
-      <span class="card-badge bg-amber-100 text-amber-700">In-Depth</span>
+      <span class="card-badge">In-Depth</span>
       <h3 class="text-base font-bold text-gray-800 group-hover:text-amber-600 transition-colors">Long Questions</h3>
     </div>
     <div class="p-5">
@@ -549,12 +572,12 @@
   </a>
 
   <!-- Card 4: Numerical Problems -->
-  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Numerical-Problems.html" class="resource-card group block bg-white rounded-2xl shadow-sm border border-gray-200 card-hover overflow-hidden">
+  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Numerical-Problems.html" class="resource-card group block bg-white/85 backdrop-blur-sm rounded-2xl shadow-sm border border-teal-500/10 card-hover overflow-hidden">
     <div class="resource-card-top">
-      <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-500 transition-colors duration-300">
-        <svg class="w-6 h-6 text-orange-700 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+      <div class="icon-wrapper w-12 h-12 bg-orange-100/40 rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-100/70 transition-colors duration-300">
+        <svg class="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
       </div>
-      <span class="card-badge bg-orange-100 text-orange-700">Numericals</span>
+      <span class="card-badge">Numericals</span>
       <h3 class="text-base font-bold text-gray-800 group-hover:text-orange-600 transition-colors">Numerical Problems</h3>
     </div>
     <div class="p-5">
@@ -567,12 +590,12 @@
   </a>
 
   <!-- Card 5: Constructed Response -->
-  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Constructed-Response.html" class="resource-card group block bg-white rounded-2xl shadow-sm border border-gray-200 card-hover overflow-hidden">
+  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-Constructed-Response.html" class="resource-card group block bg-white/85 backdrop-blur-sm rounded-2xl shadow-sm border border-teal-500/10 card-hover overflow-hidden">
     <div class="resource-card-top">
-      <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-500 transition-colors duration-300">
-        <svg class="w-6 h-6 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+      <div class="icon-wrapper w-12 h-12 bg-blue-100/40 rounded-xl flex items-center justify-center mb-4 group-hover:bg-blue-100/70 transition-colors duration-300">
+        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
       </div>
-      <span class="card-badge bg-blue-100 text-blue-700">Exam Prep</span>
+      <span class="card-badge">Exam Prep</span>
       <h3 class="text-base font-bold text-gray-800 group-hover:text-blue-600 transition-colors">Constructed Response</h3>
     </div>
     <div class="p-5">
@@ -585,12 +608,12 @@
   </a>
 
   <!-- Card 6: MCQs -->
-  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-MCQs.html" class="resource-card group block bg-white rounded-2xl shadow-sm border border-gray-200 card-hover overflow-hidden">
+  <a href="https://hiraacademy.com.pk/physics10-2026/Chapter13-MCQs.html" class="resource-card group block bg-white/85 backdrop-blur-sm rounded-2xl shadow-sm border border-teal-500/10 card-hover overflow-hidden">
     <div class="resource-card-top">
-      <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-pink-500 transition-colors duration-300">
-        <svg class="w-6 h-6 text-pink-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+      <div class="icon-wrapper w-12 h-12 bg-pink-100/40 rounded-xl flex items-center justify-center mb-4 group-hover:bg-pink-100/70 transition-colors duration-300">
+        <svg class="w-6 h-6 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
       </div>
-      <span class="card-badge bg-pink-100 text-pink-700">MCQs</span>
+      <span class="card-badge">MCQs</span>
       <h3 class="text-base font-bold text-gray-800 group-hover:text-pink-600 transition-colors">Multiple Choice Questions</h3>
     </div>
     <div class="p-5">
@@ -605,7 +628,7 @@
 </div>
 
     <!-- Key Concepts Section with MathJax Equations (Teal theme) -->
-    <div class="mt-16 bg-white rounded-2xl shadow-md p-6 border border-gray-100">
+    <div class="mt-16 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-teal-500/20 p-6">
       <h2 class="text-2xl font-bold text-teal-700 mb-4 flex items-center gap-2">⚡ Key Formulas – Sound </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <div class="equation-bg p-4 rounded-xl text-center"><span class="font-mono text-teal-600 text-lg">\[ v = f\lambda \]</span><br><span class="text-sm text-gray-500">Wave Equation</span></div>
@@ -618,56 +641,56 @@
 
     <!-- Other Chapters Dropdown (Units 10–21) -->
 <div class="text-center mt-10 mb-16">
-  <button id="toggleChapters" class="px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-xl shadow-xl hover:from-teal-600 hover:to-cyan-700 transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
+  <button id="toggleChapters" class="px-8 py-4 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl shadow-lg hover:from-slate-800 hover:to-teal-800 transition-all duration-300 font-bold text-lg transform hover:-translate-y-1 border border-teal-500/30">
     📚 Explore Other Physics Units (10–21)
   </button>
   <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-10-Thermal-Physics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-10-Thermal-Physics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/90 to-teal-900/80 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/30 backdrop-blur-sm">
       <span>Unit 10</span><span>Thermal Physics</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-11-Transfer-of-Thermal-Energy.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-11-Transfer-of-Thermal-Energy.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 11</span><span>Transfer of Thermal Energy</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-12-Waves.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-12-Waves.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 12</span><span>Waves</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-13-Sound.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-13-Sound.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/90 to-teal-900/80 text-white rounded-xl shadow-lg ring-2 ring-teal-400/50 font-semibold border border-teal-500/30 backdrop-blur-sm">
       <span>Unit 13</span><span>✨ Sound</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-14-Light.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-14-Light.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 14</span><span>Light</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-15-Electrostatics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-15-Electrostatics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 15</span><span>Electrostatics</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-16-Electricity.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-16-Electricity.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 16</span><span>Electricity</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-17-Electromagnetism.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-17-Electromagnetism.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 17</span><span>Electromagnetism</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-18-Electromagnetic-Induction.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-18-Electromagnetic-Induction.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 18</span><span>Electromagnetic Induction & EM Waves</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-19-Electronics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-19-Electronics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 19</span><span>Electronics</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-20-Atomic-and-Nuclear-Physics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-20-Atomic-and-Nuclear-Physics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 20</span><span>Atomic and Nuclear Physics</span>
     </a>
 
-    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-21-Space-and-Environment.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
+    <a href="https://hiraacademy.com.pk/physics10-2026/Chapter-21-Space-and-Environment.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-slate-900/80 to-teal-900/60 text-white rounded-xl shadow-lg hover:from-slate-800/90 hover:to-teal-800/80 transition-all duration-300 font-semibold transform hover:-translate-y-1 border border-teal-500/20 backdrop-blur-sm">
       <span>Unit 21</span><span>Space and Environment</span>
     </a>
 
@@ -677,13 +700,13 @@
 
     <div class="mt-12 text-center text-gray-600">
       <p class="mb-2">Created by <strong class="text-teal-700">Hira Science Academy</strong> | Aligned with <strong class="text-teal-700">PECTAA 2026 Syllabus</strong></p>
-      <p class="mt-4"><a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="inline-block px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold rounded-full shadow-lg hover:from-teal-600 hover:to-cyan-700 transition-all duration-300 transform hover:-translate-y-1">← Back to Class 10 Physics Notes</a></p>
+      <p class="mt-4"><a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="inline-block px-6 py-3 bg-gradient-to-r from-slate-900 to-teal-800 text-white font-semibold rounded-full shadow-lg hover:from-slate-800 hover:to-teal-700 transition-all duration-300 transform hover:-translate-y-1 border border-teal-500/30">← Back to Class 10 Physics Notes</a></p>
     </div>
   </main>
 
   <!-- Internal Linking Section (updated to GitHub Pages) -->
   <section class="max-w-7xl mx-auto px-6 pb-14">
-    <details class="bg-gradient-to-br from-teal-50 via-white to-cyan-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
+    <details class="bg-gradient-to-br from-slate-900/5 via-slate-800/5 to-teal-950/10 backdrop-blur-sm border border-teal-500/20 rounded-3xl shadow-xl p-6 transition-all">
       <summary class="text-2xl md:text-3xl font-bold text-teal-800 cursor-pointer hover:text-teal-600 list-none flex items-center justify-center gap-3 text-center">
         <span class="text-3xl">📚</span> Explore Complete Learning Resources (Class 9, 10 & More)
       </summary>
@@ -692,112 +715,112 @@
         <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Class 9 Resources -->
-          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
+          <article class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border border-teal-500/10">
+            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-teal-100/40 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
             <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/Islamiat-9th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li><li><a href="https://hiraacademy.com.pk/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li></ul></nav>
           </article>
           <!-- Class 10 Resources -->
-          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-emerald-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
+          <article class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border border-teal-500/10">
+            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-emerald-100/40 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
             <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-10th-New-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-10th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-10th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/PakistanStudies-10th.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li></ul></nav>
           </article>
           <!-- Special Resources -->
-          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
+          <article class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border border-teal-500/10">
+            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-yellow-100/40 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li><li><a href="https://hiraacademy.com.pk/physics-numericals.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li><li><a href="https://hiraacademy.com.pk/math-mistakes.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li><li><a href="https://hiraacademy.com.pk/physics-formulas.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li><li><a href="https://hiraacademy.com.pk/blog.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li></ul>
           </article>
           <!-- Quick Links -->
-          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
+          <article class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border border-teal-500/10">
+            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-purple-100/40 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/courses-details.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li><li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li><li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li><li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li><li><a href="https://hiraacademy.com.pk/student-portal.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li></ul>
           </article>
           <!-- Definitions & Key Resources -->
-          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources</h3>
+          <article class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border border-teal-500/10">
+            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-teal-100/40 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul>
           </article>
           <!-- Support & Policies -->
-          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies</h3>
+          <article class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border border-teal-500/10">
+            <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-red-100/40 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li><li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li><li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li><li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li><li><a href="https://hiraacademy.com.pk/mission.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li></ul>
           </article>
         </div>
-        <div class="mt-10 text-center"><a href="https://hiraacademy.com.pk/index.html" class="inline-flex items-center bg-teal-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-teal-700 hover:shadow-xl transition-all"><span class="mr-3">🏠</span>Return to Homepage</a></div>
+        <div class="mt-10 text-center"><a href="https://hiraacademy.com.pk/index.html" class="inline-flex items-center bg-gradient-to-r from-teal-700 to-emerald-700 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:from-teal-800 hover:to-emerald-800 hover:shadow-xl transition-all"><span class="mr-3">🏠</span>Return to Homepage</a></div>
       </div>
     </details>
   </section>
 
-  <!-- Footer (Centered on Mobile, Columns on Desktop) -->
-<footer class="bg-teal-900 text-gray-100 shadow-xl relative z-10">
-  <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
-    
-    <!-- Changed grid alignment to center items by default on mobile -->
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+    <!-- Footer (Centered on Mobile, Columns on Desktop) -->
+  <footer class="bg-slate-950 text-gray-100 shadow-xl relative z-10">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
       
-      <!-- Column 1: Brand & Bio -->
-      <div class="flex flex-col items-center md:items-start">
-        <a href="https://hiraacademy.com.pk/" class="flex flex-col md:flex-row items-center md:items-start gap-3">
-          <img src="https://hiraacademy.com.pk/images/logo.webp" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" alt="Hira Science Academy Logo">
-          <span class="text-xl font-bold bg-gradient-to-r from-cyan-300 to-teal-400 bg-clip-text text-transparent">Hira Science Academy</span>
-        </a>
-        <p class="mt-4 text-sm text-gray-200 max-w-sm mx-auto md:mx-0">
-          Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry) – serving students of all 10 BISE Punjab boards.
-        </p>
+      <!-- Changed grid alignment to center items by default on mobile -->
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+        
+        <!-- Column 1: Brand & Bio -->
+        <div class="flex flex-col items-center md:items-start">
+          <a href="https://hiraacademy.com.pk/" class="flex flex-col md:flex-row items-center md:items-start gap-3">
+            <img src="https://hiraacademy.com.pk/images/logo.webp" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" alt="Hira Science Academy Logo">
+            <span class="text-xl font-bold bg-gradient-to-r from-teal-300 to-emerald-300 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 max-w-sm mx-auto md:mx-0">
+            Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry) – serving students of all 10 BISE Punjab boards.
+          </p>
+        </div>
+
+        <!-- Column 2: Programs -->
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/courses-details.html#class9" class="hover:text-teal-300 transition">9th Class</a></li>
+            <li><a href="https://hiraacademy.com.pk/courses-details.html#class10" class="hover:text-teal-300 transition">10th Class</a></li>
+            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-teal-300 transition">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-teal-300 transition">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Resources -->
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/blog.html" class="hover:text-teal-300 transition">Study Tips &amp; Blog</a></li>
+            <li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-teal-300 transition">Career Guidance</a></li>
+            <li><a href="https://hiraacademy.com.pk/student-portal.html" class="hover:text-teal-300 transition">Student Portal</a></li>
+            <li><a href="https://hiraacademy.com.pk/alumni-network.html" class="hover:text-teal-300 transition">Alumni Network</a></li>
+            <li><a href="https://hiraacademy.com.pk/events.html" class="hover:text-teal-300 transition">Events &amp; Workshops</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Legal -->
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-teal-300 transition">Terms of Service</a></li>
+            <li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-teal-300 transition">Privacy Policy</a></li>
+            <li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-teal-300 transition">Refund Policy</a></li>
+            <li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-teal-300 transition">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: About -->
+        <div>
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-teal-300 transition">About Hira Academy</a></li>
+            <li><a href="https://hiraacademy.com.pk/mission.html" class="hover:text-teal-300 transition">Our Mission</a></li>
+            <li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-teal-300 transition">Contact Us</a></li>
+          </ul>
+        </div>
       </div>
 
-      <!-- Column 2: Programs -->
-      <div>
-        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
-        <ul class="space-y-2">
-          <li><a href="https://hiraacademy.com.pk/courses-details.html#class9" class="hover:text-cyan-300 transition">9th Class</a></li>
-          <li><a href="https://hiraacademy.com.pk/courses-details.html#class10" class="hover:text-cyan-300 transition">10th Class</a></li>
-          <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
-          <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">Entry Test Preparation</a></li>
-        </ul>
+      <!-- Bottom Copyright & Credits Section -->
+      <div class="mt-12 border-t border-teal-800/50 pt-6 text-center">
+        <p class="text-base text-gray-200">&copy; 2026-2027 Hira Science Academy. All rights reserved. | Class 10 Physics Notes 2026 PECTAA Syllabus</p>
+        <p class="text-sm text-gray-300 mt-2">✍️ Prepared by <strong class="text-amber-300">Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska</p>
       </div>
 
-      <!-- Column 3: Resources -->
-      <div>
-        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
-        <ul class="space-y-2">
-          <li><a href="https://hiraacademy.com.pk/blog.html" class="hover:text-cyan-300 transition">Study Tips &amp; Blog</a></li>
-          <li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-cyan-300 transition">Career Guidance</a></li>
-          <li><a href="https://hiraacademy.com.pk/student-portal.html" class="hover:text-cyan-300 transition">Student Portal</a></li>
-          <li><a href="https://hiraacademy.com.pk/alumni-network.html" class="hover:text-cyan-300 transition">Alumni Network</a></li>
-          <li><a href="https://hiraacademy.com.pk/events.html" class="hover:text-cyan-300 transition">Events &amp; Workshops</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 4: Legal -->
-      <div>
-        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
-        <ul class="space-y-2">
-          <li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-cyan-300 transition">Terms of Service</a></li>
-          <li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-cyan-300 transition">Privacy Policy</a></li>
-          <li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-cyan-300 transition">Refund Policy</a></li>
-          <li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-cyan-300 transition">Accessibility</a></li>
-        </ul>
-      </div>
-
-      <!-- Column 5: About -->
-      <div>
-        <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
-        <ul class="space-y-2">
-          <li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-cyan-300 transition">About Hira Academy</a></li>
-          <li><a href="https://hiraacademy.com.pk/mission.html" class="hover:text-cyan-300 transition">Our Mission</a></li>
-          <li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-cyan-300 transition">Contact Us</a></li>
-        </ul>
-      </div>
     </div>
-
-    <!-- Bottom Copyright & Credits Section -->
-    <div class="mt-12 border-t border-teal-700 pt-6 text-center">
-      <p class="text-base text-gray-200">&copy; 2025-2026 Hira Science Academy. All rights reserved. | Class 10 Physics Notes 2026 PECTAA Syllabus</p>
-      <p class="text-sm text-gray-300 mt-2">✍️ Prepared by <strong class="text-yellow-200">Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska</p>
-    </div>
-
-  </div>
-</footer>
+  </footer>
 
   <button class="back-to-top" id="backToTop">↑</button>
 
