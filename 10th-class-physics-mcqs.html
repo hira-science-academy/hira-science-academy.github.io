@@ -86,7 +86,7 @@ console.log(`✍️ Prepared by: ${PHYSICS_NOTES_AUTHOR.fullName}`);
 console.log(`🏫 ${PHYSICS_NOTES_AUTHOR.designation} | ${PHYSICS_NOTES_AUTHOR.institution}`);
 console.log("========================================");
 </script>
-<!-- Custom Styles (UPDATED: dark glass + neon accents) -->
+<!-- Custom Styles (UPDATED: dark glass + neon accents for ALL buttons) -->
 <style>
 :root { --primary-teal: #0d9488; --primary-teal-dark: #0f766e; --neon-glow: rgba(20, 184, 166, 0.3); }
 body { font-family: 'Inter', 'Poppins', sans-serif; background-color: #f9fafb; color: #1f2937; scroll-behavior: smooth; }
@@ -100,15 +100,37 @@ body { font-family: 'Inter', 'Poppins', sans-serif; background-color: #f9fafb; c
 .chapter-content { display: none; border-top: 1px solid #f1f5f9; padding: 1.5rem; background-color: #f8fafc; border-radius: 0 0 16px 16px; }
 .chapter-card.open .chapter-content { display: block; animation: fadeIn 0.3s ease-out; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-.btn-view { background: linear-gradient(135deg, #0d9488, #059669); color: white; padding: 0.5rem 0.9rem; border-radius: 8px; font-weight: 500; font-size: 0.8rem; transition: all 0.3s; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 8px rgba(13, 148, 136, 0.25); text-decoration: none; }
-.btn-view:hover { background: linear-gradient(135deg, #0f766e, #047857); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(13, 148, 136, 0.4); color: white; }
-.new-badge { background: linear-gradient(135deg, #0d9488, #059669); color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+/* UPDATED: All buttons now use dark glassmorphic theme */
+.btn-view { 
+    background: linear-gradient(135deg, #0f172a, #1e293b) !important; 
+    color: white; 
+    padding: 0.6rem 1rem; 
+    border-radius: 8px; 
+    font-weight: 500; 
+    font-size: 0.8rem; 
+    transition: all 0.3s ease; 
+    display: inline-flex; 
+    align-items: center; 
+    gap: 5px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    text-decoration: none; 
+    border: 1px solid rgba(20, 184, 166, 0.2);
+}
+.btn-view:hover { 
+    background: linear-gradient(135deg, #0f172a, #0d9488) !important; 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 25px rgba(13, 148, 136, 0.25);
+    border-color: rgba(20, 184, 166, 0.4);
+    color: white; 
+}
+.new-badge { background: linear-gradient(135deg, #0d9488, #0891b2); color: white; padding: 0.3rem 0.9rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; box-shadow: 0 0 15px rgba(20, 184, 166, 0.3); border: 1px solid rgba(20, 184, 166, 0.4); animation: badgePulse 2s infinite ease-in-out; }
+@keyframes badgePulse { 0% { box-shadow: 0 0 5px rgba(20, 184, 166, 0.3); } 50% { box-shadow: 0 0 20px rgba(20, 184, 166, 0.6); } 100% { box-shadow: 0 0 5px rgba(20, 184, 166, 0.3); } }
 .practice-banner { background: linear-gradient(135deg, #0d9488, #059669); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(13, 148, 136, 0.3); }
 .search-input { width: 100%; padding: 1rem 1.5rem 1rem 3.5rem; border-radius: 50px; border: 2px solid #e5e7eb; background-color: white; transition: all 0.3s; }
 .search-input:focus { outline: none; border-color: #0d9488; box-shadow: 0 6px 20px rgba(13, 148, 136, 0.15); }
-.back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 3rem; height: 3rem; background: linear-gradient(135deg, #0d9488, #059669); color: white; border-radius: 50%; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 40; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 14px rgba(13, 148, 136, 0.4); }
+.back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 3rem; height: 3rem; background: linear-gradient(135deg, #0f172a, #1e293b); color: white; border-radius: 50%; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 40; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 4px 14px rgba(0,0,0,0.3); border: 1px solid rgba(20, 184, 166, 0.2); }
 .back-to-top.show { opacity: 1; visibility: visible; }
-.back-to-top:hover { transform: scale(1.08); background: linear-gradient(135deg, #0f766e, #047857); }
+.back-to-top:hover { transform: scale(1.08); background: linear-gradient(135deg, #0f172a, #0d9488); box-shadow: 0 6px 25px rgba(13, 148, 136, 0.3); }
 .nav-link { transition: color 0.3s ease; position: relative; }
 .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; position: relative; }
 @keyframes portalPulse { 0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); } 50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); } 100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); } }
@@ -117,8 +139,37 @@ body { font-family: 'Inter', 'Poppins', sans-serif; background-color: #f9fafb; c
 @media (min-width: 768px) { .resources-grid { grid-template-columns: repeat(3, 1fr); } }
 .author-credit-badge { background: rgba(13, 148, 136, 0.25); backdrop-filter: blur(8px); border: 1px solid rgba(20, 184, 166, 0.3); border-radius: 50px; padding: 0.5rem 1.2rem; display: inline-flex; align-items: center; gap: 8px; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 .chapter-title-name { font-size: 0.85rem; color: #4b5563; margin-top: 0.2rem; font-weight: normal; }
-.hub-button { transition: all 0.3s ease; box-shadow: 0 6px 14px rgba(0,0,0,0.1); background: linear-gradient(135deg, #0d9488, #059669) !important; }
-.hub-button:hover { transform: translateY(-3px); box-shadow: 0 12px 20px rgba(13, 148, 136, 0.3); background: linear-gradient(135deg, #0f766e, #047857) !important; }
+/* UPDATED: Dark Glassmorphic Chapter Hub Button */
+.hub-button { 
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+    border: 1px solid rgba(20, 184, 166, 0.25);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+    color: white !important;
+}
+.hub-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+.hub-button:hover::before {
+    left: 100%;
+}
+.hub-button:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 12px 40px rgba(13, 148, 136, 0.25), 0 0 60px rgba(13, 148, 136, 0.1);
+    border-color: rgba(20, 184, 166, 0.5);
+    background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+    color: white !important;
+}
 .divider-custom { display: flex; align-items: center; text-align: center; margin: 1.2rem 0 1rem 0; }
 .divider-custom::before, .divider-custom::after { content: ''; flex: 1; border-bottom: 1px solid #cbd5e1; }
 .divider-custom span { padding: 0 12px; color: #4b5563; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.5px; background: #f8fafc; }
@@ -163,6 +214,36 @@ margin: 1.5rem 0;
 .faq-item summary { cursor: pointer; }
 .faq-item summary::-webkit-details-marker { display: none; }
 .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(4px); border: 1px solid rgba(13, 148, 136, 0.2); }
+/* Practice test button on banner */
+.practice-test-btn {
+    background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+    color: white !important;
+    border: 1px solid rgba(20, 184, 166, 0.3);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+.practice-test-btn:hover {
+    background: linear-gradient(135deg, #0f172a, #0d9488) !important;
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(13, 148, 136, 0.3);
+    border-color: rgba(20, 184, 166, 0.5);
+    color: white !important;
+}
+/* Return to Homepage button */
+.homepage-btn {
+    background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+    border: 1px solid rgba(20, 184, 166, 0.25);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: white !important;
+}
+.homepage-btn:hover {
+    background: linear-gradient(135deg, #0f172a, #0d9488) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(13, 148, 136, 0.25);
+    border-color: rgba(20, 184, 166, 0.5);
+    color: white !important;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -408,7 +489,7 @@ height="470">
 <div class="practice-banner p-8 md:p-10 text-white shadow-lg">
 <div class="flex flex-col md:flex-row items-center justify-between">
 <div><h2 class="text-2xl md:text-3xl font-bold mb-3">Take the Full MCQs Test</h2><p class="text-emerald-100 text-lg">Interactive MCQs test for the 2026 syllabus with instant results.</p></div>
-<a href="Physics-10th-New-2026-MCQs-Test.html" class="bg-white text-teal-700 font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition transform hover:scale-105">⚡ Start Practice Test</a>
+<a href="Physics-10th-New-2026-MCQs-Test.html" class="practice-test-btn font-bold px-8 py-4 rounded-full shadow-lg transition transform hover:scale-105">⚡ Start Practice Test</a>
 </div>
 </div>
 </section>
@@ -423,42 +504,42 @@ height="470">
 <div id="chaptersContainer">
 <div class="chapter-card open"><div class="chapter-header flex justify-between items-center"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">🔥</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 10 – Thermal Physics</h3><div class="chapter-title-name">MCQs: Thermal Physics</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↑</span></div></div>
 <div class="chapter-content"><p class="text-gray-700 mb-4 text-justify">MCQs on heat, temperature, thermal expansion, specific heat capacity, and latent heat, with answer key.</p>
-<a href="physics10-2026/Chapter10-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 10 MCQs</a>
+<a href="physics10-2026/Chapter10-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 10 MCQs</a>
 <div class="divider-custom"><span>📌 QUICK LINKS</span></div>
 <div class="resources-grid"><a href="physics10-2026/Chapter-10-Thermal-Physics.html" class="btn-view">🌟 Chapter Hub</a><a href="physics10-2026/Chapter10-Numerical-Problems.html" class="btn-view">📐 Numericals</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">🌡️</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 11 – Transfer of Thermal Energy</h3><div class="chapter-title-name">MCQs: Transfer of Thermal Energy</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter11-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 11 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-11-Transfer-of-Thermal-Energy.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter11-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 11 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-11-Transfer-of-Thermal-Energy.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">🌊</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 12 – Waves</h3><div class="chapter-title-name">MCQs: Waves</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter12-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 12 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-12-Waves.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter12-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 12 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-12-Waves.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">🎵</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 13 – Sound</h3><div class="chapter-title-name">MCQs: Sound</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter13-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 13 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-13-Sound.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter13-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 13 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-13-Sound.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">💡</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 14 – Light</h3><div class="chapter-title-name">MCQs: Light</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter14-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 14 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-14-Light.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter14-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 14 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-14-Light.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">⚡</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 15 – Electrostatics</h3><div class="chapter-title-name">MCQs: Electrostatics</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter15-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 15 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-15-Electrostatics.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter15-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 15 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-15-Electrostatics.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">🔌</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 16 – Electricity</h3><div class="chapter-title-name">MCQs: Electricity</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter16-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 16 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-16-Electricity.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter16-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 16 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-16-Electricity.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">🧲</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 17 – Electromagnetism</h3><div class="chapter-title-name">MCQs: Electromagnetism</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter17-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 17 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-17-Electromagnetism.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter17-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 17 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-17-Electromagnetism.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">📡</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 18 – Electromagnetic Induction & EM Waves</h3><div class="chapter-title-name">MCQs: Electromagnetic Induction</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter18-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 18 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-18-Electromagnetic-Induction.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter18-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 18 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-18-Electromagnetic-Induction.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">💻</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 19 – Electronics</h3><div class="chapter-title-name">MCQs: Electronics</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter19-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 19 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-19-Electronics.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter19-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 19 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-19-Electronics.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">☢️</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 20 – Atomic and Nuclear Physics</h3><div class="chapter-title-name">MCQs: Atomic and Nuclear Physics</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter20-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 20 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-20-Atomic-and-Nuclear-Physics.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter20-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 20 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-20-Atomic-and-Nuclear-Physics.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 
 <div class="chapter-card"><div class="chapter-header flex justify-between"><div class="flex items-center"><div class="unit-icon bg-gradient-to-br from-teal-100/40 to-emerald-100/40">🪐</div><div><h3 class="text-lg md:text-xl font-semibold">Chapter 21 – Space and Environment</h3><div class="chapter-title-name">MCQs: Space and Environment</div></div></div><div class="flex items-center flex-shrink-0 ml-2"><span class="new-badge">New 2026</span><span class="toggle-icon text-2xl ml-2">↓</span></div></div>
-<div class="chapter-content"><a href="physics10-2026/Chapter21-MCQs.html" class="hub-button w-full block text-center bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-700 hover:to-emerald-700 text-white font-bold py-3 px-5 rounded-xl shadow-lg transition-all mb-3">✅ Open Chapter 21 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-21-Space-and-Environment.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
+<div class="chapter-content"><a href="physics10-2026/Chapter21-MCQs.html" class="hub-button w-full block text-center font-bold py-3.5 px-5 rounded-xl transition-all mb-3">✅ Open Chapter 21 MCQs</a><div class="divider-custom"><span>📌 QUICK LINKS</span></div><div class="resources-grid"><a href="physics10-2026/Chapter-21-Space-and-Environment.html" class="btn-view">🌟 Chapter Hub</a></div></div></div>
 </div>
 </main>
 
@@ -571,7 +652,7 @@ approach makes the difference between recognising an answer and genuinely knowin
 <article class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 border border-teal-500/10"><h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-red-100/40 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies</h3><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-teal-600 transition">📜 Terms of Service</a></li><li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-teal-600 transition">🔒 Privacy Policy</a></li><li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-teal-600 transition">💳 Refund Policy</a></li><li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-teal-600 transition">♿ Accessibility</a></li></ul></article>
 
 </div>
-<div class="mt-10 text-center"><a href="https://hiraacademy.com.pk/" class="inline-flex items-center bg-gradient-to-r from-teal-700 to-emerald-700 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:from-teal-800 hover:to-emerald-800 hover:shadow-xl transition-all"><span class="mr-3">🏠</span>Return to Homepage</a></div>
+<div class="mt-10 text-center"><a href="https://hiraacademy.com.pk/" class="inline-flex items-center homepage-btn px-8 py-4 rounded-full font-bold shadow-lg transition"><span class="mr-3">🏠</span>Return to Homepage</a></div>
 </div>
 </details>
 </section>
