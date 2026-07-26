@@ -87,15 +87,37 @@
   <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
   <style>
+    :root { --primary-teal: #0d9488; --primary-teal-dark: #0f766e; --neon-glow: rgba(20, 184, 166, 0.3); }
     body {
       font-family: 'Inter', 'Poppins', sans-serif;
       background-color: #f9fafb;
-    }
-    html {
+      color: #1f2937;
       scroll-behavior: smooth;
+    }
+    .header-gradient { 
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #042f2e 100%); 
+      position: relative; 
+      overflow: hidden; 
+    }
+    .header-gradient::before { 
+      content: ''; 
+      position: absolute; 
+      inset: 0; 
+      background: radial-gradient(circle at 20% 30%, rgba(20, 184, 166, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.08), transparent 50%); 
+      pointer-events: none; 
     }
     .mcq-box {
       scroll-margin-top: 85px;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-left: 5px solid #0f766e;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 4px 12px rgba(15,118,110,0.1);
+      transition: all 0.2s;
+    }
+    .mcq-box:hover {
+      transform: translateX(4px);
     }
     .content-section {
       margin-bottom: 2.5rem;
@@ -108,68 +130,22 @@
       font-weight: 700;
       font-size: 1.75rem;
     }
-    .mcq-box {
-      background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
-      border-left: 5px solid #eab308;
+    .equation {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
       padding: 1.5rem;
       margin: 1.5rem 0;
-      border-radius: 0 12px 12px 0;
-      box-shadow: 0 4px 12px rgba(234,179,8,0.1);
-      transition: all 0.2s;
+      border-radius: 12px;
+      text-align: center;
+      font-family: 'Cambria Math', 'Times New Roman', serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
     }
-    .mcq-box:hover {
-      transform: translateX(4px);
-    }
-    .options {
-      margin-top: 0.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    .option {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-    }
-    .answer-content {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem;
-      background: #e6f7e6;
-      border-radius: 10px;
-      border-left: 4px solid #0f766e;
-    }
-    .answer-content.show {
-      display: block;
-    }
-    .toggle-answer-btn {
-      margin-top: 0.75rem;
-      background-color: #eab308;
-      color: #1e293b;
-      border: none;
-      padding: 0.4rem 1.2rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: inline-block;
-    }
-    .toggle-answer-btn:hover {
-      background-color: #ca8a04;
-      transform: translateY(-1px);
-      color: white;
-    }
-    .correct-badge {
-      background-color: #0f766e;
-      color: white;
-      font-size: 0.7rem;
-      font-weight: bold;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      margin-left: 0.5rem;
-      display: inline-block;
+    .highlight-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+      border: 2px solid #0f766e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
     }
     .back-to-top {
       position: fixed;
@@ -190,12 +166,8 @@
       transition: all 0.3s ease;
       z-index: 1000;
     }
-    .back-to-top:hover {
-      transform: translateY(-3px);
-    }
-    .back-to-top.show {
-      display: flex;
-    }
+    .back-to-top:hover { transform: translateY(-3px); }
+    .back-to-top.show { display: flex; }
     .btn-view {
       background: linear-gradient(135deg, #0f172a, #1e293b) !important;
       color: white;
@@ -257,35 +229,48 @@
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
     }
-    .hub-button {
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
-      border: 1px solid rgba(20, 184, 166, 0.25);
-      position: relative;
-      overflow: hidden;
-      letter-spacing: 0.3px;
-      color: white !important;
+    .mcq-option {
+      display: block;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #e2e8f0;
     }
-    .hub-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.15), transparent);
-      transition: left 0.6s ease;
+    .mcq-option:hover {
+      background-color: #e2e8f0;
     }
-    .hub-button:hover::before {
-      left: 100%;
+    .mcq-option.selected {
+      background-color: #0f766e;
+      color: white;
+      border-color: #0f766e;
     }
-    .hub-button:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 12px 40px rgba(13, 148, 136, 0.25), 0 0 60px rgba(13, 148, 136, 0.1);
-      border-color: rgba(20, 184, 166, 0.5);
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
-      color: white !important;
+    .mcq-option.correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
+    }
+    .mcq-option.wrong {
+      background-color: #ef4444;
+      color: white;
+      border-color: #ef4444;
+    }
+    .mcq-option.show-correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
+    }
+    .explanation-box {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background-color: #f8fafc;
+      border-radius: 8px;
+      border-left: 4px solid #0f766e;
+    }
+    .explanation-box.show {
+      display: block;
     }
     .dark-glass-btn {
       background: linear-gradient(135deg, #0f172a, #1e293b) !important;
@@ -319,22 +304,45 @@
       background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #042f2e 100%);
       border-top: 1px solid rgba(20, 184, 166, 0.15);
     }
-    .highlight-box {
-      background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
-      border: 2px solid #0f766e;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
+    .author-credit-badge {
+      background: rgba(13, 148, 136, 0.25);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      border-radius: 50px;
+      padding: 0.5rem 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .equation {
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 12px;
-      text-align: center;
-      font-family: 'Cambria Math', 'Times New Roman', serif;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      border: 1px solid #e2e8f0;
+    .hub-button {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+      color: white !important;
+    }
+    .hub-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.15), transparent);
+      transition: left 0.6s ease;
+    }
+    .hub-button:hover::before { left: 100%; }
+    .hub-button:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 40px rgba(13, 148, 136, 0.25), 0 0 60px rgba(13, 148, 136, 0.1);
+      border-color: rgba(20, 184, 166, 0.5);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      color: white !important;
     }
   </style>
 
@@ -429,7 +437,7 @@
   </nav>
 
   <!-- Header (Dark Glassmorphic with Neon Accents) -->
-  <header class="header-gradient text-white relative py-20 md:py-28 overflow-hidden text-center shadow-lg" style="background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #042f2e 100%);">
+  <header class="header-gradient text-white relative py-20 md:py-28 overflow-hidden text-center shadow-lg">
     <!-- Neon glow orbs -->
     <div class="absolute top-0 left-0 w-80 h-80 bg-teal-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
@@ -546,84 +554,129 @@
     <div class="content-section" id="questions-section">
       <h2>📖 Multiple Choice Questions & Answers (PECTAA 2026)</h2>
 
-      <!-- MCQ 1 -->
+      <!-- MCQ 10.1 -->
       <div id="mcq1" class="mcq-box">
-        <strong class="text-lg">10.1</strong> When the temperature of a rod of copper is increased, its length:
-        <div class="options">
-          <span class="option"><strong>A.</strong> remains the same</span>
-          <span class="option"><strong>B.</strong> increases <span class="correct-badge">✓ Correct</span></span>
-          <span class="option"><strong>C.</strong> decreases</span>
-          <span class="option"><strong>D.</strong> becomes double</span>
+        <p class="font-semibold text-lg">10.1 When the temperature of a rod of copper is increased, its length:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="1" data-option="A">
+            <input type="radio" name="mcq1" value="A" class="mr-2"> A) remains the same
+          </label>
+          <label class="mcq-option" data-question="1" data-option="B">
+            <input type="radio" name="mcq1" value="B" class="mr-2"> B) increases
+          </label>
+          <label class="mcq-option" data-question="1" data-option="C">
+            <input type="radio" name="mcq1" value="C" class="mr-2"> C) decreases
+          </label>
+          <label class="mcq-option" data-question="1" data-option="D">
+            <input type="radio" name="mcq1" value="D" class="mr-2"> D) becomes double
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq1">
-          <strong>✅ Correct Answer: B. increases</strong><br>
+        <div class="explanation-box" id="explanation1">
+          <strong>✅ Correct Answer: B</strong><br>
           <strong>Explanation:</strong> Thermal expansion occurs because atoms vibrate more vigorously and push further apart as temperature rises. Therefore, the length of the copper rod increases.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq1">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(1, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(1)">Reset</button>
       </div>
 
-      <!-- MCQ 2 -->
+      <!-- MCQ 10.2 -->
       <div id="mcq2" class="mcq-box">
-        <strong class="text-lg">10.2</strong> The amount by which unit length of a material increases when the temperature is raised to 1°C, is called the coefficient of:
-        <div class="options">
-          <span class="option"><strong>A.</strong> cubic expansion</span>
-          <span class="option"><strong>B.</strong> volume expansion</span>
-          <span class="option"><strong>C.</strong> linear expansion <span class="correct-badge">✓ Correct</span></span>
-          <span class="option"><strong>D.</strong> none of these</span>
+        <p class="font-semibold text-lg">10.2 The amount by which unit length of a material increases when the temperature is raised to 1°C, is called the coefficient of:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="2" data-option="A">
+            <input type="radio" name="mcq2" value="A" class="mr-2"> A) cubic expansion
+          </label>
+          <label class="mcq-option" data-question="2" data-option="B">
+            <input type="radio" name="mcq2" value="B" class="mr-2"> B) volume expansion
+          </label>
+          <label class="mcq-option" data-question="2" data-option="C">
+            <input type="radio" name="mcq2" value="C" class="mr-2"> C) linear expansion
+          </label>
+          <label class="mcq-option" data-question="2" data-option="D">
+            <input type="radio" name="mcq2" value="D" class="mr-2"> D) none of these
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq2">
-          <strong>✅ Correct Answer: C. linear expansion</strong><br>
+        <div class="explanation-box" id="explanation2">
+          <strong>✅ Correct Answer: C</strong><br>
           <strong>Explanation:</strong> Linear expansion α specifically refers to the fractional change in length per unit length per degree change in temperature. Mathematically, α = ΔL / (L₀ ΔT).
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq2">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(2, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(2)">Reset</button>
       </div>
 
-      <!-- MCQ 3 -->
+      <!-- MCQ 10.3 -->
       <div id="mcq3" class="mcq-box">
-        <strong class="text-lg">10.3</strong> What does a liquid turn into once it is evaporated?
-        <div class="options">
-          <span class="option"><strong>A.</strong> Gas</span>
-          <span class="option"><strong>B.</strong> Water vapours</span>
-          <span class="option"><strong>C.</strong> Air</span>
-          <span class="option"><strong>D.</strong> Both (A) and (B) <span class="correct-badge">✓ Correct</span></span>
+        <p class="font-semibold text-lg">10.3 What does a liquid turn into once it is evaporated?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="3" data-option="A">
+            <input type="radio" name="mcq3" value="A" class="mr-2"> A) Gas
+          </label>
+          <label class="mcq-option" data-question="3" data-option="B">
+            <input type="radio" name="mcq3" value="B" class="mr-2"> B) Water vapours
+          </label>
+          <label class="mcq-option" data-question="3" data-option="C">
+            <input type="radio" name="mcq3" value="C" class="mr-2"> C) Air
+          </label>
+          <label class="mcq-option" data-question="3" data-option="D">
+            <input type="radio" name="mcq3" value="D" class="mr-2"> D) Both (A) and (B)
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq3">
-          <strong>✅ Correct Answer: D. Both (A) and (B)</strong><br>
+        <div class="explanation-box" id="explanation3">
+          <strong>✅ Correct Answer: D</strong><br>
           <strong>Explanation:</strong> Evaporation turns a liquid into its gaseous state. In the case of water, the gas is specifically referred to as water vapor, which is a form of gas.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq3">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(3, 'D')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(3)">Reset</button>
       </div>
 
-      <!-- MCQ 4 -->
+      <!-- MCQ 10.4 -->
       <div id="mcq4" class="mcq-box">
-        <strong class="text-lg">10.4</strong> Which property determines how much heat a solid can absorb before its temperature changes significantly?
-        <div class="options">
-          <span class="option"><strong>A.</strong> Density</span>
-          <span class="option"><strong>B.</strong> Specific heat capacity <span class="correct-badge">✓ Correct</span></span>
-          <span class="option"><strong>C.</strong> Colour</span>
-          <span class="option"><strong>D.</strong> Hardness</span>
+        <p class="font-semibold text-lg">10.4 Which property determines how much heat a solid can absorb before its temperature changes significantly?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="4" data-option="A">
+            <input type="radio" name="mcq4" value="A" class="mr-2"> A) Density
+          </label>
+          <label class="mcq-option" data-question="4" data-option="B">
+            <input type="radio" name="mcq4" value="B" class="mr-2"> B) Specific heat capacity
+          </label>
+          <label class="mcq-option" data-question="4" data-option="C">
+            <input type="radio" name="mcq4" value="C" class="mr-2"> C) Colour
+          </label>
+          <label class="mcq-option" data-question="4" data-option="D">
+            <input type="radio" name="mcq4" value="D" class="mr-2"> D) Hardness
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq4">
-          <strong>✅ Correct Answer: B. Specific heat capacity</strong><br>
+        <div class="explanation-box" id="explanation4">
+          <strong>✅ Correct Answer: B</strong><br>
           <strong>Explanation:</strong> Specific heat capacity (c) is defined as the heat required to raise the temperature of 1 kg of a substance by 1°C. A higher specific heat capacity means the substance can absorb more heat with a smaller temperature change.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq4">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(4, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(4)">Reset</button>
       </div>
 
-      <!-- MCQ 5 -->
+      <!-- MCQ 10.5 -->
       <div id="mcq5" class="mcq-box">
-        <strong class="text-lg">10.5</strong> High-temperature superconductors typically involve which type of material?
-        <div class="options">
-          <span class="option"><strong>A.</strong> Pure metals</span>
-          <span class="option"><strong>B.</strong> Organic compounds</span>
-          <span class="option"><strong>C.</strong> Ceramics <span class="correct-badge">✓ Correct</span></span>
-          <span class="option"><strong>D.</strong> Liquid crystals</span>
+        <p class="font-semibold text-lg">10.5 High-temperature superconductors typically involve which type of material?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="5" data-option="A">
+            <input type="radio" name="mcq5" value="A" class="mr-2"> A) Pure metals
+          </label>
+          <label class="mcq-option" data-question="5" data-option="B">
+            <input type="radio" name="mcq5" value="B" class="mr-2"> B) Organic compounds
+          </label>
+          <label class="mcq-option" data-question="5" data-option="C">
+            <input type="radio" name="mcq5" value="C" class="mr-2"> C) Ceramics
+          </label>
+          <label class="mcq-option" data-question="5" data-option="D">
+            <input type="radio" name="mcq5" value="D" class="mr-2"> D) Liquid crystals
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq5">
-          <strong>✅ Correct Answer: C. Ceramics</strong><br>
+        <div class="explanation-box" id="explanation5">
+          <strong>✅ Correct Answer: C</strong><br>
           <strong>Explanation:</strong> While traditional superconductors are metals, "high-temperature" superconductors discovered in the late 1980s are typically ceramic materials (cuprates) that exhibit superconductivity at much higher temperatures.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq5">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(5, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(5)">Reset</button>
       </div>
     </div>
 
@@ -740,7 +793,7 @@
           </article>
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources</h3>
-            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul></nav>
           </article>
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies</h3>
@@ -845,18 +898,64 @@
       window.addEventListener('scroll', updateProgressBar);
       window.addEventListener('resize', updateProgressBar);
       updateProgressBar();
-      const toggleAnswerBtns = document.querySelectorAll('.toggle-answer-btn');
-      toggleAnswerBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          const targetId = this.getAttribute('data-target');
-          const answerDiv = document.getElementById(targetId);
-          if (answerDiv) {
-            answerDiv.classList.toggle('show');
-            this.textContent = answerDiv.classList.contains('show') ? 'Hide Answer & Explanation' : 'Show Answer & Explanation';
-          }
-        });
-      });
     })();
+
+    // MCQ Functions
+    function checkMCQ(questionNum, correctAnswer) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+      let selected = false;
+
+      options.forEach(opt => {
+        const radio = opt.querySelector('input[type="radio"]');
+        if (radio.checked) {
+          selected = true;
+          const userAnswer = radio.value;
+          // Reset all options for this question
+          options.forEach(o => {
+            o.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+          });
+          if (userAnswer === correctAnswer) {
+            opt.classList.add('correct');
+          } else {
+            opt.classList.add('wrong');
+            // Show correct answer
+            options.forEach(o => {
+              if (o.dataset.option === correctAnswer) {
+                o.classList.add('show-correct');
+              }
+            });
+          }
+          explanation.classList.add('show');
+        }
+      });
+
+      if (!selected) {
+        alert('Please select an option first.');
+      }
+    }
+
+    function resetMCQ(questionNum) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const radios = document.querySelectorAll(`input[name="mcq${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+
+      radios.forEach(radio => radio.checked = false);
+      options.forEach(opt => {
+        opt.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+      });
+      explanation.classList.remove('show');
+    }
+
+    // Allow clicking on label to select radio
+    document.querySelectorAll('.mcq-option').forEach(label => {
+      label.addEventListener('click', function(e) {
+        const radio = this.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+        }
+      });
+    });
   </script>
 </body>
 </html>

@@ -50,7 +50,7 @@
   <meta name="twitter:description" content="Free MCQs for Light chapter. 2026 syllabus notes by Muhammad Tayyab.">
   <meta name="twitter:image" content="https://hiraacademy.com.pk/images/physics-10th-new-2026-pectaa.webp">
 
-<link rel="icon" href="https://hiraacademy.com.pk/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="https://hiraacademy.com.pk/images/favicon.ico" type="image/x-icon" />
   <link rel="icon" type="image/png" sizes="16x16" href="https://hiraacademy.com.pk/images/favicon-16x16.png" />
   <link rel="icon" type="image/png" sizes="32x32" href="https://hiraacademy.com.pk/images/favicon-32x32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.com.pk/images/apple-touch-icon.png" />
@@ -119,22 +119,6 @@
     .mcq-box:hover {
       transform: translateX(4px);
     }
-    .mcq-box .options {
-      padding-left: 1.5rem;
-      margin: 0.5rem 0;
-    }
-    .mcq-box .options li {
-      list-style-type: none;
-      padding: 0.25rem 0;
-    }
-    .mcq-box .options .correct {
-      font-weight: 700;
-      color: #0f766e;
-    }
-    .mcq-box .options .correct::after {
-      content: " ✓";
-      color: #0f766e;
-    }
     .content-section {
       margin-bottom: 2.5rem;
     }
@@ -145,23 +129,6 @@
       margin-bottom: 1.5rem;
       font-weight: 700;
       font-size: 1.75rem;
-    }
-    .equation {
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 12px;
-      text-align: center;
-      font-family: 'Cambria Math', 'Times New Roman', serif;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      border: 1px solid #e2e8f0;
-    }
-    .highlight-box {
-      background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
-      border: 2px solid #0f766e;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
     }
     .back-to-top {
       position: fixed;
@@ -245,42 +212,93 @@
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
     }
-    .answer-content {
-      display: none;
-      margin-top: 1rem;
-    }
-    .answer-content.show {
+    .mcq-option {
       display: block;
-    }
-    .toggle-answer-btn {
-      margin-top: 0.75rem;
-      background-color: #e2e8f0;
-      color: #1e293b;
-      border: none;
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 500;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem 0;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s;
-      display: inline-block;
+      border: 1px solid #e2e8f0;
     }
-    .toggle-answer-btn:hover {
-      background-color: #cbd5e1;
-      transform: translateY(-1px);
+    .mcq-option:hover {
+      background-color: #e2e8f0;
     }
-    table {
-      border-collapse: collapse;
+    .mcq-option.selected {
+      background-color: #0f766e;
+      color: white;
+      border-color: #0f766e;
+    }
+    .mcq-option.correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
+    }
+    .mcq-option.wrong {
+      background-color: #ef4444;
+      color: white;
+      border-color: #ef4444;
+    }
+    .mcq-option.show-correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
+    }
+    .explanation-box {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background-color: #f8fafc;
+      border-radius: 8px;
+      border-left: 4px solid #0f766e;
+    }
+    .explanation-box.show {
+      display: block;
+    }
+    .equation {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 12px;
+      text-align: center;
+      font-family: 'Cambria Math', 'Times New Roman', serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+      border: 2px solid #0f766e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .hub-button {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+      color: white !important;
+    }
+    .hub-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
       width: 100%;
-      margin: 1rem 0;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.15), transparent);
+      transition: left 0.6s ease;
     }
-    th, td {
-      border: 1px solid #d1d5db;
-      padding: 0.75rem;
-      text-align: left;
-    }
-    th {
-      background-color: #f3f4f6;
+    .hub-button:hover::before { left: 100%; }
+    .hub-button:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 40px rgba(13, 148, 136, 0.25), 0 0 60px rgba(13, 148, 136, 0.1);
+      border-color: rgba(20, 184, 166, 0.5);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      color: white !important;
     }
     .dark-glass-btn {
       background: linear-gradient(135deg, #0f172a, #1e293b) !important;
@@ -326,33 +344,32 @@
       font-size: 0.9rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .hub-button {
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
-      border: 1px solid rgba(20, 184, 166, 0.25);
-      position: relative;
-      overflow: hidden;
-      letter-spacing: 0.3px;
-      color: white !important;
-    }
-    .hub-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
+    .mcq-table {
       width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.15), transparent);
-      transition: left 0.6s ease;
+      border-collapse: collapse;
+      font-size: 0.9rem;
     }
-    .hub-button:hover::before { left: 100%; }
-    .hub-button:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 12px 40px rgba(13, 148, 136, 0.25), 0 0 60px rgba(13, 148, 136, 0.1);
-      border-color: rgba(20, 184, 166, 0.5);
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
-      color: white !important;
+    .mcq-table th {
+      background: #0f766e;
+      color: white;
+      padding: 10px 8px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .mcq-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    .mcq-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .mcq-table tr:hover {
+      background-color: #e6fffa;
+    }
+    .mcq-answer {
+      font-weight: 600;
+      color: #0f766e;
     }
   </style>
 
@@ -545,186 +562,249 @@
       <p class="text-sm text-gray-500 mt-3">Light covers reflection, refraction, total internal reflection, optical fibres, lenses, prisms, dispersion, and optical instruments.</p>
     </div>
 
-    <!-- Table of Contents -->
+    <!-- Quick Jump to MCQs -->
     <div class="mb-8">
       <h2 class="text-2xl font-bold text-teal-700 mb-4">📑 Quick Jump to MCQs</h2>
-      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-5 gap-2">
-        <a href="#q1" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.1</a>
-        <a href="#q2" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.2</a>
-        <a href="#q3" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.3</a>
-        <a href="#q4" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.4</a>
-        <a href="#q5" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.5</a>
-        <a href="#q6" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.6</a>
-        <a href="#q7" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-3 rounded-lg text-center transition-all duration-300">14.7</a>
+      <div class="flex flex-wrap gap-2">
+        <a href="#mcq1" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q14.1</a>
+        <a href="#mcq2" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q14.2</a>
+        <a href="#mcq3" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q14.3</a>
+        <a href="#mcq4" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q14.4</a>
+        <a href="#mcq5" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q14.5</a>
+        <a href="#mcq6" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q14.6</a>
+        <a href="#mcq7" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q14.7</a>
       </div>
     </div>
 
-    <!-- MCQs with Answers and Explanations -->
+    <!-- MCQs with Radio Buttons (Interactive) -->
     <div class="content-section" id="questions-section">
       <h2>📖 Multiple Choice Questions & Answers (PECTAA 2026)</h2>
 
       <!-- MCQ 14.1 -->
-      <div id="q1" class="mcq-box">
-        <strong>14.1 What type of image is always formed by a convex mirror?</strong>
-        <ul class="options">
-          <li>A. Real and inverted</li>
-          <li class="correct">B. Virtual and diminished</li>
-          <li>C. Real and magnified</li>
-          <li>D. Virtual and magnified</li>
-        </ul>
-        <div class="answer-content" id="answer1">
-          <strong>Correct Answer: (B) Virtual and diminished</strong><br><br>
-          A convex mirror always forms an upright, virtual, and smaller image behind the mirror regardless of the object's distance.
+      <div id="mcq1" class="mcq-box">
+        <p class="font-semibold text-lg">14.1 What type of image is always formed by a convex mirror?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="1" data-option="A">
+            <input type="radio" name="mcq1" value="A" class="mr-2"> A) Real and inverted
+          </label>
+          <label class="mcq-option" data-question="1" data-option="B">
+            <input type="radio" name="mcq1" value="B" class="mr-2"> B) Virtual and diminished
+          </label>
+          <label class="mcq-option" data-question="1" data-option="C">
+            <input type="radio" name="mcq1" value="C" class="mr-2"> C) Real and magnified
+          </label>
+          <label class="mcq-option" data-question="1" data-option="D">
+            <input type="radio" name="mcq1" value="D" class="mr-2"> D) Virtual and magnified
+          </label>
         </div>
-        <button class="toggle-answer-btn" data-target="answer1">Show Answer & Explanation</button>
+        <div class="explanation-box" id="explanation1">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> A convex mirror always forms an upright, virtual, and smaller image behind the mirror regardless of the object's distance.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(1, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(1)">Reset</button>
       </div>
 
       <!-- MCQ 14.2 -->
-      <div id="q2" class="mcq-box">
-        <strong>14.2 The optical device which uses a convex lens to magnify an object by creating a virtual image:</strong>
-        <ul class="options">
-          <li>A. Camera</li>
-          <li>B. Microscope</li>
-          <li class="correct">C. Magnifying glass</li>
-          <li>D. Slide projector</li>
-        </ul>
-        <div class="answer-content" id="answer2">
-          <strong>Correct Answer: (C) Magnifying glass</strong><br><br>
-          When an object is placed inside the focal length of a convex lens, it forms an erect, virtual, and magnified image on the same side. This defines the operation of a magnifying glass.
+      <div id="mcq2" class="mcq-box">
+        <p class="font-semibold text-lg">14.2 The optical device which uses a convex lens to magnify an object by creating a virtual image:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="2" data-option="A">
+            <input type="radio" name="mcq2" value="A" class="mr-2"> A) Camera
+          </label>
+          <label class="mcq-option" data-question="2" data-option="B">
+            <input type="radio" name="mcq2" value="B" class="mr-2"> B) Microscope
+          </label>
+          <label class="mcq-option" data-question="2" data-option="C">
+            <input type="radio" name="mcq2" value="C" class="mr-2"> C) Magnifying glass
+          </label>
+          <label class="mcq-option" data-question="2" data-option="D">
+            <input type="radio" name="mcq2" value="D" class="mr-2"> D) Slide projector
+          </label>
         </div>
-        <button class="toggle-answer-btn" data-target="answer2">Show Answer & Explanation</button>
+        <div class="explanation-box" id="explanation2">
+          <strong>✅ Correct Answer: C</strong><br>
+          <strong>Explanation:</strong> When an object is placed inside the focal length of a convex lens, it forms an erect, virtual, and magnified image on the same side. This defines the operation of a magnifying glass.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(2, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(2)">Reset</button>
       </div>
 
       <!-- MCQ 14.3 -->
-      <div id="q3" class="mcq-box">
-        <strong>14.3 Which statement best describes the phenomenon of total internal reflection?</strong>
-        <ul class="options">
-          <li>A. Light bends when it enters a new medium</li>
-          <li class="correct">B. Light is completely reflected at the boundary of two media</li>
-          <li>C. Light slows down as it enters a denser medium</li>
-          <li>D. Light passes through a medium without changing direction</li>
-        </ul>
-        <div class="answer-content" id="answer3">
-          <strong>Correct Answer: (B) Light is completely reflected at the boundary of two media</strong><br><br>
-          Total internal reflection occurs when light travelling from a denser to a rarer medium hits the boundary at an angle greater than the critical angle.
+      <div id="mcq3" class="mcq-box">
+        <p class="font-semibold text-lg">14.3 Which statement best describes the phenomenon of total internal reflection?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="3" data-option="A">
+            <input type="radio" name="mcq3" value="A" class="mr-2"> A) Light bends when it enters a new medium
+          </label>
+          <label class="mcq-option" data-question="3" data-option="B">
+            <input type="radio" name="mcq3" value="B" class="mr-2"> B) Light is completely reflected at the boundary of two media
+          </label>
+          <label class="mcq-option" data-question="3" data-option="C">
+            <input type="radio" name="mcq3" value="C" class="mr-2"> C) Light slows down as it enters a denser medium
+          </label>
+          <label class="mcq-option" data-question="3" data-option="D">
+            <input type="radio" name="mcq3" value="D" class="mr-2"> D) Light passes through a medium without changing direction
+          </label>
         </div>
-        <button class="toggle-answer-btn" data-target="answer3">Show Answer & Explanation</button>
+        <div class="explanation-box" id="explanation3">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> Total internal reflection occurs when light travelling from a denser to a rarer medium hits the boundary at an angle greater than the critical angle.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(3, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(3)">Reset</button>
       </div>
 
       <!-- MCQ 14.4 -->
-      <div id="q4" class="mcq-box">
-        <strong>14.4 A ray of light travelling from water to air bends:</strong>
-        <ul class="options">
-          <li>A. Toward the normal</li>
-          <li class="correct">B. Away from the normal</li>
-          <li>C. At 90° to the normal</li>
-          <li>D. Parallel to the normal</li>
-        </ul>
-        <div class="answer-content" id="answer4">
-          <strong>Correct Answer: (B) Away from the normal</strong><br><br>
-          Light speeds up and bends away from the normal when it travels from an optically denser medium (water) into a rarer medium (air).
+      <div id="mcq4" class="mcq-box">
+        <p class="font-semibold text-lg">14.4 A ray of light travelling from water to air bends:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="4" data-option="A">
+            <input type="radio" name="mcq4" value="A" class="mr-2"> A) Toward the normal
+          </label>
+          <label class="mcq-option" data-question="4" data-option="B">
+            <input type="radio" name="mcq4" value="B" class="mr-2"> B) Away from the normal
+          </label>
+          <label class="mcq-option" data-question="4" data-option="C">
+            <input type="radio" name="mcq4" value="C" class="mr-2"> C) At 90° to the normal
+          </label>
+          <label class="mcq-option" data-question="4" data-option="D">
+            <input type="radio" name="mcq4" value="D" class="mr-2"> D) Parallel to the normal
+          </label>
         </div>
-        <button class="toggle-answer-btn" data-target="answer4">Show Answer & Explanation</button>
+        <div class="explanation-box" id="explanation4">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> Light speeds up and bends away from the normal when it travels from an optically denser medium (water) into a rarer medium (air).
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(4, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(4)">Reset</button>
       </div>
 
       <!-- MCQ 14.5 -->
-      <div id="q5" class="mcq-box">
-        <strong>14.5 The optical device which works on the principle of inverting an image for projection is:</strong>
-        <ul class="options">
-          <li>A. Magnifying glass</li>
-          <li>B. Photograph Enlarger</li>
-          <li class="correct">C. Slide projector</li>
-          <li>D. Plane mirror</li>
-        </ul>
-        <div class="answer-content" id="answer5">
-          <strong>Correct Answer: (C) Slide projector</strong><br><br>
-          A slide projector places the slide between F and 2F of a convex lens to project a real, magnified, and inverted image onto a screen.
+      <div id="mcq5" class="mcq-box">
+        <p class="font-semibold text-lg">14.5 The optical device which works on the principle of inverting an image for projection is:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="5" data-option="A">
+            <input type="radio" name="mcq5" value="A" class="mr-2"> A) Magnifying glass
+          </label>
+          <label class="mcq-option" data-question="5" data-option="B">
+            <input type="radio" name="mcq5" value="B" class="mr-2"> B) Photograph Enlarger
+          </label>
+          <label class="mcq-option" data-question="5" data-option="C">
+            <input type="radio" name="mcq5" value="C" class="mr-2"> C) Slide projector
+          </label>
+          <label class="mcq-option" data-question="5" data-option="D">
+            <input type="radio" name="mcq5" value="D" class="mr-2"> D) Plane mirror
+          </label>
         </div>
-        <button class="toggle-answer-btn" data-target="answer5">Show Answer & Explanation</button>
+        <div class="explanation-box" id="explanation5">
+          <strong>✅ Correct Answer: C</strong><br>
+          <strong>Explanation:</strong> A slide projector places the slide between F and 2F of a convex lens to project a real, magnified, and inverted image onto a screen.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(5, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(5)">Reset</button>
       </div>
 
       <!-- MCQ 14.6 -->
-      <div id="q6" class="mcq-box">
-        <strong>14.6 What happens to light when it enters an optical fibre?</strong>
-        <ul class="options">
-          <li>A. It is absorbed by the fibre</li>
-          <li class="correct">B. It undergoes total internal reflection</li>
-          <li>C. It gets refracted at every point</li>
-          <li>D. It travels in a straight line without deviation</li>
-        </ul>
-        <div class="answer-content" id="answer6">
-          <strong>Correct Answer: (B) It undergoes total internal reflection</strong><br><br>
-          Light stays trapped inside an optical fibre because it continuously strikes the core-cladding boundary at an angle greater than the critical angle.
+      <div id="mcq6" class="mcq-box">
+        <p class="font-semibold text-lg">14.6 What happens to light when it enters an optical fibre?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="6" data-option="A">
+            <input type="radio" name="mcq6" value="A" class="mr-2"> A) It is absorbed by the fibre
+          </label>
+          <label class="mcq-option" data-question="6" data-option="B">
+            <input type="radio" name="mcq6" value="B" class="mr-2"> B) It undergoes total internal reflection
+          </label>
+          <label class="mcq-option" data-question="6" data-option="C">
+            <input type="radio" name="mcq6" value="C" class="mr-2"> C) It gets refracted at every point
+          </label>
+          <label class="mcq-option" data-question="6" data-option="D">
+            <input type="radio" name="mcq6" value="D" class="mr-2"> D) It travels in a straight line without deviation
+          </label>
         </div>
-        <button class="toggle-answer-btn" data-target="answer6">Show Answer & Explanation</button>
+        <div class="explanation-box" id="explanation6">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> Light stays trapped inside an optical fibre because it continuously strikes the core-cladding boundary at an angle greater than the critical angle.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(6, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(6)">Reset</button>
       </div>
 
       <!-- MCQ 14.7 -->
-      <div id="q7" class="mcq-box">
-        <strong>14.7 Which of the following phenomenon explains why a pencil appears bent when partially immersed in water?</strong>
-        <ul class="options">
-          <li>A. Reflection</li>
-          <li>B. Diffraction</li>
-          <li class="correct">C. Refraction</li>
-          <li>D. Interference</li>
-        </ul>
-        <div class="answer-content" id="answer7">
-          <strong>Correct Answer: (C) Refraction</strong><br><br>
-          The pencil appears bent because light changes its speed and direction as it transitions from water into air.
+      <div id="mcq7" class="mcq-box">
+        <p class="font-semibold text-lg">14.7 Which of the following phenomenon explains why a pencil appears bent when partially immersed in water?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="7" data-option="A">
+            <input type="radio" name="mcq7" value="A" class="mr-2"> A) Reflection
+          </label>
+          <label class="mcq-option" data-question="7" data-option="B">
+            <input type="radio" name="mcq7" value="B" class="mr-2"> B) Diffraction
+          </label>
+          <label class="mcq-option" data-question="7" data-option="C">
+            <input type="radio" name="mcq7" value="C" class="mr-2"> C) Refraction
+          </label>
+          <label class="mcq-option" data-question="7" data-option="D">
+            <input type="radio" name="mcq7" value="D" class="mr-2"> D) Interference
+          </label>
         </div>
-        <button class="toggle-answer-btn" data-target="answer7">Show Answer & Explanation</button>
+        <div class="explanation-box" id="explanation7">
+          <strong>✅ Correct Answer: C</strong><br>
+          <strong>Explanation:</strong> The pencil appears bent because light changes its speed and direction as it transitions from water into air.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(7, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(7)">Reset</button>
       </div>
+    </div>
 
-      <!-- Summary Table -->
-      <div class="mt-8">
-        <h3 class="text-xl font-bold text-teal-700 mb-4">📋 Answer Key Summary</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Q. No</th>
-              <th>Correct Answer</th>
-              <th>Explanation</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>14.1</td>
-              <td>(B) Virtual and diminished</td>
-              <td>A convex mirror always forms an upright, virtual, and smaller image behind the mirror regardless of the object's distance.</td>
-            </tr>
-            <tr>
-              <td>14.2</td>
-              <td>(C) Magnifying glass</td>
-              <td>When an object is placed inside the focal length of a convex lens, it forms an erect, virtual, and magnified image on the same side. This defines the operation of a magnifying glass.</td>
-            </tr>
-            <tr>
-              <td>14.3</td>
-              <td>(B) Light is completely reflected at the boundary of two media</td>
-              <td>Total internal reflection occurs when light travelling from a denser to a rarer medium hits the boundary at an angle greater than the critical angle.</td>
-            </tr>
-            <tr>
-              <td>14.4</td>
-              <td>(B) Away from the normal</td>
-              <td>Light speeds up and bends away from the normal when it travels from an optically denser medium (water) into a rarer medium (air).</td>
-            </tr>
-            <tr>
-              <td>14.5</td>
-              <td>(C) Slide projector</td>
-              <td>A slide projector places the slide between F and 2F of a convex lens to project a real, magnified, and inverted image onto a screen.</td>
-            </tr>
-            <tr>
-              <td>14.6</td>
-              <td>(B) It undergoes total internal reflection</td>
-              <td>Light stays trapped inside an optical fibre because it continuously strikes the core-cladding boundary at an angle greater than the critical angle.</td>
-            </tr>
-            <tr>
-              <td>14.7</td>
-              <td>(C) Refraction</td>
-              <td>The pencil appears bent because light changes its speed and direction as it transitions from water into air.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <!-- Answer Key Summary Table -->
+    <div class="content-section">
+      <h2>📋 Answer Key Summary</h2>
+      <table class="mcq-table">
+        <thead>
+          <tr>
+            <th>Q. No</th>
+            <th>Correct Answer</th>
+            <th>Explanation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>14.1</td>
+            <td>(B) Virtual and diminished</td>
+            <td>A convex mirror always forms an upright, virtual, and smaller image behind the mirror regardless of the object's distance.</td>
+          </tr>
+          <tr>
+            <td>14.2</td>
+            <td>(C) Magnifying glass</td>
+            <td>When an object is placed inside the focal length of a convex lens, it forms an erect, virtual, and magnified image on the same side. This defines the operation of a magnifying glass.</td>
+          </tr>
+          <tr>
+            <td>14.3</td>
+            <td>(B) Light is completely reflected at the boundary of two media</td>
+            <td>Total internal reflection occurs when light travelling from a denser to a rarer medium hits the boundary at an angle greater than the critical angle.</td>
+          </tr>
+          <tr>
+            <td>14.4</td>
+            <td>(B) Away from the normal</td>
+            <td>Light speeds up and bends away from the normal when it travels from an optically denser medium (water) into a rarer medium (air).</td>
+          </tr>
+          <tr>
+            <td>14.5</td>
+            <td>(C) Slide projector</td>
+            <td>A slide projector places the slide between F and 2F of a convex lens to project a real, magnified, and inverted image onto a screen.</td>
+          </tr>
+          <tr>
+            <td>14.6</td>
+            <td>(B) It undergoes total internal reflection</td>
+            <td>Light stays trapped inside an optical fibre because it continuously strikes the core-cladding boundary at an angle greater than the critical angle.</td>
+          </tr>
+          <tr>
+            <td>14.7</td>
+            <td>(C) Refraction</td>
+            <td>The pencil appears bent because light changes its speed and direction as it transitions from water into air.</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- Key Formulas Section -->
@@ -735,6 +815,13 @@
       <div class="equation"><strong>Critical Angle:</strong> \( C = \sin^{-1} \left( \frac{1}{n} \right) \)</div>
       <div class="equation"><strong>Mirror / Lens Formula:</strong> \( \frac{1}{f} = \frac{1}{p} + \frac{1}{q} \)</div>
       <div class="equation"><strong>Power of Lens:</strong> \( P = \frac{1}{f} \)</div>
+    </div>
+
+    <div class="highlight-box">
+      <p class="font-semibold text-lg mb-2 text-justify">💡 Exam Tip:</p>
+      <p class="text-justify">
+        For MCQs, read each option carefully. Pay attention to key concepts like image formation by mirrors, total internal reflection conditions, and refraction phenomena. These questions follow the PECTAA 2026 pattern and are prepared by Subject Specialist Muhammad Tayyab.
+      </p>
     </div>
 
     <!-- Other Chapters Dropdown (Dark Glass) -->
@@ -794,13 +881,6 @@
 
       </div>
       <p class="text-xs text-gray-500 mt-3">📖 Complete syllabus coverage for Class 10 Physics (PECTAA 2026) – Units 10 to 21</p>
-    </div>
-
-    <div class="highlight-box">
-      <p class="font-semibold text-lg mb-2 text-justify">💡 Exam Tip:</p>
-      <p class="text-justify">
-        For MCQs, read each option carefully. Pay attention to key concepts like image formation by mirrors, total internal reflection conditions, and refraction phenomena. These questions follow the PECTAA 2026 pattern and are prepared by Subject Specialist Muhammad Tayyab.
-      </p>
     </div>
 
     <!-- Footer back link - Dark Glass -->
@@ -955,26 +1035,70 @@
         const winHeight = window.innerHeight;
         const docHeight = document.documentElement.scrollHeight;
         const maxScroll = docHeight - winHeight;
-        const scrollPercent = (scrollTop / maxScroll) * 100;
+        const scrollPercent = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
         if (progressBar) progressBar.style.width = scrollPercent + '%';
       }
       window.addEventListener('scroll', updateProgressBar);
       window.addEventListener('resize', updateProgressBar);
       updateProgressBar();
-
-      // Show/Hide answer toggles
-      const toggleBtns = document.querySelectorAll('.toggle-answer-btn');
-      toggleBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
-          const targetId = this.getAttribute('data-target');
-          const answerDiv = document.getElementById(targetId);
-          if (answerDiv) {
-            answerDiv.classList.toggle('show');
-            this.textContent = answerDiv.classList.contains('show') ? 'Hide Answer & Explanation' : 'Show Answer & Explanation';
-          }
-        });
-      });
     })();
+
+    // MCQ Functions
+    function checkMCQ(questionNum, correctAnswer) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+      let selected = false;
+
+      options.forEach(opt => {
+        const radio = opt.querySelector('input[type="radio"]');
+        if (radio.checked) {
+          selected = true;
+          const userAnswer = radio.value;
+          // Reset all options for this question
+          options.forEach(o => {
+            o.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+          });
+          if (userAnswer === correctAnswer) {
+            opt.classList.add('correct');
+          } else {
+            opt.classList.add('wrong');
+            // Show correct answer
+            options.forEach(o => {
+              if (o.dataset.option === correctAnswer) {
+                o.classList.add('show-correct');
+              }
+            });
+          }
+          explanation.classList.add('show');
+        }
+      });
+
+      if (!selected) {
+        alert('Please select an option first.');
+      }
+    }
+
+    function resetMCQ(questionNum) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const radios = document.querySelectorAll(`input[name="mcq${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+
+      radios.forEach(radio => radio.checked = false);
+      options.forEach(opt => {
+        opt.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+      });
+      explanation.classList.remove('show');
+    }
+
+    // Allow clicking on label to select radio
+    document.querySelectorAll('.mcq-option').forEach(label => {
+      label.addEventListener('click', function(e) {
+        const radio = this.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+        }
+      });
+    });
   </script>
 </body>
 </html>

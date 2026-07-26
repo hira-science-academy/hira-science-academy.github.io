@@ -130,57 +130,6 @@
       font-weight: 700;
       font-size: 1.75rem;
     }
-    .options {
-      margin-top: 0.75rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-    .option {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.95rem;
-    }
-    .answer-content {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem;
-      background: #e6f7e6;
-      border-radius: 10px;
-      border-left: 4px solid #0f766e;
-    }
-    .answer-content.show {
-      display: block;
-    }
-    .toggle-answer-btn {
-      margin-top: 0.75rem;
-      background-color: #eab308;
-      color: #1e293b;
-      border: none;
-      padding: 0.4rem 1.2rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: inline-block;
-    }
-    .toggle-answer-btn:hover {
-      background-color: #ca8a04;
-      transform: translateY(-1px);
-      color: white;
-    }
-    .correct-badge {
-      background-color: #0f766e;
-      color: white;
-      font-size: 0.7rem;
-      font-weight: bold;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      margin-left: 0.5rem;
-      display: inline-block;
-    }
     .back-to-top {
       position: fixed;
       bottom: 30px;
@@ -262,6 +211,49 @@
     }
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
+    }
+    .mcq-option {
+      display: block;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #e2e8f0;
+    }
+    .mcq-option:hover {
+      background-color: #e2e8f0;
+    }
+    .mcq-option.selected {
+      background-color: #0f766e;
+      color: white;
+      border-color: #0f766e;
+    }
+    .mcq-option.correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
+    }
+    .mcq-option.wrong {
+      background-color: #ef4444;
+      color: white;
+      border-color: #ef4444;
+    }
+    .mcq-option.show-correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
+    }
+    .explanation-box {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background-color: #f8fafc;
+      border-radius: 8px;
+      border-left: 4px solid #0f766e;
+    }
+    .explanation-box.show {
+      display: block;
     }
     .equation {
       background: #f1f5f9;
@@ -555,136 +547,208 @@
       </div>
     </div>
 
-    <!-- MCQs Content (from PDF data Chapter 12) -->
+    <!-- MCQs Content (Interactive with Radio Buttons) -->
     <div class="content-section" id="questions-section">
       <h2>📖 Multiple Choice Questions & Answers (PECTAA 2026)</h2>
 
       <!-- MCQ 12.1 -->
       <div id="mcq1" class="mcq-box">
-        <strong class="text-lg">12.1</strong> The direction of vibration in a longitudinal wave is:
-        <div class="options">
-          <span class="option"><strong>A.</strong> at right angles to the wave direction</span>
-          <span class="option"><strong>B.</strong> in circular motion</span>
-          <span class="option"><strong>C.</strong> opposite to the wave direction</span>
-          <span class="option"><strong>D.</strong> in the same direction as the wave travels <span class="correct-badge">✓ Correct</span></span>
+        <p class="font-semibold text-lg">12.1 The direction of vibration in a longitudinal wave is:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="1" data-option="A">
+            <input type="radio" name="mcq1" value="A" class="mr-2"> A) at right angles to the wave direction
+          </label>
+          <label class="mcq-option" data-question="1" data-option="B">
+            <input type="radio" name="mcq1" value="B" class="mr-2"> B) in circular motion
+          </label>
+          <label class="mcq-option" data-question="1" data-option="C">
+            <input type="radio" name="mcq1" value="C" class="mr-2"> C) opposite to the wave direction
+          </label>
+          <label class="mcq-option" data-question="1" data-option="D">
+            <input type="radio" name="mcq1" value="D" class="mr-2"> D) in the same direction as the wave travels
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq1">
-          <strong>✅ Correct Answer: D. in the same direction as the wave travels</strong><br>
+        <div class="explanation-box" id="explanation1">
+          <strong>✅ Correct Answer: D</strong><br>
           <strong>Explanation:</strong> In a longitudinal wave, particles vibrate parallel to the direction of wave travel (e.g., sound waves). The oscillations are along the propagation axis.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq1">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(1, 'D')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(1)">Reset</button>
       </div>
 
       <!-- MCQ 12.2 -->
       <div id="mcq2" class="mcq-box">
-        <strong class="text-lg">12.2</strong> Which part of a transverse wave carries the lowest point?
-        <div class="options">
-          <span class="option"><strong>A.</strong> Crest</span>
-          <span class="option"><strong>B.</strong> Compression</span>
-          <span class="option"><strong>C.</strong> Rarefaction</span>
-          <span class="option"><strong>D.</strong> Trough <span class="correct-badge">✓ Correct</span></span>
+        <p class="font-semibold text-lg">12.2 Which part of a transverse wave carries the lowest point?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="2" data-option="A">
+            <input type="radio" name="mcq2" value="A" class="mr-2"> A) Crest
+          </label>
+          <label class="mcq-option" data-question="2" data-option="B">
+            <input type="radio" name="mcq2" value="B" class="mr-2"> B) Compression
+          </label>
+          <label class="mcq-option" data-question="2" data-option="C">
+            <input type="radio" name="mcq2" value="C" class="mr-2"> C) Rarefaction
+          </label>
+          <label class="mcq-option" data-question="2" data-option="D">
+            <input type="radio" name="mcq2" value="D" class="mr-2"> D) Trough
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq2">
-          <strong>✅ Correct Answer: D. Trough</strong><br>
+        <div class="explanation-box" id="explanation2">
+          <strong>✅ Correct Answer: D</strong><br>
           <strong>Explanation:</strong> In a transverse wave, the trough is the lowest point (minimum displacement), while the crest is the highest point.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq2">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(2, 'D')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(2)">Reset</button>
       </div>
 
       <!-- MCQ 12.3 -->
       <div id="mcq3" class="mcq-box">
-        <strong class="text-lg">12.3</strong> Which of the following wave types requires a medium to travel?
-        <div class="options">
-          <span class="option"><strong>A.</strong> X-rays</span>
-          <span class="option"><strong>B.</strong> Light waves</span>
-          <span class="option"><strong>C.</strong> Radiowaves</span>
-          <span class="option"><strong>D.</strong> Sound waves <span class="correct-badge">✓ Correct</span></span>
+        <p class="font-semibold text-lg">12.3 Which of the following wave types requires a medium to travel?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="3" data-option="A">
+            <input type="radio" name="mcq3" value="A" class="mr-2"> A) X-rays
+          </label>
+          <label class="mcq-option" data-question="3" data-option="B">
+            <input type="radio" name="mcq3" value="B" class="mr-2"> B) Light waves
+          </label>
+          <label class="mcq-option" data-question="3" data-option="C">
+            <input type="radio" name="mcq3" value="C" class="mr-2"> C) Radiowaves
+          </label>
+          <label class="mcq-option" data-question="3" data-option="D">
+            <input type="radio" name="mcq3" value="D" class="mr-2"> D) Sound waves
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq3">
-          <strong>✅ Correct Answer: D. Sound waves</strong><br>
+        <div class="explanation-box" id="explanation3">
+          <strong>✅ Correct Answer: D</strong><br>
           <strong>Explanation:</strong> Sound waves are mechanical waves and require a medium (solid, liquid, or gas) to propagate. X-rays, light, and radiowaves are electromagnetic waves that can travel through vacuum.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq3">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(3, 'D')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(3)">Reset</button>
       </div>
 
       <!-- MCQ 12.4 -->
       <div id="mcq4" class="mcq-box">
-        <strong class="text-lg">12.4</strong> The property of a wave which indicates how much energy it carries is:
-        <div class="options">
-          <span class="option"><strong>A.</strong> crest</span>
-          <span class="option"><strong>B.</strong> amplitude <span class="correct-badge">✓ Correct</span></span>
-          <span class="option"><strong>C.</strong> wavelength</span>
-          <span class="option"><strong>D.</strong> speed</span>
+        <p class="font-semibold text-lg">12.4 The property of a wave which indicates how much energy it carries is:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="4" data-option="A">
+            <input type="radio" name="mcq4" value="A" class="mr-2"> A) crest
+          </label>
+          <label class="mcq-option" data-question="4" data-option="B">
+            <input type="radio" name="mcq4" value="B" class="mr-2"> B) amplitude
+          </label>
+          <label class="mcq-option" data-question="4" data-option="C">
+            <input type="radio" name="mcq4" value="C" class="mr-2"> C) wavelength
+          </label>
+          <label class="mcq-option" data-question="4" data-option="D">
+            <input type="radio" name="mcq4" value="D" class="mr-2"> D) speed
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq4">
-          <strong>✅ Correct Answer: B. amplitude</strong><br>
+        <div class="explanation-box" id="explanation4">
+          <strong>✅ Correct Answer: B</strong><br>
           <strong>Explanation:</strong> Amplitude is a measure of the energy carried by a wave. Larger amplitude means more energy. For example, loud sound has high amplitude, bright light has large electric field amplitude.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq4">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(4, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(4)">Reset</button>
       </div>
 
       <!-- MCQ 12.5 -->
       <div id="mcq5" class="mcq-box">
-        <strong class="text-lg">12.5</strong> A wave front is:
-        <div class="options">
-          <span class="option"><strong>A.</strong> the distance between two crests</span>
-          <span class="option"><strong>B.</strong> a region of high pressure in a wave</span>
-          <span class="option"><strong>C.</strong> a line joining points that vibrate in phase <span class="correct-badge">✓ Correct</span></span>
-          <span class="option"><strong>D.</strong> the outer edge of a wave medium</span>
+        <p class="font-semibold text-lg">12.5 A wave front is:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="5" data-option="A">
+            <input type="radio" name="mcq5" value="A" class="mr-2"> A) the distance between two crests
+          </label>
+          <label class="mcq-option" data-question="5" data-option="B">
+            <input type="radio" name="mcq5" value="B" class="mr-2"> B) a region of high pressure in a wave
+          </label>
+          <label class="mcq-option" data-question="5" data-option="C">
+            <input type="radio" name="mcq5" value="C" class="mr-2"> C) a line joining points that vibrate in phase
+          </label>
+          <label class="mcq-option" data-question="5" data-option="D">
+            <input type="radio" name="mcq5" value="D" class="mr-2"> D) the outer edge of a wave medium
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq5">
-          <strong>✅ Correct Answer: C. a line joining points that vibrate in phase</strong><br>
+        <div class="explanation-box" id="explanation5">
+          <strong>✅ Correct Answer: C</strong><br>
           <strong>Explanation:</strong> A wave front connects points on adjacent waves that are at the same stage of vibration (in phase). Examples: crests or troughs form wavefronts.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq5">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(5, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(5)">Reset</button>
       </div>
 
       <!-- MCQ 12.6 -->
       <div id="mcq6" class="mcq-box">
-        <strong class="text-lg">12.6</strong> The wave phenomenon which occurs when waves change direction due to a change in speed is:
-        <div class="options">
-          <span class="option"><strong>A.</strong> diffraction</span>
-          <span class="option"><strong>B.</strong> reflection</span>
-          <span class="option"><strong>C.</strong> absorption</span>
-          <span class="option"><strong>D.</strong> refraction <span class="correct-badge">✓ Correct</span></span>
+        <p class="font-semibold text-lg">12.6 The wave phenomenon which occurs when waves change direction due to a change in speed is:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="6" data-option="A">
+            <input type="radio" name="mcq6" value="A" class="mr-2"> A) diffraction
+          </label>
+          <label class="mcq-option" data-question="6" data-option="B">
+            <input type="radio" name="mcq6" value="B" class="mr-2"> B) reflection
+          </label>
+          <label class="mcq-option" data-question="6" data-option="C">
+            <input type="radio" name="mcq6" value="C" class="mr-2"> C) absorption
+          </label>
+          <label class="mcq-option" data-question="6" data-option="D">
+            <input type="radio" name="mcq6" value="D" class="mr-2"> D) refraction
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq6">
-          <strong>✅ Correct Answer: D. refraction</strong><br>
+        <div class="explanation-box" id="explanation6">
+          <strong>✅ Correct Answer: D</strong><br>
           <strong>Explanation:</strong> Refraction is the change in direction of a wave as it changes speed when moving from one medium to another. Example: bending of light in water.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq6">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(6, 'D')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(6)">Reset</button>
       </div>
 
       <!-- MCQ 12.7 -->
       <div id="mcq7" class="mcq-box">
-        <strong class="text-lg">12.7</strong> What happens to wave speed and wavelength when a tsunami approaches shallow water?
-        <div class="options">
-          <span class="option"><strong>A.</strong> Speed increases, wavelength increases</span>
-          <span class="option"><strong>B.</strong> Speed decreases, wavelength shortens <span class="correct-badge">✓ Correct</span></span>
-          <span class="option"><strong>C.</strong> Speed remains the same, wavelength shortens</span>
-          <span class="option"><strong>D.</strong> Speed increases, wavelength stays constant</span>
+        <p class="font-semibold text-lg">12.7 What happens to wave speed and wavelength when a tsunami approaches shallow water?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="7" data-option="A">
+            <input type="radio" name="mcq7" value="A" class="mr-2"> A) Speed increases, wavelength increases
+          </label>
+          <label class="mcq-option" data-question="7" data-option="B">
+            <input type="radio" name="mcq7" value="B" class="mr-2"> B) Speed decreases, wavelength shortens
+          </label>
+          <label class="mcq-option" data-question="7" data-option="C">
+            <input type="radio" name="mcq7" value="C" class="mr-2"> C) Speed remains the same, wavelength shortens
+          </label>
+          <label class="mcq-option" data-question="7" data-option="D">
+            <input type="radio" name="mcq7" value="D" class="mr-2"> D) Speed increases, wavelength stays constant
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq7">
-          <strong>✅ Correct Answer: B. Speed decreases, wavelength shortens</strong><br>
+        <div class="explanation-box" id="explanation7">
+          <strong>✅ Correct Answer: B</strong><br>
           <strong>Explanation:</strong> In shallow water, a tsunami's speed decreases due to friction with the seabed, causing its wavelength to shorten (frequency remains constant, as per v = fλ).
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq7">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(7, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(7)">Reset</button>
       </div>
 
       <!-- MCQ 12.8 -->
       <div id="mcq8" class="mcq-box">
-        <strong class="text-lg">12.8</strong> Which wave behaviour explains how sound is heard around a corner?
-        <div class="options">
-          <span class="option"><strong>A.</strong> Reflection</span>
-          <span class="option"><strong>B.</strong> Refraction</span>
-          <span class="option"><strong>C.</strong> Interference</span>
-          <span class="option"><strong>D.</strong> Diffraction <span class="correct-badge">✓ Correct</span></span>
+        <p class="font-semibold text-lg">12.8 Which wave behaviour explains how sound is heard around a corner?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="8" data-option="A">
+            <input type="radio" name="mcq8" value="A" class="mr-2"> A) Reflection
+          </label>
+          <label class="mcq-option" data-question="8" data-option="B">
+            <input type="radio" name="mcq8" value="B" class="mr-2"> B) Refraction
+          </label>
+          <label class="mcq-option" data-question="8" data-option="C">
+            <input type="radio" name="mcq8" value="C" class="mr-2"> C) Interference
+          </label>
+          <label class="mcq-option" data-question="8" data-option="D">
+            <input type="radio" name="mcq8" value="D" class="mr-2"> D) Diffraction
+          </label>
         </div>
-        <div class="answer-content" id="answerMcq8">
-          <strong>✅ Correct Answer: D. Diffraction</strong><br>
+        <div class="explanation-box" id="explanation8">
+          <strong>✅ Correct Answer: D</strong><br>
           <strong>Explanation:</strong> Diffraction is the bending of waves around obstacles or edges, allowing sound to be heard around a corner. It occurs when wave encounters an obstacle whose size is comparable to wavelength.
         </div>
-        <button class="toggle-answer-btn" data-target="answerMcq8">Show Answer & Explanation</button>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(8, 'D')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(8)">Reset</button>
       </div>
     </div>
 
@@ -846,18 +910,64 @@
       window.addEventListener('scroll', updateProgressBar);
       window.addEventListener('resize', updateProgressBar);
       updateProgressBar();
-      const toggleAnswerBtns = document.querySelectorAll('.toggle-answer-btn');
-      toggleAnswerBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          const targetId = this.getAttribute('data-target');
-          const answerDiv = document.getElementById(targetId);
-          if (answerDiv) {
-            answerDiv.classList.toggle('show');
-            this.textContent = answerDiv.classList.contains('show') ? 'Hide Answer & Explanation' : 'Show Answer & Explanation';
-          }
-        });
-      });
     })();
+
+    // MCQ Functions
+    function checkMCQ(questionNum, correctAnswer) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+      let selected = false;
+
+      options.forEach(opt => {
+        const radio = opt.querySelector('input[type="radio"]');
+        if (radio.checked) {
+          selected = true;
+          const userAnswer = radio.value;
+          // Reset all options for this question
+          options.forEach(o => {
+            o.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+          });
+          if (userAnswer === correctAnswer) {
+            opt.classList.add('correct');
+          } else {
+            opt.classList.add('wrong');
+            // Show correct answer
+            options.forEach(o => {
+              if (o.dataset.option === correctAnswer) {
+                o.classList.add('show-correct');
+              }
+            });
+          }
+          explanation.classList.add('show');
+        }
+      });
+
+      if (!selected) {
+        alert('Please select an option first.');
+      }
+    }
+
+    function resetMCQ(questionNum) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const radios = document.querySelectorAll(`input[name="mcq${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+
+      radios.forEach(radio => radio.checked = false);
+      options.forEach(opt => {
+        opt.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+      });
+      explanation.classList.remove('show');
+    }
+
+    // Allow clicking on label to select radio
+    document.querySelectorAll('.mcq-option').forEach(label => {
+      label.addEventListener('click', function(e) {
+        const radio = this.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+        }
+      });
+    });
   </script>
 </body>
 </html>

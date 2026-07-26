@@ -108,17 +108,17 @@
     }
     .mcq-card {
       scroll-margin-top: 85px;
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
       border-left: 5px solid #0f766e;
       padding: 1.5rem;
       margin: 1.5rem 0;
       border-radius: 0 16px 16px 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(15,118,110,0.1);
       transition: all 0.2s;
     }
     .mcq-card:hover {
       transform: translateX(4px);
-      box-shadow: 0 8px 20px rgba(15,118,110,0.1);
+      box-shadow: 0 8px 20px rgba(15,118,110,0.15);
     }
     .content-section h2 {
       color: #0f766e;
@@ -127,55 +127,6 @@
       margin-bottom: 1.5rem;
       font-weight: 700;
       font-size: 1.75rem;
-    }
-    .options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 0.75rem 0;
-    }
-    .option {
-      background: #f1f5f9;
-      padding: 0.3rem 0.9rem;
-      border-radius: 20px;
-      font-size: 0.9rem;
-    }
-    .correct-badge {
-      display: inline-block;
-      background: #0f766e;
-      color: white;
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.2rem 0.6rem;
-      border-radius: 20px;
-      margin-left: 0.5rem;
-    }
-    .explanation {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem;
-      background: #e6f7f5;
-      border-radius: 12px;
-      border-left: 4px solid #0d9488;
-    }
-    .explanation.show {
-      display: block;
-    }
-    .toggle-exp-btn {
-      margin-top: 0.75rem;
-      background-color: #e2e8f0;
-      color: #1e293b;
-      border: none;
-      padding: 0.3rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .toggle-exp-btn:hover {
-      background-color: #cbd5e1;
-      transform: translateY(-1px);
     }
     .back-to-top {
       position: fixed;
@@ -258,6 +209,49 @@
     }
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
+    }
+    .mcq-option {
+      display: block;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem 0;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      border: 1px solid #e2e8f0;
+    }
+    .mcq-option:hover {
+      background-color: #e2e8f0;
+    }
+    .mcq-option.selected {
+      background-color: #0f766e;
+      color: white;
+      border-color: #0f766e;
+    }
+    .mcq-option.correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
+    }
+    .mcq-option.wrong {
+      background-color: #ef4444;
+      color: white;
+      border-color: #ef4444;
+    }
+    .mcq-option.show-correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
+    }
+    .explanation-box {
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background-color: #f8fafc;
+      border-radius: 8px;
+      border-left: 4px solid #0f766e;
+    }
+    .explanation-box.show {
+      display: block;
     }
     .answer-key-table {
       width: 100%;
@@ -352,6 +346,16 @@
       gap: 8px;
       font-size: 0.9rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .equation {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 12px;
+      text-align: center;
+      font-family: 'Cambria Math', 'Times New Roman', serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
     }
   </style>
 
@@ -512,71 +516,197 @@
       </div>
     </div>
 
+    <!-- Quick Jump to MCQs -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-teal-700 mb-4">📑 Quick Jump to MCQs</h2>
+      <div class="flex flex-wrap gap-2">
+        <a href="#q1" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q11.1</a>
+        <a href="#q2" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q11.2</a>
+        <a href="#q3" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q11.3</a>
+        <a href="#q4" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q11.4</a>
+        <a href="#q5" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q11.5</a>
+        <a href="#q6" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q11.6</a>
+        <a href="#q7" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q11.7</a>
+      </div>
+    </div>
+
     <!-- MCQs List -->
-    <div class="content-section">
+    <div class="content-section" id="questions-section">
       <h2>📝 Multiple Choice Questions (1–7)</h2>
 
       <!-- MCQ 11.1 -->
       <div id="q1" class="mcq-card">
-        <div class="font-bold text-teal-700">11.1</div>
-        <div class="question-text font-semibold mt-1">Which method of heat transfer requires direct contact between particles?</div>
-        <div class="options"><span class="option">A) Convection</span><span class="option">B) Radiation</span><span class="option">C) Conduction ✓</span><span class="option">D) Evaporation</span></div>
-        <div class="explanation" id="exp1"><strong>✅ Correct Answer: (C) Conduction</strong><br>Conduction is the process by which heat is transferred through direct contact between particles in a material, without any actual movement of the material.</div>
-        <button class="toggle-exp-btn" data-target="exp1">Show Explanation</button>
+        <p class="font-semibold text-lg">11.1 Which method of heat transfer requires direct contact between particles?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="1" data-option="A">
+            <input type="radio" name="mcq1" value="A" class="mr-2"> A) Convection
+          </label>
+          <label class="mcq-option" data-question="1" data-option="B">
+            <input type="radio" name="mcq1" value="B" class="mr-2"> B) Radiation
+          </label>
+          <label class="mcq-option" data-question="1" data-option="C">
+            <input type="radio" name="mcq1" value="C" class="mr-2"> C) Conduction
+          </label>
+          <label class="mcq-option" data-question="1" data-option="D">
+            <input type="radio" name="mcq1" value="D" class="mr-2"> D) Evaporation
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation1">
+          <strong>✅ Correct Answer: C</strong><br>
+          <strong>Explanation:</strong> Conduction is the process by which heat is transferred through direct contact between particles in a material, without any actual movement of the material.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(1, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(1)">Reset</button>
       </div>
 
       <!-- MCQ 11.2 -->
       <div id="q2" class="mcq-card">
-        <div class="font-bold text-teal-700">11.2</div>
-        <div class="question-text font-semibold mt-1">What causes convection currents in liquids and gases?</div>
-        <div class="options"><span class="option">A) The continuous movement of particles in all directions</span><span class="option">B) The rising of warm regions and sinking of cooler regions ✓</span><span class="option">C) The conduction of heat through the medium</span><span class="option">D) The reflection of heat waves</span></div>
-        <div class="explanation" id="exp2"><strong>✅ Correct Answer: (B) The rising of warm regions and sinking of cooler regions</strong><br>When a liquid or gas is heated, it becomes less dense and rises, and cooler fluid from the surrounding area moves in to take its place.</div>
-        <button class="toggle-exp-btn" data-target="exp2">Show Explanation</button>
+        <p class="font-semibold text-lg">11.2 What causes convection currents in liquids and gases?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="2" data-option="A">
+            <input type="radio" name="mcq2" value="A" class="mr-2"> A) The continuous movement of particles in all directions
+          </label>
+          <label class="mcq-option" data-question="2" data-option="B">
+            <input type="radio" name="mcq2" value="B" class="mr-2"> B) The rising of warm regions and sinking of cooler regions
+          </label>
+          <label class="mcq-option" data-question="2" data-option="C">
+            <input type="radio" name="mcq2" value="C" class="mr-2"> C) The conduction of heat through the medium
+          </label>
+          <label class="mcq-option" data-question="2" data-option="D">
+            <input type="radio" name="mcq2" value="D" class="mr-2"> D) The reflection of heat waves
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation2">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> When a liquid or gas is heated, it becomes less dense and rises, and cooler fluid from the surrounding area moves in to take its place.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(2, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(2)">Reset</button>
       </div>
 
       <!-- MCQ 11.3 -->
       <div id="q3" class="mcq-card">
-        <div class="font-bold text-teal-700">11.3</div>
-        <div class="question-text font-semibold mt-1">The natural phenomenon caused by convection currents is:</div>
-        <div class="options"><span class="option">A) earthquakes</span><span class="option">B) land and sea breezes ✓</span><span class="option">C) magnetic fields</span><span class="option">D) solar eclipses</span></div>
-        <div class="explanation" id="exp3"><strong>✅ Correct Answer: (B) land and sea breezes</strong><br>Land and sea breezes are caused by convection. During the day, the land heats up faster than the sea, creating a sea breeze. At night, the land cools down more quickly than the sea, creating a land breeze.</div>
-        <button class="toggle-exp-btn" data-target="exp3">Show Explanation</button>
+        <p class="font-semibold text-lg">11.3 The natural phenomenon caused by convection currents is:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="3" data-option="A">
+            <input type="radio" name="mcq3" value="A" class="mr-2"> A) earthquakes
+          </label>
+          <label class="mcq-option" data-question="3" data-option="B">
+            <input type="radio" name="mcq3" value="B" class="mr-2"> B) land and sea breezes
+          </label>
+          <label class="mcq-option" data-question="3" data-option="C">
+            <input type="radio" name="mcq3" value="C" class="mr-2"> C) magnetic fields
+          </label>
+          <label class="mcq-option" data-question="3" data-option="D">
+            <input type="radio" name="mcq3" value="D" class="mr-2"> D) solar eclipses
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation3">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> Land and sea breezes are caused by convection. During the day, the land heats up faster than the sea, creating a sea breeze. At night, the land cools down more quickly than the sea, creating a land breeze.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(3, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(3)">Reset</button>
       </div>
 
       <!-- MCQ 11.4 -->
       <div id="q4" class="mcq-card">
-        <div class="font-bold text-teal-700">11.4</div>
-        <div class="question-text font-semibold mt-1">How does heat transfer occur through radiation?</div>
-        <div class="options"><span class="option">A) Through direct contact between objects</span><span class="option">B) Through the movement of heated fluid</span><span class="option">C) Through electromagnetic waves without needing a medium ✓</span><span class="option">D) Through the absorption of water molecules</span></div>
-        <div class="explanation" id="exp4"><strong>✅ Correct Answer: (C) Through electromagnetic waves without needing a medium</strong><br>In radiation, heat transfer occurs through electromagnetic waves without requiring a medium.</div>
-        <button class="toggle-exp-btn" data-target="exp4">Show Explanation</button>
+        <p class="font-semibold text-lg">11.4 How does heat transfer occur through radiation?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="4" data-option="A">
+            <input type="radio" name="mcq4" value="A" class="mr-2"> A) Through direct contact between objects
+          </label>
+          <label class="mcq-option" data-question="4" data-option="B">
+            <input type="radio" name="mcq4" value="B" class="mr-2"> B) Through the movement of heated fluid
+          </label>
+          <label class="mcq-option" data-question="4" data-option="C">
+            <input type="radio" name="mcq4" value="C" class="mr-2"> C) Through electromagnetic waves without needing a medium
+          </label>
+          <label class="mcq-option" data-question="4" data-option="D">
+            <input type="radio" name="mcq4" value="D" class="mr-2"> D) Through the absorption of water molecules
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation4">
+          <strong>✅ Correct Answer: C</strong><br>
+          <strong>Explanation:</strong> In radiation, heat transfer occurs through electromagnetic waves without requiring a medium.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(4, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(4)">Reset</button>
       </div>
 
       <!-- MCQ 11.5 -->
       <div id="q5" class="mcq-card">
-        <div class="font-bold text-teal-700">11.5</div>
-        <div class="question-text font-semibold mt-1">The surface which absorbs and emits the most radiation is:</div>
-        <div class="options"><span class="option">A) smooth and shiny surfaces</span><span class="option">B) dark and rough surfaces ✓</span><span class="option">C) transparent and thin surfaces</span><span class="option">D) polished and white surfaces</span></div>
-        <div class="explanation" id="exp5"><strong>✅ Correct Answer: (B) dark and rough surfaces</strong><br>Dull and dark-coloured surfaces are very good at absorbing and emitting infrared radiation. Rough surfaces absorb and emit radiation better.</div>
-        <button class="toggle-exp-btn" data-target="exp5">Show Explanation</button>
+        <p class="font-semibold text-lg">11.5 The surface which absorbs and emits the most radiation is:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="5" data-option="A">
+            <input type="radio" name="mcq5" value="A" class="mr-2"> A) smooth and shiny surfaces
+          </label>
+          <label class="mcq-option" data-question="5" data-option="B">
+            <input type="radio" name="mcq5" value="B" class="mr-2"> B) dark and rough surfaces
+          </label>
+          <label class="mcq-option" data-question="5" data-option="C">
+            <input type="radio" name="mcq5" value="C" class="mr-2"> C) transparent and thin surfaces
+          </label>
+          <label class="mcq-option" data-question="5" data-option="D">
+            <input type="radio" name="mcq5" value="D" class="mr-2"> D) polished and white surfaces
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation5">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> Dull and dark-coloured surfaces are very good at absorbing and emitting infrared radiation. Rough surfaces absorb and emit radiation better.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(5, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(5)">Reset</button>
       </div>
 
       <!-- MCQ 11.6 -->
       <div id="q6" class="mcq-card">
-        <div class="font-bold text-teal-700">11.6</div>
-        <div class="question-text font-semibold mt-1">What is the role of the greenhouse effect in Earth's temperature regulation?</div>
-        <div class="options"><span class="option">A) It allows all heat to escape into space</span><span class="option">B) It blocks heat from entering the atmosphere</span><span class="option">C) It traps heat to maintain a stable temperature ✓</span><span class="option">D) It causes immediate cooling of Earth's surface</span></div>
-        <div class="explanation" id="exp6"><strong>✅ Correct Answer: (C) It traps heat to maintain a stable temperature</strong><br>The greenhouse effect refers to the process by which the Earth's atmosphere traps some of the Sun's heat, maintaining a temperature that is suitable for life.</div>
-        <button class="toggle-exp-btn" data-target="exp6">Show Explanation</button>
+        <p class="font-semibold text-lg">11.6 What is the role of the greenhouse effect in Earth's temperature regulation?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="6" data-option="A">
+            <input type="radio" name="mcq6" value="A" class="mr-2"> A) It allows all heat to escape into space
+          </label>
+          <label class="mcq-option" data-question="6" data-option="B">
+            <input type="radio" name="mcq6" value="B" class="mr-2"> B) It blocks heat from entering the atmosphere
+          </label>
+          <label class="mcq-option" data-question="6" data-option="C">
+            <input type="radio" name="mcq6" value="C" class="mr-2"> C) It traps heat to maintain a stable temperature
+          </label>
+          <label class="mcq-option" data-question="6" data-option="D">
+            <input type="radio" name="mcq6" value="D" class="mr-2"> D) It causes immediate cooling of Earth's surface
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation6">
+          <strong>✅ Correct Answer: C</strong><br>
+          <strong>Explanation:</strong> The greenhouse effect refers to the process by which the Earth's atmosphere traps some of the Sun's heat, maintaining a temperature that is suitable for life.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(6, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(6)">Reset</button>
       </div>
 
       <!-- MCQ 11.7 -->
       <div id="q7" class="mcq-card">
-        <div class="font-bold text-teal-700">11.7</div>
-        <div class="question-text font-semibold mt-1">The Sun's heat reaches the Earth:</div>
-        <div class="options"><span class="option">A) through conduction between air particles</span><span class="option">B) through convection in space</span><span class="option">C) through radiation via electromagnetic waves ✓</span><span class="option">D) through reflection by the moon</span></div>
-        <div class="explanation" id="exp7"><strong>✅ Correct Answer: (C) through radiation via electromagnetic waves</strong><br>The Sun's heat does not reach the Earth through conduction or convection, as there is no medium between the Sun and Earth's atmosphere. Instead, heat is transferred via radiation.</div>
-        <button class="toggle-exp-btn" data-target="exp7">Show Explanation</button>
+        <p class="font-semibold text-lg">11.7 The Sun's heat reaches the Earth:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="7" data-option="A">
+            <input type="radio" name="mcq7" value="A" class="mr-2"> A) through conduction between air particles
+          </label>
+          <label class="mcq-option" data-question="7" data-option="B">
+            <input type="radio" name="mcq7" value="B" class="mr-2"> B) through convection in space
+          </label>
+          <label class="mcq-option" data-question="7" data-option="C">
+            <input type="radio" name="mcq7" value="C" class="mr-2"> C) through radiation via electromagnetic waves
+          </label>
+          <label class="mcq-option" data-question="7" data-option="D">
+            <input type="radio" name="mcq7" value="D" class="mr-2"> D) through reflection by the moon
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation7">
+          <strong>✅ Correct Answer: C</strong><br>
+          <strong>Explanation:</strong> The Sun's heat does not reach the Earth through conduction or convection, as there is no medium between the Sun and Earth's atmosphere. Instead, heat is transferred via radiation.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(7, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(7)">Reset</button>
       </div>
     </div>
 
@@ -599,27 +729,34 @@
       </table>
     </div>
 
-    <div class="highlight-box">
-      <p class="font-semibold text-lg mb-2">💡 Exam Tip:</p>
-      <p class="text-justify">For MCQs, focus on understanding key differences between conduction, convection, and radiation. Remember that radiation does not require a medium, convection occurs only in fluids, and dark/rough surfaces are best absorbers and emitters of radiation.</p>
+    <!-- Key Concepts Summary -->
+    <div class="content-section">
+      <h2>📐 Key Concepts Covered in MCQs</h2>
+      <div class="equation"><strong>Conduction:</strong> Heat transfer through direct contact between particles</div>
+      <div class="equation"><strong>Convection:</strong> Heat transfer through fluid movement (liquids and gases)</div>
+      <div class="equation"><strong>Radiation:</strong> Heat transfer through electromagnetic waves (no medium required)</div>
+      <div class="highlight-box">
+        <p class="font-semibold text-lg mb-2">💡 Exam Tip:</p>
+        <p class="text-justify">For MCQs, focus on understanding key differences between conduction, convection, and radiation. Remember that radiation does not require a medium, convection occurs only in fluids, and dark/rough surfaces are best absorbers and emitters of radiation.</p>
+      </div>
     </div>
 
     <!-- Other Chapters Dropdown (Dark Glass) -->
     <div class="text-center mt-10 mb-16">
       <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">📚 Explore Other Physics Units (10–21)</button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
-        <a href="Chapter-10-Thermal-Physics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold"><span>Unit 10</span><span>✨ Thermal Physics</span></a>
-        <a href="Chapter-11-Transfer-of-Thermal-Energy.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 11</span><span>🔥 Transfer of Thermal Energy</span></a>
-        <a href="Chapter-12-Waves.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 12</span><span>Waves</span></a>
-        <a href="Chapter-13-Sound.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 13</span><span>Sound</span></a>
-        <a href="Chapter-14-Light.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 14</span><span>Light</span></a>
-        <a href="Chapter-15-Electrostatics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 15</span><span>Electrostatics</span></a>
-        <a href="Chapter-16-Electricity.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 16</span><span>Electricity</span></a>
-        <a href="Chapter-17-Electromagnetism.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 17</span><span>Electromagnetism</span></a>
-        <a href="Chapter-18-Electromagnetic-Induction.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 18</span><span>Electromagnetic Induction & EM Waves</span></a>
-        <a href="Chapter-19-Electronics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 19</span><span>Electronics</span></a>
-        <a href="Chapter-20-Atomic-and-Nuclear-Physics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 20</span><span>Atomic and Nuclear Physics</span></a>
-        <a href="Chapter-21-Space-and-Environment.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all font-semibold"><span>Unit 21</span><span>Space and Environment</span></a>
+        <a href="Chapter-10-Thermal-Physics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 10</span><span>✨ Thermal Physics</span></a>
+        <a href="Chapter-11-Transfer-of-Thermal-Energy.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold"><span>Unit 11</span><span>🔥 Transfer of Thermal Energy</span></a>
+        <a href="Chapter-12-Waves.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 12</span><span>Waves</span></a>
+        <a href="Chapter-13-Sound.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 13</span><span>Sound</span></a>
+        <a href="Chapter-14-Light.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 14</span><span>Light</span></a>
+        <a href="Chapter-15-Electrostatics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 15</span><span>Electrostatics</span></a>
+        <a href="Chapter-16-Electricity.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 16</span><span>Electricity</span></a>
+        <a href="Chapter-17-Electromagnetism.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 17</span><span>Electromagnetism</span></a>
+        <a href="Chapter-18-Electromagnetic-Induction.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 18</span><span>Electromagnetic Induction & EM Waves</span></a>
+        <a href="Chapter-19-Electronics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 19</span><span>Electronics</span></a>
+        <a href="Chapter-20-Atomic-and-Nuclear-Physics.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 20</span><span>Atomic and Nuclear Physics</span></a>
+        <a href="Chapter-21-Space-and-Environment.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-xl shadow-lg hover:from-teal-600 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Unit 21</span><span>Space and Environment</span></a>
       </div>
       <p class="text-xs text-gray-500 mt-3">📖 Complete syllabus coverage for Class 10 Physics (PECTAA 2026) – Units 10 to 21</p>
     </div>
@@ -725,8 +862,64 @@
       const progressBar = document.getElementById('readingProgressBar');
       function updateProgressBar() { const st = window.pageYOffset || document.documentElement.scrollTop; const wh = window.innerHeight; const dh = document.documentElement.scrollHeight; const max = dh - wh; const percent = (st / max) * 100; if(progressBar) progressBar.style.width = percent + '%'; }
       window.addEventListener('scroll', updateProgressBar); window.addEventListener('resize', updateProgressBar); updateProgressBar();
-      document.querySelectorAll('.toggle-exp-btn').forEach(btn => { btn.addEventListener('click', function() { const target = document.getElementById(this.getAttribute('data-target')); if(target) { target.classList.toggle('show'); this.textContent = target.classList.contains('show') ? 'Hide Explanation' : 'Show Explanation'; } }); });
     })();
+
+    // MCQ Functions
+    function checkMCQ(questionNum, correctAnswer) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+      let selected = false;
+
+      options.forEach(opt => {
+        const radio = opt.querySelector('input[type="radio"]');
+        if (radio.checked) {
+          selected = true;
+          const userAnswer = radio.value;
+          // Reset all options for this question
+          options.forEach(o => {
+            o.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+          });
+          if (userAnswer === correctAnswer) {
+            opt.classList.add('correct');
+          } else {
+            opt.classList.add('wrong');
+            // Show correct answer
+            options.forEach(o => {
+              if (o.dataset.option === correctAnswer) {
+                o.classList.add('show-correct');
+              }
+            });
+          }
+          explanation.classList.add('show');
+        }
+      });
+
+      if (!selected) {
+        alert('Please select an option first.');
+      }
+    }
+
+    function resetMCQ(questionNum) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const radios = document.querySelectorAll(`input[name="mcq${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+
+      radios.forEach(radio => radio.checked = false);
+      options.forEach(opt => {
+        opt.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+      });
+      explanation.classList.remove('show');
+    }
+
+    // Allow clicking on label to select radio
+    document.querySelectorAll('.mcq-option').forEach(label => {
+      label.addEventListener('click', function(e) {
+        const radio = this.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+        }
+      });
+    });
   </script>
 </body>
 </html>

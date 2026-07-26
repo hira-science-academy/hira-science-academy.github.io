@@ -106,17 +106,17 @@
       background: radial-gradient(circle at 20% 30%, rgba(20, 184, 166, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.08), transparent 50%); 
       pointer-events: none; 
     }
-    .definition-box {
+    .mcq-box {
       scroll-margin-top: 85px;
-      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-      border-left: 5px solid #0f766e;
+      background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%);
+      border-left: 5px solid #eab308;
       padding: 1.5rem;
       margin: 1.5rem 0;
       border-radius: 0 12px 12px 0;
-      box-shadow: 0 4px 12px rgba(15,118,110,0.1);
+      box-shadow: 0 4px 12px rgba(234,179,8,0.1);
       transition: all 0.2s;
     }
-    .definition-box:hover {
+    .mcq-box:hover {
       transform: translateX(4px);
     }
     .content-section {
@@ -129,23 +129,6 @@
       margin-bottom: 1.5rem;
       font-weight: 700;
       font-size: 1.75rem;
-    }
-    .equation {
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 12px;
-      text-align: center;
-      font-family: 'Cambria Math', 'Times New Roman', serif;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      border: 1px solid #e2e8f0;
-    }
-    .highlight-box {
-      background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
-      border: 2px solid #0f766e;
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin: 1.5rem 0;
     }
     .back-to-top {
       position: fixed;
@@ -229,64 +212,65 @@
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
     }
-    .answer-content {
-      display: none;
-      margin-top: 1rem;
-    }
-    .answer-content.show {
+    .mcq-option {
       display: block;
-    }
-    .toggle-answer-btn {
-      margin-top: 0.75rem;
-      background-color: #e2e8f0;
-      color: #1e293b;
-      border: none;
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-      font-weight: 500;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem 0;
+      border-radius: 8px;
       cursor: pointer;
       transition: all 0.2s;
-      display: inline-block;
+      border: 1px solid #e2e8f0;
     }
-    .toggle-answer-btn:hover {
-      background-color: #cbd5e1;
-      transform: translateY(-1px);
+    .mcq-option:hover {
+      background-color: #e2e8f0;
     }
-    .mcq-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-    .mcq-table th {
-      background: #0f766e;
+    .mcq-option.selected {
+      background-color: #0f766e;
       color: white;
-      padding: 10px 8px;
-      text-align: left;
-      font-weight: 600;
+      border-color: #0f766e;
     }
-    .mcq-table td {
-      padding: 10px 8px;
-      border-bottom: 1px solid #e2e8f0;
-      vertical-align: top;
+    .mcq-option.correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
     }
-    .mcq-table tr:nth-child(even) {
-      background-color: #f8fafc;
+    .mcq-option.wrong {
+      background-color: #ef4444;
+      color: white;
+      border-color: #ef4444;
     }
-    .mcq-table tr:hover {
-      background-color: #e6fffa;
-    }
-    .mcq-answer {
-      font-weight: 600;
-      color: #0f766e;
+    .mcq-option.show-correct {
+      background-color: #22c55e;
+      color: white;
+      border-color: #22c55e;
     }
     .explanation-box {
-      background: #f0fdf4;
+      display: none;
+      margin-top: 0.75rem;
+      padding: 0.75rem 1rem;
+      background-color: #f8fafc;
+      border-radius: 8px;
       border-left: 4px solid #0f766e;
-      padding: 1rem;
-      margin-top: 0.5rem;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.9rem;
+    }
+    .explanation-box.show {
+      display: block;
+    }
+    .equation {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 12px;
+      text-align: center;
+      font-family: 'Cambria Math', 'Times New Roman', serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
+    }
+    .highlight-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+      border: 2px solid #0f766e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
     }
     .hub-button {
       transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -359,6 +343,33 @@
       gap: 8px;
       font-size: 0.9rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .mcq-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .mcq-table th {
+      background: #0f766e;
+      color: white;
+      padding: 10px 8px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .mcq-table td {
+      padding: 10px 8px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+    .mcq-table tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .mcq-table tr:hover {
+      background-color: #e6fffa;
+    }
+    .mcq-answer {
+      font-weight: 600;
+      color: #0f766e;
     }
   </style>
 
@@ -504,12 +515,12 @@
     </nav>
   </div>
 
-  <main class="max-w-5xl mx-auto px-4 py-8 bg-white rounded-2xl shadow-lg mt-4 mb-16 border border-gray-100">
+  <main class="max-w-4xl mx-auto px-4 py-8 bg-white rounded-2xl shadow-lg mt-4 mb-16 border border-gray-100">
     <div class="text-center mb-8">
       <p class="text-teal-700 font-semibold text-xl mb-2 text-center">🎵 Chapter 13: Sound – Multiple Choice Questions</p>
       <p class="mt-2 text-gray-600 text-center max-w-3xl mx-auto">Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska. Based on <strong>PECTAA 2026 syllabus (National Curriculum 2023)</strong>.</p>
       <div class="mt-3 max-w-3xl mx-auto bg-teal-50 rounded-lg p-3 border border-teal-200">
-        <p class="text-gray-700 text-justify"><span class="font-semibold text-teal-700">📖 What's Inside:</span> This section covers Multiple Choice Questions from Chapter 13 Sound including <strong>sound production, echo, longitudinal waves, speed of sound in different media, acoustic protection, and audible frequency range</strong>. Each MCQ is presented with the <strong>correct answer and detailed explanation</strong> as per the official PECTAA 2026 Physics curriculum. Perfect for Punjab Boards (Lahore, Gujranwala, Multan, etc.) and all BISE boards across Pakistan.</p>
+        <p class="text-gray-700 text-justify"><span class="font-semibold text-teal-700">📖 What's Inside:</span> This section covers Multiple Choice Questions from Chapter 13 Sound including <strong>sound production, echo, longitudinal waves, speed of sound in different media, acoustic protection, and audible frequency range</strong>. Each MCQ is presented with the <strong>correct answer and detailed explanation</strong> as per the official PECTAA 2026 Physics curriculum.</p>
       </div>
     </div>
 
@@ -548,120 +559,237 @@
       <p class="text-sm text-gray-500 mt-3">Sound covers waves, echo, ultrasound, SONAR, pitch, loudness, and acoustics. Includes solved examples and numerical problems.</p>
     </div>
 
-    <!-- MCQs Table -->
-    <div class="content-section">
-      <h2>📝 Multiple Choice Questions</h2>
-      <div class="overflow-x-auto">
-        <table class="mcq-table">
-          <thead>
-            <tr>
-              <th style="width:8%;">Q.No</th>
-              <th style="width:32%;">Question</th>
-              <th style="width:15%;">A</th>
-              <th style="width:15%;">B</th>
-              <th style="width:15%;">C</th>
-              <th style="width:15%;">D</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>13.1</strong></td>
-              <td>What is required for the production of sound?</td>
-              <td>A vacuum</td>
-              <td class="mcq-answer">Vibrations of a medium ✓</td>
-              <td>Only air</td>
-              <td>Light waves</td>
-            </tr>
-            <tr>
-              <td><strong>13.2</strong></td>
-              <td>An echo is produced due to:</td>
-              <td>refraction of sound waves</td>
-              <td class="mcq-answer">reflection of sound waves ✓</td>
-              <td>diffraction of sound waves</td>
-              <td>absorption of sound waves</td>
-            </tr>
-            <tr>
-              <td><strong>13.3</strong></td>
-              <td>An example of a longitudinal wave is:</td>
-              <td>light wave</td>
-              <td>water wave</td>
-              <td class="mcq-answer">sound wave ✓</td>
-              <td>radiowave</td>
-            </tr>
-            <tr>
-              <td><strong>13.4</strong></td>
-              <td>In which medium does sound travel the fastest?</td>
-              <td>Gases</td>
-              <td>Liquids</td>
-              <td class="mcq-answer">Solids ✓</td>
-              <td>Vacuum</td>
-            </tr>
-            <tr>
-              <td><strong>13.5</strong></td>
-              <td>What is the approximate speed of sound in air?</td>
-              <td>150 ms⁻¹</td>
-              <td class="mcq-answer">330-350 ms⁻¹ ✓</td>
-              <td>500 ms⁻¹</td>
-              <td>1,000 ms⁻¹</td>
-            </tr>
-            <tr>
-              <td><strong>13.6</strong></td>
-              <td>Why is acoustic protection important in building design?</td>
-              <td>To increase noise pollution</td>
-              <td class="mcq-answer">To reduce echo and improve sound quality ✓</td>
-              <td>To amplify sound</td>
-              <td>To increase the speed of sound</td>
-            </tr>
-            <tr>
-              <td><strong>13.7</strong></td>
-              <td>For a normal person, the audible frequency range for sound waves lies between:</td>
-              <td>10 Hz and 10 kHz</td>
-              <td class="mcq-answer">20 Hz and 20 kHz ✓</td>
-              <td>25 Hz and 25 kHz</td>
-              <td>30 Hz and 30 kHz</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- Quick Jump to MCQs -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-teal-700 mb-4">📑 Quick Jump to MCQs</h2>
+      <div class="flex flex-wrap gap-2">
+        <a href="#mcq1" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q13.1</a>
+        <a href="#mcq2" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q13.2</a>
+        <a href="#mcq3" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q13.3</a>
+        <a href="#mcq4" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q13.4</a>
+        <a href="#mcq5" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q13.5</a>
+        <a href="#mcq6" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q13.6</a>
+        <a href="#mcq7" class="bg-gray-100 hover:bg-teal-600 hover:text-white text-gray-700 font-medium py-2 px-4 rounded-lg transition-all duration-300">Q13.7</a>
       </div>
     </div>
 
-    <!-- Answer Key with Explanations -->
+    <!-- MCQs with Radio Buttons (Interactive) -->
+    <div class="content-section" id="questions-section">
+      <h2>📖 Multiple Choice Questions & Answers (PECTAA 2026)</h2>
+
+      <!-- MCQ 13.1 -->
+      <div id="mcq1" class="mcq-box">
+        <p class="font-semibold text-lg">13.1 What is required for the production of sound?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="1" data-option="A">
+            <input type="radio" name="mcq1" value="A" class="mr-2"> A) A vacuum
+          </label>
+          <label class="mcq-option" data-question="1" data-option="B">
+            <input type="radio" name="mcq1" value="B" class="mr-2"> B) Vibrations of a medium
+          </label>
+          <label class="mcq-option" data-question="1" data-option="C">
+            <input type="radio" name="mcq1" value="C" class="mr-2"> C) Only air
+          </label>
+          <label class="mcq-option" data-question="1" data-option="D">
+            <input type="radio" name="mcq1" value="D" class="mr-2"> D) Light waves
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation1">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> Sound is a mechanical wave produced by vibrating bodies. It requires a material medium (solid, liquid, or gas) for its propagation and cannot travel through a vacuum.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(1, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(1)">Reset</button>
+      </div>
+
+      <!-- MCQ 13.2 -->
+      <div id="mcq2" class="mcq-box">
+        <p class="font-semibold text-lg">13.2 An echo is produced due to:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="2" data-option="A">
+            <input type="radio" name="mcq2" value="A" class="mr-2"> A) refraction of sound waves
+          </label>
+          <label class="mcq-option" data-question="2" data-option="B">
+            <input type="radio" name="mcq2" value="B" class="mr-2"> B) reflection of sound waves
+          </label>
+          <label class="mcq-option" data-question="2" data-option="C">
+            <input type="radio" name="mcq2" value="C" class="mr-2"> C) diffraction of sound waves
+          </label>
+          <label class="mcq-option" data-question="2" data-option="D">
+            <input type="radio" name="mcq2" value="D" class="mr-2"> D) absorption of sound waves
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation2">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> An echo is simply the repetition of sound caused by the reflection of sound waves from a hard surface or obstacle back to the listener.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(2, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(2)">Reset</button>
+      </div>
+
+      <!-- MCQ 13.3 -->
+      <div id="mcq3" class="mcq-box">
+        <p class="font-semibold text-lg">13.3 An example of a longitudinal wave is:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="3" data-option="A">
+            <input type="radio" name="mcq3" value="A" class="mr-2"> A) light wave
+          </label>
+          <label class="mcq-option" data-question="3" data-option="B">
+            <input type="radio" name="mcq3" value="B" class="mr-2"> B) water wave
+          </label>
+          <label class="mcq-option" data-question="3" data-option="C">
+            <input type="radio" name="mcq3" value="C" class="mr-2"> C) sound wave
+          </label>
+          <label class="mcq-option" data-question="3" data-option="D">
+            <input type="radio" name="mcq3" value="D" class="mr-2"> D) radiowave
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation3">
+          <strong>✅ Correct Answer: C</strong><br>
+          <strong>Explanation:</strong> Sound waves are longitudinal waves because the particles of the medium vibrate back and forth along the same direction in which the wave travels. Light, water, and radio waves are transverse waves.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(3, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(3)">Reset</button>
+      </div>
+
+      <!-- MCQ 13.4 -->
+      <div id="mcq4" class="mcq-box">
+        <p class="font-semibold text-lg">13.4 In which medium does sound travel the fastest?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="4" data-option="A">
+            <input type="radio" name="mcq4" value="A" class="mr-2"> A) Gases
+          </label>
+          <label class="mcq-option" data-question="4" data-option="B">
+            <input type="radio" name="mcq4" value="B" class="mr-2"> B) Liquids
+          </label>
+          <label class="mcq-option" data-question="4" data-option="C">
+            <input type="radio" name="mcq4" value="C" class="mr-2"> C) Solids
+          </label>
+          <label class="mcq-option" data-question="4" data-option="D">
+            <input type="radio" name="mcq4" value="D" class="mr-2"> D) Vacuum
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation4">
+          <strong>✅ Correct Answer: C</strong><br>
+          <strong>Explanation:</strong> Sound travels 5 times faster in liquids and 15 times faster in solids than in gases.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(4, 'C')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(4)">Reset</button>
+      </div>
+
+      <!-- MCQ 13.5 -->
+      <div id="mcq5" class="mcq-box">
+        <p class="font-semibold text-lg">13.5 What is the approximate speed of sound in air?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="5" data-option="A">
+            <input type="radio" name="mcq5" value="A" class="mr-2"> A) \( 150 \, \text{ms}^{-1} \)
+          </label>
+          <label class="mcq-option" data-question="5" data-option="B">
+            <input type="radio" name="mcq5" value="B" class="mr-2"> B) \( 330-350 \, \text{ms}^{-1} \)
+          </label>
+          <label class="mcq-option" data-question="5" data-option="C">
+            <input type="radio" name="mcq5" value="C" class="mr-2"> C) \( 500 \, \text{ms}^{-1} \)
+          </label>
+          <label class="mcq-option" data-question="5" data-option="D">
+            <input type="radio" name="mcq5" value="D" class="mr-2"> D) \( 1,000 \, \text{ms}^{-1} \)
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation5">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> The speed of sound in air at standard room temperature and pressure is approximately \( 330-343 \, \text{ms}^{-1} \).
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(5, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(5)">Reset</button>
+      </div>
+
+      <!-- MCQ 13.6 -->
+      <div id="mcq6" class="mcq-box">
+        <p class="font-semibold text-lg">13.6 Why is acoustic protection important in building design?</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="6" data-option="A">
+            <input type="radio" name="mcq6" value="A" class="mr-2"> A) To increase noise pollution
+          </label>
+          <label class="mcq-option" data-question="6" data-option="B">
+            <input type="radio" name="mcq6" value="B" class="mr-2"> B) To reduce echo and improve sound quality
+          </label>
+          <label class="mcq-option" data-question="6" data-option="C">
+            <input type="radio" name="mcq6" value="C" class="mr-2"> C) To amplify sound
+          </label>
+          <label class="mcq-option" data-question="6" data-option="D">
+            <input type="radio" name="mcq6" value="D" class="mr-2"> D) To increase the speed of sound
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation6">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> Acoustic protection or insulation uses soft, porous materials to absorb unwanted sound waves, which minimizes reflections (echoes) and improves clarity inside a building.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(6, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(6)">Reset</button>
+      </div>
+
+      <!-- MCQ 13.7 -->
+      <div id="mcq7" class="mcq-box">
+        <p class="font-semibold text-lg">13.7 For a normal person, the audible frequency range for sound waves lies between:</p>
+        <div class="mt-3">
+          <label class="mcq-option" data-question="7" data-option="A">
+            <input type="radio" name="mcq7" value="A" class="mr-2"> A) 10 Hz and 10 kHz
+          </label>
+          <label class="mcq-option" data-question="7" data-option="B">
+            <input type="radio" name="mcq7" value="B" class="mr-2"> B) 20 Hz and 20 kHz
+          </label>
+          <label class="mcq-option" data-question="7" data-option="C">
+            <input type="radio" name="mcq7" value="C" class="mr-2"> C) 25 Hz and 25 kHz
+          </label>
+          <label class="mcq-option" data-question="7" data-option="D">
+            <input type="radio" name="mcq7" value="D" class="mr-2"> D) 30 Hz and 30 kHz
+          </label>
+        </div>
+        <div class="explanation-box" id="explanation7">
+          <strong>✅ Correct Answer: B</strong><br>
+          <strong>Explanation:</strong> The standard audible frequency range for a healthy human ear is between 20 Hz and 20,000 Hz (20 kHz). Frequencies below or above this range are inaudible.
+        </div>
+        <button class="mt-3 bg-teal-600 hover:bg-teal-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(7, 'B')">Check Answer</button>
+        <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(7)">Reset</button>
+      </div>
+    </div>
+
+    <!-- Answer Key Summary Table -->
     <div class="content-section">
       <h2>🔑 Answer Key with Explanations</h2>
       
-      <div class="definition-box">
+      <div class="mcq-box" style="background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); border-left-color: #eab308;">
         <strong>13.1 Correct Answer: (B) Vibrations of a medium</strong>
-        <div class="explanation-box">Sound is a mechanical wave produced by vibrating bodies. It requires a material medium (solid, liquid, or gas) for its propagation and cannot travel through a vacuum.</div>
+        <div style="margin-top:0.5rem; padding:0.75rem; background:#f8fafc; border-radius:8px; border-left:4px solid #0f766e;">Sound is a mechanical wave produced by vibrating bodies. It requires a material medium (solid, liquid, or gas) for its propagation and cannot travel through a vacuum.</div>
       </div>
 
-      <div class="definition-box">
+      <div class="mcq-box" style="background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); border-left-color: #eab308;">
         <strong>13.2 Correct Answer: (B) reflection of sound waves</strong>
-        <div class="explanation-box">An echo is simply the repetition of sound caused by the reflection of sound waves from a hard surface or obstacle back to the listener.</div>
+        <div style="margin-top:0.5rem; padding:0.75rem; background:#f8fafc; border-radius:8px; border-left:4px solid #0f766e;">An echo is simply the repetition of sound caused by the reflection of sound waves from a hard surface or obstacle back to the listener.</div>
       </div>
 
-      <div class="definition-box">
+      <div class="mcq-box" style="background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); border-left-color: #eab308;">
         <strong>13.3 Correct Answer: (C) sound wave</strong>
-        <div class="explanation-box">Sound waves are longitudinal waves because the particles of the medium vibrate back and forth along the same direction in which the wave travels. Light, water, and radio waves are transverse waves.</div>
+        <div style="margin-top:0.5rem; padding:0.75rem; background:#f8fafc; border-radius:8px; border-left:4px solid #0f766e;">Sound waves are longitudinal waves because the particles of the medium vibrate back and forth along the same direction in which the wave travels. Light, water, and radio waves are transverse waves.</div>
       </div>
 
-      <div class="definition-box">
+      <div class="mcq-box" style="background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); border-left-color: #eab308;">
         <strong>13.4 Correct Answer: (C) Solids</strong>
-        <div class="explanation-box">It moves 5 times faster in liquids and 15 times faster in solids than in gases.</div>
+        <div style="margin-top:0.5rem; padding:0.75rem; background:#f8fafc; border-radius:8px; border-left:4px solid #0f766e;">Sound travels 5 times faster in liquids and 15 times faster in solids than in gases.</div>
       </div>
 
-      <div class="definition-box">
-        <strong>13.5 Correct Answer: (B) 330-350 ms⁻¹</strong>
-        <div class="explanation-box">The speed of sound in air at standard room temperature and pressure is approximately 330-343 ms⁻¹, which falls squarely within the range of 330 to 350 ms⁻¹.</div>
+      <div class="mcq-box" style="background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); border-left-color: #eab308;">
+        <strong>13.5 Correct Answer: (B) \( 330-350 \, \text{ms}^{-1} \)</strong>
+        <div style="margin-top:0.5rem; padding:0.75rem; background:#f8fafc; border-radius:8px; border-left:4px solid #0f766e;">The speed of sound in air at standard room temperature and pressure is approximately \( 330-343 \, \text{ms}^{-1} \).</div>
       </div>
 
-      <div class="definition-box">
+      <div class="mcq-box" style="background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); border-left-color: #eab308;">
         <strong>13.6 Correct Answer: (B) To reduce echo and improve sound quality</strong>
-        <div class="explanation-box">Acoustic protection or insulation uses soft, porous materials to absorb unwanted sound waves, which minimizes reflections (echoes) and improves clarity inside a building.</div>
+        <div style="margin-top:0.5rem; padding:0.75rem; background:#f8fafc; border-radius:8px; border-left:4px solid #0f766e;">Acoustic protection or insulation uses soft, porous materials to absorb unwanted sound waves, which minimizes reflections (echoes) and improves clarity inside a building.</div>
       </div>
 
-      <div class="definition-box">
+      <div class="mcq-box" style="background: linear-gradient(135deg, #fefce8 0%, #fef9c3 100%); border-left-color: #eab308;">
         <strong>13.7 Correct Answer: (B) 20 Hz and 20 kHz</strong>
-        <div class="explanation-box">The standard audible frequency range for a healthy human ear is between 20 Hz and 20,000 Hz (20 kHz). Frequencies below or above this range are inaudible.</div>
+        <div style="margin-top:0.5rem; padding:0.75rem; background:#f8fafc; border-radius:8px; border-left:4px solid #0f766e;">The standard audible frequency range for a healthy human ear is between 20 Hz and 20,000 Hz (20 kHz). Frequencies below or above this range are inaudible.</div>
       </div>
     </div>
 
@@ -671,6 +799,13 @@
       <div class="equation"><strong>Wave Equation:</strong> \( v = f\lambda \)</div>
       <div class="equation"><strong>Time Period:</strong> \( T = \frac{1}{f} \)</div>
       <div class="equation"><strong>SONAR / Echo Distance:</strong> \( d = \frac{v \times t}{2} \)</div>
+    </div>
+
+    <div class="highlight-box">
+      <p class="font-semibold text-lg mb-2 text-justify">💡 Exam Tip:</p>
+      <p class="text-justify">
+        For MCQs, focus on key definitions, formulas, and conceptual understanding. Pay attention to the distinction between longitudinal and transverse waves, speed of sound in different media, and the audible frequency range. These MCQs follow the PECTAA 2026 pattern and are prepared by Subject Specialist Muhammad Tayyab.
+      </p>
     </div>
 
     <!-- Other Chapters Dropdown (Dark Glass) -->
@@ -732,13 +867,6 @@
       <p class="text-xs text-gray-500 mt-3">📖 Complete syllabus coverage for Class 10 Physics (PECTAA 2026) – Units 10 to 21</p>
     </div>
 
-    <div class="highlight-box">
-      <p class="font-semibold text-lg mb-2 text-justify">💡 Exam Tip:</p>
-      <p class="text-justify">
-        For MCQs, focus on key definitions, formulas, and conceptual understanding. Pay attention to the distinction between longitudinal and transverse waves, speed of sound in different media, and the audible frequency range. These MCQs follow the PECTAA 2026 pattern and are prepared by Subject Specialist Muhammad Tayyab.
-      </p>
-    </div>
-
     <!-- Footer back link - Dark Glass -->
     <div class="mt-12 text-center text-gray-600">
       <p class="mb-2">Created by <strong class="text-teal-700">Hira Science Academy</strong> | Aligned with <strong class="text-teal-700">PECTAA 2026 Syllabus</strong></p>
@@ -751,7 +879,7 @@
     </div>
   </main>
 
-  <!-- Internal Linking Section -->
+  <!-- 🧭 Internal Linking Section -->
   <section class="max-w-7xl mx-auto px-6 pb-14">
     <details class="bg-gradient-to-br from-teal-50 via-white to-cyan-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
       <summary class="text-2xl md:text-3xl font-bold text-teal-800 cursor-pointer hover:text-teal-600 list-none flex items-center justify-center gap-3 text-center">
@@ -786,7 +914,7 @@
           <!-- Definitions & Key Resources -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-teal-700 mb-6 flex items-center"><span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources</h3>
-            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-teal-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-teal-600 font-semibold hover:text-teal-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul></nav>
           </article>
           <!-- Support & Policies -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
@@ -853,7 +981,7 @@
         </div>
       </div>
       <div class="mt-12 border-t border-teal-800/50 pt-6 text-center">
-        <p class="text-base text-gray-200">&copy; 2026-2027 Hira Science Academy. All rights reserved. | Class 10 Physics Notes 2026 PECTAA Syllabus</p>
+        <p class="text-base text-gray-200">&copy; 2025-2026 Hira Science Academy. All rights reserved. | Class 10 Physics Notes 2026 PECTAA Syllabus</p>
         <p class="text-sm text-gray-300 mt-2">✍️ Prepared by <strong class="text-amber-300">Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska</p>
       </div>
     </div>
@@ -891,13 +1019,70 @@
         const winHeight = window.innerHeight;
         const docHeight = document.documentElement.scrollHeight;
         const maxScroll = docHeight - winHeight;
-        const scrollPercent = (scrollTop / maxScroll) * 100;
+        const scrollPercent = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
         if (progressBar) progressBar.style.width = scrollPercent + '%';
       }
       window.addEventListener('scroll', updateProgressBar);
       window.addEventListener('resize', updateProgressBar);
       updateProgressBar();
     })();
+
+    // MCQ Functions
+    function checkMCQ(questionNum, correctAnswer) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+      let selected = false;
+
+      options.forEach(opt => {
+        const radio = opt.querySelector('input[type="radio"]');
+        if (radio.checked) {
+          selected = true;
+          const userAnswer = radio.value;
+          // Reset all options for this question
+          options.forEach(o => {
+            o.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+          });
+          if (userAnswer === correctAnswer) {
+            opt.classList.add('correct');
+          } else {
+            opt.classList.add('wrong');
+            // Show correct answer
+            options.forEach(o => {
+              if (o.dataset.option === correctAnswer) {
+                o.classList.add('show-correct');
+              }
+            });
+          }
+          explanation.classList.add('show');
+        }
+      });
+
+      if (!selected) {
+        alert('Please select an option first.');
+      }
+    }
+
+    function resetMCQ(questionNum) {
+      const options = document.querySelectorAll(`label[data-question="${questionNum}"]`);
+      const radios = document.querySelectorAll(`input[name="mcq${questionNum}"]`);
+      const explanation = document.getElementById(`explanation${questionNum}`);
+
+      radios.forEach(radio => radio.checked = false);
+      options.forEach(opt => {
+        opt.classList.remove('selected', 'correct', 'wrong', 'show-correct');
+      });
+      explanation.classList.remove('show');
+    }
+
+    // Allow clicking on label to select radio
+    document.querySelectorAll('.mcq-option').forEach(label => {
+      label.addEventListener('click', function(e) {
+        const radio = this.querySelector('input[type="radio"]');
+        if (radio) {
+          radio.checked = true;
+        }
+      });
+    });
   </script>
 </body>
 </html>
