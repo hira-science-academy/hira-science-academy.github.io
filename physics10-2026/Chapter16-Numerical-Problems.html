@@ -93,28 +93,27 @@
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
 
   <style>
+    :root { --primary-teal: #0d9488; --primary-teal-dark: #0f766e; --neon-glow: rgba(20, 184, 166, 0.3); }
     body {
       font-family: 'Inter', 'Poppins', sans-serif;
       background-color: #f9fafb;
-    }
-    html {
+      color: #1f2937;
       scroll-behavior: smooth;
+    }
+    .header-gradient { 
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #042f2e 100%); 
+      position: relative; 
+      overflow: hidden; 
+    }
+    .header-gradient::before { 
+      content: ''; 
+      position: absolute; 
+      inset: 0; 
+      background: radial-gradient(circle at 20% 30%, rgba(20, 184, 166, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(16, 185, 129, 0.08), transparent 50%); 
+      pointer-events: none; 
     }
     .numerical-box {
       scroll-margin-top: 85px;
-    }
-    .content-section {
-      margin-bottom: 2.5rem;
-    }
-    .content-section h2 {
-      color: #0f766e;
-      border-bottom: 3px solid #0f766e;
-      padding-bottom: 0.75rem;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-      font-size: 1.75rem;
-    }
-    .numerical-box {
       background: #ffffff;
       border: 1px solid #e2e8f0;
       border-left: 5px solid #0f766e;
@@ -220,13 +219,14 @@
       color: #334155;
     }
     .equation {
-      background: #ffffff;
-      padding: 12px;
-      border-radius: 8px;
-      border: 1px solid #f1f5f9;
-      margin: 10px 0;
-      overflow-x: auto;
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 12px;
       text-align: center;
+      font-family: 'Cambria Math', 'Times New Roman', serif;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #e2e8f0;
     }
     .ans-box {
       background: linear-gradient(135deg, #f0fdf4, #dcfce7);
@@ -251,47 +251,16 @@
       color: #713f12;
       line-height: 1.5;
     }
-    .toggle-answer-btn {
-      background: #0f766e;
-      color: #ffffff;
-      border: none;
-      padding: 8px 18px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      margin-top: 0.75rem;
+    .content-section {
+      margin-bottom: 2.5rem;
     }
-    .toggle-answer-btn:hover {
-      background: #115e59;
-    }
-    .toggle-answer-btn:active {
-      transform: scale(0.98);
-    }
-    .example-box {
-      border-left-color: #3b82f6 !important;
-    }
-    .example-badge {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
-      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;
-    }
-    .example-btn {
-      background: #3b82f6 !important;
-    }
-    .example-btn:hover {
-      background: #2563eb !important;
-    }
-    .equation {
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      padding: 1.5rem;
-      margin: 1.5rem 0;
-      border-radius: 12px;
-      text-align: center;
-      font-family: 'Cambria Math', 'Times New Roman', serif;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-      border: 1px solid #e2e8f0;
+    .content-section h2 {
+      color: #0f766e;
+      border-bottom: 3px solid #0f766e;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      font-size: 1.75rem;
     }
     .highlight-box {
       background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
@@ -319,14 +288,10 @@
       transition: all 0.3s ease;
       z-index: 1000;
     }
-    .back-to-top:hover {
-      transform: translateY(-3px);
-    }
-    .back-to-top.show {
-      display: flex;
-    }
+    .back-to-top:hover { transform: translateY(-3px); }
+    .back-to-top.show { display: flex; }
     .btn-view {
-      background-color: #0f766e;
+      background: linear-gradient(135deg, #0f172a, #1e293b) !important;
       color: white;
       padding: 0.5rem 0.9rem;
       border-radius: 8px;
@@ -336,13 +301,16 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      box-shadow: 0 2px 5px rgba(15,118,110,0.2);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       text-decoration: none;
+      border: 1px solid rgba(20, 184, 166, 0.2);
     }
     .btn-view:hover {
-      background-color: #0d9488;
+      background: linear-gradient(135deg, #0f172a, #0d9488) !important;
       transform: translateY(-2px);
       color: white;
+      box-shadow: 0 6px 25px rgba(13, 148, 136, 0.25);
+      border-color: rgba(20, 184, 166, 0.4);
     }
     .resources-grid {
       display: grid;
@@ -382,6 +350,110 @@
     }
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
+    }
+    .toggle-answer-btn {
+      background: #0f766e;
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin-top: 0.75rem;
+    }
+    .toggle-answer-btn:hover {
+      background: #115e59;
+    }
+    .toggle-answer-btn:active {
+      transform: scale(0.98);
+    }
+    .example-box {
+      border-left-color: #3b82f6 !important;
+    }
+    .example-badge {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+      box-shadow: 0 2px 4px rgba(59, 130, 246, 0.2) !important;
+    }
+    .example-btn {
+      background: #3b82f6 !important;
+    }
+    .example-btn:hover {
+      background: #2563eb !important;
+    }
+    .dark-glass-btn {
+      background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      color: white !important;
+    }
+    .dark-glass-btn:hover {
+      background: linear-gradient(135deg, #0f172a, #0d9488) !important;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(13, 148, 136, 0.25);
+      border-color: rgba(20, 184, 166, 0.5);
+      color: white !important;
+    }
+    .homepage-btn {
+      background: linear-gradient(135deg, #0f172a, #1e293b) !important;
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      color: white !important;
+    }
+    .homepage-btn:hover {
+      background: linear-gradient(135deg, #0f172a, #0d9488) !important;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(13, 148, 136, 0.25);
+      border-color: rgba(20, 184, 166, 0.5);
+      color: white !important;
+    }
+    .footer-dark-glass {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #042f2e 100%);
+      border-top: 1px solid rgba(20, 184, 166, 0.15);
+    }
+    .author-credit-badge {
+      background: rgba(13, 148, 136, 0.25);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(20, 184, 166, 0.3);
+      border-radius: 50px;
+      padding: 0.5rem 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .hub-button {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      border: 1px solid rgba(20, 184, 166, 0.25);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+      color: white !important;
+    }
+    .hub-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(20, 184, 166, 0.15), transparent);
+      transition: left 0.6s ease;
+    }
+    .hub-button:hover::before { left: 100%; }
+    .hub-button:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 40px rgba(13, 148, 136, 0.25), 0 0 60px rgba(13, 148, 136, 0.1);
+      border-color: rgba(20, 184, 166, 0.5);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      color: white !important;
     }
   </style>
 
@@ -432,14 +504,14 @@
     <div class="reading-progress-bar" id="readingProgressBar"></div>
   </div>
 
-  <!-- Navigation Bar -->
+  <!-- Navigation Bar (Dark Glassmorphic) -->
   <nav class="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
           <a href="https://hiraacademy.com.pk/" class="flex items-center gap-3 group transition duration-300">
             <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition">
-            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-teal-600 to-cyan-600 bg-clip-text text-transparent">Hira Science Academy</span>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-teal-700 to-emerald-700 bg-clip-text text-transparent">Hira Science Academy</span>
           </a>
         </div>
         <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
@@ -472,11 +544,44 @@
     </div>
   </nav>
 
-  <header class="bg-gradient-to-r from-teal-700 to-teal-800 text-white py-8 text-center shadow-xl">
-    <h1 class="text-3xl font-bold mb-3">Unit 16: Electricity – Numerical Problems & Solutions</h1>
-    <p class="text-lg opacity-90">
-      <a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="text-amber-300 hover:text-amber-200 transition-colors duration-300 font-medium">Class 10 Physics Notes (New 2026)</a> | Unit 16 – Numerical Problems | PECTAA Syllabus
-    </p>
+  <!-- Header (Dark Glassmorphic with Neon Accents) -->
+  <header class="header-gradient text-white relative py-20 md:py-28 overflow-hidden text-center shadow-lg">
+    <!-- Neon glow orbs -->
+    <div class="absolute top-0 left-0 w-80 h-80 bg-teal-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    
+    <!-- Clean Grid Pattern Overlay -->
+    <div class="absolute inset-0 pointer-events-none" 
+         style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 40px 40px;">
+    </div>
+
+    <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 tracking-tight bg-gradient-to-r from-white via-slate-100 to-teal-200 bg-clip-text text-transparent text-center">
+        Unit 16: Electricity
+      </h1>
+      
+      <p class="text-xl text-teal-400 mb-2 font-medium text-center">
+        Numerical Problems & Solutions
+      </p>
+      
+      <p class="text-lg text-emerald-300/80 mb-6 text-center">
+        Based on National Curriculum 2023 | PECTAA 2026 Syllabus
+      </p>
+
+      <div class="author-credit-badge inline-flex items-center gap-2 bg-slate-900/80 backdrop-blur-md border border-teal-500/30 px-5 py-2.5 rounded-full mb-4 shadow-xl mx-auto">
+        <span class="text-xl">✍️</span>
+        <span class="font-semibold text-slate-100">Prepared by <span class="text-amber-300 font-bold text-lg">Muhammad Tayyab</span></span>
+      </div>
+      
+      <p class="text-teal-300/80 text-sm md:text-base text-center">
+        🏫 Subject Specialist Physics | Govt Christian High School Daska
+      </p>
+    </div>
+
+    <!-- Section divider blending into the content below -->
+    <svg class="absolute bottom-0 left-0 w-full text-slate-50" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+      <path fill="currentColor" d="M0,32 C240,60 480,0 720,16 C960,32 1200,60 1440,24 L1440,60 L0,60 Z"></path>
+    </svg>
   </header>
 
   <!-- Breadcrumb Navigation -->
@@ -494,14 +599,13 @@
 
   <main class="max-w-4xl mx-auto px-4 py-8 bg-white rounded-2xl shadow-lg mt-4 mb-16 border border-gray-100">
     <div class="text-center mb-8">
-      <p class="text-teal-700 font-semibold text-xl mb-2">⚡ Chapter 16: Electricity – Numerical Problems</p>
+      <p class="text-teal-700 font-semibold text-xl mb-2 text-center">⚡ Chapter 16: Electricity – Numerical Problems</p>
       <p class="mt-2 text-gray-600 text-center max-w-3xl mx-auto">Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska. Based on <strong>PECTAA 2026 syllabus (National Curriculum 2023)</strong>.</p>
       <div class="mt-3 max-w-3xl mx-auto bg-teal-50 rounded-lg p-3 border border-teal-200">
         <p class="text-gray-700 text-justify"><span class="font-semibold text-teal-700">📖 What's Inside:</span> This section covers numerical problems from Chapter 16 Electricity including <strong>current, resistance, series and parallel circuits, e.m.f., power, energy, and cost calculations</strong>. Each problem is presented with <strong>Given Data, To Find, and step-by-step Solution</strong> as per the official PECTAA 2026 Physics curriculum. Perfect for Punjab Boards (Lahore, Gujranwala, Multan, etc.) and all BISE boards across Pakistan.</p>
       </div>
     </div>
 
-    
     <!-- Embedded PDF (Google Drive) -->
     <div class="flex justify-center mb-12">
       <div class="w-full" style="height: 80vh; max-height: 700px;">
@@ -516,10 +620,10 @@
       </div>
     </div>
 
-    <!-- DOWNLOAD PDF BUTTON -->
+    <!-- DOWNLOAD PDF BUTTON (Dark Glass) -->
     <div class="flex justify-center mb-5">
       <a href="https://drive.google.com/uc?export=download&id=1P4jwtUuoJwBuQbRBe-zaKPpYR6CEtG0g" 
-         class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
+         class="dark-glass-btn inline-flex items-center gap-2 font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
         ⬇️ Download PDF (Numerical Problems)
       </a>
     </div>
@@ -884,9 +988,9 @@
       <div class="equation"><strong>Electricity Cost:</strong> \( Cost = \frac{P(W) \times t(h) \times Price}{1000} \)</div>
     </div>
 
-    <!-- Other Chapters Dropdown (Units 10–21) -->
+    <!-- Other Chapters Dropdown (Dark Glass) -->
     <div class="text-center mt-10 mb-16">
-      <button id="toggleChapters" class="px-8 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-white rounded-xl shadow-xl hover:from-teal-600 hover:to-cyan-700 transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
+      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
         📚 Explore Other Physics Units (10–21)
       </button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
@@ -950,12 +1054,12 @@
       </p>
     </div>
 
-    <!-- Footer back link -->
+    <!-- Footer back link - Dark Glass -->
     <div class="mt-12 text-center text-gray-600">
       <p class="mb-2">Created by <strong class="text-teal-700">Hira Science Academy</strong> | Aligned with <strong class="text-teal-700">PECTAA 2026 Syllabus</strong></p>
       <p class="mt-6">
         <a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" 
-           class="inline-block px-6 py-3 bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-semibold rounded-full shadow-lg hover:from-teal-600 hover:to-cyan-700 transition-all duration-300 transform hover:-translate-y-1">
+           class="dark-glass-btn inline-block px-6 py-3 font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
           ← Back to Class 10 Physics Notes
         </a>
       </p>
@@ -1007,20 +1111,20 @@
         </div>
 
         <div class="mt-10 text-center">
-          <a href="https://hiraacademy.com.pk/index.html" class="inline-flex items-center bg-teal-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-teal-700 hover:shadow-xl transition-all"><span class="mr-3">🏠</span>Return to Homepage</a>
+          <a href="https://hiraacademy.com.pk/" class="inline-flex items-center homepage-btn px-8 py-4 rounded-full font-bold shadow-lg transition"><span class="mr-3">🏠</span>Return to Homepage</a>
         </div>
       </div>
     </details>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-teal-900 text-gray-100 shadow-xl relative z-10">
+  <!-- Footer (Dark Glassmorphic) -->
+  <footer class="footer-dark-glass text-gray-100 shadow-xl relative z-10">
     <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
         <div class="flex flex-col items-center md:items-start">
           <a href="https://hiraacademy.com.pk/" class="flex flex-col md:flex-row items-center md:items-start gap-3">
             <img src="https://hiraacademy.com.pk/images/logo.webp" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" alt="Hira Science Academy Logo">
-            <span class="text-xl font-bold bg-gradient-to-r from-cyan-300 to-teal-400 bg-clip-text text-transparent">Hira Science Academy</span>
+            <span class="text-xl font-bold bg-gradient-to-r from-teal-300 to-emerald-300 bg-clip-text text-transparent">Hira Science Academy</span>
           </a>
           <p class="mt-4 text-sm text-gray-200 max-w-sm mx-auto md:mx-0">
             Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry) – serving students of all 10 BISE Punjab boards.
@@ -1029,43 +1133,43 @@
         <div>
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
           <ul class="space-y-2">
-            <li><a href="https://hiraacademy.com.pk/courses-details.html#class9" class="hover:text-cyan-300 transition">9th Class</a></li>
-            <li><a href="https://hiraacademy.com.pk/courses-details.html#class10" class="hover:text-cyan-300 transition">10th Class</a></li>
-            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
-            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-cyan-300 transition">Entry Test Preparation</a></li>
+            <li><a href="https://hiraacademy.com.pk/courses-details.html#class9" class="hover:text-teal-300 transition">9th Class</a></li>
+            <li><a href="https://hiraacademy.com.pk/courses-details.html#class10" class="hover:text-teal-300 transition">10th Class</a></li>
+            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-teal-300 transition">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-teal-300 transition">Entry Test Preparation</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
           <ul class="space-y-2">
-            <li><a href="https://hiraacademy.com.pk/blog.html" class="hover:text-cyan-300 transition">Study Tips &amp; Blog</a></li>
-            <li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-cyan-300 transition">Career Guidance</a></li>
-            <li><a href="https://hiraacademy.com.pk/student-portal.html" class="hover:text-cyan-300 transition">Student Portal</a></li>
-            <li><a href="https://hiraacademy.com.pk/alumni-network.html" class="hover:text-cyan-300 transition">Alumni Network</a></li>
-            <li><a href="https://hiraacademy.com.pk/events.html" class="hover:text-cyan-300 transition">Events &amp; Workshops</a></li>
+            <li><a href="https://hiraacademy.com.pk/blog.html" class="hover:text-teal-300 transition">Study Tips &amp; Blog</a></li>
+            <li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-teal-300 transition">Career Guidance</a></li>
+            <li><a href="https://hiraacademy.com.pk/student-portal.html" class="hover:text-teal-300 transition">Student Portal</a></li>
+            <li><a href="https://hiraacademy.com.pk/alumni-network.html" class="hover:text-teal-300 transition">Alumni Network</a></li>
+            <li><a href="https://hiraacademy.com.pk/events.html" class="hover:text-teal-300 transition">Events &amp; Workshops</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
           <ul class="space-y-2">
-            <li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-cyan-300 transition">Terms of Service</a></li>
-            <li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-cyan-300 transition">Privacy Policy</a></li>
-            <li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-cyan-300 transition">Refund Policy</a></li>
-            <li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-cyan-300 transition">Accessibility</a></li>
+            <li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-teal-300 transition">Terms of Service</a></li>
+            <li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-teal-300 transition">Privacy Policy</a></li>
+            <li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-teal-300 transition">Refund Policy</a></li>
+            <li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-teal-300 transition">Accessibility</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
           <ul class="space-y-2">
-            <li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-cyan-300 transition">About Hira Academy</a></li>
-            <li><a href="https://hiraacademy.com.pk/mission.html" class="hover:text-cyan-300 transition">Our Mission</a></li>
-            <li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-cyan-300 transition">Contact Us</a></li>
+            <li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-teal-300 transition">About Hira Academy</a></li>
+            <li><a href="https://hiraacademy.com.pk/mission.html" class="hover:text-teal-300 transition">Our Mission</a></li>
+            <li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-teal-300 transition">Contact Us</a></li>
           </ul>
         </div>
       </div>
-      <div class="mt-12 border-t border-teal-700 pt-6 text-center">
+      <div class="mt-12 border-t border-teal-800/50 pt-6 text-center">
         <p class="text-base text-gray-200">&copy; 2026-2027 Hira Science Academy. All rights reserved. | Class 10 Physics Notes 2026 PECTAA Syllabus</p>
-        <p class="text-sm text-gray-300 mt-2">✍️ Prepared by <strong class="text-yellow-200">Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska</p>
+        <p class="text-sm text-gray-300 mt-2">✍️ Prepared by <strong class="text-amber-300">Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska</p>
       </div>
     </div>
   </footer>
@@ -1117,7 +1221,7 @@
           const answerDiv = document.getElementById(targetId);
           if (answerDiv) {
             answerDiv.classList.toggle('show');
-            this.textContent = answerDiv.classList.contains('show') ? 'Hide Answer' : 'Show Answer';
+            this.textContent = answerDiv.classList.contains('show') ? 'Hide Solution' : 'Show Solution';
           }
         });
       });
