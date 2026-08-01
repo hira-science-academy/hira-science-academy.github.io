@@ -95,7 +95,7 @@
   <style>
     /* Section spacing for smooth scrolling */
     section {
-      scroll-margin-top: 120px;
+      scroll-margin-top: 150px;
       padding-top: 40px;
     }
     
@@ -206,216 +206,163 @@
     .overflow-x-auto::-webkit-scrollbar { display: none; }
     .overflow-x-auto { -ms-overflow-style: none; scrollbar-width: none; }
     
-    /* Announcement bar animation */
-    @keyframes scroll-x {
-      0% { transform: translateX(0); opacity: 0; }
-      5% { opacity: 1; }
-      100% { transform: translateX(-50%); opacity: 1; }
-    }
-
-    .scrolling-text {
-      display: inline-flex;
-      animation: scroll-x 30s linear infinite;
-      white-space: nowrap;
-      will-change: transform;
-    }
-
-    .scrolling-text:hover {
-      animation-play-state: paused;
-    }
-
+    /* Announcement bar marquee (single source of truth — used by .marquee-wrapper / .marquee-content below) */
     .announcement-link {
-      color: #ffeb99;
-      font-weight: 600;
-      text-decoration: underline;
-      transition: all 0.3s ease-in-out;
+      color: white;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.3s ease;
     }
 
     .announcement-link:hover {
-      color: #fff;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+      color: #fde047;
+      text-decoration: underline;
     }
-    
-    .pattern-bg {
-      background-image: 
-        radial-gradient(circle at 25px 25px, rgba(255,255,255,0.1) 2%, transparent 2%),
-        radial-gradient(circle at 75px 75px, rgba(255,255,255,0.1) 2%, transparent 2%);
-      background-size: 100px 100px;
-      background-position: center;
+
+    .marquee-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
     }
-/* Announcement bar scrolling animation */
-.scrolling-text {
-  display: inline-block;
-  white-space: nowrap;
-  animation: scrollAnnouncement 40s linear infinite;
-}
 
-.scrolling-text:hover {
-  animation-play-state: paused;
-}
+    .marquee-content {
+      display: inline-flex;
+      width: max-content;
+      animation: smoothMarquee 55s linear infinite;
+      will-change: transform;
+    }
 
-@keyframes scrollAnnouncement {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+    .marquee-content:hover {
+      animation-play-state: paused;
+    }
 
-/* Make announcement links stand out */
-.announcement-link {
-  color: white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
+    @keyframes smoothMarquee {
+      from {
+        transform: translateX(0);
+      }
+      to {
+        transform: translateX(-50%);
+      }
+    }
 
-.announcement-link:hover {
-  color: #fde047;
-  text-decoration: underline;
-}
+    /* Better readability on mobile */
+    @media (max-width: 640px) {
+      .marquee-content {
+        animation-duration: 70s;
+      }
 
-.marquee-wrapper {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-}
+      #announcement-bar {
+        font-size: 13px;
+      }
+    }
 
-.marquee-content {
-  display: inline-flex;
-  width: max-content;
-  animation: smoothMarquee 55s linear infinite;
-  will-change: transform;
-}
+    /* ==========================================================
+       PREMIUM VISUAL SYSTEM — Hira Science Academy
+       Signature: graph-paper texture (the subject's own material —
+       a physics/math notebook) beneath an aurora gradient, paired
+       with a restrained serif display face for authority.
+       ========================================================== */
 
-.marquee-content:hover {
-  animation-play-state: paused;
-}
+    :root {
+      --paper-line: rgba(14, 116, 144, 0.07);
+      --ink: #0b1220;
+    }
 
-@keyframes smoothMarquee {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
+    body { font-family: 'Inter', 'Poppins', sans-serif; }
+    h1, h2, h3, .font-display { font-family: 'Playfair Display', Georgia, serif; }
+    .font-mono-label { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; }
 
-.announcement-link {
-  text-decoration: none;
-  white-space: nowrap;
-}
+    /* Graph-paper texture: nods to physics/math worksheets, used sparingly */
+    .graph-paper {
+      background-image:
+        linear-gradient(var(--paper-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
 
-/* Better readability on mobile */
-@media (max-width: 640px) {
-  .marquee-content {
-    animation-duration: 70s;
-  }
+    .graph-paper-dark {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
 
-  #announcement-bar {
-    font-size: 13px;
-  }
-}
+    /* Aurora gradient mesh for the hero — primary/secondary/amber, one signature moment */
+    .aurora-mesh {
+      background:
+        radial-gradient(60% 55% at 12% 8%, rgba(56,189,248,0.55), transparent 60%),
+        radial-gradient(55% 50% at 88% 15%, rgba(167,139,250,0.5), transparent 60%),
+        radial-gradient(45% 45% at 50% 100%, rgba(245,158,11,0.25), transparent 65%),
+        linear-gradient(135deg, #0c4a6e 0%, #1e2a5e 45%, #4c1d95 100%);
+    }
 
-/* ==========================================================
-   PREMIUM VISUAL SYSTEM — Hira Science Academy
-   Signature: graph-paper texture (the subject's own material —
-   a physics/math notebook) beneath an aurora gradient, paired
-   with a restrained serif display face for authority.
-   ========================================================== */
+    /* Eyebrow labels used as section signposts */
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
 
-:root {
-  --paper-line: rgba(14, 116, 144, 0.07);
-  --ink: #0b1220;
-}
+    /* Premium card lift */
+    .card-premium {
+      transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s cubic-bezier(.2,.8,.2,1);
+    }
+    .card-premium:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 48px -18px rgba(15,23,42,0.28);
+    }
 
-body { font-family: 'Inter', 'Poppins', sans-serif; }
-h1, h2, h3, .font-display { font-family: 'Playfair Display', Georgia, serif; }
-.font-mono-label { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; }
+    /* Premium buttons */
+    .btn-shine {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .btn-shine::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -60%;
+      width: 40%; height: 100%;
+      background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
+      transform: skewX(-20deg);
+      transition: left 0.65s ease;
+      z-index: 1;
+    }
+    .btn-shine:hover::before { left: 130%; }
 
-/* Graph-paper texture: nods to physics/math worksheets, used sparingly */
-.graph-paper {
-  background-image:
-    linear-gradient(var(--paper-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
+    /* Scroll-reveal (respects reduced motion) */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
 
-.graph-paper-dark {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
+    /* Refined focus states for accessibility */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+      outline: 2px solid #0ea5e9;
+      outline-offset: 2px;
+      border-radius: 6px;
+    }
 
-/* Aurora gradient mesh for the hero — primary/secondary/amber, one signature moment */
-.aurora-mesh {
-  background:
-    radial-gradient(60% 55% at 12% 8%, rgba(56,189,248,0.55), transparent 60%),
-    radial-gradient(55% 50% at 88% 15%, rgba(167,139,250,0.5), transparent 60%),
-    radial-gradient(45% 45% at 50% 100%, rgba(245,158,11,0.25), transparent 65%),
-    linear-gradient(135deg, #0c4a6e 0%, #1e2a5e 45%, #4c1d95 100%);
-}
+    /* Custom scrollbar for horizontal card rails */
+    .overflow-x-auto::-webkit-scrollbar { display: none; }
 
-/* Eyebrow labels used as section signposts */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
+    /* Section divider — subtle wave, used between major sections */
+    .divider-wave { display: block; width: 100%; height: 48px; }
 
-/* Premium card lift */
-.card-premium {
-  transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s cubic-bezier(.2,.8,.2,1);
-}
-.card-premium:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 24px 48px -18px rgba(15,23,42,0.28);
-}
-
-/* Premium buttons */
-.btn-shine {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-.btn-shine::before {
-  content: '';
-  position: absolute;
-  top: 0; left: -60%;
-  width: 40%; height: 100%;
-  background: linear-gradient(115deg, transparent, rgba(255,255,255,0.55), transparent);
-  transform: skewX(-20deg);
-  transition: left 0.65s ease;
-  z-index: 1;
-}
-.btn-shine:hover::before { left: 130%; }
-
-/* Scroll-reveal (respects reduced motion) */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.in-view { opacity: 1; transform: translateY(0); }
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
-}
-
-/* Refined focus states for accessibility */
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-  outline: 2px solid #0ea5e9;
-  outline-offset: 2px;
-  border-radius: 6px;
-}
-
-/* Custom scrollbar for horizontal card rails */
-.overflow-x-auto::-webkit-scrollbar { display: none; }
-
-/* Section divider — subtle wave, used between major sections */
-.divider-wave { display: block; width: 100%; height: 48px; }
-
+    /* Featured pairing-scheme callout banner */
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.55); }
+      50% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
+    }
+    .pairing-badge {
+      animation: glowPulse 2.2s infinite;
+    }
   </style>
 
   <script type="application/ld+json">
@@ -425,11 +372,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     "name": "Hira Science Academy",
     "url": "https://hiraacademy.com.pk/",
     "logo": "https://hiraacademy.com.pk/images/logo.webp",
-    "description": "Hira Science Academy provides free Class 9 & 10 notes, solved exercises, and concept explanations for Mathematics, Physics, Chemistry, Biology, Islamiat, and Pakistan Studies – aligned with PECTAA 2025 syllabus and suitable for all BISE Punjab boards (Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, Sahiwal, Federal).",
+    "description": "Hira Science Academy provides free Class 9 & 10 notes, solved exercises, and concept explanations for Mathematics, Physics, Chemistry, Biology, Islamiat, and Pakistan Studies – aligned with PECTAA 2026/27 syllabus and suitable for all BISE Punjab boards (Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, Sahiwal, Federal).",
     "sameAs": [
       "https://web.facebook.com/HiraScienceAcademy.Daska",
       "https://x.com/hiraacademyDSK",
-      "https://www.youtube.com/"
+      "https://www.youtube.com/",
+      "https://www.instagram.com/hira.scienceacademy/"
     ],
     "founder": [
       { "@type": "Person", "name": "Muhammad Tayyab (MSc Mathematics)" },
@@ -439,13 +387,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       "@type": "PostalAddress",
       "streetAddress": "Near Masjid Usman Ghani, Model Town",
       "addressLocality": "Daska",
+      "addressRegion": "Punjab",
       "postalCode": "51010",
       "addressCountry": "PK"
     },
     "areaServed": [
       "Bahawalpur", "DG Khan", "Faisalabad", "Federal", "Gujranwala", "Lahore", "Multan", "Rawalpindi", "Sahiwal", "Sargodha"
     ],
-    "copyrightNotice": "© 2025 Hira Science Academy. All rights reserved."
+    "copyrightNotice": "© 2026 Hira Science Academy. All rights reserved."
   }
   </script>
   <!-- FAQPage Schema for Homepage -->
@@ -464,10 +413,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       },
       {
         "@type": "Question",
-        "name": "What is the PECTAA 2025 syllabus?",
+        "name": "What is the PECTAA 2026/27 syllabus?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "PECTAA stands for Punjab Education, Curriculum, Training and Assessment Authority. The 2025 syllabus emphasizes deeper understanding and concept-based learning over rote memorization."
+          "text": "PECTAA stands for Punjab Education, Curriculum, Training and Assessment Authority. The updated syllabus emphasizes deeper understanding and concept-based learning over rote memorization."
         }
       },
       {
@@ -517,6 +466,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
           "@type": "Answer",
           "text": "Our notes are crafted by dual-specialist faculty (MSc Mathematics and M.Phil Chemistry) with two decades of classroom experience. They focus on conceptual clarity, step-by-step solutions, and board-pattern MCQs."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Where can I download the 2027 pairing scheme?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The latest pairing scheme for Class 9 and Class 10 (all subjects) is available as a free PDF on our Pairing Scheme page, valid for the upcoming BISE Punjab board exams."
+        }
       }
     ]
   }
@@ -524,7 +481,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 </head>
 <body class="bg-gray-50 min-h-screen">
 
-<h1 style="display:none;">Hira Academy Online - Hira Science Academy Daska - Expert Class 9 & 10 Notes for All BISE Punjab Boards</h1>
 <nav class="bg-white/75 backdrop-blur-xl border-b border-gray-200/70 sticky top-0 z-50 shadow-[0_1px_0_rgba(15,23,42,0.04),0_8px_24px_-16px_rgba(15,23,42,0.25)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
@@ -534,6 +490,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
           <img 
             src="https://hiraacademy.com.pk/images/logo.webp" 
             alt="Hira Science Academy Logo" 
+            width="40"
+            height="40"
             class="h-10 w-auto rounded-xl shadow-premium ring-4 ring-white/40 group-hover:scale-105 transition duration-300" />
           <span class="text-xl md:text-2xl font-display font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
             Hira Science Academy
@@ -557,7 +515,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       </div>
 
       <div class="flex items-center md:hidden">
-        <button type="button" id="mobile-menu-button" 
+        <button type="button" id="mobile-menu-button" aria-expanded="false" aria-controls="mobile-menu"
                 class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
           <span class="sr-only">Open main menu</span>
           <svg class="block h-6 w-6" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -608,8 +566,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <!-- ORIGINAL ITEMS -->
         <span class="mx-12 inline-flex items-center">
           📋
-          <a href="https://hiraacademy.com.pk/pairing-scheme.html"
-             target="_blank"
+          <a href="pairing-scheme.html"
              class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
             NEW: Class 9 & 10 All Subjects 2027 Pairing Scheme PDF available now for Punjab Board Exams
           </a>
@@ -617,8 +574,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
         <span class="mx-12 inline-flex items-center">
           ⚛️
-          <a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html"
-             target="_blank"
+          <a href="Physics-10th-New-2026.html"
              class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
             NEW: Class 10 Physics Notes (New 2026 Edition – PECTAA Syllabus) by Muhammad Tayyab
           </a>
@@ -626,8 +582,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
         <span class="mx-12 inline-flex items-center">
           📚
-          <a href="https://hiraacademy.com.pk/Mathematics-10th-New-2026.html"
-             target="_blank"
+          <a href="Mathematics-10th-New-2026.html"
              class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
             Class 10 Mathematics (New 2026 PECTAA Syllabus) complete notes for all Punjab Boards
           </a>
@@ -637,8 +592,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
         <span class="mx-12 inline-flex items-center">
           📋
-          <a href="https://hiraacademy.com.pk/pairing-scheme.html"
-             target="_blank"
+          <a href="pairing-scheme.html"
              class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
             NEW: Class 9 & 10 All Subjects 2027 Pairing Scheme PDF available now for Punjab Board Exams
           </a>
@@ -646,8 +600,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
         <span class="mx-12 inline-flex items-center">
           ⚛️
-          <a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html"
-             target="_blank"
+          <a href="Physics-10th-New-2026.html"
              class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
             NEW: Class 10 Physics Notes (New 2026 Edition – PECTAA Syllabus) by Muhammad Tayyab
           </a>
@@ -655,8 +608,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
         <span class="mx-12 inline-flex items-center">
           📚
-          <a href="https://hiraacademy.com.pk/Mathematics-10th-New-2026.html"
-             target="_blank"
+          <a href="Mathematics-10th-New-2026.html"
              class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
             Class 10 Mathematics (New 2026 PECTAA Syllabus) complete notes for all Punjab Boards
           </a>
@@ -685,7 +637,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
           ✦ PECTAA-Aligned · All 10 BISE Punjab Boards
         </span>
 
-        <!-- ✅ VISIBLE H1 for SEO -->
+        <!-- ✅ SINGLE VISIBLE H1 for SEO (the site's only h1 — do not add another) -->
         <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] mb-6 tracking-tight">
           Expert Class 9 & 10 Notes <br class="hidden lg:block"/>
           <span class="italic bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent">
@@ -696,7 +648,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <p class="text-lg md:text-xl text-blue-50/90 mb-6 max-w-xl leading-relaxed text-justify">
           At <strong class="text-white">Hira Science Academy</strong>, we offer expert guidance for 
           <strong class="text-white">Class 9</strong> and <strong class="text-white">Class 10</strong> students following the 
-          <strong class="text-white">PECTAA 2025 syllabus</strong> – suitable for all <strong class="text-white">10 BISE Punjab boards</strong> including Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, Sahiwal.
+          <strong class="text-white">PECTAA 2026/27 syllabus</strong> – suitable for all <strong class="text-white">10 BISE Punjab boards</strong> including Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, Sahiwal.
         </p>
 
         <p class="text-base md:text-lg text-blue-50/80 mb-10 max-w-xl leading-relaxed text-justify">
@@ -735,7 +687,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
           <div class="absolute -inset-3 bg-gradient-to-tr from-amber-300/40 via-white/10 to-secondary-400/40 rounded-[2rem] blur-xl"></div>
           <img 
             src="https://hiraacademy.com.pk/images/classroom.webp"
-            alt="Students learning at Hira Science Academy"
+            alt="Students learning Physics and Mathematics at Hira Science Academy Daska"
             width="900" 
             height="700"
             loading="eager"
@@ -753,21 +705,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </svg>
 </section>
 
-<!-- ========== NEW 350+ WORD INTRO SECTION (PECTAA & BISE) ========== -->
+<!-- ========== 350+ WORD INTRO SECTION (PECTAA & BISE) ========== -->
 <section class="py-16 bg-white border-y border-gray-100 relative">
   <div class="max-w-5xl mx-auto px-6 text-gray-800 reveal">
     <div class="text-center mb-6">
       <span class="eyebrow text-primary-600"># Our Approach</span>
     </div>
-    <h2 class="font-display text-3xl md:text-4xl font-bold text-center text-primary-800 mb-6">Your Trusted Partner for PECTAA 2025 & All BISE Punjab Boards</h2>
+    <h2 class="font-display text-3xl md:text-4xl font-bold text-center text-primary-800 mb-6">Your Trusted Partner for PECTAA 2026/27 & All BISE Punjab Boards</h2>
     <div class="space-y-5 text-lg leading-relaxed text-justify">
-      <p>At Hira Science Academy, we understand that students across Punjab face different challenges while preparing for board exams. Whether you're appearing under <strong>BISE Lahore, BISE Gujranwala, BISE Multan, BISE Rawalpindi, BISE Faisalabad, BISE Sargodha, BISE DG Khan, BISE Bahawalpur, BISE Sahiwal, or the Federal Board</strong> – our notes are designed to meet the common core of the <strong>PECTAA 2025 syllabus</strong> while addressing the specific paper patterns of each board.</p>
+      <p>At Hira Science Academy, we understand that students across Punjab face different challenges while preparing for board exams. Whether you're appearing under <strong>BISE Lahore, BISE Gujranwala, BISE Multan, BISE Rawalpindi, BISE Faisalabad, BISE Sargodha, BISE DG Khan, BISE Bahawalpur, BISE Sahiwal, or the Federal Board</strong> – our notes are designed to meet the common core of the <strong>PECTAA 2026/27 syllabus</strong> while addressing the specific paper patterns of each board.</p>
       
       <p>Our teaching methodology is rooted in the latest curriculum from the <strong>Punjab Education, Curriculum, Training and Assessment Authority (PECTAA)</strong>. Every note, every solved example, and every MCQ set is crafted by our dual-specialist faculty: <strong>Muhammad Tayyab (MSc Mathematics)</strong> and <strong>Mirza Abid Shabbir Mughal (M.Phil Chemistry)</strong>. Together, they bring over two decades of classroom experience to help students grasp concepts, not just memorize facts.</p>
       
       <p>We break down complex topics into digestible sections. For Mathematics, we provide step-by-step solutions to all exercises, plus extra numerical problems. In Physics, we focus on conceptual clarity and problem-solving techniques. Chemistry notes include balanced equations, practical explanations, and board-pattern MCQs. Biology resources cover all chapters with detailed diagrams and glossary terms – all aligned with the <strong>10 BISE Punjab boards' examination standards</strong>.</p>
       
-      <p>The <strong>PECTAA 2025 syllabus</strong> emphasizes deeper understanding over rote learning. That's why our notes include "exam smart" pointers, common mistake warnings, and pairing-scheme based revision. Every resource on this site is <strong>completely free</strong> for students across Punjab – from Lahore to Multan, Gujranwala to Bahawalpur, Rawalpindi to Sahiwal.</p>
+      <p>The <strong>PECTAA 2026/27 syllabus</strong> emphasizes deeper understanding over rote learning. That's why our notes include "exam smart" pointers, common mistake warnings, and pairing-scheme based revision. Every resource on this site is <strong>completely free</strong> for students across Punjab – from Lahore to Multan, Gujranwala to Bahawalpur, Rawalpindi to Sahiwal.</p>
       
       <p class="font-medium">🔍 Ready to achieve top marks in your BISE board exams? Start with our Class 9 or Class 10 notes below.</p>
     </div>
@@ -906,10 +858,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         </div>
       </a>
     </div>
-    <div class="text-center mb-16">
-      <a href="pairing-scheme.html" class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors shadow-md">
-        📚 Download 2027 Pairing Scheme & Guide →
-      </a>
+
+    <!-- 🏆 FEATURED CALLOUT — Pairing Scheme download (high search-intent CTA) -->
+    <div class="relative mb-16 rounded-3xl overflow-hidden shadow-premium-lg reveal border-2 border-amber-400/60">
+      <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-blue-950 to-slate-900"></div>
+      <div class="absolute inset-0 graph-paper-dark opacity-50"></div>
+      <div class="absolute -top-10 -right-10 w-56 h-56 bg-amber-400/20 rounded-full blur-3xl"></div>
+      <div class="absolute -bottom-16 -left-10 w-64 h-64 bg-amber-300/10 rounded-full blur-3xl"></div>
+      <div class="relative flex flex-col md:flex-row items-center gap-6 md:gap-10 px-6 py-8 md:px-10 md:py-10">
+        <div class="pairing-badge flex-shrink-0 flex items-center justify-center h-20 w-20 md:h-24 md:w-24 rounded-2xl bg-amber-400 text-emerald-950 text-5xl shadow-glow-amber">
+          📋
+        </div>
+        <div class="flex-1 text-center md:text-left">
+          <span class="inline-block bg-amber-400 text-indigo-950 text-xs font-bold uppercase tracking-wide px-3 py-1 rounded-full mb-3 shadow-md">
+            🔥 Most Downloaded · 2027 Board Exams
+          </span>
+          <h3 class="font-display text-2xl md:text-3xl font-bold text-white mb-2">
+            Official Class 9 &amp; 10 Pairing Scheme (2027)
+          </h3>
+          <p class="text-blue-100 max-w-2xl text-base md:text-lg leading-relaxed">
+            Get the complete, all-subjects pairing scheme for the 2027 BISE Punjab board exams — see exactly which chapters carry the most marks so you can revise smart, not just hard.
+          </p>
+        </div>
+        <div class="flex-shrink-0">
+          <a href="pairing-scheme.html" class="btn-shine inline-flex items-center gap-2 bg-amber-400 text-indigo-950 hover:bg-amber-300 px-7 py-4 rounded-xl font-bold text-lg shadow-glow-amber hover:-translate-y-0.5 transition-all whitespace-nowrap">
+            📚 Download 2027 Pairing Scheme &amp; Guide →
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- STEP 3 — Old Class 10 papers: clearly separated and out of the way -->
@@ -980,7 +956,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     {"@type": "ListItem","position":10,"name":"Chemistry 10th New Syllabus 2026","url":"https://hiraacademy.com.pk/Chemistry-10th-New-2026.html"},
     {"@type": "ListItem","position":11,"name":"Biology 10th New Syllabus 2026","url":"https://hiraacademy.com.pk/Biology-10th-New-2026.html"},
     {"@type": "ListItem","position":12,"name":"Pakistan Studies 10th New Syllabus 2026","url":"https://hiraacademy.com.pk/PakistanStudies-10th-New-2026.html"},
-    {"@type": "ListItem","position":13,"name":"2026 Pairing Scheme","url":"https://hiraacademy.com.pk/pairing-scheme.html"}
+    {"@type": "ListItem","position":13,"name":"2027 Pairing Scheme","url":"https://hiraacademy.com.pk/pairing-scheme.html"}
   ]
 }
 </script>
@@ -1041,7 +1017,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         Our Academic Programs
       </h2>
       <p class="mt-3 max-w-3xl mx-auto text-lg text-gray-600 text-justify">
-        We provide high-quality education programs strictly following the PECTAA 2025 syllabus, designed to build strong foundations and ensure academic excellence for all BISE Punjab boards.
+        We provide high-quality education programs strictly following the PECTAA 2026/27 syllabus, designed to build strong foundations and ensure academic excellence for all BISE Punjab boards.
       </p>
     </div>
 
@@ -1052,7 +1028,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="relative flex flex-col card-premium rounded-2xl shadow-lg overflow-hidden">
         <!-- Gradient Bar -->
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary-400 to-primary-600"></div>
-        <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://hiraacademy.com.pk/images/class9-banner.webp" alt="9th Class Course" width="800" height="400">
+        <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://hiraacademy.com.pk/images/class9-banner.webp" alt="9th Class Science Program banner at Hira Science Academy" width="800" height="400">
         <div class="bg-white p-6 flex flex-col justify-between flex-1">
           <div>
             <span class="inline-block bg-primary-100 text-primary-800 px-3 py-1 text-sm font-medium rounded-full">📘 9th Class</span>
@@ -1074,11 +1050,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="relative flex flex-col card-premium rounded-2xl shadow-lg overflow-hidden">
         <!-- Gradient Bar -->
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary-400 to-secondary-600"></div>
-        <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://hiraacademy.com.pk/images/class10-banner.webp" alt="10th Class Course" width="800" height="400">
+        <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://hiraacademy.com.pk/images/class10-banner.webp" alt="10th Class Science Program banner at Hira Science Academy" width="800" height="400">
         <div class="bg-white p-6 flex flex-col justify-between flex-1">
           <div>
             <span class="inline-block bg-secondary-100 text-secondary-800 px-3 py-1 text-sm font-medium rounded-full">📗 10th Class</span>
-            <h3 class="mt-3 text-2xl font-bold text-secondary-600">10th Class Science Program (PECTAA 2025)</h3>
+            <h3 class="mt-3 text-2xl font-bold text-secondary-600">10th Class Science Program (PECTAA 2026)</h3>
             <p class="mt-3 text-base text-gray-600 text-justify">
               This program offers complete syllabus coverage with <strong>practical preparations</strong>, <strong>revision exercises</strong>, and <strong>solved examples</strong> tailored for all 10 BISE Punjab boards including Federal Board.
             </p>
@@ -1181,7 +1157,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <div class="hidden md:block md:w-1/3">
           <img class="h-full w-full object-cover"
                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/129a4d20-46db-4973-8468-b823202bff01.png"
-               alt="Students celebrating academic success"
+               alt="Students celebrating academic success at Hira Science Academy"
                width="400" height="400">
         </div>
       </div>
@@ -1211,7 +1187,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary-400 to-primary-600 rounded-t-2xl"></div>
         <div class="flex items-center">
-          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/shahid-ahmed.jpg" alt="Shahid Ahmed" width="48" height="48">
+          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/shahid-ahmed.jpg" alt="Sir Shahid, Arts Teacher at The Citi School Daska" width="48" height="48">
           <div class="ml-4">
             <h4 class="text-lg font-semibold text-primary-600">Sir Shahid</h4>
             <p class="text-gray-500 text-sm">Arts Teacher, The Citi School Daska</p>
@@ -1226,7 +1202,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-purple-400 to-purple-600 rounded-t-2xl"></div>
         <div class="flex items-center">
-          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/bilal-ahmed.jpg" alt="Bilal Ahmed" width="48" height="48">
+          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/bilal-ahmed.jpg" alt="Bilal Ahmed, Teacher at Citi School Daska" width="48" height="48">
           <div class="ml-4">
             <h4 class="text-lg font-semibold text-purple-600">Bilal Ahmed</h4>
             <p class="text-gray-500 text-sm">Teacher, Citi School Daska</p>
@@ -1241,7 +1217,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-400 to-red-600 rounded-t-2xl"></div>
         <div class="flex items-center">
-          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/umer-zaman.jpg" alt="Umer Zaman" width="48" height="48">
+          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/umer-zaman.jpg" alt="Umer Zaman, M.Sc Physics teacher at Govt. Christian High School Daska" width="48" height="48">
           <div class="ml-4">
             <h4 class="text-lg font-semibold text-red-600">Umer Zaman</h4>
             <p class="text-gray-500 text-sm">M.Sc Physics, Govt. Christian High School Daska</p>
@@ -1256,7 +1232,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-green-400 to-green-600 rounded-t-2xl"></div>
         <div class="flex items-center">
-          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/daud-imran.jpg" alt="Daud Imran" width="48" height="48">
+          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/daud-imran.jpg" alt="Hafiz Daud Imran, M.Phil Physics teacher at Govt. High School Daska" width="48" height="48">
           <div class="ml-4">
             <h4 class="text-lg font-semibold text-green-600">Hafiz Daud Imran</h4>
             <p class="text-gray-500 text-sm">M.Phil Physics, Govt. High School Daska</p>
@@ -1271,7 +1247,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-400 to-blue-600 rounded-t-2xl"></div>
         <div class="flex items-center">
-          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/rafaqat-iqbal.jpg" alt="Rafaqat Iqbal" width="48" height="48">
+          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/rafaqat-iqbal.jpg" alt="Rafaqat Iqbal, M.Sc Mathematics teacher at Govt. Christian School Daska" width="48" height="48">
           <div class="ml-4">
             <h4 class="text-lg font-semibold text-blue-600">Rafaqat Iqbal</h4>
             <p class="text-gray-500 text-sm">M.Sc Mathematics, Govt. Christian School Daska</p>
@@ -1286,7 +1262,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-t-2xl"></div>
         <div class="flex items-center">
-          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/rana-ehsan-ullah.jpg" alt="Rana Ehsan Ullah" width="48" height="48">
+          <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/rana-ehsan-ullah.jpg" alt="Rana Ehsan Ullah, Chemical Engineer and Teacher at Govt. Christian School Daska" width="48" height="48">
           <div class="ml-4">
             <h4 class="text-lg font-semibold text-yellow-600">Rana Ehsan Ullah</h4>
             <p class="text-gray-500 text-sm">Chemical Engineer & Teacher, Govt. Christian School Daska</p>
@@ -1444,7 +1420,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
             </div>
           </div>
           <div class="ml-4">
-            <h2 class="text-lg font-semibold text-gray-900">Contact Numbers - Call Now</h2>
+            <h3 class="text-lg font-semibold text-gray-900">Contact Numbers - Call Now</h3>
             <p class="mt-2 text-gray-600 text-justify">
               📞 <strong>0333 8114798</strong> – Muhammad Tayyab (MSc Mathematics)
             </p>
@@ -1467,7 +1443,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
             </div>
           </div>
           <div class="ml-4">
-            <h2 class="text-lg font-semibold text-gray-900">Email Address</h2>
+            <h3 class="text-lg font-semibold text-gray-900">Email Address</h3>
             <p class="mt-2 text-gray-600">✉️ <strong>tayyabgchs@gmail.com</strong></p>
             <p class="mt-1 text-sm text-gray-600">Send us your queries about courses, fees, or schedule. We typically respond within 24 hours.</p>
           </div>
@@ -1483,7 +1459,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
             </div>
           </div>
           <div class="ml-4">
-            <h2 class="text-lg font-semibold text-gray-900">Academy Hours</h2>
+            <h3 class="text-lg font-semibold text-gray-900">Academy Hours</h3>
             <p class="mt-2 text-gray-600">Monday - Saturday: 3:00 PM - 7:00 PM</p>
             <p class="mt-1 text-gray-600">Sunday: Closed</p>
             <p class="mt-1 text-sm text-gray-600">Visit during academy hours for admission inquiries and free demo classes.</p>
@@ -1551,7 +1527,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   </div>
 </section>
 
-<!-- 🧭 Internal Linking Section (updated to Accordion Layout) -->
+<!-- 🧭 Internal Linking Section (Accordion Layout) -->
 <section class="max-w-7xl mx-auto px-6 pb-14">
   <details class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
     <summary class="text-2xl md:text-3xl font-bold text-primary-700 cursor-pointer hover:text-primary-600 list-none flex items-center justify-center gap-3 text-center">
@@ -1566,14 +1542,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <!-- Class 9 Resources -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-blue-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
-          <nav>
+          <nav aria-label="Class 9 Resources">
             <ul class="space-y-4 text-sm">
-              <li><a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-              <li><a href="https://hiraacademy.com.pk/Physics-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-              <li><a href="https://hiraacademy.com.pk/Chemistry-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-              <li><a href="https://hiraacademy.com.pk/Biology-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
-              <li><a href="https://hiraacademy.com.pk/Islamiat-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li>
-              <li><a href="https://hiraacademy.com.pk/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li>
+              <li><a href="Mathematics-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
+              <li><a href="Physics-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
+              <li><a href="Chemistry-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
+              <li><a href="Biology-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
+              <li><a href="Islamiat-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li>
+              <li><a href="smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li>
             </ul>
           </nav>
         </article>
@@ -1581,13 +1557,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <!-- Class 10 Resources -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-indigo-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
-          <nav>
+          <nav aria-label="Class 10 Resources">
             <ul class="space-y-4 text-sm">
-              <li><a href="https://hiraacademy.com.pk/Mathematics-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-              <li><a href="https://hiraacademy.com.pk/Physics-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-              <li><a href="https://hiraacademy.com.pk/Chemistry-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-              <li><a href="https://hiraacademy.com.pk/Biology-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
-              <li><a href="https://hiraacademy.com.pk/PakistanStudies-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li>
+              <li><a href="Mathematics-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
+              <li><a href="Physics-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
+              <li><a href="Chemistry-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
+              <li><a href="Biology-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
+              <li><a href="PakistanStudies-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li>
             </ul>
           </nav>
         </article>
@@ -1596,11 +1572,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-amber-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
           <ul class="space-y-4 text-sm">
-            <li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li>
-            <li><a href="https://hiraacademy.com.pk/physics-numericals.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li>
-            <li><a href="https://hiraacademy.com.pk/math-mistakes.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li>
-            <li><a href="https://hiraacademy.com.pk/physics-formulas.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li>
-            <li><a href="https://hiraacademy.com.pk/blog.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li>
+            <li><a href="fsc-entry-test.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li>
+            <li><a href="physics-numericals.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li>
+            <li><a href="math-mistakes.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li>
+            <li><a href="physics-formulas.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li>
+            <li><a href="blog.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li>
           </ul>
         </article>
 
@@ -1608,11 +1584,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-violet-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
           <ul class="space-y-4 text-sm">
-            <li><a href="https://hiraacademy.com.pk/courses-details.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li>
-            <li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li>
-            <li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li>
-            <li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li>
-            <li><a href="https://hiraacademy.com.pk/student-portal.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li>
+            <li><a href="courses-details.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li>
+            <li><a href="contact.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li>
+            <li><a href="about.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li>
+            <li><a href="career-services.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li>
+            <li><a href="student-portal.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li>
           </ul>
         </article>
 
@@ -1620,11 +1596,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-cyan-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources</h3>
           <ul class="space-y-4 text-sm">
-            <li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li>
-            <li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li>
-            <li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li>
-            <li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li>
-            <li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li>
+            <li><a href="Math-9th-Definitions.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li>
+            <li><a href="Physics-9th-Definitions.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li>
+            <li><a href="grade9-math-pairing-scheme-2026.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li>
+            <li><a href="grade9-physics-pairing-scheme-2026.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li>
+            <li><a href="grade9-mathematics-model-paper-2026.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li>
           </ul>
         </article>
 
@@ -1632,17 +1608,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies</h3>
           <ul class="space-y-4 text-sm">
-            <li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li>
-            <li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li>
-            <li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li>
-            <li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li>
-            <li><a href="https://hiraacademy.com.pk/mission.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li>
+            <li><a href="terms.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li>
+            <li><a href="privacy-policy.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li>
+            <li><a href="refund-policy.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li>
+            <li><a href="accessibility.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li>
+            <li><a href="mission.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li>
           </ul>
         </article>
       </div>
 
       <div class="mt-10 text-center">
-        <a href="https://hiraacademy.com.pk/index.html" class="inline-flex items-center bg-primary-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-primary-700 hover:shadow-xl transition-all"><span class="mr-3">🏠</span>Return to Homepage</a>
+        <a href="/" class="inline-flex items-center bg-primary-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-primary-700 hover:shadow-xl transition-all"><span class="mr-3">🏠</span>Return to Homepage</a>
       </div>
     </div>
   </details>
@@ -1662,6 +1638,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
             <img
               src="https://hiraacademy.com.pk/images/logo.webp"
               alt="Hira Science Academy"
+              width="40"
+              height="40"
               class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
             <span class="text-xl font-bold bg-gradient-to-r from-cyan-300 to-white bg-clip-text text-transparent mt-2 lg:mt-0 text-center lg:text-left">
               Hira Science Academy
@@ -1677,6 +1655,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         <div class="mt-5 flex justify-center lg:justify-start space-x-6 text-blue-100">
           <a href="https://web.facebook.com/HiraScienceAcademy.Daska"
              target="_blank"
+             rel="noopener noreferrer"
              aria-label="Facebook"
              class="hover:text-white transition duration-300 hover:scale-110">
             <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
@@ -1696,6 +1675,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
           <a href="https://wa.me/923338114798"
              target="_blank"
+             rel="noopener noreferrer"
              aria-label="WhatsApp"
              class="hover:text-green-300 transition duration-300 hover:scale-110">
             <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
@@ -1784,7 +1764,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 </a>
 
 <!-- Back to Top Button -->
-<button id="backToTop" class="fixed bottom-6 right-6 bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg transition-all opacity-0 invisible">
+<button id="backToTop" class="fixed bottom-6 right-6 bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg transition-all opacity-0 invisible" aria-label="Back to top">
   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
   </svg>
@@ -1844,7 +1824,22 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetElement = document.querySelector(targetId);
       
       if (targetElement) {
-        const headerOffset = 100;
+        // Measure the actual sticky nav + fixed announcement bar heights at
+        // click time (rather than a hardcoded guess) so the target section
+        // always lands fully below both bars, whether or not the
+        // announcement bar happens to be visible right now.
+        const navEl = document.querySelector('nav');
+        const barEl = document.getElementById('announcement-bar');
+        const navHeight = navEl ? navEl.getBoundingClientRect().height : 0;
+        let barHeight = 0;
+        if (barEl) {
+          const barTransform = window.getComputedStyle(barEl).transform;
+          const barHidden = barTransform && barTransform !== 'none' && barTransform.includes('-') && barEl.getBoundingClientRect().bottom <= navHeight;
+          if (!barHidden) {
+            barHeight = barEl.getBoundingClientRect().height;
+          }
+        }
+        const headerOffset = navHeight + barHeight + 16; // small breathing room
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
         
@@ -1910,38 +1905,6 @@ document.addEventListener('DOMContentLoaded', function() {
     observer.observe(section);
   });
   
-  // Fallback scroll handler for older browsers
-  let isScrolling = false;
-  
-  window.addEventListener('scroll', () => {
-    if (!isScrolling) {
-      window.requestAnimationFrame(() => {
-        let current = '';
-        
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          
-          if (window.scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-          }
-        });
-        
-        allNavLinks.forEach(link => {
-          link.classList.remove('active');
-          
-          if (link.getAttribute('href') === `#${current}` && current !== '') {
-            link.classList.add('active');
-          }
-        });
-        
-        isScrolling = false;
-      });
-      
-      isScrolling = true;
-    }
-  });
-  
   // Set initial active link based on URL hash
   function setInitialActiveLink() {
     const hash = window.location.hash;
@@ -1975,118 +1938,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
 
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-  }
-  
-  // NOTICE BOARD FUNCTIONALITY - PRESERVED EXACTLY FROM ORIGINAL
-  const noticeBoard = document.getElementById('noticeBoard');
-  const closeButton = document.getElementById('closeNotice');
-  const countdownTimer = document.getElementById('countdownTimer');
-  const inlineTimer = document.getElementById('inlineTimer');
-  let countdown = 10;
-  let countdownInterval;
-  let autoCloseTimeout;
-
-  function showNotice() {
-    const lastShown = localStorage.getItem('noticeLastShown');
-    const today = new Date().toDateString();
-    
-    // For testing - show every time. For production, uncomment next line:
-    // if (lastShown === today) return;
-
-    setTimeout(() => {
-      if(noticeBoard) {
-        noticeBoard.classList.remove('hidden');
-        setTimeout(() => {
-          noticeBoard.classList.add('opacity-100');
-          const transformEl = noticeBoard.querySelector('.transform');
-          if(transformEl) transformEl.classList.remove('translate-y-4');
-        }, 10);
-      }
-
-      startAutoCloseCountdown();
-    }, 1500); // Show after 1.5 seconds
-  }
-
-  function startAutoCloseCountdown() {
-    countdown = 10;
-    if(countdownTimer) countdownTimer.textContent = countdown;
-    if(inlineTimer) inlineTimer.textContent = `${countdown} seconds`;
-    
-    countdownInterval = setInterval(() => {
-      countdown--;
-      if(countdownTimer) countdownTimer.textContent = countdown;
-      if(inlineTimer) inlineTimer.textContent = `${countdown} second${countdown !== 1 ? 's' : ''}`;
-      
-      if (countdown <= 0) {
-        clearInterval(countdownInterval);
-        closeNotice();
-      }
-    }, 1000);
-
-    autoCloseTimeout = setTimeout(closeNotice, 10000); // 10 seconds
-  }
-
-  function closeNotice() {
-    clearInterval(countdownInterval);
-    clearTimeout(autoCloseTimeout);
-    
-    localStorage.setItem('noticeLastShown', new Date().toDateString());
-    
-    if(noticeBoard) {
-      noticeBoard.classList.remove('opacity-100');
-      const transformEl = noticeBoard.querySelector('.transform');
-      if(transformEl) transformEl.classList.add('translate-y-4');
-      setTimeout(() => {
-        noticeBoard.classList.add('hidden');
-      }, 300);
-    }
-  }
-
-  // Show notice
-  if(noticeBoard) showNotice();
-
-  // Close button
-  if(closeButton) {
-    closeButton.addEventListener('click', (e) => {
-      e.stopPropagation();
-      closeNotice();
-    });
-  }
-
-  // Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && noticeBoard && !noticeBoard.classList.contains('hidden')) {
-      closeNotice();
-    }
-  });
-
-  // Click outside to close
-  if(noticeBoard) {
-    noticeBoard.addEventListener('click', (e) => {
-      if (e.target === noticeBoard) {
-        closeNotice();
-      }
-    });
-  }
-
-  // Reset timer on hover
-  const noticeContent = noticeBoard ? noticeBoard.querySelector('.transform') : null;
-  if(noticeContent) {
-    noticeContent.addEventListener('mouseenter', () => {
-      if (countdownInterval) {
-        clearInterval(countdownInterval);
-        clearTimeout(autoCloseTimeout);
-        if(countdownTimer) countdownTimer.textContent = '—';
-        if(inlineTimer) inlineTimer.textContent = 'paused';
-      }
-    });
-
-    // Resume timer on mouse leave
-    noticeContent.addEventListener('mouseleave', () => {
-      if (noticeBoard && !noticeBoard.classList.contains('hidden')) {
-        startAutoCloseCountdown();
-      }
     });
   }
 
