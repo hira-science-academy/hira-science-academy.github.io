@@ -287,6 +287,21 @@
       background-size: 28px 28px;
     }
 
+    /* Star-field texture: scattered tiny dots for a subtle night-sky feel on dark surfaces (footer) */
+    .stars-bg {
+      background-image:
+        radial-gradient(1.6px 1.6px at 20px 30px, rgba(255,255,255,0.85), transparent),
+        radial-gradient(1.2px 1.2px at 90px 80px, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1.6px 1.6px at 150px 45px, rgba(255,255,255,0.7), transparent),
+        radial-gradient(1.2px 1.2px at 55px 120px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1.8px 1.8px at 180px 100px, rgba(255,255,255,0.65), transparent),
+        radial-gradient(1.2px 1.2px at 25px 160px, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1.4px 1.4px at 115px 150px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1.6px 1.6px at 195px 15px, rgba(255,255,255,0.75), transparent);
+      background-repeat: repeat;
+      background-size: 220px 200px;
+    }
+
     /* Aurora gradient mesh for the hero — primary/secondary/amber, one signature moment */
     .aurora-mesh {
       background:
@@ -1625,10 +1640,11 @@
 </section>
 
 <!-- Footer -->
-<footer class="relative aurora-mesh text-gray-100 shadow-2xl z-10 -mb-16 overflow-hidden">
-  <div class="absolute inset-0 graph-paper-dark opacity-60"></div>
-  <div class="pointer-events-none absolute -top-16 -left-10 w-72 h-72 bg-primary-400/25 rounded-full blur-3xl"></div>
-  <div class="pointer-events-none absolute -bottom-20 -right-14 w-80 h-80 bg-secondary-400/25 rounded-full blur-3xl"></div>
+<footer class="relative bg-gradient-to-br from-ink-900 via-primary-900 to-ink-800 text-gray-100 shadow-2xl z-10 -mb-16 overflow-hidden">
+  <div class="absolute inset-0 opacity-90 stars-bg"></div>
+  <div class="pointer-events-none absolute -top-20 -left-16 w-72 h-72 bg-secondary-400/10 rounded-full blur-3xl"></div>
+  <div class="pointer-events-none absolute -bottom-24 -right-16 w-96 h-96 bg-primary-400/15 rounded-full blur-3xl"></div>
+  <div class="relative z-10 h-[3px] w-full bg-gradient-to-r from-primary-400 via-secondary-400 to-amber-300"></div>
   <div class="relative z-10 max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     
     <!-- Main Footer Grid -->
