@@ -1,5 +1,6 @@
 (function() {
-  const API_ENDPOINT = 'https://hira-academy-agent-git-main-hira-academy.vercel.app/api/chat'; 
+  // Updated with your active Vercel live domain
+  const API_ENDPOINT = 'https://hira-academy-agent-pink.vercel.app/api/chat'; 
   
   const style = document.createElement('style');
   style.innerHTML = `
