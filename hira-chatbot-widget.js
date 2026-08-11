@@ -22,15 +22,15 @@
   const style = document.createElement('style');
   style.innerHTML = `
     #hira-chat-btn {
-      position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
+      position: fixed; bottom: 85px; right: 24px; width: 56px; height: 56px;
       background-color: #00796b; color: white; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2); cursor: pointer; z-index: 9999;
-      font-size: 26px; transition: transform 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25); cursor: pointer; z-index: 9999;
+      font-size: 24px; transition: transform 0.2s ease;
     }
     #hira-chat-btn:hover { transform: scale(1.08); }
     #hira-chat-window {
-      position: fixed; bottom: 90px; right: 20px; width: 350px; height: 480px;
+      position: fixed; bottom: 152px; right: 24px; width: 350px; height: 480px;
       background: white; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);
       display: none; flex-direction: column; z-index: 9999; overflow: hidden;
       font-family: Arial, sans-serif;
