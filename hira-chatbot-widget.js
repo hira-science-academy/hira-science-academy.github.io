@@ -1,8 +1,6 @@
 (function() {
-  // Your live Vercel API endpoint
   const API_ENDPOINT = 'https://hira-academy-agent-git-main-hira-academy.vercel.app/api/chat'; 
   
-  // Inject widget CSS styles
   const style = document.createElement('style');
   style.innerHTML = `
     #hira-chat-btn {
@@ -44,23 +42,22 @@
   `;
   document.head.appendChild(style);
 
-  // Build widget HTML elements
   const widgetContainer = document.createElement('div');
   widgetContainer.innerHTML = `
-    💬
-    
-      
-        Hira Academy Assistant
-        ✖
-      
-      
-        Assalam-o-Alaikum! I am your Hira Academy assistant. Ask me anything about Class 9 & 10 Physics or Math!
-      
-      
-        
-        Send
-      
-    
+    <div id="hira-chat-btn" title="Chat with Hira Assistant">💬</div>
+    <div id="hira-chat-window">
+      <div id="hira-chat-header">
+        <span>Hira Academy Assistant</span>
+        <span id="hira-chat-close">✖</span>
+      </div>
+      <div id="hira-chat-messages">
+        <div class="hira-msg bot">Assalam-o-Alaikum! I am your Hira Academy assistant. Ask me anything about Class 9 & 10 Physics or Math!</div>
+      </div>
+      <div id="hira-chat-input-area">
+        <input type="text" id="hira-chat-input" placeholder="Type your question..." />
+        <button id="hira-chat-send">Send</button>
+      </div>
+    </div>
   `;
   document.body.appendChild(widgetContainer);
 
