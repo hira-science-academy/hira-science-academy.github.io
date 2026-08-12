@@ -112,6 +112,8 @@
   const sendBtn = document.getElementById('hira-chat-send');
 
   let conversationHistory = [];
+  let lastMessageTime = 0;
+  const COOLDOWN_TIME = 4000; // 4 seconds cooldown between messages
 
   btn.addEventListener('click', () => chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex');
   closeBtn.addEventListener('click', () => chatWindow.style.display = 'none');
@@ -139,6 +141,15 @@
   async function sendMessage() {
     const text = inputEl.value.trim();
     if (!text) return;
+
+    // Cooldown Check to protect API quota
+    const now = Date.now();
+    if (now - lastMessageTime < COOLDOWN_TIME) {
+      const remainingSecs = Math.ceil((COOLDOWN_TIME - (now - lastMessageTime)) / 1000);
+      appendMessage('bot', `⚠️ Please wait ${remainingSecs}s before sending another message to keep our free assistant running smoothly.`);
+      return;
+    }
+    lastMessageTime = Date.now();
 
     appendMessage('user', text);
     inputEl.value = '';
