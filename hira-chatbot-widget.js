@@ -23,43 +23,65 @@
   style.innerHTML = `
     #hira-chat-btn {
       position: fixed; bottom: 85px; right: 24px; width: 56px; height: 56px;
-      background-color: #00796b; color: white; border-radius: 50%;
+      background: linear-gradient(135deg, #0c4a6e 0%, #1e2a5e 50%, #4c1d95 100%); 
+      color: white; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25); cursor: pointer; z-index: 9999;
-      font-size: 24px; transition: transform 0.2s ease;
+      box-shadow: 0 10px 25px -5px rgba(14, 165, 233, 0.4), 0 0 15px rgba(250, 204, 21, 0.3); 
+      cursor: pointer; z-index: 9999;
+      font-size: 24px; transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border: 2px solid rgba(255, 255, 255, 0.3);
     }
-    #hira-chat-btn:hover { transform: scale(1.08); }
+    #hira-chat-btn:hover { 
+      transform: scale(1.08); 
+      box-shadow: 0 12px 30px -5px rgba(14, 165, 233, 0.6), 0 0 20px rgba(250, 204, 21, 0.5);
+    }
     #hira-chat-window {
       position: fixed; bottom: 152px; right: 24px; width: 350px; height: 480px;
-      background: white; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      background: white; border-radius: 16px; box-shadow: 0 20px 50px rgba(11, 18, 32, 0.25);
       display: none; flex-direction: column; z-index: 9999; overflow: hidden;
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      border: 1px solid rgba(226, 232, 240, 0.8);
     }
     #hira-chat-header {
-      background: #00796b; color: white; padding: 14px; font-weight: bold;
+      background: linear-gradient(135deg, #0c4a6e 0%, #1e2a5e 50%, #4c1d95 100%); 
+      color: white; padding: 14px 16px; font-weight: bold;
       display: flex; justify-content: space-between; align-items: center; font-size: 15px;
+      font-family: Georgia, serif;
     }
-    #hira-chat-close { cursor: pointer; font-size: 18px; }
+    #hira-chat-close { cursor: pointer; font-size: 20px; color: rgba(255,255,255,0.8); transition: color 0.2s; }
+    #hira-chat-close:hover { color: #facc15; }
     #hira-chat-messages {
-      flex: 1; padding: 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;
-      background: #f8f9fa;
+      flex: 1; padding: 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px;
+      background: #f8fafc;
     }
-    .hira-msg { padding: 10px 12px; border-radius: 12px; max-width: 85%; font-size: 13.5px; line-height: 1.5; word-wrap: break-word; }
-    .hira-msg.user { background: #00796b; color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
-    .hira-msg.bot { background: white; align-self: flex-start; border: 1px solid #e0e0e0; color: #222; border-bottom-left-radius: 2px; }
+    .hira-msg { padding: 10px 14px; border-radius: 14px; max-width: 85%; font-size: 13.5px; line-height: 1.5; word-wrap: break-word; }
+    .hira-msg.user { 
+      background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%); 
+      color: white; align-self: flex-end; border-bottom-right-radius: 4px; 
+      box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+    }
+    .hira-msg.bot { 
+      background: white; align-self: flex-start; border: 1px solid #e2e8f0; 
+      color: #0b1220; border-bottom-left-radius: 4px; 
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
     .hira-msg p { margin: 0 0 6px 0; }
     .hira-msg p:last-child { margin-bottom: 0; }
     .hira-msg ul, .hira-msg ol { margin: 4px 0 6px 18px; padding: 0; }
     #hira-chat-input-area {
-      display: flex; padding: 10px; border-top: 1px solid #eee; background: white; gap: 6px;
+      display: flex; padding: 12px; border-top: 1px solid #e2e8f0; background: white; gap: 8px;
     }
     #hira-chat-input {
-      flex: 1; padding: 9px 12px; border: 1px solid #ccc; border-radius: 20px; outline: none; font-size: 13.5px;
+      flex: 1; padding: 10px 14px; border: 1px solid #cbd5e1; border-radius: 20px; outline: none; font-size: 13.5px;
+      transition: border-color 0.2s;
     }
+    #hira-chat-input:focus { border-color: #0ea5e9; }
     #hira-chat-send {
-      background: #00796b; color: white; border: none; padding: 0 16px;
+      background: #0ea5e9; color: white; border: none; padding: 0 16px;
       border-radius: 20px; cursor: pointer; font-weight: bold; font-size: 13px;
+      transition: background 0.2s;
     }
+    #hira-chat-send:hover { background: #0284c7; }
   `;
   document.head.appendChild(style);
 
