@@ -112,7 +112,7 @@
       background: radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(5, 150, 105, 0.08), transparent 50%);
       pointer-events: none;
     }
-    .question-box {
+    .numerical-box {
       scroll-margin-top: 85px;
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -123,21 +123,30 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .question-box:hover {
+    .numerical-box:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
     }
-    .question-title {
+    .problem-title {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #0f172a;
       margin-bottom: 12px;
       flex-wrap: wrap;
     }
-    .q-badge {
+    .problem-title .num-badge {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .problem-title .problem-text {
+      text-align: justify;
+      line-height: 1.7;
+      flex: 1;
+    }
+    .num-badge {
       background: linear-gradient(135deg, #047857, #059669);
       color: #ffffff;
       font-weight: 600;
@@ -146,18 +155,9 @@
       font-size: 0.85rem;
       letter-spacing: 0.5px;
       box-shadow: 0 2px 4px rgba(5, 150, 105, 0.2);
+      white-space: nowrap;
     }
-    .q-badge-example {
-      background: linear-gradient(135deg, #7c3aed, #6d28d9);
-      color: #ffffff;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-      box-shadow: 0 2px 4px rgba(124, 58, 237, 0.2);
-    }
-    .question-box p {
+    .numerical-box p {
       color: #334155;
       line-height: 1.6;
       margin-bottom: 16px;
@@ -191,14 +191,51 @@
       height: 1px;
       background: linear-gradient(90deg, #cbd5e1, transparent);
     }
-    .ans-text {
+    .given-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 20px;
+      margin: 6px 0 14px 4px;
+      font-size: 0.95rem;
+      color: #334155;
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+    }
+    .given-grid span:nth-child(odd) {
+      font-weight: 600;
+      color: #64748b;
+    }
+    .tofind-line {
+      margin: 4px 0 4px 12px;
+      font-size: 0.95rem;
+      color: #0f172a;
+      font-weight: 500;
+      position: relative;
+    }
+    .tofind-line::before {
+      content: "•";
+      color: #2563eb;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    .sol-text {
       margin: 8px 0;
       text-align: justify;
       font-size: 0.95rem;
       color: #334155;
-      padding-left: 8px;
-      border-left: 3px solid #059669;
-      padding-left: 16px;
+    }
+    .equation {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #f1f5f9;
+      margin: 10px 0;
+      overflow-x: auto;
+      text-align: center;
     }
     .ans-box {
       background: linear-gradient(135deg, #ecfdf5, #d1fae5);
@@ -213,34 +250,37 @@
       align-items: center;
       box-shadow: 0 2px 4px rgba(5, 150, 105, 0.05);
     }
-    .figure-box {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 12px;
-      margin: 16px 0;
-      text-align: center;
+    .toggle-answer-btn {
+      background: #059669;
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin-top: 0.75rem;
     }
-    .figure-box img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 4px;
+    .toggle-answer-btn:hover {
+      background: #047857;
     }
-    .figure-caption {
-      font-size: 0.85rem;
-      color: #64748b;
-      margin-top: 8px;
-      font-style: italic;
+    .toggle-answer-btn:active {
+      transform: scale(0.98);
     }
-    .note-box {
-      background: #fefce8;
-      border-left: 4px solid #eab308;
-      padding: 12px 16px;
-      margin: 14px 0;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.93rem;
-      color: #713f12;
-      line-height: 1.5;
+    .example-box {
+      border-left-color: #7c3aed !important;
+    }
+    .example-badge {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+      box-shadow: 0 2px 4px rgba(124, 58, 237, 0.2) !important;
+    }
+    .example-btn {
+      background: #7c3aed !important;
+    }
+    .example-btn:hover {
+      background: #6d28d9 !important;
     }
     .content-section {
       margin-bottom: 2.5rem;
@@ -342,24 +382,33 @@
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
     }
-    .toggle-answer-btn {
-      background: #059669;
-      color: #ffffff;
-      border: none;
-      padding: 8px 18px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      margin-top: 0.75rem;
+    .hub-button {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      border: 1px solid rgba(5, 150, 105, 0.25);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+      color: white !important;
     }
-    .toggle-answer-btn:hover {
-      background: #047857;
+    .hub-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.15), transparent);
+      transition: left 0.6s ease;
     }
-    .toggle-answer-btn:active {
-      transform: scale(0.98);
+    .hub-button:hover::before { left: 100%; }
+    .hub-button:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 40px rgba(5, 150, 105, 0.25), 0 0 60px rgba(5, 150, 105, 0.1);
+      border-color: rgba(5, 150, 105, 0.5);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      color: white !important;
     }
     .dark-glass-btn {
       background: linear-gradient(135deg, #0f172a, #1e293b) !important;
@@ -405,68 +454,24 @@
       font-size: 0.9rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .hub-button {
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
-      border: 1px solid rgba(5, 150, 105, 0.25);
-      position: relative;
-      overflow: hidden;
-      letter-spacing: 0.3px;
-      color: white !important;
-    }
-    .hub-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(5, 150, 105, 0.15), transparent);
-      transition: left 0.6s ease;
-    }
-    .hub-button:hover::before { left: 100%; }
-    .hub-button:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 12px 40px rgba(5, 150, 105, 0.25), 0 0 60px rgba(5, 150, 105, 0.1);
-      border-color: rgba(5, 150, 105, 0.5);
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
-      color: white !important;
-    }
-    .equation {
-      background: #f8fafc;
-      border-left: 4px solid #059669;
-      padding: 0.75rem 1rem;
-      margin: 1rem 0;
-      border-radius: 0 8px 8px 0;
-      font-size: 1.05rem;
-      font-family: 'Courier New', monospace;
-    }
-    .truth-table {
-      border-collapse: collapse;
-      width: 100%;
-      max-width: 100%;
-      margin: 12px 0;
-      font-size: 0.95rem;
-    }
-    .truth-table th, .truth-table td {
-      border: 1px solid #cbd5e1;
-      padding: 6px 12px;
+    .figure-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 16px 0;
       text-align: center;
     }
-    .truth-table th {
-      background: #f1f5f9;
-      font-weight: 600;
-      color: #0f172a;
+    .figure-box img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
     }
-    .truth-table td {
-      background: #ffffff;
-    }
-    .example-box {
-      border-left-color: #7c3aed !important;
-    }
-    .example-box .q-badge {
-      background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+    .figure-caption {
+      font-size: 0.85rem;
+      color: #64748b;
+      margin-top: 8px;
+      font-style: italic;
     }
   </style>
 
@@ -615,7 +620,7 @@
       <p class="text-emerald-700 font-semibold text-xl mb-2 text-center">📘 Chapter 2: Kinematics – Numerical Problems</p>
       <p class="mt-2 text-gray-600 text-center max-w-3xl mx-auto">Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska. Based on <strong>PECTAA 2026 syllabus (National Curriculum 2023)</strong>.</p>
       <div class="mt-3 max-w-3xl mx-auto bg-emerald-50 rounded-lg p-3 border border-emerald-200">
-        <p class="text-gray-700 text-justify"><span class="font-semibold text-emerald-700">📖 What's Inside:</span> This section covers numerical problems from Chapter 2 Kinematics including <strong>vector representation, speed, acceleration, equations of motion, free fall, and average velocity calculations</strong>. Each problem is presented with a step-by-step solution as per the official PECTAA 2026 Physics curriculum. Perfect for Punjab Boards (Lahore, Gujranwala, Multan, etc.) and all BISE boards across Pakistan.</p>
+        <p class="text-gray-700 text-justify"><span class="font-semibold text-emerald-700">📖 What's Inside:</span> This section covers numerical problems from Chapter 2 Kinematics including <strong>vector representation, speed, acceleration, equations of motion, free fall, and average velocity calculations</strong>. Each problem is presented with <strong>Given Data, To Find, and step-by-step Solution</strong> as per the official PECTAA 2026 Physics curriculum. Perfect for Punjab Boards (Lahore, Gujranwala, Multan, etc.) and all BISE boards across Pakistan.</p>
       </div>
     </div>
 
@@ -680,309 +685,583 @@
       </div>
     </div>
 
-   
-
     <div class="content-section" id="questions-section">
-      <h2>📝 Numerical Problems & Solutions (PECTAA 2026)</h2>
+      <h2>📐 Numerical Problems & Solutions (PECTAA 2026)</h2>
 
       <!-- Problem 2.1 -->
-      <div id="q1" class="question-box">
-        <div class="question-title"><span class="q-badge">2.1</span> Draw the representative lines of the following vectors: (a) A velocity of \(400 \text{ ms}^{-1}\) making an angle of \(60^\circ\) with x-axis. (b) A force of \(50 \text{ N}\) making an angle of \(120^\circ\) with x-axis.</div>
+      <div id="q1" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.1</span>
+          <span class="problem-text">Draw the representative lines of the following vectors: (a) A velocity of \(400 \text{ ms}^{-1}\) making an angle of \(60^\circ\) with x-axis. (b) A force of \(50 \text{ N}\) making an angle of \(120^\circ\) with x-axis.</span>
+        </div>
         <div class="answer-content" id="answer1">
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text"><strong>(a) A velocity of \(400 \text{ ms}^{-1}\) at \(60^\circ\) with x-axis:</strong></div>
-          <div class="ans-text">(i) Draw horizontal and vertical lines to represent x-axis and y-axis.</div>
-          <div class="ans-text">(ii) Select a suitable scale: If \(100 \text{ ms}^{-1} = 1 \text{ cm}\), then \(400 \text{ ms}^{-1} = 4 \text{ cm}\).</div>
-          <div class="ans-text">(iii) Draw \(4 \text{ cm}\) line \(OQ\) at angle of \(60^\circ\) with positive x-axis. The \(OQ\) is vector \(\vec{V}\).</div>
-          <div class="figure-box">
-            <img src="images/vector-400ms-60deg.png" alt="Vector representation: 400 ms-1 at 60 degrees" loading="lazy">
-            <div class="figure-caption">Figure (a): Velocity vector \(400 \text{ ms}^{-1}\) at \(60^\circ\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Solution</div>
+            <div class="block-lbl">(a) A velocity of \(400 \text{ ms}^{-1}\) at \(60^\circ\) with x-axis:</div>
+            <p class="sol-text">(i) Draw horizontal and vertical lines to represent x-axis and y-axis.</p>
+            <p class="sol-text">(ii) Select a suitable scale: If \(100 \text{ ms}^{-1} = 1 \text{ cm}\), then \(400 \text{ ms}^{-1} = 4 \text{ cm}\).</p>
+            <p class="sol-text">(iii) Draw \(4 \text{ cm}\) line \(OQ\) at angle of \(60^\circ\) with positive x-axis. The \(OQ\) is vector \(\vec{V}\).</p>
+            <div class="figure-box">
+              <img src="images/vector-400ms-60deg.png" alt="Vector representation: 400 ms-1 at 60 degrees" loading="lazy">
+              <div class="figure-caption">Figure (a): Velocity vector \(400 \text{ ms}^{-1}\) at \(60^\circ\)</div>
+            </div>
+            <div class="block-lbl">(b) A force of \(50 \text{ N}\) at \(120^\circ\) with x-axis:</div>
+            <p class="sol-text">(i) Draw horizontal and vertical lines to represent x-axis and y-axis.</p>
+            <p class="sol-text">(ii) Select a suitable scale: If \(10 \text{ N} = 1 \text{ cm}\), then \(50 \text{ N} = 5 \text{ cm}\).</p>
+            <p class="sol-text">(iii) Draw \(5 \text{ cm}\) line \(OQ\) at angle of \(120^\circ\) with x-axis. The \(OQ\) is vector \(\vec{F}\).</p>
+            <div class="figure-box">
+              <img src="images/vector-50N-120deg.png" alt="Vector representation: 50 N at 120 degrees" loading="lazy">
+              <div class="figure-caption">Figure (b): Force vector \(50 \text{ N}\) at \(120^\circ\)</div>
+            </div>
+            <div class="ans-box">✅ (a) 4 cm line at 60° (scale: 100 ms⁻¹ = 1 cm). (b) 5 cm line at 120° (scale: 10 N = 1 cm).</div>
           </div>
-          <div class="ans-text"><strong>(b) A force of \(50 \text{ N}\) at \(120^\circ\) with x-axis:</strong></div>
-          <div class="ans-text">(i) Draw horizontal and vertical lines to represent x-axis and y-axis.</div>
-          <div class="ans-text">(ii) Select a suitable scale: If \(10 \text{ N} = 1 \text{ cm}\), then \(50 \text{ N} = 5 \text{ cm}\).</div>
-          <div class="ans-text">(iii) Draw \(5 \text{ cm}\) line \(OQ\) at angle of \(120^\circ\) with x-axis. The \(OQ\) is vector \(\vec{F}\).</div>
-          <div class="figure-box">
-            <img src="images/vector-50N-120deg.png" alt="Vector representation: 50 N at 120 degrees" loading="lazy">
-            <div class="figure-caption">Figure (b): Force vector \(50 \text{ N}\) at \(120^\circ\)</div>
-          </div>
-          <div class="ans-box">✅ (a) 4 cm line at 60° (scale: 100 ms⁻¹ = 1 cm). (b) 5 cm line at 120° (scale: 10 N = 1 cm).</div>
         </div>
         <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
       </div>
 
       <!-- Problem 2.2 -->
-      <div id="q2" class="question-box">
-        <div class="question-title"><span class="q-badge">2.2</span> A car is moving with an average speed of \(72 \text{ kmh}^{-1}\). How much time will it take to cover a distance of \(360 \text{ km}\)?</div>
+      <div id="q2" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.2</span>
+          <span class="problem-text">A car is moving with an average speed of \(72 \text{ kmh}^{-1}\). How much time will it take to cover a distance of \(360 \text{ km}\)?</span>
+        </div>
         <div class="answer-content" id="answer2">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">Average speed of car = \(v_{av} = 72 \text{ kmh}^{-1}\)</div>
-          <div class="ans-text">Distance = \(S = 360 \text{ km}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Time = \(t = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using formula of distance</div>
-          <div class="ans-text">\(S = v_{av} \times t\)</div>
-          <div class="ans-text">\(360 = 72 \times t \Rightarrow t = \frac{360}{72} = 5 \text{ hr}\)</div>
-          <div class="ans-box">✅ Time = 5 hours</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Average\ speed\)</span><span>\(= v_{av} = 72\ \text{kmh}^{-1}\)</span>
+              <span>\(Distance\)</span><span>\(= S = 360\ \text{km}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Time = t = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using formula of distance:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              S &= v_{av} \times t \\
+              360 &= 72 \times t \\
+              t &= \frac{360}{72} \\
+              \boldsymbol{t} &= \boldsymbol{5\ \text{hr}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Time = 5 hours</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
       </div>
 
       <!-- Problem 2.3 -->
-      <div id="q3" class="question-box">
-        <div class="question-title"><span class="q-badge">2.3</span> A truck starts from rest. It reaches a velocity of \(90 \text{ kmh}^{-1}\) in 50 seconds. Find its average acceleration.</div>
+      <div id="q3" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.3</span>
+          <span class="problem-text">A truck starts from rest. It reaches a velocity of \(90 \text{ kmh}^{-1}\) in 50 seconds. Find its average acceleration.</span>
+        </div>
         <div class="answer-content" id="answer3">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">Initial velocity of truck = \(v_i = 0 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Final velocity = \(v_f = 90 \text{ kmh}^{-1} = 90 \times \frac{10}{36} = 25 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Time = \(t = 50 \text{ s}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Average acceleration = \(a_{av} = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using formula of average acceleration</div>
-          <div class="ans-text">\(a_{av} = \frac{v_f - v_i}{t}\)</div>
-          <div class="ans-text">\(a_{av} = \frac{25 - 0}{50} = \frac{25}{50} = 0.5 \text{ ms}^{-2}\)</div>
-          <div class="ans-box">✅ Average acceleration = \(0.5 \text{ ms}^{-2}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Initial\ velocity\)</span><span>\(= v_i = 0\ \text{ms}^{-1}\)</span>
+              <span>\(Final\ velocity\)</span><span>\(= v_f = 90\ \text{kmh}^{-1} = 90 \times \frac{10}{36} = 25\ \text{ms}^{-1}\)</span>
+              <span>\(Time\)</span><span>\(= t = 50\ \text{s}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Average\ acceleration = a_{av} = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using formula of average acceleration:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              a_{av} &= \frac{v_f - v_i}{t} \\
+              a_{av} &= \frac{25 - 0}{50} \\
+              \boldsymbol{a_{av}} &= \boldsymbol{0.5\ \text{ms}^{-2}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Average acceleration = \(0.5\ \text{ms}^{-2}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
       </div>
 
       <!-- Problem 2.4 -->
-      <div id="q4" class="question-box">
-        <div class="question-title"><span class="q-badge">2.4</span> A car passes a green traffic signal while moving with a velocity of \(5 \text{ ms}^{-1}\). It then accelerates at \(1.5 \text{ ms}^{-2}\). What is the velocity of the car after 5 seconds?</div>
+      <div id="q4" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.4</span>
+          <span class="problem-text">A car passes a green traffic signal while moving with a velocity of \(5 \text{ ms}^{-1}\). It then accelerates at \(1.5 \text{ ms}^{-2}\). What is the velocity of the car after 5 seconds?</span>
+        </div>
         <div class="answer-content" id="answer4">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">Initial velocity of car = \(v_i = 5 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Acceleration = \(a = 1.5 \text{ ms}^{-2}\)</div>
-          <div class="ans-text">Time = \(t = 5 \text{ s}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Final Velocity = \(v_f = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using first equation of motion</div>
-          <div class="ans-text">\(v_f = v_i + at\)</div>
-          <div class="ans-text">\(v_f = 5 + (1.5)(5) = 5 + 7.5 = 12.5 \text{ ms}^{-1}\)</div>
-          <div class="ans-box">✅ Final velocity = \(12.5 \text{ ms}^{-1}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Initial\ velocity\)</span><span>\(= v_i = 5\ \text{ms}^{-1}\)</span>
+              <span>\(Acceleration\)</span><span>\(= a = 1.5\ \text{ms}^{-2}\)</span>
+              <span>\(Time\)</span><span>\(= t = 5\ \text{s}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Final\ velocity = v_f = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using first equation of motion:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v_f &= v_i + at \\
+              v_f &= 5 + (1.5)(5) \\
+              v_f &= 5 + 7.5 \\
+              \boldsymbol{v_f} &= \boldsymbol{12.5\ \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Final velocity = \(12.5\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
       </div>
 
       <!-- Problem 2.5 -->
-      <div id="q5" class="question-box">
-        <div class="question-title"><span class="q-badge">2.5</span> A motorcycle initially travelling at \(18 \text{ kmh}^{-1}\) accelerates at a constant rate of \(2 \text{ ms}^{-2}\). How far will the motorcycle go in 10 seconds?</div>
+      <div id="q5" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.5</span>
+          <span class="problem-text">A motorcycle initially travelling at \(18 \text{ kmh}^{-1}\) accelerates at a constant rate of \(2 \text{ ms}^{-2}\). How far will the motorcycle go in 10 seconds?</span>
+        </div>
         <div class="answer-content" id="answer5">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">Initial velocity = \(v_i = 18 \text{ kmh}^{-1} = 18 \times \frac{10}{36} = 5 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Acceleration = \(a = 2 \text{ ms}^{-2}\)</div>
-          <div class="ans-text">Time = \(t = 10 \text{ s}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Distance moved = \(S = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using second equation of motion</div>
-          <div class="ans-text">\(S = v_i t + \frac{1}{2} at^2\)</div>
-          <div class="ans-text">\(S = (5)(10) + \frac{1}{2}(2)(10)^2\)</div>
-          <div class="ans-text">\(S = 50 + \frac{1}{2}(2)(100)\)</div>
-          <div class="ans-text">\(S = 50 + 100 = 150 \text{ m}\)</div>
-          <div class="ans-box">✅ Distance = \(150 \text{ m}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Initial\ velocity\)</span><span>\(= v_i = 18\ \text{kmh}^{-1} = 18 \times \frac{10}{36} = 5\ \text{ms}^{-1}\)</span>
+              <span>\(Acceleration\)</span><span>\(= a = 2\ \text{ms}^{-2}\)</span>
+              <span>\(Time\)</span><span>\(= t = 10\ \text{s}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Distance\ moved = S = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using second equation of motion:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              S &= v_i t + \frac{1}{2} at^2 \\
+              S &= (5)(10) + \frac{1}{2}(2)(10)^2 \\
+              S &= 50 + 100 \\
+              \boldsymbol{S} &= \boldsymbol{150\ \text{m}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Distance = \(150\ \text{m}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
       </div>
 
       <!-- Problem 2.6 -->
-      <div id="q6" class="question-box">
-        <div class="question-title"><span class="q-badge">2.6</span> A wagon is moving on the road with a velocity of \(54 \text{ kmh}^{-1}\). Brakes are applied suddenly. The wagon covers a distance of \(25 \text{ m}\) before stopping. Determine the acceleration of the wagon.</div>
+      <div id="q6" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.6</span>
+          <span class="problem-text">A wagon is moving on the road with a velocity of \(54 \text{ kmh}^{-1}\). Brakes are applied suddenly. The wagon covers a distance of \(25 \text{ m}\) before stopping. Determine the acceleration of the wagon.</span>
+        </div>
         <div class="answer-content" id="answer6">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">Initial velocity of wagon = \(v_i = 54 \text{ kmh}^{-1} = 54 \times \frac{10}{36} = 15 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Distance covered = \(S = 25 \text{ m}\)</div>
-          <div class="ans-text">Final velocity = \(v_f = 0 \text{ ms}^{-1}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Acceleration = \(a = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using third equation of motion</div>
-          <div class="ans-text">\(2aS = v_f^2 - v_i^2\)</div>
-          <div class="ans-text">\(2(a)(25) = (0)^2 - (15)^2\)</div>
-          <div class="ans-text">\(50a = -225 \Rightarrow a = -\frac{225}{50} = -4.5 \text{ ms}^{-2}\)</div>
-          <div class="ans-box">✅ Acceleration = \(-4.5 \text{ ms}^{-2}\) (deceleration)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Initial\ velocity\)</span><span>\(= v_i = 54\ \text{kmh}^{-1} = 54 \times \frac{10}{36} = 15\ \text{ms}^{-1}\)</span>
+              <span>\(Distance\)</span><span>\(= S = 25\ \text{m}\)</span>
+              <span>\(Final\ velocity\)</span><span>\(= v_f = 0\ \text{ms}^{-1}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Acceleration = a = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using third equation of motion:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              2aS &= v_f^2 - v_i^2 \\
+              2(a)(25) &= (0)^2 - (15)^2 \\
+              50a &= -225 \\
+              a &= -\frac{225}{50} \\
+              \boldsymbol{a} &= \boldsymbol{-4.5\ \text{ms}^{-2}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Acceleration = \(-4.5\ \text{ms}^{-2}\) (deceleration)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
       </div>
 
       <!-- Problem 2.7 -->
-      <div id="q7" class="question-box">
-        <div class="question-title"><span class="q-badge">2.7</span> A stone is dropped from a height of \(45 \text{ m}\). How long will it take to reach the ground? What will be its velocity just before hitting the ground?</div>
+      <div id="q7" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.7</span>
+          <span class="problem-text">A stone is dropped from a height of \(45 \text{ m}\). How long will it take to reach the ground? What will be its velocity just before hitting the ground?</span>
+        </div>
         <div class="answer-content" id="answer7">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">Height = \(h = 45 \text{ m}\)</div>
-          <div class="ans-text">Initial velocity = \(v_i = 0 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Acceleration due to gravity = \(g = 10 \text{ ms}^{-2}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Time to reach ground = \(t = ?\), Velocity just before hitting ground = \(v_f = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using second equation of motion body moving under gravity</div>
-          <div class="ans-text">\(h = v_i t + \frac{1}{2} gt^2\)</div>
-          <div class="ans-text">\(45 = (0)(t) + \frac{1}{2}(10)(t)^2\)</div>
-          <div class="ans-text">\(45 = 5t^2 \Rightarrow t^2 = 9 \Rightarrow t = 3 \text{ s}\)</div>
-          <div class="ans-text">Now for final velocity by using first equation of motion under gravity</div>
-          <div class="ans-text">\(v_f = v_i + gt = 0 + (10)(3) = 30 \text{ ms}^{-1}\)</div>
-          <div class="ans-box">✅ Time = 3 s, Velocity = \(30 \text{ ms}^{-1}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Height\)</span><span>\(= h = 45\ \text{m}\)</span>
+              <span>\(Initial\ velocity\)</span><span>\(= v_i = 0\ \text{ms}^{-1}\)</span>
+              <span>\(Acceleration\ due\ to\ gravity\)</span><span>\(= g = 10\ \text{ms}^{-2}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Time\ to\ reach\ ground = t = ?\)</div>
+            <div class="tofind-line">\(Velocity\ just\ before\ hitting\ ground = v_f = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using second equation of motion body moving under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              h &= v_i t + \frac{1}{2} gt^2 \\
+              45 &= (0)(t) + \frac{1}{2}(10)(t)^2 \\
+              45 &= 5t^2 \\
+              t^2 &= 9 \\
+              \boldsymbol{t} &= \boldsymbol{3\ \text{s}}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Now for final velocity by using first equation of motion under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v_f &= v_i + gt \\
+              v_f &= 0 + (10)(3) \\
+              \boldsymbol{v_f} &= \boldsymbol{30\ \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Time = 3 s, Velocity = \(30\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer7">Show Solution</button>
       </div>
 
       <!-- Problem 2.8 -->
-      <div id="q8" class="question-box">
-        <div class="question-title"><span class="q-badge">2.8</span> A car travels \(10 \text{ km}\) with an average velocity of \(20 \text{ ms}^{-1}\). Then it travels in the same direction through a diversion at an average velocity of \(4 \text{ ms}^{-1}\) for the next \(0.8 \text{ km}\). Determine the average velocity of the car for the total journey.</div>
+      <div id="q8" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.8</span>
+          <span class="problem-text">A car travels \(10 \text{ km}\) with an average velocity of \(20 \text{ ms}^{-1}\). Then it travels in the same direction through a diversion at an average velocity of \(4 \text{ ms}^{-1}\) for the next \(0.8 \text{ km}\). Determine the average velocity of the car for the total journey.</span>
+        </div>
         <div class="answer-content" id="answer8">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">Distance traveled = \(S_1 = 10 \text{ km} = 10000 \text{ m}\)</div>
-          <div class="ans-text">Average velocity = \(v_1 = 20 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Next distance traveled = \(S_2 = 0.8 \text{ km} = 800 \text{ m}\)</div>
-          <div class="ans-text">Average velocity = \(v_2 = 4 \text{ ms}^{-1}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Average velocity for total journey = \(v_{av} = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> For \(S_1\) time taken by using formula \(S = vt\)</div>
-          <div class="ans-text">\(t_1 = \frac{S_1}{v_1} = \frac{10000}{20} = 500 \text{ s}\)</div>
-          <div class="ans-text">For \(S_2\) time taken</div>
-          <div class="ans-text">\(t_2 = \frac{S_2}{v_2} = \frac{800}{4} = 200 \text{ s}\)</div>
-          <div class="ans-text">Total time = \(t = t_1 + t_2 = 500 + 200 = 700 \text{ s}\)</div>
-          <div class="ans-text">Total distance = \(S = S_1 + S_2 = 10000 + 800 = 10800 \text{ m}\)</div>
-          <div class="ans-text">Now by using formula of distance</div>
-          <div class="ans-text">\(S = v_{av} \times t \Rightarrow 10800 = v_{av} \times 700 \Rightarrow v_{av} = \frac{10800}{700} = 15.4 \text{ ms}^{-1}\)</div>
-          <div class="ans-box">✅ Average velocity = \(15.4 \text{ ms}^{-1}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(First\ distance\)</span><span>\(= S_1 = 10\ \text{km} = 10000\ \text{m}\)</span>
+              <span>\(First\ average\ velocity\)</span><span>\(= v_1 = 20\ \text{ms}^{-1}\)</span>
+              <span>\(Second\ distance\)</span><span>\(= S_2 = 0.8\ \text{km} = 800\ \text{m}\)</span>
+              <span>\(Second\ average\ velocity\)</span><span>\(= v_2 = 4\ \text{ms}^{-1}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Average\ velocity\ for\ total\ journey = v_{av} = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">For \(S_1\), time taken by using formula \(S = vt\):</p>
+            <div class="equation">
+              \[
+              t_1 = \frac{S_1}{v_1} = \frac{10000}{20} = 500\ \text{s}
+              \]
+            </div>
+            <p class="sol-text">For \(S_2\), time taken:</p>
+            <div class="equation">
+              \[
+              t_2 = \frac{S_2}{v_2} = \frac{800}{4} = 200\ \text{s}
+              \]
+            </div>
+            <p class="sol-text">Total time = \(t = t_1 + t_2 = 500 + 200 = 700\ \text{s}\)</p>
+            <p class="sol-text">Total distance = \(S = S_1 + S_2 = 10000 + 800 = 10800\ \text{m}\)</p>
+            <p class="sol-text">Now by using formula of distance:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              S &= v_{av} \times t \\
+              10800 &= v_{av} \times 700 \\
+              v_{av} &= \frac{10800}{700} \\
+              \boldsymbol{v_{av}} &= \boldsymbol{15.4\ \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Average velocity = \(15.4\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer8">Show Solution</button>
       </div>
 
       <!-- Problem 2.9 -->
-      <div id="q9" class="question-box">
-        <div class="question-title"><span class="q-badge">2.9</span> A ball is dropped from the top of a tower. The ball reaches the ground in 5 seconds. Find the height of the tower and the velocity of the ball with which it strikes the ground.</div>
+      <div id="q9" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.9</span>
+          <span class="problem-text">A ball is dropped from the top of a tower. The ball reaches the ground in 5 seconds. Find the height of the tower and the velocity of the ball with which it strikes the ground.</span>
+        </div>
         <div class="answer-content" id="answer9">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">Time taken = \(t = 5 \text{ s}\)</div>
-          <div class="ans-text">Initial velocity = \(v_i = 0 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Acceleration due to gravity = \(g = 10 \text{ ms}^{-2}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Height of tower = \(h = ?\), Final velocity = \(v_f = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using second equation of motion body moving under gravity</div>
-          <div class="ans-text">\(h = v_i t + \frac{1}{2} gt^2\)</div>
-          <div class="ans-text">\(h = (0)(5) + \frac{1}{2}(10)(5)^2 = 0 + 5 \times 25 = 125 \text{ m}\)</div>
-          <div class="ans-text">Now for final velocity by using first equation of motion under gravity</div>
-          <div class="ans-text">\(v_f = v_i + gt = 0 + (10)(5) = 50 \text{ ms}^{-1}\)</div>
-          <div class="ans-box">✅ Height = \(125 \text{ m}\), Velocity = \(50 \text{ ms}^{-1}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Time\)</span><span>\(= t = 5\ \text{s}\)</span>
+              <span>\(Initial\ velocity\)</span><span>\(= v_i = 0\ \text{ms}^{-1}\)</span>
+              <span>\(Acceleration\ due\ to\ gravity\)</span><span>\(= g = 10\ \text{ms}^{-2}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Height\ of\ tower = h = ?\)</div>
+            <div class="tofind-line">\(Final\ velocity = v_f = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using second equation of motion body moving under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              h &= v_i t + \frac{1}{2} gt^2 \\
+              h &= (0)(5) + \frac{1}{2}(10)(5)^2 \\
+              h &= 0 + 5 \times 25 \\
+              \boldsymbol{h} &= \boldsymbol{125\ \text{m}}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Now for final velocity by using first equation of motion under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v_f &= v_i + gt \\
+              v_f &= 0 + (10)(5) \\
+              \boldsymbol{v_f} &= \boldsymbol{50\ \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Height = \(125\ \text{m}\), Velocity = \(50\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer9">Show Solution</button>
       </div>
 
       <!-- Problem 2.10 -->
-      <div id="q10" class="question-box">
-        <div class="question-title"><span class="q-badge">2.10</span> A cricket ball is hit so that it travels straight up in the air. An observer notes that it took 3 seconds to reach the highest point. What was the initial velocity of the ball? If the ball was hit 1 m above the ground, how high did it rise from the ground?</div>
+      <div id="q10" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">2.10</span>
+          <span class="problem-text">A cricket ball is hit so that it travels straight up in the air. An observer notes that it took 3 seconds to reach the highest point. What was the initial velocity of the ball? If the ball was hit 1 m above the ground, how high did it rise from the ground?</span>
+        </div>
         <div class="answer-content" id="answer10">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">Time to reach the highest point = \(t = 3 \text{ s}\)</div>
-          <div class="ans-text">Final velocity = \(v_f = 0 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Acceleration due to gravity = \(g = -10 \text{ ms}^{-2}\) (upward motion)</div>
-          <div class="ans-text"><strong>To Find:</strong> Initial velocity = \(v_i = ?\), Height of ball 1 m above the ground = \(h_t = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> For initial velocity by using first equation of motion under gravity</div>
-          <div class="ans-text">\(v_f = v_i + gt \Rightarrow 0 = v_i + (-10)(3) \Rightarrow 0 = v_i - 30 \Rightarrow v_i = 30 \text{ ms}^{-1}\)</div>
-          <div class="ans-text">Now by using second equation of motion body moving under gravity</div>
-          <div class="ans-text">\(h = v_i t + \frac{1}{2} gt^2 = (30)(3) + \frac{1}{2}(-10)(3)^2 = 90 - 45 = 45 \text{ m}\)</div>
-          <div class="ans-text">Required total height = \(h_t = h_{gain} + h_{initial}\)</div>
-          <div class="ans-text">\(h_t = 45 \text{ m} + 1 \text{ m} = 46 \text{ m}\)</div>
-          <div class="ans-box">✅ Initial velocity = \(30 \text{ ms}^{-1}\), Total height = \(46 \text{ m}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Time\ to\ reach\ highest\ point\)</span><span>\(= t = 3\ \text{s}\)</span>
+              <span>\(Final\ velocity\)</span><span>\(= v_f = 0\ \text{ms}^{-1}\)</span>
+              <span>\(Acceleration\ due\ to\ gravity\)</span><span>\(= g = -10\ \text{ms}^{-2}\ (upward\ motion)\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Initial\ velocity = v_i = ?\)</div>
+            <div class="tofind-line">\(Height\ of\ ball\ 1\ m\ above\ ground = h_t = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">For initial velocity by using first equation of motion under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v_f &= v_i + gt \\
+              0 &= v_i + (-10)(3) \\
+              0 &= v_i - 30 \\
+              v_i &= 30 \\
+              \boldsymbol{v_i} &= \boldsymbol{30\ \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Now by using second equation of motion body moving under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              h &= v_i t + \frac{1}{2} gt^2 \\
+              h &= (30)(3) + \frac{1}{2}(-10)(3)^2 \\
+              h &= 90 - 45 \\
+              h &= 45\ \text{m}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Required total height = \(h_t = h_{gain} + h_{initial}\)</p>
+            <div class="equation">
+              \[
+              h_t = 45\ \text{m} + 1\ \text{m} = 46\ \text{m}
+              \]
+            </div>
+            <div class="ans-box">✅ Initial velocity = \(30\ \text{ms}^{-1}\), Total height = \(46\ \text{m}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer10">Show Solution</button>
       </div>
-
     </div>
 
     <!-- Examples Section -->
-    <div class="content-section">
-      <h2>📝 Solved Examples (PECTAA 2026)</h2>
+    <div class="content-section" id="examples-section">
+      <h2>📘 Solved Examples (PECTAA 2026)</h2>
 
-      <!-- Example 2.1 - Draw velocity vector -->
-      <div id="ex1" class="question-box example-box">
-        <div class="question-title"><span class="q-badge-example">Example 2.1</span> Draw the velocity vector \(\nu\); a velocity of \(300 \text{ ms}^{-1}\) at an angle of \(60^\circ\) to the east of north.</div>
+      <!-- Example 2.1 -->
+      <div id="ex1" class="numerical-box example-box">
+        <div class="problem-title">
+          <span class="num-badge example-badge">Example 2.1</span>
+          <span class="problem-text">Draw the velocity vector \(\nu\); a velocity of \(300 \text{ ms}^{-1}\) at an angle of \(60^\circ\) to the east of north.</span>
+        </div>
         <div class="answer-content" id="answerex1">
-          <div class="ans-text"><strong>Solution:</strong> A velocity of \(300 \text{ ms}^{-1}\) making an angle of \(60^\circ\) with x-axis.</div>
-          <div class="ans-text">(i) Draw two mutually perpendicular lines to represent N, S, E and W.</div>
-          <div class="ans-text">(ii) Select a suitable scale: If \(100 \text{ ms}^{-1} = 1 \text{ cm}\), then \(300 \text{ ms}^{-1} = 3 \text{ cm}\).</div>
-          <div class="ans-text">(iii) Draw \(3 \text{ cm}\) line \(OP\) at angle of \(60^\circ\) starting from N towards E. The \(OP\) is vector \(\vec{v}\).</div>
-          <div class="figure-box">
-            <img src="images/example-vector-300ms-60deg.png" alt="Velocity vector 300 ms-1 at 60 degrees east of north" loading="lazy">
-            <div class="figure-caption">Figure: Velocity vector \(300 \text{ ms}^{-1}\) at \(60^\circ\) east of north</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">A velocity of \(300 \text{ ms}^{-1}\) making an angle of \(60^\circ\) with x-axis.</p>
+            <p class="sol-text">(i) Draw two mutually perpendicular lines to represent N, S, E and W.</p>
+            <p class="sol-text">(ii) Select a suitable scale: If \(100 \text{ ms}^{-1} = 1 \text{ cm}\), then \(300 \text{ ms}^{-1} = 3 \text{ cm}\).</p>
+            <p class="sol-text">(iii) Draw \(3 \text{ cm}\) line \(OP\) at angle of \(60^\circ\) starting from N towards E. The \(OP\) is vector \(\vec{v}\).</p>
+            <div class="figure-box">
+              <img src="images/example-vector-300ms-60deg.png" alt="Velocity vector 300 ms-1 at 60 degrees east of north" loading="lazy">
+              <div class="figure-caption">Figure: Velocity vector \(300 \text{ ms}^{-1}\) at \(60^\circ\) east of north</div>
+            </div>
+            <div class="ans-box">✅ Vector \(\vec{v}\) drawn with 3 cm line at 60° from N towards E</div>
           </div>
-          <div class="ans-box">✅ Vector \(\vec{v}\) drawn with 3 cm line at 60° from N towards E</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answerex1">Show Solution</button>
+        <button class="toggle-answer-btn example-btn" data-target="answerex1">Show Solution</button>
       </div>
 
-      <!-- Example 2.2 - Draw force vector -->
-      <div id="ex2" class="question-box example-box">
-        <div class="question-title"><span class="q-badge-example">Example 2.2</span> Draw a force vector \(F\) having magnitude \(350 \text{ N}\) and acting at an angle of \(60^\circ\) with x-axis.</div>
+      <!-- Example 2.2 -->
+      <div id="ex2" class="numerical-box example-box">
+        <div class="problem-title">
+          <span class="num-badge example-badge">Example 2.2</span>
+          <span class="problem-text">Draw a force vector \(F\) having magnitude \(350 \text{ N}\) and acting at an angle of \(60^\circ\) with x-axis.</span>
+        </div>
         <div class="answer-content" id="answerex2">
-          <div class="ans-text"><strong>Solution:</strong> A force vector \(F\) having magnitude \(350 \text{ N}\) and acting at an angle of \(60^\circ\) with x-axis.</div>
-          <div class="ans-text">(i) Draw horizontal and vertical lines to represent x-axis and y-axis.</div>
-          <div class="ans-text">(ii) Select a suitable scale, e.g. \(100 \text{ N} = 1 \text{ cm}\), then \(350 \text{ N} = 3.5 \text{ cm}\).</div>
-          <div class="ans-text">(iii) Draw a \(3.5 \text{ cm}\) line \(OP\) at an angle of \(60^\circ\) with x-axis.</div>
-          <div class="ans-text">(iv) Make an arrow head at the end of the line \(OP\). The \(OP\) is the vector \(F\).</div>
-          <div class="figure-box">
-            <img src="images/example-force-vector-350N.png" alt="Force vector 350 N at 60 degrees with x-axis" loading="lazy">
-            <div class="figure-caption">Figure: Force vector \(350 \text{ N}\) at \(60^\circ\) with x-axis</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">A force vector \(F\) having magnitude \(350 \text{ N}\) and acting at an angle of \(60^\circ\) with x-axis.</p>
+            <p class="sol-text">(i) Draw horizontal and vertical lines to represent x-axis and y-axis.</p>
+            <p class="sol-text">(ii) Select a suitable scale, e.g. \(100 \text{ N} = 1 \text{ cm}\), then \(350 \text{ N} = 3.5 \text{ cm}\).</p>
+            <p class="sol-text">(iii) Draw a \(3.5 \text{ cm}\) line \(OP\) at an angle of \(60^\circ\) with x-axis.</p>
+            <p class="sol-text">(iv) Make an arrow head at the end of the line \(OP\). The \(OP\) is the vector \(F\).</p>
+            <div class="figure-box">
+              <img src="images/example-force-vector-350N.png" alt="Force vector 350 N at 60 degrees with x-axis" loading="lazy">
+              <div class="figure-caption">Figure: Force vector \(350 \text{ N}\) at \(60^\circ\) with x-axis</div>
+            </div>
+            <div class="ans-box">✅ Vector \(F\) drawn with 3.5 cm line at 60° from x-axis</div>
           </div>
-          <div class="ans-box">✅ Vector \(F\) drawn with 3.5 cm line at 60° from x-axis</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answerex2">Show Solution</button>
+        <button class="toggle-answer-btn example-btn" data-target="answerex2">Show Solution</button>
       </div>
 
-      <!-- Example 2.3 - Eagle diving -->
-      <div id="ex3" class="question-box example-box">
-        <div class="question-title"><span class="q-badge-example">Example 2.3</span> An eagle dives to the ground along a \(300 \text{ m}\) path with an average speed of \(60 \text{ ms}^{-1}\). How long does it take to cover this distance?</div>
+      <!-- Example 2.3 -->
+      <div id="ex3" class="numerical-box example-box">
+        <div class="problem-title">
+          <span class="num-badge example-badge">Example 2.3</span>
+          <span class="problem-text">An eagle dives to the ground along a \(300 \text{ m}\) path with an average speed of \(60 \text{ ms}^{-1}\). How long does it take to cover this distance?</span>
+        </div>
         <div class="answer-content" id="answerex3">
-          <div class="ans-text"><strong>Given Data:</strong> Total distance covered = \(S = 300 \text{ m}\), Average speed = \(v_{av} = 60 \text{ ms}^{-1}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Total time taken = \(t = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using formula of average speed</div>
-          <div class="ans-text">\(v_{av} = \frac{S}{t} \Rightarrow 60 = \frac{300}{t} \Rightarrow t = \frac{300}{60} = 5 \text{ s}\)</div>
-          <div class="ans-box">✅ Time = 5 seconds</div>
-        </div>
-        <button class="toggle-answer-btn" data-target="answerex3">Show Solution</button>
-      </div>
-
-      <!-- Example 2.4 - Plane acceleration -->
-      <div id="ex4" class="question-box example-box">
-        <div class="question-title"><span class="q-badge-example">Example 2.4</span> A plane starts running from rest on a runway. It accelerates down the runway and after 20 seconds attains a velocity of \(252 \text{ kmh}^{-1}\). Determine the average acceleration of the plane.</div>
-        <div class="answer-content" id="answerex4">
-          <div class="ans-text"><strong>Given Data:</strong> Initial velocity = \(v_i = 0 \text{ ms}^{-1}\), Final velocity = \(v_f = 252 \text{ kmh}^{-1} = 252 \times \frac{10}{36} = 70 \text{ ms}^{-1}\), Time taken = \(t = 20 \text{ s}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Average acceleration = \(a_{av} = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using formula of average acceleration</div>
-          <div class="ans-text">\(a_{av} = \frac{v_f - v_i}{t} = \frac{70 - 0}{20} = \frac{70}{20} = 3.5 \text{ ms}^{-2}\)</div>
-          <div class="figure-box">
-            <img src="images/plane-runway-acceleration.png" alt="Plane accelerating on runway" loading="lazy">
-            <div class="figure-caption">Figure: Plane accelerating down the runway</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Total\ distance\)</span><span>\(= S = 300\ \text{m}\)</span>
+              <span>\(Average\ speed\)</span><span>\(= v_{av} = 60\ \text{ms}^{-1}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Total\ time\ taken = t = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using formula of average speed:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v_{av} &= \frac{S}{t} \\
+              60 &= \frac{300}{t} \\
+              t &= \frac{300}{60} \\
+              \boldsymbol{t} &= \boldsymbol{5\ \text{s}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Time = 5 seconds</div>
           </div>
-          <div class="ans-box">✅ Average acceleration = \(3.5 \text{ ms}^{-2}\)</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answerex4">Show Solution</button>
+        <button class="toggle-answer-btn example-btn" data-target="answerex3">Show Solution</button>
       </div>
 
-      <!-- Example 2.5 - Iron bob dropped -->
-      <div id="ex5" class="question-box example-box">
-        <div class="question-title"><span class="q-badge-example">Example 2.5</span> An iron bob is dropped from the top of a tower. It reaches the ground in 4 seconds. Find: (a) the height of the tower (b) the velocity of the ball as it strikes the ground.</div>
+      <!-- Example 2.4 -->
+      <div id="ex4" class="numerical-box example-box">
+        <div class="problem-title">
+          <span class="num-badge example-badge">Example 2.4</span>
+          <span class="problem-text">A plane starts running from rest on a runway. It accelerates down the runway and after 20 seconds attains a velocity of \(252 \text{ kmh}^{-1}\). Determine the average acceleration of the plane.</span>
+        </div>
+        <div class="answer-content" id="answerex4">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Initial\ velocity\)</span><span>\(= v_i = 0\ \text{ms}^{-1}\)</span>
+              <span>\(Final\ velocity\)</span><span>\(= v_f = 252\ \text{kmh}^{-1} = 252 \times \frac{10}{36} = 70\ \text{ms}^{-1}\)</span>
+              <span>\(Time\)</span><span>\(= t = 20\ \text{s}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Average\ acceleration = a_{av} = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using formula of average acceleration:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              a_{av} &= \frac{v_f - v_i}{t} \\
+              a_{av} &= \frac{70 - 0}{20} \\
+              a_{av} &= \frac{70}{20} \\
+              \boldsymbol{a_{av}} &= \boldsymbol{3.5\ \text{ms}^{-2}}
+              \end{aligned}\]
+            </div>
+            <div class="figure-box">
+              <img src="images/plane-runway-acceleration.png" alt="Plane accelerating on runway" loading="lazy">
+              <div class="figure-caption">Figure: Plane accelerating down the runway</div>
+            </div>
+            <div class="ans-box">✅ Average acceleration = \(3.5\ \text{ms}^{-2}\)</div>
+          </div>
+        </div>
+        <button class="toggle-answer-btn example-btn" data-target="answerex4">Show Solution</button>
+      </div>
+
+      <!-- Example 2.5 -->
+      <div id="ex5" class="numerical-box example-box">
+        <div class="problem-title">
+          <span class="num-badge example-badge">Example 2.5</span>
+          <span class="problem-text">An iron bob is dropped from the top of a tower. It reaches the ground in 4 seconds. Find: (a) the height of the tower (b) the velocity of the ball as it strikes the ground.</span>
+        </div>
         <div class="answer-content" id="answerex5">
-          <div class="ans-text"><strong>Given Data:</strong> Time taken = \(t = 4 \text{ s}\), Initial velocity = \(v_i = 0 \text{ ms}^{-1}\), \(g = 10 \text{ ms}^{-2}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Height of tower = \(h = ?\), Final velocity = \(v_f = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> By using second equation of motion body moving under gravity</div>
-          <div class="ans-text">\(h = v_i t + \frac{1}{2} gt^2 = (0)(4) + \frac{1}{2}(10)(4)^2 = 0 + 5 \times 16 = 80 \text{ m}\)</div>
-          <div class="ans-text">Now for final velocity by using first equation of motion under gravity</div>
-          <div class="ans-text">\(v_f = v_i + gt = 0 + (10)(4) = 40 \text{ ms}^{-1}\)</div>
-          <div class="ans-box">✅ (a) Height = \(80 \text{ m}\), (b) Velocity = \(40 \text{ ms}^{-1}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Time\)</span><span>\(= t = 4\ \text{s}\)</span>
+              <span>\(Initial\ velocity\)</span><span>\(= v_i = 0\ \text{ms}^{-1}\)</span>
+              <span>\(Acceleration\ due\ to\ gravity\)</span><span>\(= g = 10\ \text{ms}^{-2}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Height\ of\ tower = h = ?\)</div>
+            <div class="tofind-line">\(Final\ velocity = v_f = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">By using second equation of motion body moving under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              h &= v_i t + \frac{1}{2} gt^2 \\
+              h &= (0)(4) + \frac{1}{2}(10)(4)^2 \\
+              h &= 0 + 5 \times 16 \\
+              \boldsymbol{h} &= \boldsymbol{80\ \text{m}}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Now for final velocity by using first equation of motion under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v_f &= v_i + gt \\
+              v_f &= 0 + (10)(4) \\
+              \boldsymbol{v_f} &= \boldsymbol{40\ \text{ms}^{-1}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ (a) Height = \(80\ \text{m}\), (b) Velocity = \(40\ \text{ms}^{-1}\)</div>
+          </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answerex5">Show Solution</button>
+        <button class="toggle-answer-btn example-btn" data-target="answerex5">Show Solution</button>
       </div>
 
-      <!-- Example 2.6 - Arrow thrown upward -->
-      <div id="ex6" class="question-box example-box">
-        <div class="question-title"><span class="q-badge-example">Example 2.6</span> An arrow is thrown vertically upward with the help of a bow. The velocity of the arrow when it leaves the bow is \(30 \text{ ms}^{-1}\). Determine time to reach the highest point? Also, find the maximum height attained by the arrow.</div>
+      <!-- Example 2.6 -->
+      <div id="ex6" class="numerical-box example-box">
+        <div class="problem-title">
+          <span class="num-badge example-badge">Example 2.6</span>
+          <span class="problem-text">An arrow is thrown vertically upward with the help of a bow. The velocity of the arrow when it leaves the bow is \(30 \text{ ms}^{-1}\). Determine time to reach the highest point? Also, find the maximum height attained by the arrow.</span>
+        </div>
         <div class="answer-content" id="answerex6">
-          <div class="ans-text"><strong>Given Data:</strong> Initial velocity = \(v_i = 30 \text{ ms}^{-1}\) (upward), Final velocity = \(v_f = 0 \text{ ms}^{-1}\), Acceleration = \(g = -10 \text{ ms}^{-2}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Time = \(t = ?\), Height = \(h = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong> Using the first equation of motion for bodies moving under gravity:</div>
-          <div class="ans-text">\(v_f = v_i + gt \Rightarrow 0 = 30 + (-10)(t) \Rightarrow 0 = 30 - 10t \Rightarrow 10t = 30 \Rightarrow t = 3 \text{ s}\)</div>
-          <div class="ans-text">Now by using second equation of motion body moving under gravity:</div>
-          <div class="ans-text">\(h = v_i t + \frac{1}{2} gt^2 = (30)(3) + \frac{1}{2}(-10)(3)^2 = 90 - 45 = 45 \text{ m}\)</div>
-          <div class="ans-box">✅ Time = 3 s, Maximum height = \(45 \text{ m}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>\(Initial\ velocity\)</span><span>\(= v_i = 30\ \text{ms}^{-1}\)</span>
+              <span>\(Final\ velocity\)</span><span>\(= v_f = 0\ \text{ms}^{-1}\)</span>
+              <span>\(Acceleration\)</span><span>\(= g = -10\ \text{ms}^{-2}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">\(Time = t = ?\)</div>
+            <div class="tofind-line">\(Height = h = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">Using the first equation of motion for bodies moving under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              v_f &= v_i + gt \\
+              0 &= 30 + (-10)(t) \\
+              0 &= 30 - 10t \\
+              10t &= 30 \\
+              \boldsymbol{t} &= \boldsymbol{3\ \text{s}}
+              \end{aligned}\]
+            </div>
+            <p class="sol-text">Now by using second equation of motion body moving under gravity:</p>
+            <div class="equation">
+              \[\begin{aligned}
+              h &= v_i t + \frac{1}{2} gt^2 \\
+              h &= (30)(3) + \frac{1}{2}(-10)(3)^2 \\
+              h &= 90 - 45 \\
+              \boldsymbol{h} &= \boldsymbol{45\ \text{m}}
+              \end{aligned}\]
+            </div>
+            <div class="ans-box">✅ Time = 3 s, Maximum height = \(45\ \text{m}\)</div>
+          </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answerex6">Show Solution</button>
+        <button class="toggle-answer-btn example-btn" data-target="answerex6">Show Solution</button>
       </div>
-
     </div>
- <!-- Important Formulas Section -->
+
+    <!-- Key Formulas Section -->
     <div class="content-section">
       <h2>📐 Important Formulas – Kinematics</h2>
       <div class="equation"><strong>Distance:</strong> \(S = v_{av} \times t\)</div>
@@ -1009,43 +1288,33 @@
         📚 Explore Other Physics Chapters (1–9)
       </button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-1-Physical-Quantities-and-Measurements/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 1</span><span>Physical Quantities and Measurements</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-2-Kinematics/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold">
           <span>Chapter 2</span><span>✨ Kinematics</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-3-Dynamics/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 3</span><span>Dynamics</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-4-Turning-Effect-of-Forces/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 4</span><span>Turning Effect of Forces</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-5-Work-and-Energy/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 5</span><span>Work and Energy</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-6-Mechanical-Properties-of-Matter/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 6</span><span>Mechanical Properties of Matter</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-7-Thermal-Properties-of-Matter/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 7</span><span>Thermal Properties of Matter</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-8-Magnetism/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 8</span><span>Magnetism</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-9-Nature-of-Science/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-xl shadow-lg hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 9</span><span>Nature of Science</span>
         </a>
-
       </div>
       <p class="text-xs text-gray-500 mt-3">📖 Complete syllabus coverage for Class 9 Physics (PECTAA 2026) – Chapters 1 to 9</p>
     </div>
@@ -1068,44 +1337,35 @@
       <summary class="text-2xl md:text-3xl font-bold text-emerald-800 cursor-pointer hover:text-emerald-600 list-none flex items-center justify-center gap-3 text-center">
         <span class="text-3xl">📚</span> Explore Complete Learning Resources (Class 9, 10 & More)
       </summary>
-
       <div class="mt-8">
         <h2 class="text-2xl font-bold text-center text-emerald-800 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
         <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Class 9 Resources -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-emerald-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
             <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-9th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-9th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/Islamiat-9th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li><li><a href="https://hiraacademy.com.pk/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-emerald-600 font-semibold hover:text-emerald-700 inline-flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li></ul></nav>
           </article>
-          <!-- Class 10 Resources -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
             <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-10th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-10th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-10th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-10th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/PakistanStudies-10th.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li></ul></nav>
           </article>
-          <!-- Special Resources -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-amber-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li><li><a href="https://hiraacademy.com.pk/physics-numericals.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li><li><a href="https://hiraacademy.com.pk/math-mistakes.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li><li><a href="https://hiraacademy.com.pk/physics-formulas.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li><li><a href="https://hiraacademy.com.pk/blog.html" class="text-emerald-600 font-semibold hover:text-emerald-700 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li></ul>
           </article>
-          <!-- Quick Links -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/courses-details.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li><li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li><li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li><li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li><li><a href="https://hiraacademy.com.pk/student-portal.html" class="text-emerald-600 font-semibold hover:text-emerald-700 inline-flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li></ul>
           </article>
-          <!-- Definitions & Key Resources -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-emerald-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-emerald-600 font-semibold hover:text-emerald-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul>
           </article>
-          <!-- Support & Policies -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li><li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li><li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li><li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-emerald-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li><li><a href="https://hiraacademy.com.pk/mission.html" class="text-emerald-600 font-semibold hover:text-emerald-700 inline-flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li></ul>
           </article>
         </div>
-
         <div class="mt-10 text-center">
           <a href="https://hiraacademy.com.pk/" class="inline-flex items-center homepage-btn px-8 py-4 rounded-full font-bold shadow-lg transition"><span class="mr-3">🏠</span>Return to Homepage</a>
         </div>
@@ -1202,7 +1462,7 @@
         const winHeight = window.innerHeight;
         const docHeight = document.documentElement.scrollHeight;
         const maxScroll = docHeight - winHeight;
-        const scrollPercent = (scrollTop / maxScroll) * 100;
+        const scrollPercent = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
         if (progressBar) progressBar.style.width = scrollPercent + '%';
       }
       window.addEventListener('scroll', updateProgressBar);
