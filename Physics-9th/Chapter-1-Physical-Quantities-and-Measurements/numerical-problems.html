@@ -112,7 +112,7 @@
       background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
       pointer-events: none;
     }
-    .question-box {
+    .numerical-box {
       scroll-margin-top: 85px;
       background: #ffffff;
       border: 1px solid #e2e8f0;
@@ -123,21 +123,30 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .question-box:hover {
+    .numerical-box:hover {
       transform: translateY(-2px);
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.08);
     }
-    .question-title {
+    .problem-title {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: #0f172a;
       margin-bottom: 12px;
       flex-wrap: wrap;
     }
-    .q-badge {
+    .problem-title .num-badge {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .problem-title .problem-text {
+      text-align: justify;
+      line-height: 1.7;
+      flex: 1;
+    }
+    .num-badge {
       background: linear-gradient(135deg, #1d4ed8, #2563eb);
       color: #ffffff;
       font-weight: 600;
@@ -146,8 +155,9 @@
       font-size: 0.85rem;
       letter-spacing: 0.5px;
       box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+      white-space: nowrap;
     }
-    .question-box p {
+    .numerical-box p {
       color: #334155;
       line-height: 1.6;
       margin-bottom: 16px;
@@ -181,14 +191,51 @@
       height: 1px;
       background: linear-gradient(90deg, #cbd5e1, transparent);
     }
-    .ans-text {
+    .given-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 20px;
+      margin: 6px 0 14px 4px;
+      font-size: 0.95rem;
+      color: #334155;
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+    }
+    .given-grid span:nth-child(odd) {
+      font-weight: 600;
+      color: #64748b;
+    }
+    .tofind-line {
+      margin: 4px 0 4px 12px;
+      font-size: 0.95rem;
+      color: #0f172a;
+      font-weight: 500;
+      position: relative;
+    }
+    .tofind-line::before {
+      content: "•";
+      color: #2563eb;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+    .sol-text {
       margin: 8px 0;
       text-align: justify;
       font-size: 0.95rem;
       color: #334155;
-      padding-left: 8px;
-      border-left: 3px solid #2563eb;
-      padding-left: 16px;
+    }
+    .equation {
+      background: #ffffff;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #f1f5f9;
+      margin: 10px 0;
+      overflow-x: auto;
+      text-align: center;
     }
     .ans-box {
       background: linear-gradient(135deg, #eff6ff, #dbeafe);
@@ -203,34 +250,37 @@
       align-items: center;
       box-shadow: 0 2px 4px rgba(37, 99, 235, 0.05);
     }
-    .figure-box {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      padding: 12px;
-      margin: 16px 0;
-      text-align: center;
+    .toggle-answer-btn {
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.1s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      margin-top: 0.75rem;
     }
-    .figure-box img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 4px;
+    .toggle-answer-btn:hover {
+      background: #1d4ed8;
     }
-    .figure-caption {
-      font-size: 0.85rem;
-      color: #64748b;
-      margin-top: 8px;
-      font-style: italic;
+    .toggle-answer-btn:active {
+      transform: scale(0.98);
     }
-    .note-box {
-      background: #fefce8;
-      border-left: 4px solid #eab308;
-      padding: 12px 16px;
-      margin: 14px 0;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.93rem;
-      color: #713f12;
-      line-height: 1.5;
+    .example-box {
+      border-left-color: #7c3aed !important;
+    }
+    .example-badge {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+      box-shadow: 0 2px 4px rgba(124, 58, 237, 0.2) !important;
+    }
+    .example-btn {
+      background: #7c3aed !important;
+    }
+    .example-btn:hover {
+      background: #6d28d9 !important;
     }
     .content-section {
       margin-bottom: 2.5rem;
@@ -332,24 +382,33 @@
     @media (max-width: 768px) {
       .reading-progress-container { top: 64px; }
     }
-    .toggle-answer-btn {
-      background: #2563eb;
-      color: #ffffff;
-      border: none;
-      padding: 8px 18px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.1s ease;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-      margin-top: 0.75rem;
+    .hub-button {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.3px;
+      color: white !important;
     }
-    .toggle-answer-btn:hover {
-      background: #1d4ed8;
+    .hub-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.15), transparent);
+      transition: left 0.6s ease;
     }
-    .toggle-answer-btn:active {
-      transform: scale(0.98);
+    .hub-button:hover::before { left: 100%; }
+    .hub-button:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.25), 0 0 60px rgba(37, 99, 235, 0.1);
+      border-color: rgba(37, 99, 235, 0.5);
+      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
+      color: white !important;
     }
     .dark-glass-btn {
       background: linear-gradient(135deg, #0f172a, #1e293b) !important;
@@ -395,92 +454,24 @@
       font-size: 0.9rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
-    .hub-button {
-      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
-      border: 1px solid rgba(37, 99, 235, 0.25);
-      position: relative;
-      overflow: hidden;
-      letter-spacing: 0.3px;
-      color: white !important;
+    .figure-box {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px;
+      margin: 16px 0;
+      text-align: center;
     }
-    .hub-button::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.15), transparent);
-      transition: left 0.6s ease;
-    }
-    .hub-button:hover::before { left: 100%; }
-    .hub-button:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 12px 40px rgba(37, 99, 235, 0.25), 0 0 60px rgba(37, 99, 235, 0.1);
-      border-color: rgba(37, 99, 235, 0.5);
-      background: linear-gradient(135deg, #0f172a, #1e293b, #0f172a) !important;
-      color: white !important;
-    }
-    .equation {
-      background: #f8fafc;
-      border-left: 4px solid #2563eb;
-      padding: 0.75rem 1rem;
-      margin: 1rem 0;
-      border-radius: 0 8px 8px 0;
-      font-size: 1.05rem;
-      font-family: 'Courier New', monospace;
-    }
-    .truth-table {
-      border-collapse: collapse;
-      width: 100%;
+    .figure-box img {
       max-width: 100%;
-      margin: 12px 0;
-      font-size: 0.95rem;
+      height: auto;
+      border-radius: 4px;
     }
-    .truth-table th, .truth-table td {
-      border: 1px solid #cbd5e1;
-      padding: 6px 12px;
-      text-align: center;
-    }
-    .truth-table th {
-      background: #f1f5f9;
-      font-weight: 600;
-      color: #0f172a;
-    }
-    .truth-table td {
-      background: #ffffff;
-    }
-    .comparison-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 12px 0;
-      font-size: 0.95rem;
-    }
-    .comparison-table th, .comparison-table td {
-      border: 1px solid #cbd5e1;
-      padding: 8px 12px;
-      text-align: left;
-      vertical-align: top;
-    }
-    .comparison-table th {
-      background: #f1f5f9;
-      font-weight: 600;
-      color: #0f172a;
-      text-align: center;
-    }
-    .comparison-table td {
-      background: #ffffff;
-    }
-    .comparison-table tr:nth-child(even) td {
-      background: #fafafa;
-    }
-    .step-lbl {
-      font-weight: 600;
-      color: #1e3a8a;
+    .figure-caption {
+      font-size: 0.85rem;
+      color: #64748b;
       margin-top: 8px;
-      display: block;
+      font-style: italic;
     }
   </style>
 
@@ -629,7 +620,7 @@
       <p class="text-blue-700 font-semibold text-xl mb-2 text-center">📘 Chapter 1: Physical Quantities and Measurements – Numerical Problems</p>
       <p class="mt-2 text-gray-600 text-center max-w-3xl mx-auto">Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist Physics, Govt Christian High School Daska. Based on <strong>PECTAA 2026 syllabus (National Curriculum 2023)</strong>.</p>
       <div class="mt-3 max-w-3xl mx-auto bg-blue-50 rounded-lg p-3 border border-blue-200">
-        <p class="text-gray-700 text-justify"><span class="font-semibold text-blue-700">📖 What's Inside:</span> This section covers numerical problems from Chapter 1 Physical Quantities and Measurements including <strong>time conversions using SI prefixes, scientific notation, addition and subtraction in scientific notation, multiplication and division in scientific notation, significant figures, prefix conversions, light year calculation, and density unit conversion</strong>. Each problem is presented with a step-by-step solution as per the official PECTAA 2026 Physics curriculum. Perfect for Punjab Boards (Lahore, Gujranwala, Multan, etc.) and all BISE boards across Pakistan.</p>
+        <p class="text-gray-700 text-justify"><span class="font-semibold text-blue-700">📖 What's Inside:</span> This section covers numerical problems from Chapter 1 Physical Quantities and Measurements including <strong>time conversions using SI prefixes, scientific notation, addition and subtraction in scientific notation, multiplication and division in scientific notation, significant figures, prefix conversions, light year calculation, and density unit conversion</strong>. Each problem is presented with <strong>Given Data, To Find, and step-by-step Solution</strong> as per the official PECTAA 2026 Physics curriculum. Perfect for Punjab Boards (Lahore, Gujranwala, Multan, etc.) and all BISE boards across Pakistan.</p>
       </div>
     </div>
 
@@ -693,221 +684,553 @@
     </div>
 
     <div class="content-section" id="questions-section">
-      <h2>📝 Numerical Problems & Solutions (PECTAA 2026)</h2>
+      <h2>📐 Numerical Problems & Solutions (PECTAA 2026)</h2>
 
       <!-- Problem 1.1 -->
-      <div id="q1" class="question-box">
-        <div class="question-title"><span class="q-badge">1.1</span> Calculate the number of seconds in (a) a day (b) a week (c) a month and state your answers using SI prefixes.</div>
+      <div id="q1" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.1</span>
+          <span class="problem-text">Calculate the number of seconds in (a) a day (b) a week (c) a month and state your answers using SI prefixes.</span>
+        </div>
         <div class="answer-content" id="answer1">
-          <div class="ans-text"><strong>Given Data:</strong></div>
-          <div class="ans-text">(a) \(t = 1\) day (b) \(t = 1\) week (c) \(t = 1\) month</div>
-          <div class="ans-text"><strong>To Find:</strong> Number of seconds in SI prefixes</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text"><strong>(a) 1 day:</strong></div>
-          <div class="ans-text">\[ t = 1 \text{ day} = 1 \times 24 \times 60 \times 60 \text{ s} = 86400 \text{ s} \]</div>
-          <div class="ans-text">\[ t = 8.64 \times 10^4 \text{ s} = 86.4 \times 10^{-1} \times 10^4 \text{ s} = 86.4 \times 10^3 \text{ s} \]</div>
-          <div class="ans-text">\[ t = 86.4 \text{ ks} \quad (\because k = 10^3) \]</div>
-          <div class="ans-text"><strong>(b) 1 week:</strong></div>
-          <div class="ans-text">\[ t = 1 \times 7 \times 24 \times 60 \times 60 \text{ s} = 604800 \text{ s} \]</div>
-          <div class="ans-text">\[ t = 6.048 \times 10^5 \text{ s} = 604.8 \times 10^{-2} \times 10^5 \text{ s} = 604.8 \times 10^3 \text{ s} \]</div>
-          <div class="ans-text">\[ t = 604.8 \text{ ks} \]</div>
-          <div class="ans-text"><strong>(c) 1 month:</strong></div>
-          <div class="ans-text">\[ t = 1 \times 30 \times 24 \times 60 \times 60 \text{ s} = 2592000 \text{ s} \]</div>
-          <div class="ans-text">\[ t = 2.592 \times 10^6 \text{ s} = 2.592 \text{ Ms} \quad (\because M = 10^6) \]</div>
-          <div class="ans-box">✅ (a) 86.4 ks (b) 604.8 ks (c) 2.592 Ms</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>(a)</span><span>\(t = 1\) day</span>
+              <span>(b)</span><span>\(t = 1\) week</span>
+              <span>(c)</span><span>\(t = 1\) month</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Number of seconds in SI prefixes</div>
+            <div class="block-lbl">Solution</div>
+            <div class="block-lbl">(a) 1 day</div>
+            <div class="equation">
+              \[
+              t = 1 \text{ day} = 1 \times 24 \times 60 \times 60 \text{ s} = 86400 \text{ s}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              t = 8.64 \times 10^4 \text{ s} = 86.4 \times 10^{-1} \times 10^4 \text{ s} = 86.4 \times 10^3 \text{ s}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              t = 86.4 \text{ ks} \quad (\because k = 10^3)
+              \]
+            </div>
+            <div class="block-lbl">(b) 1 week</div>
+            <div class="equation">
+              \[
+              t = 1 \times 7 \times 24 \times 60 \times 60 \text{ s} = 604800 \text{ s}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              t = 6.048 \times 10^5 \text{ s} = 604.8 \times 10^{-2} \times 10^5 \text{ s} = 604.8 \times 10^3 \text{ s}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              t = 604.8 \text{ ks}
+              \]
+            </div>
+            <div class="block-lbl">(c) 1 month</div>
+            <div class="equation">
+              \[
+              t = 1 \times 30 \times 24 \times 60 \times 60 \text{ s} = 2592000 \text{ s}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              t = 2.592 \times 10^6 \text{ s} = 2.592 \text{ Ms} \quad (\because M = 10^6)
+              \]
+            </div>
+            <div class="ans-box">✅ (a) 86.4 ks (b) 604.8 ks (c) 2.592 Ms</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
       </div>
 
       <!-- Problem 1.2 -->
-      <div id="q2" class="question-box">
-        <div class="question-title"><span class="q-badge">1.2</span> State the answers of problem 1.1 in scientific notation.</div>
+      <div id="q2" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.2</span>
+          <span class="problem-text">State the answers of problem 1.1 in scientific notation.</span>
+        </div>
         <div class="answer-content" id="answer2">
-          <div class="ans-text"><strong>Given Data:</strong> (a) 86.4 ks (b) 604.8 ks (c) 2.592 Ms</div>
-          <div class="ans-text"><strong>To Find:</strong> Answers in scientific notation</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text"><strong>(a) 86.4 ks:</strong></div>
-          <div class="ans-text">\[ 86.4 \text{ ks} = 86.4 \times 10^3 \text{ s} = 8.64 \times 10^1 \times 10^3 \text{ s} = 8.64 \times 10^4 \text{ s} \]</div>
-          <div class="ans-text"><strong>(b) 604.8 ks:</strong></div>
-          <div class="ans-text">\[ 604.8 \text{ ks} = 604.8 \times 10^3 \text{ s} = 6.048 \times 10^2 \times 10^3 \text{ s} = 6.048 \times 10^5 \text{ s} \]</div>
-          <div class="ans-text"><strong>(c) 2.592 Ms:</strong></div>
-          <div class="ans-text">\[ 2.592 \text{ Ms} = 2.592 \times 10^6 \text{ s} \]</div>
-          <div class="ans-box">✅ (a) \(8.64 \times 10^4 \text{ s}\) (b) \(6.048 \times 10^5 \text{ s}\) (c) \(2.592 \times 10^6 \text{ s}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>(a)</span><span>86.4 ks</span>
+              <span>(b)</span><span>604.8 ks</span>
+              <span>(c)</span><span>2.592 Ms</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Answers in scientific notation</div>
+            <div class="block-lbl">Solution</div>
+            <div class="block-lbl">(a) 86.4 ks</div>
+            <div class="equation">
+              \[
+              86.4 \text{ ks} = 86.4 \times 10^3 \text{ s} = 8.64 \times 10^1 \times 10^3 \text{ s} = 8.64 \times 10^4 \text{ s}
+              \]
+            </div>
+            <div class="block-lbl">(b) 604.8 ks</div>
+            <div class="equation">
+              \[
+              604.8 \text{ ks} = 604.8 \times 10^3 \text{ s} = 6.048 \times 10^2 \times 10^3 \text{ s} = 6.048 \times 10^5 \text{ s}
+              \]
+            </div>
+            <div class="block-lbl">(c) 2.592 Ms</div>
+            <div class="equation">
+              \[
+              2.592 \text{ Ms} = 2.592 \times 10^6 \text{ s}
+              \]
+            </div>
+            <div class="ans-box">✅ (a) \(8.64 \times 10^4 \text{ s}\) (b) \(6.048 \times 10^5 \text{ s}\) (c) \(2.592 \times 10^6 \text{ s}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
       </div>
 
       <!-- Problem 1.3 -->
-      <div id="q3" class="question-box">
-        <div class="question-title"><span class="q-badge">1.3</span> Solve the following addition or subtraction. State your answers in scientific notation. (a) \(4 \times 10^{-4} \text{ kg} + 3 \times 10^{-5} \text{ kg}\) (b) \(5.4 \times 10^{-6} \text{ m} - 3.2 \times 10^{-5} \text{ m}\)</div>
+      <div id="q3" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.3</span>
+          <span class="problem-text">Solve the following addition or subtraction. State your answers in scientific notation. (a) \(4 \times 10^{-4} \text{ kg} + 3 \times 10^{-5} \text{ kg}\) (b) \(5.4 \times 10^{-6} \text{ m} - 3.2 \times 10^{-5} \text{ m}\)</span>
+        </div>
         <div class="answer-content" id="answer3">
-          <div class="ans-text"><strong>Given Data:</strong> (a) \(4 \times 10^{-4} \text{ kg} + 3 \times 10^{-5} \text{ kg}\) (b) \(5.4 \times 10^{-6} \text{ m} - 3.2 \times 10^{-5} \text{ m}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Answers in scientific notation</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text"><strong>(a)</strong></div>
-          <div class="ans-text">\[ 4 \times 10^{-4} \text{ kg} + 3 \times 10^{-5} \text{ kg} \]</div>
-          <div class="ans-text">\[ = 4 \times 10^{-4} \text{ kg} + 0.3 \times 10^{-4} \text{ kg} \]</div>
-          <div class="ans-text">\[ = (4 + 0.3) \times 10^{-4} \text{ kg} = 4.03 \times 10^{-4} \text{ kg} \]</div>
-          <div class="ans-text"><strong>(b)</strong></div>
-          <div class="ans-text">\[ 5.4 \times 10^{-6} \text{ m} - 3.2 \times 10^{-5} \text{ m} \]</div>
-          <div class="ans-text">\[ = 0.54 \times 10^{-5} \text{ m} - 3.2 \times 10^{-5} \text{ m} \]</div>
-          <div class="ans-text">\[ = (0.54 - 3.2) \times 10^{-5} \text{ m} = -2.66 \times 10^{-5} \text{ m} \]</div>
-          <div class="ans-box">✅ (a) \(4.03 \times 10^{-4} \text{ kg}\) (b) \(-2.66 \times 10^{-5} \text{ m}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>(a)</span><span>\(4 \times 10^{-4} \text{ kg} + 3 \times 10^{-5} \text{ kg}\)</span>
+              <span>(b)</span><span>\(5.4 \times 10^{-6} \text{ m} - 3.2 \times 10^{-5} \text{ m}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Answers in scientific notation</div>
+            <div class="block-lbl">Solution</div>
+            <div class="block-lbl">(a)</div>
+            <div class="equation">
+              \[
+              4 \times 10^{-4} \text{ kg} + 3 \times 10^{-5} \text{ kg}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 4 \times 10^{-4} \text{ kg} + 0.3 \times 10^{-4} \text{ kg}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = (4 + 0.3) \times 10^{-4} \text{ kg} = 4.03 \times 10^{-4} \text{ kg}
+              \]
+            </div>
+            <div class="block-lbl">(b)</div>
+            <div class="equation">
+              \[
+              5.4 \times 10^{-6} \text{ m} - 3.2 \times 10^{-5} \text{ m}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 0.54 \times 10^{-5} \text{ m} - 3.2 \times 10^{-5} \text{ m}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = (0.54 - 3.2) \times 10^{-5} \text{ m} = -2.66 \times 10^{-5} \text{ m}
+              \]
+            </div>
+            <div class="ans-box">✅ (a) \(4.03 \times 10^{-4} \text{ kg}\) (b) \(-2.66 \times 10^{-5} \text{ m}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
       </div>
 
       <!-- Problem 1.4 -->
-      <div id="q4" class="question-box">
-        <div class="question-title"><span class="q-badge">1.4</span> Solve the following multiplication or division. State your answers in scientific notation. (a) \((5 \times 10^4 \text{ m}) \times (3 \times 10^{-2} \text{ m})\) (b) \(\frac{6 \times 10^8 \text{ kg}}{3 \times 10^4 \text{ m}^3}\)</div>
+      <div id="q4" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.4</span>
+          <span class="problem-text">Solve the following multiplication or division. State your answers in scientific notation. (a) \((5 \times 10^4 \text{ m}) \times (3 \times 10^{-2} \text{ m})\) (b) \(\frac{6 \times 10^8 \text{ kg}}{3 \times 10^4 \text{ m}^3}\)</span>
+        </div>
         <div class="answer-content" id="answer4">
-          <div class="ans-text"><strong>Given Data:</strong> (a) \((5 \times 10^4 \text{ m}) \times (3 \times 10^{-2} \text{ m})\) (b) \(\frac{6 \times 10^8 \text{ kg}}{3 \times 10^4 \text{ m}^3}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Answers in scientific notation</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text"><strong>(a)</strong></div>
-          <div class="ans-text">\[ (5 \times 10^4 \text{ m}) \times (3 \times 10^{-2} \text{ m}) \]</div>
-          <div class="ans-text">\[ = 15 \times 10^{4-2} \text{ m}^2 = 15 \times 10^2 \text{ m}^2 \]</div>
-          <div class="ans-text">\[ = 1.5 \times 10^3 \text{ m}^2 \]</div>
-          <div class="ans-text"><strong>(b)</strong></div>
-          <div class="ans-text">\[ \frac{6 \times 10^8 \text{ kg}}{3 \times 10^4 \text{ m}^3} = \frac{6}{3} \times 10^{8-4} \text{ kg m}^{-3} = 2.0 \times 10^4 \text{ kg m}^{-3} \]</div>
-          <div class="ans-box">✅ (a) \(1.5 \times 10^3 \text{ m}^2\) (b) \(2.0 \times 10^4 \text{ kg m}^{-3}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>(a)</span><span>\((5 \times 10^4 \text{ m}) \times (3 \times 10^{-2} \text{ m})\)</span>
+              <span>(b)</span><span>\(\frac{6 \times 10^8 \text{ kg}}{3 \times 10^4 \text{ m}^3}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Answers in scientific notation</div>
+            <div class="block-lbl">Solution</div>
+            <div class="block-lbl">(a)</div>
+            <div class="equation">
+              \[
+              (5 \times 10^4 \text{ m}) \times (3 \times 10^{-2} \text{ m})
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 15 \times 10^{4-2} \text{ m}^2 = 15 \times 10^2 \text{ m}^2
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 1.5 \times 10^3 \text{ m}^2
+              \]
+            </div>
+            <div class="block-lbl">(b)</div>
+            <div class="equation">
+              \[
+              \frac{6 \times 10^8 \text{ kg}}{3 \times 10^4 \text{ m}^3} = \frac{6}{3} \times 10^{8-4} \text{ kg m}^{-3} = 2.0 \times 10^4 \text{ kg m}^{-3}
+              \]
+            </div>
+            <div class="ans-box">✅ (a) \(1.5 \times 10^3 \text{ m}^2\) (b) \(2.0 \times 10^4 \text{ kg m}^{-3}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
       </div>
 
       <!-- Problem 1.5 -->
-      <div id="q5" class="question-box">
-        <div class="question-title"><span class="q-badge">1.5</span> Calculate the following and state your answer in scientific notation. \(\frac{(3 \times 10^2 \text{ kg}) \times (4.0 \text{ km})}{5 \times 10^2 \text{ s}^2}\)</div>
+      <div id="q5" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.5</span>
+          <span class="problem-text">Calculate the following and state your answer in scientific notation. \(\frac{(3 \times 10^2 \text{ kg}) \times (4.0 \text{ km})}{5 \times 10^2 \text{ s}^2}\)</span>
+        </div>
         <div class="answer-content" id="answer5">
-          <div class="ans-text"><strong>Given Data:</strong> \(\frac{(3 \times 10^2 \text{ kg}) \times (4.0 \text{ km})}{5 \times 10^2 \text{ s}^2}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Answer in scientific notation</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text">\[ \frac{(3 \times 10^2 \text{ kg}) \times (4.0 \text{ km})}{5 \times 10^2 \text{ s}^2} \]</div>
-          <div class="ans-text">\[ = \frac{(3 \times 10^2 \text{ kg}) \times (4.0 \times 10^3 \text{ m})}{5 \times 10^2 \text{ s}^2} \]</div>
-          <div class="ans-text">\[ = \frac{3 \times 4.0}{5} \times 10^{2+3-2} \text{ kg m s}^{-2} \]</div>
-          <div class="ans-text">\[ = 2.4 \times 10^3 \text{ kg m s}^{-2} \]</div>
-          <div class="ans-box">✅ \(2.4 \times 10^3 \text{ kg m s}^{-2}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>Expression</span><span>\(\frac{(3 \times 10^2 \text{ kg}) \times (4.0 \text{ km})}{5 \times 10^2 \text{ s}^2}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Answer in scientific notation</div>
+            <div class="block-lbl">Solution</div>
+            <div class="equation">
+              \[
+              \frac{(3 \times 10^2 \text{ kg}) \times (4.0 \text{ km})}{5 \times 10^2 \text{ s}^2}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = \frac{(3 \times 10^2 \text{ kg}) \times (4.0 \times 10^3 \text{ m})}{5 \times 10^2 \text{ s}^2}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = \frac{3 \times 4.0}{5} \times 10^{2+3-2} \text{ kg m s}^{-2}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 2.4 \times 10^3 \text{ kg m s}^{-2}
+              \]
+            </div>
+            <div class="ans-box">✅ \(2.4 \times 10^3 \text{ kg m s}^{-2}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
       </div>
 
       <!-- Problem 1.6 -->
-      <div id="q6" class="question-box">
-        <div class="question-title"><span class="q-badge">1.6</span> State the number of significant digits in each measurement. (a) \(0.0045 \text{ m}\) (b) \(2.047 \text{ m}\) (c) \(3.40 \text{ m}\) (d) \(3.420 \times 10^4 \text{ m}\)</div>
+      <div id="q6" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.6</span>
+          <span class="problem-text">State the number of significant digits in each measurement. (a) \(0.0045 \text{ m}\) (b) \(2.047 \text{ m}\) (c) \(3.40 \text{ m}\) (d) \(3.420 \times 10^4 \text{ m}\)</span>
+        </div>
         <div class="answer-content" id="answer6">
-          <div class="ans-text"><strong>Given Data:</strong> (a) \(0.0045 \text{ m}\) (b) \(2.047 \text{ m}\) (c) \(3.40 \text{ m}\) (d) \(3.420 \times 10^4 \text{ m}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Number of significant digits</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text">(a) \(0.0045 \text{ m}\) → <strong>2</strong> significant digits (4 and 5)</div>
-          <div class="ans-text">(b) \(2.047 \text{ m}\) → <strong>4</strong> significant digits (2, 0, 4, 7)</div>
-          <div class="ans-text">(c) \(3.40 \text{ m}\) → <strong>3</strong> significant digits (3, 4, 0)</div>
-          <div class="ans-text">(d) \(3.420 \times 10^4 \text{ m}\) → <strong>4</strong> significant digits (3, 4, 2, 0)</div>
-          <div class="ans-box">✅ (a) 2 (b) 4 (c) 3 (d) 4</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>(a)</span><span>\(0.0045 \text{ m}\)</span>
+              <span>(b)</span><span>\(2.047 \text{ m}\)</span>
+              <span>(c)</span><span>\(3.40 \text{ m}\)</span>
+              <span>(d)</span><span>\(3.420 \times 10^4 \text{ m}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Number of significant digits</div>
+            <div class="block-lbl">Solution</div>
+            <p class="sol-text">(a) \(0.0045 \text{ m}\) → <strong>2</strong> significant digits (4 and 5)</p>
+            <p class="sol-text">(b) \(2.047 \text{ m}\) → <strong>4</strong> significant digits (2, 0, 4, 7)</p>
+            <p class="sol-text">(c) \(3.40 \text{ m}\) → <strong>3</strong> significant digits (3, 4, 0)</p>
+            <p class="sol-text">(d) \(3.420 \times 10^4 \text{ m}\) → <strong>4</strong> significant digits (3, 4, 2, 0)</p>
+            <div class="ans-box">✅ (a) 2 (b) 4 (c) 3 (d) 4</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
       </div>
 
       <!-- Problem 1.7 -->
-      <div id="q7" class="question-box">
-        <div class="question-title"><span class="q-badge">1.7</span> Write in scientific notation: (a) \(0.0035 \text{ m}\) (b) \(206.4 \times 10^2 \text{ m}\)</div>
+      <div id="q7" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.7</span>
+          <span class="problem-text">Write in scientific notation: (a) \(0.0035 \text{ m}\) (b) \(206.4 \times 10^2 \text{ m}\)</span>
+        </div>
         <div class="answer-content" id="answer7">
-          <div class="ans-text"><strong>Given Data:</strong> (a) \(0.0035 \text{ m}\) (b) \(206.4 \times 10^2 \text{ m}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Answers in scientific notation</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text">(a) \(0.0035 \text{ m} = 3.5 \times 10^{-3} \text{ m}\)</div>
-          <div class="ans-text">(b) \(206.4 \times 10^2 \text{ m} = 2.064 \times 10^2 \times 10^2 \text{ m} = 2.064 \times 10^4 \text{ m}\)</div>
-          <div class="ans-box">✅ (a) \(3.5 \times 10^{-3} \text{ m}\) (b) \(2.064 \times 10^4 \text{ m}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>(a)</span><span>\(0.0035 \text{ m}\)</span>
+              <span>(b)</span><span>\(206.4 \times 10^2 \text{ m}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Answers in scientific notation</div>
+            <div class="block-lbl">Solution</div>
+            <div class="block-lbl">(a)</div>
+            <div class="equation">
+              \[
+              0.0035 \text{ m} = 3.5 \times 10^{-3} \text{ m}
+              \]
+            </div>
+            <div class="block-lbl">(b)</div>
+            <div class="equation">
+              \[
+              206.4 \times 10^2 \text{ m} = 2.064 \times 10^2 \times 10^2 \text{ m} = 2.064 \times 10^4 \text{ m}
+              \]
+            </div>
+            <div class="ans-box">✅ (a) \(3.5 \times 10^{-3} \text{ m}\) (b) \(2.064 \times 10^4 \text{ m}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer7">Show Solution</button>
       </div>
 
       <!-- Problem 1.8 -->
-      <div id="q8" class="question-box">
-        <div class="question-title"><span class="q-badge">1.8</span> Write using correct prefixes: (a) \(5.0 \times 10^4 \text{ cm}\) (b) \(580 \times 10^2 \text{ g}\) (c) \(45 \times 10^{-4} \text{ s}\)</div>
+      <div id="q8" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.8</span>
+          <span class="problem-text">Write using correct prefixes: (a) \(5.0 \times 10^4 \text{ cm}\) (b) \(580 \times 10^2 \text{ g}\) (c) \(45 \times 10^{-4} \text{ s}\)</span>
+        </div>
         <div class="answer-content" id="answer8">
-          <div class="ans-text"><strong>Given Data:</strong> (a) \(5.0 \times 10^4 \text{ cm}\) (b) \(580 \times 10^2 \text{ g}\) (c) \(45 \times 10^{-4} \text{ s}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Correct prefixes</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text">(a) \(5.0 \times 10^4 \text{ cm} = 5.0 \times 10^4 \times 10^{-2} \text{ m} = 5.0 \times 10^2 \text{ m} = 0.5 \text{ km}\)</div>
-          <div class="ans-text">(b) \(580 \times 10^2 \text{ g} = 58.0 \times 10^3 \text{ g} = 58.0 \text{ kg}\)</div>
-          <div class="ans-text">(c) \(45 \times 10^{-4} \text{ s} = 4.5 \times 10^{-3} \text{ s} = 4.5 \text{ ms}\)</div>
-          <div class="ans-box">✅ (a) 0.5 km (b) 58.0 kg (c) 4.5 ms</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>(a)</span><span>\(5.0 \times 10^4 \text{ cm}\)</span>
+              <span>(b)</span><span>\(580 \times 10^2 \text{ g}\)</span>
+              <span>(c)</span><span>\(45 \times 10^{-4} \text{ s}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Correct prefixes</div>
+            <div class="block-lbl">Solution</div>
+            <div class="block-lbl">(a)</div>
+            <div class="equation">
+              \[
+              5.0 \times 10^4 \text{ cm} = 5.0 \times 10^4 \times 10^{-2} \text{ m} = 5.0 \times 10^2 \text{ m} = 0.5 \text{ km}
+              \]
+            </div>
+            <div class="block-lbl">(b)</div>
+            <div class="equation">
+              \[
+              580 \times 10^2 \text{ g} = 58.0 \times 10^3 \text{ g} = 58.0 \text{ kg}
+              \]
+            </div>
+            <div class="block-lbl">(c)</div>
+            <div class="equation">
+              \[
+              45 \times 10^{-4} \text{ s} = 4.5 \times 10^{-3} \text{ s} = 4.5 \text{ ms}
+              \]
+            </div>
+            <div class="ans-box">✅ (a) 0.5 km (b) 58.0 kg (c) 4.5 ms</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer8">Show Solution</button>
       </div>
 
       <!-- Problem 1.9 -->
-      <div id="q9" class="question-box">
-        <div class="question-title"><span class="q-badge">1.9</span> Light year is a unit of distance used in Astronomy. It is the distance covered by light in one year. Taking the speed of light as \(3.0 \times 10^8 \text{ ms}^{-1}\), calculate the distance.</div>
+      <div id="q9" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.9</span>
+          <span class="problem-text">Light year is a unit of distance used in Astronomy. It is the distance covered by light in one year. Taking the speed of light as \(3.0 \times 10^8 \text{ ms}^{-1}\), calculate the distance.</span>
+        </div>
         <div class="answer-content" id="answer9">
-          <div class="ans-text"><strong>Given Data:</strong> Speed of light = \(c = 3.0 \times 10^8 \text{ ms}^{-1}\), Time = \(t = 1\) year</div>
-          <div class="ans-text">\[ t = 1 \times 365 \times 24 \times 60 \times 60 \text{ s} = 31536000 \text{ s} = 3.1536 \times 10^7 \text{ s} \]</div>
-          <div class="ans-text"><strong>To Find:</strong> Distance covered = \(S = ?\)</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text">\[ S = vt = ct \]</div>
-          <div class="ans-text">\[ S = (3.0 \times 10^8) \times (3.1536 \times 10^7) \]</div>
-          <div class="ans-text">\[ S = 9.5 \times 10^{15} \text{ m} \]</div>
-          <div class="ans-box">✅ \(9.5 \times 10^{15} \text{ m}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>Speed of light</span><span>\(c = 3.0 \times 10^8 \text{ ms}^{-1}\)</span>
+              <span>Time</span><span>\(t = 1\) year</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Distance covered = \(S = ?\)</div>
+            <div class="block-lbl">Solution</div>
+            <div class="equation">
+              \[
+              t = 1 \times 365 \times 24 \times 60 \times 60 \text{ s} = 31536000 \text{ s} = 3.1536 \times 10^7 \text{ s}
+              \]
+            </div>
+            <p class="sol-text">By using formula of distance:</p>
+            <div class="equation">
+              \[
+              S = vt = ct
+              \]
+            </div>
+            <div class="equation">
+              \[
+              S = (3.0 \times 10^8) \times (3.1536 \times 10^7)
+              \]
+            </div>
+            <div class="equation">
+              \[
+              S = 9.5 \times 10^{15} \text{ m}
+              \]
+            </div>
+            <div class="ans-box">✅ \(9.5 \times 10^{15} \text{ m}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer9">Show Solution</button>
       </div>
 
       <!-- Problem 1.10 -->
-      <div id="q10" class="question-box">
-        <div class="question-title"><span class="q-badge">1.10</span> Express the density of mercury given as \(13.6 \text{ gcm}^{-3}\) in \(\text{kgm}^{-3}\).</div>
+      <div id="q10" class="numerical-box">
+        <div class="problem-title">
+          <span class="num-badge">1.10</span>
+          <span class="problem-text">Express the density of mercury given as \(13.6 \text{ gcm}^{-3}\) in \(\text{kgm}^{-3}\).</span>
+        </div>
         <div class="answer-content" id="answer10">
-          <div class="ans-text"><strong>Given Data:</strong> Density of mercury = \(13.6 \text{ gcm}^{-3}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Density in \(\text{kgm}^{-3}\)</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text">\[ 13.6 \text{ gcm}^{-3} = 13.6 \times \frac{1 \text{ g}}{1 \text{ cm}^3} \]</div>
-          <div class="ans-text">\[ = 13.6 \times \frac{10^{-3} \text{ kg}}{10^{-6} \text{ m}^3} \]</div>
-          <div class="ans-text">\[ = 13.6 \times 10^3 \text{ kgm}^{-3} \]</div>
-          <div class="ans-text">\[ = 1.36 \times 10^4 \text{ kgm}^{-3} \]</div>
-          <div class="ans-box">✅ \(1.36 \times 10^4 \text{ kgm}^{-3}\)</div>
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>Density of mercury</span><span>\(13.6 \text{ gcm}^{-3}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Density in \(\text{kgm}^{-3}\)</div>
+            <div class="block-lbl">Solution</div>
+            <div class="equation">
+              \[
+              13.6 \text{ gcm}^{-3} = 13.6 \times \frac{1 \text{ g}}{1 \text{ cm}^3}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 13.6 \times \frac{10^{-3} \text{ kg}}{10^{-6} \text{ m}^3}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 13.6 \times 10^3 \text{ kgm}^{-3}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 1.36 \times 10^4 \text{ kgm}^{-3}
+              \]
+            </div>
+            <div class="ans-box">✅ \(1.36 \times 10^4 \text{ kgm}^{-3}\)</div>
+          </div>
         </div>
         <button class="toggle-answer-btn" data-target="answer10">Show Solution</button>
       </div>
+    </div>
+
+    <!-- Examples Section -->
+    <div class="content-section" id="examples-section">
+      <h2>📘 Solved Examples (PECTAA 2026)</h2>
 
       <!-- Example 1.1 -->
-      <div id="ex1" class="question-box" style="border-left-color: #7c3aed;">
-        <div class="question-title"><span class="q-badge" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);">Example 1.1</span> Solve the following: (a) \(5.123 \times 10^4 \text{ m} + 3.28 \times 10^5 \text{ m}\) (b) \(2.57 \times 10^{-2} \text{ mm} - 3.43 \times 10^{-3} \text{ mm}\)</div>
-        <div class="answer-content" id="answer11">
-          <div class="ans-text"><strong>Given Data:</strong> (a) \(5.123 \times 10^4 \text{ m} + 3.28 \times 10^5 \text{ m}\) (b) \(2.57 \times 10^{-2} \text{ mm} - 3.43 \times 10^{-3} \text{ mm}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Answers in scientific notation</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text"><strong>(a)</strong></div>
-          <div class="ans-text">\[ 5.123 \times 10^4 \text{ m} + 3.28 \times 10^5 \text{ m} \]</div>
-          <div class="ans-text">\[ = 5.123 \times 10^4 \text{ m} + 32.8 \times 10^4 \text{ m} \]</div>
-          <div class="ans-text">\[ = (5.123 + 32.8) \times 10^4 \text{ m} \]</div>
-          <div class="ans-text">\[ = 37.923 \times 10^4 \text{ m} = 3.7923 \times 10^5 \text{ m} \]</div>
-          <div class="ans-text"><strong>(b)</strong></div>
-          <div class="ans-text">\[ 2.57 \times 10^{-2} \text{ mm} - 3.43 \times 10^{-3} \text{ mm} \]</div>
-          <div class="ans-text">\[ = 2.57 \times 10^{-2} \text{ mm} - 0.343 \times 10^{-2} \text{ mm} \]</div>
-          <div class="ans-text">\[ = (2.57 - 0.343) \times 10^{-2} \text{ mm} \]</div>
-          <div class="ans-text">\[ = 2.227 \times 10^{-2} \text{ mm} = 2.227 \times 10^{-5} \text{ m} \]</div>
-          <div class="ans-box">✅ (a) \(3.7923 \times 10^5 \text{ m}\) (b) \(2.227 \times 10^{-5} \text{ m}\)</div>
+      <div id="ex1" class="numerical-box example-box">
+        <div class="problem-title">
+          <span class="num-badge example-badge">Example 1.1</span>
+          <span class="problem-text">Solve the following: (a) \(5.123 \times 10^4 \text{ m} + 3.28 \times 10^5 \text{ m}\) (b) \(2.57 \times 10^{-2} \text{ mm} - 3.43 \times 10^{-3} \text{ mm}\)</span>
         </div>
-        <button class="toggle-answer-btn" data-target="answer11">Show Solution</button>
+        <div class="answer-content" id="answer11">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>(a)</span><span>\(5.123 \times 10^4 \text{ m} + 3.28 \times 10^5 \text{ m}\)</span>
+              <span>(b)</span><span>\(2.57 \times 10^{-2} \text{ mm} - 3.43 \times 10^{-3} \text{ mm}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Answers in scientific notation</div>
+            <div class="block-lbl">Solution</div>
+            <div class="block-lbl">(a)</div>
+            <div class="equation">
+              \[
+              5.123 \times 10^4 \text{ m} + 3.28 \times 10^5 \text{ m}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 5.123 \times 10^4 \text{ m} + 32.8 \times 10^4 \text{ m}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = (5.123 + 32.8) \times 10^4 \text{ m}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 37.923 \times 10^4 \text{ m} = 3.7923 \times 10^5 \text{ m}
+              \]
+            </div>
+            <div class="block-lbl">(b)</div>
+            <div class="equation">
+              \[
+              2.57 \times 10^{-2} \text{ mm} - 3.43 \times 10^{-3} \text{ mm}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 2.57 \times 10^{-2} \text{ mm} - 0.343 \times 10^{-2} \text{ mm}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = (2.57 - 0.343) \times 10^{-2} \text{ mm}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 2.227 \times 10^{-2} \text{ mm} = 2.227 \times 10^{-5} \text{ m}
+              \]
+            </div>
+            <div class="ans-box">✅ (a) \(3.7923 \times 10^5 \text{ m}\) (b) \(2.227 \times 10^{-5} \text{ m}\)</div>
+          </div>
+        </div>
+        <button class="toggle-answer-btn example-btn" data-target="answer11">Show Solution</button>
       </div>
 
       <!-- Example 1.2 -->
-      <div id="ex2" class="question-box" style="border-left-color: #7c3aed;">
-        <div class="question-title"><span class="q-badge" style="background: linear-gradient(135deg, #7c3aed, #6d28d9);">Example 1.2</span> Find the value of each of the following quantities: (a) \((4 \times 10^3 \text{ kg})(6 \times 10^6 \text{ m})\) (b) \(\frac{6 \times 10^6 \text{ m}^3}{2 \times 10^{-2} \text{ m}^2}\)</div>
-        <div class="answer-content" id="answer12">
-          <div class="ans-text"><strong>Given Data:</strong> (a) \((4 \times 10^3 \text{ kg})(6 \times 10^6 \text{ m})\) (b) \(\frac{6 \times 10^6 \text{ m}^3}{2 \times 10^{-2} \text{ m}^2}\)</div>
-          <div class="ans-text"><strong>To Find:</strong> Answers in scientific notation</div>
-          <div class="ans-text"><strong>Solution:</strong></div>
-          <div class="ans-text"><strong>(a)</strong></div>
-          <div class="ans-text">\[ (4 \times 10^3 \text{ kg})(6 \times 10^6 \text{ m}) \]</div>
-          <div class="ans-text">\[ = 24 \times 10^9 \text{ kg m} = 2.4 \times 10^{10} \text{ kg m} \]</div>
-          <div class="ans-text"><strong>(b)</strong></div>
-          <div class="ans-text">\[ \frac{6 \times 10^6 \text{ m}^3}{2 \times 10^{-2} \text{ m}^2} \]</div>
-          <div class="ans-text">\[ = \frac{6}{2} \times 10^{6+2} \text{ m}^{3-2} = 3 \times 10^8 \text{ m} \]</div>
-          <div class="ans-box">✅ (a) \(2.4 \times 10^{10} \text{ kg m}\) (b) \(3 \times 10^8 \text{ m}\)</div>
+      <div id="ex2" class="numerical-box example-box">
+        <div class="problem-title">
+          <span class="num-badge example-badge">Example 1.2</span>
+          <span class="problem-text">Find the value of each of the following quantities: (a) \((4 \times 10^3 \text{ kg})(6 \times 10^6 \text{ m})\) (b) \(\frac{6 \times 10^6 \text{ m}^3}{2 \times 10^{-2} \text{ m}^2}\)</span>
         </div>
-        <button class="toggle-answer-btn" data-target="answer12">Show Solution</button>
+        <div class="answer-content" id="answer12">
+          <div class="num-sol-wrap">
+            <div class="block-lbl">Given Data</div>
+            <div class="given-grid">
+              <span>(a)</span><span>\((4 \times 10^3 \text{ kg})(6 \times 10^6 \text{ m})\)</span>
+              <span>(b)</span><span>\(\frac{6 \times 10^6 \text{ m}^3}{2 \times 10^{-2} \text{ m}^2}\)</span>
+            </div>
+            <div class="block-lbl">To Find</div>
+            <div class="tofind-line">Answers in scientific notation</div>
+            <div class="block-lbl">Solution</div>
+            <div class="block-lbl">(a)</div>
+            <div class="equation">
+              \[
+              (4 \times 10^3 \text{ kg})(6 \times 10^6 \text{ m})
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = 24 \times 10^9 \text{ kg m} = 2.4 \times 10^{10} \text{ kg m}
+              \]
+            </div>
+            <div class="block-lbl">(b)</div>
+            <div class="equation">
+              \[
+              \frac{6 \times 10^6 \text{ m}^3}{2 \times 10^{-2} \text{ m}^2}
+              \]
+            </div>
+            <div class="equation">
+              \[
+              = \frac{6}{2} \times 10^{6+2} \text{ m}^{3-2} = 3 \times 10^8 \text{ m}
+              \]
+            </div>
+            <div class="ans-box">✅ (a) \(2.4 \times 10^{10} \text{ kg m}\) (b) \(3 \times 10^8 \text{ m}\)</div>
+          </div>
+        </div>
+        <button class="toggle-answer-btn example-btn" data-target="answer12">Show Solution</button>
       </div>
-
     </div>
 
     <!-- Key Formulas Section -->
@@ -935,43 +1258,33 @@
         📚 Explore Other Physics Chapters (1–9)
       </button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-1-Physical-Quantities-and-Measurements/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold">
           <span>Chapter 1</span><span>✨ Physical Quantities and Measurements</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-2-Kinematics/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 2</span><span>Kinematics</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-3-Dynamics/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 3</span><span>Dynamics</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-4-Turning-Effect-of-Forces/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 4</span><span>Turning Effect of Forces</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-5-Work-and-Energy/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 5</span><span>Work and Energy</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-6-Mechanical-Properties-of-Matter/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 6</span><span>Mechanical Properties of Matter</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-7-Thermal-Properties-of-Matter/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 7</span><span>Thermal Properties of Matter</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-8-Magnetism/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 8</span><span>Magnetism</span>
         </a>
-
         <a href="https://hiraacademy.com.pk/Physics-9th/Chapter-9-Nature-of-Science/index.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
           <span>Chapter 9</span><span>Nature of Science</span>
         </a>
-
       </div>
       <p class="text-xs text-gray-500 mt-3">📖 Complete syllabus coverage for Class 9 Physics (PECTAA 2026) – Chapters 1 to 9</p>
     </div>
@@ -994,44 +1307,35 @@
       <summary class="text-2xl md:text-3xl font-bold text-blue-800 cursor-pointer hover:text-blue-600 list-none flex items-center justify-center gap-3 text-center">
         <span class="text-3xl">📚</span> Explore Complete Learning Resources (Class 9, 10 & More)
       </summary>
-
       <div class="mt-8">
         <h2 class="text-2xl font-bold text-center text-blue-800 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
         <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
-
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Class 9 Resources -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-blue-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
             <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-9th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-9th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/Islamiat-9th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li><li><a href="https://hiraacademy.com.pk/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li></ul></nav>
           </article>
-          <!-- Class 10 Resources -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-indigo-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
             <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-10th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-10th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-10th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-10th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/PakistanStudies-10th.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li></ul></nav>
           </article>
-          <!-- Special Resources -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li><li><a href="https://hiraacademy.com.pk/physics-numericals.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li><li><a href="https://hiraacademy.com.pk/math-mistakes.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li><li><a href="https://hiraacademy.com.pk/physics-formulas.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li><li><a href="https://hiraacademy.com.pk/blog.html" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li></ul>
           </article>
-          <!-- Quick Links -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/courses-details.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li><li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li><li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li><li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li><li><a href="https://hiraacademy.com.pk/student-portal.html" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li></ul>
           </article>
-          <!-- Definitions & Key Resources -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-blue-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources</h3>
-            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul></nav>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul>
           </article>
-          <!-- Support & Policies -->
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
             <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies</h3>
             <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li><li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li><li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li><li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-blue-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li><li><a href="https://hiraacademy.com.pk/mission.html" class="text-blue-600 font-semibold hover:text-blue-700 inline-flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li></ul>
           </article>
         </div>
-
         <div class="mt-10 text-center">
           <a href="https://hiraacademy.com.pk/" class="inline-flex items-center homepage-btn px-8 py-4 rounded-full font-bold shadow-lg transition"><span class="mr-3">🏠</span>Return to Homepage</a>
         </div>
@@ -1128,7 +1432,7 @@
         const winHeight = window.innerHeight;
         const docHeight = document.documentElement.scrollHeight;
         const maxScroll = docHeight - winHeight;
-        const scrollPercent = (scrollTop / maxScroll) * 100;
+        const scrollPercent = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
         if (progressBar) progressBar.style.width = scrollPercent + '%';
       }
       window.addEventListener('scroll', updateProgressBar);
