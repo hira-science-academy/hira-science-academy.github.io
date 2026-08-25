@@ -228,8 +228,92 @@
             display: ['Montserrat', 'sans-serif']
           },
           colors: {
-            primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
-            secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+            // Limited semantic color palette - Fix for Issue #1
+            brand: {
+              primary: '#0f766e',    // Teal
+              secondary: '#0284c7',  // Blue
+              accent: '#7c3aed',     // Purple
+              'text-dark': '#1e293b',
+              'text-muted': '#64748b',
+              'bg-light': '#f8fafc',
+              white: '#ffffff',
+            },
+            // Keep only essential utility colors
+            emerald: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              300: '#6ee7b7',
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+            },
+            blue: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            red: {
+              50: '#fef2f2',
+              100: '#fee2e2',
+              200: '#fecaca',
+              300: '#fca5a5',
+              400: '#f87171',
+              500: '#ef4444',
+              600: '#dc2626',
+              700: '#b91c1c',
+            },
+            teal: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+            },
+            amber: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              200: '#fde68a',
+              300: '#fcd34d',
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            indigo: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            },
+            gray: {
+              50: '#f9fafb',
+              100: '#f3f4f6',
+              200: '#e5e7eb',
+              300: '#d1d5db',
+              400: '#9ca3af',
+              500: '#6b7280',
+              600: '#4b5563',
+              700: '#374151',
+              800: '#1f2937',
+              900: '#111827',
+            }
           }
         }
       }
@@ -238,7 +322,11 @@
 
   <!-- Custom Styles -->
   <style>
-    section { scroll-margin-top: 120px; padding-top: 40px; }
+    /* Reduced padding and scroll margin - Fix for Issue #3 */
+    section { 
+      scroll-margin-top: 100px; 
+      padding-top: 20px; 
+    }
     .nav-link.active { color: #0ea5e9 !important; font-weight: 600; position: relative; }
     .nav-link.active::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, #0ea5e9, #8b5cf6); border-radius: 3px; }
     #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; }
@@ -256,7 +344,7 @@
     .prose-content p { color: #334155; line-height: 1.8; margin-bottom: 1rem; text-align: justify; }
     .prose-content ul { list-style-type: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
     .prose-content ul li { margin-bottom: 0.4rem; color: #334155; }
-    .prose-content ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+    .prose-content ol { padding-left: 1.5rem; margin-bottom: 0.5rem; } /* Reduced margin - Fix for Issue #3 */
     .prose-content ol li { margin-bottom: 0.4rem; color: #334155; }
     .new-syllabus-badge { background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 600; box-shadow: 0 4px 12px rgba(16,185,129,0.3); }
     .old-archive-section { background: #f8fafc; border-top: 2px dashed #cbd5e1; }
@@ -270,38 +358,52 @@
     .faq-item:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-color: #0f766e; }
     .faq-item h3 { font-size: 1.1rem; font-weight: 600; color: #0f766e; margin-bottom: 0.5rem; }
     .faq-item p { color: #475569; line-height: 1.7; text-align: justify; }
+    /* Dropdown styles - Fix for Issue #6 */
+    .dropdown-group:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu { opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s ease; }
   </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
 
-<!-- ===== NAVIGATION ===== -->
+<!-- ===== NAVIGATION - Fixed with dropdown for Issue #6 ===== -->
 <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
       <div class="flex-shrink-0 flex items-center">
         <a href="/" class="flex items-center gap-3 group transition duration-300">
           <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-          <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
+          <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-emerald-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">
             Hira Science Academy
           </span>
         </a>
       </div>
 
+      <!-- Desktop Navigation - Reduced top-level items -->
       <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
-        <a href="/#home" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Home</a>
-        <a href="/#notes" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Notes</a>
-        <a href="/#courses" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Courses</a>
-        <a href="/#features" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Features</a>
-        <a href="/#testimonials" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Testimonials</a>
-        <a href="/#blog-preview" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Blog</a>
-        <a href="/#contact" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium">Contact</a>
+        <a href="/#home" class="nav-link text-gray-700 hover:text-emerald-600 px-2 py-2 text-sm font-medium">Home</a>
+        
+        <!-- Resources Dropdown - Groups Notes, Courses, Features -->
+        <div class="relative dropdown-group">
+          <button class="nav-link text-gray-700 hover:text-emerald-600 px-2 py-2 text-sm font-medium flex items-center gap-1">
+            Resources <span class="text-xs">▼</span>
+          </button>
+          <div class="dropdown-menu absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-2 z-50">
+            <a href="/#notes" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-emerald-600">📚 Notes</a>
+            <a href="/#courses" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-emerald-600">🎓 Courses</a>
+            <a href="/#features" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-emerald-600">✨ Features</a>
+          </div>
+        </div>
+        
+        <a href="/#testimonials" class="nav-link text-gray-700 hover:text-emerald-600 px-2 py-2 text-sm font-medium">Testimonials</a>
+        <a href="/#blog-preview" class="nav-link text-gray-700 hover:text-emerald-600 px-2 py-2 text-sm font-medium">Blog</a>
+        <a href="/#contact" class="nav-link text-gray-700 hover:text-emerald-600 px-2 py-2 text-sm font-medium">Contact</a>
         <a href="student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105">
           🎓 Student Portal
         </a>
       </div>
 
       <div class="flex items-center md:hidden">
-        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none">
+        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-emerald-600 hover:bg-gray-100 focus:outline-none">
           <span class="sr-only">Open main menu</span>
           <svg class="block h-6 w-6" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
           <svg class="hidden h-6 w-6" id="menu-icon-close" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -313,22 +415,20 @@
   <!-- Mobile menu -->
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
     <div class="px-4 pt-2 pb-6 space-y-1">
-      <a href="/#home" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Home</a>
-      <a href="/#notes" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Notes</a>
-      <a href="/#courses" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Courses</a>
-      <a href="/#features" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Features</a>
-      <a href="/#testimonials" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Testimonials</a>
-      <a href="/#blog-preview" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Blog</a>
-      <a href="/#contact" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600">Contact</a>
+      <a href="/#home" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600">Home</a>
+      <a href="/#notes" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600">Notes</a>
+      <a href="/#courses" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600">Courses</a>
+      <a href="/#features" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600">Features</a>
+      <a href="/#testimonials" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600">Testimonials</a>
+      <a href="/#blog-preview" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600">Blog</a>
+      <a href="/#contact" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-emerald-600">Contact</a>
       <div class="pt-4"><a href="student-portal.html" class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400">🎓 Student Portal</a></div>
     </div>
   </div>
 </nav>
 
 <!-- ===== HERO SECTION ===== -->
-<!-- ⭐ LCP Optimized Header Section with original colors and mathematical grid -->
-<section class="relative bg-gradient-to-r from-emerald-700 via-teal-700 to-primary-800 text-white py-20 overflow-hidden text-center">
-  <!-- Clean Grid Pattern Overlay (Uses your original background color underneath) -->
+<section class="relative bg-gradient-to-r from-emerald-700 via-teal-700 to-emerald-800 text-white py-20 overflow-hidden text-center">
   <div class="absolute inset-0 pointer-events-none" 
        style="
          background-image: 
@@ -340,23 +440,19 @@
   <div class="absolute inset-0 opacity-10 pattern-bg"></div>
 
   <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <!-- Original Badge Style Preserved -->
     <div class="inline-block bg-yellow-400 text-gray-900 font-bold px-5 py-2 rounded-full text-sm mb-6 shadow-lg animate-pulse">
       📢 NEW 2026 SYLLABUS (PECTAA) READY
     </div>
 
-    <!-- ✅ VISIBLE H1 for SEO -->
     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight">
       Class 10 Notes 2026 – All Subjects PDF<br>
       <span class="bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent">New PECTAA Curriculum Edition</span>
     </h1>
     
-    <!-- Original Text Colors and Styles Preserved Exactly -->
-    <p class="text-xl text-primary-100 max-w-3xl mx-auto mb-8 leading-relaxed">
-      Download free <strong>Class 10 notes for all subjects</strong> in PDF format. Fully updated for <strong>PECTAA 2026 syllabus</strong> by <strong>Muhammad Tayyab (MSc Mathematics)</strong> & <strong>Mirza Abid Shabbir Mughal (M.Phil Chemistry)</strong>. Designed for all 10 <strong>BISE Punjab boards</strong>.
+    <p class="text-xl text-emerald-100 max-w-3xl mx-auto mb-8 leading-relaxed">
+      Download free <strong>Class 10 notes for all subjects</strong> in PDF format. Fully updated for <strong>PECTAA 2026 syllabus</strong> by <strong>Muhammad Tayyab (MSc Mathematics)</strong> & <strong>Mirza Abid Shabbir Mughal (M.Phil Chemistry)</strong>. Designed for all 9 <strong>BISE Punjab boards</strong>.
     </p>
     
-    <!-- Badges layout -->
     <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
       <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">✨ Revised Exercises</span>
       <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">📝 New MCQs Bank</span>
@@ -365,45 +461,42 @@
     </div>
   </div>
 
-  <!-- Section divider blending into the content below -->
   <svg class="absolute bottom-0 left-0 w-full text-gray-50" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
     <path fill="currentColor" d="M0,32 C240,60 480,0 720,16 C960,32 1200,60 1440,24 L1440,60 L0,60 Z"></path>
   </svg>
 </section>
 
 <!-- ===== TRUST SIGNAL: All BISE Boards ===== -->
-<div class="max-w-7xl mx-auto px-6 py-8 -mt-4">
+<div class="max-w-7xl mx-auto px-6 py-6 -mt-4"> <!-- Reduced padding -->
   <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 text-center shadow-sm">
-    <p class="text-lg font-medium text-emerald-800 flex flex-wrap items-center justify-center gap-2">
+    <p class="text-base font-medium text-emerald-800 flex flex-wrap items-center justify-center gap-2"> <!-- Smaller text -->
       <span>✅ Valid for all <strong>10 BISE Punjab boards</strong> (2026 New Syllabus):</span> 
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Lahore</span>
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Gujranwala</span>
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Multan</span>
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Rawalpindi</span>
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Faisalabad</span>
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Sargodha</span>
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">DG Khan</span>
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Bahawalpur</span>
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Sahiwal</span>
-      <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Federal</span>
+      <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm">Lahore</span>
+      <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm">Gujranwala</span>
+      <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm">Multan</span>
+      <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm">Rawalpindi</span>
+      <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm">Faisalabad</span>
+      <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm">Sargodha</span>
+      <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm">DG Khan</span>
+      <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm">Bahawalpur</span>
+      <span class="text-xs bg-white px-3 py-1 rounded-full shadow-sm">Sahiwal</span>
+     
     </p>
   </div>
 </div>
 
-
-
 <!-- ===== SUBJECT GRID (NEW 2026 SYLLABUS) ===== -->
-<section class="py-16 bg-gray-50">
+<section class="py-12 bg-gray-50"> <!-- Reduced padding -->
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-4">📚 Download Class 10 Notes (New 2026 Syllabus)</h2>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Click on any subject below to access detailed chapter-wise notes, solved exercises, and MCQs in PDF format.</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-3">📚 Download Class 10 Notes (New 2026 Syllabus)</h2> <!-- Reduced margin -->
+    <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">Click on any subject below to access detailed chapter-wise notes, solved exercises, and MCQs in PDF format.</p> <!-- Reduced margin -->
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       
       <!-- Mathematics 10th NEW 2026 card -->
       <div class="subject-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-emerald-200 relative">
         <div class="absolute top-3 right-3 z-10"><span class="new-syllabus-badge">NEW 2026</span></div>
-        <div class="h-2 bg-gradient-to-r from-emerald-500 to-green-600"></div>
+        <div class="h-2 bg-gradient-to-r from-emerald-500 to-emerald-600"></div>
         <div class="p-6 text-center">
           <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">📐</div>
           <h3 class="text-2xl font-bold text-emerald-700 mb-3">Mathematics 10th (2026)</h3>
@@ -420,7 +513,7 @@
       <!-- Physics 10th NEW 2026 card -->
       <div class="subject-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-blue-200 relative">
         <div class="absolute top-3 right-3 z-10"><span class="new-syllabus-badge">NEW 2026</span></div>
-        <div class="h-2 bg-gradient-to-r from-blue-500 to-cyan-600"></div>
+        <div class="h-2 bg-gradient-to-r from-blue-500 to-blue-600"></div>
         <div class="p-6 text-center">
           <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">⚛️</div>
           <h3 class="text-2xl font-bold text-blue-700 mb-3">Physics 10th (2026)</h3>
@@ -437,7 +530,7 @@
       <!-- Chemistry 10th NEW 2026 card -->
       <div class="subject-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-red-200 relative">
         <div class="absolute top-3 right-3 z-10"><span class="new-syllabus-badge">NEW 2026</span></div>
-        <div class="h-2 bg-gradient-to-r from-red-500 to-rose-600"></div>
+        <div class="h-2 bg-gradient-to-r from-red-500 to-red-600"></div>
         <div class="p-6 text-center">
           <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">🧪</div>
           <h3 class="text-2xl font-bold text-red-700 mb-3">Chemistry 10th (2026)</h3>
@@ -452,9 +545,9 @@
       </div>
 
       <!-- Biology 10th NEW 2026 card -->
-      <div class="subject-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-green-200 relative">
+      <div class="subject-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-teal-200 relative">
         <div class="absolute top-3 right-3 z-10"><span class="new-syllabus-badge">NEW 2026</span></div>
-        <div class="h-2 bg-gradient-to-r from-teal-500 to-green-600"></div>
+        <div class="h-2 bg-gradient-to-r from-teal-500 to-teal-600"></div>
         <div class="p-6 text-center">
           <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">🧬</div>
           <h3 class="text-2xl font-bold text-teal-700 mb-3">Biology 10th (2026)</h3>
@@ -471,7 +564,7 @@
       <!-- Pakistan Studies 10th NEW 2026 card -->
       <div class="subject-card bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border-2 border-amber-200 relative">
         <div class="absolute top-3 right-3 z-10"><span class="new-syllabus-badge">NEW 2026</span></div>
-        <div class="h-2 bg-gradient-to-r from-amber-500 to-orange-600"></div>
+        <div class="h-2 bg-gradient-to-r from-amber-500 to-amber-600"></div>
         <div class="p-6 text-center">
           <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">🇵🇰</div>
           <h3 class="text-2xl font-bold text-amber-700 mb-3">Pakistan Studies 10th (2026)</h3>
@@ -486,8 +579,8 @@
       </div>
 
       <!-- 2027 Pairing Scheme & Guide card -->
-      <div class="subject-card bg-gradient-to-br from-indigo-50 to-purple-50 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-indigo-200">
-        <div class="h-2 bg-gradient-to-r from-indigo-500 to-purple-600"></div>
+      <div class="subject-card bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-indigo-200">
+        <div class="h-2 bg-gradient-to-r from-indigo-500 to-indigo-600"></div>
         <div class="p-6 text-center">
           <div class="text-6xl mb-4 group-hover:scale-110 transition-transform">📚</div>
           <h3 class="text-2xl font-bold text-indigo-700 mb-3">2027 Pairing Scheme &amp; Guide</h3>
@@ -504,28 +597,80 @@
   </div>
 </section>
 
-<!-- ===== TEXTBOOKS SECTION (UPDATED 2026 EDITION) ===== -->
-<section class="py-16 bg-gradient-to-br from-slate-50 to-blue-50">
+<!-- ===== TEXTBOOKS SECTION (UPDATED 2026 EDITION) - Fixed Issue #5 ===== -->
+<section class="py-12 bg-gradient-to-br from-slate-50 to-blue-50">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-12">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">📚 2026 Textbooks (PECTAA Edition)</h2>
+    <div class="text-center mb-8"> <!-- Reduced margin -->
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">📚 2026 Textbooks (PECTAA Edition)</h2> <!-- Reduced margin -->
       <p class="text-lg text-gray-600 max-w-3xl mx-auto">Official Punjab Board textbooks updated for the new 2026 syllabus. Free online viewing &amp; PDF download.</p>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-      <a href="textbooks/Mathematics-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-indigo-200 group hover:-translate-y-2"><div class="h-2 bg-indigo-500"></div><div class="p-5 text-center"><div class="text-4xl mb-3">📘</div><h3 class="text-lg font-bold text-indigo-700">Math 2026</h3><span class="inline-block text-sm bg-indigo-100 px-4 py-1.5 rounded-full">View Book →</span></div></a>
-      <a href="textbooks/Physics-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-blue-200 group hover:-translate-y-2"><div class="h-2 bg-blue-500"></div><div class="p-5 text-center"><div class="text-4xl mb-3">⚛️</div><h3 class="text-lg font-bold text-blue-700">Physics 2026</h3><span class="inline-block text-sm bg-blue-100 px-4 py-1.5 rounded-full">View Book →</span></div></a>
-      <a href="textbooks/Chemistry-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-red-200 group hover:-translate-y-2"><div class="h-2 bg-red-500"></div><div class="p-5 text-center"><div class="text-4xl mb-3">🧪</div><h3 class="text-lg font-bold text-red-700">Chemistry 2026</h3><span class="inline-block text-sm bg-red-100 px-4 py-1.5 rounded-full">View Book →</span></div></a>
-      <a href="textbooks/Biology-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-green-200 group hover:-translate-y-2"><div class="h-2 bg-green-500"></div><div class="p-5 text-center"><div class="text-4xl mb-3">🧬</div><h3 class="text-lg font-bold text-green-700">Biology 2026</h3><span class="inline-block text-sm bg-green-100 px-4 py-1.5 rounded-full">View Book →</span></div></a>
-      <a href="textbooks/PakStudies-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-teal-200 group hover:-translate-y-2"><div class="h-2 bg-teal-500"></div><div class="p-5 text-center"><div class="text-4xl mb-3">🇵🇰</div><h3 class="text-lg font-bold text-teal-700">Pak Studies 2026</h3><span class="inline-block text-sm bg-teal-100 px-4 py-1.5 rounded-full">View Book →</span></div></a>
+      
+      <!-- Math Textbook Card - Fixed with better spacing -->
+      <a href="textbooks/Mathematics-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-indigo-200 group hover:-translate-y-2">
+        <div class="h-2 bg-indigo-500"></div>
+        <div class="p-6 text-center"> <!-- Increased padding from p-5 to p-6 -->
+          <div class="text-4xl mb-4">📘</div> <!-- Increased margin from mb-3 to mb-4 -->
+          <h3 class="text-lg font-bold text-indigo-700 mb-3">Math 2026</h3> <!-- Added margin-bottom -->
+          <span class="inline-block text-sm bg-indigo-100 px-5 py-2 rounded-full font-medium">View Book →</span> <!-- Increased padding -->
+        </div>
+      </a>
+      
+      <!-- Physics Textbook Card -->
+      <a href="textbooks/Physics-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-blue-200 group hover:-translate-y-2">
+        <div class="h-2 bg-blue-500"></div>
+        <div class="p-6 text-center">
+          <div class="text-4xl mb-4">⚛️</div>
+          <h3 class="text-lg font-bold text-blue-700 mb-3">Physics 2026</h3>
+          <span class="inline-block text-sm bg-blue-100 px-5 py-2 rounded-full font-medium">View Book →</span>
+        </div>
+      </a>
+      
+      <!-- Chemistry Textbook Card -->
+      <a href="textbooks/Chemistry-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-red-200 group hover:-translate-y-2">
+        <div class="h-2 bg-red-500"></div>
+        <div class="p-6 text-center">
+          <div class="text-4xl mb-4">🧪</div>
+          <h3 class="text-lg font-bold text-red-700 mb-3">Chemistry 2026</h3>
+          <span class="inline-block text-sm bg-red-100 px-5 py-2 rounded-full font-medium">View Book →</span>
+        </div>
+      </a>
+      
+      <!-- Biology Textbook Card -->
+      <a href="textbooks/Biology-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-teal-200 group hover:-translate-y-2">
+        <div class="h-2 bg-teal-500"></div>
+        <div class="p-6 text-center">
+          <div class="text-4xl mb-4">🧬</div>
+          <h3 class="text-lg font-bold text-teal-700 mb-3">Biology 2026</h3>
+          <span class="inline-block text-sm bg-teal-100 px-5 py-2 rounded-full font-medium">View Book →</span>
+        </div>
+      </a>
+      
+      <!-- Pak Studies Textbook Card -->
+      <a href="textbooks/PakStudies-10th-Textbook-2026.html" class="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-teal-200 group hover:-translate-y-2">
+        <div class="h-2 bg-teal-500"></div>
+        <div class="p-6 text-center">
+          <div class="text-4xl mb-4">🇵🇰</div>
+          <h3 class="text-lg font-bold text-teal-700 mb-3">Pak Studies 2026</h3>
+          <span class="inline-block text-sm bg-teal-100 px-5 py-2 rounded-full font-medium">View Book →</span>
+        </div>
+      </a>
     </div>
-    <div class="mt-10 text-center"><div class="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-md"><span class="text-emerald-600 font-semibold">📖 2026 Updated Textbooks</span><span class="w-1.5 h-1.5 bg-emerald-600 rounded-full"></span><span class="text-gray-600">Free &amp; No Registration</span></div></div>
+    <div class="mt-8 text-center"> <!-- Reduced margin -->
+      <div class="inline-flex items-center gap-3 bg-white px-6 py-3 rounded-full shadow-md">
+        <span class="text-emerald-600 font-semibold">📖 2026 Updated Textbooks</span>
+        <span class="w-1.5 h-1.5 bg-emerald-600 rounded-full"></span>
+        <span class="text-gray-600">Free &amp; No Registration</span>
+      </div>
+    </div>
   </div>
 </section>
+
 <!-- ===== DETAILED INTRODUCTION (600+ words) ===== -->
-<section class="py-12 bg-white">
+<section class="py-10 bg-white"> <!-- Reduced padding -->
   <div class="max-w-5xl mx-auto px-6">
     <div class="prose-content">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Complete Class 10 Notes for Punjab Board 2026 (New Syllabus)</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 text-center">Complete Class 10 Notes for Punjab Board 2026 (New Syllabus)</h2> <!-- Reduced margin -->
       
       <p>
         Welcome to your complete resource for <strong>Class 10 notes for all subjects</strong> based on the <strong>NEW 2026 PECTAA syllabus</strong>. Whether you're preparing for your annual board exams or building a strong foundation for F.Sc. and entry tests, these <strong>10th class notes PDF</strong> are designed to help you succeed. Our notes cover the complete <strong>PECTAA 2026 curriculum</strong> and are aligned with the National Curriculum 2023 for all <strong>BISE Punjab boards</strong>.
@@ -551,7 +696,7 @@
       <p>
         To get the most out of these <strong>10th class notes</strong>, follow this study strategy:
       </p>
-      <ol style="list-style-type: decimal; padding-left: 1.5rem; margin-bottom: 1rem;">
+      <ol>
         <li><strong>Read the Chapter Summary:</strong> Start with the key points to get an overview.</li>
         <li><strong>Study the Detailed Content:</strong> Go through the complete explanations and solved examples.</li>
         <li><strong>Practice MCQs:</strong> Test your knowledge with chapter-wise multiple-choice questions.</li>
@@ -570,7 +715,7 @@
     </div>
 
     <!-- ===== DETAILED SUBJECT TABLE ===== -->
-    <div class="overflow-x-auto mt-6 shadow-lg rounded-xl border border-gray-200">
+    <div class="overflow-x-auto mt-4 shadow-lg rounded-xl border border-gray-200"> <!-- Reduced margin -->
       <table class="subject-table">
         <thead>
           <tr>
@@ -596,7 +741,7 @@
             <td>Revised equations, solved exercises, MCQ bank, periodic trends</td>
           </tr>
           <tr>
-            <td class="font-semibold text-green-700">Biology</td>
+            <td class="font-semibold text-teal-700">Biology</td>
             <td>Gaseous Exchange, Homeostasis, Coordination &amp; Control, Reproduction, Genetics, Evolution, Ecosystem</td>
             <td>Updated diagrams, glossary, short &amp; long questions, MCQs</td>
           </tr>
@@ -609,7 +754,7 @@
       </table>
     </div>
     
-    <div class="prose-content mt-10">
+    <div class="prose-content mt-8"> <!-- Reduced margin -->
       <h3>Why Choose Hira Science Academy for Your Class 10 Notes?</h3>
       <p>
         At <strong>Hira Science Academy</strong>, we are committed to providing quality education to students across Punjab. Our <strong>10th class notes</strong> are the result of years of teaching experience and a deep understanding of the <strong>Punjab Board exam patterns</strong>. We focus on:
@@ -626,10 +771,11 @@
     </div>
   </div>
 </section>
+
 <!-- ===== STUDY TIPS & EXAM PREPARATION ===== -->
-<section class="py-16 bg-white">
+<section class="py-12 bg-white"> <!-- Reduced padding -->
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">💡 Study Tips &amp; Exam Preparation Strategies for 2026</h2>
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">💡 Study Tips &amp; Exam Preparation Strategies for 2026</h2> <!-- Reduced margin -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 shadow-md border border-emerald-100">
         <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center"><span class="text-3xl mr-3">📖</span> How to Study Effectively</h3>
@@ -656,9 +802,9 @@
 </section>
 
 <!-- ===== COMMON MISTAKES & PROBLEM-SOLVING ===== -->
-<section class="py-16 bg-gray-50">
+<section class="py-12 bg-gray-50"> <!-- Reduced padding -->
   <div class="max-w-7xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">⚠️ Common Mistakes &amp; How to Avoid Them in 2026 Exams</h2>
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">⚠️ Common Mistakes &amp; How to Avoid Them in 2026 Exams</h2> <!-- Reduced margin -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       <div class="bg-white rounded-2xl shadow-md p-8 border border-gray-200">
         <h3 class="text-2xl font-bold text-red-600 mb-4 flex items-center"><span class="text-3xl mr-3">❌</span> Mistakes Students Make</h3>
@@ -685,9 +831,9 @@
 </section>
 
 <!-- ===== FAQ SECTION (8 questions) ===== -->
-<section class="py-16 bg-white">
+<section class="py-12 bg-white"> <!-- Reduced padding -->
   <div class="max-w-5xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Frequently Asked Questions About Class 10 Notes (2026)</h2>
+    <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">Frequently Asked Questions About Class 10 Notes (2026)</h2> <!-- Reduced margin -->
     <div class="space-y-6">
       <div class="faq-item">
         <h3>What is the new PECTAA 2026 syllabus for Class 10?</h3>
@@ -726,16 +872,17 @@
 </section>
 
 <!-- ===== WHY HIRA ACADEMY ===== -->
-<section class="py-16 bg-gradient-to-br from-emerald-50 to-teal-50">
+<section class="py-12 bg-gradient-to-br from-emerald-50 to-teal-50"> <!-- Reduced padding -->
   <div class="max-w-5xl mx-auto px-6">
     <div class="bg-white p-10 rounded-3xl shadow-xl border border-emerald-100 relative overflow-hidden">
       <div class="relative z-10 text-center">
         <h2 class="text-3xl font-extrabold text-gray-900 mb-6">🎯 Why Thousands of Students Trust Hira Science Academy for 2026 Notes</h2>
-        <p class="text-xl text-gray-700 mb-8 leading-relaxed max-w-4xl mx-auto text-justify">
+        <p class="text-xl text-gray-700 mb-6 leading-relaxed max-w-4xl mx-auto text-justify"> <!-- Reduced margin -->
           Our <strong>Class 10 resources</strong> are strictly aligned with the <strong>PECTAA 2026 curriculum</strong> (National Curriculum 2023). Every chapter is reviewed by our lead specialists, <strong>Muhammad Tayyab (MSc Mathematics)</strong> and <strong>Mirza Abid Shabbir Mughal (M.Phil Chemistry)</strong>, to ensure 100% accuracy and alignment with the latest Punjab board paper patterns.
         </p>
-        <h3 class="text-sm uppercase tracking-widest font-bold text-emerald-600 mb-4">Optimized for All 10 BISE Punjab Boards</h3>
-        <div class="flex flex-wrap justify-center gap-3 mb-10">
+        <!-- Fixed Issue #2: Removed uppercase class from long text -->
+        <h3 class="text-sm font-bold text-emerald-600 mb-4">Optimized for All 9 BISE Punjab Boards</h3>
+        <div class="flex flex-wrap justify-center gap-3 mb-8"> <!-- Reduced margin -->
           <span class="bg-white border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-sm font-semibold shadow-sm hover:border-emerald-400 transition-colors">Lahore Board</span>
           <span class="bg-white border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-sm font-semibold shadow-sm hover:border-emerald-400 transition-colors">Gujranwala</span>
           <span class="bg-white border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-sm font-semibold shadow-sm hover:border-emerald-400 transition-colors">Multan</span>
@@ -745,7 +892,6 @@
           <span class="bg-white border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-sm font-semibold shadow-sm hover:border-emerald-400 transition-colors">DG Khan</span>
           <span class="bg-white border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-sm font-semibold shadow-sm hover:border-emerald-400 transition-colors">Bahawalpur</span>
           <span class="bg-white border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-sm font-semibold shadow-sm hover:border-emerald-400 transition-colors">Sahiwal</span>
-          <span class="bg-white border border-emerald-200 text-emerald-700 px-4 py-2 rounded-xl text-sm font-semibold shadow-sm hover:border-emerald-400 transition-colors">Federal Board</span>
         </div>
         <div class="bg-emerald-50 rounded-2xl p-6 inline-block border border-emerald-100">
           <p class="text-gray-800 font-medium flex items-center gap-3">
@@ -757,34 +903,72 @@
   </div>
 </section>
 
-<!-- ===== ARCHIVE SECTION (Old Syllabus) ===== -->
-<section class="old-archive-section py-12">
+<!-- ===== ARCHIVE SECTION (Old Syllabus) - Fixed Issue #7 ===== -->
+<section class="old-archive-section py-10"> <!-- Reduced padding -->
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center mb-8">
+    <div class="text-center mb-6"> <!-- Reduced margin -->
       <span class="bg-gray-300 text-gray-700 text-xs font-semibold px-3 py-1 rounded-full">Archive</span>
       <h3 class="text-2xl font-bold text-gray-500 mt-3">📕 Previous Syllabus Notes (Before 2026)</h3>
       <p class="text-gray-500 max-w-2xl mx-auto">For reference only. Students are advised to use the <strong class="text-emerald-600">New 2026 Notes</strong> above for current exams.</p>
     </div>
-    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 opacity-80 hover:opacity-100 transition">
-      <a href="Mathematics-10th.html" class="bg-gray-100 p-4 rounded-xl text-center hover:bg-gray-200 transition"><span class="text-3xl block">📐</span><span class="text-sm font-medium">Math (Old)</span></a>
-      <a href="Physics-10th.html" class="bg-gray-100 p-4 rounded-xl text-center hover:bg-gray-200 transition"><span class="text-3xl block">⚛️</span><span class="text-sm font-medium">Physics (Old)</span></a>
-      <a href="Chemistry-10th.html" class="bg-gray-100 p-4 rounded-xl text-center hover:bg-gray-200 transition"><span class="text-3xl block">🧪</span><span class="text-sm font-medium">Chemistry (Old)</span></a>
-      <a href="Biology-10th.html" class="bg-gray-100 p-4 rounded-xl text-center hover:bg-gray-200 transition"><span class="text-3xl block">🧬</span><span class="text-sm font-medium">Biology (Old)</span></a>
-      <a href="PakistanStudies-10th.html" class="bg-gray-100 p-4 rounded-xl text-center hover:bg-gray-200 transition"><span class="text-3xl block">🇵🇰</span><span class="text-sm font-medium">Pak Studies (Old)</span></a>
+    <!-- Cards now match new syllabus style with muted/archive treatment -->
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <a href="Mathematics-10th.html" class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200 hover:border-gray-300 group hover:-translate-y-1">
+        <div class="h-1 bg-gray-300"></div>
+        <div class="p-4 text-center">
+          <div class="text-3xl mb-2 opacity-60">📐</div>
+          <h4 class="text-sm font-semibold text-gray-500">Mathematics</h4>
+          <span class="inline-block text-xs bg-gray-100 text-gray-500 px-3 py-0.5 rounded-full mt-1">Archive</span>
+        </div>
+      </a>
+      <a href="Physics-10th.html" class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200 hover:border-gray-300 group hover:-translate-y-1">
+        <div class="h-1 bg-gray-300"></div>
+        <div class="p-4 text-center">
+          <div class="text-3xl mb-2 opacity-60">⚛️</div>
+          <h4 class="text-sm font-semibold text-gray-500">Physics</h4>
+          <span class="inline-block text-xs bg-gray-100 text-gray-500 px-3 py-0.5 rounded-full mt-1">Archive</span>
+        </div>
+      </a>
+      <a href="Chemistry-10th.html" class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200 hover:border-gray-300 group hover:-translate-y-1">
+        <div class="h-1 bg-gray-300"></div>
+        <div class="p-4 text-center">
+          <div class="text-3xl mb-2 opacity-60">🧪</div>
+          <h4 class="text-sm font-semibold text-gray-500">Chemistry</h4>
+          <span class="inline-block text-xs bg-gray-100 text-gray-500 px-3 py-0.5 rounded-full mt-1">Archive</span>
+        </div>
+      </a>
+      <a href="Biology-10th.html" class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200 hover:border-gray-300 group hover:-translate-y-1">
+        <div class="h-1 bg-gray-300"></div>
+        <div class="p-4 text-center">
+          <div class="text-3xl mb-2 opacity-60">🧬</div>
+          <h4 class="text-sm font-semibold text-gray-500">Biology</h4>
+          <span class="inline-block text-xs bg-gray-100 text-gray-500 px-3 py-0.5 rounded-full mt-1">Archive</span>
+        </div>
+      </a>
+      <a href="PakistanStudies-10th.html" class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-200 hover:border-gray-300 group hover:-translate-y-1">
+        <div class="h-1 bg-gray-300"></div>
+        <div class="p-4 text-center">
+          <div class="text-3xl mb-2 opacity-60">🇵🇰</div>
+          <h4 class="text-sm font-semibold text-gray-500">Pak Studies</h4>
+          <span class="inline-block text-xs bg-gray-100 text-gray-500 px-3 py-0.5 rounded-full mt-1">Archive</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===== INTERNAL LINKING SECTION ===== -->
-<section class="max-w-7xl mx-auto px-6 py-16">
+<!-- ===== INTERNAL LINKING SECTION - Fixed Issue #4 (removed redundant Quick Links) ===== -->
+<section class="max-w-7xl mx-auto px-6 py-12"> <!-- Reduced padding -->
   <details class="bg-gradient-to-br from-emerald-50 via-white to-teal-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
     <summary class="text-2xl md:text-3xl font-bold text-emerald-800 cursor-pointer hover:text-emerald-600 list-none flex items-center justify-center gap-3 text-center">
       <span class="text-3xl">📚</span> Explore Complete Learning Resources (Class 9, 10 &amp; More)
     </summary>
     <div class="mt-8">
       <h2 class="text-2xl font-bold text-center text-emerald-800 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
-      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need.</p>
+      <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need.</p> <!-- Reduced margin -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Class 9 Resources -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-emerald-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
           <ul class="space-y-4 text-sm">
@@ -795,6 +979,8 @@
             <li><a href="Islamiat-9th.html" class="hover:text-emerald-600 transition">📿 Islamiat Notes</a></li>
           </ul>
         </article>
+        
+        <!-- Class 10 Resources -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-teal-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
           <ul class="space-y-4 text-sm">
@@ -805,6 +991,8 @@
             <li><a href="PakistanStudies-10th-New-2026.html" class="hover:text-emerald-600 transition">🇵🇰 Pakistan Studies</a></li>
           </ul>
         </article>
+        
+        <!-- Special Resources - Removed redundant Quick Links -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
           <ul class="space-y-4 text-sm">
@@ -814,15 +1002,8 @@
             <li><a href="physics-formulas.html" class="hover:text-emerald-600 transition">📝 Physics Formulas</a></li>
           </ul>
         </article>
-        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-          <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
-          <ul class="space-y-4 text-sm">
-            <li><a href="courses-details.html" class="hover:text-emerald-600 transition">🎓 Courses Overview</a></li>
-            <li><a href="contact.html" class="hover:text-emerald-600 transition">📞 Contact Us</a></li>
-            <li><a href="about.html" class="hover:text-emerald-600 transition">ℹ️ About Us</a></li>
-            <li><a href="career-services.html" class="hover:text-emerald-600 transition">💼 Career Services</a></li>
-          </ul>
-        </article>
+        
+        <!-- Definitions & Key Resources -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-cyan-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions &amp; Key Resources</h3>
           <ul class="space-y-4 text-sm">
@@ -832,6 +1013,8 @@
             <li><a href="grade9-physics-pairing-scheme-2026.html" class="hover:text-emerald-600 transition">📋 Physics Pairing Scheme</a></li>
           </ul>
         </article>
+        
+        <!-- Support & Policies -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support &amp; Policies</h3>
           <ul class="space-y-4 text-sm">
@@ -841,8 +1024,19 @@
             <li><a href="accessibility.html" class="hover:text-emerald-600 transition">♿ Accessibility</a></li>
           </ul>
         </article>
+
+        <!-- NEW: Consolidated site-wide links (formerly Quick Links) -->
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <h3 class="text-xl font-bold text-emerald-700 mb-6 flex items-center"><span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Site Links</h3>
+          <ul class="space-y-4 text-sm">
+            <li><a href="courses-details.html" class="hover:text-emerald-600 transition">🎓 Courses Overview</a></li>
+            <li><a href="contact.html" class="hover:text-emerald-600 transition">📞 Contact Us</a></li>
+            <li><a href="about.html" class="hover:text-emerald-600 transition">ℹ️ About Us</a></li>
+            <li><a href="career-services.html" class="hover:text-emerald-600 transition">💼 Career Services</a></li>
+          </ul>
+        </article>
       </div>
-      <div class="mt-10 text-center">
+      <div class="mt-8 text-center"> <!-- Reduced margin -->
         <a href="/" class="inline-flex items-center bg-emerald-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-emerald-700 hover:shadow-xl transition-all"><span class="mr-3">🏠</span>Return to Homepage</a>
       </div>
     </div>
@@ -898,7 +1092,7 @@
       </div>
     </div>
     <div class="mt-12 border-t border-emerald-700 pt-6 text-center">
-      <p class="text-base text-gray-200">&copy; 2025-2026 Hira Science Academy. All rights reserved. Serving students of all 10 BISE Punjab boards with <strong class="text-emerald-300">NEW 2026 Syllabus Notes</strong>.</p>
+      <p class="text-base text-gray-200">&copy; 2026-2027 Hira Science Academy. All rights reserved. Serving students of all 10 BISE Punjab boards with <strong class="text-emerald-300">NEW 2026 Syllabus Notes</strong>.</p>
       <p class="text-sm text-gray-300 mt-2">Prepared by Muhammad Tayyab (SSE), Govt Christian High School Daska</p>
     </div>
   </div>
