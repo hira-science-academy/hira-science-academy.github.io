@@ -78,13 +78,26 @@
           colors: {
             primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
             secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' },
-            ink: { 900:'#0b1220', 800:'#101a2e' }
+            ink: { 900:'#0b1220', 800:'#101a2e' },
+            /* Issue 2: named tokens for the page's two most common copy-color
+               roles, so new/edited markup can converge instead of picking a
+               fresh gray-500/600/700/800 each time. */
+            'body-text': '#374151',
+            'muted-text': '#6b7280'
           },
           boxShadow: {
             'premium': '0 20px 50px -12px rgba(15,23,42,0.18)',
             'premium-lg': '0 30px 70px -15px rgba(15,23,42,0.25)',
             'glow-primary': '0 0 0 1px rgba(14,165,233,0.15), 0 8px 30px -6px rgba(14,165,233,0.45)',
             'glow-amber': '0 8px 30px -6px rgba(245,158,11,0.5)'
+          },
+          /* Issues 1 & 3: named radius tokens for the two recurring card/panel
+             roles. Additive (extend), so existing rounded-xl/2xl/3xl utilities
+             keep working — new and edited markup should prefer these names so
+             the distinct-value count trends down over time instead of growing. */
+          borderRadius: {
+            'card': '1rem',
+            'panel': '1.5rem'
           }
         }
       }
@@ -322,6 +335,13 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
+    /* Issue 4 fix: hero eyebrow badge needs a readable floor (~14px); higher
+       specificity than the single-class .eyebrow rule above so it wins
+       regardless of Tailwind's injection order. */
+    .eyebrow.text-sm { font-size: 0.875rem; }
+    /* Issue 5 fix: long eyebrow copy (e.g. "# Free Study Notes") should read
+       in sentence case, not the all-caps most short eyebrow labels use. */
+    .eyebrow.normal-case { text-transform: none; }
 
     /* Premium card lift */
     .card-premium {
@@ -648,7 +668,7 @@
     <div class="flex flex-col md:flex-row items-center">
       <!-- ⭐ Left Content -->
       <div class="md:w-1/2 mb-12 md:mb-0">
-        <span class="eyebrow bg-white/10 border border-white/20 text-amber-200 px-3 py-1.5 rounded-full mb-6 backdrop-blur-sm">
+        <span class="eyebrow bg-white/10 border border-white/20 text-amber-200 px-3 py-1.5 rounded-full mb-6 backdrop-blur-sm text-sm">
           ✦ PECTAA-Aligned · All 9 BISE Punjab Boards + Federal Board
         </span>
 
@@ -745,7 +765,7 @@
 
     <!-- Section Heading (single, unambiguous) -->
     <div class="text-center mb-12 reveal">
-      <span class="eyebrow text-emerald-600 mb-3 inline-block"># Free Study Notes</span>
+      <span class="eyebrow text-emerald-600 mb-3 inline-block normal-case tracking-wide"># Free Study Notes</span>
       <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900">
         Class Notes for <span class="bg-gradient-to-r from-emerald-600 to-blue-700 bg-clip-text text-transparent">Class 9 & 10</span>
       </h2>
@@ -1195,7 +1215,7 @@
         <div class="flex items-center">
           <img class="h-12 w-12 rounded-full object-cover" src="https://hiraacademy.com.pk/images/shahid-ahmed.jpg" alt="Sir Shahid, Arts Teacher at The Citi School Daska" width="48" height="48">
           <div class="ml-4">
-            <h4 class="text-lg font-semibold text-primary-600">Sir Shahid</h4>
+            <h3 class="text-lg font-semibold text-primary-600">Sir Shahid</h3>
             <p class="text-gray-500 text-sm">Arts Teacher, The Citi School Daska</p>
           </div>
         </div>
@@ -1308,7 +1328,7 @@
               <span class="text-blue-600 font-bold">MT</span>
             </div>
             <div>
-              <h4 class="font-bold text-gray-900">Muhammad Tayyab</h4>
+              <h3 class="font-bold text-gray-900">Muhammad Tayyab</h3>
               <p class="text-sm text-gray-600">MSc Mathematics</p>
             </div>
           </div>
@@ -1428,7 +1448,7 @@
           <div class="ml-4">
             <h3 class="text-lg font-semibold text-gray-900">Contact Numbers - Call Now</h3>
             <p class="mt-2 text-gray-600 text-justify">
-              📞 <strong>0333 8114798</strong> – Muhammad Tayyab (MSc Mathematics)
+              📞 <strong>0300 7242631</strong> – Muhammad Tayyab (MSc Mathematics)
             </p>
             <p class="mt-1 text-gray-600 text-justify">
               📞 <strong>0346 4645878</strong> – Mirza Abid Shabbir (M.Phil Chemistry)
