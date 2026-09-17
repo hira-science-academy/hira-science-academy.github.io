@@ -144,7 +144,7 @@
     };
   </script>
 
-  <!-- URL Parameter Cleaner (preserved) -->
+  <!-- URL Parameter Cleaner (fixed – no redirect) -->
   <script>
   (function() {
       'use strict';
@@ -153,30 +153,35 @@
           const params = currentUrl.searchParams;
           const removeParams = ['program', 'class', 'course', 'level', 'type', 'category', 'ref'];
           const preserveParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content'];
-          let needsRedirect = false;
+
+          let needsClean = false;
           const preserved = new URLSearchParams();
+
           for (const [key, value] of params) {
               const lowerKey = key.toLowerCase();
               if (removeParams.includes(lowerKey)) {
-                  needsRedirect = true;
+                  needsClean = true;
               } else if (preserveParams.includes(lowerKey)) {
                   preserved.append(key, value);
               } else {
-                  needsRedirect = true;
+                  needsClean = true;
               }
           }
-          if (needsRedirect) {
+
+          if (needsClean) {
               const cleanUrl = new URL(currentUrl.pathname, currentUrl.origin);
-              if (preserved.toString()) { cleanUrl.search = preserved.toString(); }
-              if (cleanUrl.toString() !== window.location.href) {
-                  window.location.replace(cleanUrl.toString());
-                  return true;
+              if (preserved.toString()) {
+                  cleanUrl.search = preserved.toString();
               }
+              // Use replaceState instead of location.replace() to avoid
+              // triggering a redirect that Google Search Console flags.
+              window.history.replaceState({}, '', cleanUrl.toString());
           }
+
           const canonical = document.querySelector('link[rel="canonical"]');
           if (canonical) { canonical.href = 'https://hiraacademy.com.pk/contact.html'; }
-          return false;
       }
+
       if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', cleanURLParameters);
       } else {
