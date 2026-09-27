@@ -32,7 +32,7 @@
   <meta name="twitter:site" content="@hiraacademyDSK" />
   <meta name="twitter:title" content="Class 9 & 10 Notes for All BISE Punjab Boards | Hira Science Academy" />
   <meta name="twitter:description" content="Free Class 9 & 10 notes for Physics, Chemistry, Biology, Math – PECTAA 2026/27 syllabus. For all 9 BISE Punjab boards (Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, Sahiwal) plus the Federal Board." />
-<meta name="twitter:image" content="https://hiraacademy.com.pk/images/logo.jpg" />
+  <meta name="twitter:image" content="https://hiraacademy.com.pk/images/logo.jpg" />
   <meta name="twitter:image:alt" content="Hira Science Academy – Free Class 9 & 10 Notes" />
 
   <!-- Favicons -->
@@ -60,7 +60,7 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
      crossorigin="anonymous"></script>
 
-  <!-- Premium Typography: Playfair Display (headings) + Inter (body) + JetBrains Mono (data/labels) -->
+  <!-- Premium Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
@@ -80,9 +80,6 @@
             primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
             secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' },
             ink: { 900:'#0b1220', 800:'#101a2e' },
-            /* Issue 2: named tokens for the page's two most common copy-color
-               roles, so new/edited markup can converge instead of picking a
-               fresh gray-500/600/700/800 each time. */
             'body-text': '#374151',
             'muted-text': '#6b7280'
           },
@@ -92,10 +89,6 @@
             'glow-primary': '0 0 0 1px rgba(14,165,233,0.15), 0 8px 30px -6px rgba(14,165,233,0.45)',
             'glow-amber': '0 8px 30px -6px rgba(245,158,11,0.5)'
           },
-          /* Issues 1 & 3: named radius tokens for the two recurring card/panel
-             roles. Additive (extend), so existing rounded-xl/2xl/3xl utilities
-             keep working — new and edited markup should prefer these names so
-             the distinct-value count trends down over time instead of growing. */
           borderRadius: {
             'card': '1rem',
             'panel': '1.5rem'
@@ -105,22 +98,18 @@
     };
   </script>
 
-  <!-- Scroll-Spy CSS (preserved exactly as original) -->
   <style>
-    /* Section spacing for smooth scrolling */
     section {
       scroll-margin-top: 150px;
       padding-top: 40px;
     }
     
-    /* Active link styling - Enhanced */
     .nav-link.active {
       color: #0ea5e9 !important;
       font-weight: 600;
       position: relative;
     }
     
-    /* Desktop active link underline */
     .nav-link.active::after {
       content: '';
       position: absolute;
@@ -134,7 +123,6 @@
       transition: transform 0.3s ease;
     }
     
-    /* Desktop hover effect */
     .nav-link:not(.active):hover::after {
       content: '';
       position: absolute;
@@ -148,14 +136,12 @@
       transition: transform 0.3s ease;
     }
     
-    /* Mobile menu active link */
     #mobile-menu .nav-link.active {
       background-color: rgba(14, 165, 233, 0.1);
       border-left: 4px solid #0ea5e9;
       color: #0ea5e9 !important;
     }
     
-    /* Mobile menu animation */
     #mobile-menu {
       transition: all 0.3s ease-in-out;
       max-height: 0;
@@ -166,66 +152,30 @@
       max-height: 500px;
     }
     
-    /* Smooth scroll behavior */
     html {
       scroll-behavior: smooth;
     }
     
-    /* Navigation link transition */
     .nav-link {
       position: relative;
       transition: color 0.3s ease;
     }
     
-    /* Desktop navigation specific */
     @media (min-width: 768px) {
       .nav-link {
         padding-bottom: 8px;
       }
-    }
-
-    @keyframes portalPulse {
-      0% {
-        box-shadow: 0 0 0px rgba(250, 204, 21, 0.6);
-        transform: scale(1);
-      }
-      50% {
-        box-shadow: 0 0 18px rgba(250, 204, 21, 0.9);
-      }
-      100% {
-        box-shadow: 0 0 0px rgba(250, 204, 21, 0.6);
-        transform: scale(1);
-      }
-    }
-
-    .student-portal-blink {
-      animation: portalPulse 1.8s infinite ease-in-out;
-      position: relative;
-    }
-
-    /* Optional small dot indicator */
-    .student-portal-blink::after {
-      content: '';
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      width: 10px;
-      height: 10px;
-      background: #22c55e;
-      border-radius: 50%;
-      animation: portalPulse 1.8s infinite;
     }
     
     /* Hide Scrollbar for Clean Mobile Look */
     .overflow-x-auto::-webkit-scrollbar { display: none; }
     .overflow-x-auto { -ms-overflow-style: none; scrollbar-width: none; }
     
-    /* Announcement bar marquee (single source of truth — used by .marquee-wrapper / .marquee-content below) */
+    /* Announcement bar link styling (no marquee — WCAG 2.1 AA compliant) */
     .announcement-link {
       color: white;
       text-decoration: none;
-      white-space: nowrap;
-      transition: all 0.3s ease;
+      transition: color 0.3s ease;
     }
 
     .announcement-link:hover {
@@ -233,49 +183,11 @@
       text-decoration: underline;
     }
 
-    .marquee-wrapper {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .marquee-content {
-      display: inline-flex;
-      width: max-content;
-      animation: smoothMarquee 55s linear infinite;
-      will-change: transform;
-    }
-
-    .marquee-content:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes smoothMarquee {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-50%);
-      }
-    }
-
-    /* Better readability on mobile */
     @media (max-width: 640px) {
-      .marquee-content {
-        animation-duration: 70s;
-      }
-
       #announcement-bar {
         font-size: 13px;
       }
     }
-
-    /* ==========================================================
-       PREMIUM VISUAL SYSTEM — Hira Science Academy
-       Signature: graph-paper texture (the subject's own material —
-       a physics/math notebook) beneath an aurora gradient, paired
-       with a restrained serif display face for authority.
-       ========================================================== */
 
     :root {
       --paper-line: rgba(14, 116, 144, 0.07);
@@ -286,7 +198,6 @@
     h1, h2, h3, .font-display { font-family: 'Playfair Display', Georgia, serif; }
     .font-mono-label { font-family: 'JetBrains Mono', monospace; letter-spacing: 0.06em; }
 
-    /* Graph-paper texture: nods to physics/math worksheets, used sparingly */
     .graph-paper {
       background-image:
         linear-gradient(var(--paper-line) 1px, transparent 1px),
@@ -301,7 +212,6 @@
       background-size: 28px 28px;
     }
 
-    /* Star-field texture: scattered tiny dots for a subtle night-sky feel on dark surfaces (footer) */
     .stars-bg {
       background-image:
         radial-gradient(1.6px 1.6px at 20px 30px, rgba(255,255,255,0.85), transparent),
@@ -316,7 +226,6 @@
       background-size: 220px 200px;
     }
 
-    /* Aurora gradient mesh for the hero — primary/secondary/amber, one signature moment */
     .aurora-mesh {
       background:
         radial-gradient(60% 55% at 12% 8%, rgba(56,189,248,0.55), transparent 60%),
@@ -325,7 +234,6 @@
         linear-gradient(135deg, #0c4a6e 0%, #1e2a5e 45%, #4c1d95 100%);
     }
 
-    /* Eyebrow labels used as section signposts */
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -336,15 +244,9 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-    /* Issue 4 fix: hero eyebrow badge needs a readable floor (~14px); higher
-       specificity than the single-class .eyebrow rule above so it wins
-       regardless of Tailwind's injection order. */
     .eyebrow.text-sm { font-size: 0.875rem; }
-    /* Issue 5 fix: long eyebrow copy (e.g. "# Free Study Notes") should read
-       in sentence case, not the all-caps most short eyebrow labels use. */
     .eyebrow.normal-case { text-transform: none; }
 
-    /* Premium card lift */
     .card-premium {
       transition: transform 0.35s cubic-bezier(.2,.8,.2,1), box-shadow 0.35s cubic-bezier(.2,.8,.2,1);
     }
@@ -353,7 +255,6 @@
       box-shadow: 0 24px 48px -18px rgba(15,23,42,0.28);
     }
 
-    /* Premium buttons */
     .btn-shine {
       position: relative;
       overflow: hidden;
@@ -371,27 +272,22 @@
     }
     .btn-shine:hover::before { left: 130%; }
 
-    /* Scroll-reveal (respects reduced motion) */
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.in-view { opacity: 1; transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
     }
 
-    /* Refined focus states for accessibility */
     a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
       outline: 2px solid #0ea5e9;
       outline-offset: 2px;
       border-radius: 6px;
     }
 
-    /* Custom scrollbar for horizontal card rails */
     .overflow-x-auto::-webkit-scrollbar { display: none; }
 
-    /* Section divider — subtle wave, used between major sections */
     .divider-wave { display: block; width: 100%; height: 48px; }
 
-    /* Featured pairing-scheme callout banner */
     @keyframes glowPulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0.55); }
       50% { box-shadow: 0 0 0 10px rgba(251, 191, 36, 0); }
@@ -433,7 +329,7 @@
     "copyrightNotice": "© 2026 Hira Science Academy. All rights reserved."
   }
   </script>
-  <!-- FAQPage Schema for Homepage -->
+  <!-- FAQPage Schema for Homepage (matches visible FAQ section) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -500,7 +396,7 @@
         "name": "How are the notes different from other platforms?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Our notes are crafted by dual-specialist faculty (MSc Mathematics and M.Phil Chemistry) with two decades of classroom experience. They focus on conceptual clarity, step-by-step solutions, and board-pattern MCQs."
+          "text": "Our notes are crafted by dual-specialist faculty (MSc Mathematics and M.Phil Chemistry) with classroom teaching experience. They focus on conceptual clarity, step-by-step solutions, and board-pattern MCQs — using an 'error-first' approach that shows the common wrong method before the correct one."
         }
       },
       {
@@ -521,7 +417,6 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
       <div class="flex-shrink-0 flex items-center">
-        <!-- Homepage link: prefer / -->
         <a href="/" class="flex items-center gap-3 group transition duration-300">
           <img 
             src="https://hiraacademy.com.pk/images/logo.webp" 
@@ -545,7 +440,7 @@
         <a href="#contact" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium transition-colors">Contact</a>
         
         <a href="student-portal.html" 
-           class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105 text-nowrap">
+           class="ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105 text-nowrap">
            <span>🎓</span> Student Portal
         </a>
       </div>
@@ -584,96 +479,35 @@
 </nav>
 
 
-<!-- 📢 Smooth Stylish Announcements Bar -->
-<div id="announcement-bar" class="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white text-sm sm:text-base font-medium shadow-lg fixed top-20 left-0 right-0 z-40 rounded-b-2xl backdrop-blur-md overflow-hidden">
-  
-  <div class="relative flex items-center h-14">
-
-    <!-- Fixed Label -->
-    <div class="absolute left-0 top-0 bottom-0 flex items-center bg-white/20 backdrop-blur-md px-5 font-bold uppercase tracking-wide text-xs sm:text-sm z-20 rounded-r-xl shadow-md border-r border-white/30">
+<!-- 📢 Static Rotating Announcements Bar (WCAG 2.1 AA compliant — no marquee animation) -->
+<div id="announcement-bar" class="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-red-600 text-white text-sm sm:text-base font-medium shadow-lg fixed top-20 left-0 right-0 z-40 rounded-b-2xl">
+  <div class="max-w-7xl mx-auto px-4 h-14 flex items-center gap-4">
+    <div class="flex items-center bg-white/20 backdrop-blur-md px-4 h-9 rounded-full font-bold uppercase tracking-wide text-xs shrink-0">
       📢 Updates
     </div>
-
-    <!-- Marquee Wrapper -->
-    <div class="marquee-wrapper ml-40 overflow-hidden whitespace-nowrap w-full">
-      
-      <div class="marquee-content flex items-center">
-
-        <!-- ORIGINAL ITEMS -->
-        <span class="mx-12 inline-flex items-center">
-          📋
-          <a href="pairing-scheme.html"
-             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
-            NEW: Class 9 & 10 All Subjects 2027 Pairing Scheme PDF available now for Punjab Board Exams
-          </a>
-        </span>
-
-        <span class="mx-12 inline-flex items-center">
-          ⚛️
-          <a href="Physics-10th-New-2026.html"
-             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
-            NEW: Class 10 Physics Notes (New 2026 Edition – PECTAA Syllabus) by Muhammad Tayyab
-          </a>
-        </span>
-
-        <span class="mx-12 inline-flex items-center">
-          📚
-          <a href="Mathematics-10th-New-2026.html"
-             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
-            Class 10 Mathematics (New 2026 PECTAA Syllabus) complete notes for all Punjab Boards
-          </a>
-        </span>
-
-        <!-- DUPLICATE ITEMS FOR PERFECT LOOP -->
-
-        <span class="mx-12 inline-flex items-center">
-          📋
-          <a href="pairing-scheme.html"
-             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
-            NEW: Class 9 & 10 All Subjects 2027 Pairing Scheme PDF available now for Punjab Board Exams
-          </a>
-        </span>
-
-        <span class="mx-12 inline-flex items-center">
-          ⚛️
-          <a href="Physics-10th-New-2026.html"
-             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
-            NEW: Class 10 Physics Notes (New 2026 Edition – PECTAA Syllabus) by Muhammad Tayyab
-          </a>
-        </span>
-
-        <span class="mx-12 inline-flex items-center">
-          📚
-          <a href="Mathematics-10th-New-2026.html"
-             class="announcement-link ml-2 hover:text-yellow-200 transition-colors duration-200 font-semibold">
-            Class 10 Mathematics (New 2026 PECTAA Syllabus) complete notes for all Punjab Boards
-          </a>
-        </span>
-
-      </div>
-    </div>
+    <a id="announcement-link"
+       href="pairing-scheme.html"
+       class="announcement-link truncate flex-1">
+      NEW: Class 9 &amp; 10 All Subjects 2027 Pairing Scheme PDF available now for Punjab Board Exams
+    </a>
   </div>
 </div>
-
 
 
 <!-- ⭐ LCP Optimized Hero Section with VISIBLE H1 — signature aurora + graph-paper texture -->
 <section id="home" class="relative text-white py-24 md:py-36 overflow-hidden hero-section aurora-mesh">
   <div class="absolute inset-0 graph-paper-dark"></div>
   <div class="absolute inset-0 opacity-10 pattern-bg"></div>
-  <!-- Soft glow orbs for depth (decorative) -->
   <div class="pointer-events-none absolute -top-24 -left-20 w-96 h-96 bg-primary-400/30 rounded-full blur-3xl"></div>
   <div class="pointer-events-none absolute -bottom-32 -right-16 w-[28rem] h-[28rem] bg-secondary-400/25 rounded-full blur-3xl"></div>
 
   <div class="container mx-auto px-6 relative z-10">
     <div class="flex flex-col md:flex-row items-center">
-      <!-- ⭐ Left Content -->
       <div class="md:w-1/2 mb-12 md:mb-0">
         <span class="eyebrow bg-white/10 border border-white/20 text-amber-200 px-3 py-1.5 rounded-full mb-6 backdrop-blur-sm text-sm">
           ✦ PECTAA-Aligned · All 9 BISE Punjab Boards + Federal Board
         </span>
 
-        <!-- ✅ SINGLE VISIBLE H1 for SEO (the site's only h1 — do not add another) -->
         <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.08] mb-6 tracking-tight">
           Expert Class 9 & 10 Notes <br class="hidden lg:block"/>
           <span class="italic bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400 bg-clip-text text-transparent">
@@ -691,19 +525,16 @@
           <strong class="text-white">chapter-wise MCQs</strong>, and personalized learning plans.
         </p>
 
-        <!-- ⭐ Two-Row Button Layout -->
         <div class="space-y-4 max-w-md">
-          <!-- First Row -->
           <div class="flex flex-col sm:flex-row gap-4">
             <a href="#courses" class="btn-shine flex-1 bg-white text-primary-700 hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold shadow-premium hover:-translate-y-0.5 transition-all text-center">
               📚 Browse Courses
             </a>
-            <a href="student-portal.html" class="btn-shine flex-1 student-portal-blink bg-gradient-to-r from-rose-500 to-red-600 text-white hover:from-rose-600 hover:to-red-700 px-6 py-3 rounded-xl font-bold shadow-glow-primary hover:-translate-y-0.5 transition-all text-center flex items-center justify-center gap-2">
+            <a href="student-portal.html" class="btn-shine flex-1 bg-gradient-to-r from-rose-500 to-red-600 text-white hover:from-rose-600 hover:to-red-700 px-6 py-3 rounded-xl font-bold shadow-glow-primary hover:-translate-y-0.5 transition-all text-center flex items-center justify-center gap-2">
               <span>🎓 Student Portal</span>
             </a>
           </div>
           
-          <!-- Second Row -->
           <div class="flex flex-col sm:flex-row gap-4">
             <a href="contact.html" class="flex-1 border-2 border-white/70 hover:bg-white hover:text-primary-700 px-6 py-3 rounded-xl font-semibold transition-all text-center hover:-translate-y-0.5">
               ✉️ Contact Us
@@ -715,7 +546,6 @@
         </div>
       </div>
 
-      <!-- ⭐ LCP Image with width/height -->
       <div class="md:w-1/2 md:pl-12">
         <div class="relative">
           <div class="absolute -inset-3 bg-gradient-to-tr from-amber-300/40 via-white/10 to-secondary-400/40 rounded-[2rem] blur-xl"></div>
@@ -733,11 +563,10 @@
     </div>
   </div>
 
-  <!-- Section divider into the intro band -->
   <svg class="absolute bottom-0 left-0 w-full text-gray-50" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
     <path fill="currentColor" d="M0,32 C240,60 480,0 720,16 C960,32 1200,60 1440,24 L1440,60 L0,60 Z"></path>
   </svg>
-</section>
+</section>-    
 
 <!-- ========== INTRO SECTION (PECTAA & BISE) ========== -->
 <section class="py-16 bg-white border-y border-gray-100 relative">
@@ -760,11 +589,10 @@
   </div>
 </section>
 
-<!-- 🌟 Class Notes Section with Hub Page Links - UPDATED FOR NEW 2026 SYLLABUS -->
+<!-- 🌟 Class Notes Section with Hub Page Links -->
 <section id="notes" class="py-16 bg-gradient-to-b from-blue-50/60 via-white to-white graph-paper">
   <div class="max-w-7xl mx-auto px-4">
 
-    <!-- Section Heading (single, unambiguous) -->
     <div class="text-center mb-12 reveal">
       <span class="eyebrow text-emerald-600 mb-3 inline-block normal-case tracking-wide"># Free Study Notes</span>
       <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900">
@@ -775,9 +603,7 @@
       </p>
     </div>
 
-    <!-- STEP 1 — Pick your class (the one decision every visitor needs to make) -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 reveal">
-      <!-- Class 9 Hub Card -->
       <a href="9th-class-notes.html"
          class="group relative bg-gradient-to-br from-indigo-50 to-blue-50 card-premium rounded-2xl shadow-lg overflow-hidden border-2 border-indigo-200 hover:border-indigo-400">
         <div class="absolute top-0 right-0 bg-indigo-600 text-white px-4 py-1 rounded-bl-lg text-sm font-semibold">Current Syllabus</div>
@@ -793,7 +619,6 @@
         </div>
       </a>
 
-      <!-- Class 10 Hub Card -->
       <a href="10th-class-notes.html"
          class="group relative bg-gradient-to-br from-emerald-50 to-teal-50 card-premium rounded-2xl shadow-lg overflow-hidden border-2 border-emerald-300 hover:border-emerald-500">
         <div class="absolute top-0 right-0 bg-emerald-600 text-white px-4 py-1 rounded-bl-lg text-sm font-semibold">2026 Syllabus</div>
@@ -810,9 +635,6 @@
       </a>
     </div>
 
-    <!-- STEP 2 — Jump straight to a subject, grouped clearly by class -->
-
-    <!-- Class 9 subjects -->
     <div class="mb-4 flex items-center gap-3 reveal">
       <span class="font-mono-label text-xs text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">CLASS 9</span>
       <h3 class="text-xl font-bold text-gray-900">Jump to a Subject</h3>
@@ -850,7 +672,6 @@
       </a>
     </div>
 
-    <!-- Class 10 subjects (2026 syllabus) -->
     <div class="mb-4 flex items-center gap-3 reveal">
       <span class="font-mono-label text-xs text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full">CLASS 10 · 2026</span>
       <h3 class="text-xl font-bold text-gray-900">Jump to a Subject</h3>
@@ -893,7 +714,6 @@
       </a>
     </div>
 
-    <!-- 🏆 FEATURED CALLOUT — Pairing Scheme download (high search-intent CTA) -->
     <div class="relative mb-16 rounded-3xl overflow-hidden shadow-premium-lg reveal border-2 border-amber-400/60">
       <div class="absolute inset-0 bg-gradient-to-br from-indigo-950 via-blue-950 to-slate-900"></div>
       <div class="absolute inset-0 graph-paper-dark opacity-50"></div>
@@ -922,7 +742,6 @@
       </div>
     </div>
 
-    <!-- STEP 3 — Old Class 10 papers: clearly separated and out of the way -->
     <details class="group max-w-3xl mx-auto reveal">
       <summary class="cursor-pointer list-none flex items-center justify-between gap-3 bg-white border border-gray-200 rounded-xl px-5 py-4 shadow-sm hover:shadow-md transition-shadow">
         <span class="text-sm text-gray-600">
@@ -970,7 +789,7 @@
   </div>
 </section>
 
-<!-- 📘 Structured Data for Notes (UPDATED with 2026 Notes) -->
+<!-- 📘 Structured Data for Notes -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -995,11 +814,10 @@
 }
 </script>
 
-<!-- Courses Section (preserved from original with PECTAA updates) -->
+<!-- Courses Section -->
 <section id="courses" class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Section Heading -->
     <div class="text-center reveal">
       <span class="eyebrow text-primary-600 mb-3 inline-block"># Academic Programs</span>
       <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900">
@@ -1010,12 +828,9 @@
       </p>
     </div>
 
-    <!-- 🔹 Course Cards -->
     <div class="mt-14 grid gap-10 md:grid-cols-2">
       
-      <!-- 9th Class Course -->
       <div class="relative flex flex-col card-premium rounded-2xl shadow-lg overflow-hidden">
-        <!-- Gradient Bar -->
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary-400 to-primary-600"></div>
         <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://hiraacademy.com.pk/images/class9-banner.webp" alt="9th Class Science Program banner at Hira Science Academy" width="800" height="400">
         <div class="bg-white p-6 flex flex-col justify-between flex-1">
@@ -1035,9 +850,7 @@
         </div>
       </div>
 
-      <!-- 10th Class Course -->
       <div class="relative flex flex-col card-premium rounded-2xl shadow-lg overflow-hidden">
-        <!-- Gradient Bar -->
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-secondary-400 to-secondary-600"></div>
         <img class="h-48 w-full object-cover hover:scale-105 transition-transform duration-300" src="https://hiraacademy.com.pk/images/class10-banner.webp" alt="10th Class Science Program banner at Hira Science Academy" width="800" height="400">
         <div class="bg-white p-6 flex flex-col justify-between flex-1">
@@ -1062,11 +875,10 @@
   </div>
 </section>
 
-<!-- ⭐ Improved Features Section -->
+<!-- Features Section -->
 <section id="features" class="py-24 bg-gradient-to-b from-white to-gray-50">
   <div class="max-w-7xl mx-auto px-6">
 
-    <!-- Heading -->
     <div class="text-center reveal">
       <span class="eyebrow text-primary-600 mb-3 inline-block"># Why Us</span>
       <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900 tracking-tight">
@@ -1077,10 +889,8 @@
       </p>
     </div>
 
-    <!-- Feature Cards -->
     <div class="mt-16 grid md:grid-cols-3 gap-10">
 
-      <!-- Card 1 -->
       <div class="group relative bg-white card-premium rounded-2xl shadow-lg p-8 text-center">
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary-400 to-primary-600 rounded-t-2xl"></div>
         <div class="flex items-center justify-center h-14 w-14 mx-auto rounded-full bg-primary-500 text-white shadow-md group-hover:scale-110 transition">🧑‍🏫</div>
@@ -1090,7 +900,6 @@
         </p>
       </div>
 
-      <!-- Card 2 -->
       <div class="group relative bg-white card-premium rounded-2xl shadow-lg p-8 text-center">
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-secondary-400 to-secondary-600 rounded-t-2xl"></div>
         <div class="flex items-center justify-center h-14 w-14 mx-auto rounded-full bg-secondary-500 text-white shadow-md group-hover:scale-110 transition">🎯</div>
@@ -1100,7 +909,6 @@
         </p>
       </div>
 
-      <!-- Card 3 -->
       <div class="group relative bg-white card-premium rounded-2xl shadow-lg p-8 text-center">
         <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-400 to-indigo-600 rounded-t-2xl"></div>
         <div class="flex items-center justify-center h-14 w-14 mx-auto rounded-full bg-indigo-500 text-white shadow-md group-hover:scale-110 transition">💰</div>
@@ -1112,12 +920,10 @@
 
     </div>
 
-    <!-- CTA Banner (preserved from original) -->
     <div class="mt-20 rounded-3xl bg-gradient-to-r from-primary-600 to-secondary-600 shadow-premium-lg overflow-hidden relative reveal">
       <div class="absolute inset-0 graph-paper-dark"></div>
       <div class="relative flex flex-col md:flex-row">
         
-        <!-- Left Text -->
         <div class="p-10 md:p-14 md:w-2/3">
           <h3 class="font-display text-3xl md:text-4xl font-bold text-white leading-tight">
             Ready to Transform Your Future?
@@ -1135,7 +941,6 @@
           </div>
         </div>
 
-        <!-- Right Image -->
         <div class="hidden md:block md:w-1/3">
           <img class="h-full w-full object-cover"
                src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/129a4d20-46db-4973-8468-b823202bff01.png"
@@ -1147,11 +952,10 @@
   </div>
 </section>
 
-<!-- Testimonials Section with ALL ORIGINAL IMAGES preserved -->
+<!-- Testimonials Section -->
 <section id="testimonials" class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Heading -->
     <div class="text-center reveal">
       <span class="eyebrow text-primary-600 mb-3 inline-block"># Testimonials</span>
       <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900">
@@ -1162,10 +966,8 @@
       </p>
     </div>
 
-    <!-- Testimonial Grid with ALL ORIGINAL IMAGES -->
     <div class="mt-14 grid gap-10 md:grid-cols-2 lg:grid-cols-3">
 
-      <!-- Testimonial 1 - Shahid Ahmed with image -->
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-primary-400 to-primary-600 rounded-t-2xl"></div>
         <div class="flex items-center">
@@ -1180,7 +982,6 @@
         </p>
       </div>
 
-      <!-- Testimonial 2 - Bilal Ahmed with image -->
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-purple-400 to-purple-600 rounded-t-2xl"></div>
         <div class="flex items-center">
@@ -1195,7 +996,6 @@
         </p>
       </div>
 
-      <!-- Testimonial 3 - Umer Zaman with image -->
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-400 to-red-600 rounded-t-2xl"></div>
         <div class="flex items-center">
@@ -1210,7 +1010,6 @@
         </p>
       </div>
 
-      <!-- Testimonial 4 - Daud Imran with image -->
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-green-400 to-green-600 rounded-t-2xl"></div>
         <div class="flex items-center">
@@ -1225,7 +1024,6 @@
         </p>
       </div>
 
-      <!-- Testimonial 5 - Rafaqat Iqbal with image -->
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-400 to-blue-600 rounded-t-2xl"></div>
         <div class="flex items-center">
@@ -1240,7 +1038,6 @@
         </p>
       </div>
 
-      <!-- Testimonial 6 - Rana Ehsan Ullah with image -->
       <div class="relative pt-6 pb-10 px-6 bg-white card-premium rounded-2xl shadow-lg border border-gray-100">
         <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-t-2xl"></div>
         <div class="flex items-center">
@@ -1258,10 +1055,9 @@
   </div>
 </section>
 
-<!-- 📚 Blog Preview Section (UPDATED) -->
+<!-- Blog Preview Section -->
 <section id="blog-preview" class="py-16 bg-gradient-to-b from-white to-blue-50">
   <div class="max-w-7xl mx-auto px-6">
-    <!-- Section Header -->
     <div class="text-center mb-12 reveal">
       <span class="eyebrow bg-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full mb-3 inline-flex">
         Latest Educational Content
@@ -1277,7 +1073,6 @@
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
       
-      <!-- Blog Card 1: Structural Crisis (NEW - FEATURED) -->
       <article class="bg-white card-premium rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 relative border-l-4 border-red-500">
         <div class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
           🔥 FEATURED
@@ -1292,17 +1087,16 @@
               <p class="text-sm text-gray-600">SSE Mathematics, MSc</p>
             </div>
           </div>
-          <h3 class="text-xl font-bold text-gray-900 mb-3">The Structural Crisis Behind Punjab's 9th Class Board Results</h3>
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Why More Than Half of Punjab's Class 9 Students Failed Mathematics in 2026</h3>
           <p class="text-gray-700 mb-4 text-justify">
-            Analysis of Punjab's 2026 BISE 9th class board exam failures: teacher shortages, 10 years without permanent headmasters, automatic promotion traps, and unannounced closures. Mathematics pass rate plunged to <strong>61.19%</strong> — nearly 100,000 students failed outright.
+            A teacher's analysis of the 2026 BISE Punjab results — teacher shortages, automatic promotion traps, the PECTAA curriculum's concept-heavy shift, and what parents and students can actually do about it before the next cycle.
           </p>
-          <a href="structural-crisis-punjab-board-results.html" class="text-red-600 font-medium hover:underline inline-flex items-center">
+          <a href="why-students-fail-class-9-math-punjab.html" class="text-red-600 font-medium hover:underline inline-flex items-center">
             Read Full Analysis →
           </a>
         </div>
       </article>
 
-      <!-- Blog Card 2: Single Math Curriculum -->
       <article class="bg-white card-premium rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 relative">
         <div class="absolute top-3 right-3 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
           NEW
@@ -1319,7 +1113,7 @@
           </div>
           <h3 class="text-xl font-bold text-gray-900 mb-3">Single Math Curriculum in Punjab: Fair Standard or Unfair Burden for Arts Students?</h3>
           <p class="text-gray-700 mb-4 text-justify">
-            Analysis of Punjab's new unified Mathematics curriculum for Grade 9 Arts students. 2026 board results show Math as the lowest-performing subject at 61.19% — nearly 100,000 students failed. Discover what practical financial literacy topics were removed and what abstract university-prep math replaced them.
+            Analysis of Punjab's new unified Mathematics curriculum for Grade 9 Arts students. 2026 board results show Math as the lowest-performing subject. Discover what practical financial literacy topics were removed and what abstract university-prep math replaced them.
           </p>
           <a href="single-math-curriculum-punjab.html" class="text-blue-600 font-medium hover:underline inline-flex items-center">
             Read Article →
@@ -1327,7 +1121,6 @@
         </div>
       </article>
 
-      <!-- Blog Card 3: Physics Numericals -->
       <article class="bg-white card-premium rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
         <div class="p-6">
           <div class="flex items-center mb-4">
@@ -1349,7 +1142,6 @@
         </div>
       </article>
 
-      <!-- Blog Card 4: Math Mistakes -->
       <article class="bg-white card-premium rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
         <div class="p-6">
           <div class="flex items-center mb-4">
@@ -1371,7 +1163,6 @@
         </div>
       </article>
 
-      <!-- Blog Card 5: Physics Formulas -->
       <article class="bg-white card-premium rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
         <div class="p-6">
           <div class="flex items-center mb-4">
@@ -1395,7 +1186,6 @@
 
     </div>
 
-    <!-- CTA Button -->
     <div class="text-center mt-12">
       <a href="blog.html" class="inline-flex items-center bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition duration-300 hover:scale-105">
         <span class="mr-2">📚</span>
@@ -1404,11 +1194,11 @@
     </div>
   </div>
 </section>
-<!-- Contact Section (preserved from original) -->
+
+<!-- Contact Section -->
 <section id="contact" class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     
-    <!-- Heading -->
     <div class="text-center reveal">
       <span class="eyebrow text-primary-600 mb-3 inline-block"># Contact</span>
       <h2 class="font-display text-4xl md:text-5xl font-bold text-gray-900">
@@ -1422,10 +1212,8 @@
 
     <div class="mt-14 grid gap-10 md:grid-cols-2">
       
-      <!-- Contact Info -->
       <div class="space-y-8">
         
-        <!-- Location -->
         <div class="flex items-start">
           <div class="flex-shrink-0">
             <div class="flex items-center justify-center h-12 w-12 rounded-full bg-primary-500 text-white shadow-md">
@@ -1443,7 +1231,6 @@
           </div>
         </div>
 
-        <!-- Phone -->
         <div class="flex items-start">
           <div class="flex-shrink-0">
             <div class="flex items-center justify-center h-12 w-12 rounded-full bg-green-600 text-white shadow-md">
@@ -1464,7 +1251,6 @@
           </div>
         </div>
 
-        <!-- Email -->
         <div class="flex items-start">
           <div class="flex-shrink-0">
             <div class="flex items-center justify-center h-12 w-12 rounded-full bg-indigo-600 text-white shadow-md">
@@ -1480,7 +1266,6 @@
           </div>
         </div>
         
-        <!-- Academy Hours -->
         <div class="flex items-start">
           <div class="flex-shrink-0">
             <div class="flex items-center justify-center h-12 w-12 rounded-full bg-amber-600 text-white shadow-md">
@@ -1498,7 +1283,6 @@
         </div>
       </div>
 
-      <!-- Contact Form -->
       <div class="bg-white card-premium rounded-2xl shadow-xl p-8">
         <h2 class="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
         
@@ -1556,7 +1340,7 @@
   </div>
 </section>
 
-<!-- 🧭 Internal Linking Section (Accordion Layout) -->
+<!-- Internal Linking Section -->
 <section class="max-w-7xl mx-auto px-6 pb-14">
   <details class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
     <summary class="text-2xl md:text-3xl font-bold text-primary-700 cursor-pointer hover:text-primary-600 list-none flex items-center justify-center gap-3 text-center">
@@ -1568,7 +1352,6 @@
       <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Class 9 Resources -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-blue-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
           <nav aria-label="Class 9 Resources">
@@ -1583,7 +1366,6 @@
           </nav>
         </article>
 
-        <!-- Class 10 Resources -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-indigo-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
           <nav aria-label="Class 10 Resources">
@@ -1597,7 +1379,6 @@
           </nav>
         </article>
 
-        <!-- Special Resources -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-amber-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
           <ul class="space-y-4 text-sm">
@@ -1609,7 +1390,6 @@
           </ul>
         </article>
 
-        <!-- Quick Links -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-violet-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
           <ul class="space-y-4 text-sm">
@@ -1620,7 +1400,6 @@
           </ul>
         </article>
 
-        <!-- Definitions & Key Resources -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-cyan-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions & Key Resources</h3>
           <ul class="space-y-4 text-sm">
@@ -1632,7 +1411,6 @@
           </ul>
         </article>
 
-        <!-- Support & Policies -->
         <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
           <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support & Policies</h3>
           <ul class="space-y-4 text-sm">
@@ -1649,7 +1427,130 @@
     </div>
   </details>
 </section>
+<!-- ===== FREQUENTLY ASKED QUESTIONS ===== -->
+<section id="faq" class="py-20 bg-gradient-to-b from-white to-gray-50">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-12 reveal">
+      <span class="eyebrow text-primary-600 mb-3 inline-block"># FAQ</span>
+      <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900">
+        Frequently Asked Questions
+      </h2>
+      <p class="mt-3 max-w-2xl mx-auto text-lg text-gray-600">
+        Common questions from students and parents about our Class 9 & 10 resources.
+      </p>
+    </div>
 
+    <div class="space-y-3">
+      <details class="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-semibold text-gray-900 text-base md:text-lg">
+          <span>Which Punjab Boards does Hira Science Academy support?</span>
+          <svg class="h-5 w-5 text-primary-600 shrink-0 mt-1 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-gray-700 leading-relaxed text-justify">
+          We support all 9 BISE Punjab boards including Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, and Sahiwal, plus the Federal Board.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-semibold text-gray-900 text-base md:text-lg">
+          <span>What is the PECTAA 2026/27 syllabus?</span>
+          <svg class="h-5 w-5 text-primary-600 shrink-0 mt-1 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-gray-700 leading-relaxed text-justify">
+          PECTAA stands for Punjab Education, Curriculum, Training and Assessment Authority. The updated syllabus emphasizes deeper understanding and concept-based learning over rote memorization.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-semibold text-gray-900 text-base md:text-lg">
+          <span>Are the Class 10 notes updated for 2026?</span>
+          <svg class="h-5 w-5 text-primary-600 shrink-0 mt-1 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-gray-700 leading-relaxed text-justify">
+          Yes, the Class 10 notes are fully updated to the 2026 PECTAA syllabus. Class 9 notes cover the current syllabus as-is.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-semibold text-gray-900 text-base md:text-lg">
+          <span>What subjects are available for Class 9?</span>
+          <svg class="h-5 w-5 text-primary-600 shrink-0 mt-1 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-gray-700 leading-relaxed text-justify">
+          We offer complete notes for Mathematics, Physics, Chemistry, Biology, and Islamiat for Class 9.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-semibold text-gray-900 text-base md:text-lg">
+          <span>What subjects are available for Class 10?</span>
+          <svg class="h-5 w-5 text-primary-600 shrink-0 mt-1 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-gray-700 leading-relaxed text-justify">
+          We offer complete notes for Mathematics, Physics, Chemistry, Biology, and Pakistan Studies for Class 10, all updated to the 2026 syllabus.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-semibold text-gray-900 text-base md:text-lg">
+          <span>How can I access the Student Portal?</span>
+          <svg class="h-5 w-5 text-primary-600 shrink-0 mt-1 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-gray-700 leading-relaxed text-justify">
+          You can access the Student Portal by clicking the 'Student Portal' button in the navigation bar or on the homepage. It provides resources for attendance, exam results, and academic progress.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-semibold text-gray-900 text-base md:text-lg">
+          <span>Are the notes free to use?</span>
+          <svg class="h-5 w-5 text-primary-600 shrink-0 mt-1 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-gray-700 leading-relaxed text-justify">
+          Yes, all notes on Hira Science Academy are completely free for students across Punjab.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-semibold text-gray-900 text-base md:text-lg">
+          <span>How are the notes different from other platforms?</span>
+          <svg class="h-5 w-5 text-primary-600 shrink-0 mt-1 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-gray-700 leading-relaxed text-justify">
+          Our notes are crafted by dual-specialist faculty (MSc Mathematics and M.Phil Chemistry) with classroom teaching experience. They focus on conceptual clarity, step-by-step solutions, and board-pattern MCQs — using an "error-first" approach that shows the common wrong method before the correct one.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-gray-200 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow">
+        <summary class="cursor-pointer list-none flex items-start justify-between gap-4 font-semibold text-gray-900 text-base md:text-lg">
+          <span>Where can I download the 2027 pairing scheme?</span>
+          <svg class="h-5 w-5 text-primary-600 shrink-0 mt-1 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <p class="mt-3 text-gray-700 leading-relaxed text-justify">
+          The latest pairing scheme for Class 9 and Class 10 (all subjects) is available as a free PDF on our <a href="pairing-scheme.html" class="text-primary-600 font-semibold hover:underline">Pairing Scheme page</a>, valid for the upcoming BISE Punjab board exams.
+        </p>
+      </details>
+    </div>
+  </div>
+</section>
 <!-- Footer -->
 <footer class="relative bg-gradient-to-br from-primary-900 via-blue-900 to-slate-900 text-gray-100 shadow-2xl z-10 -mb-16 overflow-hidden">
   <div class="absolute inset-0 opacity-70 stars-bg"></div>
@@ -1657,10 +1558,8 @@
   <div class="relative z-10 h-1 w-full bg-gradient-to-r from-primary-400 via-secondary-400 to-amber-300"></div>
   <div class="relative z-10 max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     
-    <!-- Main Footer Grid -->
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-5 lg:gap-6">
       
-      <!-- Logo & Description -->
       <div class="lg:col-span-1">
         <div class="flex flex-col items-center lg:items-start">
           <a href="/" class="flex flex-col items-center lg:flex-row lg:items-start gap-3 group transition duration-300">
@@ -1680,7 +1579,6 @@
           Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry) – serving students of all 9 BISE Punjab boards plus the Federal Board.
         </p>
 
-        <!-- Social Media -->
         <div class="mt-5 flex justify-center lg:justify-start space-x-6 text-blue-100">
           <a href="https://web.facebook.com/HiraScienceAcademy.Daska"
              target="_blank"
@@ -1714,7 +1612,6 @@
         </div>
       </div>
 
-      <!-- Programs -->
       <div class="text-center lg:text-left">
         <h3 class="text-sm font-semibold uppercase tracking-wider mb-4 text-white">Programs</h3>
         <ul class="space-y-2 text-blue-100 flex flex-col items-center lg:items-start">
@@ -1725,7 +1622,6 @@
         </ul>
       </div>
 
-      <!-- Resources -->
       <div class="text-center lg:text-left">
         <h3 class="text-sm font-semibold uppercase tracking-wider mb-4 text-white">Resources</h3>
         <ul class="space-y-2 text-blue-100 flex flex-col items-center lg:items-start">
@@ -1737,7 +1633,6 @@
         </ul>
       </div>
 
-      <!-- Legal -->
       <div class="text-center lg:text-left">
         <h3 class="text-sm font-semibold uppercase tracking-wider mb-4 text-white">Legal</h3>
         <ul class="space-y-2 text-blue-100 flex flex-col items-center lg:items-start">
@@ -1748,7 +1643,6 @@
         </ul>
       </div>
 
-      <!-- About -->
       <div class="text-center lg:text-left">
         <h3 class="text-sm font-semibold uppercase tracking-wider mb-4 text-white">About</h3>
         <ul class="space-y-2 text-blue-100 flex flex-col items-center lg:items-start">
@@ -1760,7 +1654,6 @@
 
     </div>
 
-    <!-- Bottom -->
     <div class="mt-12 border-t border-blue-400/20 pt-6">
       <p class="text-center text-sm md:text-base text-blue-100 leading-relaxed">
         © 2026 Hira Science Academy. All rights reserved.
@@ -1773,18 +1666,14 @@ Serving students across all 9 BISE Punjab Boards (Lahore, Gujranwala, Multan, Ra
 </footer>
 
 <!-- WhatsApp Floating Button -->
-<!-- Modern WhatsApp Floating Button -->
-
 <a href="https://wa.me/923007242631?text=Assalam-o-Alaikum%2C%20I%20want%20information%20about%20admission%20at%20Hira%20Science%20Academy."
 target="_blank"
 rel="noopener noreferrer"
 aria-label="Chat with Hira Science Academy on WhatsApp"
 class="fixed bottom-6 left-6 z-50 group">
 
-```
 <div class="flex items-center gap-3">
 
-    <!-- WhatsApp Button -->
     <div class="relative flex items-center justify-center
                 w-14 h-14 sm:w-16 sm:h-16
                 rounded-full
@@ -1798,12 +1687,10 @@ class="fixed bottom-6 left-6 z-50 group">
                 group-focus-visible:ring-4
                 group-focus-visible:ring-green-400/50">
 
-        <!-- Soft notification ring -->
         <span class="absolute inset-0 rounded-full
                      border-2 border-green-300/60
                      animate-ping opacity-30"></span>
 
-        <!-- WhatsApp Icon -->
         <svg xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 24 24"
              fill="currentColor"
@@ -1813,7 +1700,6 @@ class="fixed bottom-6 left-6 z-50 group">
         </svg>
     </div>
 
-    <!-- Desktop Label -->
     <span class="hidden sm:block
                  bg-white text-gray-700
                  px-4 py-2
@@ -1831,10 +1717,8 @@ class="fixed bottom-6 left-6 z-50 group">
 </div>
 
 <span class="sr-only">Chat with Hira Science Academy on WhatsApp</span>
-```
 
 </a>
-
 
 <!-- Back to Top Button -->
 <button id="backToTop" class="fixed bottom-6 right-6 bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg transition-all opacity-0 invisible" aria-label="Back to top">
@@ -1843,32 +1727,27 @@ class="fixed bottom-6 left-6 z-50 group">
   </svg>
 </button>
 
-<!-- Enhanced JavaScript (preserved exactly from original with all functionality) -->
+<!-- Enhanced JavaScript (preserved from original) -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Mobile Menu Toggle Elements
   const mobileMenuButton = document.getElementById('mobile-menu-button');
   const mobileMenu = document.getElementById('mobile-menu');
   const menuIconOpen = document.getElementById('menu-icon-open');
   const menuIconClose = document.getElementById('menu-icon-close');
   
-  // Toggle mobile menu
   if(mobileMenuButton) {
     mobileMenuButton.addEventListener('click', function() {
       const isExpanded = mobileMenu.classList.toggle('hidden');
       
-      // Toggle menu icons
       if(menuIconOpen && menuIconClose) {
         menuIconOpen.classList.toggle('hidden');
         menuIconClose.classList.toggle('hidden');
       }
       
-      // Update aria-expanded attribute
       this.setAttribute('aria-expanded', !isExpanded);
     });
   }
   
-  // Close mobile menu when clicking on links
   document.querySelectorAll('#mobile-menu .nav-link').forEach(link => {
     link.addEventListener('click', function() {
       mobileMenu.classList.add('hidden');
@@ -1882,12 +1761,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
-  // Smooth scrolling for all nav links
   document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', function(e) {
-      // Skip smooth scrolling for external links (those with .html extension)
       if (this.getAttribute('href').includes('.html')) {
-        // Let the browser handle external links normally
         return;
       }
       
@@ -1897,10 +1773,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetElement = document.querySelector(targetId);
       
       if (targetElement) {
-        // Measure the actual sticky nav + fixed announcement bar heights at
-        // click time (rather than a hardcoded guess) so the target section
-        // always lands fully below both bars, whether or not the
-        // announcement bar happens to be visible right now.
         const navEl = document.querySelector('nav');
         const barEl = document.getElementById('announcement-bar');
         const navHeight = navEl ? navEl.getBoundingClientRect().height : 0;
@@ -1912,7 +1784,7 @@ document.addEventListener('DOMContentLoaded', function() {
             barHeight = barEl.getBoundingClientRect().height;
           }
         }
-        const headerOffset = navHeight + barHeight + 16; // small breathing room
+        const headerOffset = navHeight + barHeight + 16;
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
         
@@ -1921,13 +1793,11 @@ document.addEventListener('DOMContentLoaded', function() {
           behavior: 'smooth'
         });
         
-        // Update active link on click
         updateActiveLink(targetId);
       }
     });
   });
   
-  // Function to update active link
   function updateActiveLink(targetId) {
     const allNavLinks = document.querySelectorAll('.nav-link');
     allNavLinks.forEach(link => {
@@ -1938,32 +1808,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
-  // 🎯 ENHANCED SCROLL-SPY FUNCTIONALITY
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link:not([href*=".html"])');
   const mobileNavLinks = document.querySelectorAll('#mobile-menu .nav-link:not([href*=".html"])');
   const allNavLinks = [...navLinks, ...mobileNavLinks];
   
-  // Options for Intersection Observer
   const observerOptions = {
     root: null,
-    rootMargin: '-20% 0px -70% 0px', // Adjust these values to control when the section becomes active
+    rootMargin: '-20% 0px -70% 0px',
     threshold: 0
   };
   
-  // Create Intersection Observer
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Get the ID of the section in view
         const activeSectionId = entry.target.getAttribute('id');
         
-        // Remove active class from all links
         allNavLinks.forEach(link => {
           link.classList.remove('active');
         });
         
-        // Add active class to corresponding link
         allNavLinks.forEach(link => {
           if (link.getAttribute('href') === `#${activeSectionId}`) {
             link.classList.add('active');
@@ -1973,12 +1837,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }, observerOptions);
   
-  // Observe all sections
   sections.forEach(section => {
     observer.observe(section);
   });
   
-  // Set initial active link based on URL hash
   function setInitialActiveLink() {
     const hash = window.location.hash;
     if (hash) {
@@ -1994,7 +1856,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   setInitialActiveLink();
   
-  // ✨ Script: Hide announcement bar on Scroll Down, Show on Scroll Up
+  // Hide announcement bar on Scroll Down, Show on Scroll Up
   const bar = document.getElementById("announcement-bar");
   let lastScrollTop = 0;
 
@@ -2003,10 +1865,8 @@ document.addEventListener('DOMContentLoaded', function() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
       if (scrollTop > lastScrollTop) {
-        // Scrolling Down → Hide bar
         bar.style.transform = "translateY(-200%)";
       } else {
-        // Scrolling Up → Show bar
         bar.style.transform = "translateY(0)";
       }
 
@@ -2014,7 +1874,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Back to top button functionality
   const backToTopButton = document.getElementById('backToTop');
   
   if(backToTopButton) {
@@ -2038,7 +1897,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- Scroll-reveal for premium redesign (additive; respects prefers-reduced-motion via CSS) -->
+<!-- Scroll-reveal -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const revealEls = document.querySelectorAll('.reveal');
@@ -2055,6 +1914,35 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+<!-- Static Rotating Announcement Bar (WCAG 2.1 AA — no animation, no marquee) -->
+<script>
+(function () {
+  var announcements = [
+    {
+      text: "NEW: Class 9 & 10 All Subjects 2027 Pairing Scheme PDF available now for Punjab Board Exams",
+      href: "pairing-scheme.html"
+    },
+    {
+      text: "NEW: Class 10 Physics Notes (New 2026 Edition – PECTAA Syllabus) by Muhammad Tayyab",
+      href: "Physics-10th-New-2026.html"
+    },
+    {
+      text: "Class 10 Mathematics (New 2026 PECTAA Syllabus) complete notes for all Punjab Boards",
+      href: "Mathematics-10th-New-2026.html"
+    }
+  ];
+
+  var link = document.getElementById('announcement-link');
+  if (!link) return;
+
+  var index = 0;
+  setInterval(function () {
+    index = (index + 1) % announcements.length;
+    link.textContent = announcements[index].text;
+    link.href = announcements[index].href;
+  }, 8000);
+})();
+</script>
 
 </body>
 </html>
