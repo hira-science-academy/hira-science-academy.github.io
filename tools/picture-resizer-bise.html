@@ -44,6 +44,45 @@
   }
   </script>
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is my photo uploaded to a server?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. All processing happens inside your browser using the Canvas API. Your image never leaves your device and is never sent to Hira Science Academy or any third party." }
+      },
+      {
+        "@type": "Question",
+        "name": "What format should I upload?",
+        "acceptedAnswer": { "@type": "Answer", "text": "JPG or JPEG is best for BISE forms because the output must be JPG. PNG and WEBP also work as input; the tool converts everything to JPG on output." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the result is still over 20 KB?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Lower the JPEG quality slider (try 0.6 or 0.5). You can also set the 'Target file size' field to 20 KB — the tool will automatically reduce quality in steps to meet the target, while never going below 6 KB to keep the photo legible." }
+      },
+      {
+        "@type": "Question",
+        "name": "Will resizing distort my face?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The tool scales the entire image to your chosen dimensions. If your original photo is not square, the result will be stretched or compressed. For best results, crop your photo to a square before uploading." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is there a 6 KB minimum?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Below about 6 KB, a JPEG photo of a face becomes visibly blurry and blocky. Most board portals reject unrecognisable photos even if they meet the file size. The 6 KB floor prevents the tool from over-compressing your photo to meet a target that would ruin it." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this for other forms (NADRA, passport, etc.)?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, but always verify the specific requirements of the form you are filling. Different authorities have different size and dimension rules. This tool is flexible — just enter the dimensions and target size you need." }
+      }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com/"></script>
   <script>
     tailwind.config = {
@@ -144,6 +183,7 @@
     .info-value { color: #0b1220; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
     .info-value.good { color: #10b981; }
     .info-value.bad { color: #ef4444; }
+    .info-value.warn { color: #d97706; }
 
     .preset-btn {
       padding: 0.5rem 0.875rem;
@@ -158,6 +198,14 @@
     }
     .preset-btn:hover { border-color: #0ea5e9; color: #0369a1; }
     .preset-btn.is-active { background: #0ea5e9; color: #ffffff; border-color: #0ea5e9; }
+
+    /* Grid helper for the two numeric fields */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    @media (max-width: 540px) { .grid-2 { grid-template-columns: 1fr; } }
   </style>
 </head>
 
@@ -200,6 +248,7 @@
         <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
         <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
         <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
       </div>
     </div>
   </nav>
@@ -303,7 +352,7 @@
       <div class="mt-4">
         <label for="target-kb" class="calc-label">Target file size (KB) — optional</label>
         <input type="number" id="target-kb" class="calc-input" value="20" min="1" max="5000" />
-        <p class="text-xs text-gray-500 mt-1">If set, the tool will automatically reduce quality to meet this target.</p>
+        <p class="text-xs text-gray-500 mt-1">If set, the tool will automatically reduce quality to meet this target — but never below <strong>6 KB</strong>, to keep the photo legible.</p>
       </div>
 
       <div class="flex flex-wrap gap-3 mt-6">
@@ -343,7 +392,7 @@
           <li>Click the upload box and choose your photo (or drag-and-drop it).</li>
           <li>Pick a preset, or enter custom width and height.</li>
           <li>Adjust the JPEG quality slider if needed.</li>
-          <li>(Optional) Set a target file size in KB — the tool will automatically lower quality to meet it.</li>
+          <li>(Optional) Set a target file size in KB — the tool will automatically lower quality to meet it, but never below 6 KB.</li>
           <li>Click <strong>Process &amp; Download</strong> to generate and save the resized JPG.</li>
         </ol>
       </section>
@@ -354,7 +403,7 @@
           <li><strong>Use a well-lit, front-facing photo</strong> with a plain white or blue background.</li>
           <li><strong>Crop to the face</strong> — head and shoulders, centered, before uploading. The tool scales the whole image; it does not auto-crop.</li>
           <li><strong>Start with a JPG</strong> rather than a screenshot or a PNG — JPG compresses better.</li>
-          <li><strong>Don't over-compress</strong>. If the file is under 20 KB but the face is blurry, the board may reject it. Aim for the largest quality that still fits under the size limit.</li>
+          <li><strong>Don't over-compress</strong>. If the file is under 20 KB but the face is blurry, the board may reject it. Aim for the largest quality that still fits under the size limit. The tool enforces a 6 KB floor for this reason.</li>
           <li><strong>Verify on your board's portal</strong> — some boards accept up to 50 KB or require 130×130, while correction portals may allow 500 KB.</li>
         </ul>
       </section>
@@ -410,11 +459,15 @@
           </details>
           <details class="faq-item">
             <summary>What if the result is still over 20 KB?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Lower the JPEG quality slider (try 0.6 or 0.5). You can also set the "Target file size" field to 20 KB — the tool will automatically reduce quality in steps to meet the target.</p>
+            <p class="faq-answer">Lower the JPEG quality slider (try 0.6 or 0.5). You can also set the 'Target file size' field to 20 KB — the tool will automatically reduce quality in steps to meet the target, while never going below 6 KB to keep the photo legible.</p>
           </details>
           <details class="faq-item">
             <summary>Will resizing distort my face?<span aria-hidden="true">▾</span></summary>
             <p class="faq-answer">The tool scales the entire image to your chosen dimensions. If your original photo is not square, the result will be stretched or compressed. For best results, crop your photo to a square before uploading.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why is there a 6 KB minimum?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Below about 6 KB, a JPEG photo of a face becomes visibly blurry and blocky. Most board portals reject unrecognisable photos even if they meet the file size. The 6 KB floor prevents the tool from over-compressing your photo to meet a target that would ruin it.</p>
           </details>
           <details class="faq-item">
             <summary>Can I use this for other forms (NADRA, passport, etc.)?<span aria-hidden="true">▾</span></summary>
@@ -430,56 +483,85 @@
           <li><a href="percentage-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Percentage Calculator</a></li>
           <li><a href="exam-percentage-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Exam Percentage Calculator</a></li>
           <li><a href="unit-converter.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Unit Converter</a></li>
+          <li><a href="study-time-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Study Time Calculator</a></li>
+          <li><a href="final-grade-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Final Grade Calculator</a></li>
         </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Prepare for BISE registration and exams with our
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
+          and track term progress with the free
+          <a href="https://hiraacademy.com.pk/student-portal.html" class="text-blue-700 font-semibold underline">Student Portal</a>.
+        </p>
       </section>
 
     </article>
 
   </main>
 
+  <!-- FOOTER -->
   <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
     <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
-        <div class="md:col-span-1 text-center md:text-left">
-          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group" href="https://hiraacademy.com.pk/index.html">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
             <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
             <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
           </a>
-          <p class="mt-4 text-sm text-gray-200 leading-6">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
         </div>
+
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
           <ul class="space-y-2">
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc / Entry Test</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
           </ul>
         </div>
+
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
           <ul class="space-y-2">
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
           </ul>
         </div>
+
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
           <ul class="space-y-2">
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
           </ul>
         </div>
+
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
           <ul class="space-y-2">
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
-            <li><a class="hover:text-cyan-400" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
           </ul>
         </div>
+
       </div>
-      <div class="mt-12 border-t border-blue-700 pt-6">
-        <p class="text-base text-gray-200 text-center">© 2026 Hira Science Academy. All rights reserved. | Picture Resizer for BISE Forms</p>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
       </div>
     </div>
   </footer>
@@ -502,6 +584,8 @@
     'use strict';
     const { trackEvent } = ToolsCommon;
     const CALC_NAME = 'picture-resizer-bise';
+
+    const MIN_KB = 6; // Hard floor — never produce a JPEG below this size
 
     const fileInput = document.getElementById('file-input');
     const dropzone = document.getElementById('dropzone');
@@ -605,6 +689,7 @@
     });
 
     // Process: resize to canvas, compress, auto-lower quality if target size not met
+    // The auto-reduction loop stops either at the target size OR at MIN_KB, whichever comes first
     function processImage() {
       if (!originalImage) {
         alert('Please upload a photo first.');
@@ -636,13 +721,21 @@
       ctx.imageSmoothingQuality = 'high';
       ctx.drawImage(originalImage, 0, 0, w, h);
 
-      // If a target size is set, iteratively lower quality to meet it
+      // Encode with iteratively lower quality until either the target KB is met
+      // OR we hit MIN_KB (below which the photo becomes illegible).
       function tryEncode(q, callback) {
         canvas.toBlob((blob) => {
           if (!blob) { callback(null); return; }
           const kb = blob.size / 1024;
-          if (targetKb && kb > targetKb && q > 0.15) {
-            // Try lower quality
+          // Stop conditions:
+          // 1. No target set → return immediately
+          // 2. Size <= target → done
+          // 3. Size <= MIN_KB → done (don't go lower)
+          // 4. Quality floor reached → done
+          const overTarget = targetKb && kb > targetKb;
+          const aboveFloor = kb > MIN_KB;
+          const canReduce = q > 0.15;
+          if (overTarget && aboveFloor && canReduce) {
             tryEncode(q - 0.05, callback);
           } else {
             callback({ blob, quality: q });
@@ -656,15 +749,28 @@
           return;
         }
         const { blob, quality: usedQ } = result;
-        const sizeKB = (blob.size / 1024).toFixed(2);
+        const sizeKB = blob.size / 1024;
         const url = URL.createObjectURL(blob);
 
         // Build output filename
         const baseName = (originalFile.name || 'photo').replace(/\.[^.]+$/, '');
         const outName = `${baseName}_bise_${w}x${h}.jpg`;
 
-        const meetsTarget = !targetKb || parseFloat(sizeKB) <= targetKb;
-        const sizeClass = meetsTarget ? 'good' : 'bad';
+        // Determine status: good (meets target), warn (hit 6 KB floor before target),
+        // bad (still above target for some other reason)
+        const atFloor = sizeKB <= MIN_KB + 0.05;
+        const meetsTarget = !targetKb || sizeKB <= targetKb;
+        let sizeClass = 'good';
+        let sizeNote = '';
+        if (!meetsTarget && atFloor) {
+          sizeClass = 'warn';
+          sizeNote = ` — hit the ${MIN_KB} KB floor (photo kept legible)`;
+        } else if (!meetsTarget) {
+          sizeClass = 'bad';
+          sizeNote = ` (target ≤ ${targetKb} KB not met)`;
+        } else if (targetKb) {
+          sizeNote = ` (target ≤ ${targetKb} KB)`;
+        }
 
         resultPanel.innerHTML = `
           <div class="result-label">Resized Photo Ready</div>
@@ -683,7 +789,7 @@
               </div>
               <div class="info-row">
                 <span class="info-label">File size</span>
-                <span class="info-value ${sizeClass}">${sizeKB} KB${targetKb ? ' (target ≤ ' + targetKb + ' KB)' : ''}</span>
+                <span class="info-value ${sizeClass}">${sizeKB.toFixed(2)} KB${sizeNote}</span>
               </div>
               <div class="info-row">
                 <span class="info-label">JPEG quality used</span>
