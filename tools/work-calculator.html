@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Work Calculator — W = Fd cos θ with Energy Comparisons | Hira Science Academy</title>
+  <meta content="Free work calculator. Solve W = F × d × cos θ for work, force or distance — with unit-aware inputs (N, kN, m, cm, J, kJ) and real-world energy scale comparisons." name="description"/>
+  <meta content="work calculator, W=Fd, work formula, work at angle, cos theta, energy calculator, joules, kilojoules, class 9 physics, class 10 physics" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/work-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Work Calculator — W = Fd cos θ with Energy Comparisons" property="og:title"/>
+  <meta content="Solve W = F × d × cos θ for work, force or distance with real-world energy scale comparisons." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/work-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Work Calculator", "item": "https://hiraacademy.com.pk/tools/work-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the formula for work?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Work is force multiplied by the displacement in the direction of the force: W = F × d × cos θ. When the force is parallel to the displacement (θ = 0°), cos θ = 1, and the formula simplifies to W = F × d. Work is measured in joules (J), where 1 J = 1 N·m." }
+      },
+      {
+        "@type": "Question",
+        "name": "When is work zero?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Work is zero whenever the displacement is perpendicular to the force. At θ = 90°, cos 90° = 0, so no work is done. For example, carrying a suitcase horizontally while gravity pulls downward does no work against gravity — the force and displacement are perpendicular." }
+      },
+      {
+        "@type": "Question",
+        "name": "When is work negative?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Work is negative when the force has a component opposite to the displacement (cos θ < 0, i.e. between 90° and 180°). This happens with friction, braking forces, or gravity when an object is thrown upward. Negative work means energy is being removed from the system, not added." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between work and energy?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Work is the transfer of energy that occurs when a force moves an object through a displacement. Energy is the capacity to do work. Both are measured in joules. When you do 100 J of work lifting a box, you have transferred 100 J of energy into the box's gravitational potential energy." }
+      },
+      {
+        "@type": "Question",
+        "name": "How much work does climbing stairs require?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Lifting a person of mass m up a height h requires work W = mgh. For an average 70 kg person climbing 10 m of stairs, W = 70 × 9.8 × 10 = 6860 J ≈ 6.9 kJ. This is why climbing stairs makes you tired — the body performs this work repeatedly and loses energy as heat." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the calculator reject zero force or zero distance?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Work requires both force and displacement. Zero force with nonzero displacement produces zero work (nothing is pushing). Zero displacement means nothing moves, so no work is done regardless of how hard you push. When solving for force or distance, dividing by zero is undefined. The calculator handles each case with the appropriate domain error or zero result." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
+    .latex-frac.big { font-size: 1.2em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .latex-sup { vertical-align: super; font-size: 0.75em; }
+    .latex-sub { vertical-align: sub; font-size: 0.75em; }
+
+    /* Result */
+    .cgpa-big-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0b1220;
+      line-height: 1.1;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .cgpa-big-scale {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+    .cgpa-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .cgpa-summary { grid-template-columns: repeat(4, 1fr); } }
+    .cgpa-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cgpa-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .cgpa-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .cgpa-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .cgpa-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .cgpa-context strong { color: #0b1220; }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      margin-top: 0.5rem;
+    }
+    .status-ok    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .status-warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .status-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .status-secure{ background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+
+    /* Input rows */
+    .cgpa-input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-items: end;
+      margin-bottom: 0.75rem;
+    }
+    @media (max-width: 540px) { .cgpa-input-grid { grid-template-columns: 1fr; } }
+    .cgpa-group-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #0369a1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cgpa-group-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* Mode toggle */
+    .mode-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .mode-toggle button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .mode-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+
+    /* Angle toggle (secondary) */
+    .angle-toggle {
+      display: inline-flex;
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.6rem;
+      padding: 0.2rem;
+      gap: 0.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .angle-toggle button {
+      padding: 0.4rem 0.85rem;
+      border-radius: 0.4rem;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .angle-toggle button.is-active {
+      background: #0ea5e9;
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.4);
+    }
+
+    /* Value + unit inline control */
+    .value-unit {
+      display: flex;
+      gap: 0.4rem;
+      align-items: stretch;
+    }
+    .value-unit input {
+      flex: 1 1 auto;
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      font-family: 'JetBrains Mono', monospace;
+      background: #ffffff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .value-unit input:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+    .value-unit select {
+      flex: 0 0 auto;
+      padding: 0.5rem 0.6rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      background: #f1f5f9;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #0369a1;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .value-unit select:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+
+    /* Work diagram */
+    .work-diagram {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 0.6rem;
+      padding: 0.75rem 1rem;
+      margin: 0.5rem 0 1.25rem 0;
+    }
+    .work-svg {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+    .work-caption {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 0.35rem;
+    }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Three Solve Modes · Energy Comparisons</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Work Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Solve W = F × d × cos θ for work, force or distance — with unit-aware inputs and real-world energy comparisons.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Work Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Work calculator inputs">
+
+      <div class="mode-toggle" role="group" aria-label="Solve mode">
+        <button type="button" data-mode="work" class="is-active" aria-pressed="true">Find Work (W)</button>
+        <button type="button" data-mode="force" aria-pressed="false">Find Force (F)</button>
+        <button type="button" data-mode="distance" aria-pressed="false">Find Distance (d)</button>
+      </div>
+
+      <!-- Angle toggle (applies to all modes) -->
+      <div class="angle-toggle" role="group" aria-label="Angle mode">
+        <button type="button" data-angle="parallel" class="is-active" aria-pressed="true">Force parallel (θ = 0°)</button>
+        <button type="button" data-angle="custom" aria-pressed="false">Force at angle θ</button>
+      </div>
+
+      <!-- Find work panel -->
+      <div id="panel-work">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter force and distance</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="w-force" class="calc-label">Force</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="w-force" placeholder="e.g. 50" autocomplete="off" />
+              <select id="w-force-unit" aria-label="Force unit">
+                <option value="N" selected>N</option>
+                <option value="kN">kN</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="w-distance" class="calc-label">Distance</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="w-distance" placeholder="e.g. 10" autocomplete="off" />
+              <select id="w-distance-unit" aria-label="Distance unit">
+                <option value="m" selected>m</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-input-grid" id="w-angle-row" style="display:none;">
+          <div>
+            <label for="w-theta" class="calc-label">Angle between force and displacement (°)</label>
+            <input type="text" inputmode="decimal" id="w-theta" class="calc-input" placeholder="e.g. 60" autocomplete="off" />
+          </div>
+          <div></div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Work output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="w-out-unit" class="calc-label">Show work in</label>
+            <select id="w-out-unit" class="calc-select">
+              <option value="J" selected>J</option>
+              <option value="kJ">kJ</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Find force panel -->
+      <div id="panel-force" class="hidden">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter work and distance</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="f-work" class="calc-label">Work</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="f-work" placeholder="e.g. 500" autocomplete="off" />
+              <select id="f-work-unit" aria-label="Work unit">
+                <option value="J" selected>J</option>
+                <option value="kJ">kJ</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="f-distance" class="calc-label">Distance</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="f-distance" placeholder="e.g. 10" autocomplete="off" />
+              <select id="f-distance-unit" aria-label="Distance unit">
+                <option value="m" selected>m</option>
+                <option value="cm">cm</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-input-grid" id="f-angle-row" style="display:none;">
+          <div>
+            <label for="f-theta" class="calc-label">Angle between force and displacement (°)</label>
+            <input type="text" inputmode="decimal" id="f-theta" class="calc-input" placeholder="e.g. 60" autocomplete="off" />
+          </div>
+          <div></div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Force output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="f-out-unit" class="calc-label">Show force in</label>
+            <select id="f-out-unit" class="calc-select">
+              <option value="N" selected>N</option>
+              <option value="kN">kN</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Find distance panel -->
+      <div id="panel-distance" class="hidden">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter work and force</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="d-work" class="calc-label">Work</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="d-work" placeholder="e.g. 500" autocomplete="off" />
+              <select id="d-work-unit" aria-label="Work unit">
+                <option value="J" selected>J</option>
+                <option value="kJ">kJ</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="d-force" class="calc-label">Force</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="d-force" placeholder="e.g. 50" autocomplete="off" />
+              <select id="d-force-unit" aria-label="Force unit">
+                <option value="N" selected>N</option>
+                <option value="kN">kN</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-input-grid" id="d-angle-row" style="display:none;">
+          <div>
+            <label for="d-theta" class="calc-label">Angle between force and displacement (°)</label>
+            <input type="text" inputmode="decimal" id="d-theta" class="calc-input" placeholder="e.g. 60" autocomplete="off" />
+          </div>
+          <div></div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Distance output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="d-out-unit" class="calc-label">Show distance in</label>
+            <select id="d-out-unit" class="calc-select">
+              <option value="m" selected>m</option>
+              <option value="cm">cm</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Work diagram -->
+      <div class="work-diagram" aria-hidden="true">
+        <svg class="work-svg" viewBox="0 0 340 100" width="340" height="100" xmlns="http://www.w3.org/2000/svg">
+          <!-- ground line -->
+          <line x1="10" y1="72" x2="330" y2="72" stroke="#cbd5e1" stroke-width="1.5" />
+          <!-- block -->
+          <rect x="60" y="42" width="60" height="30" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.5" rx="2" />
+          <text x="90" y="62" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#0369a1" font-weight="700">F</text>
+          <!-- force arrow at angle -->
+          <line x1="120" y1="57" x2="180" y2="27" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowWorkF)" />
+          <text x="155" y="20" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#dc2626" font-weight="700">F</text>
+          <!-- angle arc -->
+          <path d="M 140 57 A 20 20 0 0 0 155 45" fill="none" stroke="#dc2626" stroke-width="1.2" />
+          <text x="142" y="42" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#dc2626" font-weight="700">θ</text>
+          <!-- displacement arrow along ground -->
+          <line x1="60" y1="85" x2="290" y2="85" stroke="#0369a1" stroke-width="2.5" marker-end="url(#arrowWorkD)" />
+          <text x="180" y="97" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#0369a1" font-weight="700">d</text>
+          <defs>
+            <marker id="arrowWorkF" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#dc2626" />
+            </marker>
+            <marker id="arrowWorkD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#0369a1" />
+            </marker>
+          </defs>
+        </svg>
+        <div class="work-caption">work is the component of force along the displacement, times the displacement</div>
+      </div>
+
+      <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        Preview: enter force and distance
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this work calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool applies the work formula W = F × d × cos θ in all three of its rearrangements. If you know force and distance, it computes work. If you know work and distance, it computes force. If you know work and force, it computes distance. A dedicated angle toggle lets you switch between the simple parallel case (θ = 0°, so W = Fd) and the general angled case where you enter θ in degrees. Force is unit-aware in newtons or kilonewtons, distance in metres or centimetres, and work output in joules or kilojoules. The result panel places the answer against real-world energy scales — from lifting a book to running a household appliance — so you can judge whether a computed value is reasonable.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formula</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Work — general form (force at angle θ)</div>
+          <div class="math-block">
+            <span>W = F × d × cos θ</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Work — parallel case (θ = 0°)</div>
+          <div class="math-block">
+            <span>W = F × d</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Solve for force</div>
+          <div class="math-block">
+            <span>F = </span>
+            <span class="latex-frac big">
+              <span class="f-num">W</span>
+              <span class="f-den">d × cos θ</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Solve for distance</div>
+          <div class="math-block">
+            <span>d = </span>
+            <span class="latex-frac big">
+              <span class="f-num">W</span>
+              <span class="f-den">F × cos θ</span>
+            </span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>W</strong> — work, in joules (J). 1 J = 1 N·m.</li>
+          <li><strong>F</strong> — magnitude of the applied force, in newtons (N).</li>
+          <li><strong>d</strong> — magnitude of the displacement, in metres (m).</li>
+          <li><strong>θ</strong> — angle between the force vector and the displacement vector, in degrees.</li>
+        </ul>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Sign of work — what cos θ tells you</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>θ = 0°</strong> → cos θ = 1 → maximum positive work (force fully along the displacement).</li>
+          <li><strong>θ = 90°</strong> → cos θ = 0 → zero work (perpendicular force does nothing to speed or slow).</li>
+          <li><strong>θ = 180°</strong> → cos θ = −1 → maximum negative work (force fully opposes displacement, e.g. friction).</li>
+          <li><strong>0° &lt; θ &lt; 90°</strong> → positive work (force has a component along the displacement).</li>
+          <li><strong>90° &lt; θ &lt; 180°</strong> → negative work (force has a component against the displacement).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Simple parallel case — pushing a box</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            F = 50 N · d = 10 m · θ = 0°
+          </div>
+          <ol>
+            <li>W = F × d × cos 0° = 50 × 10 × 1.</li>
+            <li>W = <strong>500 J</strong>.</li>
+            <li>Pushing a box 10 m with 50 N of horizontal force performs 500 J of work — about the energy needed to lift a 5 kg bag 10 m.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Force at an angle — pulling a suitcase</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            F = 100 N · d = 20 m · θ = 60°
+          </div>
+          <ol>
+            <li>cos 60° = 0.5.</li>
+            <li>W = 100 × 20 × 0.5 = <strong>1000 J</strong>.</li>
+            <li>The upward pull wastes half the force — only the horizontal component (100 cos 60° = 50 N) does useful work.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Perpendicular force — carrying a bag</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            F = 200 N (upward, supporting the bag) · d = 15 m (horizontal walk) · θ = 90°
+          </div>
+          <ol>
+            <li>cos 90° = 0.</li>
+            <li>W = 200 × 15 × 0 = <strong>0 J</strong>.</li>
+            <li>You carry a bag 15 m without doing any physics work on it. Your muscles do work (they contract repeatedly), but the mechanical work on the bag is zero because the force (up) is perpendicular to the displacement (horizontal).</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Negative work — friction on a sliding block</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            F = 30 N (friction) · d = 8 m · θ = 180°
+          </div>
+          <ol>
+            <li>cos 180° = −1.</li>
+            <li>W = 30 × 8 × (−1) = <strong>−240 J</strong>.</li>
+            <li>Friction does −240 J of work — it removes 240 J of kinetic energy from the block, converting it to heat.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Find force — a crane lifting a load</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            W = 49,000 J · d = 20 m · θ = 0°
+          </div>
+          <ol>
+            <li>F = W / (d × cos 0°) = 49000 / 20.</li>
+            <li>F = <strong>2450 N</strong> = 2.45 kN.</li>
+            <li>This is the force required to lift a 250 kg load (weight = 250 × 9.8 = 2450 N) 20 m upward.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 6: Find distance — a labourer pushing a wheelbarrow</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            W = 3000 J · F = 150 N · θ = 0°
+          </div>
+          <ol>
+            <li>d = W / (F × cos 0°) = 3000 / 150.</li>
+            <li>d = <strong>20 m</strong>.</li>
+            <li>Performing 3000 J of work with 150 N of horizontal force covers 20 m of ground.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Work in perspective — the joule scale</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Because work and energy share the same unit (the joule), everyday energy values give a good intuition for what a computed work value means.
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>~1 J</strong> — lifting a small apple (100 g) by 1 m.</li>
+          <li><strong>~10 J</strong> — lifting a 1 kg book from floor to desk.</li>
+          <li><strong>~100 J</strong> — throwing a cricket ball at 130 km/h.</li>
+          <li><strong>~500 J</strong> — a single heartbeat's worth of mechanical work, or lifting a 5 kg bag 10 m.</li>
+          <li><strong>~5 kJ</strong> — climbing one flight of stairs (10 m of height for a 50 kg person).</li>
+          <li><strong>~50 kJ</strong> — walking briskly for 10 minutes; roughly 12 food calories.</li>
+          <li><strong>~500 kJ</strong> — boiling 1 litre of water from room temperature.</li>
+          <li><strong>~4 MJ</strong> — running a 1000 W microwave oven for about an hour.</li>
+          <li><strong>~40 MJ</strong> — the energy released by burning 1 kg of petrol.</li>
+        </ul>
+        <p class="leading-relaxed text-justify mt-2">
+          If your answer comes out in the tens or hundreds of joules, it corresponds to a small everyday task. Kilojoule and megajoule answers describe industrial-scale work or heat.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Forgetting the cos θ factor.</strong> When the force is not parallel to the displacement, the work is only the component along the displacement times the distance. Using W = Fd without the cosine overestimates the work whenever θ ≠ 0°.</li>
+          <li><strong>Using the wrong angle.</strong> θ is the angle between the force vector and the displacement vector — not the angle between the force and the horizontal (unless the displacement is horizontal). Draw the two vectors and measure between them.</li>
+          <li><strong>Treating carried objects as work.</strong> Carrying a bag horizontally while gravity pulls down does zero mechanical work on the bag — the force (up) is perpendicular to the displacement (sideways). Your muscles do work, but the mechanical work on the object is zero.</li>
+          <li><strong>Dropping the sign of negative work.</strong> Friction, braking, and gravity on a rising object all do negative work. Keep the sign — it tells you energy is being removed, not added.</li>
+          <li><strong>Mixing joules and other energy units.</strong> Calories (food), kilowatt-hours (electrical), and electronvolts (atomic) are all energy units, but the physics formula uses joules. 1 food calorie = 4184 J, 1 kWh = 3,600,000 J.</li>
+          <li><strong>Using mass instead of force.</strong> The formula needs force in newtons. Weight of a mass m is mg (mg ≈ 9.8m N). Do not plug mass directly into F.</li>
+          <li><strong>Confusing displacement with distance travelled.</strong> Displacement is the straight-line vector from start to finish. If a person walks around a circular path and returns to the start, the displacement is zero even though the distance walked is large — the net work against a conservative force is zero.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What is the formula for work?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Work is force multiplied by the displacement in the direction of the force: W = F × d × cos θ. When the force is parallel to the displacement (θ = 0°), cos θ = 1, and the formula simplifies to W = F × d. Work is measured in joules (J), where 1 J = 1 N·m.</p>
+          </details>
+          <details class="faq-item">
+            <summary>When is work zero?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Work is zero whenever the displacement is perpendicular to the force. At θ = 90°, cos 90° = 0, so no work is done. For example, carrying a suitcase horizontally while gravity pulls downward does no work against gravity — the force and displacement are perpendicular.</p>
+          </details>
+          <details class="faq-item">
+            <summary>When is work negative?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Work is negative when the force has a component opposite to the displacement (cos θ < 0, i.e. between 90° and 180°). This happens with friction, braking forces, or gravity when an object is thrown upward. Negative work means energy is being removed from the system, not added.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between work and energy?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Work is the transfer of energy that occurs when a force moves an object through a displacement. Energy is the capacity to do work. Both are measured in joules. When you do 100 J of work lifting a box, you have transferred 100 J of energy into the box's gravitational potential energy.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How much work does climbing stairs require?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Lifting a person of mass m up a height h requires work W = mgh. For an average 70 kg person climbing 10 m of stairs, W = 70 × 9.8 × 10 = 6860 J ≈ 6.9 kJ. This is why climbing stairs makes you tired — the body performs this work repeatedly and loses energy as heat.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why does the calculator reject zero force or zero distance?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Work requires both force and displacement. Zero force with nonzero displacement produces zero work (nothing is pushing). Zero displacement means nothing moves, so no work is done regardless of how hard you push. When solving for force or distance, dividing by zero is undefined. The calculator handles each case with the appropriate domain error or zero result.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="physics-formula-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Physics Formula Calculator</a></li>
+          <li><a href="force-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Force Calculator</a></li>
+          <li><a href="power-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Power Calculator</a></li>
+          <li><a href="kinetic-energy-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Kinetic Energy Calculator</a></li>
+          <li><a href="pressure-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Pressure Calculator</a></li>
+          <li><a href="density-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Density Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Revise the theory of work, energy and power with our
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
+          and track term progress with the free
+          <a href="https://hiraacademy.com.pk/student-portal.html" class="text-blue-700 font-semibold underline">Student Portal</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'work-calculator';
+
+    /* Mode toggle */
+    const modeBtns      = document.querySelectorAll('.mode-toggle button');
+    const panelWork     = document.getElementById('panel-work');
+    const panelForce    = document.getElementById('panel-force');
+    const panelDistance = document.getElementById('panel-distance');
+
+    /* Angle toggle */
+    const angleBtns = document.querySelectorAll('.angle-toggle button');
+    const wAngleRow = document.getElementById('w-angle-row');
+    const fAngleRow = document.getElementById('f-angle-row');
+    const dAngleRow = document.getElementById('d-angle-row');
+
+    /* Work inputs */
+    const wForce = document.getElementById('w-force'), wForceUnit = document.getElementById('w-force-unit');
+    const wDistance = document.getElementById('w-distance'), wDistanceUnit = document.getElementById('w-distance-unit');
+    const wTheta = document.getElementById('w-theta');
+    const wOutUnit = document.getElementById('w-out-unit');
+
+    /* Force inputs */
+    const fWork = document.getElementById('f-work'), fWorkUnit = document.getElementById('f-work-unit');
+    const fDistance = document.getElementById('f-distance'), fDistanceUnit = document.getElementById('f-distance-unit');
+    const fTheta = document.getElementById('f-theta');
+    const fOutUnit = document.getElementById('f-out-unit');
+
+    /* Distance inputs */
+    const dWork = document.getElementById('d-work'), dWorkUnit = document.getElementById('d-work-unit');
+    const dForce = document.getElementById('d-force'), dForceUnit = document.getElementById('d-force-unit');
+    const dTheta = document.getElementById('d-theta');
+    const dOutUnit = document.getElementById('d-out-unit');
+
+    const previewEl = document.getElementById('live-preview');
+    const calcBtn = document.getElementById('calc-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section = document.querySelector('section[aria-label="Work calculator inputs"]');
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    let mode = 'work';
+    let angleMode = 'parallel';
+
+    /* ============ Unit conversions ============ */
+    const FORCE_TO_N = { N: 1, kN: 1000 };
+    const DIST_TO_M  = { m: 1, cm: 0.01 };
+    const WORK_TO_J  = { J: 1, kJ: 1000 };
+
+    function forceToN(v, u) { return v * FORCE_TO_N[u]; }
+    function distToM(v, u) { return v * DIST_TO_M[u]; }
+    function workToJ(v, u) { return v * WORK_TO_J[u]; }
+
+    /* ============ Helpers ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 4;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) return String(x);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+    function round3(x) { return Math.round(x * 1000) / 1000; }
+    function round6(x) { return Math.round(x * 1e6) / 1e6; }
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+    function smartFmt(x) {
+      if (!Number.isFinite(x)) return '—';
+      const abs = Math.abs(x);
+      if (abs === 0) return '0';
+      if (abs >= 0.01 && abs < 1e6) return fmtNum(round6(x), 6);
+      return x.toExponential(3);
+    }
+
+    function currentCos() {
+      if (angleMode === 'parallel') return 1;
+      // read theta from the active panel
+      let thetaEl = null;
+      if (mode === 'work') thetaEl = wTheta;
+      else if (mode === 'force') thetaEl = fTheta;
+      else thetaEl = dTheta;
+      const raw = thetaEl ? thetaEl.value.trim() : '';
+      const theta = parseNum(raw);
+      if (!Number.isFinite(theta)) return NaN;
+      return Math.cos(theta * Math.PI / 180);
+    }
+
+    function currentTheta() {
+      if (angleMode === 'parallel') return 0;
+      let thetaEl = null;
+      if (mode === 'work') thetaEl = wTheta;
+      else if (mode === 'force') thetaEl = fTheta;
+      else thetaEl = dTheta;
+      return parseNum(thetaEl ? thetaEl.value : '');
+    }
+
+    function workScale(j) {
+      const a = Math.abs(j);
+      if (a < 1) return 'sub-joule (a light flick)';
+      if (a < 20) return 'very small (lifting a book)';
+      if (a < 200) return 'small everyday task';
+      if (a < 2000) return 'moderate (walking a few minutes, climbing stairs)';
+      if (a < 20000) return 'substantial (heavy lifting, short workout)';
+      if (a < 200000) return 'kitchen-scale energy (boiling water)';
+      if (a < 2000000) return 'household appliance hour-scale';
+      if (a < 2e7) return 'vehicle-scale mechanical energy';
+      return 'industrial / engine-scale energy';
+    }
+
+    function workComparison(j) {
+      const a = Math.abs(j);
+      const refs = [
+        { label: 'lifting a small apple 1 m', value: 1 },
+        { label: 'lifting a book onto a desk', value: 10 },
+        { label: 'throwing a cricket ball hard', value: 100 },
+        { label: 'lifting a 5 kg bag 10 m', value: 500 },
+        { label: 'climbing one flight of stairs', value: 5000 },
+        { label: 'boiling 1 L of water', value: 336000 },
+        { label: 'running a 1000 W microwave 1 hour', value: 3600000 }
+      ];
+      for (const r of refs) {
+        const ratio = a / r.value;
+        if (ratio >= 0.5 && ratio <= 2) {
+          if (ratio > 1) return `about ${ratio.toFixed(1)} × the energy of ${r.label}`;
+          return `about 1/${(1 / ratio).toFixed(1)} of the energy of ${r.label}`;
+        }
+      }
+      return '';
+    }
+
+    /* ============ Mode switching ============ */
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mode = btn.dataset.mode;
+        modeBtns.forEach(b => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        panelWork.classList.toggle('hidden', mode !== 'work');
+        panelForce.classList.toggle('hidden', mode !== 'force');
+        panelDistance.classList.toggle('hidden', mode !== 'distance');
+        clearAllErrors(section);
+        hideResult(resultPanel);
+        renderPreview();
+      });
+    });
+
+    /* ============ Angle toggle ============ */
+    angleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        angleMode = btn.dataset.angle;
+        angleBtns.forEach(b => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        const showAngle = angleMode === 'custom';
+        wAngleRow.style.display = showAngle ? '' : 'none';
+        fAngleRow.style.display = showAngle ? '' : 'none';
+        dAngleRow.style.display = showAngle ? '' : 'none';
+        if (!showAngle) {
+          if (wTheta) wTheta.value = '';
+          if (fTheta) fTheta.value = '';
+          if (dTheta) dTheta.value = '';
+        }
+        clearAllErrors(section);
+        hideResult(resultPanel);
+        renderPreview();
+      });
+    });
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      if (mode === 'work') {
+        const fRaw = wForce.value.trim(), dRaw = wDistance.value.trim();
+        if (!fRaw && !dRaw) { previewEl.innerHTML = 'Preview: enter force and distance'; return; }
+        const F = parseNum(fRaw), d = parseNum(dRaw);
+        if (!Number.isFinite(F) || !Number.isFinite(d)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        const cosT = currentCos();
+        if (!Number.isFinite(cosT)) { previewEl.innerHTML = 'Preview: enter a valid angle θ'; return; }
+        const FN = forceToN(F, wForceUnit.value);
+        const dM = distToM(d, wDistanceUnit.value);
+        const j = FN * dM * cosT;
+        const shown = wOutUnit.value === 'J' ? j : j / 1000;
+        previewEl.innerHTML = `Preview: W = <span style="color:#0b1220;">${smartFmt(shown)} ${wOutUnit.value}</span>`;
+      } else if (mode === 'force') {
+        const wRaw = fWork.value.trim(), dRaw = fDistance.value.trim();
+        if (!wRaw && !dRaw) { previewEl.innerHTML = 'Preview: enter work and distance'; return; }
+        const W = parseNum(wRaw), d = parseNum(dRaw);
+        if (!Number.isFinite(W) || !Number.isFinite(d)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        const cosT = currentCos();
+        if (!Number.isFinite(cosT)) { previewEl.innerHTML = 'Preview: enter a valid angle θ'; return; }
+        if (Math.abs(cosT) < 1e-9) { previewEl.innerHTML = 'Preview: cos θ = 0 → force cannot be determined'; return; }
+        const J = workToJ(W, fWorkUnit.value);
+        const dM = distToM(d, fDistanceUnit.value);
+        if (dM === 0) { previewEl.innerHTML = 'Preview: distance must be greater than 0'; return; }
+        const FN = J / (dM * cosT);
+        const shown = fOutUnit.value === 'N' ? FN : FN / 1000;
+        previewEl.innerHTML = `Preview: F = <span style="color:#0b1220;">${smartFmt(shown)} ${fOutUnit.value}</span>`;
+      } else {
+        const wRaw = dWork.value.trim(), fRaw = dForce.value.trim();
+        if (!wRaw && !fRaw) { previewEl.innerHTML = 'Preview: enter work and force'; return; }
+        const W = parseNum(wRaw), F = parseNum(fRaw);
+        if (!Number.isFinite(W) || !Number.isFinite(F)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        const cosT = currentCos();
+        if (!Number.isFinite(cosT)) { previewEl.innerHTML = 'Preview: enter a valid angle θ'; return; }
+        if (Math.abs(cosT) < 1e-9) { previewEl.innerHTML = 'Preview: cos θ = 0 → distance cannot be determined'; return; }
+        const J = workToJ(W, dWorkUnit.value);
+        const FN = forceToN(F, dForceUnit.value);
+        if (FN === 0) { previewEl.innerHTML = 'Preview: force must be greater than 0'; return; }
+        const dM = J / (FN * cosT);
+        const shown = dOutUnit.value === 'm' ? dM : dM * 100;
+        previewEl.innerHTML = `Preview: d = <span style="color:#0b1220;">${smartFmt(shown)} ${dOutUnit.value}</span>`;
+      }
+    }
+
+    [wForce, wDistance, wTheta, fWork, fDistance, fTheta, dWork, dForce, dTheta].forEach(el => {
+      if (el) el.addEventListener('input', renderPreview);
+    });
+    [wForceUnit, wDistanceUnit, wOutUnit,
+     fWorkUnit, fDistanceUnit, fOutUnit,
+     dWorkUnit, dForceUnit, dOutUnit].forEach(el => {
+      if (el) el.addEventListener('change', () => { clearAllErrors(section); hideResult(resultPanel); renderPreview(); });
+    });
+
+    /* ============ Calculate ============ */
+    function calculate() {
+      clearAllErrors(section);
+      if (mode === 'work') calcWork();
+      else if (mode === 'force') calcForce();
+      else calcDistance();
+    }
+
+    /* ============ Find work ============ */
+    function calcWork() {
+      const fRaw = wForce.value.trim(), dRaw = wDistance.value.trim();
+      if (fRaw === '') { showError(wForce, 'Enter the force.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (dRaw === '') { showError(wDistance, 'Enter the distance.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const F = parseNum(fRaw), d = parseNum(dRaw);
+      if (!Number.isFinite(F)) { showError(wForce, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(d)) { showError(wDistance, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (F < 0) { showError(wForce, 'Force cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (d < 0) { showError(wDistance, 'Distance cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      let theta = 0, cosT = 1;
+      if (angleMode === 'custom') {
+        const tRaw = wTheta.value.trim();
+        if (tRaw === '') { showError(wTheta, 'Enter the angle θ.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        theta = parseNum(tRaw);
+        if (!Number.isFinite(theta)) { showError(wTheta, 'Enter a valid angle.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        cosT = Math.cos(theta * Math.PI / 180);
+      }
+
+      const FN = forceToN(F, wForceUnit.value);
+      const dM = distToM(d, wDistanceUnit.value);
+      const j = FN * dM * cosT;
+      const kJ = j / 1000;
+
+      const outUnit = wOutUnit.value;
+      const shown = outUnit === 'J' ? j : kJ;
+
+      let statusClass = 'status-ok', arrow = '✓', text = 'Work computed';
+      if (Math.abs(j) < 1e-9) { statusClass = 'status-warn'; arrow = '◆'; text = 'Zero work (cos θ = 0 or F = 0 or d = 0)'; }
+      else if (j < 0) { statusClass = 'status-warn'; arrow = '◆'; text = 'Negative work (force opposes displacement)'; }
+
+      const scale = workScale(j);
+      const comp = workComparison(j);
+
+      let ctx = [];
+      ctx.push(`🔹 Work: <strong>${smartFmt(shown)} ${outUnit}</strong> (${smartFmt(j)} J).`);
+      if (angleMode === 'parallel' || theta === 0) {
+        ctx.push(`🔹 Force is parallel to displacement (θ = 0°), so cos θ = 1 and W = F × d.`);
+      } else if (Math.abs(theta - 90) < 1e-9) {
+        ctx.push(`🔹 θ = 90°, so cos θ = 0 and the work is zero — perpendicular forces do no work.`);
+      } else if (theta > 90 && theta < 270) {
+        ctx.push(`🔹 θ = ${fmtNum(theta, 4)}°, cos θ = ${fmtNum(cosT, 4)} (negative). The force opposes the displacement and does negative work.`);
+      } else {
+        ctx.push(`🔹 θ = ${fmtNum(theta, 4)}°, cos θ = ${fmtNum(cosT, 4)}. Only the component F cos θ = ${smartFmt(FN * cosT)} N does useful work.`);
+      }
+      ctx.push(`🔹 Scale: this is <strong>${scale}</strong>.`);
+      if (comp) ctx.push(`🔹 That is ${comp}.`);
+
+      const html = `
+        <div class="result-label">Work (W = F × d × cos θ)</div>
+        <div class="cgpa-big-value" style="${j < 0 ? 'color:#b45309;' : ''}">${smartFmt(shown)}<span class="cgpa-big-scale">${outUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${smartFmt(j)} J</p>
+        <div style="text-align:center;">
+          <span class="status-badge ${statusClass}">${arrow} ${text}</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(F, 4)}</div>
+            <div class="cgpa-summary-label">F (${wForceUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(d, 4)}</div>
+            <div class="cgpa-summary-label">d (${wDistanceUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${angleMode === 'parallel' ? '0°' : fmtNum(theta, 2) + '°'}</div>
+            <div class="cgpa-summary-label">Angle θ</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${smartFmt(shown)}</div>
+            <div class="cgpa-summary-label">W (${outUnit})</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: W = F × d × cos θ.</li>
+            <li>Convert to SI: F = ${fmtNum(F, 4)} ${wForceUnit.value} = ${smartFmt(FN)} N; d = ${fmtNum(d, 4)} ${wDistanceUnit.value} = ${smartFmt(dM)} m.</li>
+            ${angleMode === 'parallel' || theta === 0
+              ? `<li>θ = 0°, so cos θ = 1.</li>`
+              : `<li>θ = ${fmtNum(theta, 4)}°, so cos θ = ${fmtNum(cosT, 4)}.</li>`}
+            <li>Work in J: ${smartFmt(FN)} × ${smartFmt(dM)} × ${fmtNum(cosT, 4)} = <strong>${smartFmt(j)} J</strong>.</li>
+            <li>In kJ: ${smartFmt(j)} / 1000 = <strong>${smartFmt(kJ)} kJ</strong>.</li>
+            <li>Result in your chosen unit: <strong>${smartFmt(shown)} ${outUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+        </div>
+      `;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Find force ============ */
+    function calcForce() {
+      const wRaw = fWork.value.trim(), dRaw = fDistance.value.trim();
+      if (wRaw === '') { showError(fWork, 'Enter the work.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (dRaw === '') { showError(fDistance, 'Enter the distance.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const W = parseNum(wRaw), d = parseNum(dRaw);
+      if (!Number.isFinite(W)) { showError(fWork, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(d)) { showError(fDistance, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (d <= 0) { showError(fDistance, 'Distance must be greater than 0 (division by zero).'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      let theta = 0, cosT = 1;
+      if (angleMode === 'custom') {
+        const tRaw = fTheta.value.trim();
+        if (tRaw === '') { showError(fTheta, 'Enter the angle θ.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        theta = parseNum(tRaw);
+        if (!Number.isFinite(theta)) { showError(fTheta, 'Enter a valid angle.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        cosT = Math.cos(theta * Math.PI / 180);
+      }
+      if (Math.abs(cosT) < 1e-9) {
+        showError(angleMode === 'custom' ? fTheta : fWork,
+          'cos θ = 0 (force perpendicular to displacement), so work is zero regardless of force. Force cannot be determined.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      const J = workToJ(W, fWorkUnit.value);
+      const dM = distToM(d, fDistanceUnit.value);
+      const FN = J / (dM * cosT);
+      const kN = FN / 1000;
+
+      const outUnit = fOutUnit.value;
+      const shown = outUnit === 'N' ? FN : kN;
+
+      let ctx = [];
+      ctx.push(`🔹 Force: <strong>${smartFmt(shown)} ${outUnit}</strong> (${smartFmt(FN)} N).`);
+      if (angleMode === 'parallel' || theta === 0) {
+        ctx.push(`🔹 Force is parallel to displacement (θ = 0°), so cos θ = 1 and F = W / d.`);
+      } else {
+        ctx.push(`🔹 Only the component F cos θ = ${smartFmt(FN * cosT)} N contributes to the work. The total applied force is larger: F = W / (d × cos θ).`);
+      }
+      ctx.push(`🔹 Equivalent weight: this force supports a mass of about <strong>${smartFmt(FN / 9.8)} kg</strong> at Earth's surface.`);
+      ctx.push(`🔹 Unit check: J / (m × dimensionless) = N ✓`);
+
+      const html = `
+        <div class="result-label">Force (F = W / (d × cos θ))</div>
+        <div class="cgpa-big-value">${smartFmt(shown)}<span class="cgpa-big-scale">${outUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${smartFmt(FN)} N</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Force computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(W, 4)}</div>
+            <div class="cgpa-summary-label">W (${fWorkUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(d, 4)}</div>
+            <div class="cgpa-summary-label">d (${fDistanceUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${angleMode === 'parallel' ? '0°' : fmtNum(theta, 2) + '°'}</div>
+            <div class="cgpa-summary-label">Angle θ</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${smartFmt(shown)}</div>
+            <div class="cgpa-summary-label">F (${outUnit})</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: F = W / (d × cos θ).</li>
+            <li>Convert to SI: W = ${fmtNum(W, 4)} ${fWorkUnit.value} = ${smartFmt(J)} J; d = ${fmtNum(d, 4)} ${fDistanceUnit.value} = ${smartFmt(dM)} m.</li>
+            ${angleMode === 'parallel' || theta === 0
+              ? `<li>θ = 0°, so cos θ = 1.</li>`
+              : `<li>θ = ${fmtNum(theta, 4)}°, so cos θ = ${fmtNum(cosT, 4)}.</li>`}
+            <li>Force in N: ${smartFmt(J)} / (${smartFmt(dM)} × ${fmtNum(cosT, 4)}) = <strong>${smartFmt(FN)} N</strong>.</li>
+            <li>In kN: ${smartFmt(FN)} / 1000 = <strong>${smartFmt(kN)} kN</strong>.</li>
+            <li>Result in your chosen unit: <strong>${smartFmt(shown)} ${outUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+        </div>
+      `;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Find distance ============ */
+    function calcDistance() {
+      const wRaw = dWork.value.trim(), fRaw = dForce.value.trim();
+      if (wRaw === '') { showError(dWork, 'Enter the work.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (fRaw === '') { showError(dForce, 'Enter the force.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const W = parseNum(wRaw), F = parseNum(fRaw);
+      if (!Number.isFinite(W)) { showError(dWork, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(F)) { showError(dForce, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (F <= 0) { showError(dForce, 'Force must be greater than 0 (division by zero).'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      let theta = 0, cosT = 1;
+      if (angleMode === 'custom') {
+        const tRaw = dTheta.value.trim();
+        if (tRaw === '') { showError(dTheta, 'Enter the angle θ.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        theta = parseNum(tRaw);
+        if (!Number.isFinite(theta)) { showError(dTheta, 'Enter a valid angle.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        cosT = Math.cos(theta * Math.PI / 180);
+      }
+      if (Math.abs(cosT) < 1e-9) {
+        showError(angleMode === 'custom' ? dTheta : dWork,
+          'cos θ = 0 (force perpendicular to displacement), so work is zero regardless of distance. Distance cannot be determined.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      const J = workToJ(W, dWorkUnit.value);
+      const FN = forceToN(F, dForceUnit.value);
+      const dM = J / (FN * cosT);
+      const dCm = dM * 100;
+
+      const outUnit = dOutUnit.value;
+      const shown = outUnit === 'm' ? dM : dCm;
+
+      let ctx = [];
+      ctx.push(`🔹 Distance: <strong>${smartFmt(shown)} ${outUnit}</strong> (${smartFmt(dM)} m).`);
+      if (angleMode === 'parallel' || theta === 0) {
+        ctx.push(`🔹 Force is parallel to displacement (θ = 0°), so cos θ = 1 and d = W / F.`);
+      } else {
+        ctx.push(`🔹 Only the component F cos θ = ${smartFmt(FN * cosT)} N contributes to work. Solving for the full distance gives d = W / (F × cos θ).`);
+      }
+      ctx.push(`🔹 Unit check: J / (N × dimensionless) = (N·m) / N = m ✓`);
+
+      const html = `
+        <div class="result-label">Distance (d = W / (F × cos θ))</div>
+        <div class="cgpa-big-value">${smartFmt(shown)}<span class="cgpa-big-scale">${outUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${smartFmt(dM)} m</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Distance computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(W, 4)}</div>
+            <div class="cgpa-summary-label">W (${dWorkUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(F, 4)}</div>
+            <div class="cgpa-summary-label">F (${dForceUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${angleMode === 'parallel' ? '0°' : fmtNum(theta, 2) + '°'}</div>
+            <div class="cgpa-summary-label">Angle θ</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${smartFmt(shown)}</div>
+            <div class="cgpa-summary-label">d (${outUnit})</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: d = W / (F × cos θ).</li>
+            <li>Convert to SI: W = ${fmtNum(W, 4)} ${dWorkUnit.value} = ${smartFmt(J)} J; F = ${fmtNum(F, 4)} ${dForceUnit.value} = ${smartFmt(FN)} N.</li>
+            ${angleMode === 'parallel' || theta === 0
+              ? `<li>θ = 0°, so cos θ = 1.</li>`
+              : `<li>θ = ${fmtNum(theta, 4)}°, so cos θ = ${fmtNum(cosT, 4)}.</li>`}
+            <li>Distance in m: ${smartFmt(J)} / (${smartFmt(FN)} × ${fmtNum(cosT, 4)}) = <strong>${smartFmt(dM)} m</strong>.</li>
+            <li>In cm: ${smartFmt(dM)} × 100 = <strong>${smartFmt(dCm)} cm</strong>.</li>
+            <li>Result in your chosen unit: <strong>${smartFmt(shown)} ${outUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+        </div>
+      `;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      [wForce, wDistance, wTheta, fWork, fDistance, fTheta, dWork, dForce, dTheta].forEach(el => { if (el) el.value = ''; });
+      [wForceUnit, fOutUnit, dForceUnit].forEach(el => { if (el) el.value = 'N'; });
+      [wDistanceUnit, dOutUnit].forEach(el => { if (el) el.value = 'm'; });
+      if (fDistanceUnit) fDistanceUnit.value = 'm';
+      [wOutUnit, fWorkUnit, dWorkUnit].forEach(el => { if (el) el.value = 'J'; });
+      mode = 'work';
+      angleMode = 'parallel';
+      modeBtns.forEach(b => {
+        const on = b.dataset.mode === 'work';
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      angleBtns.forEach(b => {
+        const on = b.dataset.angle === 'parallel';
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      panelWork.classList.remove('hidden');
+      panelForce.classList.add('hidden');
+      panelDistance.classList.add('hidden');
+      wAngleRow.style.display = 'none';
+      fAngleRow.style.display = 'none';
+      dAngleRow.style.display = 'none';
+      previewEl.innerHTML = 'Preview: enter force and distance';
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

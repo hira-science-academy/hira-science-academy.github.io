@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Attendance Calculator — Percentage, Required Classes and Safe Skips | Hira Science Academy</title>
+  <meta content="Free attendance calculator. Compute your current attendance percentage, see how many classes you must attend to reach a target, and how many you can still skip safely." name="description"/>
+  <meta content="attendance calculator, attendance percentage, classes needed, safe skips, attendance shortage, BISE Punjab, class 9, class 10" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/attendance-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Attendance Calculator — Percentage, Required Classes and Safe Skips" property="og:title"/>
+  <meta content="Track your attendance percentage, plan the classes you must attend, and see how many you can still skip." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/attendance-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Attendance Calculator", "item": "https://hiraacademy.com.pk/tools/attendance-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is attendance percentage calculated?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Divide the number of classes you attended by the total number of classes conducted, then multiply by 100. For example, if you attended 78 out of 96 classes, your attendance is (78 / 96) × 100 = 81.25%." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many classes can I miss without falling below a target?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The maximum number of additional classes you can miss is found by solving (attended) / (total + skips) ≥ target. Rearranged: skips ≤ attended / target − total. This calculator computes that number for you, given your attended, total and target percentages." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many classes must I attend to reach a target percentage?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If your current attendance is below the target, you need to attend enough consecutive future classes so that (attended + x) / (total + x) ≥ target. Solving for x gives x ≥ (target × total − attended) / (1 − target). The result is rounded up to the next whole class." }
+      },
+      {
+        "@type": "Question",
+        "name": "What attendance percentage is required in Pakistani schools?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Most BISE Punjab boards require 75% attendance to sit the annual exam. Some private schools set higher thresholds (80% or 85%) and a few set lower ones. Check your school's official attendance policy or your board's exam regulations." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this calculator count medical leave or approved absences?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Only the numbers you enter. If your school exempts medical leave or approved absences, subtract those from the total classes and attended classes before entering, so the calculator reflects your official attendance record." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the target is impossible to reach?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If the required classes to reach the target exceeds the number of classes remaining in the term, the target is mathematically out of reach. The calculator flags this and shows the highest attendance you can still achieve with the remaining classes." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
+    .latex-frac.big { font-size: 1.2em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    /* Result */
+    .cgpa-big-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0b1220;
+      line-height: 1.1;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .cgpa-big-scale {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+    .cgpa-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .cgpa-summary { grid-template-columns: repeat(4, 1fr); } }
+    .cgpa-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cgpa-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .cgpa-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .cgpa-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .cgpa-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .cgpa-context strong { color: #0b1220; }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      margin-top: 0.5rem;
+    }
+    .status-ok    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .status-warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .status-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .status-secure{ background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+
+    /* Input rows */
+    .cgpa-input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-items: end;
+      margin-bottom: 0.75rem;
+    }
+    @media (max-width: 540px) { .cgpa-input-grid { grid-template-columns: 1fr; } }
+    .cgpa-group-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #0369a1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cgpa-group-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* Mode toggle */
+    .mode-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .mode-toggle button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .mode-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+
+    /* Attendance progress ring */
+    .att-ring-wrap {
+      display: flex;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+    .att-ring {
+      position: relative;
+      width: 9rem;
+      height: 9rem;
+    }
+    .att-ring svg { transform: rotate(-90deg); }
+    .att-ring .ring-bg { fill: none; stroke: #e2e8f0; stroke-width: 10; }
+    .att-ring .ring-fg { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 0.6s ease; }
+    .att-ring .ring-label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Montserrat', sans-serif;
+      color: #0b1220;
+      line-height: 1.1;
+    }
+    .att-ring .ring-label strong {
+      font-size: 1.65rem;
+      font-weight: 800;
+    }
+    .att-ring .ring-label span {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+      margin-top: 0.15rem;
+    }
+
+    /* Class-count tiles */
+    .att-tile-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .att-tile-grid { grid-template-columns: repeat(4, 1fr); } }
+    .att-tile {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.65rem;
+      padding: 0.7rem 0.5rem;
+      text-align: center;
+    }
+    .att-tile .tile-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0b1220;
+      line-height: 1.1;
+    }
+    .att-tile .tile-label {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #64748b;
+      font-weight: 700;
+      margin-top: 0.25rem;
+    }
+    .att-tile.tile-green { border-color: #86efac; background: #f0fdf4; }
+    .att-tile.tile-green .tile-num { color: #166534; }
+    .att-tile.tile-red   { border-color: #fca5a5; background: #fef2f2; }
+    .att-tile.tile-red .tile-num { color: #991b1b; }
+    .att-tile.tile-amber { border-color: #fde68a; background: #fffbeb; }
+    .att-tile.tile-amber .tile-num { color: #92400e; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Current % · Required Classes · Safe Skips</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Attendance Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Track your attendance percentage, plan how many classes you must attend to hit a target, and see how many you can still skip safely.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Attendance Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Attendance calculator inputs">
+
+      <div class="mode-toggle" role="group" aria-label="Calculation mode">
+        <button type="button" data-mode="current" class="is-active" aria-pressed="true">Current Attendance</button>
+        <button type="button" data-mode="plan" aria-pressed="false">Plan to Reach Target</button>
+      </div>
+
+      <!-- Current mode -->
+      <div id="panel-current">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Your attendance record</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="attended" class="calc-label">Classes attended</label>
+            <input type="text" inputmode="numeric" id="attended" class="calc-input" placeholder="e.g. 78" autocomplete="off" />
+          </div>
+          <div>
+            <label for="total" class="calc-label">Total classes held</label>
+            <input type="text" inputmode="numeric" id="total" class="calc-input" placeholder="e.g. 96" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Optional — check against a target</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="target-check" class="calc-label">Target attendance (%)</label>
+            <input type="text" inputmode="decimal" id="target-check" class="calc-input" placeholder="e.g. 75" autocomplete="off" />
+          </div>
+          <div>
+            <label for="remaining" class="calc-label">Classes remaining in term (optional)</label>
+            <input type="text" inputmode="numeric" id="remaining" class="calc-input" placeholder="e.g. 24" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Plan mode -->
+      <div id="panel-plan" class="hidden">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Your current record</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="p-attended" class="calc-label">Classes attended so far</label>
+            <input type="text" inputmode="numeric" id="p-attended" class="calc-input" placeholder="e.g. 60" autocomplete="off" />
+          </div>
+          <div>
+            <label for="p-total" class="calc-label">Total classes held so far</label>
+            <input type="text" inputmode="numeric" id="p-total" class="calc-input" placeholder="e.g. 90" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Your goal</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="p-target" class="calc-label">Target attendance (%)</label>
+            <input type="text" inputmode="decimal" id="p-target" class="calc-input" placeholder="e.g. 75" autocomplete="off" />
+          </div>
+          <div>
+            <label for="p-remaining" class="calc-label">Classes remaining in term</label>
+            <input type="text" inputmode="numeric" id="p-remaining" class="calc-input" placeholder="e.g. 30" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        Preview: enter your attendance record
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this attendance calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool has two jobs. First, it computes your current attendance percentage — the simple <em>attended ÷ total × 100</em> that every school uses. Second, it answers the two questions every student actually asks when their attendance is borderline: <strong>"How many classes do I need to attend to reach 75%?"</strong> and <strong>"How many classes can I still skip without falling below 75%?"</strong> Both are solved with closed-form algebra, not guesswork. The result shows a circular progress ring for your percentage, a four-tile summary of the key numbers, and step-by-step arithmetic so you can see the reasoning behind every figure.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Current attendance percentage</div>
+          <div class="math-block">
+            <span>Attendance % = </span>
+            <span class="latex-frac big">
+              <span class="f-num">attended</span>
+              <span class="f-den">total</span>
+            </span>
+            <span> × 100</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Classes needed to reach target (attendance below target)</div>
+          <div class="math-block">
+            <span>x ≥ </span>
+            <span class="latex-frac big">
+              <span class="f-num">target × total − attended</span>
+              <span class="f-den">1 − target</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Classes you can still skip (attendance above target)</div>
+          <div class="math-block">
+            <span>skips ≤ </span>
+            <span class="latex-frac big">
+              <span class="f-num">attended</span>
+              <span class="f-den">target</span>
+            </span>
+            <span> − total</span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>attended</strong> — number of classes you have attended so far.</li>
+          <li><strong>total</strong> — total number of classes held so far.</li>
+          <li><strong>target</strong> — the attendance percentage you want to reach or maintain, as a decimal (e.g. 75% → 0.75).</li>
+          <li><strong>x</strong> — the number of additional classes you must attend to reach the target.</li>
+          <li><strong>skips</strong> — the number of classes you can miss while still staying above the target.</li>
+        </ul>
+
+        <p class="leading-relaxed text-justify mt-3">
+          The two planning formulas come from solving the same inequality, <em>(attended) / (total + future) ≥ target</em>, in opposite directions. The first solves for the future attended classes (assumes every future class is attended). The second solves for the future skipped classes (assumes no future class is attended).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Comfortable attendance</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            Attended: 78 · Total: 96
+          </div>
+          <ol>
+            <li>Attendance % = 78 / 96 × 100 = <strong>81.25%</strong>.</li>
+            <li>Well above the typical 75% threshold.</li>
+            <li>Skips allowed to stay at 75%: 78 / 0.75 − 96 = 104 − 96 = <strong>8 classes</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Just above the threshold</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            Attended: 69 · Total: 90
+          </div>
+          <ol>
+            <li>Attendance % = 69 / 90 × 100 = <strong>76.67%</strong>.</li>
+            <li>Above 75% but only just.</li>
+            <li>Skips allowed to stay at 75%: 69 / 0.75 − 90 = 92 − 90 = <strong>2 classes</strong>.</li>
+            <li>You can miss only two more classes before dropping below 75%.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Below the threshold — how many to attend</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            Attended: 60 · Total: 90 · Target: 75%
+          </div>
+          <ol>
+            <li>Current attendance: 60 / 90 = <strong>66.67%</strong>.</li>
+            <li>Classes needed to reach 75%: (0.75 × 90 − 60) / (1 − 0.75) = (67.5 − 60) / 0.25 = <strong>30 classes</strong>.</li>
+            <li>You need to attend 30 consecutive classes without missing any, and then your attendance will be (60 + 30) / (90 + 30) = 90 / 120 = 75%.</li>
+            <li>If only 20 classes remain, the target is unreachable this term — the best you can finish with is (60 + 20) / (90 + 20) = 80 / 110 = 72.73%.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Attendance exactly at target</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            Attended: 60 · Total: 80 · Target: 75%
+          </div>
+          <ol>
+            <li>Attendance % = 60 / 80 = <strong>75.00%</strong>.</li>
+            <li>Right on the threshold — no margin.</li>
+            <li>Skips allowed at 75%: 60 / 0.75 − 80 = 80 − 80 = <strong>0 classes</strong>.</li>
+            <li>Classes needed: 0 — you are already at the target.</li>
+            <li>You cannot miss any more classes without dropping below 75%.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Planning ahead with remaining classes</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            Attended: 55 · Total: 80 · Target: 75% · Remaining classes: 40
+          </div>
+          <ol>
+            <li>Current attendance: 55 / 80 = <strong>68.75%</strong>.</li>
+            <li>Classes needed: (0.75 × 80 − 55) / (1 − 0.75) = (60 − 55) / 0.25 = <strong>20 classes</strong>.</li>
+            <li>Only 40 classes remain. Since 20 ≤ 40, the target is <strong>reachable</strong> — you must attend at least 20 of the next 40 without missing.</li>
+            <li>If you attend all 40, you finish at (55 + 40) / (80 + 40) = 95 / 120 = 79.17%. Still above target.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 6: Target unreachable in the remaining term</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            Attended: 40 · Total: 80 · Target: 75% · Remaining classes: 20
+          </div>
+          <ol>
+            <li>Current attendance: 40 / 80 = <strong>50.00%</strong>.</li>
+            <li>Classes needed: (0.75 × 80 − 40) / 0.25 = (60 − 40) / 0.25 = <strong>80 classes</strong>.</li>
+            <li>Only 20 classes remain. Since 80 &gt; 20, the target is <strong>impossible to reach this term</strong>.</li>
+            <li>Best possible finish: (40 + 20) / (80 + 20) = 60 / 100 = <strong>60.00%</strong>.</li>
+            <li>You would need to negotiate with your school about the attendance requirement, or accept the consequences.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Attendance requirements in Pakistan</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Attendance rules vary widely between institutions. The most common thresholds:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>BISE Punjab boards</strong> — 75% attendance is the standard minimum to be allowed to sit the annual examination for class 9 and 10. Boards verify attendance via school-submitted records.</li>
+          <li><strong>Government schools</strong> — often follow the board minimum (75%), though enforcement varies by school.</li>
+          <li><strong>Private schools</strong> — frequently set higher thresholds, such as 80% or 85%. Some premium schools require 90%.</li>
+          <li><strong>Colleges and universities</strong> — most Pakistani universities require 75% for exam eligibility, and many professional programmes (MBBS, engineering) require 80%+.</li>
+          <li><strong>Scholarship and honours programmes</strong> — some require 90% or higher as a condition for maintaining the award.</li>
+        </ul>
+        <p class="leading-relaxed text-justify mt-2">
+          When you are unsure, ask your class teacher or check the school's official attendance policy document. Never rely on the general figure alone — the specific rule at your school is what gets applied.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Counting free periods or cancelled classes in the total.</strong> Only classes that were actually held count. If a class was cancelled, it is not in the denominator.</li>
+          <li><strong>Forgetting that late arrivals often count as absences.</strong> Many schools mark a late student as absent for that period. Check your school's rule.</li>
+          <li><strong>Assuming medical leave counts as attended.</strong> Usually it does not, unless the school has an explicit exemption policy. Enter the numbers as your official record shows them.</li>
+          <li><strong>Ignoring the remaining-classes figure.</strong> A required-classes number means nothing without knowing whether enough classes remain this term to hit it.</li>
+          <li><strong>Using percentage of working days instead of percentage of class periods.</strong> Attendance is usually computed per period, not per day. If your school tracks periods, use per-period numbers.</li>
+          <li><strong>Trusting a rounded percentage at the boundary.</strong> 74.5% rounds to 75%, but the official system may not round — you may be genuinely below the cutoff. Keep a small margin above the target.</li>
+          <li><strong>Waiting until the last two weeks to fix attendance.</strong> The required-classes formula shows that catching up from below is expensive: dropping to 60% from 75% requires attending roughly three times as many future classes as the gap suggests.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>How is attendance percentage calculated?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Divide the number of classes you attended by the total number of classes conducted, then multiply by 100. For example, if you attended 78 out of 96 classes, your attendance is (78 / 96) × 100 = 81.25%.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How many classes can I miss without falling below a target?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">The maximum number of additional classes you can miss is found by solving (attended) / (total + skips) ≥ target. Rearranged: skips ≤ attended / target − total. This calculator computes that number for you, given your attended, total and target percentages.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How many classes must I attend to reach a target percentage?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">If your current attendance is below the target, you need to attend enough consecutive future classes so that (attended + x) / (total + x) ≥ target. Solving for x gives x ≥ (target × total − attended) / (1 − target). The result is rounded up to the next whole class.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What attendance percentage is required in Pakistani schools?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Most BISE Punjab boards require 75% attendance to sit the annual exam. Some private schools set higher thresholds (80% or 85%) and a few set lower ones. Check your school's official attendance policy or your board's exam regulations.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does this calculator count medical leave or approved absences?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">No. Only the numbers you enter. If your school exempts medical leave or approved absences, subtract those from the total classes and attended classes before entering, so the calculator reflects your official attendance record.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What if the target is impossible to reach?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">If the required classes to reach the target exceeds the number of classes remaining in the term, the target is mathematically out of reach. The calculator flags this and shows the highest attendance you can still achieve with the remaining classes.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="study-time-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Study Time Calculator</a></li>
+          <li><a href="exam-percentage-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Exam Percentage Calculator</a></li>
+          <li><a href="required-exam-score-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Required Exam Score Calculator</a></li>
+          <li><a href="final-grade-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Final Grade Calculator</a></li>
+          <li><a href="percentage-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Percentage Calculator</a></li>
+          <li><a href="gpa-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ GPA Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Track your term progress with the free
+          <a href="https://hiraacademy.com.pk/student-portal.html" class="text-blue-700 font-semibold underline">Student Portal</a>,
+          and revise subject content with our
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'attendance-calculator';
+
+    /* Current mode refs */
+    const attendedEl   = document.getElementById('attended');
+    const totalEl      = document.getElementById('total');
+    const targetChkEl  = document.getElementById('target-check');
+    const remainingEl  = document.getElementById('remaining');
+
+    /* Plan mode refs */
+    const pAttendedEl  = document.getElementById('p-attended');
+    const pTotalEl     = document.getElementById('p-total');
+    const pTargetEl    = document.getElementById('p-target');
+    const pRemainingEl = document.getElementById('p-remaining');
+
+    const previewEl    = document.getElementById('live-preview');
+    const calcBtn      = document.getElementById('calc-btn');
+    const resetBtn     = document.getElementById('reset-btn');
+    const resultPanel  = document.getElementById('result-panel');
+    const section      = document.querySelector('section[aria-label="Attendance calculator inputs"]');
+    const modeBtns     = document.querySelectorAll('.mode-toggle button');
+    const panelCurrent = document.getElementById('panel-current');
+    const panelPlan    = document.getElementById('panel-plan');
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    let mode = 'current';
+
+    /* ============ Helpers ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 4;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) return String(x);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+    function round2(x) { return Math.round(x * 100) / 100; }
+
+    function attendanceClass(pct, target) {
+      // Returns {cls, arrow, label} for a status badge
+      const t = (target && Number.isFinite(target)) ? target : 75;
+      if (pct >= t + 10) return { cls: 'status-ok', arrow: '✓', label: 'Comfortably above target' };
+      if (pct >= t + 3)  return { cls: 'status-ok', arrow: '✓', label: 'Above target' };
+      if (pct >= t)      return { cls: 'status-warn', arrow: '◆', label: 'Just above target' };
+      if (pct >= t - 5)  return { cls: 'status-warn', arrow: '◆', label: 'Below target — recoverable' };
+      if (pct >= 40)     return { cls: 'status-alert', arrow: '⚠', label: 'Below target — serious' };
+      return { cls: 'status-alert', arrow: '⚠', label: 'Critical — at risk of exam ineligibility' };
+    }
+
+    function ringColor(pct, target) {
+      const t = (target && Number.isFinite(target)) ? target : 75;
+      if (pct >= t + 5) return '#22c55e';
+      if (pct >= t)     return '#0ea5e9';
+      if (pct >= t - 10) return '#f59e0b';
+      return '#ef4444';
+    }
+
+    /* ============ Mode switching ============ */
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mode = btn.dataset.mode;
+        modeBtns.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        panelCurrent.classList.toggle('hidden', mode !== 'current');
+        panelPlan.classList.toggle('hidden', mode !== 'plan');
+        clearAllErrors(section);
+        hideResult(resultPanel);
+        renderPreview();
+      });
+    });
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      if (mode === 'current') {
+        const aRaw = attendedEl.value.trim();
+        const tRaw = totalEl.value.trim();
+        if (aRaw === '' && tRaw === '') { previewEl.innerHTML = 'Preview: enter your attendance record'; return; }
+        const a = parseNum(aRaw);
+        const t = parseNum(tRaw);
+        if (!Number.isFinite(a) || !Number.isFinite(t)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        if (t <= 0) { previewEl.innerHTML = 'Preview: total classes must be greater than 0'; return; }
+        if (a < 0) { previewEl.innerHTML = 'Preview: attended classes cannot be negative'; return; }
+        if (a > t) { previewEl.innerHTML = 'Preview: attended cannot exceed total'; return; }
+        const pct = (a / t) * 100;
+        const targetRaw = targetChkEl.value.trim();
+        let tgt = null;
+        if (targetRaw !== '') {
+          const tv = parseNum(targetRaw);
+          if (Number.isFinite(tv) && tv > 0 && tv < 100) tgt = tv;
+        }
+        const cmp = tgt === null ? '' : (pct >= tgt ? ' ✓' : ' ✗');
+        previewEl.innerHTML = `Preview: attendance ≈ <span style="color:#0b1220;">${fmtNum(round2(pct), 2)}%</span>${cmp}`;
+      } else {
+        const aRaw = pAttendedEl.value.trim();
+        const tRaw = pTotalEl.value.trim();
+        const tgRaw = pTargetEl.value.trim();
+        const rmRaw = pRemainingEl.value.trim();
+        const filled = [aRaw, tRaw, tgRaw, rmRaw].filter(s => s !== '').length;
+        if (filled === 0) { previewEl.innerHTML = 'Preview: enter your current record and target'; return; }
+        if (filled < 4) { previewEl.innerHTML = `Preview: ${filled}/4 fields filled`; return; }
+        const a = parseNum(aRaw);
+        const t = parseNum(tRaw);
+        const tg = parseNum(tgRaw);
+        const rm = parseNum(rmRaw);
+        if (![a, t, tg, rm].every(Number.isFinite)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        if (t <= 0) { previewEl.innerHTML = 'Preview: total classes must be greater than 0'; return; }
+        if (a < 0 || a > t) { previewEl.innerHTML = 'Preview: check attended vs total'; return; }
+        if (tg <= 0 || tg >= 100) { previewEl.innerHTML = 'Preview: target must be between 0 and 100'; return; }
+        if (rm < 0) { previewEl.innerHTML = 'Preview: remaining classes cannot be negative'; return; }
+        const current = (a / t) * 100;
+        if (current >= tg) {
+          const skips = Math.floor((a / (tg / 100)) - t);
+          previewEl.innerHTML = `Preview: at target (${fmtNum(round2(current), 2)}%) — can skip up to <span style="color:#0b1220;">${skips}</span> more`;
+        } else {
+          const needed = Math.ceil(((tg / 100) * t - a) / (1 - tg / 100));
+          if (needed > rm) {
+            const ceiling = ((a + rm) / (t + rm)) * 100;
+            previewEl.innerHTML = `Preview: target not reachable — ceiling <span style="color:#b91c1c;">${fmtNum(round2(ceiling), 2)}%</span>`;
+          } else {
+            previewEl.innerHTML = `Preview: attend <span style="color:#0b1220;">${needed}</span> of the next ${rm} classes without missing`;
+          }
+        }
+      }
+    }
+
+    [attendedEl, totalEl, targetChkEl, remainingEl,
+     pAttendedEl, pTotalEl, pTargetEl, pRemainingEl].forEach(el => {
+      el.addEventListener('input', renderPreview);
+    });
+
+    /* ============ Calculate ============ */
+    function calculate() {
+      clearAllErrors(section);
+      if (mode === 'current') calcCurrent();
+      else calcPlan();
+    }
+
+    /* ============ Current mode ============ */
+    function calcCurrent() {
+      const aRaw = attendedEl.value.trim();
+      const tRaw = totalEl.value.trim();
+
+      if (aRaw === '') { showError(attendedEl, 'Enter the classes you attended.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (tRaw === '') { showError(totalEl, 'Enter the total classes held.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const a = parseNum(aRaw);
+      const t = parseNum(tRaw);
+
+      if (!Number.isFinite(a)) { showError(attendedEl, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(t)) { showError(totalEl, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (a < 0) { showError(attendedEl, 'Attended classes cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (t <= 0) { showError(totalEl, 'Total classes must be greater than 0.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (a > t) { showError(attendedEl, 'Attended classes cannot exceed total classes.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      // Optional target
+      let target = null;
+      const tgRaw = targetChkEl.value.trim();
+      if (tgRaw !== '') {
+        const tv = parseNum(tgRaw);
+        if (!Number.isFinite(tv)) { showError(targetChkEl, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        if (tv <= 0 || tv >= 100) { showError(targetChkEl, 'Target must be between 0 and 100.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        target = tv;
+      }
+
+      // Optional remaining
+      let remaining = null;
+      const rmRaw = remainingEl.value.trim();
+      if (rmRaw !== '') {
+        const rv = parseNum(rmRaw);
+        if (!Number.isFinite(rv)) { showError(remainingEl, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        if (rv < 0) { showError(remainingEl, 'Remaining classes cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+        remaining = rv;
+      }
+
+      const pct = (a / t) * 100;
+      const pctR = round2(pct);
+      const missed = t - a;
+
+      // If target given, compute skips and needed
+      let skipsAllowed = null;
+      let neededToReach = 0;
+      let reachable = true;
+      let ceiling = pct;
+
+      if (target !== null) {
+        const tg = target / 100;
+        if (pct >= target) {
+          skipsAllowed = Math.floor(a / tg - t);
+          if (skipsAllowed < 0) skipsAllowed = 0;
+        } else {
+          neededToReach = Math.ceil((tg * t - a) / (1 - tg));
+          if (remaining !== null && neededToReach > remaining) {
+            reachable = false;
+            ceiling = ((a + remaining) / (t + remaining)) * 100;
+          }
+        }
+      }
+
+      const badge = attendanceClass(pct, target || 75);
+      const color = ringColor(pct, target || 75);
+
+      // SVG ring: circumference = 2*pi*r. r=44, so C ≈ 276.46
+      const R = 44, C = 2 * Math.PI * R;
+      const dashOffset = C * (1 - Math.min(pct, 100) / 100);
+
+      // Summary tiles
+      let tile1 = `<div class="att-tile"><div class="tile-num">${fmtNum(a, 2)}</div><div class="tile-label">Attended</div></div>`;
+      let tile2 = `<div class="att-tile"><div class="tile-num">${fmtNum(t, 2)}</div><div class="tile-label">Total held</div></div>`;
+      let tile3 = `<div class="att-tile"><div class="tile-num">${fmtNum(missed, 2)}</div><div class="tile-label">Missed</div></div>`;
+      let tile4;
+      if (target !== null) {
+        if (pct >= target) {
+          tile4 = `<div class="att-tile tile-green"><div class="tile-num">${skipsAllowed}</div><div class="tile-label">Can still skip</div></div>`;
+        } else if (reachable) {
+          tile4 = `<div class="att-tile tile-amber"><div class="tile-num">${neededToReach}</div><div class="tile-label">Classes needed</div></div>`;
+        } else {
+          tile4 = `<div class="att-tile tile-red"><div class="tile-num">${fmtNum(round2(ceiling), 1)}%</div><div class="tile-label">Best possible</div></div>`;
+        }
+      } else {
+        tile4 = `<div class="att-tile"><div class="tile-num">${fmtNum(pctR, 2)}%</div><div class="tile-label">Attendance</div></div>`;
+      }
+
+      // Context lines
+      let ctx = [];
+      ctx.push(`🔹 Attendance: <strong>${fmtNum(pctR, 2)}%</strong> (${fmtNum(a, 2)} attended / ${fmtNum(t, 2)} total).`);
+      ctx.push(`🔹 Missed classes so far: <strong>${fmtNum(missed, 2)}</strong>.`);
+
+      if (target !== null) {
+        if (pct >= target) {
+          ctx.push(`🟢 Above your target of <strong>${fmtNum(target, 2)}%</strong>.`);
+          if (skipsAllowed > 0) {
+            ctx.push(`🔹 You can miss up to <strong>${skipsAllowed}</strong> more class${skipsAllowed === 1 ? '' : 'es'} and still stay at or above ${fmtNum(target, 2)}%.`);
+          } else {
+            ctx.push(`🔹 You cannot miss any more classes without dropping below the target.`);
+          }
+          if (remaining !== null) {
+            const finalIfPerfect = ((a + remaining) / (t + remaining)) * 100;
+            ctx.push(`🔹 If you attend all ${fmtNum(remaining, 2)} remaining classes, you finish at <strong>${fmtNum(round2(finalIfPerfect), 2)}%</strong>.`);
+          }
+        } else if (reachable) {
+          ctx.push(`🟡 Below your target of <strong>${fmtNum(target, 2)}%</strong>, but recoverable.`);
+          ctx.push(`🔹 Attend <strong>${neededToReach}</strong> consecutive class${neededToReach === 1 ? '' : 'es'} without missing any to reach exactly ${fmtNum(target, 2)}%.`);
+          if (remaining !== null) {
+            ctx.push(`🔹 Only <strong>${fmtNum(remaining, 2)}</strong> classes remain — since ${neededToReach} ≤ ${fmtNum(remaining, 2)}, the target is reachable.`);
+            const slack = remaining - neededToReach;
+            if (slack > 0) ctx.push(`🔹 That leaves you a buffer of <strong>${slack}</strong> class${slack === 1 ? '' : 'es'} you could still miss, if needed.`);
+          }
+        } else {
+          ctx.push(`🔴 Below your target of <strong>${fmtNum(target, 2)}%</strong>, and <strong>not reachable this term</strong>.`);
+          ctx.push(`🔹 You would need <strong>${neededToReach}</strong> consecutive attended classes, but only <strong>${fmtNum(remaining, 2)}</strong> remain.`);
+          ctx.push(`🔹 Best possible finish: <strong>${fmtNum(round2(ceiling), 2)}%</strong> (attend every remaining class).`);
+        }
+      } else {
+        const t75 = 75;
+        if (pct >= t75) {
+          const skips75 = Math.floor(a / 0.75 - t);
+          ctx.push(`🔹 At the common 75% threshold, you can still miss <strong>${skips75 < 0 ? 0 : skips75}</strong> class${skips75 === 1 ? '' : 'es'} and remain eligible.`);
+        } else {
+          const need75 = Math.ceil((0.75 * t - a) / 0.25);
+          ctx.push(`🔹 To reach the common 75% threshold, attend <strong>${need75}</strong> consecutive classes without missing any.`);
+        }
+        ctx.push(`🔹 Tip: enter a target percentage to see how many classes you must attend or can still skip.`);
+      }
+
+      const html = `
+        <div class="result-label">Current attendance</div>
+        <div class="att-ring-wrap">
+          <div class="att-ring">
+            <svg width="144" height="144" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="ring-bg" cx="50" cy="50" r="${R}"></circle>
+              <circle class="ring-fg" cx="50" cy="50" r="${R}" stroke="${color}"
+                      stroke-dasharray="${C.toFixed(2)}" stroke-dashoffset="${dashOffset.toFixed(2)}"></circle>
+            </svg>
+            <div class="ring-label">
+              <strong>${fmtNum(pctR, 2)}%</strong>
+              <span>Attendance</span>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <span class="status-badge ${badge.cls}">${badge.arrow} ${badge.label}</span>
+        </div>
+
+        <div class="att-tile-grid">
+          ${tile1}${tile2}${tile3}${tile4}
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Attended: <strong>${fmtNum(a, 2)}</strong>. Total held: <strong>${fmtNum(t, 2)}</strong>.</li>
+            <li>Attendance % = ${fmtNum(a, 2)} / ${fmtNum(t, 2)} × 100 = <strong>${fmtNum(pctR, 2)}%</strong>.</li>
+            <li>Missed = ${fmtNum(t, 2)} − ${fmtNum(a, 2)} = <strong>${fmtNum(missed, 2)}</strong>.</li>
+            ${target !== null ? `
+              <li>Target = ${fmtNum(target, 2)}% (${fmtNum(target / 100, 4)} as decimal).</li>
+              ${pct >= target
+                ? `<li>Skips allowed = attended / target − total = ${fmtNum(a, 2)} / ${fmtNum(target / 100, 4)} − ${fmtNum(t, 2)} = <strong>${skipsAllowed}</strong>.</li>`
+                : `<li>Classes needed = (target × total − attended) / (1 − target) = (${fmtNum(target / 100, 4)} × ${fmtNum(t, 2)} − ${fmtNum(a, 2)}) / ${fmtNum(1 - target / 100, 4)} = <strong>${neededToReach}</strong>.</li>`}
+              ${remaining !== null && pct < target ? `<li>Remaining classes: ${fmtNum(remaining, 2)}. Required: ${neededToReach}. ${reachable ? 'Reachable ✓' : 'Not reachable this term ✗'}.</li>` : ''}
+            ` : ''}
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+        </div>
+      `;
+
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Plan mode ============ */
+    function calcPlan() {
+      const aRaw = pAttendedEl.value.trim();
+      const tRaw = pTotalEl.value.trim();
+      const tgRaw = pTargetEl.value.trim();
+      const rmRaw = pRemainingEl.value.trim();
+
+      if (aRaw === '') { showError(pAttendedEl, 'Enter classes attended so far.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (tRaw === '') { showError(pTotalEl, 'Enter total classes held so far.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (tgRaw === '') { showError(pTargetEl, 'Enter your target attendance percentage.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (rmRaw === '') { showError(pRemainingEl, 'Enter classes remaining in the term.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const a = parseNum(aRaw);
+      const t = parseNum(tRaw);
+      const tg = parseNum(tgRaw);
+      const rm = parseNum(rmRaw);
+
+      if (!Number.isFinite(a)) { showError(pAttendedEl, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(t)) { showError(pTotalEl, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(tg)) { showError(pTargetEl, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(rm)) { showError(pRemainingEl, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (a < 0) { showError(pAttendedEl, 'Attended classes cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (t <= 0) { showError(pTotalEl, 'Total classes must be greater than 0.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (a > t) { showError(pAttendedEl, 'Attended cannot exceed total.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (tg <= 0 || tg >= 100) { showError(pTargetEl, 'Target must be between 0 and 100 (exclusive).'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (rm < 0) { showError(pRemainingEl, 'Remaining classes cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const current = (a / t) * 100;
+      const currentR = round2(current);
+      const target = tg / 100;
+
+      const futureTotal = t + rm;
+      const bestCase = ((a + rm) / futureTotal) * 100;
+      const bestCaseR = round2(bestCase);
+
+      let neededToReach = 0;
+      let reachable = true;
+      let skipsAllowed = 0;
+      let maxSkipsInRemaining = 0;
+
+      if (current >= tg) {
+        neededToReach = 0;
+        // How many can be missed out of the remaining term?
+        // Solve (a) / (t + skipped) ≥ target → skipped ≤ a/target − t
+        skipsAllowed = Math.floor(a / target - t);
+        if (skipsAllowed < 0) skipsAllowed = 0;
+        if (skipsAllowed > rm) skipsAllowed = rm;
+        maxSkipsInRemaining = skipsAllowed;
+      } else {
+        neededToReach = Math.ceil((target * t - a) / (1 - target));
+        if (neededToReach > rm) {
+          reachable = false;
+        }
+      }
+
+      const badge = attendanceClass(current, tg);
+      const color = ringColor(current, tg);
+
+      const R = 44, C = 2 * Math.PI * R;
+      const dashOffset = C * (1 - Math.min(current, 100) / 100);
+
+      // Tiles
+      let tile1 = `<div class="att-tile"><div class="tile-num">${fmtNum(currentR, 2)}%</div><div class="tile-label">Current</div></div>`;
+      let tile2 = `<div class="att-tile"><div class="tile-num">${fmtNum(tg, 2)}%</div><div class="tile-label">Target</div></div>`;
+      let tile3 = `<div class="att-tile"><div class="tile-num">${fmtNum(rm, 2)}</div><div class="tile-label">Remaining</div></div>`;
+      let tile4;
+      if (current >= tg) {
+        tile4 = `<div class="att-tile tile-green"><div class="tile-num">${maxSkipsInRemaining}</div><div class="tile-label">Can still skip</div></div>`;
+      } else if (reachable) {
+        tile4 = `<div class="att-tile tile-amber"><div class="tile-num">${neededToReach}</div><div class="tile-label">Must attend</div></div>`;
+      } else {
+        tile4 = `<div class="att-tile tile-red"><div class="tile-num">${fmtNum(bestCaseR, 1)}%</div><div class="tile-label">Best possible</div></div>`;
+      }
+
+      // Context
+      let ctx = [];
+      ctx.push(`🔹 Current attendance: <strong>${fmtNum(currentR, 2)}%</strong> (${fmtNum(a, 2)} / ${fmtNum(t, 2)}).`);
+      ctx.push(`🔹 Target: <strong>${fmtNum(tg, 2)}%</strong>. Classes remaining: <strong>${fmtNum(rm, 2)}</strong>.`);
+
+      if (current >= tg) {
+        ctx.push(`🟢 You are already at or above the target.`);
+        if (maxSkipsInRemaining > 0) {
+          ctx.push(`🔹 You can miss up to <strong>${maxSkipsInRemaining}</strong> of the ${fmtNum(rm, 2)} remaining classes and still finish at or above ${fmtNum(tg, 2)}%.`);
+        } else {
+          ctx.push(`🔹 You cannot miss any of the remaining classes without dropping below ${fmtNum(tg, 2)}%.`);
+        }
+        const finalIfPerfect = ((a + rm) / futureTotal) * 100;
+        ctx.push(`🔹 If you attend every remaining class, you finish at <strong>${fmtNum(round2(finalIfPerfect), 2)}%</strong>.`);
+        ctx.push(`🔹 If you skip the maximum (${maxSkipsInRemaining}), you finish at approximately <strong>${fmtNum(round2(((a + rm - maxSkipsInRemaining) / futureTotal) * 100), 2)}%</strong>.`);
+      } else if (reachable) {
+        ctx.push(`🟡 You are below the target but can still reach it this term.`);
+        ctx.push(`🔹 Attend at least <strong>${neededToReach}</strong> of the next ${fmtNum(rm, 2)} classes without missing.`);
+        const slack = rm - neededToReach;
+        if (slack > 0) {
+          ctx.push(`🔹 That leaves a buffer of <strong>${slack}</strong> class${slack === 1 ? '' : 'es'} you could still miss, if needed.`);
+        } else {
+          ctx.push(`🔹 There is no buffer — you must attend every single remaining class to hit the target.`);
+        }
+        const finalIfPerfect = ((a + rm) / futureTotal) * 100;
+        ctx.push(`🔹 If you attend every remaining class, you finish at <strong>${fmtNum(round2(finalIfPerfect), 2)}%</strong>.`);
+      } else {
+        ctx.push(`🔴 Target <strong>not reachable</strong> this term.`);
+        ctx.push(`🔹 Required classes: <strong>${neededToReach}</strong>. Only <strong>${fmtNum(rm, 2)}</strong> remain.`);
+        ctx.push(`🔹 Best possible finish (attend every remaining class): <strong>${fmtNum(bestCaseR, 2)}%</strong>.`);
+        ctx.push(`🔹 You would need at least <strong>${neededToReach - rm}</strong> more classes than remain to reach ${fmtNum(tg, 2)}%.`);
+        ctx.push(`🔹 Consider discussing with your school: medical exemptions, extra classes, or a documented reason for the shortfall.`);
+      }
+
+      const html = `
+        <div class="result-label">Plan to reach ${fmtNum(tg, 2)}% attendance</div>
+        <div class="att-ring-wrap">
+          <div class="att-ring">
+            <svg width="144" height="144" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="ring-bg" cx="50" cy="50" r="${R}"></circle>
+              <circle class="ring-fg" cx="50" cy="50" r="${R}" stroke="${color}"
+                      stroke-dasharray="${C.toFixed(2)}" stroke-dashoffset="${dashOffset.toFixed(2)}"></circle>
+            </svg>
+            <div class="ring-label">
+              <strong>${fmtNum(currentR, 2)}%</strong>
+              <span>Current</span>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <span class="status-badge ${badge.cls}">${badge.arrow} ${badge.label}</span>
+        </div>
+
+        <div class="att-tile-grid">
+          ${tile1}${tile2}${tile3}${tile4}
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Current attendance: ${fmtNum(a, 2)} / ${fmtNum(t, 2)} × 100 = <strong>${fmtNum(currentR, 2)}%</strong>.</li>
+            <li>Target as decimal: ${fmtNum(tg, 2)}% = <strong>${fmtNum(target, 4)}</strong>.</li>
+            ${current >= tg
+              ? `<li>Since current (${fmtNum(currentR, 2)}%) ≥ target (${fmtNum(tg, 2)}%), compute safe skips.</li>
+                 <li>Skips allowed = attended / target − total = ${fmtNum(a, 2)} / ${fmtNum(target, 4)} − ${fmtNum(t, 2)} = <strong>${skipsAllowed}</strong>.</li>
+                 <li>Capped at remaining classes (${fmtNum(rm, 2)}): <strong>${maxSkipsInRemaining}</strong>.</li>`
+              : `<li>Since current (${fmtNum(currentR, 2)}%) < target (${fmtNum(tg, 2)}%), compute classes needed.</li>
+                 <li>Classes needed = (target × total − attended) / (1 − target) = (${fmtNum(target, 4)} × ${fmtNum(t, 2)} − ${fmtNum(a, 2)}) / ${fmtNum(1 - target, 4)} = <strong>${neededToReach}</strong>.</li>
+                 <li>Compare to remaining: ${neededToReach} ${reachable ? '≤' : '>'} ${fmtNum(rm, 2)} → ${reachable ? 'reachable ✓' : 'not reachable ✗'}.</li>`}
+            <li>Best-case finish (attend every remaining class): (${fmtNum(a, 2)} + ${fmtNum(rm, 2)}) / (${fmtNum(t, 2)} + ${fmtNum(rm, 2)}) × 100 = <strong>${fmtNum(bestCaseR, 2)}%</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+        </div>
+      `;
+
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      [attendedEl, totalEl, targetChkEl, remainingEl,
+       pAttendedEl, pTotalEl, pTargetEl, pRemainingEl].forEach(el => { el.value = ''; });
+      mode = 'current';
+      modeBtns.forEach(b => {
+        const active = b.dataset.mode === 'current';
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      panelCurrent.classList.remove('hidden');
+      panelPlan.classList.add('hidden');
+      previewEl.innerHTML = 'Preview: enter your attendance record';
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Area &amp; Perimeter Calculator — Rectangle, Circle, Triangle &amp; More | Hira Science Academy</title>
+  <meta content="Free area and perimeter calculator for rectangles, squares, circles, triangles, trapezoids, and parallelograms. Enter dimensions to get area, perimeter, and step-by-step working." name="description"/>
+  <meta content="area calculator, perimeter calculator, rectangle area, circle area, triangle area, trapezoid area, parallelogram area, geometry calculator" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/area-perimeter-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Area &amp; Perimeter Calculator — Rectangle, Circle, Triangle &amp; More" property="og:title"/>
+  <meta content="Compute area and perimeter for six common shapes with step-by-step working." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/area-perimeter-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Area & Perimeter Calculator", "item": "https://hiraacademy.com.pk/tools/area-perimeter-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the difference between area and perimeter?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Perimeter is the distance around the outside of a shape — a length measured in linear units (cm, m). Area is the amount of surface the shape covers — a two-dimensional measure in square units (cm², m²). They are both geometric measures but of different kinds." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find the area of a rectangle?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Multiply the length by the width: A = l × w. The perimeter is twice the sum of length and width: P = 2(l + w)." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the formula for the area of a circle?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Area = π × r², where r is the radius. The circumference (perimeter) is 2πr, or πd where d is the diameter. If you only know the diameter, halve it to get the radius first." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the area of a triangle half the base times height?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Two congruent triangles together form a parallelogram with the same base and height. The parallelogram's area is base × height, so each triangle has half that area. This is why the formula is A = ½ × b × h." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find the area of a trapezoid?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Average the two parallel sides and multiply by the height: A = ½ × (a + b) × h, where a and b are the parallel sides and h is the perpendicular distance between them. The perimeter is the sum of all four side lengths." }
+      },
+      {
+        "@type": "Question",
+        "name": "What units should I use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use the same unit for every length you enter. The area will be in the square of that unit (cm² if lengths are in cm), and the perimeter will be in the original unit (cm). Mixing units (cm and m) gives wrong results." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-radical {
+      display: inline-flex;
+      align-items: stretch;
+      font-family: 'JetBrains Mono', monospace;
+      vertical-align: middle;
+      line-height: 1;
+      color: #0b1220;
+    }
+    .latex-radical .r-sign {
+      display: inline-block;
+      font-size: 1.15em;
+      transform: translateY(0.02em);
+      padding-right: 0.02em;
+    }
+    .latex-radical .r-body {
+      display: inline-block;
+      border-top: 1.5px solid currentColor;
+      padding: 0.15em 0.25em 0.05em 0.25em;
+      margin-top: 0.1em;
+    }
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
+    .latex-frac.big { font-size: 1.35em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .latex-sup {
+      display: inline-block;
+      font-size: 0.72em;
+      vertical-align: super;
+      line-height: 0;
+      font-weight: 600;
+    }
+    .latex-sub {
+      display: inline-block;
+      font-size: 0.72em;
+      vertical-align: sub;
+      line-height: 0;
+      font-weight: 600;
+    }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    /* Shape diagram */
+    .shape-diagram-wrap {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .shape-diagram-wrap canvas {
+      display: block;
+      width: 100%;
+      height: 260px;
+      border-radius: 0.5rem;
+      background: #ffffff;
+    }
+
+    /* Result cards */
+    .ap-dual-result {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    @media (min-width: 540px) { .ap-dual-result { grid-template-columns: 1fr 1fr; } }
+    .ap-big-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.875rem;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .ap-big-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0369a1;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.4rem;
+    }
+    .ap-big-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0b1220;
+      line-height: 1.15;
+      word-break: break-word;
+    }
+    .ap-big-unit {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #64748b;
+      margin-left: 0.25rem;
+    }
+
+    .ap-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .ap-summary { grid-template-columns: repeat(4, 1fr); } }
+    .ap-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .ap-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .ap-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .ap-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .ap-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .ap-context strong { color: #0b1220; }
+
+    /* Input grid — two columns for the variable fields */
+    .ap-input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-items: end;
+      margin-top: 1rem;
+    }
+    @media (max-width: 540px) { .ap-input-grid { grid-template-columns: 1fr; } }
+
+    .shape-select {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #0b1220;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .shape-select:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+    }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · 6 Shapes · Step-by-Step</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Area &amp; Perimeter Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Choose a shape, enter its dimensions, and get both area and perimeter with full working and a diagram.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Area &amp; Perimeter Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Area and perimeter calculator inputs">
+
+      <label for="shape" class="calc-label">Choose a shape</label>
+      <select id="shape" class="shape-select">
+        <option value="rectangle" selected>Rectangle</option>
+        <option value="square">Square</option>
+        <option value="circle">Circle</option>
+        <option value="triangle">Triangle (base &amp; height)</option>
+        <option value="trapezoid">Trapezoid</option>
+        <option value="parallelogram">Parallelogram</option>
+      </select>
+
+      <!-- Dynamic inputs rendered here -->
+      <div class="ap-input-grid" id="inputs-area"></div>
+
+      <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        Preview: fill in the dimensions
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this area and perimeter calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool computes the area and perimeter of six common two-dimensional shapes: rectangle, square, circle, triangle, trapezoid, and parallelogram. Choose a shape, enter the dimensions, and the calculator returns both measures with the exact formulas shown and the arithmetic worked out step by step. A diagram draws the shape to scale using your inputs, so you can see exactly which quantity each result refers to. The tool also reports complementary values — like the diagonal of a rectangle or the diameter of a circle — so you get the complete picture in one calculation.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas for each shape</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Rectangle — length l, width w</div>
+          <div class="math-block">
+            <span>A = l × w</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>P = 2(l + w)</span>
+          </div>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">Diagonal d = √(l² + w²).</p>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Square — side s</div>
+          <div class="math-block">
+            <span>A = s²</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>P = 4s</span>
+          </div>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">Diagonal d = s√2.</p>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Circle — radius r</div>
+          <div class="math-block">
+            <span>A = π r²</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>Circumference C = 2π r</span>
+          </div>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">Diameter d = 2r.</p>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Triangle — base b, height h (perpendicular)</div>
+          <div class="math-block">
+            <span>A = </span>
+            <span class="latex-frac big"><span class="f-num">1</span><span class="f-den">2</span></span>
+            <span>b × h</span>
+          </div>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">For perimeter, enter the other two side lengths (or use 0 to skip).</p>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Trapezoid — parallel sides a and b, height h</div>
+          <div class="math-block">
+            <span>A = </span>
+            <span class="latex-frac big"><span class="f-num">1</span><span class="f-den">2</span></span>
+            <span>(a + b) × h</span>
+          </div>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">P = a + b + c + d, the sum of all four sides.</p>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Parallelogram — base b, height h, side s</div>
+          <div class="math-block">
+            <span>A = b × h</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>P = 2(b + s)</span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>A</strong> — area (in square units).</li>
+          <li><strong>P</strong> — perimeter (in linear units).</li>
+          <li><strong>r, d</strong> — radius and diameter of a circle.</li>
+          <li><strong>b, h</strong> — base and perpendicular height.</li>
+          <li><strong>π</strong> — pi ≈ 3.141592653589793.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Rectangle 8 cm by 5 cm</p>
+          <ol>
+            <li>Area: A = 8 × 5 = <strong>40 cm²</strong>.</li>
+            <li>Perimeter: P = 2(8 + 5) = 2 × 13 = <strong>26 cm</strong>.</li>
+            <li>Diagonal: d = √(8² + 5²) = √(64 + 25) = √89 ≈ 9.434 cm.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Square with side 7 m</p>
+          <ol>
+            <li>Area: A = 7² = <strong>49 m²</strong>.</li>
+            <li>Perimeter: P = 4 × 7 = <strong>28 m</strong>.</li>
+            <li>Diagonal: d = 7√2 ≈ 9.899 m.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Circle with radius 5 cm</p>
+          <ol>
+            <li>Area: A = π × 5² = 25π ≈ <strong>78.5398 cm²</strong>.</li>
+            <li>Circumference: C = 2π × 5 = 10π ≈ <strong>31.4159 cm</strong>.</li>
+            <li>Diameter: d = 10 cm.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Triangle with base 12 m and height 5 m</p>
+          <ol>
+            <li>Area: A = ½ × 12 × 5 = <strong>30 m²</strong>.</li>
+            <li>If the other two sides are 6 m and 8 m: perimeter = 12 + 6 + 8 = 26 m.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Trapezoid with parallel sides 10 and 6, height 4</p>
+          <ol>
+            <li>Area: A = ½ × (10 + 6) × 4 = ½ × 16 × 4 = <strong>32</strong>.</li>
+            <li>If legs are 5 and 5: perimeter = 10 + 6 + 5 + 5 = 26.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 6: Parallelogram base 9, height 4, side 5</p>
+          <ol>
+            <li>Area: A = 9 × 4 = <strong>36</strong>.</li>
+            <li>Perimeter: P = 2(9 + 5) = <strong>28</strong>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Area vs perimeter</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          These two measures describe different aspects of a shape:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Perimeter</strong> is the total length of the boundary — a 1-D measure in linear units (cm, m, km). Think of it as the fence you need to enclose a garden.</li>
+          <li><strong>Area</strong> is the total surface covered — a 2-D measure in square units (cm², m²). Think of it as the paint you need to cover a wall.</li>
+          <li>Two shapes with the same area can have very different perimeters, and vice versa. A 1×16 rectangle has area 16 and perimeter 34; a 4×4 square has area 16 and perimeter 16.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Mixing up radius and diameter.</strong> The circle formula uses the radius, not the diameter. If you're given a diameter of 10 cm, use r = 5 cm in the formula.</li>
+          <li><strong>Using slant height instead of perpendicular height for trapezoids and parallelograms.</strong> The height h is the perpendicular distance between the parallel sides, not the length of the slanted side.</li>
+          <li><strong>Forgetting to square the units for area.</strong> Area is in cm², m², or km² — never just cm or m. Writing "40 cm" for an area is wrong; it should be "40 cm²".</li>
+          <li><strong>Adding lengths in different units.</strong> If one side is in cm and another in m, convert first. Mixing units gives nonsense.</li>
+          <li><strong>Using the wrong formula for the triangle area.</strong> The triangle formula is ½ × base × height, not base × height. This is because a triangle is half a parallelogram with the same base and height.</li>
+          <li><strong>Confusing perimeter and area.</strong> Perimeter is the length around the boundary; area is the space inside. They are not interchangeable.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What is the difference between area and perimeter?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Perimeter is the distance around the outside of a shape — a length measured in linear units (cm, m). Area is the amount of surface the shape covers — a two-dimensional measure in square units (cm², m²). They are both geometric measures but of different kinds.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I find the area of a rectangle?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Multiply the length by the width: A = l × w. The perimeter is twice the sum of length and width: P = 2(l + w).</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the formula for the area of a circle?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Area = π × r², where r is the radius. The circumference (perimeter) is 2πr, or πd where d is the diameter. If you only know the diameter, halve it to get the radius first.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why is the area of a triangle half the base times height?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Two congruent triangles together form a parallelogram with the same base and height. The parallelogram's area is base × height, so each triangle has half that area. This is why the formula is A = ½ × b × h.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I find the area of a trapezoid?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Average the two parallel sides and multiply by the height: A = ½ × (a + b) × h, where a and b are the parallel sides and h is the perpendicular distance between them. The perimeter is the sum of all four side lengths.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What units should I use?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Use the same unit for every length you enter. The area will be in the square of that unit (cm² if lengths are in cm), and the perimeter will be in the original unit (cm). Mixing units (cm and m) gives wrong results.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="triangle-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Triangle Calculator</a></li>
+          <li><a href="circle-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Circle Calculator</a></li>
+          <li><a href="pythagorean-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Pythagorean Theorem Calculator</a></li>
+          <li><a href="area-unit-converter.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Area Unit Converter</a></li>
+          <li><a href="volume-converter.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Volume Converter</a></li>
+          <li><a href="distance-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Distance Between Points</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Area and perimeter formulas appear throughout the Class 9 and 10 mathematics syllabus, especially in the geometry chapters. Revise with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'area-perimeter-calculator';
+
+    const shapeEl = document.getElementById('shape');
+    const inputsArea = document.getElementById('inputs-area');
+    const previewEl = document.getElementById('live-preview');
+    const calcBtn = document.getElementById('calc-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section = document.querySelector('section[aria-label="Area and perimeter calculator inputs"]');
+
+    let currentShape = 'rectangle';
+    let lastResult = null;
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    /* ============ LaTeX helpers ============ */
+    function fracHTML(numHTML, denHTML, big) {
+      const cls = 'latex-frac' + (big ? ' big' : '');
+      return `<span class="${cls}"><span class="f-num">${numHTML}</span><span class="f-den">${denHTML}</span></span>`;
+    }
+
+    /* ============ Number formatting ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 6;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) {
+        if (Math.abs(x) < 1e15) return x.toLocaleString('en-US');
+        return x.toExponential(6);
+      }
+      const abs = Math.abs(x);
+      if (abs < 1e-6 || abs >= 1e12) return x.toExponential(6);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+
+    /* ============ Per-shape field definitions ============ */
+    const SHAPES = {
+      rectangle: {
+        label: 'Rectangle',
+        fields: [
+          { id: 'len', label: 'Length l', placeholder: 'e.g. 8', name: 'length' },
+          { id: 'wid', label: 'Width w', placeholder: 'e.g. 5', name: 'width' }
+        ]
+      },
+      square: {
+        label: 'Square',
+        fields: [
+          { id: 'side', label: 'Side s', placeholder: 'e.g. 7', name: 'side' }
+        ]
+      },
+      circle: {
+        label: 'Circle',
+        fields: [
+          { id: 'radius', label: 'Radius r', placeholder: 'e.g. 5', name: 'radius' }
+        ]
+      },
+      triangle: {
+        label: 'Triangle',
+        fields: [
+          { id: 'base', label: 'Base b', placeholder: 'e.g. 12', name: 'base' },
+          { id: 'height', label: 'Perpendicular height h', placeholder: 'e.g. 5', name: 'height' },
+          { id: 'side2', label: 'Side 2 (optional, for perimeter)', placeholder: 'e.g. 6', name: 'side2', optional: true },
+          { id: 'side3', label: 'Side 3 (optional, for perimeter)', placeholder: 'e.g. 8', name: 'side3', optional: true }
+        ]
+      },
+      trapezoid: {
+        label: 'Trapezoid',
+        fields: [
+          { id: 'p1', label: 'Parallel side a', placeholder: 'e.g. 10', name: 'side a' },
+          { id: 'p2', label: 'Parallel side b', placeholder: 'e.g. 6', name: 'side b' },
+          { id: 'theight', label: 'Perpendicular height h', placeholder: 'e.g. 4', name: 'height' },
+          { id: 'leg1', label: 'Leg c (optional, for perimeter)', placeholder: 'e.g. 5', name: 'leg c', optional: true },
+          { id: 'leg2', label: 'Leg d (optional, for perimeter)', placeholder: 'e.g. 5', name: 'leg d', optional: true }
+        ]
+      },
+      parallelogram: {
+        label: 'Parallelogram',
+        fields: [
+          { id: 'pbase', label: 'Base b', placeholder: 'e.g. 9', name: 'base' },
+          { id: 'pside', label: 'Side s', placeholder: 'e.g. 5', name: 'side' },
+          { id: 'pheight', label: 'Perpendicular height h', placeholder: 'e.g. 4', name: 'height' }
+        ]
+      }
+    };
+
+    /* ============ Render inputs ============ */
+    function renderInputs() {
+      const spec = SHAPES[currentShape];
+      inputsArea.innerHTML = spec.fields.map(f => `
+        <div>
+          <label for="in-${f.id}" class="calc-label">${f.label}${f.optional ? '<span style="font-weight:400;color:#94a3b8;"> (optional)</span>' : ''}</label>
+          <input type="text" inputmode="decimal" id="in-${f.id}" class="calc-input" placeholder="${f.placeholder}" autocomplete="off" data-name="${f.name}" data-optional="${f.optional ? 'true' : 'false'}" />
+        </div>
+      `).join('');
+      // Attach input listeners for preview
+      inputsArea.querySelectorAll('input').forEach(el => el.addEventListener('input', renderPreview));
+      renderPreview();
+    }
+
+    /* ============ Get current values ============ */
+    function getValues() {
+      const spec = SHAPES[currentShape];
+      const vals = {};
+      spec.fields.forEach(f => {
+        const el = document.getElementById('in-' + f.id);
+        vals[f.id] = el ? el.value.trim() : '';
+      });
+      return vals;
+    }
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      const spec = SHAPES[currentShape];
+      const vals = getValues();
+      const provided = spec.fields.filter(f => vals[f.id] !== '');
+      if (provided.length === 0) {
+        previewEl.innerHTML = 'Preview: fill in the dimensions';
+        return;
+      }
+      const parts = provided.map(f => {
+        const v = parseNum(vals[f.id]);
+        return `${f.name} = ${Number.isFinite(v) ? fmtNum(v) : '?'}`;
+      });
+      previewEl.innerHTML = `${spec.label}: ${parts.map(p => `<span style="color:#0b1220;">${p}</span>`).join(', ')}`;
+    }
+
+    /* ============ Read and validate ============ */
+    function readRequired() {
+      const spec = SHAPES[currentShape];
+      const out = {};
+      let ok = true;
+      spec.fields.forEach(f => {
+        const el = document.getElementById('in-' + f.id);
+        const raw = vals_el(el);
+        if (f.optional && raw === '') {
+          out[f.id] = null;
+          return;
+        }
+        if (raw === '') {
+          showError(el, `Enter ${f.name}.`);
+          ok = false;
+          return;
+        }
+        const v = parseNum(raw);
+        if (!Number.isFinite(v)) {
+          showError(el, `Enter a valid number for ${f.name}.`);
+          ok = false;
+          return;
+        }
+        if (v <= 0) {
+          showError(el, `${f.name} must be positive.`);
+          ok = false;
+          return;
+        }
+        out[f.id] = v;
+      });
+      return { ok, v: out };
+    }
+    function vals_el(el) { return el ? el.value.trim() : ''; }
+
+    /* ============ Main calculate ============ */
+    function calculate() {
+      clearAllErrors(section);
+      const { ok, v } = readRequired();
+      if (!ok) { trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      let area, perimeter, extraInfo = [];
+      const L = SHAPES[currentShape].label;
+
+      if (currentShape === 'rectangle') {
+        area = v.len * v.wid;
+        perimeter = 2 * (v.len + v.wid);
+        const diag = Math.sqrt(v.len * v.len + v.wid * v.wid);
+        extraInfo.push(`Diagonal d = √(l² + w²) = √(${fmtNum(v.len * v.len)} + ${fmtNum(v.wid * v.wid)}) = √${fmtNum(v.len * v.len + v.wid * v.wid)} ≈ <strong>${fmtNum(diag, 6)}</strong>`);
+      } else if (currentShape === 'square') {
+        area = v.side * v.side;
+        perimeter = 4 * v.side;
+        const diag = v.side * Math.SQRT2;
+        extraInfo.push(`Diagonal d = s√2 = ${fmtNum(v.side)} × √2 ≈ <strong>${fmtNum(diag, 6)}</strong>`);
+      } else if (currentShape === 'circle') {
+        area = Math.PI * v.radius * v.radius;
+        perimeter = 2 * Math.PI * v.radius;
+        extraInfo.push(`Diameter d = 2r = <strong>${fmtNum(2 * v.radius)}</strong>`);
+        extraInfo.push(`Area in exact form: π × r² = <strong>${fmtNum(v.radius * v.radius)}π</strong>`);
+        extraInfo.push(`Circumference in exact form: 2πr = <strong>${fmtNum(2 * v.radius)}π</strong>`);
+      } else if (currentShape === 'triangle') {
+        area = 0.5 * v.base * v.height;
+        if (v.side2 !== null && v.side3 !== null) {
+          // Full perimeter
+          if (v.side2 + v.side3 <= v.base || v.base + v.side3 <= v.side2 || v.base + v.side2 <= v.side3) {
+            showError(document.getElementById('in-base'), 'The three sides do not form a valid triangle.');
+            trackEvent(CALC_NAME, 'invalid_input');
+            return;
+          }
+          perimeter = v.base + v.side2 + v.side3;
+          extraInfo.push(`All three sides given, so perimeter = b + c + d = ${fmtNum(v.base)} + ${fmtNum(v.side2)} + ${fmtNum(v.side3)} = <strong>${fmtNum(perimeter)}</strong>`);
+        } else if (v.side2 !== null) {
+          perimeter = v.base + v.side2 + v.side2; // assume isosceles if only one side given? No, don't assume.
+          perimeter = null;
+          extraInfo.push(`Only one additional side given — perimeter cannot be determined. Provide both other sides for the full perimeter, or use the Triangle Calculator.`);
+        } else {
+          perimeter = null;
+          extraInfo.push(`Perimeter requires the other two sides. Enter them in the optional fields, or leave blank to compute area only.`);
+        }
+      } else if (currentShape === 'trapezoid') {
+        area = 0.5 * (v.p1 + v.p2) * v.theight;
+        if (v.leg1 !== null && v.leg2 !== null) {
+          perimeter = v.p1 + v.p2 + v.leg1 + v.leg2;
+          extraInfo.push(`Perimeter = a + b + c + d = ${fmtNum(v.p1)} + ${fmtNum(v.p2)} + ${fmtNum(v.leg1)} + ${fmtNum(v.leg2)} = <strong>${fmtNum(perimeter)}</strong>`);
+        } else {
+          perimeter = null;
+          extraInfo.push(`Perimeter requires the two legs. Enter them in the optional fields, or leave blank to compute area only.`);
+        }
+      } else if (currentShape === 'parallelogram') {
+        area = v.pbase * v.pheight;
+        perimeter = 2 * (v.pbase + v.pside);
+      }
+
+      const html = buildResultHTML(L, area, perimeter, v, extraInfo);
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+
+      lastResult = { shape: currentShape, v, area, perimeter };
+      requestAnimationFrame(() => drawShape(currentShape, v, area, perimeter));
+
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Result HTML ============ */
+    function buildResultHTML(label, area, perimeter, v, extraInfo) {
+      const areaStr = fmtNum(area, 6);
+      const perimStr = perimeter !== null ? fmtNum(perimeter, 6) : '—';
+
+      const perimLine = perimeter !== null
+        ? `<div class="ap-big-card">
+             <div class="ap-big-label">Perimeter</div>
+             <div class="ap-big-value">${perimStr}<span class="ap-big-unit">units</span></div>
+           </div>`
+        : `<div class="ap-big-card" style="opacity:0.65;">
+             <div class="ap-big-label">Perimeter</div>
+             <div class="ap-big-value" style="font-size:1.125rem;color:#64748b;">Not computed</div>
+             <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.25rem;">Enter all sides to compute</div>
+           </div>`;
+
+      // Build summary cards
+      const summaryCards = [];
+      summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${areaStr}</div><div class="ap-summary-label">Area</div></div>`);
+      summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${perimStr}</div><div class="ap-summary-label">Perimeter</div></div>`);
+      // Add specific info per shape
+      if (currentShape === 'circle') {
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(2 * v.radius)}</div><div class="ap-summary-label">Diameter</div></div>`);
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(v.radius * v.radius)}π</div><div class="ap-summary-label">Area (exact)</div></div>`);
+      } else if (currentShape === 'rectangle') {
+        const d = Math.sqrt(v.len * v.len + v.wid * v.wid);
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(d, 6)}</div><div class="ap-summary-label">Diagonal</div></div>`);
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(2 * (v.len + v.wid))}</div><div class="ap-summary-label">2(l + w)</div></div>`);
+      } else if (currentShape === 'square') {
+        const d = v.side * Math.SQRT2;
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(d, 6)}</div><div class="ap-summary-label">Diagonal</div></div>`);
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(v.side * v.side)}</div><div class="ap-summary-label">s²</div></div>`);
+      } else if (currentShape === 'triangle') {
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(v.base)}</div><div class="ap-summary-label">Base</div></div>`);
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(v.height)}</div><div class="ap-summary-label">Height</div></div>`);
+      } else if (currentShape === 'trapezoid') {
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum((v.p1 + v.p2) / 2)}</div><div class="ap-summary-label">Average base</div></div>`);
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(v.theight)}</div><div class="ap-summary-label">Height</div></div>`);
+      } else if (currentShape === 'parallelogram') {
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(v.pbase)}</div><div class="ap-summary-label">Base</div></div>`);
+        summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(v.pheight)}</div><div class="ap-summary-label">Height</div></div>`);
+      }
+
+      return `
+        <div class="result-label">${label}</div>
+        <div class="ap-dual-result">
+          <div class="ap-big-card">
+            <div class="ap-big-label">Area</div>
+            <div class="ap-big-value">${areaStr}<span class="ap-big-unit">units²</span></div>
+          </div>
+          ${perimLine}
+        </div>
+
+        <div class="ap-summary">
+          ${summaryCards.join('')}
+        </div>
+
+        <div class="shape-diagram-wrap">
+          <canvas id="shape-canvas" aria-label="Diagram of the shape"></canvas>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          ${buildSteps(label, area, perimeter, v)}
+        </div>
+
+        <div class="ap-context">
+          <p>🔹 Shape: <strong>${label}</strong>.</p>
+          <p>🔹 Area: <strong>${areaStr}</strong> square units.</p>
+          ${perimeter !== null ? `<p>🔹 Perimeter: <strong>${perimStr}</strong> units.</p>` : ''}
+          ${extraInfo.map(e => `<p>🔹 ${e}</p>`).join('')}
+        </div>
+      `;
+    }
+
+    /* ============ Step-by-step builder ============ */
+    function buildSteps(label, area, perimeter, v) {
+      const steps = [];
+      if (currentShape === 'rectangle') {
+        steps.push(`Identify length l = ${fmtNum(v.len)} and width w = ${fmtNum(v.wid)}.`);
+        steps.push(`Area: A = l × w = ${fmtNum(v.len)} × ${fmtNum(v.wid)} = <strong>${fmtNum(area)}</strong>.`);
+        steps.push(`Perimeter: P = 2(l + w) = 2(${fmtNum(v.len)} + ${fmtNum(v.wid)}) = 2 × ${fmtNum(v.len + v.wid)} = <strong>${fmtNum(perimeter)}</strong>.`);
+      } else if (currentShape === 'square') {
+        steps.push(`Identify side s = ${fmtNum(v.side)}.`);
+        steps.push(`Area: A = s² = ${fmtNum(v.side)}² = <strong>${fmtNum(area)}</strong>.`);
+        steps.push(`Perimeter: P = 4s = 4 × ${fmtNum(v.side)} = <strong>${fmtNum(perimeter)}</strong>.`);
+        steps.push(`Diagonal: d = s√2 = ${fmtNum(v.side)} × 1.4142... ≈ ${fmtNum(v.side * Math.SQRT2, 6)}.`);
+      } else if (currentShape === 'circle') {
+        steps.push(`Identify radius r = ${fmtNum(v.radius)}.`);
+        steps.push(`Area: A = π r² = π × ${fmtNum(v.radius)}² = π × ${fmtNum(v.radius * v.radius)} = <strong>${fmtNum(area, 6)}</strong>.`);
+        steps.push(`Circumference: C = 2π r = 2π × ${fmtNum(v.radius)} = <strong>${fmtNum(perimeter, 6)}</strong>.`);
+        steps.push(`Diameter: d = 2r = ${fmtNum(2 * v.radius)}.`);
+      } else if (currentShape === 'triangle') {
+        steps.push(`Identify base b = ${fmtNum(v.base)} and perpendicular height h = ${fmtNum(v.height)}.`);
+        steps.push(`Area: A = ½ × b × h = ½ × ${fmtNum(v.base)} × ${fmtNum(v.height)} = <strong>${fmtNum(area)}</strong>.`);
+        if (perimeter !== null) {
+          steps.push(`Perimeter: P = b + side2 + side3 = ${fmtNum(v.base)} + ${fmtNum(v.side2)} + ${fmtNum(v.side3)} = <strong>${fmtNum(perimeter)}</strong>.`);
+        } else {
+          steps.push(`Perimeter: requires all three sides. Enter the two optional sides to compute it.`);
+        }
+      } else if (currentShape === 'trapezoid') {
+        steps.push(`Identify parallel sides a = ${fmtNum(v.p1)}, b = ${fmtNum(v.p2)}, and height h = ${fmtNum(v.theight)}.`);
+        steps.push(`Area: A = ½ × (a + b) × h = ½ × (${fmtNum(v.p1)} + ${fmtNum(v.p2)}) × ${fmtNum(v.theight)} = ½ × ${fmtNum(v.p1 + v.p2)} × ${fmtNum(v.theight)} = <strong>${fmtNum(area)}</strong>.`);
+        if (perimeter !== null) {
+          steps.push(`Perimeter: P = a + b + c + d = ${fmtNum(v.p1)} + ${fmtNum(v.p2)} + ${fmtNum(v.leg1)} + ${fmtNum(v.leg2)} = <strong>${fmtNum(perimeter)}</strong>.`);
+        } else {
+          steps.push(`Perimeter: requires the two legs. Enter them to compute it.`);
+        }
+      } else if (currentShape === 'parallelogram') {
+        steps.push(`Identify base b = ${fmtNum(v.pbase)}, side s = ${fmtNum(v.pside)}, and height h = ${fmtNum(v.pheight)}.`);
+        steps.push(`Area: A = b × h = ${fmtNum(v.pbase)} × ${fmtNum(v.pheight)} = <strong>${fmtNum(area)}</strong>.`);
+        steps.push(`Perimeter: P = 2(b + s) = 2(${fmtNum(v.pbase)} + ${fmtNum(v.pside)}) = <strong>${fmtNum(perimeter)}</strong>.`);
+      }
+      return `<ol>${steps.map(s => `<li>${s}</li>`).join('')}</ol>`;
+    }
+
+    /* ============ Shape diagram ============ */
+    function drawShape(shape, v, area, perimeter) {
+      const canvas = document.getElementById('shape-canvas');
+      if (!canvas) return;
+      const wrap = canvas.parentElement;
+      const W = wrap.clientWidth - 16, H = 260;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(W * dpr);
+      canvas.height = Math.floor(H * dpr);
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      ctx.font = "12px 'JetBrains Mono', monospace";
+      ctx.fillStyle = '#0b1220';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      if (shape === 'rectangle' || shape === 'square') {
+        const s = (shape === 'square') ? v.side : null;
+        const l = s !== null ? s : v.len;
+        const w = s !== null ? s : v.wid;
+        drawRectShape(ctx, W, H, l, w, (shape === 'square' ? 's' : 'l'), (shape === 'square' ? 's' : 'w'));
+      } else if (shape === 'circle') {
+        drawCircleShape(ctx, W, H, v.radius);
+      } else if (shape === 'triangle') {
+        drawTriangleShape(ctx, W, H, v.base, v.height);
+      } else if (shape === 'trapezoid') {
+        drawTrapezoidShape(ctx, W, H, v.p1, v.p2, v.theight);
+      } else if (shape === 'parallelogram') {
+        drawParallelogramShape(ctx, W, H, v.pbase, v.pside, v.pheight);
+      }
+    }
+
+    function drawRectShape(ctx, W, H, l, w, lLabel, wLabel) {
+      const margin = 60;
+      const availW = W - 2 * margin;
+      const availH = H - 2 * margin;
+      const ratio = l / w;
+      let rw, rh;
+      if (ratio > availW / availH) { rw = availW; rh = rw / ratio; }
+      else { rh = availH; rw = rh * ratio; }
+      const x = (W - rw) / 2;
+      const y = (H - rh) / 2;
+
+      ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+      ctx.fillRect(x, y, rw, rh);
+      ctx.strokeStyle = '#0284c7';
+      ctx.lineWidth = 2.5;
+      ctx.strokeRect(x, y, rw, rh);
+
+      ctx.fillStyle = '#0b1220';
+      // Top label
+      ctx.fillText(`${lLabel} = ${fmtNum(l)}`, x + rw / 2, y - 14);
+      // Left label
+      ctx.save();
+      ctx.translate(x - 14, y + rh / 2);
+      ctx.rotate(-Math.PI / 2);
+      ctx.fillText(`${wLabel} = ${fmtNum(w)}`, 0, 0);
+      ctx.restore();
+    }
+
+    function drawCircleShape(ctx, W, H, r) {
+      const cx = W / 2, cy = H / 2;
+      const maxR = Math.min(W, H) / 2 - 30;
+      const scale = maxR / r;
+      const drawR = r * scale;
+
+      ctx.beginPath();
+      ctx.arc(cx, cy, drawR, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+      ctx.fill();
+      ctx.strokeStyle = '#0284c7';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Draw radius
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + drawR, cy);
+      ctx.strokeStyle = '#8b5cf6';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      ctx.fillStyle = '#0b1220';
+      ctx.fillText(`r = ${fmtNum(r)}`, cx + drawR / 2, cy - 10);
+    }
+
+    function drawTriangleShape(ctx, W, H, base, height) {
+      const margin = 60;
+      const availW = W - 2 * margin;
+      const availH = H - 2 * margin;
+      const ratio = base / height;
+      let bw, hh;
+      if (ratio > availW / availH) { bw = availW; hh = bw / ratio; }
+      else { hh = availH; bw = hh * ratio; }
+      const x0 = (W - bw) / 2;
+      const y0 = (H + hh) / 2;
+      // Triangle with base bottom and apex centered at top
+      const apexX = x0 + bw / 2;
+      const apexY = y0 - hh;
+
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x0 + bw, y0);
+      ctx.lineTo(apexX, apexY);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+      ctx.fill();
+      ctx.strokeStyle = '#0284c7';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Height line (dashed)
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = '#8b5cf6';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(apexX, apexY);
+      ctx.lineTo(apexX, y0);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = '#0b1220';
+      ctx.fillText(`b = ${fmtNum(base)}`, x0 + bw / 2, y0 + 16);
+      ctx.fillText(`h = ${fmtNum(height)}`, apexX + 28, (apexY + y0) / 2);
+    }
+
+    function drawTrapezoidShape(ctx, W, H, a, b, h) {
+      const margin = 60;
+      const availW = W - 2 * margin;
+      const availH = H - 2 * margin;
+      const longest = Math.max(a, b);
+      const ratio = longest / h;
+      let lw, hh;
+      if (ratio > availW / availH) { lw = availW; hh = lw / ratio; }
+      else { hh = availH; lw = hh * ratio; }
+
+      const scale = lw / longest;
+      const aw = a * scale, bw = b * scale;
+      const x0 = (W - Math.max(aw, bw)) / 2;
+      const y0 = (H + hh) / 2;
+
+      // Bottom is the longer parallel side, top the shorter, centered
+      const bottomW = Math.max(aw, bw);
+      const topW = Math.min(aw, bw);
+      const topOffset = (bottomW - topW) / 2;
+
+      ctx.beginPath();
+      ctx.moveTo(x0, y0);
+      ctx.lineTo(x0 + bottomW, y0);
+      ctx.lineTo(x0 + topOffset + topW, y0 - hh);
+      ctx.lineTo(x0 + topOffset, y0 - hh);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+      ctx.fill();
+      ctx.strokeStyle = '#0284c7';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      ctx.fillStyle = '#0b1220';
+      ctx.fillText(`a = ${fmtNum(bottomW / scale === 0 ? 0 : (bottomW === aw ? a : b))}`, x0 + bottomW / 2, y0 + 16);
+      ctx.fillText(`b = ${fmtNum(bottomW === aw ? b : a)}`, x0 + topOffset + topW / 2, y0 - hh - 16);
+
+      // Height dashed line
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = '#8b5cf6';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(x0 + topOffset + topW / 2, y0 - hh);
+      ctx.lineTo(x0 + topOffset + topW / 2, y0);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#8b5cf6';
+      ctx.fillText(`h = ${fmtNum(h)}`, x0 + topOffset + topW / 2 + 40, y0 - hh / 2);
+    }
+
+    function drawParallelogramShape(ctx, W, H, b, s, h) {
+      const margin = 60;
+      const availW = W - 2 * margin;
+      const availH = H - 2 * margin;
+      const ratio = (b + s * 0.5) / h;
+      let bw, hh;
+      if (ratio > availW / availH) { bw = availW; hh = bw / ratio; }
+      else { hh = availH; bw = hh * ratio; }
+
+      const x0 = (W - bw) / 2;
+      const y0 = (H + hh) / 2;
+      const offset = bw * 0.2;
+
+      ctx.beginPath();
+      ctx.moveTo(x0 + offset, y0);
+      ctx.lineTo(x0 + bw, y0);
+      ctx.lineTo(x0 + bw - offset, y0 - hh);
+      ctx.lineTo(x0, y0 - hh);
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+      ctx.fill();
+      ctx.strokeStyle = '#0284c7';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      ctx.fillStyle = '#0b1220';
+      ctx.fillText(`b = ${fmtNum(b)}`, x0 + offset + (bw - offset) / 2, y0 + 16);
+      ctx.fillText(`s = ${fmtNum(s)}`, x0 + 30, y0 - hh / 2);
+    }
+
+    /* ============ Wiring ============ */
+    shapeEl.addEventListener('change', () => {
+      currentShape = shapeEl.value;
+      renderInputs();
+      hideResult(resultPanel);
+      clearAllErrors(section);
+      lastResult = null;
+    });
+
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      currentShape = 'rectangle';
+      shapeEl.value = 'rectangle';
+      renderInputs();
+      hideResult(resultPanel);
+      clearAllErrors(section);
+      lastResult = null;
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (lastResult && resultPanel.classList.contains('is-visible')) {
+          drawShape(lastResult.shape, lastResult.v, lastResult.area, lastResult.perimeter);
+        }
+      }, 200);
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Init
+    renderInputs();
+  })();
+  </script>
+</body>
+</html>

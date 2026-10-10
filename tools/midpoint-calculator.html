@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Midpoint Calculator — Midpoint &amp; Missing Endpoint | Hira Science Academy</title>
+  <meta content="Free midpoint calculator. Find the midpoint of a line segment given two endpoints, or find the missing endpoint given one endpoint and the midpoint. With graph and steps." name="description"/>
+  <meta content="midpoint calculator, midpoint formula, missing endpoint, coordinate geometry, line segment midpoint, find endpoint" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/midpoint-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Midpoint Calculator — Midpoint &amp; Missing Endpoint" property="og:title"/>
+  <meta content="Find the midpoint of a line segment, or find the missing endpoint given one endpoint and the midpoint." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/midpoint-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Midpoint Calculator", "item": "https://hiraacademy.com.pk/tools/midpoint-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the midpoint formula?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The midpoint of a segment with endpoints (x₁, y₁) and (x₂, y₂) is ((x₁ + x₂) / 2, (y₁ + y₂) / 2). It is the average of the two x-coordinates paired with the average of the two y-coordinates." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find a missing endpoint given one endpoint and the midpoint?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use the midpoint formula in reverse. If M is the midpoint and P is the known endpoint, then the unknown endpoint Q satisfies Q = 2M − P. That is, double each coordinate of the midpoint and subtract the corresponding coordinate of the known endpoint." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the midpoint divide the segment in half?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. By definition, the midpoint is the point that divides the segment into two equal lengths. The distance from either endpoint to the midpoint is half the total segment length." }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the two endpoints are the same point?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If both endpoints are the same, the segment has zero length and the midpoint is that point. This is the degenerate case of a line segment." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the order of the endpoints matter?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Addition is commutative, so (x₁ + x₂) / 2 = (x₂ + x₁) / 2. The midpoint is the same whether you call one point 'first' or 'second'." }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the midpoint used in geometry?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The midpoint is used to construct perpendicular bisectors, prove that a point divides a segment equally, find the centre of a circle from a diameter, and identify vertices of a parallelogram (whose diagonals bisect each other at the midpoint)." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-radical {
+      display: inline-flex;
+      align-items: stretch;
+      font-family: 'JetBrains Mono', monospace;
+      vertical-align: middle;
+      line-height: 1;
+      color: #0b1220;
+    }
+    .latex-radical .r-sign {
+      display: inline-block;
+      font-size: 1.15em;
+      transform: translateY(0.02em);
+      padding-right: 0.02em;
+    }
+    .latex-radical .r-body {
+      display: inline-block;
+      border-top: 1.5px solid currentColor;
+      padding: 0.15em 0.25em 0.05em 0.25em;
+      margin-top: 0.1em;
+    }
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
+    .latex-frac.big { font-size: 1.35em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .latex-sup {
+      display: inline-block;
+      font-size: 0.72em;
+      vertical-align: super;
+      line-height: 0;
+      font-weight: 600;
+    }
+    .latex-sub {
+      display: inline-block;
+      font-size: 0.72em;
+      vertical-align: sub;
+      line-height: 0;
+      font-weight: 600;
+    }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    /* Graph canvas */
+    .graph-canvas-wrap {
+      position: relative;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .graph-canvas-wrap canvas {
+      display: block;
+      width: 100%;
+      height: 280px;
+      border-radius: 0.5rem;
+      background: #ffffff;
+    }
+    .graph-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #64748b;
+      padding: 0.5rem 0 0.25rem 0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .graph-legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .legend-dot {
+      display: inline-block;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 9999px;
+    }
+
+    /* Result */
+    .mid-result-value {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .mid-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .mid-summary { grid-template-columns: repeat(3, 1fr); } }
+    .mid-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.875rem 0.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .mid-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .mid-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .mid-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .mid-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .mid-context strong { color: #0b1220; }
+
+    /* Mode toggle */
+    .mode-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .mode-toggle button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .mode-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+
+    /* Point input grid */
+    .point-input-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+    .point-row-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      color: #475569;
+      font-weight: 600;
+    }
+    .point-row-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Two Modes · Graph</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Midpoint Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Find the midpoint of a segment, or work backwards to find a missing endpoint given the midpoint.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Midpoint Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Midpoint calculator inputs">
+
+      <div class="mode-toggle" role="group" aria-label="Choose calculation mode">
+        <button type="button" data-mode="midpoint" class="is-active" aria-pressed="true">Find Midpoint</button>
+        <button type="button" data-mode="endpoint" aria-pressed="false">Find Missing Endpoint</button>
+      </div>
+
+      <!-- Midpoint mode panel -->
+      <div id="panel-midpoint">
+        <div class="point-row-label"><span class="point-row-num">1</span> Endpoint 1 (x₁, y₁)</div>
+        <div class="point-input-pair" style="margin-bottom:1rem;">
+          <div>
+            <label for="x1" class="calc-label">x₁</label>
+            <input type="text" inputmode="decimal" id="x1" class="calc-input" placeholder="e.g. 2" autocomplete="off" />
+          </div>
+          <div>
+            <label for="y1" class="calc-label">y₁</label>
+            <input type="text" inputmode="decimal" id="y1" class="calc-input" placeholder="e.g. 3" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="point-row-label"><span class="point-row-num">2</span> Endpoint 2 (x₂, y₂)</div>
+        <div class="point-input-pair">
+          <div>
+            <label for="x2" class="calc-label">x₂</label>
+            <input type="text" inputmode="decimal" id="x2" class="calc-input" placeholder="e.g. 8" autocomplete="off" />
+          </div>
+          <div>
+            <label for="y2" class="calc-label">y₂</label>
+            <input type="text" inputmode="decimal" id="y2" class="calc-input" placeholder="e.g. 9" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Endpoint mode panel -->
+      <div id="panel-endpoint" class="hidden">
+        <div class="point-row-label"><span class="point-row-num">1</span> Known endpoint P (x₁, y₁)</div>
+        <div class="point-input-pair" style="margin-bottom:1rem;">
+          <div>
+            <label for="px" class="calc-label">x₁</label>
+            <input type="text" inputmode="decimal" id="px" class="calc-input" placeholder="e.g. 2" autocomplete="off" />
+          </div>
+          <div>
+            <label for="py" class="calc-label">y₁</label>
+            <input type="text" inputmode="decimal" id="py" class="calc-input" placeholder="e.g. 3" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="point-row-label"><span class="point-row-num">M</span> Midpoint M (mx, my)</div>
+        <div class="point-input-pair">
+          <div>
+            <label for="mx" class="calc-label">mx</label>
+            <input type="text" inputmode="decimal" id="mx" class="calc-input" placeholder="e.g. 5" autocomplete="off" />
+          </div>
+          <div>
+            <label for="my" class="calc-label">my</label>
+            <input type="text" inputmode="decimal" id="my" class="calc-input" placeholder="e.g. 6" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        Preview: fill the coordinates
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this midpoint calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool works in two directions. In the first mode, it takes two endpoints of a segment and returns the midpoint — the point exactly halfway between them. In the second mode, it reverses the calculation: given one endpoint and the midpoint, it finds the missing other endpoint. Every result includes a graph showing the two known points (or all three when working backwards) and the segment joining them, along with the full step-by-step working using the midpoint formula.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">The midpoint formula</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Midpoint of two points</div>
+          <div class="math-block">
+            <span>M = </span>
+            <span style="font-size:1.05rem;">(</span>
+            <span class="latex-frac big">
+              <span class="f-num">x<sub>1</sub> + x<sub>2</sub></span>
+              <span class="f-den">2</span>
+            </span>
+            <span>,</span>
+            <span class="latex-frac big">
+              <span class="f-num">y<sub>1</sub> + y<sub>2</sub></span>
+              <span class="f-den">2</span>
+            </span>
+            <span style="font-size:1.05rem;">)</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Finding a missing endpoint</div>
+          <div class="math-block">
+            <span>Q = (2m<sub>x</sub> − x<sub>1</sub>, &nbsp; 2m<sub>y</sub> − y<sub>1</sub>)</span>
+          </div>
+          <p style="margin-top:0.5rem;font-size:0.875rem;color:#475569;text-align:center;">Where P = (x₁, y₁) is the known endpoint and M = (m<sub>x</sub>, m<sub>y</sub>) is the midpoint.</p>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>(x₁, y₁)</strong> — coordinates of the first endpoint.</li>
+          <li><strong>(x₂, y₂)</strong> — coordinates of the second endpoint.</li>
+          <li><strong>(m<sub>x</sub>, m<sub>y</sub>)</strong> — coordinates of the midpoint.</li>
+          <li><strong>Q</strong> — the missing endpoint in endpoint mode.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Midpoint of (2, 3) and (8, 9)</p>
+          <ol>
+            <li>x-coordinate: (2 + 8) / 2 = 10 / 2 = <strong>5</strong>.</li>
+            <li>y-coordinate: (3 + 9) / 2 = 12 / 2 = <strong>6</strong>.</li>
+            <li><strong>Result: M = (5, 6)</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Midpoint of (−4, 2) and (6, −8)</p>
+          <ol>
+            <li>x-coordinate: (−4 + 6) / 2 = 2 / 2 = <strong>1</strong>.</li>
+            <li>y-coordinate: (2 + (−8)) / 2 = −6 / 2 = <strong>−3</strong>.</li>
+            <li><strong>Result: M = (1, −3)</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Fractional midpoint of (1, 0) and (2, 1)</p>
+          <ol>
+            <li>x-coordinate: (1 + 2) / 2 = 3/2 = 1.5.</li>
+            <li>y-coordinate: (0 + 1) / 2 = 1/2 = 0.5.</li>
+            <li><strong>Result: M = (3/2, 1/2)</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Missing endpoint — one endpoint (2, 3), midpoint (5, 6)</p>
+          <ol>
+            <li>Unknown endpoint x-coordinate: 2 × 5 − 2 = 10 − 2 = <strong>8</strong>.</li>
+            <li>Unknown endpoint y-coordinate: 2 × 6 − 3 = 12 − 3 = <strong>9</strong>.</li>
+            <li><strong>Result: Q = (8, 9)</strong></li>
+            <li>Check: midpoint of (2, 3) and (8, 9) = (5, 6) ✓</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Missing endpoint — endpoint (0, 0), midpoint (4, 7)</p>
+          <ol>
+            <li>x-coordinate: 2 × 4 − 0 = <strong>8</strong>.</li>
+            <li>y-coordinate: 2 × 7 − 0 = <strong>14</strong>.</li>
+            <li><strong>Result: Q = (8, 14)</strong></li>
+            <li>Interpretation: the midpoint is the average of the endpoints, so if one endpoint is the origin, the other must be twice the midpoint.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Where the midpoint appears in Class 9 &amp; 10</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          The midpoint formula is a small but fundamental tool in coordinate geometry:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Perpendicular bisectors</strong> — the perpendicular bisector of a segment passes through its midpoint.</li>
+          <li><strong>Circle centre</strong> — if you know the endpoints of a diameter, the centre of the circle is their midpoint.</li>
+          <li><strong>Parallelograms</strong> — the diagonals of a parallelogram bisect each other; the intersection is the midpoint of both diagonals.</li>
+          <li><strong>Median of a triangle</strong> — a median connects a vertex to the midpoint of the opposite side.</li>
+          <li><strong>Real-world application</strong> — finding the location halfway between two cities, or the average position of two objects.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Forgetting to divide by 2.</strong> Adding the coordinates is not enough. The midpoint is the <em>average</em> of the coordinates, so you must divide each sum by 2.</li>
+          <li><strong>Mixing up x-coordinates with y-coordinates.</strong> Add x's together and divide by 2 to get the midpoint's x. Do the same with y's separately. Do not mix the axes.</li>
+          <li><strong>Sign errors with negative coordinates.</strong> For example, (−4 + 6) / 2 = 2/2 = 1, not −5. Write down the addition carefully.</li>
+          <li><strong>Using the average of x and y for a single coordinate.</strong> The midpoint is a point (two numbers). It is not a single number obtained by averaging all four input numbers.</li>
+          <li><strong>Missing endpoint formula reversed.</strong> To find the missing endpoint, you must <em>subtract</em> the known endpoint from twice the midpoint, not add. Q = 2M − P.</li>
+          <li><strong>Assuming the midpoint lies on the segment's perpendicular bisector somewhere else.</strong> The midpoint is on the segment itself — it is the point halfway between the endpoints.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What is the midpoint formula?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">The midpoint of a segment with endpoints (x₁, y₁) and (x₂, y₂) is ((x₁ + x₂) / 2, (y₁ + y₂) / 2). It is the average of the two x-coordinates paired with the average of the two y-coordinates.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I find a missing endpoint given one endpoint and the midpoint?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Use the midpoint formula in reverse. If M is the midpoint and P is the known endpoint, then the unknown endpoint Q satisfies Q = 2M − P. That is, double each coordinate of the midpoint and subtract the corresponding coordinate of the known endpoint.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does the midpoint divide the segment in half?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Yes. By definition, the midpoint is the point that divides the segment into two equal lengths. The distance from either endpoint to the midpoint is half the total segment length.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What if the two endpoints are the same point?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">If both endpoints are the same, the segment has zero length and the midpoint is that point. This is the degenerate case of a line segment.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does the order of the endpoints matter?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">No. Addition is commutative, so (x₁ + x₂) / 2 = (x₂ + x₁) / 2. The midpoint is the same whether you call one point 'first' or 'second'.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How is the midpoint used in geometry?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">The midpoint is used to construct perpendicular bisectors, prove that a point divides a segment equally, find the centre of a circle from a diameter, and identify vertices of a parallelogram (whose diagonals bisect each other at the midpoint).</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="distance-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Distance Between Points</a></li>
+          <li><a href="slope-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Slope Calculator</a></li>
+          <li><a href="pythagorean-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Pythagorean Theorem Calculator</a></li>
+          <li><a href="circle-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Circle Calculator</a></li>
+          <li><a href="triangle-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Triangle Calculator</a></li>
+          <li><a href="area-perimeter-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Area &amp; Perimeter Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          The midpoint formula is part of the coordinate geometry chapter in Class 9 and appears in various proofs in Class 10. Revise with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'midpoint-calculator';
+
+    // Midpoint mode elements
+    const x1El = document.getElementById('x1');
+    const y1El = document.getElementById('y1');
+    const x2El = document.getElementById('x2');
+    const y2El = document.getElementById('y2');
+
+    // Endpoint mode elements
+    const pxEl = document.getElementById('px');
+    const pyEl = document.getElementById('py');
+    const mxEl = document.getElementById('mx');
+    const myEl = document.getElementById('my');
+
+    const previewEl = document.getElementById('live-preview');
+    const calcBtn = document.getElementById('calc-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section = document.querySelector('section[aria-label="Midpoint calculator inputs"]');
+    const modeBtns = document.querySelectorAll('.mode-toggle button');
+    const panelMidpoint = document.getElementById('panel-midpoint');
+    const panelEndpoint = document.getElementById('panel-endpoint');
+
+    let mode = 'midpoint';
+    let lastResult = null;
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    /* ============ LaTeX-style helpers ============ */
+    function fracHTML(numHTML, denHTML, big) {
+      const cls = 'latex-frac' + (big ? ' big' : '');
+      return `<span class="${cls}"><span class="f-num">${numHTML}</span><span class="f-den">${denHTML}</span></span>`;
+    }
+    function radicalHTML(radicandHTML, big) {
+      const cls = 'latex-radical' + (big ? ' big' : '');
+      return `<span class="${cls}"><span class="r-sign">√</span><span class="r-body">${radicandHTML}</span></span>`;
+    }
+
+    /* ============ Number formatting ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 8;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) {
+        if (Math.abs(x) < 1e15) return x.toLocaleString('en-US');
+        return x.toExponential(6);
+      }
+      const abs = Math.abs(x);
+      if (abs < 1e-6 || abs >= 1e12) return x.toExponential(6);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+
+    /* ============ Fraction utilities ============ */
+    function gcd(a, b) {
+      a = Math.abs(Math.round(a));
+      b = Math.abs(Math.round(b));
+      while (b) { const t = b; b = a % b; a = t; }
+      return a || 1;
+    }
+    function decimalToFraction(x) {
+      if (!Number.isFinite(x)) return null;
+      if (Number.isInteger(x)) return { n: x, d: 1 };
+      const sign = x < 0 ? -1 : 1;
+      const v = Math.abs(x);
+      let h1 = 1, h0 = 0, k1 = 0, k0 = 1;
+      let b = v;
+      const tol = 1e-9;
+      for (let i = 0; i < 20; i++) {
+        const a = Math.floor(b);
+        const h2 = a * h1 + h0;
+        const k2 = a * k1 + k0;
+        h0 = h1; h1 = h2;
+        k0 = k1; k1 = k2;
+        if (Math.abs(v - h1 / k1) < tol) break;
+        const frac = b - a;
+        if (frac < 1e-12) break;
+        b = 1 / frac;
+      }
+      if (k1 === 0) return null;
+      const g = gcd(h1, k1);
+      return { n: sign * h1 / g, d: k1 / g };
+    }
+
+    // Format a coordinate nicely. If integer, show as integer. If fraction with small denominator, show fraction.
+    function formatCoord(x) {
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) return x.toLocaleString('en-US');
+      const frac = decimalToFraction(x);
+      if (frac && Math.abs(frac.n) < 1e6 && frac.d < 1e6 && frac.d !== 1) {
+        return `${frac.n}/${frac.d}`;
+      }
+      return fmtNum(x, 6);
+    }
+
+    /* ============ Mode switching ============ */
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mode = btn.dataset.mode;
+        modeBtns.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        panelMidpoint.classList.toggle('hidden', mode !== 'midpoint');
+        panelEndpoint.classList.toggle('hidden', mode !== 'endpoint');
+        clearAllErrors(section);
+        hideResult(resultPanel);
+        lastResult = null;
+        renderPreview();
+      });
+    });
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      if (mode === 'midpoint') {
+        const x1s = x1El.value.trim(), y1s = y1El.value.trim();
+        const x2s = x2El.value.trim(), y2s = y2El.value.trim();
+        const x1 = parseNum(x1s), y1 = parseNum(y1s), x2 = parseNum(x2s), y2 = parseNum(y2s);
+        if (x1s === '' && y1s === '' && x2s === '' && y2s === '') {
+          previewEl.innerHTML = 'Preview: fill the four coordinates';
+          return;
+        }
+        const p1 = (x1s !== '' && y1s !== '' && Number.isFinite(x1) && Number.isFinite(y1))
+          ? `(${fmtNum(x1)}, ${fmtNum(y1)})` : '(x₁, y₁)';
+        const p2 = (x2s !== '' && y2s !== '' && Number.isFinite(x2) && Number.isFinite(y2))
+          ? `(${fmtNum(x2)}, ${fmtNum(y2)})` : '(x₂, y₂)';
+        previewEl.innerHTML = `Midpoint of <span style="color:#0b1220;">${p1}</span> and <span style="color:#0b1220;">${p2}</span>`;
+      } else {
+        const pxs = pxEl.value.trim(), pys = pyEl.value.trim();
+        const mxs = mxEl.value.trim(), mys = myEl.value.trim();
+        const px = parseNum(pxs), py = parseNum(pys), mx = parseNum(mxs), my = parseNum(mys);
+        if (pxs === '' && pys === '' && mxs === '' && mys === '') {
+          previewEl.innerHTML = 'Preview: fill the known endpoint and midpoint';
+          return;
+        }
+        const pStr = (pxs !== '' && pys !== '' && Number.isFinite(px) && Number.isFinite(py))
+          ? `(${fmtNum(px)}, ${fmtNum(py)})` : 'P';
+        const mStr = (mxs !== '' && mys !== '' && Number.isFinite(mx) && Number.isFinite(my))
+          ? `(${fmtNum(mx)}, ${fmtNum(my)})` : 'M';
+        previewEl.innerHTML = `Find endpoint Q given P = <span style="color:#0b1220;">${pStr}</span> and midpoint M = <span style="color:#0b1220;">${mStr}</span>`;
+      }
+    }
+
+    [x1El, y1El, x2El, y2El, pxEl, pyEl, mxEl, myEl].forEach(el => el.addEventListener('input', renderPreview));
+
+    /* ============ Calculate ============ */
+    function calculate() {
+      clearAllErrors(section);
+      if (mode === 'midpoint') calcMidpoint();
+      else calcEndpoint();
+    }
+
+    /* ============ Midpoint mode ============ */
+    function calcMidpoint() {
+      const readings = [
+        { el: x1El, name: 'x₁' }, { el: y1El, name: 'y₁' },
+        { el: x2El, name: 'x₂' }, { el: y2El, name: 'y₂' }
+      ];
+      let allFilled = true;
+      readings.forEach(r => {
+        if (r.el.value.trim() === '') { showError(r.el, `Enter ${r.name}.`); allFilled = false; }
+      });
+      if (!allFilled) { trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const x1 = parseNum(x1El.value), y1 = parseNum(y1El.value);
+      const x2 = parseNum(x2El.value), y2 = parseNum(y2El.value);
+      if (![x1, y1, x2, y2].every(Number.isFinite)) {
+        readings.forEach(r => {
+          if (!Number.isFinite(parseNum(r.el.value))) showError(r.el, 'Enter a valid number.');
+        });
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      const mx = (x1 + x2) / 2;
+      const my = (y1 + y2) / 2;
+
+      const mxStr = formatCoord(mx);
+      const myStr = formatCoord(my);
+
+      const mxFrac = decimalToFraction(mx);
+      const myFrac = decimalToFraction(my);
+      const mxFracHTML = mxFrac && mxFrac.d !== 1
+        ? fracHTML(mxFrac.n, mxFrac.d, true)
+        : `<span style="font-weight:800;">${mxStr}</span>`;
+      const myFracHTML = myFrac && myFrac.d !== 1
+        ? fracHTML(myFrac.n, myFrac.d, true)
+        : `<span style="font-weight:800;">${myStr}</span>`;
+
+      // Segment length
+      const dx = x2 - x1, dy = y2 - y1;
+      const segLen = Math.sqrt(dx * dx + dy * dy);
+
+      const html = `
+        <div class="result-label">Midpoint</div>
+        <div class="mid-result-value">M = (${mxFracHTML}, ${myFracHTML})</div>
+
+        <div class="mid-summary">
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(x1)}</div>
+            <div class="mid-summary-label">x₁</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(y1)}</div>
+            <div class="mid-summary-label">y₁</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(x2)}</div>
+            <div class="mid-summary-label">x₂</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(y2)}</div>
+            <div class="mid-summary-label">y₂</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">(${mxStr}, ${myStr})</div>
+            <div class="mid-summary-label">Midpoint</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(segLen, 6)}</div>
+            <div class="mid-summary-label">Segment length</div>
+          </div>
+        </div>
+
+        <div class="graph-canvas-wrap">
+          <canvas id="graph-canvas" aria-label="Graph showing the endpoints and midpoint"></canvas>
+          <div class="graph-legend">
+            <span><span class="legend-dot" style="background:#0ea5e9;"></span>P₁ (${fmtNum(x1)}, ${fmtNum(y1)})</span>
+            <span><span class="legend-dot" style="background:#8b5cf6;"></span>P₂ (${fmtNum(x2)}, ${fmtNum(y2)})</span>
+            <span><span class="legend-dot" style="background:#10b981;"></span>Midpoint M</span>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Endpoints: P₁ = (${fmtNum(x1)}, ${fmtNum(y1)}), P₂ = (${fmtNum(x2)}, ${fmtNum(y2)}).</li>
+            <li>x-coordinate of midpoint: (x₁ + x₂) / 2 = (${fmtNum(x1)} + ${fmtNum(x2)}) / 2 = ${fmtNum(x1 + x2)} / 2 = <strong>${mxStr}</strong>.</li>
+            <li>y-coordinate of midpoint: (y₁ + y₂) / 2 = (${fmtNum(y1)} + ${fmtNum(y2)}) / 2 = ${fmtNum(y1 + y2)} / 2 = <strong>${myStr}</strong>.</li>
+            <li>Midpoint M = <strong>(${mxStr}, ${myStr})</strong>.</li>
+            <li>Check: distance from M to P₁ = ${fmtNum(Math.sqrt(Math.pow(mx - x1, 2) + Math.pow(my - y1, 2)), 6)}, distance from M to P₂ = ${fmtNum(Math.sqrt(Math.pow(mx - x2, 2) + Math.pow(my - y2, 2)), 6)}. They match ✓</li>
+          </ol>
+        </div>
+
+        <div class="mid-context">
+          <p>🔹 The midpoint divides the segment into two equal halves.</p>
+          <p>🔹 Total segment length = <strong>${fmtNum(segLen, 8)}</strong>, so each half is <strong>${fmtNum(segLen / 2, 8)}</strong>.</p>
+          <p>🔹 The midpoint is the average of the two endpoints — it lies exactly halfway along the segment.</p>
+        </div>
+      `;
+
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+
+      lastResult = { mode: 'midpoint', x1, y1, x2, y2, mx, my };
+      requestAnimationFrame(() => drawGraphMidpoint(x1, y1, x2, y2, mx, my));
+
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Endpoint mode ============ */
+    function calcEndpoint() {
+      const readings = [
+        { el: pxEl, name: 'x₁' }, { el: pyEl, name: 'y₁' },
+        { el: mxEl, name: 'mx' }, { el: myEl, name: 'my' }
+      ];
+      let allFilled = true;
+      readings.forEach(r => {
+        if (r.el.value.trim() === '') { showError(r.el, `Enter ${r.name}.`); allFilled = false; }
+      });
+      if (!allFilled) { trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const px = parseNum(pxEl.value), py = parseNum(pyEl.value);
+      const mx = parseNum(mxEl.value), my = parseNum(myEl.value);
+      if (![px, py, mx, my].every(Number.isFinite)) {
+        readings.forEach(r => {
+          if (!Number.isFinite(parseNum(r.el.value))) showError(r.el, 'Enter a valid number.');
+        });
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      // Q = 2M - P
+      const qx = 2 * mx - px;
+      const qy = 2 * my - py;
+
+      const qxStr = formatCoord(qx);
+      const qyStr = formatCoord(qy);
+
+      const qxFrac = decimalToFraction(qx);
+      const qyFrac = decimalToFraction(qy);
+      const qxFracHTML = qxFrac && qxFrac.d !== 1
+        ? fracHTML(qxFrac.n, qxFrac.d, true)
+        : `<span style="font-weight:800;">${qxStr}</span>`;
+      const qyFracHTML = qyFrac && qyFrac.d !== 1
+        ? fracHTML(qyFrac.n, qyFrac.d, true)
+        : `<span style="font-weight:800;">${qyStr}</span>`;
+
+      // Segment length from P to Q
+      const dx = qx - px, dy = qy - py;
+      const segLen = Math.sqrt(dx * dx + dy * dy);
+
+      const html = `
+        <div class="result-label">Missing Endpoint</div>
+        <div class="mid-result-value">Q = (${qxFracHTML}, ${qyFracHTML})</div>
+
+        <div class="mid-summary">
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(px)}</div>
+            <div class="mid-summary-label">x₁ (known)</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(py)}</div>
+            <div class="mid-summary-label">y₁ (known)</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(mx)}</div>
+            <div class="mid-summary-label">mx</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(my)}</div>
+            <div class="mid-summary-label">my</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">(${qxStr}, ${qyStr})</div>
+            <div class="mid-summary-label">Q (unknown)</div>
+          </div>
+          <div class="mid-summary-unit">
+            <div class="mid-summary-value">${fmtNum(segLen, 6)}</div>
+            <div class="mid-summary-label">Segment length</div>
+          </div>
+        </div>
+
+        <div class="graph-canvas-wrap">
+          <canvas id="graph-canvas" aria-label="Graph showing the known endpoint, midpoint, and unknown endpoint"></canvas>
+          <div class="graph-legend">
+            <span><span class="legend-dot" style="background:#0ea5e9;"></span>P (${fmtNum(px)}, ${fmtNum(py)})</span>
+            <span><span class="legend-dot" style="background:#10b981;"></span>Midpoint M</span>
+            <span><span class="legend-dot" style="background:#f59e0b;"></span>Q (${fmtNum(qx)}, ${fmtNum(qy)})</span>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Known endpoint: P = (${fmtNum(px)}, ${fmtNum(py)}).</li>
+            <li>Midpoint: M = (${fmtNum(mx)}, ${fmtNum(my)}).</li>
+            <li>Reverse the midpoint formula: Q = 2M − P.</li>
+            <li>x-coordinate: qx = 2 × mx − x₁ = 2 × ${fmtNum(mx)} − ${fmtNum(px)} = ${fmtNum(2 * mx)} − ${fmtNum(px)} = <strong>${qxStr}</strong>.</li>
+            <li>y-coordinate: qy = 2 × my − y₁ = 2 × ${fmtNum(my)} − ${fmtNum(py)} = ${fmtNum(2 * my)} − ${fmtNum(py)} = <strong>${qyStr}</strong>.</li>
+            <li><strong>Q = (${qxStr}, ${qyStr})</strong>.</li>
+            <li>Check: midpoint of P and Q = ((${fmtNum(px)} + ${fmtNum(qx)}) / 2, (${fmtNum(py)} + ${fmtNum(qy)}) / 2) = (${fmtNum((px + qx) / 2)}, ${fmtNum((py + qy) / 2)}) ${Math.abs((px + qx) / 2 - mx) < 1e-9 && Math.abs((py + qy) / 2 - my) < 1e-9 ? '= M ✓' : '⚠'}.</li>
+          </ol>
+        </div>
+
+        <div class="mid-context">
+          <p>🔹 The unknown endpoint Q = (${qxStr}, ${qyStr}).</p>
+          <p>🔹 Total segment length P → Q = <strong>${fmtNum(segLen, 8)}</strong>, half of which is <strong>${fmtNum(segLen / 2, 8)}</strong> (the distance from either endpoint to the midpoint).</p>
+          <p>🔹 The midpoint is the average of the endpoints, so the missing endpoint is obtained by doubling the midpoint and subtracting the known endpoint.</p>
+        </div>
+      `;
+
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+
+      lastResult = { mode: 'endpoint', px, py, mx, my, qx, qy };
+      requestAnimationFrame(() => drawGraphEndpoint(px, py, mx, my, qx, qy));
+
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Graph renderer (midpoint) ============ */
+    function drawGraphMidpoint(x1, y1, x2, y2, mx, my) {
+      setupCanvas();
+      const canvas = document.getElementById('graph-canvas');
+      if (!canvas) return;
+      const wrap = canvas.parentElement;
+      const W = wrap.clientWidth - 16, H = 280;
+      const ctx = canvas.getContext('2d');
+
+      const { sx, sy } = computeScales([x1, x2, mx], [y1, y2, my], W, H);
+      drawGrid(ctx, W, H, sx, sy);
+      drawSegment(ctx, sx, sy, x1, y1, x2, y2, '#10b981');
+      drawPoint(ctx, sx, sy, x1, y1, '#0ea5e9');
+      drawPoint(ctx, sx, sy, x2, y2, '#8b5cf6');
+      drawPoint(ctx, sx, sy, mx, my, '#10b981', 7);
+      drawLabels(ctx, W, H, sx, sy);
+    }
+
+    /* ============ Graph renderer (endpoint) ============ */
+    function drawGraphEndpoint(px, py, mx, my, qx, qy) {
+      setupCanvas();
+      const canvas = document.getElementById('graph-canvas');
+      if (!canvas) return;
+      const wrap = canvas.parentElement;
+      const W = wrap.clientWidth - 16, H = 280;
+      const ctx = canvas.getContext('2d');
+
+      const { sx, sy } = computeScales([px, mx, qx], [py, my, qy], W, H);
+      drawGrid(ctx, W, H, sx, sy);
+      drawSegment(ctx, sx, sy, px, py, qx, qy, '#94a3b8');
+      drawPoint(ctx, sx, sy, px, py, '#0ea5e9');
+      drawPoint(ctx, sx, sy, mx, my, '#10b981', 7);
+      drawPoint(ctx, sx, sy, qx, qy, '#f59e0b');
+      drawLabels(ctx, W, H, sx, sy);
+    }
+
+    /* ============ Graph helpers ============ */
+    function setupCanvas() {
+      const canvas = document.getElementById('graph-canvas');
+      if (!canvas) return;
+      const wrap = canvas.parentElement;
+      const cssWidth = wrap.clientWidth - 16;
+      const cssHeight = 280;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(cssWidth * dpr);
+      canvas.height = Math.floor(cssHeight * dpr);
+      canvas.style.width = cssWidth + 'px';
+      canvas.style.height = cssHeight + 'px';
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, cssWidth, cssHeight);
+    }
+
+    function computeScales(xs, ys, W, H) {
+      let xMin = Math.min(...xs, 0), xMax = Math.max(...xs, 0);
+      let yMin = Math.min(...ys, 0), yMax = Math.max(...ys, 0);
+      if (xMax - xMin < 1e-9) { xMin -= 1; xMax += 1; }
+      if (yMax - yMin < 1e-9) { yMin -= 1; yMax += 1; }
+      const xPad = Math.max((xMax - xMin) * 0.25, 1);
+      const yPad = Math.max((yMax - yMin) * 0.25, 1);
+      xMin -= xPad; xMax += xPad; yMin -= yPad; yMax += yPad;
+      return {
+        sx: (x) => ((x - xMin) / (xMax - xMin)) * W,
+        sy: (y) => H - ((y - yMin) / (yMax - yMin)) * H,
+        xMin, xMax, yMin, yMax
+      };
+    }
+
+    function drawGrid(ctx, W, H, sx, sy) {
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      const gridCount = 10;
+      for (let i = 0; i <= gridCount; i++) {
+        const gx = (i / gridCount) * W;
+        const gy = (i / gridCount) * H;
+        ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+      }
+      // Axes
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1.5;
+      const axisY = sy(0);
+      const axisX = sx(0);
+      if (axisY >= 0 && axisY <= H) { ctx.beginPath(); ctx.moveTo(0, axisY); ctx.lineTo(W, axisY); ctx.stroke(); }
+      if (axisX >= 0 && axisX <= W) { ctx.beginPath(); ctx.moveTo(axisX, 0); ctx.lineTo(axisX, H); ctx.stroke(); }
+    }
+
+    function drawSegment(ctx, sx, sy, x1, y1, x2, y2, color) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(sx(x1), sy(y1));
+      ctx.lineTo(sx(x2), sy(y2));
+      ctx.stroke();
+    }
+
+    function drawPoint(ctx, sx, sy, x, y, color, radius) {
+      radius = radius || 6;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(sx(x), sy(y), radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function drawLabels(ctx, W, H, sx, sy) {
+      // Cannot easily access xMin/xMax here without passing them, so skip axis numeric labels on midpoint graphs
+      // Instead, add nothing. If you want labels, refactor computeScales to return them and pass through.
+      return;
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      [x1El, y1El, x2El, y2El, pxEl, pyEl, mxEl, myEl].forEach(el => { el.value = ''; });
+      lastResult = null;
+      renderPreview();
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Redraw graph on resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (!lastResult || !resultPanel.classList.contains('is-visible')) return;
+        if (lastResult.mode === 'midpoint') {
+          drawGraphMidpoint(lastResult.x1, lastResult.y1, lastResult.x2, lastResult.y2, lastResult.mx, lastResult.my);
+        } else {
+          drawGraphEndpoint(lastResult.px, lastResult.py, lastResult.mx, lastResult.my, lastResult.qx, lastResult.qy);
+        }
+      }, 200);
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Exponent &amp; Power Calculator — Any Base, Any Exponent | Hira Science Academy</title>
+  <meta content="Free exponent calculator. Compute any base raised to any exponent, including negative and fractional exponents, with step-by-step working and simplification." name="description"/>
+  <meta content="exponent calculator, power calculator, negative exponent, fractional exponent, powers and indices, base and exponent, laws of exponents" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/exponent-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Exponent &amp; Power Calculator — Any Base, Any Exponent" property="og:title"/>
+  <meta content="Compute any base raised to any exponent with step-by-step working." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/exponent-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Exponent Calculator", "item": "https://hiraacademy.com.pk/tools/exponent-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does a negative exponent mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A negative exponent means take the reciprocal of the base raised to the positive exponent. For example, 2^-3 = 1 / (2^3) = 1/8 = 0.125. It does not make the answer negative unless the base is negative and the exponent is odd." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does a fractional exponent mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An exponent of the form 1/n means the n-th root. For example, 8^(1/3) = the cube root of 8 = 2. In general, a^(m/n) = the n-th root of (a^m). Fractional exponents connect powers and roots." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is anything raised to the power 0?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Any non-zero number raised to the power 0 equals 1. This follows from the quotient law of exponents: a^n / a^n = a^(n-n) = a^0, and any number divided by itself is 1. The expression 0^0 is indeterminate and is reported as an error by this calculator." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I raise a negative number to a fractional exponent?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It depends on the exponent. If the fractional exponent simplifies to a rational with an odd denominator (like 1/3), the real root exists. For example, (-8)^(1/3) = -2. If the denominator is even (like 1/2), the real root does not exist because no real number squared gives a negative. This calculator reports an error in that case." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the laws of exponents?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The product law: a^m × a^n = a^(m+n). The quotient law: a^m ÷ a^n = a^(m-n). The power law: (a^m)^n = a^(mn). The distribution law: (ab)^n = a^n × b^n. These laws appear throughout Class 9 and 10 algebra." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my calculator give a slightly different answer for large exponents?",
+        "acceptedAnswer": { "@type": "Answer", "text": "JavaScript numbers are 64-bit floating point. For very large results (beyond about 10^308), they overflow to Infinity. For most Class 9 and 10 problems, the exponent stays below 100, and the answers remain exact." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    .exp-result-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-all;
+    }
+    .exp-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .exp-summary { grid-template-columns: repeat(3, 1fr); } }
+    .exp-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.875rem 0.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .exp-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .exp-summary-label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .exp-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .exp-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .exp-context strong { color: #0b1220; }
+    .formula-inline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9375rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e2e8f0;
+    }
+    .exp-input-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 0.5rem;
+      align-items: end;
+    }
+    @media (max-width: 480px) {
+      .exp-input-row { grid-template-columns: 1fr; gap: 0.75rem; }
+      .exp-input-row .exp-sep { display: none; }
+    }
+    .exp-sep {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0b1220;
+      text-align: center;
+      padding-bottom: 0.6rem;
+    }
+    .exp-steps-block {
+      background: #ffffff;
+      border-left: 4px solid #8b5cf6;
+      border-radius: 0.5rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .exp-steps-block ol { list-style: decimal; padding-left: 1.25rem; margin: 0; }
+    .exp-steps-block li { margin-bottom: 0.5rem; font-size: 0.9375rem; color: #334155; line-height: 1.6; }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Negative Exponents · Fractional Exponents</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Exponent &amp; Power Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Compute any base raised to any exponent — integers, negatives, and fractions — with the working shown.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Exponent Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Exponent calculator inputs">
+
+      <div class="exp-input-row">
+        <div>
+          <label for="base" class="calc-label">Base (a)</label>
+          <input type="text" inputmode="decimal" id="base" class="calc-input" placeholder="e.g. 2" autocomplete="off" />
+        </div>
+        <div class="exp-sep">^</div>
+        <div>
+          <label for="exponent" class="calc-label">Exponent (n)</label>
+          <input type="text" inputmode="decimal" id="exponent" class="calc-input" placeholder="e.g. 10" autocomplete="off" />
+        </div>
+      </div>
+      <p style="font-size:0.75rem;color:#64748b;margin-top:0.75rem;">
+        Decimals are accepted for both fields. To compute a fractional exponent like 1/3, enter <span class="formula-inline">0.3333…</span> or use the form <span class="formula-inline">a^(1/3)</span> in the exponent by entering the decimal value.
+      </p>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this exponent calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool computes any base raised to any exponent. It handles the three cases that appear in the Punjab board syllabus: <strong>positive integer exponents</strong> (repeated multiplication), <strong>negative exponents</strong> (reciprocals), and <strong>fractional exponents</strong> (roots). It also handles the special cases — zero exponent, exponent one, and the indeterminate form 0⁰ — with clear explanations rather than confusing output. Every result comes with the step-by-step working, so you can see exactly how the value was produced and how the laws of exponents applied.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Laws of exponents</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          For any non-zero real number <span class="formula-inline">a</span> and integers or rationals <span class="formula-inline">m</span>, <span class="formula-inline">n</span>:
+        </p>
+
+        <div class="formula-block">
+          <div class="formula-label">Definition (positive integer exponent)</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            a^n = a × a × … × a &nbsp;&nbsp; (n factors of a)
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Zero exponent</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            a^0 = 1 &nbsp;&nbsp; (for a ≠ 0)
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Negative exponent</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            a^(-n) = 1 / a^n
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Fractional exponent</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            a^(1/n) = n-th root of a &nbsp;&nbsp;&nbsp; a^(m/n) = (n-th root of a)^m
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Product and quotient laws</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            a^m × a^n = a^(m+n) &nbsp;&nbsp;&nbsp;&nbsp; a^m ÷ a^n = a^(m−n)
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Power of a power, and of a product</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            (a^m)^n = a^(mn) &nbsp;&nbsp;&nbsp;&nbsp; (a × b)^n = a^n × b^n
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>a</strong> — the base, any real number.</li>
+          <li><strong>n</strong> — the exponent, an integer or a rational number.</li>
+          <li><strong>m</strong> — the numerator of a fractional exponent.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: 2^10</p>
+          <ol>
+            <li>By definition, 2^10 = 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2 × 2.</li>
+            <li>Pair up: (2 × 2) = 4, (2 × 2) = 4, (2 × 2) = 4, (2 × 2) = 4, (2 × 2) = 4.</li>
+            <li>Multiply the pairs: 4^5 = 4 × 4 × 4 × 4 × 4.</li>
+            <li>Compute: 4 × 4 = 16, then 16 × 4 = 64, then 64 × 4 = 256, then 256 × 4 = 1024.</li>
+            <li><strong>Result: 1024</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: 5^(-3)</p>
+          <ol>
+            <li>Use the negative exponent rule: 5^(-3) = 1 / 5^3.</li>
+            <li>Compute 5^3 = 125.</li>
+            <li>Take the reciprocal: 1 / 125 = 0.008.</li>
+            <li><strong>Result: 0.008</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: 8^(1/3)</p>
+          <ol>
+            <li>The exponent 1/3 means the cube root.</li>
+            <li>Find the number whose cube is 8: 2 × 2 × 2 = 8, so the cube root is 2.</li>
+            <li><strong>Result: 2</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: 27^(2/3)</p>
+          <ol>
+            <li>Split: 27^(2/3) = (27^(1/3))^2.</li>
+            <li>Cube root of 27: 3 × 3 × 3 = 27, so 27^(1/3) = 3.</li>
+            <li>Square it: 3^2 = 9.</li>
+            <li><strong>Result: 9</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Anything nonzero to the power 0</p>
+          <ol>
+            <li>By the quotient law: a^n ÷ a^n = a^(n−n) = a^0.</li>
+            <li>But any nonzero quantity divided by itself equals 1.</li>
+            <li>Therefore a^0 = 1 for any a ≠ 0.</li>
+            <li>Example: 7^0 = 1. Even 0.5^0 = 1. <strong>Result: 1</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 6: Negative base with odd vs even exponent</p>
+          <ol>
+            <li>(−2)^3 = (−2) × (−2) × (−2) = −8. Odd exponent keeps the negative sign.</li>
+            <li>(−2)^4 = (−2) × (−2) × (−2) × (−2) = 16. Even exponent removes the sign.</li>
+            <li>This pattern holds for all negative bases: sign = (−1) raised to the exponent.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Where exponents appear in Class 9 &amp; 10</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Exponents are woven through both years of the BISE Punjab mathematics and physics syllabus:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Scientific notation</strong> — very large and small numbers are written as a × 10^n. This is used in physics for distances, masses, and atomic scales.</li>
+          <li><strong>Algebraic simplification</strong> — laws of exponents shorten polynomial multiplications and divisions.</li>
+          <li><strong>Compound interest</strong> — A = P(1 + r)^n uses exponents to model growth.</li>
+          <li><strong>Logarithms</strong> — logarithms are the inverse of exponentiation, so exponent laws mirror log laws.</li>
+          <li><strong>Roots and surds</strong> — square and cube roots are exponents of 1/2 and 1/3, and simplifying surds uses exponent laws.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Multiplying base by exponent.</strong> 2^3 means 2 × 2 × 2 = 8, not 2 × 3 = 6. The exponent is a count of how many times the base is a factor.</li>
+          <li><strong>Adding exponents when multiplying powers of different bases.</strong> 2^3 × 3^4 is <em>not</em> 6^7. The product law a^m × a^n = a^(m+n) requires the same base.</li>
+          <li><strong>Treating a negative exponent as a negative result.</strong> 2^(-3) = 1/8 = 0.125, not −8. A negative exponent gives the reciprocal, not a negative sign.</li>
+          <li><strong>Squaring a negative number and getting a negative result.</strong> (−3)^2 = 9 because the two negatives multiply to a positive. Only an odd exponent preserves the negative sign.</li>
+          <li><strong>Assuming 0^0 equals 0 or 1.</strong> It is indeterminate; different contexts treat it differently. This calculator reports it as an error.</li>
+          <li><strong>Forgetting to square every factor inside brackets.</strong> (2 × 3)^2 = 2^2 × 3^2 = 4 × 9 = 36, not 2 × 9. The exponent applies to the whole product.</li>
+          <li><strong>Taking a square root of a negative number.</strong> (-4)^(1/2) has no real solution. The cube root of a negative exists: (-8)^(1/3) = −2. Denominator even → no real root; denominator odd → real root.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What does a negative exponent mean?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">A negative exponent means take the reciprocal of the base raised to the positive exponent. For example, 2^-3 = 1 / (2^3) = 1/8 = 0.125. It does not make the answer negative unless the base is negative and the exponent is odd.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What does a fractional exponent mean?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">An exponent of the form 1/n means the n-th root. For example, 8^(1/3) = the cube root of 8 = 2. In general, a^(m/n) = the n-th root of (a^m). Fractional exponents connect powers and roots.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is anything raised to the power 0?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Any non-zero number raised to the power 0 equals 1. This follows from the quotient law of exponents: a^n / a^n = a^(n-n) = a^0, and any number divided by itself is 1. The expression 0^0 is indeterminate and is reported as an error by this calculator.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I raise a negative number to a fractional exponent?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">It depends on the exponent. If the fractional exponent simplifies to a rational with an odd denominator (like 1/3), the real root exists. For example, (-8)^(1/3) = -2. If the denominator is even (like 1/2), the real root does not exist because no real number squared gives a negative. This calculator reports an error in that case.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What are the laws of exponents?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">The product law: a^m × a^n = a^(m+n). The quotient law: a^m ÷ a^n = a^(m-n). The power law: (a^m)^n = a^(mn). The distribution law: (ab)^n = a^n × b^n. These laws appear throughout Class 9 and 10 algebra.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why does my calculator give a slightly different answer for large exponents?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">JavaScript numbers are 64-bit floating point. For very large results (beyond about 10^308), they overflow to Infinity. For most Class 9 and 10 problems, the exponent stays below 100, and the answers remain exact.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="square-root-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Square Root Calculator</a></li>
+          <li><a href="scientific-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Scientific Calculator</a></li>
+          <li><a href="lcm-gcf-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ LCM &amp; GCF Calculator</a></li>
+          <li><a href="decimal-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Decimal Calculator</a></li>
+          <li><a href="quadratic-solver.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Quadratic Equation Solver</a></li>
+          <li><a href="standard-deviation-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Standard Deviation Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          The laws of exponents appear throughout the BISE Punjab algebra syllabus and in scientific notation problems in physics and chemistry. Revise with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'exponent-calculator';
+
+    const baseEl     = document.getElementById('base');
+    const exponentEl = document.getElementById('exponent');
+    const calcBtn    = document.getElementById('calc-btn');
+    const resetBtn   = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section    = document.querySelector('section[aria-label="Exponent calculator inputs"]');
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    /* ---------- GCD for simplifying the fractional exponent ---------- */
+    function gcd(a, b) {
+      a = Math.abs(a); b = Math.abs(b);
+      while (b) { const t = b; b = a % b; a = t; }
+      return a;
+    }
+
+    /* ---------- Try to express a decimal as a simple fraction m/n ---------- */
+    function decimalToFraction(x) {
+      // Returns {n, d} such that n/d ≈ x with small integers, or null if not applicable.
+      if (!Number.isFinite(x)) return null;
+      if (Number.isInteger(x)) return { n: x, d: 1 };
+      // Continued fraction expansion
+      const sign = x < 0 ? -1 : 1;
+      let v = Math.abs(x);
+      let h1 = 1, h0 = 0, k1 = 0, k0 = 1;
+      let b = v;
+      const tol = 1e-9;
+      for (let i = 0; i < 20; i++) {
+        const a = Math.floor(b);
+        const h2 = a * h1 + h0;
+        const k2 = a * k1 + k0;
+        h0 = h1; h1 = h2;
+        k0 = k1; k1 = k2;
+        if (Math.abs(v - h1 / k1) < tol) break;
+        const frac = b - a;
+        if (frac < 1e-12) break;
+        b = 1 / frac;
+      }
+      if (k1 === 0) return null;
+      const g = gcd(h1, k1) || 1;
+      return { n: sign * h1 / g, d: k1 / g };
+    }
+
+    /* ---------- Format a number for display ---------- */
+    function fmtNumber(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 10;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) {
+        if (Math.abs(x) < 1e15) return x.toLocaleString('en-US');
+        return x.toExponential(6);
+      }
+      const abs = Math.abs(x);
+      if (abs < 1e-6 || abs >= 1e12) return x.toExponential(6);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+
+    /* ---------- Main ---------- */
+    function calculate() {
+      clearAllErrors(section);
+
+      const baseStr = baseEl.value.trim();
+      const expStr  = exponentEl.value.trim();
+
+      if (baseStr === '') {
+        showError(baseEl, 'Enter a base value.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+      if (expStr === '') {
+        showError(exponentEl, 'Enter an exponent.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      const a = parseNum(baseStr);
+      const n = parseNum(expStr);
+
+      if (!Number.isFinite(a)) {
+        showError(baseEl, 'Enter a valid number.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+      if (!Number.isFinite(n)) {
+        showError(exponentEl, 'Enter a valid number.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      /* -------- Case analysis and validation -------- */
+
+      // 0^0 is indeterminate
+      if (a === 0 && n === 0) {
+        showError(exponentEl, '0^0 is indeterminate — it has no defined value.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      // 0^negative is division by zero
+      if (a === 0 && n < 0) {
+        showError(baseEl, '0 cannot be raised to a negative power (would divide by zero).');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      // Negative base raised to a fractional exponent
+      if (a < 0 && !Number.isInteger(n)) {
+        // Attempt to see if the exponent simplifies to a fraction with odd denominator
+        const frac = decimalToFraction(n);
+        if (!frac || frac.d % 2 === 0) {
+          showError(baseEl, 'A negative base can only be raised to a fractional power when the exponent reduces to an odd-denominator fraction (like 1/3 or 2/3).');
+          trackEvent(CALC_NAME, 'invalid_input');
+          return;
+        }
+      }
+
+      // Compute the result
+      const result = Math.pow(a, n);
+
+      if (!Number.isFinite(result)) {
+        showError(exponentEl, 'The result is too large to represent (overflow). Try a smaller exponent.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      /* -------- Build the steps -------- */
+      const stepsHtml = buildSteps(a, n, result);
+      const frac = decimalToFraction(n);
+
+      /* -------- Context lines -------- */
+      const contextLines = [];
+      contextLines.push(`🔹 Expression: <strong>${fmtNumber(a)}</strong> raised to the power <strong>${fmtNumber(n)}</strong>.`);
+      contextLines.push(`🔹 Result: <strong>${fmtNumber(result)}</strong>.`);
+
+      if (n === 0) {
+        contextLines.push(`🔹 Any non-zero base to the power 0 equals <strong>1</strong>. This follows from the quotient law a^n ÷ a^n = a^0.`);
+      } else if (n === 1) {
+        contextLines.push(`🔹 Any base to the power 1 equals the base itself.`);
+      } else if (n < 0) {
+        contextLines.push(`🔹 A negative exponent means the reciprocal of the positive power: a^(−n) = 1 / a^n.`);
+      } else if (!Number.isInteger(n) && frac && frac.d === 2) {
+        contextLines.push(`🔹 The exponent ${fmtNumber(n)} is close to 1/2, meaning a square root.`);
+      } else if (!Number.isInteger(n) && frac && frac.d === 3) {
+        contextLines.push(`🔹 The exponent ${fmtNumber(n)} is close to 1/3, meaning a cube root.`);
+      }
+
+      if (a < 0) {
+        contextLines.push(`🔹 The base is negative. ${Number.isInteger(n) ? (n % 2 === 0 ? 'Even exponent → positive result.' : 'Odd exponent → negative result.') : 'The fractional exponent reduces to an odd denominator, so the real root exists.'}`);
+      }
+
+      const reciprocalLine = (Number.isFinite(result) && result !== 0)
+        ? `<p>🔹 Reciprocal 1 / (a^n): <strong>${fmtNumber(1 / result)}</strong>.</p>`
+        : '';
+
+      const html = `
+        <div class="result-label">Result</div>
+        <div class="exp-result-value">${fmtNumber(a)} ^ ${fmtNumber(n)} = ${fmtNumber(result)}</div>
+
+        <div class="exp-summary">
+          <div class="exp-summary-unit">
+            <div class="exp-summary-value">${fmtNumber(a)}</div>
+            <div class="exp-summary-label">Base</div>
+          </div>
+          <div class="exp-summary-unit">
+            <div class="exp-summary-value">${fmtNumber(n)}</div>
+            <div class="exp-summary-label">Exponent</div>
+          </div>
+          <div class="exp-summary-unit">
+            <div class="exp-summary-value">${fmtNumber(result)}</div>
+            <div class="exp-summary-label">Result</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          ${stepsHtml}
+        </div>
+
+        <div class="exp-context">
+          ${contextLines.map(l => `<p>${l}</p>`).join('')}
+          ${reciprocalLine}
+        </div>
+      `;
+
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ---------- Step generation ---------- */
+    function buildSteps(a, n, result) {
+      // Zero exponent
+      if (n === 0) {
+        return `
+          <ol>
+            <li>By the quotient law of exponents, a^n ÷ a^n = a^(n−n) = a^0.</li>
+            <li>Any non-zero quantity divided by itself is 1.</li>
+            <li>Therefore ${fmtNumber(a)}^0 = <strong>1</strong>.</li>
+          </ol>
+        `;
+      }
+
+      // Positive integer exponent — show repeated multiplication (compact if large)
+      if (Number.isInteger(n) && n > 0) {
+        if (n <= 10) {
+          const factors = Array(Math.abs(n)).fill(fmtNumber(a)).join(' × ');
+          return `
+            <ol>
+              <li>Definition of a positive integer exponent: multiply the base by itself n times.</li>
+              <li>${fmtNumber(a)}^${n} = ${factors}.</li>
+              <li>Multiply sequentially to get <strong>${fmtNumber(result)}</strong>.</li>
+            </ol>
+          `;
+        } else {
+          // Show grouping hint without writing out all factors
+          return `
+            <ol>
+              <li>Definition: ${fmtNumber(a)}^${n} means multiplying ${fmtNumber(a)} by itself ${n} times.</li>
+              <li>Use the power law to reduce the work: ${fmtNumber(a)}^${n} = (${fmtNumber(a)}^${Math.floor(n / 2)})^2 × ${fmtNumber(a)}^${n % 2}.</li>
+              <li>Compute iteratively: result = <strong>${fmtNumber(result)}</strong>.</li>
+            </ol>
+          `;
+        }
+      }
+
+      // Negative integer exponent
+      if (Number.isInteger(n) && n < 0) {
+        const posExp = -n;
+        const posResult = Math.pow(a, posExp);
+        return `
+          <ol>
+            <li>Negative exponent rule: a^(−n) = 1 / a^n.</li>
+            <li>So ${fmtNumber(a)}^(${n}) = 1 / ${fmtNumber(a)}^${posExp}.</li>
+            <li>Compute the denominator: ${fmtNumber(a)}^${posExp} = <strong>${fmtNumber(posResult)}</strong>.</li>
+            <li>Take the reciprocal: 1 / ${fmtNumber(posResult)} = <strong>${fmtNumber(result)}</strong>.</li>
+          </ol>
+        `;
+      }
+
+      // Fractional exponent
+      const frac = decimalToFraction(n);
+      if (frac && frac.d !== 1) {
+        const { n: mn, d: dd } = frac;
+
+        // If numerator is 1, it's a pure root
+        if (Math.abs(mn) === 1) {
+          const rootStr = dd === 2 ? 'square root' : dd === 3 ? 'cube root' : `${dd}-th root`;
+          return `
+            <ol>
+              <li>The exponent ${fmtNumber(n)} is close to 1/${dd}.</li>
+              <li>a^(1/${dd}) means the ${rootStr} of a.</li>
+              <li>Find the number whose ${dd}-th power is ${fmtNumber(a)}.</li>
+              <li>Result: <strong>${fmtNumber(result)}</strong>.</li>
+            </ol>
+          `;
+        }
+        return `
+          <ol>
+            <li>The exponent ${fmtNumber(n)} is close to ${mn}/${dd}.</li>
+            <li>Split: a^(${mn}/${dd}) = (a^(1/${dd}))^${mn}.</li>
+            <li>First compute the ${dd}-th root of ${fmtNumber(a)}: ${fmtNumber(Math.pow(a, 1 / dd))}.</li>
+            <li>Then raise to the power ${mn}: <strong>${fmtNumber(result)}</strong>.</li>
+          </ol>
+        `;
+      }
+
+      // Non-integer, non-simple fraction
+      return `
+        <ol>
+          <li>Exponent ${fmtNumber(n)} is not a simple fraction.</li>
+          <li>The expression is evaluated numerically as ${fmtNumber(a)}^${fmtNumber(n)}.</li>
+          <li>Result: <strong>${fmtNumber(result)}</strong>.</li>
+        </ol>
+      `;
+    }
+
+    /* ---------- Wiring ---------- */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      baseEl.value = '';
+      exponentEl.value = '';
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

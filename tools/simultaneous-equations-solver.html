@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Simultaneous Equations Solver — 2×2 Systems by Cramer's Rule | Hira Science Academy</title>
+  <meta content="Free simultaneous equations solver. Solve two equations in two variables using Cramer's rule with determinant analysis, step-by-step working, and special case detection." name="description"/>
+  <meta content="simultaneous equations solver, system of equations, Cramer's rule, 2x2 linear system, two variables, determinant method" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/simultaneous-equations-solver.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Simultaneous Equations Solver — 2×2 Systems by Cramer's Rule" property="og:title"/>
+  <meta content="Solve two simultaneous linear equations in two variables with Cramer's rule and full working." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/simultaneous-equations-solver.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Simultaneous Equations Solver", "item": "https://hiraacademy.com.pk/tools/simultaneous-equations-solver.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are simultaneous equations?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Simultaneous equations are two or more equations in the same variables that must be satisfied at the same time. A 2×2 linear system has two equations in two unknowns, x and y. Solving means finding the pair (x, y) that satisfies both equations at once." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Cramer's rule?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Cramer's rule is a formula for solving systems of linear equations using determinants. For the system a₁x + b₁y = c₁, a₂x + b₂y = c₂, the solution is x = Dx / D and y = Dy / D, where D is the determinant of the coefficient matrix and Dx, Dy are determinants with the corresponding column replaced by the constants." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the determinant tell you?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The determinant D determines the nature of the system. If D ≠ 0, there is exactly one unique solution. If D = 0 and the equations are consistent (one is a multiple of the other), there are infinitely many solutions. If D = 0 and the equations are inconsistent, there is no solution." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between substitution and elimination?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Substitution solves one equation for one variable and substitutes into the other. Elimination adds or subtracts multiples of the equations to cancel one variable. Cramer's rule uses determinants and is faster for 2×2 and 3×3 systems, but substitution and elimination are more intuitive and are what students learn first." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can there be more than one solution?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A 2×2 linear system can have exactly one solution (D ≠ 0), infinitely many solutions (D = 0 with consistent equations), or no solution (D = 0 with inconsistent equations). It cannot have exactly two or three distinct solutions." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I check my solution?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Substitute the values of x and y back into both original equations and verify that both sides equal. Both equations must be satisfied. This substitution check catches sign errors and arithmetic mistakes." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den {
+      padding: 0.05em 0.35em 0 0.35em;
+    }
+    .latex-frac.big { font-size: 1.35em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .latex-sup {
+      display: inline-block;
+      font-size: 0.72em;
+      vertical-align: super;
+      line-height: 0;
+      font-weight: 600;
+    }
+    .latex-sub {
+      display: inline-block;
+      font-size: 0.72em;
+      vertical-align: sub;
+      line-height: 0;
+      font-weight: 600;
+    }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    /* Determinant display */
+    .det-matrix {
+      display: inline-grid;
+      grid-template-columns: auto auto;
+      gap: 0.3rem 0.9rem;
+      padding: 0.25rem 0.6rem;
+      border-left: 2px solid #0b1220;
+      border-right: 2px solid #0b1220;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9375rem;
+      color: #0b1220;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .det-matrix.det-big {
+      font-size: 1.15rem;
+      gap: 0.4rem 1.1rem;
+      padding: 0.4rem 0.85rem;
+    }
+    .det-matrix span { display: block; }
+
+    /* System display block */
+    .system-display {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      align-items: flex-start;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      color: #0b1220;
+      background: #f8fafc;
+      border-left: 4px solid #0ea5e9;
+      border-radius: 0.5rem;
+      padding: 1rem 1.25rem;
+      margin: 0.35rem 0;
+      overflow-x: auto;
+    }
+    .system-line { display: flex; align-items: center; gap: 0.35em; flex-wrap: wrap; }
+    .brace-open, .brace-close {
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 0.8;
+      color: #0b1220;
+      font-family: 'Times New Roman', serif;
+    }
+    .brace-open { margin-right: 0.35rem; }
+    .brace-close { margin-left: 0.35rem; }
+    .system-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    /* Result */
+    .sim-result-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 480px) { .sim-result-pair { grid-template-columns: 1fr; } }
+    .sim-result-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.875rem;
+      padding: 1.1rem 1.25rem;
+      text-align: center;
+    }
+    .sim-result-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0369a1;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.4rem;
+    }
+    .sim-result-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+
+    .sim-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .sim-summary { grid-template-columns: repeat(4, 1fr); } }
+    .sim-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .sim-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .sim-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    .sim-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .sim-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .sim-context strong { color: #0b1220; }
+
+    /* Two rows of coefficient inputs */
+    .sim-input-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      align-items: end;
+      margin-bottom: 0.75rem;
+    }
+    @media (max-width: 540px) {
+      .sim-input-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .sim-row-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      color: #475569;
+      font-weight: 600;
+    }
+    .sim-row-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.4rem;
+      height: 1.4rem;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .sim-coef-hint {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: center;
+      padding: 0.2rem 0;
+    }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Cramer's Rule · Step-by-Step</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Simultaneous Equations Solver</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Solve two equations in x and y using Cramer's rule, with determinant analysis for every case.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Simultaneous Equations Solver</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Simultaneous equations inputs">
+
+      <p style="font-size:0.875rem;color:#64748b;margin-bottom:1rem;">
+        Solve the system <span style="font-family:'JetBrains Mono',monospace;">a₁x + b₁y = c₁</span> and <span style="font-family:'JetBrains Mono',monospace;">a₂x + b₂y = c₂</span>.
+      </p>
+
+      <div class="sim-row-label"><span class="sim-row-num">1</span> First equation</div>
+      <div class="sim-input-grid">
+        <div>
+          <label for="a1" class="calc-label">a₁ (coefficient of x)</label>
+          <input type="text" inputmode="decimal" id="a1" class="calc-input" placeholder="e.g. 2" autocomplete="off" />
+        </div>
+        <div>
+          <label for="b1" class="calc-label">b₁ (coefficient of y)</label>
+          <input type="text" inputmode="decimal" id="b1" class="calc-input" placeholder="e.g. 3" autocomplete="off" />
+        </div>
+        <div>
+          <label for="c1" class="calc-label">c₁ (right side)</label>
+          <input type="text" inputmode="decimal" id="c1" class="calc-input" placeholder="e.g. 12" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="sim-row-label" style="margin-top:0.5rem;"><span class="sim-row-num">2</span> Second equation</div>
+      <div class="sim-input-grid">
+        <div>
+          <label for="a2" class="calc-label">a₂ (coefficient of x)</label>
+          <input type="text" inputmode="decimal" id="a2" class="calc-input" placeholder="e.g. 4" autocomplete="off" />
+        </div>
+        <div>
+          <label for="b2" class="calc-label">b₂ (coefficient of y)</label>
+          <input type="text" inputmode="decimal" id="b2" class="calc-input" placeholder="e.g. −1" autocomplete="off" />
+        </div>
+        <div>
+          <label for="c2" class="calc-label">c₂ (right side)</label>
+          <input type="text" inputmode="decimal" id="c2" class="calc-input" placeholder="e.g. 5" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="lin-eq-hint" id="system-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        System preview: fill the six coefficients
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Solve System</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this simultaneous equations solver does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool solves a system of two linear equations in two unknowns, <em>x</em> and <em>y</em>. Given coefficients for the two equations, it uses Cramer's rule — a determinant-based method that is both elegant and practical — to find the solution. It reports whether the system has a unique solution, no solution, or infinitely many solutions, and shows the determinant computations step by step. Exact fraction answers are provided wherever the solution is rational, alongside decimal approximations.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">The system and Cramer's rule</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Standard form</div>
+          <div class="math-block">
+            <span>a<sub>1</sub>x + b<sub>1</sub>y = c<sub>1</sub></span>
+          </div>
+          <div class="math-block" style="margin-top:0.35rem;">
+            <span>a<sub>2</sub>x + b<sub>2</sub>y = c<sub>2</sub></span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Main determinant</div>
+          <div class="math-block">
+            <span>D = </span>
+            <span class="det-matrix det-big"><span>a<sub>1</sub></span><span>b<sub>1</sub></span><span>a<sub>2</sub></span><span>b<sub>2</sub></span></span>
+            <span>= a<sub>1</sub>b<sub>2</sub> − a<sub>2</sub>b<sub>1</sub></span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Determinants for the numerators</div>
+          <div class="math-block">
+            <span>D<sub>x</sub> = </span>
+            <span class="det-matrix det-big"><span>c<sub>1</sub></span><span>b<sub>1</sub></span><span>c<sub>2</sub></span><span>b<sub>2</sub></span></span>
+            <span>= c<sub>1</sub>b<sub>2</sub> − c<sub>2</sub>b<sub>1</sub></span>
+          </div>
+          <div class="math-block" style="margin-top:0.5rem;">
+            <span>D<sub>y</sub> = </span>
+            <span class="det-matrix det-big"><span>a<sub>1</sub></span><span>c<sub>1</sub></span><span>a<sub>2</sub></span><span>c<sub>2</sub></span></span>
+            <span>= a<sub>1</sub>c<sub>2</sub> − a<sub>2</sub>c<sub>1</sub></span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Solution (when D ≠ 0)</div>
+          <div class="math-block">
+            <span>x = </span>
+            <span class="latex-frac big"><span class="f-num">D<sub>x</sub></span><span class="f-den">D</span></span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>y = </span>
+            <span class="latex-frac big"><span class="f-num">D<sub>y</sub></span><span class="f-den">D</span></span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">The three cases</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>D ≠ 0</strong> — unique solution. The two lines intersect at exactly one point.</li>
+          <li><strong>D = 0 and D<sub>x</sub> = D<sub>y</sub> = 0</strong> — infinitely many solutions. The two equations represent the same line.</li>
+          <li><strong>D = 0 and at least one of D<sub>x</sub>, D<sub>y</sub> is non-zero</strong> — no solution. The lines are parallel.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Unique solution</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">2x + 3y = 12 &nbsp;&nbsp;&nbsp; 4x − y = 5</p>
+          <ol>
+            <li>Identify coefficients: a₁=2, b₁=3, c₁=12; a₂=4, b₂=−1, c₂=5.</li>
+            <li>D = a₁b₂ − a₂b₁ = 2(−1) − 4(3) = −2 − 12 = <strong>−14</strong>. D ≠ 0 → unique solution.</li>
+            <li>Dₓ = c₁b₂ − c₂b₁ = 12(−1) − 5(3) = −12 − 15 = <strong>−27</strong>.</li>
+            <li>D_y = a₁c₂ − a₂c₁ = 2(5) − 4(12) = 10 − 48 = <strong>−38</strong>.</li>
+            <li>x = Dₓ / D = −27 / −14 = <strong>27/14 ≈ 1.928571</strong>.</li>
+            <li>y = D_y / D = −38 / −14 = <strong>19/7 ≈ 2.714286</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Clean integer solution</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">x + y = 7 &nbsp;&nbsp;&nbsp; x − y = 1</p>
+          <ol>
+            <li>a₁=1, b₁=1, c₁=7; a₂=1, b₂=−1, c₂=1.</li>
+            <li>D = 1(−1) − 1(1) = −1 − 1 = <strong>−2</strong>.</li>
+            <li>Dₓ = 7(−1) − 1(1) = −7 − 1 = <strong>−8</strong>.</li>
+            <li>D_y = 1(1) − 1(7) = 1 − 7 = <strong>−6</strong>.</li>
+            <li>x = −8 / −2 = <strong>4</strong>, y = −6 / −2 = <strong>3</strong>.</li>
+            <li>Check: 4 + 3 = 7 ✓, 4 − 3 = 1 ✓.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: No solution (parallel lines)</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">x + y = 3 &nbsp;&nbsp;&nbsp; 2x + 2y = 8</p>
+          <ol>
+            <li>a₁=1, b₁=1, c₁=3; a₂=2, b₂=2, c₂=8.</li>
+            <li>D = 1(2) − 2(1) = 2 − 2 = <strong>0</strong>.</li>
+            <li>Dₓ = 3(2) − 8(1) = 6 − 8 = <strong>−2</strong> ≠ 0.</li>
+            <li>Since D = 0 but Dₓ ≠ 0, the system is <strong>inconsistent</strong>: no solution.</li>
+            <li>Geometrically, the lines are parallel and never meet.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Infinitely many solutions</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">x + y = 3 &nbsp;&nbsp;&nbsp; 2x + 2y = 6</p>
+          <ol>
+            <li>a₁=1, b₁=1, c₁=3; a₂=2, b₂=2, c₂=6.</li>
+            <li>D = 1(2) − 2(1) = <strong>0</strong>.</li>
+            <li>Dₓ = 3(2) − 6(1) = 6 − 6 = <strong>0</strong>.</li>
+            <li>D_y = 1(6) − 2(3) = 6 − 6 = <strong>0</strong>.</li>
+            <li>All three determinants are zero → <strong>infinitely many solutions</strong>.</li>
+            <li>The second equation is twice the first — they represent the same line.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Negative coefficients</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">3x − 2y = 5 &nbsp;&nbsp;&nbsp; −x + 4y = 7</p>
+          <ol>
+            <li>a₁=3, b₁=−2, c₁=5; a₂=−1, b₂=4, c₂=7.</li>
+            <li>D = 3(4) − (−1)(−2) = 12 − 2 = <strong>10</strong>.</li>
+            <li>Dₓ = 5(4) − 7(−2) = 20 + 14 = <strong>34</strong>.</li>
+            <li>D_y = 3(7) − (−1)(5) = 21 + 5 = <strong>26</strong>.</li>
+            <li>x = 34 / 10 = <strong>17/5 = 3.4</strong>.</li>
+            <li>y = 26 / 10 = <strong>13/5 = 2.6</strong>.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Where simultaneous equations appear in Class 9 &amp; 10</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Systems of two linear equations appear throughout the Punjab board mathematics and physics syllabus:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Word problems</strong> — age problems, number problems, and mixture problems reduce to 2×2 systems.</li>
+          <li><strong>Coordinate geometry</strong> — intersection of two lines.</li>
+          <li><strong>Physics numericals</strong> — pulley problems, electrical circuits (Kirchhoff's laws), and force balance problems.</li>
+          <li><strong>Chemistry stoichiometry</strong> — balancing two-reaction problems.</li>
+          <li><strong>Linear programming</strong> — finding the feasible region requires solving pairs of constraints.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Getting the coefficients out of order.</strong> Write each equation in the form ax + by = c before identifying coefficients. Don't grab the numbers as they appear — check which one multiplies x and which multiplies y.</li>
+          <li><strong>Forgetting the minus sign in the determinant.</strong> D = a₁b₂ − a₂b₁, not a₁b₂ + a₂b₁. The determinant formula has a specific sign pattern.</li>
+          <li><strong>Sign errors when moving terms.</strong> If the equation is 2x − 3y = 5, then b₁ = −3, not 3. Keep the sign attached to the coefficient.</li>
+          <li><strong>Confusing the "no solution" and "infinite solutions" cases.</strong> When D = 0, you must check Dₓ and D_y. If both are zero, infinitely many. If either is non-zero, no solution.</li>
+          <li><strong>Misreading the constants.</strong> c₁, c₂ are the numbers on the right side of the equals signs. If an equation is rearranged, they may have moved.</li>
+          <li><strong>Not verifying the solution.</strong> Always substitute the answer into both original equations. Both must hold — checking only one is not enough.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What are simultaneous equations?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Simultaneous equations are two or more equations in the same variables that must be satisfied at the same time. A 2×2 linear system has two equations in two unknowns, x and y. Solving means finding the pair (x, y) that satisfies both equations at once.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is Cramer's rule?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Cramer's rule is a formula for solving systems of linear equations using determinants. For the system a₁x + b₁y = c₁, a₂x + b₂y = c₂, the solution is x = Dx / D and y = Dy / D, where D is the determinant of the coefficient matrix and Dx, Dy are determinants with the corresponding column replaced by the constants.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What does the determinant tell you?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">The determinant D determines the nature of the system. If D ≠ 0, there is exactly one unique solution. If D = 0 and the equations are consistent (one is a multiple of the other), there are infinitely many solutions. If D = 0 and the equations are inconsistent, there is no solution.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between substitution and elimination?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Substitution solves one equation for one variable and substitutes into the other. Elimination adds or subtracts multiples of the equations to cancel one variable. Cramer's rule uses determinants and is faster for 2×2 and 3×3 systems, but substitution and elimination are more intuitive and are what students learn first.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can there be more than one solution?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">A 2×2 linear system can have exactly one solution (D ≠ 0), infinitely many solutions (D = 0 with consistent equations), or no solution (D = 0 with inconsistent equations). It cannot have exactly two or three distinct solutions.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I check my solution?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Substitute the values of x and y back into both original equations and verify that both sides equal. Both equations must be satisfied. This substitution check catches sign errors and arithmetic mistakes.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="linear-equation-solver.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Linear Equation Solver</a></li>
+          <li><a href="quadratic-solver.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Quadratic Equation Solver</a></li>
+          <li><a href="slope-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Slope Calculator</a></li>
+          <li><a href="distance-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Distance Between Points</a></li>
+          <li><a href="midpoint-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Midpoint Calculator</a></li>
+          <li><a href="proportion-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Proportion Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Simultaneous equations appear throughout the Class 9 and 10 algebra syllabus and in physics numericals. Revise with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'simultaneous-equations-solver';
+
+    const a1El = document.getElementById('a1');
+    const b1El = document.getElementById('b1');
+    const c1El = document.getElementById('c1');
+    const a2El = document.getElementById('a2');
+    const b2El = document.getElementById('b2');
+    const c2El = document.getElementById('c2');
+    const previewEl = document.getElementById('system-preview');
+    const calcBtn = document.getElementById('calc-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section = document.querySelector('section[aria-label="Simultaneous equations inputs"]');
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    /* ============ LaTeX-style helpers ============ */
+    function fracHTML(numHTML, denHTML, big) {
+      const cls = 'latex-frac' + (big ? ' big' : '');
+      return `<span class="${cls}"><span class="f-num">${numHTML}</span><span class="f-den">${denHTML}</span></span>`;
+    }
+    function detMatrixHTML(a, b, c, d, big) {
+      const cls = 'det-matrix' + (big ? ' det-big' : '');
+      return `<span class="${cls}"><span>${a}</span><span>${b}</span><span>${c}</span><span>${d}</span></span>`;
+    }
+
+    /* ============ Number formatting ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 8;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) {
+        if (Math.abs(x) < 1e15) return x.toLocaleString('en-US');
+        return x.toExponential(6);
+      }
+      const abs = Math.abs(x);
+      if (abs < 1e-6 || abs >= 1e12) return x.toExponential(6);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+
+    /* ============ Fraction utilities ============ */
+    function gcd(a, b) {
+      a = Math.abs(Math.round(a));
+      b = Math.abs(Math.round(b));
+      while (b) { const t = b; b = a % b; a = t; }
+      return a || 1;
+    }
+
+    function decimalToFraction(x) {
+      if (!Number.isFinite(x)) return null;
+      if (Number.isInteger(x)) return { n: x, d: 1 };
+      const sign = x < 0 ? -1 : 1;
+      const v = Math.abs(x);
+      let h1 = 1, h0 = 0, k1 = 0, k0 = 1;
+      let b = v;
+      const tol = 1e-9;
+      for (let i = 0; i < 20; i++) {
+        const a = Math.floor(b);
+        const h2 = a * h1 + h0;
+        const k2 = a * k1 + k0;
+        h0 = h1; h1 = h2;
+        k0 = k1; k1 = k2;
+        if (Math.abs(v - h1 / k1) < tol) break;
+        const frac = b - a;
+        if (frac < 1e-12) break;
+        b = 1 / frac;
+      }
+      if (k1 === 0) return null;
+      const g = gcd(h1, k1);
+      return { n: sign * h1 / g, d: k1 / g };
+    }
+
+    /* ============ Equation text ============ */
+    function eqText(a, b, c, varFirst, varSecond) {
+      // Returns e.g. "2 x + 3 y = 12"
+      const parts = [];
+      if (a === 1) parts.push(varFirst);
+      else if (a === -1) parts.push('−' + varFirst);
+      else if (a === 0) { /* skip */ }
+      else parts.push(`${fmtNum(a)} ${varFirst}`);
+      if (b !== 0) {
+        const bAbs = fmtNum(Math.abs(b));
+        const term = (Math.abs(b) === 1 ? '' : bAbs + ' ') + varSecond;
+        parts.push((b < 0 ? '− ' : '+ ') + term);
+      }
+      if (parts.length === 0) parts.push('0');
+      return `${parts.join(' ')} = ${fmtNum(c)}`;
+    }
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      const a1s = a1El.value.trim(), b1s = b1El.value.trim(), c1s = c1El.value.trim();
+      const a2s = a2El.value.trim(), b2s = b2El.value.trim(), c2s = c2El.value.trim();
+      const a1 = parseNum(a1s), b1 = parseNum(b1s), c1 = parseNum(c1s);
+      const a2 = parseNum(a2s), b2 = parseNum(b2s), c2 = parseNum(c2s);
+      if (a1s === '' && b1s === '' && c1s === '' && a2s === '' && b2s === '' && c2s === '') {
+        previewEl.innerHTML = 'System preview: fill the six coefficients';
+        return;
+      }
+      const eq1 = (a1s !== '' && b1s !== '' && c1s !== '' && Number.isFinite(a1) && Number.isFinite(b1) && Number.isFinite(c1))
+        ? eqText(a1, b1, c1, 'x', 'y') : 'a₁x + b₁y = c₁';
+      const eq2 = (a2s !== '' && b2s !== '' && c2s !== '' && Number.isFinite(a2) && Number.isFinite(b2) && Number.isFinite(c2))
+        ? eqText(a2, b2, c2, 'x', 'y') : 'a₂x + b₂y = c₂';
+      previewEl.innerHTML = `System: <span style="color:#0b1220;">${eq1}</span> &nbsp; and &nbsp; <span style="color:#0b1220;">${eq2}</span>`;
+    }
+
+    [a1El, b1El, c1El, a2El, b2El, c2El].forEach(el => el.addEventListener('input', renderPreview));
+
+    /* ============ Main ============ */
+    function calculate() {
+      clearAllErrors(section);
+
+      // Read all values
+      const readings = [
+        { el: a1El, name: 'a₁' },
+        { el: b1El, name: 'b₁' },
+        { el: c1El, name: 'c₁' },
+        { el: a2El, name: 'a₂' },
+        { el: b2El, name: 'b₂' },
+        { el: c2El, name: 'c₂' }
+      ];
+
+      let allFilled = true;
+      readings.forEach(r => {
+        if (r.el.value.trim() === '') {
+          showError(r.el, `Enter ${r.name}.`);
+          allFilled = false;
+        }
+      });
+      if (!allFilled) { trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const a1 = parseNum(a1El.value);
+      const b1 = parseNum(b1El.value);
+      const c1 = parseNum(c1El.value);
+      const a2 = parseNum(a2El.value);
+      const b2 = parseNum(b2El.value);
+      const c2 = parseNum(c2El.value);
+
+      if (![a1, b1, c1, a2, b2, c2].every(Number.isFinite)) {
+        readings.forEach(r => {
+          if (!Number.isFinite(parseNum(r.el.value))) showError(r.el, 'Enter a valid number.');
+        });
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      // Compute determinants
+      const D  = a1 * b2 - a2 * b1;
+      const Dx = c1 * b2 - c2 * b1;
+      const Dy = a1 * c2 - a2 * c1;
+
+      const EPS = 1e-12;
+
+      /* ====== Case: unique solution ====== */
+      if (Math.abs(D) > EPS) {
+        const x = Dx / D;
+        const y = Dy / D;
+
+        // Exact fractions
+        const xFrac = decimalToFraction(x);
+        const yFrac = decimalToFraction(y);
+        const xExact = xFrac && Math.abs(xFrac.n) < 1e9 && xFrac.d < 1e9
+          ? (xFrac.d === 1 ? String(xFrac.n) : fracHTML(xFrac.n, xFrac.d, true))
+          : fmtNum(x);
+        const yExact = yFrac && Math.abs(yFrac.n) < 1e9 && yFrac.d < 1e9
+          ? (yFrac.d === 1 ? String(yFrac.n) : fracHTML(yFrac.n, yFrac.d, true))
+          : fmtNum(y);
+
+        // Substitution check
+        const lhs1 = a1 * x + b1 * y;
+        const lhs2 = a2 * x + b2 * y;
+        const ok1 = Math.abs(lhs1 - c1) < 1e-9;
+        const ok2 = Math.abs(lhs2 - c2) < 1e-9;
+
+        const html = `
+          <div class="result-label">Solution</div>
+          <div class="sim-result-pair">
+            <div class="sim-result-card">
+              <div class="sim-result-label">x</div>
+              <div class="sim-result-value">${xExact}</div>
+              ${!Number.isInteger(x) ? `<div style="font-size:0.75rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.25rem;">≈ ${fmtNum(x)}</div>` : ''}
+            </div>
+            <div class="sim-result-card">
+              <div class="sim-result-label">y</div>
+              <div class="sim-result-value">${yExact}</div>
+              ${!Number.isInteger(y) ? `<div style="font-size:0.75rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.25rem;">≈ ${fmtNum(y)}</div>` : ''}
+            </div>
+          </div>
+
+          <div class="sim-summary">
+            <div class="sim-summary-unit">
+              <div class="sim-summary-value">${fmtNum(D)}</div>
+              <div class="sim-summary-label">D</div>
+            </div>
+            <div class="sim-summary-unit">
+              <div class="sim-summary-value">${fmtNum(Dx)}</div>
+              <div class="sim-summary-label">Dₓ</div>
+            </div>
+            <div class="sim-summary-unit">
+              <div class="sim-summary-value">${fmtNum(Dy)}</div>
+              <div class="sim-summary-label">D_y</div>
+            </div>
+            <div class="sim-summary-unit">
+              <div class="sim-summary-value">Unique</div>
+              <div class="sim-summary-label">Case</div>
+            </div>
+          </div>
+
+          <div class="steps-block">
+            <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+            <ol>
+              <li>System: <strong>${eqText(a1, b1, c1, 'x', 'y')}</strong> and <strong>${eqText(a2, b2, c2, 'x', 'y')}</strong>.</li>
+              <li>D = a₁b₂ − a₂b₁ = (${fmtNum(a1)})(${fmtNum(b2)}) − (${fmtNum(a2)})(${fmtNum(b1)}) = <strong>${fmtNum(D)}</strong>.</li>
+              <li>Dₓ = c₁b₂ − c₂b₁ = (${fmtNum(c1)})(${fmtNum(b2)}) − (${fmtNum(c2)})(${fmtNum(b1)}) = <strong>${fmtNum(Dx)}</strong>.</li>
+              <li>D_y = a₁c₂ − a₂c₁ = (${fmtNum(a1)})(${fmtNum(c2)}) − (${fmtNum(a2)})(${fmtNum(c1)}) = <strong>${fmtNum(Dy)}</strong>.</li>
+              <li>D ≠ 0 → unique solution.</li>
+              <li>x = Dₓ / D = ${fmtNum(Dx)} / ${fmtNum(D)} = <strong>${fmtNum(x)}</strong>.</li>
+              <li>y = D_y / D = ${fmtNum(Dy)} / ${fmtNum(D)} = <strong>${fmtNum(y)}</strong>.</li>
+            </ol>
+          </div>
+
+          <div class="sim-context">
+            <p>🔹 Substitution check (equation 1): ${fmtNum(a1)}(${fmtNum(x)}) + ${fmtNum(b1)}(${fmtNum(y)}) = ${fmtNum(lhs1)}, expected ${fmtNum(c1)} ${ok1 ? '✓' : '⚠'}.</p>
+            <p>🔹 Substitution check (equation 2): ${fmtNum(a2)}(${fmtNum(x)}) + ${fmtNum(b2)}(${fmtNum(y)}) = ${fmtNum(lhs2)}, expected ${fmtNum(c2)} ${ok2 ? '✓' : '⚠'}.</p>
+            <p>🔹 Determinant D = ${fmtNum(D)} ≠ 0 → the two lines intersect at exactly one point.</p>
+          </div>
+        `;
+
+        resultPanel.innerHTML = html;
+        showResult(resultPanel, html);
+        trackEvent(CALC_NAME, 'calculate');
+        return;
+      }
+
+      /* ====== Case: D = 0 ====== */
+      // Check Dx, Dy
+      const consistent = Math.abs(Dx) < EPS && Math.abs(Dy) < EPS;
+
+      if (consistent) {
+        // Infinitely many solutions
+        const html = `
+          <div class="result-label">Result</div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#0ea5e9;text-align:center;padding:0.5rem 0;">
+            Infinitely many solutions
+          </div>
+
+          <div class="sim-summary">
+            <div class="sim-summary-unit">
+              <div class="sim-summary-value">0</div>
+              <div class="sim-summary-label">D</div>
+            </div>
+            <div class="sim-summary-unit">
+              <div class="sim-summary-value">0</div>
+              <div class="sim-summary-label">Dₓ</div>
+            </div>
+            <div class="sim-summary-unit">
+              <div class="sim-summary-value">0</div>
+              <div class="sim-summary-label">D_y</div>
+            </div>
+            <div class="sim-summary-unit">
+              <div class="sim-summary-value">Infinite</div>
+              <div class="sim-summary-label">Case</div>
+            </div>
+          </div>
+
+          <div class="steps-block">
+            <div class="formula-label" style="margin-bottom:0.5rem;">Why</div>
+            <ol>
+              <li>System: <strong>${eqText(a1, b1, c1, 'x', 'y')}</strong> and <strong>${eqText(a2, b2, c2, 'x', 'y')}</strong>.</li>
+              <li>D = a₁b₂ − a₂b₁ = <strong>0</strong>.</li>
+              <li>Dₓ = c₁b₂ − c₂b₁ = <strong>0</strong>.</li>
+              <li>D_y = a₁c₂ − a₂c₁ = <strong>0</strong>.</li>
+              <li>All three determinants are zero → the two equations are <em>dependent</em>.</li>
+              <li>Every solution of the first equation satisfies the second, and vice versa.</li>
+            </ol>
+          </div>
+
+          <div class="sim-context">
+            <p>🔹 The two lines coincide — they are the same line.</p>
+            <p>🔹 Any point (x, y) on that line is a solution.</p>
+            <p>🔹 Example: if the first line is x + y = 3, then (0, 3), (1, 2), (2, 1) are all solutions.</p>
+          </div>
+        `;
+        resultPanel.innerHTML = html;
+        showResult(resultPanel, html);
+        trackEvent(CALC_NAME, 'calculate');
+        return;
+      }
+
+      // No solution (inconsistent)
+      const html = `
+        <div class="result-label">Result</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#ef4444;text-align:center;padding:0.5rem 0;">
+          No solution
+        </div>
+
+        <div class="sim-summary">
+          <div class="sim-summary-unit">
+            <div class="sim-summary-value">0</div>
+            <div class="sim-summary-label">D</div>
+          </div>
+          <div class="sim-summary-unit">
+            <div class="sim-summary-value">${fmtNum(Dx)}</div>
+            <div class="sim-summary-label">Dₓ</div>
+          </div>
+          <div class="sim-summary-unit">
+            <div class="sim-summary-value">${fmtNum(Dy)}</div>
+            <div class="sim-summary-label">D_y</div>
+          </div>
+          <div class="sim-summary-unit">
+            <div class="sim-summary-value">None</div>
+            <div class="sim-summary-label">Case</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Why</div>
+          <ol>
+            <li>System: <strong>${eqText(a1, b1, c1, 'x', 'y')}</strong> and <strong>${eqText(a2, b2, c2, 'x', 'y')}</strong>.</li>
+            <li>D = a₁b₂ − a₂b₁ = <strong>0</strong>.</li>
+            <li>Dₓ = ${fmtNum(Dx)}, D_y = ${fmtNum(Dy)}. At least one is non-zero.</li>
+            <li>Since D = 0 but not both of Dₓ, D_y are zero, the system is <em>inconsistent</em>.</li>
+            <li>No pair (x, y) can satisfy both equations simultaneously.</li>
+          </ol>
+        </div>
+
+        <div class="sim-context">
+          <p>🔹 The two lines are parallel and distinct — they never intersect.</p>
+          <p>🔹 Adding or subtracting the equations leads to a false statement like 0 = ${fmtNum(Math.abs(Dx) > Math.abs(Dy) ? Dx : Dy)}.</p>
+          <p>🔹 If a problem reduces to this case, re-check the coefficients — often a sign or transcription error is the cause.</p>
+        </div>
+      `;
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      [a1El, b1El, c1El, a2El, b2El, c2El].forEach(el => { el.value = ''; });
+      renderPreview();
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

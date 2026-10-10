@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Scientific Calculator — Free Online with Sin, Cos, Log &amp; Memory | Hira Science Academy</title>
+  <meta content="Free online scientific calculator with sin, cos, tan, log, ln, sqrt, powers, pi, e, DEG/RAD toggle, memory and history. Works on mobile and desktop. No signup." name="description"/>
+  <meta content="scientific calculator, online calculator, sin cos tan calculator, log calculator, trigonometry calculator, free scientific calculator" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/scientific-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Scientific Calculator — Free Online with Sin, Cos, Log &amp; Memory" property="og:title"/>
+  <meta content="Free scientific calculator with trigonometry, logarithms, powers, memory and history." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/scientific-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Scientific Calculator", "item": "https://hiraacademy.com.pk/tools/scientific-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Does this scientific calculator use degrees or radians?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Both. Use the DEG/RAD toggle above the keypad. DEG is the default and is what BISE Punjab students normally need for physics and maths. Switch to RAD when a formula uses π-based angles." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I enter powers and roots?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use the ^ key for powers, e.g. 2^10. Use the sqrt key for square roots, or type 8^(1/3) for a cube root. Powers are evaluated right to left, so 2^3^2 = 2^9 = 512." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the Ans key do?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ans inserts the previous result into the current expression. After computing 5+3=8, pressing Ans then *2 gives 16. Memory keys M+ and MR work the same way but persist until you clear them." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does log mean log base 10 and not natural log?",
+        "acceptedAnswer": { "@type": "Answer", "text": "This calculator follows the convention used in Pakistani textbooks: log is base 10 and ln is base e. If you need log base 2, use ln(x)/ln(2) or log(x)/log(2)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a history of my previous calculations?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, the last 20 results appear in the history panel. Click any history entry to reinsert that result into the current expression. History is kept only in your browser session and is never sent to any server." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this calculator for my BISE board exam practice?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, for practice and homework. It performs the same operations as a standard scientific calculator. Note that board exams restrict which physical calculators you may bring, so check the current BISE Punjab instructions for the actual exam." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    .mode-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+    }
+    .mode-toggle button {
+      padding: 0.4rem 0.9rem;
+      border-radius: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .mode-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+    .sci-keypad { grid-template-columns: repeat(5, 1fr); }
+    @media (min-width: 640px) { .sci-keypad { grid-template-columns: repeat(6, 1fr); } }
+    .sci-key.wide { grid-column: span 2; }
+    .memory-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #f0f9ff;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+    }
+    .memory-badge.is-empty { opacity: 0.45; }
+    .sci-display-wrap {
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .sci-display::placeholder { color: #475569; }
+    .angle-hint {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient text-white relative py-16 md:py-20 overflow-hidden text-center shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · No Signup · Works Offline</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg">Scientific Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">Trigonometry, logarithms, powers, roots, constants, memory and history — all in your browser.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Scientific Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-7" aria-label="Scientific calculator">
+
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div class="mode-toggle" role="group" aria-label="Angle unit">
+          <button type="button" data-mode="DEG" class="is-active" aria-pressed="true">DEG</button>
+          <button type="button" data-mode="RAD" aria-pressed="false">RAD</button>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="memory-badge is-empty" id="memory-badge">M = 0</span>
+          <button type="button" id="clear-history" class="text-xs font-semibold text-slate-500 hover:text-red-600 underline">Clear history</button>
+        </div>
+      </div>
+
+      <div class="sci-display-wrap">
+        <span class="angle-hint" id="angle-hint">DEG</span>
+        <div class="sci-display" id="sci-display" role="textbox" aria-label="Expression" aria-live="polite" aria-readonly="false" tabindex="0">0</div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-3">
+        <button type="button" class="sci-key fn" data-insert="sin(" aria-label="Sine">sin</button>
+        <button type="button" class="sci-key fn" data-insert="cos(" aria-label="Cosine">cos</button>
+        <button type="button" class="sci-key fn" data-insert="tan(" aria-label="Tangent">tan</button>
+        <button type="button" class="sci-key fn" data-insert="log(" aria-label="Log base 10">log</button>
+        <button type="button" class="sci-key fn" data-insert="ln(" aria-label="Natural log">ln</button>
+        <button type="button" class="sci-key fn" data-insert="sqrt(" aria-label="Square root">√</button>
+        <button type="button" class="sci-key fn" data-insert="exp(" aria-label="Exponential">exp</button>
+        <button type="button" class="sci-key fn" data-insert="abs(" aria-label="Absolute value">|x|</button>
+      </div>
+
+      <div class="sci-keypad mb-4" id="keypad">
+        <button type="button" class="sci-key clear" data-action="clear" aria-label="Clear all">AC</button>
+        <button type="button" class="sci-key" data-insert="(" aria-label="Open bracket">(</button>
+        <button type="button" class="sci-key" data-insert=")" aria-label="Close bracket">)</button>
+        <button type="button" class="sci-key op" data-insert="^" aria-label="Power">^</button>
+        <button type="button" class="sci-key fn" data-insert="pi" aria-label="Pi">π</button>
+        <button type="button" class="sci-key fn" data-insert="e" aria-label="Euler number">e</button>
+
+        <button type="button" class="sci-key" data-insert="7">7</button>
+        <button type="button" class="sci-key" data-insert="8">8</button>
+        <button type="button" class="sci-key" data-insert="9">9</button>
+        <button type="button" class="sci-key op" data-insert="/" aria-label="Divide">÷</button>
+        <button type="button" class="sci-key fn" data-insert="Ans" aria-label="Previous answer">Ans</button>
+        <button type="button" class="sci-key fn" data-memory="M+" aria-label="Memory add">M+</button>
+
+        <button type="button" class="sci-key" data-insert="4">4</button>
+        <button type="button" class="sci-key" data-insert="5">5</button>
+        <button type="button" class="sci-key" data-insert="6">6</button>
+        <button type="button" class="sci-key op" data-insert="*" aria-label="Multiply">×</button>
+        <button type="button" class="sci-key fn" data-memory="MR" aria-label="Memory recall">MR</button>
+        <button type="button" class="sci-key fn" data-memory="MC" aria-label="Memory clear">MC</button>
+
+        <button type="button" class="sci-key" data-insert="1">1</button>
+        <button type="button" class="sci-key" data-insert="2">2</button>
+        <button type="button" class="sci-key" data-insert="3">3</button>
+        <button type="button" class="sci-key op" data-insert="-" aria-label="Subtract">−</button>
+        <button type="button" class="sci-key" data-action="back" aria-label="Backspace">⌫</button>
+        <button type="button" class="sci-key fn" data-action="sign" aria-label="Toggle sign">±</button>
+
+        <button type="button" class="sci-key" data-insert="0">0</button>
+        <button type="button" class="sci-key" data-insert=".">.</button>
+        <button type="button" class="sci-key op" data-insert="+" aria-label="Add">+</button>
+        <button type="button" class="sci-key fn" data-insert="1/" aria-label="Reciprocal">1/x</button>
+        <button type="button" class="sci-key equals wide" data-action="equals" aria-label="Equals">=</button>
+      </div>
+
+      <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc w-full">Reset</button>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- HISTORY -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 mt-5" aria-label="Calculation history">
+      <div class="flex items-center justify-between mb-3">
+        <h2 class="text-sm font-bold uppercase tracking-wider text-slate-500">History</h2>
+        <span class="text-xs text-slate-400">Click an entry to reuse it</span>
+      </div>
+      <div class="sci-history" id="sci-history">
+        <p class="text-sm text-slate-400 italic px-2 py-3">No calculations yet.</p>
+      </div>
+    </section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this scientific calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This is a full scientific calculator that runs entirely in your browser. It handles the operations you need for Class 9 and 10 mathematics and physics: trigonometric functions (<code>sin</code>, <code>cos</code>, <code>tan</code>) with a DEG/RAD toggle, logarithms (<code>log</code> base 10 and <code>ln</code> natural), powers and roots, and the constants π and e. It also provides a memory register (M+, MR, MC), an <code>Ans</code> key that reuses the last result, and a rolling history of your last 20 calculations. Nothing is sent to a server — all evaluation happens locally, and the history lives only in your session.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas and conventions used</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          The calculator follows the standard scientific notation used in Pakistani textbooks:
+        </p>
+        <div class="formula-block">
+          <div class="formula-label">Trigonometry (DEG mode)</div>
+          \[ \sin\theta = \sin\!\left(\theta \cdot \frac{\pi}{180}\right), \quad \cos\theta = \cos\!\left(\theta \cdot \frac{\pi}{180}\right), \quad \tan\theta = \tan\!\left(\theta \cdot \frac{\pi}{180}\right) \]
+        </div>
+        <div class="formula-block">
+          <div class="formula-label">Logarithms</div>
+          \[ \log_{10}(x) = \frac{\ln x}{\ln 10}, \qquad \ln(x) = \log_e(x) \]
+        </div>
+        <div class="formula-block">
+          <div class="formula-label">Powers and roots</div>
+          \[ x^n = \underbrace{x \cdot x \cdots x}_{n\ \text{times}}, \qquad \sqrt{x} = x^{1/2}, \qquad \sqrt[n]{x} = x^{1/n} \]
+        </div>
+        <div class="formula-block">
+          <div class="formula-label">Reciprocal</div>
+          \[ \frac{1}{x} = x^{-1} \]
+        </div>
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>θ</strong> — the angle value you enter; in DEG mode it is interpreted as degrees, in RAD mode as radians.</li>
+          <li><strong>x</strong> — any real number you enter as the argument to a function or the base of a power.</li>
+          <li><strong>n</strong> — the exponent or root index; may be negative or fractional.</li>
+          <li><strong>π</strong> — the constant 3.14159265358979… available from the π key.</li>
+          <li><strong>e</strong> — Euler's number, 2.71828182845905…, available from the e key.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: sin(30°) in DEG mode</p>
+          <ol>
+            <li>Confirm the angle unit shows <strong>DEG</strong>.</li>
+            <li>Press <code>sin</code> → enter <code>30</code> → press <code>)</code> → press <code>=</code>.</li>
+            <li>Expression: <code>sin(30)</code>. Result: <strong>0.5</strong>.</li>
+            <li>Note: if you were in RAD mode, sin(30) ≈ −0.988. The mode matters.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: log₁₀(1000) + 2³</p>
+          <ol>
+            <li>Press <code>log</code> → <code>1000</code> → <code>)</code>.</li>
+            <li>Press <code>+</code>.</li>
+            <li>Press <code>2</code> → <code>^</code> → <code>3</code>.</li>
+            <li>Press <code>=</code>. Expression: <code>log(1000)+2^3</code>. Result: <strong>3 + 8 = 11</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Using Ans to continue a calculation</p>
+          <ol>
+            <li>Compute <code>5+3</code>. Result: <strong>8</strong>. The value is stored as Ans.</li>
+            <li>Press <code>AC</code>.</li>
+            <li>Press <code>Ans</code> → <code>*</code> → <code>2</code> → <code>=</code>.</li>
+            <li>Expression: <code>Ans*2</code>. Result: <strong>16</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Cube root via fractional exponent</p>
+          <ol>
+            <li>Press <code>8</code> → <code>^</code> → <code>(</code> → <code>1</code> → <code>/</code> → <code>3</code> → <code>)</code>.</li>
+            <li>Press <code>=</code>. Expression: <code>8^(1/3)</code>. Result: <strong>2</strong>.</li>
+            <li>This works for any root: <code>x^(1/n)</code> is the n-th root of x.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Wrong angle mode.</strong> The single most common error. If sin(30) gives ≈ −0.988 instead of 0.5, you are in RAD mode. Check the DEG/RAD indicator before computing.</li>
+          <li><strong>Forgetting to close brackets.</strong> <code>sin(30+5</code> will fail. Always match every <code>(</code> with a <code>)</code> before pressing <code>=</code>.</li>
+          <li><strong>Assuming log means natural log.</strong> In this calculator (and in BISE textbooks), <code>log</code> is base 10 and <code>ln</code> is base e. If you want log base 2, use <code>ln(x)/ln(2)</code>.</li>
+          <li><strong>Negative base with fractional exponent.</strong> <code>(-8)^(1/3)</code> returns an error because the real cube root of −8 cannot be computed through the power function. Enter it as <code>-(8^(1/3))</code> instead.</li>
+          <li><strong>Confusing M+ with MR.</strong> M+ adds to memory; MR recalls it. MC clears it. If your result looks wrong, check the memory badge at the top — it shows the current stored value.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>Does this scientific calculator use degrees or radians?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Both. Use the DEG/RAD toggle above the keypad. DEG is the default and is what BISE Punjab students normally need for physics and maths. Switch to RAD when a formula uses π-based angles.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I enter powers and roots?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Use the ^ key for powers, e.g. 2^10. Use the sqrt key for square roots, or type 8^(1/3) for a cube root. Powers are evaluated right to left, so 2^3^2 = 2^9 = 512.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What does the Ans key do?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Ans inserts the previous result into the current expression. After computing 5+3=8, pressing Ans then *2 gives 16. Memory keys M+ and MR work the same way but persist until you clear them.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why does log mean log base 10 and not natural log?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">This calculator follows the convention used in Pakistani textbooks: log is base 10 and ln is base e. If you need log base 2, use ln(x)/ln(2) or log(x)/log(2).</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is there a history of my previous calculations?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Yes, the last 20 results appear in the history panel. Click any history entry to reinsert that result into the current expression. History is kept only in your browser session and is never sent to any server.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I use this calculator for my BISE board exam practice?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Yes, for practice and homework. It performs the same operations as a standard scientific calculator. Note that board exams restrict which physical calculators you may bring, so check the current BISE Punjab instructions for the actual exam.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="square-root-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Square Root Calculator</a></li>
+          <li><a href="exponent-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Exponent &amp; Power Calculator</a></li>
+          <li><a href="quadratic-solver.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Quadratic Equation Solver</a></li>
+          <li><a href="physics-formula-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Physics Formula Calculator</a></li>
+          <li><a href="percentage-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Percentage Calculator</a></li>
+          <li><a href="standard-deviation-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Standard Deviation Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Practising for BISE Punjab board exams? Revise the underlying concepts with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
+          The mathematics and physics sections cover trigonometry, logarithms, and the laws of exponents used by this calculator.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div class="md:col-span-1 text-center md:text-left">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2">
+        <p class="text-base text-gray-200 text-center">
+          © 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators
+        </p>
+        <p class="text-sm text-gray-300 text-center">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, safeEval, formatNumber, showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'scientific-calculator';
+
+    const displayEl   = document.getElementById('sci-display');
+    const hintEl      = document.getElementById('angle-hint');
+    const resultPanel = document.getElementById('result-panel');
+    const historyEl   = document.getElementById('sci-history');
+    const memBadge    = document.getElementById('memory-badge');
+    const resetBtn    = document.getElementById('reset-btn');
+    const clearHistBtn = document.getElementById('clear-history');
+    const modeButtons = document.querySelectorAll('.mode-toggle button');
+
+    let expression = '';
+    let angleMode  = 'DEG';
+    let lastAns    = 0;
+    let memory     = 0;
+    const history  = [];
+    const MAX_HISTORY = 20;
+
+    /* ---------- Display ---------- */
+    function renderDisplay() {
+      displayEl.textContent = expression === '' ? '0' : expression;
+    }
+
+    function updateMemoryBadge() {
+      memBadge.textContent = 'M = ' + formatNumber(memory, 6);
+      memBadge.classList.toggle('is-empty', memory === 0);
+    }
+
+    function updateAngleHint() {
+      hintEl.textContent = angleMode;
+    }
+
+    /* ---------- Expression input ---------- */
+    function insert(text) {
+      if (text === 'Ans') {
+        expression += String(lastAns);
+      } else {
+        expression += text;
+      }
+      renderDisplay();
+    }
+
+    function backspace() {
+      expression = expression.slice(0, -1);
+      renderDisplay();
+    }
+
+    function clearAll() {
+      expression = '';
+      renderDisplay();
+      hideResult(resultPanel);
+      clearAllErrors(document);
+    }
+
+    function toggleSign() {
+      // Find the last number token and flip its sign
+      const m = expression.match(/(-?\d*\.?\d+)$/);
+      if (!m) return;
+      const start = expression.length - m[0].length;
+      const numStr = m[0];
+      const flipped = numStr.startsWith('-') ? numStr.slice(1) : '-' + numStr;
+      expression = expression.slice(0, start) + flipped;
+      renderDisplay();
+    }
+
+    /* ---------- Preprocessing for safeEval ---------- */
+    // safeEval's parseFactor evaluates -2^2 as (-2)^2. To match standard
+    // convention (-2^2 = -4), we wrap a leading unary minus around a power.
+    // Also, insert implicit multiplication: 2(3) -> 2*(3), 2pi -> 2*pi, )( -> )*(
+    function preprocess(expr) {
+      let e = expr;
+
+      // Implicit multiplication: number/constant/bracket followed by ( or letter
+      e = e.replace(/(\d|\)|pi|e)(?=\()/g, '$1*');
+      e = e.replace(/(\))(?=\d|pi|e|sin|cos|tan|log|ln|sqrt|abs|exp)/g, '$1*');
+      e = e.replace(/(\d)(?=pi|e|sin|cos|tan|log|ln|sqrt|abs|exp)/g, '$1*');
+
+      // Wrap leading unary minus around a power: -a^b -> (-1)*(a^b)
+      // Matches at the start of string or right after an operator or '('
+      e = e.replace(/(^|[+\-*/^(])-\s*(\d*\.?\d+|pi|e|[a-z]+\()/g, (full, pre, tail) => {
+        return pre + '(-1)*' + tail;
+      });
+
+      return e;
+    }
+
+    /* ---------- Calculation ---------- */
+    function calculate() {
+      clearAllErrors(document);
+
+      if (expression.trim() === '') {
+        showError(displayEl, 'Enter an expression first.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      // Balance check — auto-close unclosed brackets (common user behavior)
+      let open  = (expression.match(/\(/g) || []).length;
+      let close = (expression.match(/\)/g) || []).length;
+      while (close < open) { expression += ')'; close++; }
+      if (close > open) {
+        showError(displayEl, 'Too many closing brackets. Check your expression.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      const prepped = preprocess(expression);
+      let value;
+      try {
+        value = safeEval(prepped, angleMode === 'DEG');
+      } catch (err) {
+        const msg = String(err && err.message || err);
+        let friendly = 'Could not evaluate: ' + msg;
+        if (/division by zero/i.test(msg))       friendly = 'Division by zero is not allowed.';
+        else if (/sqrt domain/i.test(msg))       friendly = 'Square root of a negative number is not a real number.';
+        else if (/log domain|ln domain/i.test(msg)) friendly = 'Logarithm is defined only for positive numbers.';
+        else if (/unexpected token/i.test(msg))  friendly = 'Check your expression — a number or operator looks out of place.';
+        else if (/missing \)/i.test(msg))        friendly = 'Missing a closing bracket.';
+        showError(displayEl, friendly);
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      if (!Number.isFinite(value)) {
+        showError(displayEl, 'Result is not a finite number.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      lastAns = value;
+      renderDisplay();
+      pushHistory(expression, value);
+
+      const pretty = formatNumber(value, 10);
+      resultPanel.innerHTML = `
+        <div class="result-label">Result</div>
+        <div class="result-value">${pretty}</div>
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Expression</div>
+          <code style="font-family:'JetBrains Mono',monospace;color:#0b1220;">${escapeHtml(expression)}</code>
+          <div class="formula-label" style="margin-top:0.75rem;margin-bottom:0.5rem;">Working</div>
+          <ol>
+            <li>Mode: <strong>${angleMode}</strong>${angleMode === 'DEG' ? ' (angles interpreted as degrees)' : ' (angles interpreted as radians)'}.</li>
+            <li>Expression evaluated: <code>${escapeHtml(expression)}</code></li>
+            <li>Value: <strong>${pretty}</strong></li>
+            ${value === Math.floor(value) && Math.abs(value) < 1e15 ? `<li>As an integer: <strong>${value.toLocaleString('en-US')}</strong></li>` : ''}
+            ${Number.isFinite(value) && value !== 0 ? `<li>Reciprocal 1/x: <strong>${formatNumber(1 / value, 10)}</strong></li>` : ''}
+          </ol>
+        </div>
+      `;
+      showResult(resultPanel, resultPanel.innerHTML);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    /* ---------- History ---------- */
+    function pushHistory(expr, value) {
+      history.unshift({ expr, value });
+      if (history.length > MAX_HISTORY) history.pop();
+      renderHistory();
+    }
+
+    function renderHistory() {
+      if (history.length === 0) {
+        historyEl.innerHTML = '<p class="text-sm text-slate-400 italic px-2 py-3">No calculations yet.</p>';
+        return;
+      }
+      historyEl.innerHTML = history.map((h, i) => `
+        <div class="sci-history-item" data-index="${i}" role="button" tabindex="0" aria-label="Reuse ${escapeHtml(h.expr)}">
+          <span style="color:#64748b;">${escapeHtml(h.expr)}</span>
+          <span style="float:right;font-weight:700;color:#0b1220;">${formatNumber(h.value, 10)}</span>
+        </div>
+      `).join('');
+    }
+
+    historyEl.addEventListener('click', (e) => {
+      const item = e.target.closest('.sci-history-item');
+      if (!item) return;
+      const idx = Number(item.dataset.index);
+      if (Number.isFinite(idx) && history[idx]) {
+        expression = String(history[idx].value);
+        renderDisplay();
+      }
+    });
+    historyEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        e.target.click();
+      }
+    });
+
+    clearHistBtn.addEventListener('click', () => {
+      history.length = 0;
+      renderHistory();
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    /* ---------- Memory ---------- */
+    function memoryAction(action) {
+      if (action === 'M+') { memory += lastAns; updateMemoryBadge(); }
+      else if (action === 'MR') { expression += String(memory); renderDisplay(); }
+      else if (action === 'MC') { memory = 0; updateMemoryBadge(); }
+    }
+
+    /* ---------- Event wiring ---------- */
+    document.getElementById('keypad').addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      if (btn.dataset.insert !== undefined) { insert(btn.dataset.insert); return; }
+      if (btn.dataset.memory) { memoryAction(btn.dataset.memory); return; }
+      const action = btn.dataset.action;
+      if (action === 'clear')  clearAll();
+      else if (action === 'back')  backspace();
+      else if (action === 'sign')  toggleSign();
+      else if (action === 'equals') calculate();
+    });
+
+    // fn row buttons (sin, cos, ...) — outside keypad
+    document.querySelectorAll('.sci-key.fn[data-insert]').forEach(btn => {
+      if (!btn.closest('#keypad')) {
+        btn.addEventListener('click', () => insert(btn.dataset.insert));
+      }
+    });
+
+    // Angle mode toggle
+    modeButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        angleMode = btn.dataset.mode;
+        modeButtons.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        updateAngleHint();
+      });
+    });
+
+    // Physical keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'Enter' || e.key === '=') { e.preventDefault(); calculate(); }
+      else if (e.key === 'Escape') { e.preventDefault(); clearAll(); }
+      else if (e.key === 'Backspace') { e.preventDefault(); backspace(); }
+      else if (/^[0-9.+\-*/^()]$/.test(e.key)) { e.preventDefault(); insert(e.key); }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      clearAll();
+      lastAns = 0;
+      memory = 0;
+      updateMemoryBadge();
+      history.length = 0;
+      renderHistory();
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    /* ---------- Init ---------- */
+    renderDisplay();
+    updateMemoryBadge();
+    updateAngleHint();
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

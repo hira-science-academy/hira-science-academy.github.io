@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Fraction Calculator — Add, Subtract, Multiply &amp; Divide Fractions | Hira Science Academy</title>
+  <meta content="Free fraction calculator: add, subtract, multiply and divide fractions. Simplifies to lowest terms, converts between mixed and improper fractions, shows step-by-step working." name="description"/>
+  <meta content="fraction calculator, add fractions, subtract fractions, multiply fractions, divide fractions, simplify fractions, mixed numbers, improper fractions" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/fraction-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Fraction Calculator — Add, Subtract, Multiply &amp; Divide" property="og:title"/>
+  <meta content="Add, subtract, multiply and divide fractions with simplification and step-by-step working." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/fraction-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Fraction Calculator", "item": "https://hiraacademy.com.pk/tools/fraction-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I add fractions with different denominators?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Find a common denominator, convert both fractions, then add the numerators. For 1/2 + 1/3, the least common denominator is 6, giving 3/6 + 2/6 = 5/6. This calculator does that automatically and shows each step." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does dividing fractions involve flipping the second one?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Dividing by a fraction is the same as multiplying by its reciprocal. So a/b ÷ c/d equals a/b × d/c, which is ad/bc. The flip is not a magic rule — it follows from the definition of division." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between an improper fraction and a mixed number?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An improper fraction has a numerator greater than or equal to its denominator, like 7/4. A mixed number writes the same value as a whole number plus a proper fraction, like 1 3/4. They are the same quantity in different notation." }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the calculator simplify a fraction?",
+        "acceptedAnswer": { "@type": "Answer", "text": "It divides the numerator and denominator by their greatest common divisor using the Euclidean algorithm. For 18/24, the GCD is 6, giving 3/4. A fraction is in lowest terms when the GCD of numerator and denominator is 1." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I enter negative fractions?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Put the minus sign in front of either the numerator or the whole fraction. The calculator normalizes the sign so the denominator stays positive. For example -3/4 and 3/-4 both become -3/4 in the result." }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I enter a zero denominator?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A fraction with denominator zero is undefined, so the calculator will show an error. Zero numerators are fine — 0/5 equals 0. Division by a fraction whose numerator is zero, like 3/4 ÷ 0/5, is also an error because it is equivalent to dividing by zero." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* Fraction-specific UI */
+    .frac-op-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+    .frac-op-toggle button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .frac-op-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+    .frac-input-group {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+      align-items: end;
+    }
+    .frac-stack {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      margin: 0 0.3em;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      line-height: 1.1;
+      font-size: 0.95em;
+    }
+    .frac-stack .frac-num {
+      border-bottom: 2px solid #0b1220;
+      padding: 0 0.25em 0.05em 0.25em;
+    }
+    .frac-stack .frac-den {
+      padding: 0.05em 0.25em 0 0.25em;
+    }
+    .frac-stack.big { font-size: 1.6rem; }
+    .frac-stack.big .frac-num { border-bottom-width: 3px; }
+    .mixed {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      vertical-align: middle;
+    }
+    .formula-inline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9375rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e2e8f0;
+    }
+    .frac-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .frac-summary { grid-template-columns: repeat(4, 1fr); } }
+    .frac-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.875rem 0.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .frac-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .frac-summary-label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .frac-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .frac-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .frac-context strong { color: #0b1220; }
+    .frac-mixed-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 0.8125rem;
+      color: #475569;
+    }
+    .frac-mixed-toggle input { accent-color: #0ea5e9; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient text-white relative py-16 md:py-20 overflow-hidden text-center shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Auto-Simplify · Step-by-Step</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg">Fraction Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">Add, subtract, multiply and divide fractions. Auto-simplified, with mixed-number and decimal forms.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Fraction Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Fraction calculator inputs">
+
+      <!-- Operation toggle -->
+      <div class="mb-5">
+        <span class="calc-label">Operation</span>
+        <div class="frac-op-toggle" role="group" aria-label="Choose operation">
+          <button type="button" data-op="+" class="is-active" aria-pressed="true">+</button>
+          <button type="button" data-op="-" aria-pressed="false">−</button>
+          <button type="button" data-op="×" aria-pressed="false">×</button>
+          <button type="button" data-op="÷" aria-pressed="false">÷</button>
+        </div>
+      </div>
+
+      <!-- Two fractions -->
+      <div class="grid-2">
+        <div>
+          <span class="calc-label">First fraction</span>
+          <div class="frac-input-group">
+            <div>
+              <label for="a-num" class="sr-only">Numerator of first fraction</label>
+              <input type="text" inputmode="numeric" id="a-num" class="calc-input" placeholder="Numerator (e.g. 1)" autocomplete="off" />
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;padding-bottom:0.5rem;">
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#0b1220;font-size:1.25rem;">/</span>
+            </div>
+          </div>
+          <div style="margin-top:0.5rem;">
+            <label for="a-den" class="sr-only">Denominator of first fraction</label>
+            <input type="text" inputmode="numeric" id="a-den" class="calc-input" placeholder="Denominator (e.g. 2)" autocomplete="off" />
+          </div>
+        </div>
+        <div>
+          <span class="calc-label">Second fraction</span>
+          <div class="frac-input-group">
+            <div>
+              <label for="b-num" class="sr-only">Numerator of second fraction</label>
+              <input type="text" inputmode="numeric" id="b-num" class="calc-input" placeholder="Numerator (e.g. 1)" autocomplete="off" />
+            </div>
+            <div style="display:flex;flex-direction:column;justify-content:center;padding-bottom:0.5rem;">
+              <span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:#0b1220;font-size:1.25rem;">/</span>
+            </div>
+          </div>
+          <div style="margin-top:0.5rem;">
+            <label for="b-den" class="sr-only">Denominator of second fraction</label>
+            <input type="text" inputmode="numeric" id="b-den" class="calc-input" placeholder="Denominator (e.g. 3)" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <div class="frac-mixed-toggle">
+        <input type="checkbox" id="show-mixed" checked />
+        <label for="show-mixed">Show mixed-number form when applicable</label>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this fraction calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool performs the four basic arithmetic operations on fractions and returns the answer in its simplest form. You enter two fractions — numerator and denominator for each — choose whether to add, subtract, multiply, or divide, and the calculator produces the exact result, the simplified fraction, the decimal value, and (where meaningful) the mixed-number form. It shows the full step-by-step working, so you can see the common denominator being found, the numerators being combined, and the final simplification by the greatest common divisor. Negative fractions are supported, and the calculator normalises the sign so the denominator is always positive in the result.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas used in each operation</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          For two fractions <span class="formula-inline">a/b</span> and <span class="formula-inline">c/d</span>, the four operations are defined as follows.
+        </p>
+
+        <div class="formula-block">
+          <div class="formula-label">Addition</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            a/b + c/d = (a·d + c·b) / (b·d)
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Subtraction</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            a/b − c/d = (a·d − c·b) / (b·d)
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Multiplication</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            a/b × c/d = (a·c) / (b·d)
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Division</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            a/b ÷ c/d = a/b × d/c = (a·d) / (b·c)
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Simplification</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            Let g = gcd(|numerator|, denominator). Then n/d simplifies to (n/g) / (d/g).
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>a</strong> — numerator of the first fraction.</li>
+          <li><strong>b</strong> — denominator of the first fraction (must be non-zero).</li>
+          <li><strong>c</strong> — numerator of the second fraction.</li>
+          <li><strong>d</strong> — denominator of the second fraction (must be non-zero).</li>
+          <li><strong>gcd(n, d)</strong> — greatest common divisor of numerator and denominator.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: 1/2 + 1/3</p>
+          <ol>
+            <li>Common denominator: <code>2 × 3 = 6</code>.</li>
+            <li>Convert: <code>1/2 = 3/6</code> and <code>1/3 = 2/6</code>.</li>
+            <li>Add numerators: <code>3 + 2 = 5</code>.</li>
+            <li>Result: <code>5/6</code>. Decimal value: <strong>0.833333…</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: 3/4 − 1/6</p>
+          <ol>
+            <li>Least common denominator is 12.</li>
+            <li>Convert: <code>3/4 = 9/12</code> and <code>1/6 = 2/12</code>.</li>
+            <li>Subtract: <code>9 − 2 = 7</code>.</li>
+            <li>Result: <code>7/12</code>. Decimal value: <strong>0.583333…</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: 2/3 × 9/4</p>
+          <ol>
+            <li>Multiply numerators: <code>2 × 9 = 18</code>.</li>
+            <li>Multiply denominators: <code>3 × 4 = 12</code>.</li>
+            <li>Result before simplification: <code>18/12</code>.</li>
+            <li>Divide both by gcd(18, 12) = 6: <code>3/2</code>.</li>
+            <li>Mixed form: <strong>1 1/2</strong>. Decimal value: <strong>1.5</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: 3/5 ÷ 2/7</p>
+          <ol>
+            <li>Flip the divisor: <code>2/7 → 7/2</code>.</li>
+            <li>Multiply: <code>3/5 × 7/2 = 21/10</code>.</li>
+            <li>gcd(21, 10) = 1, so the fraction is already in lowest terms.</li>
+            <li>Mixed form: <strong>2 1/10</strong>. Decimal value: <strong>2.1</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: 18/24 simplified</p>
+          <ol>
+            <li>Find gcd(18, 24). Euclid's algorithm: gcd(24, 18) → gcd(18, 6) → gcd(6, 0) = <strong>6</strong>.</li>
+            <li>Divide: <code>18/6 = 3</code>, <code>24/6 = 4</code>.</li>
+            <li>Result: <strong>3/4</strong>, which is the same fraction in lowest terms.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Understanding fractions in Class 9 &amp; 10</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Fractions are the foundation of several topics in the Punjab board syllabus. In Class 9 algebra, you manipulate algebraic fractions with variables in numerator and denominator. In Class 10, fractions appear in the quadratic formula, in probability, and in trigonometry via ratios. Being able to add and simplify fractions quickly and correctly prevents most errors in later chapters. Two key ideas to remember:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Common denominators before adding or subtracting.</strong> You cannot directly add halves to thirds. Multiplying the two denominators always gives a common one, even if it is not the smallest.</li>
+          <li><strong>Multiply straight across for multiplication and division.</strong> No common denominator is needed. For division, flip the second fraction and multiply.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Adding numerators and denominators directly.</strong> 1/2 + 1/3 is <em>not</em> 2/5. You must find a common denominator first.</li>
+          <li><strong>Forgetting to simplify.</strong> An answer like 18/12 is not considered "finished" in exams. Always reduce to lowest terms and, if it's an improper fraction, consider the mixed form.</li>
+          <li><strong>Sign errors when subtracting.</strong> Subtracting a negative fraction becomes addition: 1/2 − (−1/3) = 1/2 + 1/3 = 5/6.</li>
+          <li><strong>Flipping the wrong fraction when dividing.</strong> You flip the <em>divisor</em> (the second fraction), not the dividend. 3/4 ÷ 2/5 = 3/4 × 5/2 = 15/8.</li>
+          <li><strong>Zero denominators.</strong> Any fraction with denominator 0 is undefined. 5/0 has no value. Even 0/0 is undefined, not zero.</li>
+          <li><strong>Mixing up improper fractions and mixed numbers.</strong> 7/4 and 1 3/4 are the same value. Learn to convert both ways.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>How do I add fractions with different denominators?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Find a common denominator, convert both fractions, then add the numerators. For 1/2 + 1/3, the least common denominator is 6, giving 3/6 + 2/6 = 5/6. This calculator does that automatically and shows each step.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why does dividing fractions involve flipping the second one?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Dividing by a fraction is the same as multiplying by its reciprocal. So a/b ÷ c/d equals a/b × d/c, which is ad/bc. The flip is not a magic rule — it follows from the definition of division.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between an improper fraction and a mixed number?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">An improper fraction has a numerator greater than or equal to its denominator, like 7/4. A mixed number writes the same value as a whole number plus a proper fraction, like 1 3/4. They are the same quantity in different notation.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How does the calculator simplify a fraction?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">It divides the numerator and denominator by their greatest common divisor using the Euclidean algorithm. For 18/24, the GCD is 6, giving 3/4. A fraction is in lowest terms when the GCD of numerator and denominator is 1.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I enter negative fractions?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Yes. Put the minus sign in front of either the numerator or the whole fraction. The calculator normalizes the sign so the denominator stays positive. For example -3/4 and 3/-4 both become -3/4 in the result.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What happens if I enter a zero denominator?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">A fraction with denominator zero is undefined, so the calculator will show an error. Zero numerators are fine — 0/5 equals 0. Division by a fraction whose numerator is zero, like 3/4 ÷ 0/5, is also an error because it is equivalent to dividing by zero.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="decimal-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Decimal Calculator</a></li>
+          <li><a href="percentage-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Percentage Calculator</a></li>
+          <li><a href="ratio-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Ratio Calculator</a></li>
+          <li><a href="proportion-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Proportion Calculator</a></li>
+          <li><a href="lcm-gcf-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ LCM &amp; GCF Calculator</a></li>
+          <li><a href="scientific-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Scientific Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Fractions are used in nearly every chapter of the BISE Punjab mathematics syllabus. Practise the basics with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
+          especially the chapters on rational expressions and algebraic fractions.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div class="md:col-span-1 text-center md:text-left">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2">
+        <p class="text-base text-gray-200 text-center">
+          © 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators
+        </p>
+        <p class="text-sm text-gray-300 text-center">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, formatNumber, parseNum,
+            gcd, showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'fraction-calculator';
+
+    const aNumEl    = document.getElementById('a-num');
+    const aDenEl    = document.getElementById('a-den');
+    const bNumEl    = document.getElementById('b-num');
+    const bDenEl    = document.getElementById('b-den');
+    const showMixed = document.getElementById('show-mixed');
+    const calcBtn   = document.getElementById('calc-btn');
+    const resetBtn  = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section   = document.querySelector('section[aria-label="Fraction calculator inputs"]');
+    const opButtons = document.querySelectorAll('.frac-op-toggle button');
+
+    let operation = '+';
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    opButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        operation = btn.dataset.op;
+        opButtons.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+      });
+    });
+
+    /* ---------- Fraction helpers ---------- */
+    function makeFraction(n, d) {
+      if (d === 0) throw new Error('Zero denominator');
+      if (d < 0) { n = -n; d = -d; } // normalize sign to numerator
+      return { n, d };
+    }
+
+    function simplify(n, d) {
+      if (d === 0) throw new Error('Zero denominator');
+      if (n === 0) return { n: 0, d: 1 };
+      const g = gcd(Math.abs(n), Math.abs(d));
+      let sn = n / g, sd = d / g;
+      if (sd < 0) { sn = -sn; sd = -sd; }
+      return { n: sn, d: sd };
+    }
+
+    function addFrac(f1, f2) { return simplify(f1.n * f2.d + f2.n * f1.d, f1.d * f2.d); }
+    function subFrac(f1, f2) { return simplify(f1.n * f2.d - f2.n * f1.d, f1.d * f2.d); }
+    function mulFrac(f1, f2) { return simplify(f1.n * f2.n, f1.d * f2.d); }
+    function divFrac(f1, f2) {
+      if (f2.n === 0) throw new Error('Division by zero fraction');
+      return simplify(f1.n * f2.d, f1.d * f2.n);
+    }
+
+    function toMixed(f) {
+      // Returns {whole, n, d} or null if not improper
+      if (Math.abs(f.n) < f.d) return null;
+      const sign = f.n < 0 ? -1 : 1;
+      const absN = Math.abs(f.n);
+      const whole = Math.floor(absN / f.d) * sign;
+      const rem = absN % f.d;
+      if (rem === 0) return { whole, n: 0, d: 1 };
+      return { whole, n: rem, d: f.d };
+    }
+
+    /* ---------- HTML rendering helpers (no MathJax) ---------- */
+    function fracHTML(n, d, big) {
+      const cls = 'frac-stack' + (big ? ' big' : '');
+      return `<span class="${cls}"><span class="frac-num">${n}</span><span class="frac-den">${d}</span></span>`;
+    }
+
+    function mixedHTML(m) {
+      // m is {whole, n, d}; if n===0 show just whole
+      if (m.n === 0) return `<span class="mixed">${m.whole}</span>`;
+      const sign = m.whole < 0 ? '−' : '';
+      const w = Math.abs(m.whole);
+      return `<span class="mixed">${sign}${w}&nbsp;${fracHTML(m.n, m.d, false)}</span>`;
+    }
+
+    function decimalString(n, d) {
+      const val = n / d;
+      // Show up to 10 decimals, trim trailing zeros
+      let s = val.toFixed(10);
+      s = s.replace(/0+$/, '').replace(/\.$/, '');
+      // If repeating, indicate with ellipsis when it doesn't terminate neatly
+      if (s.length > 12) s = val.toFixed(6) + '…';
+      return s;
+    }
+
+    function fmtInt(n) {
+      return Number.isInteger(n) ? n.toLocaleString('en-US') : String(n);
+    }
+
+    /* ---------- Read inputs ---------- */
+    function readInputs() {
+      clearAllErrors(section);
+      const aN = parseNum(aNumEl.value);
+      const aD = parseNum(aDenEl.value);
+      const bN = parseNum(bNumEl.value);
+      const bD = parseNum(bDenEl.value);
+
+      let ok = true;
+      if (!Number.isInteger(aN)) { showError(aNumEl, 'Enter a whole number.'); ok = false; }
+      if (!Number.isInteger(aD)) { showError(aDenEl, 'Enter a whole number.'); ok = false; }
+      else if (aD === 0)         { showError(aDenEl, 'Denominator cannot be zero.'); ok = false; }
+      if (!Number.isInteger(bN)) { showError(bNumEl, 'Enter a whole number.'); ok = false; }
+      if (!Number.isInteger(bD)) { showError(bDenEl, 'Enter a whole number.'); ok = false; }
+      else if (bD === 0)         { showError(bDenEl, 'Denominator cannot be zero.'); ok = false; }
+
+      return { ok, aN, aD, bN, bD };
+    }
+
+    /* ---------- Main calculation ---------- */
+    function calculate() {
+      const { ok, aN, aD, bN, bD } = readInputs();
+      if (!ok) { trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const f1 = makeFraction(aN, aD);
+      const f2 = makeFraction(bN, bD);
+
+      // For display, use the user-entered fractions (before normalization)
+      const f1Disp = { n: aN, d: aD };
+      const f2Disp = { n: bN, d: bD };
+
+      let raw, result, steps;
+      try {
+        if (operation === '+') {
+          raw = { n: aN * bD + bN * aD, d: aD * bD };
+          result = addFrac(f1, f2);
+          steps = buildAddSteps(f1Disp, f2Disp, raw, result);
+        } else if (operation === '−') {
+          raw = { n: aN * bD - bN * aD, d: aD * bD };
+          result = subFrac(f1, f2);
+          steps = buildSubSteps(f1Disp, f2Disp, raw, result);
+        } else if (operation === '×') {
+          raw = { n: aN * bN, d: aD * bD };
+          result = mulFrac(f1, f2);
+          steps = buildMulSteps(f1Disp, f2Disp, raw, result);
+        } else {
+          if (bN === 0) {
+            showError(bNumEl, 'Cannot divide by a fraction whose numerator is zero.');
+            trackEvent(CALC_NAME, 'invalid_input');
+            return;
+          }
+          raw = { n: aN * bD, d: aD * bN };
+          result = divFrac(f1, f2);
+          steps = buildDivSteps(f1Disp, f2Disp, raw, result);
+        }
+      } catch (err) {
+        showError(aDenEl, String(err.message || err));
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      // Normalize raw for display (sign to numerator)
+      let rawDisplay = { n: raw.n, d: raw.d };
+      if (rawDisplay.d < 0) { rawDisplay.n = -rawDisplay.n; rawDisplay.d = -rawDisplay.d; }
+
+      const mixed = toMixed(result);
+      const showMixedChecked = showMixed.checked;
+      const decStr = decimalString(result.n, result.d);
+
+      let html = `
+        <div class="result-label">Result</div>
+        <div class="result-value">${fracHTML(result.n, result.d, true)}</div>
+        <div class="frac-summary">
+          <div class="frac-summary-unit">
+            <div class="frac-summary-value">${fracHTML(result.n, result.d, false)}</div>
+            <div class="frac-summary-label">Simplified</div>
+          </div>
+          <div class="frac-summary-unit">
+            <div class="frac-summary-value">${decStr}</div>
+            <div class="frac-summary-label">Decimal</div>
+          </div>
+          <div class="frac-summary-unit">
+            <div class="frac-summary-value">${mixed && mixed.n !== 0 && showMixedChecked ? mixedHTML(mixed) : (mixed && mixed.n === 0 && showMixedChecked ? mixedHTML(mixed) : '—')}</div>
+            <div class="frac-summary-label">Mixed</div>
+          </div>
+          <div class="frac-summary-unit">
+            <div class="frac-summary-value">${fracHTML(rawDisplay.n, rawDisplay.d, false)}</div>
+            <div class="frac-summary-label">Before simplify</div>
+          </div>
+        </div>
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          ${steps}
+        </div>
+        <div class="frac-context">
+          <p>🔹 Operation: <strong>${operation === '×' ? '×' : operation === '÷' ? '÷' : operation}</strong> between ${fracHTML(aN, aD, false)} and ${fracHTML(bN, bD, false)}.</p>
+          <p>🔹 Result in lowest terms: <strong>${fracHTML(result.n, result.d, false)}</strong>${mixed && mixed.n !== 0 && showMixedChecked ? ` = <strong>${mixedHTML(mixed)}</strong>` : ''}.</p>
+          <p>🔹 Decimal value: <strong>${decStr}</strong>.</p>
+          ${Math.abs(result.n) >= result.d ? `<p>🔹 This is an improper fraction. ${showMixedChecked ? 'The mixed form is shown above.' : 'Tick "Show mixed-number form" to display it as a mixed number.'}</p>` : ''}
+        </div>
+      `;
+
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ---------- Step builders ---------- */
+    function buildAddSteps(f1, f2, raw, result) {
+      const common = f1.d * f2.d;
+      const conv1n = f1.n * f2.d;
+      const conv2n = f2.n * f1.d;
+      return `
+        <ol>
+          <li>Find a common denominator: ${f1.d} × ${f2.d} = <strong>${common}</strong>.</li>
+          <li>Convert the first fraction: ${fracHTML(f1.n, f1.d, false)} = ${fracHTML(conv1n, common, false)}.</li>
+          <li>Convert the second fraction: ${fracHTML(f2.n, f2.d, false)} = ${fracHTML(conv2n, common, false)}.</li>
+          <li>Add the numerators: ${conv1n} + ${conv2n} = <strong>${conv1n + conv2n}</strong>.</li>
+          <li>Result before simplification: ${fracHTML(raw.n, raw.d, false)}.</li>
+          <li>Divide numerator and denominator by their GCD to get <strong>${fracHTML(result.n, result.d, false)}</strong>.</li>
+        </ol>
+      `;
+    }
+
+    function buildSubSteps(f1, f2, raw, result) {
+      const common = f1.d * f2.d;
+      const conv1n = f1.n * f2.d;
+      const conv2n = f2.n * f1.d;
+      return `
+        <ol>
+          <li>Find a common denominator: ${f1.d} × ${f2.d} = <strong>${common}</strong>.</li>
+          <li>Convert the first fraction: ${fracHTML(f1.n, f1.d, false)} = ${fracHTML(conv1n, common, false)}.</li>
+          <li>Convert the second fraction: ${fracHTML(f2.n, f2.d, false)} = ${fracHTML(conv2n, common, false)}.</li>
+          <li>Subtract the numerators: ${conv1n} − (${conv2n}) = <strong>${conv1n - conv2n}</strong>.</li>
+          <li>Result before simplification: ${fracHTML(raw.n, raw.d, false)}.</li>
+          <li>Divide numerator and denominator by their GCD to get <strong>${fracHTML(result.n, result.d, false)}</strong>.</li>
+        </ol>
+      `;
+    }
+
+    function buildMulSteps(f1, f2, raw, result) {
+      return `
+        <ol>
+          <li>Multiply numerators: ${f1.n} × ${f2.n} = <strong>${f1.n * f2.n}</strong>.</li>
+          <li>Multiply denominators: ${f1.d} × ${f2.d} = <strong>${f1.d * f2.d}</strong>.</li>
+          <li>Result before simplification: ${fracHTML(raw.n, raw.d, false)}.</li>
+          <li>Divide numerator and denominator by their GCD to get <strong>${fracHTML(result.n, result.d, false)}</strong>.</li>
+        </ol>
+      `;
+    }
+
+    function buildDivSteps(f1, f2, raw, result) {
+      return `
+        <ol>
+          <li>Rule: dividing by a fraction is the same as multiplying by its reciprocal.</li>
+          <li>Reciprocal of ${fracHTML(f2.n, f2.d, false)} is ${fracHTML(f2.d, f2.n, false)}.</li>
+          <li>Rewrite: ${fracHTML(f1.n, f1.d, false)} ÷ ${fracHTML(f2.n, f2.d, false)} = ${fracHTML(f1.n, f1.d, false)} × ${fracHTML(f2.d, f2.n, false)}.</li>
+          <li>Multiply numerators: ${f1.n} × ${f2.d} = <strong>${f1.n * f2.d}</strong>.</li>
+          <li>Multiply denominators: ${f1.d} × ${f2.n} = <strong>${f1.d * f2.n}</strong>.</li>
+          <li>Result before simplification: ${fracHTML(raw.n, raw.d, false)}.</li>
+          <li>Divide numerator and denominator by their GCD to get <strong>${fracHTML(result.n, result.d, false)}</strong>.</li>
+        </ol>
+      `;
+    }
+
+    /* ---------- Wiring ---------- */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      aNumEl.value = ''; aDenEl.value = '';
+      bNumEl.value = ''; bDenEl.value = '';
+      showMixed.checked = true;
+      operation = '+';
+      opButtons.forEach(b => {
+        const active = b.dataset.op === '+';
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

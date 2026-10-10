@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Triangle Calculator — SSS, Heron's Formula, Area &amp; Angles | Hira Science Academy</title>
+  <meta content="Free triangle calculator. Enter three sides to get area via Heron's formula, perimeter, angles via the law of cosines, and triangle type. Triangle inequality checked." name="description"/>
+  <meta content="triangle calculator, SSS triangle, Heron's formula, triangle area, triangle angles, law of cosines, triangle inequality, triangle type" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/triangle-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Triangle Calculator — SSS, Heron's Formula, Area &amp; Angles" property="og:title"/>
+  <meta content="Solve any SSS triangle: area, perimeter, angles, and type — with triangle inequality checked." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/triangle-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Triangle Calculator", "item": "https://hiraacademy.com.pk/tools/triangle-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the triangle inequality?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The triangle inequality states that the sum of any two sides of a triangle must be greater than the third side. If a + b ≤ c for any ordering of sides a, b, c, then no triangle with those side lengths exists." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Heron's formula?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Heron's formula gives the area of a triangle from its three sides: A = √(s(s − a)(s − b)(s − c)), where s is the semi-perimeter, s = (a + b + c) / 2. It works for every triangle, whether acute, right, or obtuse." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find the angles of a triangle given three sides?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use the law of cosines. For angle A opposite side a: cos A = (b² + c² − a²) / (2bc), so A = arccos((b² + c² − a²) / (2bc)). Repeat for each angle. The three angles should sum to 180°." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I classify a triangle by its sides?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Equilateral: all three sides equal. Isosceles: exactly two sides equal. Scalene: no sides equal. This calculator also classifies by angles using the Pythagorean check: if a² + b² = c² it is right; if greater, obtuse; if less, acute (assuming c is the longest side)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a triangle have a side of length zero?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. A triangle must have three positive side lengths. A zero-length side would make the shape degenerate to a line segment." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the semi-perimeter?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The semi-perimeter is half the perimeter: s = (a + b + c) / 2. It is used in Heron's formula and appears in many other triangle formulas such as the inradius and circumradius." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-radical {
+      display: inline-flex;
+      align-items: stretch;
+      font-family: 'JetBrains Mono', monospace;
+      vertical-align: middle;
+      line-height: 1;
+      color: #0b1220;
+    }
+    .latex-radical .r-sign {
+      display: inline-block;
+      font-size: 1.15em;
+      transform: translateY(0.02em);
+      padding-right: 0.02em;
+    }
+    .latex-radical .r-body {
+      display: inline-block;
+      border-top: 1.5px solid currentColor;
+      padding: 0.15em 0.25em 0.05em 0.25em;
+      margin-top: 0.1em;
+    }
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
+    .latex-frac.big { font-size: 1.35em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .latex-sup {
+      display: inline-block;
+      font-size: 0.72em;
+      vertical-align: super;
+      line-height: 0;
+      font-weight: 600;
+    }
+    .latex-sub {
+      display: inline-block;
+      font-size: 0.72em;
+      vertical-align: sub;
+      line-height: 0;
+      font-weight: 600;
+    }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    /* Graph canvas */
+    .graph-canvas-wrap {
+      position: relative;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .graph-canvas-wrap canvas {
+      display: block;
+      width: 100%;
+      height: 300px;
+      border-radius: 0.5rem;
+      background: #ffffff;
+    }
+
+    /* Result */
+    .tri-result-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .tri-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .tri-summary { grid-template-columns: repeat(4, 1fr); } }
+    .tri-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .tri-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .tri-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .tri-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .tri-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .tri-context strong { color: #0b1220; }
+
+    /* Classification badge */
+    .tri-type-badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      letter-spacing: 0.05em;
+    }
+    .tri-type-equilateral { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+    .tri-type-isosceles { background: #e0e7ff; color: #3730a3; border: 1px solid #a5b4fc; }
+    .tri-type-scalene { background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; }
+    .tri-type-right { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .tri-type-acute { background: #ecfeff; color: #155e75; border: 1px solid #a5f3fc; }
+    .tri-type-obtuse { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+    /* Side inputs */
+    .tri-input-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      align-items: end;
+    }
+    @media (max-width: 540px) { .tri-input-row { grid-template-columns: 1fr 1fr 1fr; } }
+
+    .tri-error-banner {
+      display: none;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #b91c1c;
+    }
+    .tri-error-banner.is-visible { display: block; }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · SSS · Heron's Formula · Graph</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Triangle Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Enter three sides to get area, perimeter, all angles, and triangle type — with the triangle inequality checked.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Triangle Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Triangle calculator inputs">
+
+      <p style="font-size:0.875rem;color:#64748b;margin-bottom:1rem;">
+        Enter the three side lengths in any units. The calculator determines the triangle and its properties.
+      </p>
+
+      <div class="tri-input-row">
+        <div>
+          <label for="side-a" class="calc-label">Side a</label>
+          <input type="text" inputmode="decimal" id="side-a" class="calc-input" placeholder="e.g. 3" autocomplete="off" />
+        </div>
+        <div>
+          <label for="side-b" class="calc-label">Side b</label>
+          <input type="text" inputmode="decimal" id="side-b" class="calc-input" placeholder="e.g. 4" autocomplete="off" />
+        </div>
+        <div>
+          <label for="side-c" class="calc-label">Side c</label>
+          <input type="text" inputmode="decimal" id="side-c" class="calc-input" placeholder="e.g. 5" autocomplete="off" />
+        </div>
+      </div>
+
+      <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        Preview: enter three sides
+      </div>
+
+      <div class="tri-error-banner" id="inequality-banner"></div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate Triangle</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this triangle calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool takes the three side lengths of a triangle (the SSS case in geometry) and returns everything that can be derived from them: the area, the perimeter, the semi-perimeter, all three angles, the classification by sides (equilateral, isosceles, or scalene), and the classification by angles (acute, right, or obtuse). It verifies the triangle inequality before computing anything, so impossible inputs are rejected with a clear explanation rather than a nonsensical output. A graph draws the triangle at the correct shape so you can see it.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas used</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Triangle inequality</div>
+          <div class="math-block">
+            <span>a + b &gt; c &nbsp;&nbsp; and &nbsp;&nbsp; b + c &gt; a &nbsp;&nbsp; and &nbsp;&nbsp; c + a &gt; b</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Perimeter and semi-perimeter</div>
+          <div class="math-block">
+            <span>P = a + b + c</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>s = </span>
+            <span class="latex-frac big"><span class="f-num">a + b + c</span><span class="f-den">2</span></span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Area — Heron's formula</div>
+          <div class="math-block">
+            <span>A = </span>
+            <span class="latex-radical"><span class="r-sign">√</span><span class="r-body">s(s − a)(s − b)(s − c)</span></span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Angles — law of cosines</div>
+          <div class="math-block">
+            <span>cos A = </span>
+            <span class="latex-frac big"><span class="f-num">b<sup>2</sup> + c<sup>2</sup> − a<sup>2</sup></span><span class="f-den">2bc</span></span>
+          </div>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">and similarly for B and C. Angles sum to 180°.</p>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Classify by angles (using longest side c)</div>
+          <div class="math-block" style="flex-direction:column;align-items:flex-start;gap:0.35rem;">
+            <span>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup> &nbsp;→&nbsp; <strong>Right</strong></span>
+            <span>a<sup>2</sup> + b<sup>2</sup> &gt; c<sup>2</sup> &nbsp;→&nbsp; <strong>Acute</strong></span>
+            <span>a<sup>2</sup> + b<sup>2</sup> &lt; c<sup>2</sup> &nbsp;→&nbsp; <strong>Obtuse</strong></span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>a, b, c</strong> — the three side lengths.</li>
+          <li><strong>P</strong> — perimeter.</li>
+          <li><strong>s</strong> — semi-perimeter (half the perimeter).</li>
+          <li><strong>A, B, C</strong> — the three interior angles, in degrees.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: 3-4-5 right triangle</p>
+          <ol>
+            <li>Triangle inequality: 3+4 &gt; 5 ✓, 4+5 &gt; 3 ✓, 5+3 &gt; 4 ✓. Valid.</li>
+            <li>Perimeter: P = 3 + 4 + 5 = 12, so s = 6.</li>
+            <li>Area (Heron): A = √(6 × 3 × 2 × 1) = √36 = <strong>6</strong>.</li>
+            <li>Angles: cos C = (3² + 4² − 5²) / (2 × 3 × 4) = 0, so C = 90°. A = 36.87°, B = 53.13°.</li>
+            <li>Classification: <strong>Scalene, right triangle.</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Equilateral triangle with side 6</p>
+          <ol>
+            <li>All three sides equal, so equilateral.</li>
+            <li>Perimeter: 18, s = 9.</li>
+            <li>Area: A = √(9 × 3 × 3 × 3) = √243 = 9√3 ≈ <strong>15.588</strong>.</li>
+            <li>Angles: all 60°.</li>
+            <li>Classification: <strong>Equilateral, acute.</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Isosceles 5-5-6</p>
+          <ol>
+            <li>Triangle inequality: 5+5 &gt; 6 ✓, etc. Valid.</li>
+            <li>Perimeter: 16, s = 8.</li>
+            <li>Area: A = √(8 × 3 × 3 × 2) = √144 = <strong>12</strong>.</li>
+            <li>Angles: the angle opposite the base 6 satisfies cos C = (25 + 25 − 36) / (2 × 5 × 5) = 14/50 = 0.28, so C ≈ 73.74°. The other two are (180 − 73.74)/2 ≈ 53.13°.</li>
+            <li>Classification: <strong>Isosceles, acute.</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Obtuse triangle 2-3-4</p>
+          <ol>
+            <li>Triangle inequality: 2+3 &gt; 4 ✓. Valid.</li>
+            <li>Perimeter: 9, s = 4.5.</li>
+            <li>Area: A = √(4.5 × 2.5 × 1.5 × 0.5) = √8.4375 ≈ <strong>2.9047</strong>.</li>
+            <li>Longest side c = 4: a² + b² = 4 + 9 = 13, c² = 16. Since 13 &lt; 16, the triangle is obtuse.</li>
+            <li>Classification: <strong>Scalene, obtuse.</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Impossible triangle 1-2-5</p>
+          <ol>
+            <li>Check the triangle inequality: 1 + 2 = 3, and 3 &lt; 5. Fails.</li>
+            <li>No triangle with sides 1, 2, 5 exists.</li>
+            <li><strong>Result: Invalid triangle.</strong></li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Why Heron's formula is useful</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          In Class 9 and 10 problems, you often know the three sides of a triangle but not its height. Heron's formula lets you find the area without computing a height first. It is exact when the sides are integers and the semi-perimeter times the three differences is a perfect square, and reduces to the familiar ½ × base × height otherwise. It is one of the most elegant results in elementary geometry because it depends only on the three side lengths, symmetric in a, b, c.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Not checking the triangle inequality.</strong> Sides 2, 3, 7 will not form a triangle. Always verify a + b &gt; c for the longest side c before computing anything.</li>
+          <li><strong>Using Heron's formula for an invalid triangle.</strong> If the inequality fails, one of the factors (s − a), (s − b), or (s − c) becomes negative, and the formula gives a meaningless answer or a NaN. Check validity first.</li>
+          <li><strong>Forgetting to take the square root.</strong> Heron's formula involves √(...), not just the product. Skipping the square root gives the square of the area.</li>
+          <li><strong>Mixing up which angle goes with which side.</strong> Angle A is opposite side a. The law of cosines formula for A uses sides b and c in the numerator and 2bc in the denominator.</li>
+          <li><strong>Assuming every 3-4-5-shaped triple is right.</strong> Multiples like 6-8-10 are also right, but 3-4-6 is not — always check the Pythagorean identity a² + b² = c².</li>
+          <li><strong>Rounding angles too early.</strong> Keep full precision in intermediate steps. Round the final angle values only at the end.</li>
+          <li><strong>Using degrees and radians interchangeably.</strong> This calculator reports degrees. When using trigonometry functions, remember that JavaScript's math functions work in radians unless you convert.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What is the triangle inequality?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">The triangle inequality states that the sum of any two sides of a triangle must be greater than the third side. If a + b ≤ c for any ordering of sides a, b, c, then no triangle with those side lengths exists.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is Heron's formula?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Heron's formula gives the area of a triangle from its three sides: A = √(s(s − a)(s − b)(s − c)), where s is the semi-perimeter, s = (a + b + c) / 2. It works for every triangle, whether acute, right, or obtuse.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I find the angles of a triangle given three sides?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Use the law of cosines. For angle A opposite side a: cos A = (b² + c² − a²) / (2bc), so A = arccos((b² + c² − a²) / (2bc)). Repeat for each angle. The three angles should sum to 180°.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I classify a triangle by its sides?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Equilateral: all three sides equal. Isosceles: exactly two sides equal. Scalene: no sides equal. This calculator also classifies by angles using the Pythagorean check: if a² + b² = c² it is right; if greater, obtuse; if less, acute (assuming c is the longest side).</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can a triangle have a side of length zero?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">No. A triangle must have three positive side lengths. A zero-length side would make the shape degenerate to a line segment.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the semi-perimeter?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">The semi-perimeter is half the perimeter: s = (a + b + c) / 2. It is used in Heron's formula and appears in many other triangle formulas such as the inradius and circumradius.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="pythagorean-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Pythagorean Theorem Calculator</a></li>
+          <li><a href="area-perimeter-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Area &amp; Perimeter Calculator</a></li>
+          <li><a href="distance-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Distance Between Points</a></li>
+          <li><a href="square-root-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Square Root Calculator</a></li>
+          <li><a href="circle-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Circle Calculator</a></li>
+          <li><a href="scientific-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Scientific Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Heron's formula and the triangle inequality are covered in Class 9 mathematics. Revise the theory with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'triangle-calculator';
+
+    const aEl = document.getElementById('side-a');
+    const bEl = document.getElementById('side-b');
+    const cEl = document.getElementById('side-c');
+    const previewEl = document.getElementById('live-preview');
+    const bannerEl = document.getElementById('inequality-banner');
+    const calcBtn = document.getElementById('calc-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section = document.querySelector('section[aria-label="Triangle calculator inputs"]');
+
+    let lastResult = null;
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    /* ============ LaTeX-style helpers ============ */
+    function fracHTML(numHTML, denHTML, big) {
+      const cls = 'latex-frac' + (big ? ' big' : '');
+      return `<span class="${cls}"><span class="f-num">${numHTML}</span><span class="f-den">${denHTML}</span></span>`;
+    }
+    function radicalHTML(radicandHTML, big) {
+      const cls = 'latex-radical' + (big ? ' big' : '');
+      return `<span class="${cls}"><span class="r-sign">√</span><span class="r-body">${radicandHTML}</span></span>`;
+    }
+
+    /* ============ Number formatting ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 6;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) {
+        if (Math.abs(x) < 1e15) return x.toLocaleString('en-US');
+        return x.toExponential(6);
+      }
+      const abs = Math.abs(x);
+      if (abs < 1e-6 || abs >= 1e12) return x.toExponential(6);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+
+    /* ============ Simplify a square root √n = outside √inside ============ */
+    function simplifySqrt(n) {
+      if (!Number.isFinite(n) || n < 0) return { outside: 1, inside: n };
+      if (n === 0) return { outside: 0, inside: 1 };
+      const intN = Math.round(n);
+      if (Math.abs(intN - n) > 1e-9) return { outside: 1, inside: n };
+      let outside = 1;
+      let inside = intN;
+      for (let i = 2; i * i <= inside; i++) {
+        let count = 0;
+        while (inside % (i * i) === 0) {
+          inside /= i * i;
+          count++;
+        }
+        outside *= Math.pow(i, count);
+      }
+      return { outside, inside };
+    }
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      const as = aEl.value.trim(), bs = bEl.value.trim(), cs = cEl.value.trim();
+      const a = parseNum(as), b = parseNum(bs), c = parseNum(cs);
+      bannerEl.classList.remove('is-visible');
+      bannerEl.textContent = '';
+
+      if (as === '' && bs === '' && cs === '') {
+        previewEl.innerHTML = 'Preview: enter three sides';
+        return;
+      }
+      if (as === '' || bs === '' || cs === '') {
+        previewEl.innerHTML = 'Preview: fill all three sides';
+        return;
+      }
+      if (![a, b, c].every(Number.isFinite)) {
+        previewEl.innerHTML = 'Preview: sides must be valid numbers';
+        return;
+      }
+      if (a <= 0 || b <= 0 || c <= 0) {
+        previewEl.innerHTML = 'Preview: sides must be positive';
+        return;
+      }
+      // Triangle inequality check
+      const sorted = [a, b, c].sort((x, y) => x - y);
+      if (sorted[0] + sorted[1] <= sorted[2]) {
+        previewEl.innerHTML = `Preview: <span style="color:#b91c1c;">${fmtNum(a)}, ${fmtNum(b)}, ${fmtNum(c)} cannot form a triangle</span>`;
+        bannerEl.textContent = `Triangle inequality fails: ${fmtNum(sorted[0])} + ${fmtNum(sorted[1])} = ${fmtNum(sorted[0] + sorted[1])} ≤ ${fmtNum(sorted[2])}. A triangle with these sides does not exist.`;
+        bannerEl.classList.add('is-visible');
+        return;
+      }
+      previewEl.innerHTML = `Preview: sides a = <span style="color:#0b1220;">${fmtNum(a)}</span>, b = <span style="color:#0b1220;">${fmtNum(b)}</span>, c = <span style="color:#0b1220;">${fmtNum(c)}</span>`;
+    }
+
+    [aEl, bEl, cEl].forEach(el => el.addEventListener('input', renderPreview));
+
+    /* ============ Main ============ */
+    function calculate() {
+      clearAllErrors(section);
+      bannerEl.classList.remove('is-visible');
+      bannerEl.textContent = '';
+
+      const readings = [
+        { el: aEl, name: 'Side a' },
+        { el: bEl, name: 'Side b' },
+        { el: cEl, name: 'Side c' }
+      ];
+      let allFilled = true;
+      readings.forEach(r => {
+        if (r.el.value.trim() === '') { showError(r.el, `Enter ${r.name}.`); allFilled = false; }
+      });
+      if (!allFilled) { trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const a = parseNum(aEl.value);
+      const b = parseNum(bEl.value);
+      const c = parseNum(cEl.value);
+
+      if (![a, b, c].every(Number.isFinite)) {
+        readings.forEach(r => {
+          if (!Number.isFinite(parseNum(r.el.value))) showError(r.el, 'Enter a valid number.');
+        });
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      if (a <= 0 || b <= 0 || c <= 0) {
+        (a <= 0 ? aEl : b <= 0 ? bEl : cEl).focus();
+        readings.forEach(r => {
+          const v = parseNum(r.el.value);
+          if (v <= 0) showError(r.el, 'Side length must be positive.');
+        });
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      // Triangle inequality
+      const sorted = [a, b, c].sort((x, y) => x - y);
+      if (sorted[0] + sorted[1] <= sorted[2]) {
+        bannerEl.textContent = `Triangle inequality fails: ${fmtNum(sorted[0])} + ${fmtNum(sorted[1])} = ${fmtNum(sorted[0] + sorted[1])} ≤ ${fmtNum(sorted[2])}. No triangle with these sides exists.`;
+        bannerEl.classList.add('is-visible');
+        showError(cEl, 'These sides cannot form a triangle.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      /* ============ Compute ============ */
+      const P = a + b + c;
+      const s = P / 2;
+
+      // Heron's formula
+      const heronProduct = s * (s - a) * (s - b) * (s - c);
+      const area = Math.sqrt(heronProduct);
+
+      // Angles via law of cosines
+      const A = Math.acos(Math.max(-1, Math.min(1, (b * b + c * c - a * a) / (2 * b * c)))) * 180 / Math.PI;
+      const B = Math.acos(Math.max(-1, Math.min(1, (a * a + c * c - b * b) / (2 * a * c)))) * 180 / Math.PI;
+      const C = 180 - A - B;
+
+      /* ============ Classification ============ */
+      const EPS = 1e-9;
+      const sidesEqual = (x, y) => Math.abs(x - y) < EPS;
+
+      let bySides;
+      if (sidesEqual(a, b) && sidesEqual(b, c)) bySides = 'Equilateral';
+      else if (sidesEqual(a, b) || sidesEqual(b, c) || sidesEqual(a, c)) bySides = 'Isosceles';
+      else bySides = 'Scalene';
+
+      // Angle classification using largest side
+      const [x, y, z] = sorted; // x ≤ y ≤ z
+      const lhs = x * x + y * y;
+      const rhs = z * z;
+      let byAngles;
+      let pythNote;
+      if (Math.abs(lhs - rhs) < EPS * Math.max(1, rhs)) {
+        byAngles = 'Right';
+        pythNote = `${fmtNum(x)}² + ${fmtNum(y)}² = ${fmtNum(lhs)} = ${fmtNum(z)}²`;
+      } else if (lhs > rhs) {
+        byAngles = 'Acute';
+        pythNote = `${fmtNum(x)}² + ${fmtNum(y)}² = ${fmtNum(lhs)} > ${fmtNum(z)}² = ${fmtNum(rhs)}`;
+      } else {
+        byAngles = 'Obtuse';
+        pythNote = `${fmtNum(x)}² + ${fmtNum(y)}² = ${fmtNum(lhs)} < ${fmtNum(z)}² = ${fmtNum(rhs)}`;
+      }
+
+      const badgeClass = `tri-type-${byAngles.toLowerCase()}`;
+      const sidesBadgeClass = `tri-type-${bySides.toLowerCase()}`;
+
+      /* ============ Exact area if perfect square ============ */
+      const areaInt = Math.round(area * area);
+      const isAreaPerfect = Math.abs(areaInt - heronProduct) < 1e-9 && Math.abs(Math.sqrt(areaInt) - Math.round(Math.sqrt(areaInt))) < 1e-9;
+      let areaHTML;
+      if (isAreaPerfect) {
+        areaHTML = `<span style="font-weight:800;">${Math.round(Math.sqrt(areaInt))}</span>`;
+      } else if (Math.abs(areaInt - heronProduct) < 1e-9) {
+        const simp = simplifySqrt(areaInt);
+        if (simp.outside === 1) {
+          areaHTML = radicalHTML(`${areaInt}`, true);
+        } else {
+          areaHTML = `<span style="font-weight:800;">${simp.outside}</span>${radicalHTML(`${simp.inside}`, true)}`;
+        }
+      } else {
+        areaHTML = `<span style="font-weight:800;">${fmtNum(area, 6)}</span>`;
+      }
+
+      /* ============ Render ============ */
+      const html = `
+        <div class="result-label">Area</div>
+        <div class="tri-result-value">A = ${areaHTML}</div>
+        ${!isAreaPerfect ? `<p style="text-align:center;font-size:0.9375rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.35rem;">≈ ${fmtNum(area, 10)}</p>` : ''}
+
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem;">
+          <span class="tri-type-badge ${sidesBadgeClass}">${bySides}</span>
+          <span class="tri-type-badge ${badgeClass}">${byAngles}</span>
+        </div>
+
+        <div class="tri-summary">
+          <div class="tri-summary-unit">
+            <div class="tri-summary-value">${fmtNum(a)}</div>
+            <div class="tri-summary-label">Side a</div>
+          </div>
+          <div class="tri-summary-unit">
+            <div class="tri-summary-value">${fmtNum(b)}</div>
+            <div class="tri-summary-label">Side b</div>
+          </div>
+          <div class="tri-summary-unit">
+            <div class="tri-summary-value">${fmtNum(c)}</div>
+            <div class="tri-summary-label">Side c</div>
+          </div>
+          <div class="tri-summary-unit">
+            <div class="tri-summary-value">${fmtNum(P)}</div>
+            <div class="tri-summary-label">Perimeter</div>
+          </div>
+          <div class="tri-summary-unit">
+            <div class="tri-summary-value">${fmtNum(s)}</div>
+            <div class="tri-summary-label">Semi-perimeter</div>
+          </div>
+          <div class="tri-summary-unit">
+            <div class="tri-summary-value">${fmtNum(A, 4)}°</div>
+            <div class="tri-summary-label">Angle A</div>
+          </div>
+          <div class="tri-summary-unit">
+            <div class="tri-summary-value">${fmtNum(B, 4)}°</div>
+            <div class="tri-summary-label">Angle B</div>
+          </div>
+          <div class="tri-summary-unit">
+            <div class="tri-summary-value">${fmtNum(C, 4)}°</div>
+            <div class="tri-summary-label">Angle C</div>
+          </div>
+        </div>
+
+        <div class="graph-canvas-wrap">
+          <canvas id="graph-canvas" aria-label="Graph of the triangle"></canvas>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Triangle inequality check: ${fmtNum(sorted[0])} + ${fmtNum(sorted[1])} = ${fmtNum(sorted[0] + sorted[1])} > ${fmtNum(sorted[2])} ✓. Valid triangle.</li>
+            <li>Perimeter: P = a + b + c = ${fmtNum(a)} + ${fmtNum(b)} + ${fmtNum(c)} = <strong>${fmtNum(P)}</strong>.</li>
+            <li>Semi-perimeter: s = P / 2 = <strong>${fmtNum(s)}</strong>.</li>
+            <li>Heron's formula: A = √(s(s − a)(s − b)(s − c)) = √(${fmtNum(s)} × ${fmtNum(s - a)} × ${fmtNum(s - b)} × ${fmtNum(s - c)}) = √${fmtNum(heronProduct, 6)} ≈ <strong>${fmtNum(area, 8)}</strong>.</li>
+            <li>Angle A (opposite side a): cos A = (b² + c² − a²) / (2bc) = (${fmtNum(b * b)} + ${fmtNum(c * c)} − ${fmtNum(a * a)}) / ${fmtNum(2 * b * c)} = ${fmtNum((b * b + c * c - a * a) / (2 * b * c), 6)}. So A = arccos(...) = <strong>${fmtNum(A, 4)}°</strong>.</li>
+            <li>Angle B (opposite side b): similarly, B = <strong>${fmtNum(B, 4)}°</strong>.</li>
+            <li>Angle C (opposite side c): C = 180° − A − B = <strong>${fmtNum(C, 4)}°</strong>.</li>
+            <li>Angle sum check: A + B + C = ${fmtNum(A + B + C, 4)}°. Should be exactly 180°.</li>
+            <li>By sides: <strong>${bySides}</strong>.</li>
+            <li>By angles (Pythagorean check): ${pythNote}, so <strong>${byAngles}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="tri-context">
+          <p>🔹 Classification: <strong>${bySides}</strong> by sides, <strong>${byAngles}</strong> by angles.</p>
+          <p>🔹 Angles: A = ${fmtNum(A, 4)}°, B = ${fmtNum(B, 4)}°, C = ${fmtNum(C, 4)}°.</p>
+          <p>🔹 Area ≈ <strong>${fmtNum(area, 8)}</strong> square units. Perimeter = <strong>${fmtNum(P)}</strong>.</p>
+          ${byAngles === 'Right' ? '<p>🔹 This is a right triangle — the Pythagorean relation holds exactly.</p>' : ''}
+        </div>
+      `;
+
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+
+      lastResult = { a, b, c, A, B, C, area };
+      requestAnimationFrame(() => drawTriangle(a, b, c, A, B, C));
+
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Graph renderer ============ */
+    function drawTriangle(a, b, c, Adeg, Bdeg, Cdeg) {
+      const canvas = document.getElementById('graph-canvas');
+      if (!canvas) return;
+      const wrap = canvas.parentElement;
+      const W = wrap.clientWidth - 16;
+      const H = 300;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(W * dpr);
+      canvas.height = Math.floor(H * dpr);
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      // Construct triangle: place side a along the bottom
+      // Vertices: B = (0, 0), C = (a, 0), A computed from sides b and c
+      // A is at distance c from B and distance b from C
+      const Ar = Adeg * Math.PI / 180;
+      const Bx = 0, By = 0;
+      const Cx = a, Cy = 0;
+      const Ax = c * Math.cos(Br());
+      const Ay = -c * Math.sin(Br());
+      function Br() { return Bdeg * Math.PI / 180; }
+
+      // Actually compute A directly from sides for robustness:
+      // x_A = (c² + a² − b²) / (2a)
+      // y_A = sqrt(c² − x_A²)
+      const xA = (c * c + a * a - b * b) / (2 * a);
+      const yA = Math.sqrt(Math.max(0, c * c - xA * xA));
+
+      const pts = [
+        { x: 0, y: 0, label: 'B' },
+        { x: a, y: 0, label: 'C' },
+        { x: xA, y: yA, label: 'A' }
+      ];
+
+      // Compute bounding box and scale to fit with padding
+      const xs = pts.map(p => p.x);
+      const ys = pts.map(p => p.y);
+      let xMin = Math.min(...xs), xMax = Math.max(...xs);
+      let yMin = Math.min(...ys), yMax = Math.max(...ys);
+      const pad = Math.max(xMax - xMin, yMax - yMin) * 0.18 + 0.5;
+      xMin -= pad; xMax += pad; yMin -= pad; yMax += pad;
+
+      const sx = (x) => ((x - xMin) / (xMax - xMin)) * W;
+      const sy = (y) => H - ((y - yMin) / (yMax - yMin)) * H;
+
+      // Draw triangle fill
+      ctx.beginPath();
+      ctx.moveTo(sx(pts[0].x), sy(pts[0].y));
+      ctx.lineTo(sx(pts[1].x), sy(pts[1].y));
+      ctx.lineTo(sx(pts[2].x), sy(pts[2].y));
+      ctx.closePath();
+      ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+      ctx.fill();
+      ctx.strokeStyle = '#0284c7';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Draw vertices
+      pts.forEach((p, i) => {
+        const colors = ['#0ea5e9', '#8b5cf6', '#10b981'];
+        ctx.fillStyle = colors[i];
+        ctx.beginPath();
+        ctx.arc(sx(p.x), sy(p.y), 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+      });
+
+      // Side length labels
+      ctx.font = "12px 'JetBrains Mono', monospace";
+      ctx.fillStyle = '#0b1220';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
+      // Label side a (between B and C, bottom)
+      const midBC = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
+      ctx.fillText(`a = ${fmtNum(a)}`, sx(midBC.x), sy(midBC.y) + 18);
+
+      // Label side b (between A and C)
+      const midAC = { x: (pts[1].x + pts[2].x) / 2, y: (pts[1].y + pts[2].y) / 2 };
+      ctx.fillText(`b = ${fmtNum(b)}`, sx(midAC.x) + 25, sy(midAC.y));
+
+      // Label side c (between A and B)
+      const midAB = { x: (pts[0].x + pts[2].x) / 2, y: (pts[0].y + pts[2].y) / 2 };
+      ctx.fillText(`c = ${fmtNum(c)}`, sx(midAB.x) - 25, sy(midAB.y));
+
+      // Vertex labels
+      ctx.font = "bold 14px 'Montserrat', sans-serif";
+      ctx.fillStyle = '#0b1220';
+      const offsets = [{ dx: -14, dy: 14 }, { dx: 14, dy: 14 }, { dx: 0, dy: -16 }];
+      pts.forEach((p, i) => {
+        ctx.fillText(p.label, sx(p.x) + offsets[i].dx, sy(p.y) + offsets[i].dy);
+      });
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      [aEl, bEl, cEl].forEach(el => { el.value = ''; });
+      lastResult = null;
+      previewEl.innerHTML = 'Preview: enter three sides';
+      bannerEl.classList.remove('is-visible');
+      bannerEl.textContent = '';
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (lastResult && resultPanel.classList.contains('is-visible')) {
+          drawTriangle(lastResult.a, lastResult.b, lastResult.c, lastResult.A, lastResult.B, lastResult.C);
+        }
+      }, 200);
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

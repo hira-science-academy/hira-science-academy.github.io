@@ -1,0 +1,323 @@
+/* ============================================================
+   Hira Science Academy — Tools & Calculators Shared Styles
+   ============================================================ */
+
+:root {
+  --tool-primary: #0ea5e9;
+  --tool-primary-dark: #0369a1;
+  --tool-secondary: #8b5cf6;
+  --tool-ink: #0b1220;
+  --tool-paper: #f8fafc;
+  --tool-border: #e2e8f0;
+  --tool-success: #10b981;
+  --tool-error: #ef4444;
+  --tool-radius: 1rem;
+  --tool-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.06);
+  --tool-shadow-lg: 0 20px 50px -12px rgba(15, 23, 42, 0.18);
+  --tool-font-mono: 'JetBrains Mono', monospace;
+}
+
+.tools-page {
+  background-color: var(--tool-paper);
+  background-image:
+    linear-gradient(rgba(14, 116, 144, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 116, 144, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  min-height: 100vh;
+}
+
+.calculator-shell { max-width: 780px; margin: 0 auto; padding: 0 1rem; }
+
+.input-panel {
+  background: #ffffff;
+  border: 1px solid var(--tool-border);
+  border-radius: var(--tool-radius);
+  padding: 1.5rem;
+  box-shadow: var(--tool-shadow);
+}
+
+.result-panel {
+  background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+  border: 1px solid #bae6fd;
+  border-radius: var(--tool-radius);
+  padding: 1.5rem;
+  margin-top: 1.25rem;
+  display: none;
+}
+
+.result-panel.is-visible { display: block; animation: resultFadeIn 0.35s ease; }
+
+@keyframes resultFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-panel .result-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tool-primary-dark);
+  font-weight: 600;
+  font-family: var(--tool-font-mono);
+}
+
+.result-panel .result-value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: var(--tool-ink);
+  font-family: var(--tool-font-mono);
+  word-break: break-word;
+}
+
+.result-panel .result-unit { font-size: 1rem; color: #64748b; font-weight: 500; }
+
+.calc-input, .calc-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1.5px solid var(--tool-border);
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  background: #ffffff;
+  color: var(--tool-ink);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.calc-input:focus, .calc-select:focus {
+  outline: none;
+  border-color: var(--tool-primary);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+}
+
+.calc-input.is-invalid { border-color: var(--tool-error); box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12); }
+
+.calc-label { display: block; font-size: 0.875rem; font-weight: 600; color: #334155; margin-bottom: 0.375rem; }
+
+.calc-error { font-size: 0.8125rem; color: var(--tool-error); margin-top: 0.375rem; font-weight: 500; display: none; }
+.calc-error.is-visible { display: block; }
+
+.btn-calc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.875rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.btn-calc:active { transform: scale(0.98); }
+.btn-calc:focus-visible { outline: 2px solid var(--tool-primary); outline-offset: 3px; }
+
+.btn-primary-calc {
+  background: linear-gradient(135deg, #0ea5e9, #0284c7);
+  color: #ffffff;
+  box-shadow: 0 4px 14px -4px rgba(14, 165, 233, 0.6);
+}
+
+.btn-primary-calc:hover { background: linear-gradient(135deg, #0284c7, #0369a1); transform: translateY(-1px); }
+
+.btn-secondary-calc { background: #ffffff; color: var(--tool-ink); border: 1.5px solid var(--tool-border); }
+.btn-secondary-calc:hover { background: #f1f5f9; }
+
+.btn-copy {
+  background: #ffffff;
+  color: var(--tool-primary-dark);
+  border: 1.5px solid #bae6fd;
+  padding: 0.5rem 1rem;
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-copy:hover { background: #f0f9ff; border-color: var(--tool-primary); }
+.btn-copy.is-copied { background: var(--tool-success); color: #ffffff; border-color: var(--tool-success); }
+
+.steps-block {
+  background: #ffffff;
+  border-left: 4px solid var(--tool-secondary);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.steps-block ol { list-style: decimal; padding-left: 1.25rem; margin: 0; }
+.steps-block li { margin-bottom: 0.5rem; font-size: 0.9375rem; color: #334155; line-height: 1.6; }
+.steps-block li:last-child { margin-bottom: 0; }
+
+.sci-keypad { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
+
+.sci-key {
+  padding: 0.875rem 0.5rem;
+  border-radius: 0.625rem;
+  font-family: var(--tool-font-mono);
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid var(--tool-border);
+  background: #ffffff;
+  color: var(--tool-ink);
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.sci-key:hover { background: #f0f9ff; border-color: var(--tool-primary); }
+.sci-key:active { transform: scale(0.95); }
+.sci-key.op { background: #ede9fe; color: #5b21b6; border-color: #ddd6fe; }
+.sci-key.fn { background: #f0f9ff; color: #0369a1; border-color: #bae6fd; font-size: 0.8125rem; }
+.sci-key.equals { background: linear-gradient(135deg, #0ea5e9, #0284c7); color: #ffffff; border: none; grid-column: span 2; }
+.sci-key.clear { background: #fef2f2; color: #dc2626; border-color: #fecaca; }
+
+.sci-display {
+  background: #0b1220;
+  color: #f8fafc;
+  font-family: var(--tool-font-mono);
+  font-size: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  text-align: right;
+  min-height: 3.5rem;
+  word-break: break-all;
+  overflow-x: auto;
+}
+
+.sci-history { max-height: 200px; overflow-y: auto; font-family: var(--tool-font-mono); font-size: 0.8125rem; }
+.sci-history-item { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--tool-border); cursor: pointer; }
+.sci-history-item:hover { background: #f0f9ff; }
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid var(--tool-border);
+  border-radius: var(--tool-radius);
+  padding: 1.25rem;
+  transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.tool-card:hover { transform: translateY(-4px); box-shadow: var(--tool-shadow-lg); border-color: var(--tool-primary); }
+.tool-card-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.tool-card-title { font-weight: 700; font-size: 1.0625rem; color: var(--tool-ink); margin-bottom: 0.375rem; }
+.tool-card-desc { font-size: 0.875rem; color: #64748b; line-height: 1.5; flex-grow: 1; }
+
+.category-pill {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid var(--tool-border);
+  background: #ffffff;
+  color: #475569;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.category-pill:hover { border-color: var(--tool-primary); color: var(--tool-primary-dark); }
+.category-pill.is-active { background: var(--tool-primary); color: #ffffff; border-color: var(--tool-primary); }
+
+.empty-state { text-align: center; padding: 3rem 1rem; color: #94a3b8; }
+
+.faq-item {
+  background: #ffffff;
+  border: 1px solid var(--tool-border);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  color: var(--tool-ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item[open] summary { margin-bottom: 0.75rem; }
+.faq-item .faq-answer { font-size: 0.9375rem; color: #475569; line-height: 1.7; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+@media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0;
+}
+
+/* ============================================================
+   Justification + LaTeX/MathJax styling
+   ============================================================ */
+
+.tools-page p, .tools-page li, .tools-page .faq-answer, .tools-page .tool-card-desc {
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.tools-page .calc-label, .tools-page .calc-error, .tools-page .btn-calc, .tools-page .btn-copy,
+.tools-page .result-label, .tools-page .result-value, .tools-page .result-unit,
+.tools-page .tool-card-title, .tools-page .category-pill, .tools-page .sci-display,
+.tools-page .sci-key, .tools-page .eyebrow, .tools-page h1, .tools-page h2,
+.tools-page h3, .tools-page h4, .tools-page .steps-block li,
+.tools-page .formula-label, .tools-page .formula-block {
+  text-align: left;
+  hyphens: none;
+}
+
+.tools-page .text-center, .tools-page .text-center p,
+.tools-page .empty-state, .tools-page .empty-state p {
+  text-align: center;
+}
+
+mjx-container { display: inline-block; vertical-align: middle; margin: 0 0.1em; }
+mjx-container[display="true"] { display: block; margin: 1rem auto; text-align: center; overflow-x: auto; max-width: 100%; }
+
+.formula-block {
+  background: #f8fafc;
+  border-left: 4px solid var(--tool-primary);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin: 0.75rem 0;
+  overflow-x: auto;
+}
+
+.formula-block .formula-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--tool-primary-dark);
+  font-weight: 600;
+  font-family: var(--tool-font-mono);
+  margin-bottom: 0.5rem;
+}
+
+.worked-example {
+  background: #ffffff;
+  border-left: 4px solid #0ea5e9;
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.worked-example ol { list-style: decimal; padding-left: 1.5rem; margin-top: 0.5rem; }
+.worked-example li { margin-bottom: 0.375rem; text-align: justify; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

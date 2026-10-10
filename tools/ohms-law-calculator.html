@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Ohm's Law Calculator — V = IR with All Three Rearrangements | Hira Science Academy</title>
+  <meta content="Free Ohm's law calculator. Solve V = IR for voltage, current or resistance with unit-aware inputs (V, kV, A, mA, Ω, kΩ) and real-world context for household, USB and battery voltages." name="description"/>
+  <meta content="ohms law calculator, V=IR, voltage current resistance, ohm's law formula, resistance calculator, class 9 physics, class 10 physics" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/ohms-law-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Ohm's Law Calculator — V = IR with All Three Rearrangements" property="og:title"/>
+  <meta content="Solve V = IR for voltage, current or resistance with unit-aware inputs and real-world context." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/ohms-law-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Ohm's Law Calculator", "item": "https://hiraacademy.com.pk/tools/ohms-law-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Ohm's law?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Ohm's law states that the current through a conductor between two points is directly proportional to the voltage across those points, and inversely proportional to the resistance between them: V = I × R. It applies to ohmic conductors at constant temperature." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the SI units in V = IR?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Voltage is measured in volts (V), current in amperes (A), and resistance in ohms (Ω). One ohm is the resistance that allows one ampere of current under one volt of potential difference. 1 Ω = 1 V / 1 A." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate resistance from voltage and current?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Rearrange V = IR to get R = V / I. Divide the voltage by the current. For example, a 6 V source driving 0.5 A through a resistor gives R = 6 / 0.5 = 12 Ω." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the calculator reject a resistance of zero?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A resistance of zero would require infinite current for any non-zero voltage (since I = V/R), which is unphysical. Real circuits always have some resistance — even a piece of copper wire has a small resistance. The calculator treats R = 0 as a domain error when solving for current." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between an ohmic and a non-ohmic conductor?",
+        "acceptedAnswer": { "@type": "Answer", "text": "An ohmic conductor obeys Ohm's law — its V-I graph is a straight line through the origin, and the resistance stays constant. A non-ohmic conductor does not: examples include filament bulbs (resistance increases with temperature) and diodes (current flows easily in one direction only). Ohm's law applies only to ohmic conductors." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Ohm's law be used for AC circuits?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For purely resistive AC circuits, Ohm's law applies using RMS values of voltage and current. For circuits with capacitors or inductors, the concept of impedance replaces resistance, and V = IZ must be used instead of V = IR. BISE class 9 and 10 problems mostly involve DC or purely resistive AC." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
+    .latex-frac.big { font-size: 1.2em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .latex-sup { vertical-align: super; font-size: 0.75em; }
+    .latex-sub { vertical-align: sub; font-size: 0.75em; }
+
+    /* Result */
+    .cgpa-big-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0b1220;
+      line-height: 1.1;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .cgpa-big-scale {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+    .cgpa-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .cgpa-summary { grid-template-columns: repeat(4, 1fr); } }
+    .cgpa-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cgpa-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .cgpa-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .cgpa-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .cgpa-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .cgpa-context strong { color: #0b1220; }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      margin-top: 0.5rem;
+    }
+    .status-ok    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .status-warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .status-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .status-secure{ background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+
+    /* Input rows */
+    .cgpa-input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-items: end;
+      margin-bottom: 0.75rem;
+    }
+    @media (max-width: 540px) { .cgpa-input-grid { grid-template-columns: 1fr; } }
+    .cgpa-group-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #0369a1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cgpa-group-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* Mode toggle */
+    .mode-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .mode-toggle button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .mode-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+
+    /* Value + unit inline control */
+    .value-unit {
+      display: flex;
+      gap: 0.4rem;
+      align-items: stretch;
+    }
+    .value-unit input {
+      flex: 1 1 auto;
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      font-family: 'JetBrains Mono', monospace;
+      background: #ffffff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .value-unit input:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+    .value-unit select {
+      flex: 0 0 auto;
+      padding: 0.5rem 0.6rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      background: #f1f5f9;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #0369a1;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .value-unit select:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+
+    /* Circuit diagram */
+    .circuit-diagram {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 0.6rem;
+      padding: 0.75rem 1rem;
+      margin: 0.5rem 0 1.25rem 0;
+    }
+    .circuit-svg { display: block; margin: 0 auto; max-width: 100%; height: auto; }
+    .circuit-caption {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 0.35rem;
+    }
+
+    /* Reference table */
+    .ref-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.6rem;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .ref-table th {
+      background: #f0f9ff;
+      color: #0369a1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.65rem;
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .ref-table td {
+      padding: 0.55rem 0.75rem;
+      border-bottom: 1px solid #f1f5f9;
+      color: #334155;
+    }
+    .ref-table tr:last-child td { border-bottom: none; }
+    .ref-table td.num { text-align: right; font-weight: 700; color: #0b1220; }
+    .ref-table-wrap { overflow-x: auto; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Three Solve Modes · Real-World Context</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Ohm's Law Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Solve V = IR for voltage, current or resistance — with unit-aware inputs and real-world voltage, current and resistance ranges.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Ohm's Law Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Ohm's law calculator inputs">
+
+      <div class="mode-toggle" role="group" aria-label="Solve mode">
+        <button type="button" data-mode="v" class="is-active" aria-pressed="true">Find Voltage (V)</button>
+        <button type="button" data-mode="i" aria-pressed="false">Find Current (I)</button>
+        <button type="button" data-mode="r" aria-pressed="false">Find Resistance (R)</button>
+      </div>
+
+      <!-- Find V -->
+      <div id="panel-v">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter current and resistance</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="v-i" class="calc-label">Current</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="v-i" placeholder="e.g. 0.5" autocomplete="off" />
+              <select id="v-i-unit" aria-label="Current unit">
+                <option value="A" selected>A</option>
+                <option value="mA">mA</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="v-r" class="calc-label">Resistance</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="v-r" placeholder="e.g. 12" autocomplete="off" />
+              <select id="v-r-unit" aria-label="Resistance unit">
+                <option value="ohm" selected>Ω</option>
+                <option value="kohm">kΩ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Voltage output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="v-out" class="calc-label">Show voltage in</label>
+            <select id="v-out" class="calc-select">
+              <option value="V" selected>V</option>
+              <option value="kV">kV</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Find I -->
+      <div id="panel-i" class="hidden">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter voltage and resistance</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="i-v" class="calc-label">Voltage</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="i-v" placeholder="e.g. 220" autocomplete="off" />
+              <select id="i-v-unit" aria-label="Voltage unit">
+                <option value="V" selected>V</option>
+                <option value="kV">kV</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="i-r" class="calc-label">Resistance</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="i-r" placeholder="e.g. 1000" autocomplete="off" />
+              <select id="i-r-unit" aria-label="Resistance unit">
+                <option value="ohm" selected>Ω</option>
+                <option value="kohm">kΩ</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Current output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="i-out" class="calc-label">Show current in</label>
+            <select id="i-out" class="calc-select">
+              <option value="A" selected>A</option>
+              <option value="mA">mA</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Find R -->
+      <div id="panel-r" class="hidden">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter voltage and current</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="r-v" class="calc-label">Voltage</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="r-v" placeholder="e.g. 6" autocomplete="off" />
+              <select id="r-v-unit" aria-label="Voltage unit">
+                <option value="V" selected>V</option>
+                <option value="kV">kV</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="r-i" class="calc-label">Current</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="r-i" placeholder="e.g. 0.5" autocomplete="off" />
+              <select id="r-i-unit" aria-label="Current unit">
+                <option value="A" selected>A</option>
+                <option value="mA">mA</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Resistance output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="r-out" class="calc-label">Show resistance in</label>
+            <select id="r-out" class="calc-select">
+              <option value="ohm" selected>Ω</option>
+              <option value="kohm">kΩ</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Circuit diagram -->
+      <div class="circuit-diagram" aria-hidden="true">
+        <svg class="circuit-svg" viewBox="0 0 340 120" width="340" height="120" xmlns="http://www.w3.org/2000/svg">
+          <!-- battery on the left -->
+          <line x1="60" y1="40" x2="60" y2="80" stroke="#0369a1" stroke-width="1.5" />
+          <line x1="55" y1="45" x2="65" y2="45" stroke="#0369a1" stroke-width="2" />
+          <line x1="52" y1="55" x2="68" y2="55" stroke="#0369a1" stroke-width="3" />
+          <line x1="55" y1="65" x2="65" y2="65" stroke="#0369a1" stroke-width="2" />
+          <text x="40" y="63" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="11" fill="#0369a1" font-weight="700">V</text>
+          <!-- top wire -->
+          <line x1="60" y1="40" x2="280" y2="40" stroke="#0369a1" stroke-width="1.5" />
+          <!-- bottom wire -->
+          <line x1="60" y1="80" x2="280" y2="80" stroke="#0369a1" stroke-width="1.5" />
+          <!-- resistor box -->
+          <rect x="160" y="30" width="60" height="20" fill="#fef3c7" stroke="#92400e" stroke-width="1.5" rx="2" />
+          <text x="190" y="44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#92400e" font-weight="700">R</text>
+          <!-- ammeter circle on top wire -->
+          <circle cx="100" cy="40" r="10" fill="#ffffff" stroke="#0369a1" stroke-width="1.5" />
+          <text x="100" y="44" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#0369a1" font-weight="700">A</text>
+          <!-- current arrow -->
+          <line x1="220" y1="25" x2="260" y2="25" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowCur)" />
+          <text x="240" y="18" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#166534" font-weight="700">I</text>
+          <!-- bottom wire back to battery -->
+          <line x1="280" y1="80" x2="280" y2="80" stroke="#0369a1" stroke-width="1.5" />
+          <!-- caption line under -->
+          <text x="170" y="108" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#64748b" font-weight="700">V = I × R</text>
+          <defs>
+            <marker id="arrowCur" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#22c55e" />
+            </marker>
+          </defs>
+        </svg>
+        <div class="circuit-caption">battery drives current through a resistor — V = I × R</div>
+      </div>
+
+      <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        Preview: enter current and resistance
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this Ohm's law calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool applies Ohm's law V = IR in all three of its rearrangements. If you know current and resistance, it computes voltage. If you know voltage and resistance, it computes current. If you know voltage and current, it computes resistance. Every input is unit-aware: voltage in volts or kilovolts, current in amperes or milliamperes, resistance in ohms or kilo-ohms. The result panel includes step-by-step working, unit consistency checks, and real-world context — household mains voltage, USB voltages, battery voltages, and typical current ranges from LED indicator currents to appliance-scale loads — so you can tell immediately whether a computed value corresponds to a small electronic circuit or a household appliance.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formula</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Ohm's law — base form</div>
+          <div class="math-block">
+            <span>V = I × R</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Solve for current</div>
+          <div class="math-block">
+            <span>I = </span>
+            <span class="latex-frac big">
+              <span class="f-num">V</span>
+              <span class="f-den">R</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Solve for resistance</div>
+          <div class="math-block">
+            <span>R = </span>
+            <span class="latex-frac big">
+              <span class="f-num">V</span>
+              <span class="f-den">I</span>
+            </span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Related formulas (from combining with P = VI)</h3>
+        <div class="formula-block">
+          <div class="math-block">
+            <span>P = V × I &nbsp; · &nbsp; P = I<span class="latex-sup">2</span>R &nbsp; · &nbsp; P = </span>
+            <span class="latex-frac">
+              <span class="f-num">V<span class="latex-sup">2</span></span>
+              <span class="f-den">R</span>
+            </span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>V</strong> — potential difference across the conductor, in volts (V).</li>
+          <li><strong>I</strong> — current through the conductor, in amperes (A).</li>
+          <li><strong>R</strong> — resistance of the conductor, in ohms (Ω).</li>
+          <li><strong>P</strong> — power dissipated by the resistor, in watts (W).</li>
+        </ul>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Unit conversions you need to know</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>1 kV</strong> = 1000 V</li>
+          <li><strong>1 mA</strong> = 0.001 A</li>
+          <li><strong>1 kΩ</strong> = 1000 Ω</li>
+          <li><strong>1 Ω</strong> = 1 V / 1 A</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Find voltage — a simple resistor circuit</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            I = 0.5 A · R = 12 Ω
+          </div>
+          <ol>
+            <li>V = I × R = 0.5 × 12.</li>
+            <li>V = <strong>6 V</strong>.</li>
+            <li>A current of 0.5 A through 12 Ω requires 6 V. This is a typical low-voltage electronic circuit value.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Find voltage — household mains across an appliance</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            I = 5 A · R = 44 Ω
+          </div>
+          <ol>
+            <li>V = 5 × 44.</li>
+            <li>V = <strong>220 V</strong>.</li>
+            <li>220 V is the standard household mains voltage in Pakistan. A 5 A current through 44 Ω gives the expected mains voltage.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Find current — a bulb drawing current</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            V = 220 V · R = 500 Ω
+          </div>
+          <ol>
+            <li>I = V / R = 220 / 500.</li>
+            <li>I = <strong>0.44 A = 440 mA</strong>.</li>
+            <li>A 500 Ω bulb on 220 V mains draws 440 mA — around 100 W of power. Reasonable for a filament bulb.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Find current — an LED indicator</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            V = 5 V (USB) · R = 470 Ω
+          </div>
+          <ol>
+            <li>I = 5 / 470.</li>
+            <li>I = <strong>0.0106 A = 10.6 mA</strong>.</li>
+            <li>This is the classic "USB LED with a 470 Ω resistor" circuit — a very typical low-current electronic application.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Find resistance — identifying a component</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            V = 12 V · I = 0.024 A
+          </div>
+          <ol>
+            <li>R = V / I = 12 / 0.024.</li>
+            <li>R = <strong>500 Ω</strong>.</li>
+            <li>500 Ω is a standard resistor value — often used for LED current-limiting at higher voltages.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 6: Find resistance — a heating element</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            V = 220 V · I = 6.8 A
+          </div>
+          <ol>
+            <li>R = 220 / 6.8.</li>
+            <li>R = <strong>32.4 Ω</strong>.</li>
+            <li>A 1500 W heating element on 220 V mains. The resistance is quite low, which is why heaters draw high current and why the element heats up.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Real-world reference values</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Knowing typical voltages, currents and resistances helps you sanity-check any computed answer.
+        </p>
+
+        <div class="ref-table-wrap">
+          <table class="ref-table" aria-label="Common voltages, currents and resistances">
+            <thead>
+              <tr>
+                <th>Context</th>
+                <th style="text-align:right;">Typical value</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>AA battery</td><td class="num">1.5 V</td><td>Single dry cell</td></tr>
+              <tr><td>Mobile phone battery</td><td class="num">3.7 V</td><td>Lithium-ion single cell</td></tr>
+              <tr><td>USB port</td><td class="num">5 V</td><td>Standard USB-A supply</td></tr>
+              <tr><td>Car battery</td><td class="num">12 V</td><td>Lead-acid, 6 cells</td></tr>
+              <tr><td>Pakistani household mains</td><td class="num">220 V</td><td>AC RMS, 50 Hz</td></tr>
+              <tr><td>Industrial 3-phase</td><td class="num">380–400 V</td><td>Between phases</td></tr>
+              <tr><td>Transmission line</td><td class="num">11 kV – 500 kV</td><td>WAPDA grid tiers</td></tr>
+              <tr><td>LED indicator current</td><td class="num">5–20 mA</td><td>Small signal LED</td></tr>
+              <tr><td>Phone charger output current</td><td class="num">1–3 A</td><td>USB charging</td></tr>
+              <tr><td>Ceiling fan current</td><td class="num">0.3 A</td><td>~70 W at 220 V</td></tr>
+              <tr><td>Refrigerator current</td><td class="num">0.5–1 A</td><td>Compressor cycle</td></tr>
+              <tr><td>Electric kettle current</td><td class="num">6–9 A</td><td>~1500–2000 W</td></tr>
+              <tr><td>Air conditioner current</td><td class="num">4–8 A</td><td>Per unit</td></tr>
+              <tr><td>Typical LED resistor</td><td class="num">220–1000 Ω</td><td>Current-limiting at 5 V</td></tr>
+              <tr><td>Household wiring resistance</td><td class="num">&lt; 1 Ω</td><td>Copper, short run</td></tr>
+              <tr><td>Human body (dry skin)</td><td class="num">100 kΩ – 1 MΩ</td><td>Why dry-contact shock is usually survivable</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Mixing units silently.</strong> mA must be converted to A, kΩ to Ω, kV to V, before applying the formula. Using 500 mA as 500 A gives an answer 1000× too large. The calculator handles the conversion for you, but exam answers must be correct by hand.</li>
+          <li><strong>Setting resistance to zero.</strong> R = 0 would require infinite current for any nonzero voltage. Real circuits always have some resistance. The calculator treats R = 0 as a domain error when solving for current.</li>
+          <li><strong>Applying Ohm's law to non-ohmic devices.</strong> Filament bulbs, diodes, and thermistors do not obey V = IR at all temperatures or currents. Ohm's law is valid only for ohmic conductors at constant temperature.</li>
+          <li><strong>Confusing the resistor's colour code with its value.</strong> The bands on a resistor encode the resistance in ohms. Reading them incorrectly by one band gives a value 10× or 100× off. If the problem gives bands, decode them first, then use this calculator.</li>
+          <li><strong>Using the wrong sign for AC voltages.</strong> Household mains is quoted as an RMS value (220 V in Pakistan). The peak voltage is √2 × 220 ≈ 311 V. For resistance and power calculations, use RMS values; for peak withstand, use peak.</li>
+          <li><strong>Forgetting the power limit of resistors.</strong> A resistor rated ¼ W cannot safely dissipate 1 W — it will overheat. If a computation gives a power above the resistor's rating, the resistor is the wrong choice.</li>
+          <li><strong>Assuming series and parallel rules apply inside a single formula.</strong> Ohm's law applies to one component at a time. For combinations of resistors, compute the equivalent resistance first (using series/parallel rules), then apply V = IR.</li>
+          <li><strong>Using V = IR for capacitors and inductors directly.</strong> These components have reactance, and the correct relation uses impedance Z: V = IZ. Ohm's law applies only to resistors and resistive circuits.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What is Ohm's law?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Ohm's law states that the current through a conductor between two points is directly proportional to the voltage across those points, and inversely proportional to the resistance between them: V = I × R. It applies to ohmic conductors at constant temperature.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What are the SI units in V = IR?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Voltage is measured in volts (V), current in amperes (A), and resistance in ohms (Ω). One ohm is the resistance that allows one ampere of current under one volt of potential difference. 1 Ω = 1 V / 1 A.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I calculate resistance from voltage and current?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Rearrange V = IR to get R = V / I. Divide the voltage by the current. For example, a 6 V source driving 0.5 A through a resistor gives R = 6 / 0.5 = 12 Ω.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why does the calculator reject a resistance of zero?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">A resistance of zero would require infinite current for any non-zero voltage (since I = V/R), which is unphysical. Real circuits always have some resistance — even a piece of copper wire has a small resistance. The calculator treats R = 0 as a domain error when solving for current.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between an ohmic and a non-ohmic conductor?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">An ohmic conductor obeys Ohm's law — its V-I graph is a straight line through the origin, and the resistance stays constant. A non-ohmic conductor does not: examples include filament bulbs (resistance increases with temperature) and diodes (current flows easily in one direction only). Ohm's law applies only to ohmic conductors.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can Ohm's law be used for AC circuits?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">For purely resistive AC circuits, Ohm's law applies using RMS values of voltage and current. For circuits with capacitors or inductors, the concept of impedance replaces resistance, and V = IZ must be used instead of V = IR. BISE class 9 and 10 problems mostly involve DC or purely resistive AC.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="power-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Power Calculator</a></li>
+          <li><a href="physics-formula-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Physics Formula Calculator</a></li>
+          <li><a href="unit-converter.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Unit Converter</a></li>
+          <li><a href="scientific-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Scientific Calculator</a></li>
+          <li><a href="kinetic-energy-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Kinetic Energy Calculator</a></li>
+          <li><a href="work-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Work Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Revise the theory of current electricity with our
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
+          and track term progress with the free
+          <a href="https://hiraacademy.com.pk/student-portal.html" class="text-blue-700 font-semibold underline">Student Portal</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'ohms-law-calculator';
+
+    const modeBtns   = document.querySelectorAll('.mode-toggle button');
+    const panelV     = document.getElementById('panel-v');
+    const panelI     = document.getElementById('panel-i');
+    const panelR     = document.getElementById('panel-r');
+
+    /* Find V */
+    const vI = document.getElementById('v-i'), vIUnit = document.getElementById('v-i-unit');
+    const vR = document.getElementById('v-r'), vRUnit = document.getElementById('v-r-unit');
+    const vOut = document.getElementById('v-out');
+
+    /* Find I */
+    const iV = document.getElementById('i-v'), iVUnit = document.getElementById('i-v-unit');
+    const iR = document.getElementById('i-r'), iRUnit = document.getElementById('i-r-unit');
+    const iOut = document.getElementById('i-out');
+
+    /* Find R */
+    const rV = document.getElementById('r-v'), rVUnit = document.getElementById('r-v-unit');
+    const rI = document.getElementById('r-i'), rIUnit = document.getElementById('r-i-unit');
+    const rOut = document.getElementById('r-out');
+
+    const previewEl = document.getElementById('live-preview');
+    const calcBtn = document.getElementById('calc-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section = document.querySelector('section[aria-label="Ohm\'s law calculator inputs"]');
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    let mode = 'v';
+
+    /* ============ Unit conversions ============ */
+    const VOLT_TO_V = { V: 1, kV: 1000 };
+    const CURR_TO_A = { A: 1, mA: 0.001 };
+    const RES_TO_OHM = { ohm: 1, kohm: 1000 };
+
+    function voltToV(v, u) { return v * VOLT_TO_V[u]; }
+    function currToA(v, u) { return v * CURR_TO_A[u]; }
+    function resToOhm(v, u) { return v * RES_TO_OHM[u]; }
+
+    /* ============ Helpers ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 4;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) return String(x);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+    function round3(x) { return Math.round(x * 1000) / 1000; }
+    function round6(x) { return Math.round(x * 1e6) / 1e6; }
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+    function smartFmt(x) {
+      if (!Number.isFinite(x)) return '—';
+      const abs = Math.abs(x);
+      if (abs === 0) return '0';
+      if (abs >= 0.01 && abs < 1e6) return fmtNum(round6(x), 6);
+      return x.toExponential(3);
+    }
+
+    function voltScale(v) {
+      const a = Math.abs(v);
+      if (a < 1.6) return 'low-voltage electronics range';
+      if (a < 5) return 'typical battery range (1.5–4.5 V)';
+      if (a < 12) return 'USB or small battery range';
+      if (a < 50) return 'low-voltage DC (car, adapter)';
+      if (a < 250) return 'household mains range (220–240 V in Pakistan)';
+      if (a < 1500) return 'industrial DC or 3-phase AC range';
+      if (a < 50000) return 'distribution grid range';
+      return 'high-voltage transmission range';
+    }
+
+    function currScale(i) {
+      const a = Math.abs(i);
+      if (a < 0.001) return 'microamp range (sensor, leakage)';
+      if (a < 0.02) return 'LED indicator range (a few mA)';
+      if (a < 0.1) return 'small signal electronics';
+      if (a < 0.5) return 'ceiling fan / small appliance';
+      if (a < 2) return 'refrigerator / medium appliance';
+      if (a < 10) return 'kettle, iron or air conditioner range';
+      if (a < 100) return 'heavy industrial or high-power load';
+      return 'grid-scale current';
+    }
+
+    function resScale(r) {
+      const a = Math.abs(r);
+      if (a < 0.1) return 'very low (wire, shunt, contact)';
+      if (a < 10) return 'low (heating element, high-power device)';
+      if (a < 100) return 'moderate (light bulb, small motor)';
+      if (a < 1000) return 'common resistor range (220 Ω – 1 kΩ)';
+      if (a < 100000) return 'kilohm range (LED resistor, sensor)';
+      if (a < 1e6) return 'megohm range (insulation, human body dry)';
+      return 'very high (air gap, good insulator)';
+    }
+
+    /* ============ Mode switching ============ */
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mode = btn.dataset.mode;
+        modeBtns.forEach(b => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        panelV.classList.toggle('hidden', mode !== 'v');
+        panelI.classList.toggle('hidden', mode !== 'i');
+        panelR.classList.toggle('hidden', mode !== 'r');
+        clearAllErrors(section);
+        hideResult(resultPanel);
+        renderPreview();
+      });
+    });
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      if (mode === 'v') {
+        const iRaw = vI.value.trim(), rRaw = vR.value.trim();
+        if (!iRaw && !rRaw) { previewEl.innerHTML = 'Preview: enter current and resistance'; return; }
+        const I = parseNum(iRaw), R = parseNum(rRaw);
+        if (!Number.isFinite(I) || !Number.isFinite(R)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        const IA = currToA(I, vIUnit.value);
+        const RO = resToOhm(R, vRUnit.value);
+        const VV = IA * RO;
+        const shown = vOut.value === 'V' ? VV : VV / 1000;
+        previewEl.innerHTML = `Preview: V = <span style="color:#0b1220;">${smartFmt(shown)} ${vOut.value}</span>`;
+      } else if (mode === 'i') {
+        const vRaw = iV.value.trim(), rRaw = iR.value.trim();
+        if (!vRaw && !rRaw) { previewEl.innerHTML = 'Preview: enter voltage and resistance'; return; }
+        const V = parseNum(vRaw), R = parseNum(rRaw);
+        if (!Number.isFinite(V) || !Number.isFinite(R)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        const VV = voltToV(V, iVUnit.value);
+        const RO = resToOhm(R, iRUnit.value);
+        if (RO === 0) { previewEl.innerHTML = 'Preview: resistance must be greater than 0 (division by zero)'; return; }
+        const IA = VV / RO;
+        const shown = iOut.value === 'A' ? IA : IA * 1000;
+        previewEl.innerHTML = `Preview: I = <span style="color:#0b1220;">${smartFmt(shown)} ${iOut.value}</span>`;
+      } else {
+        const vRaw = rV.value.trim(), iRaw = rI.value.trim();
+        if (!vRaw && !iRaw) { previewEl.innerHTML = 'Preview: enter voltage and current'; return; }
+        const V = parseNum(vRaw), I = parseNum(iRaw);
+        if (!Number.isFinite(V) || !Number.isFinite(I)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        const VV = voltToV(V, rVUnit.value);
+        const IA = currToA(I, rIUnit.value);
+        if (IA === 0) { previewEl.innerHTML = 'Preview: current must be non-zero (division by zero)'; return; }
+        const RO = VV / IA;
+        const shown = rOut.value === 'ohm' ? RO : RO / 1000;
+        previewEl.innerHTML = `Preview: R = <span style="color:#0b1220;">${smartFmt(shown)} ${rOut.value === 'ohm' ? 'Ω' : 'kΩ'}</span>`;
+      }
+    }
+
+    [vI, vR, iV, iR, rV, rI].forEach(el => {
+      if (el) el.addEventListener('input', renderPreview);
+    });
+    [vIUnit, vRUnit, vOut, iVUnit, iRUnit, iOut, rVUnit, rIUnit, rOut].forEach(el => {
+      if (el) el.addEventListener('change', () => { clearAllErrors(section); hideResult(resultPanel); renderPreview(); });
+    });
+
+    /* ============ Calculate ============ */
+    function calculate() {
+      clearAllErrors(section);
+      if (mode === 'v') calcV();
+      else if (mode === 'i') calcI();
+      else calcR();
+    }
+
+    /* ============ Find V ============ */
+    function calcV() {
+      const iRaw = vI.value.trim(), rRaw = vR.value.trim();
+      if (iRaw === '') { showError(vI, 'Enter the current.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (rRaw === '') { showError(vR, 'Enter the resistance.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const I = parseNum(iRaw), R = parseNum(rRaw);
+      if (!Number.isFinite(I)) { showError(vI, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(R)) { showError(vR, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (R < 0) { showError(vR, 'Resistance cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const IA = currToA(I, vIUnit.value);
+      const RO = resToOhm(R, vRUnit.value);
+      const VV = IA * RO;
+      const kV = VV / 1000;
+      const outUnit = vOut.value;
+      const shown = outUnit === 'V' ? VV : kV;
+
+      const scale = voltScale(VV);
+      let ctx = [];
+      ctx.push(`🔹 Voltage: <strong>${smartFmt(shown)} ${outUnit}</strong> (= ${smartFmt(VV)} V · ${smartFmt(kV)} kV).`);
+      ctx.push(`🔹 Scale: this is in the <strong>${scale}</strong>.`);
+      if (Math.abs(VV - 220) < 11) ctx.push(`🔹 This is close to the Pakistani household mains voltage (220 V).`);
+      if (Math.abs(VV - 5) < 0.5) ctx.push(`🔹 This matches a standard USB port voltage (5 V).`);
+      if (Math.abs(VV - 1.5) < 0.2) ctx.push(`🔹 This matches a single AA battery (1.5 V).`);
+      if (Math.abs(VV - 12) < 0.6) ctx.push(`🔹 This matches a car battery voltage (12 V nominal).`);
+      ctx.push(`🔹 Power dissipated by the resistor: P = V × I = ${smartFmt(VV)} × ${smartFmt(IA)} = <strong>${smartFmt(VV * IA)} W</strong>.`);
+
+      const html = `
+        <div class="result-label">Voltage (V = I × R)</div>
+        <div class="cgpa-big-value">${smartFmt(shown)}<span class="cgpa-big-scale">${outUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${smartFmt(VV)} V</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Voltage computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${fmtNum(I, 4)}</div><div class="cgpa-summary-label">I (${vIUnit.value})</div></div>
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${fmtNum(R, 4)}</div><div class="cgpa-summary-label">R (${vRUnit.value === 'ohm' ? 'Ω' : 'kΩ'})</div></div>
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${smartFmt(shown)}</div><div class="cgpa-summary-label">V (${outUnit})</div></div>
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${smartFmt(VV)}</div><div class="cgpa-summary-label">V (V)</div></div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: V = I × R.</li>
+            <li>Convert to SI: I = ${fmtNum(I, 4)} ${vIUnit.value} = ${smartFmt(IA)} A; R = ${fmtNum(R, 4)} ${vRUnit.value === 'ohm' ? 'Ω' : 'kΩ'} = ${smartFmt(RO)} Ω.</li>
+            <li>Voltage in V: ${smartFmt(IA)} × ${smartFmt(RO)} = <strong>${smartFmt(VV)} V</strong>.</li>
+            <li>In kV: ${smartFmt(VV)} / 1000 = <strong>${smartFmt(kV)} kV</strong>.</li>
+            <li>Result in your chosen unit: <strong>${smartFmt(shown)} ${outUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+          <p>🔹 Unit check: A × Ω = V ✓</p>
+        </div>
+      `;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Find I ============ */
+    function calcI() {
+      const vRaw = iV.value.trim(), rRaw = iR.value.trim();
+      if (vRaw === '') { showError(iV, 'Enter the voltage.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (rRaw === '') { showError(iR, 'Enter the resistance.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const V = parseNum(vRaw), R = parseNum(rRaw);
+      if (!Number.isFinite(V)) { showError(iV, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(R)) { showError(iR, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (R < 0) { showError(iR, 'Resistance cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const VV = voltToV(V, iVUnit.value);
+      const RO = resToOhm(R, iRUnit.value);
+      if (RO === 0) { showError(iR, 'Resistance must be greater than 0 (division by zero).'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const IA = VV / RO;
+      const mA = IA * 1000;
+      const outUnit = iOut.value;
+      const shown = outUnit === 'A' ? IA : mA;
+
+      const scale = currScale(IA);
+      let ctx = [];
+      ctx.push(`🔹 Current: <strong>${smartFmt(shown)} ${outUnit}</strong> (= ${smartFmt(IA)} A · ${smartFmt(mA)} mA).`);
+      ctx.push(`🔹 Scale: this is in the <strong>${scale}</strong>.`);
+      ctx.push(`🔹 Power dissipated by the resistor: P = V × I = ${smartFmt(VV)} × ${smartFmt(IA)} = <strong>${smartFmt(VV * IA)} W</strong>.`);
+      if (Math.abs(IA) > 10) ctx.push(`⚠️ Current above 10 A — this is at or above the limit of typical household circuit breakers.`);
+      if (Math.abs(IA) > 16) ctx.push(`⚠️ Current above 16 A — requires heavy-duty wiring and dedicated protection.`);
+
+      const html = `
+        <div class="result-label">Current (I = V / R)</div>
+        <div class="cgpa-big-value">${smartFmt(shown)}<span class="cgpa-big-scale">${outUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${smartFmt(IA)} A</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Current computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${fmtNum(V, 4)}</div><div class="cgpa-summary-label">V (${iVUnit.value})</div></div>
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${fmtNum(R, 4)}</div><div class="cgpa-summary-label">R (${iRUnit.value === 'ohm' ? 'Ω' : 'kΩ'})</div></div>
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${smartFmt(shown)}</div><div class="cgpa-summary-label">I (${outUnit})</div></div>
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${smartFmt(IA)}</div><div class="cgpa-summary-label">I (A)</div></div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: V = IR → I = V / R.</li>
+            <li>Convert to SI: V = ${fmtNum(V, 4)} ${iVUnit.value} = ${smartFmt(VV)} V; R = ${fmtNum(R, 4)} ${iRUnit.value === 'ohm' ? 'Ω' : 'kΩ'} = ${smartFmt(RO)} Ω.</li>
+            <li>Current in A: ${smartFmt(VV)} / ${smartFmt(RO)} = <strong>${smartFmt(IA)} A</strong>.</li>
+            <li>In mA: ${smartFmt(IA)} × 1000 = <strong>${smartFmt(mA)} mA</strong>.</li>
+            <li>Result in your chosen unit: <strong>${smartFmt(shown)} ${outUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+          <p>🔹 Unit check: V / Ω = A ✓</p>
+        </div>
+      `;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Find R ============ */
+    function calcR() {
+      const vRaw = rV.value.trim(), iRaw = rI.value.trim();
+      if (vRaw === '') { showError(rV, 'Enter the voltage.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (iRaw === '') { showError(rI, 'Enter the current.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const V = parseNum(vRaw), I = parseNum(iRaw);
+      if (!Number.isFinite(V)) { showError(rV, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(I)) { showError(rI, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const VV = voltToV(V, rVUnit.value);
+      const IA = currToA(I, rIUnit.value);
+      if (IA === 0) { showError(rI, 'Current must be non-zero (division by zero).'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const RO = VV / IA;
+      const kohm = RO / 1000;
+      const outUnit = rOut.value;
+      const shown = outUnit === 'ohm' ? RO : kohm;
+      const shownLabel = outUnit === 'ohm' ? 'Ω' : 'kΩ';
+
+      const scale = resScale(RO);
+      let ctx = [];
+      ctx.push(`🔹 Resistance: <strong>${smartFmt(shown)} ${shownLabel}</strong> (= ${smartFmt(RO)} Ω · ${smartFmt(kohm)} kΩ).`);
+      ctx.push(`🔹 Scale: this is in the <strong>${scale}</strong>.`);
+      ctx.push(`🔹 Power dissipated by this resistance at the given current: P = I²R = (${smartFmt(IA)})² × ${smartFmt(RO)} = <strong>${smartFmt(IA * IA * RO)} W</strong>.`);
+      if (RO < 1) ctx.push(`⚠️ Below 1 Ω — this is wire-level resistance. Real loads usually have more.`);
+      if (RO > 1e6) ctx.push(`🔹 Above 1 MΩ — characteristic of insulation and very low current applications.`);
+
+      const html = `
+        <div class="result-label">Resistance (R = V / I)</div>
+        <div class="cgpa-big-value">${smartFmt(shown)}<span class="cgpa-big-scale">${shownLabel}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${smartFmt(RO)} Ω</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Resistance computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${fmtNum(V, 4)}</div><div class="cgpa-summary-label">V (${rVUnit.value})</div></div>
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${fmtNum(I, 4)}</div><div class="cgpa-summary-label">I (${rIUnit.value})</div></div>
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${smartFmt(shown)}</div><div class="cgpa-summary-label">R (${shownLabel})</div></div>
+          <div class="cgpa-summary-unit"><div class="cgpa-summary-value">${smartFmt(RO)}</div><div class="cgpa-summary-label">R (Ω)</div></div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: V = IR → R = V / I.</li>
+            <li>Convert to SI: V = ${fmtNum(V, 4)} ${rVUnit.value} = ${smartFmt(VV)} V; I = ${fmtNum(I, 4)} ${rIUnit.value} = ${smartFmt(IA)} A.</li>
+            <li>Resistance in Ω: ${smartFmt(VV)} / ${smartFmt(IA)} = <strong>${smartFmt(RO)} Ω</strong>.</li>
+            <li>In kΩ: ${smartFmt(RO)} / 1000 = <strong>${smartFmt(kohm)} kΩ</strong>.</li>
+            <li>Result in your chosen unit: <strong>${smartFmt(shown)} ${shownLabel}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+          <p>🔹 Unit check: V / A = Ω ✓</p>
+        </div>
+      `;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      [vI, vR, iV, iR, rV, rI].forEach(el => { if (el) el.value = ''; });
+      [vIUnit, iOut, rIUnit].forEach(el => { if (el) el.value = 'A'; });
+      [vRUnit, iRUnit, rOut].forEach(el => { if (el) el.value = 'ohm'; });
+      [vOut, iVUnit, rVUnit].forEach(el => { if (el) el.value = 'V'; });
+      mode = 'v';
+      modeBtns.forEach(b => {
+        const on = b.dataset.mode === 'v';
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      panelV.classList.remove('hidden');
+      panelI.classList.add('hidden');
+      panelR.classList.add('hidden');
+      previewEl.innerHTML = 'Preview: enter current and resistance';
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

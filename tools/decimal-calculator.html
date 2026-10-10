@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Decimal Calculator — Add, Subtract, Multiply &amp; Divide Decimals | Hira Science Academy</title>
+  <meta content="Free decimal calculator for adding, subtracting, multiplying and dividing decimal numbers. Configurable rounding precision, step-by-step working, and decimal-to-fraction conversion." name="description"/>
+  <meta content="decimal calculator, add decimals, subtract decimals, multiply decimals, divide decimals, rounding decimals, decimal places, decimal arithmetic" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/decimal-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Decimal Calculator — Add, Subtract, Multiply &amp; Divide" property="og:title"/>
+  <meta content="Add, subtract, multiply and divide decimals with configurable precision and step-by-step working." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/decimal-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Decimal Calculator", "item": "https://hiraacademy.com.pk/tools/decimal-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I add or subtract decimals correctly?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Line up the decimal points, pad the shorter number with trailing zeros if needed, then add or subtract as if the decimal point were not there. Place the decimal point in the answer directly below the others. The calculator does this automatically and shows the alignment step." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is 0.1 + 0.2 not exactly 0.3 in some programming languages?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Binary floating-point cannot represent 0.1 or 0.2 exactly, so their sum is a tiny bit more than 0.3. This calculator rounds the final answer to a user-chosen number of decimal places, which hides the floating-point artifact. In mathematics, 0.1 + 0.2 is exactly 0.3." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I multiply decimals?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Multiply the numbers as if they had no decimal points, then count the total number of decimal digits in both factors and place the decimal point that many digits from the right of the product. For 1.2 times 0.03, multiply 12 times 3 = 36, then move the decimal three places left to get 0.036." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I divide decimals?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Shift the decimal point in both the divisor and the dividend to the right by the same number of places until the divisor becomes a whole number. Then divide normally. For 4.5 divided by 0.15, shift both two places: 450 divided by 15 equals 30." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does 'round to N decimal places' mean?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Round to N decimal places means keep N digits after the decimal point and adjust the Nth digit up or down based on the next digit. If the next digit is 5 or more, round up; otherwise round down. This calculator lets you choose N from 0 to 10." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can the calculator convert the decimal result to a fraction?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes for terminating decimals. Enter 0.375 and the result panel shows 3/8 alongside the decimal. Repeating decimals such as 0.333... are approximated to the nearest simple fraction using continued-fraction expansion." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    .dec-op-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+    .dec-op-toggle button {
+      padding: 0.5rem 1.1rem;
+      border-radius: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .dec-op-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+    .dec-result-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0b1220;
+      word-break: break-all;
+      line-height: 1.15;
+    }
+    .dec-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .dec-summary { grid-template-columns: repeat(3, 1fr); } }
+    .dec-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.875rem 0.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .dec-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .dec-summary-label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .dec-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .dec-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .dec-context strong { color: #0b1220; }
+    .formula-inline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9375rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e2e8f0;
+    }
+    .alignment-block {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9375rem;
+      background: #0b1220;
+      color: #f8fafc;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      white-space: pre;
+      overflow-x: auto;
+      margin: 0.5rem 0;
+      line-height: 1.5;
+    }
+    .precision-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .precision-row label { font-size: 0.8125rem; font-weight: 600; color: #475569; }
+    .precision-row select { width: auto; min-width: 5rem; padding: 0.4rem 0.6rem; }
+
+    /* Hero centered layout fix */
+    .hero-centered { text-align: center; }
+    .hero-centered h1,
+    .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO (explicitly centered) -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Adjustable Precision · Step-by-Step</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Decimal Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Add, subtract, multiply and divide decimal numbers with configurable rounding precision.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Decimal Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Decimal calculator inputs">
+
+      <div class="mb-5">
+        <span class="calc-label">Operation</span>
+        <div class="dec-op-toggle" role="group" aria-label="Choose operation">
+          <button type="button" data-op="+" class="is-active" aria-pressed="true">+</button>
+          <button type="button" data-op="-" aria-pressed="false">−</button>
+          <button type="button" data-op="×" aria-pressed="false">×</button>
+          <button type="button" data-op="÷" aria-pressed="false">÷</button>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div>
+          <label for="input-a" class="calc-label">First number</label>
+          <input type="text" inputmode="decimal" id="input-a" class="calc-input" placeholder="e.g. 12.75" autocomplete="off" />
+        </div>
+        <div>
+          <label for="input-b" class="calc-label">Second number</label>
+          <input type="text" inputmode="decimal" id="input-b" class="calc-input" placeholder="e.g. 4.5" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="precision-row">
+        <label for="precision">Round result to</label>
+        <select id="precision" class="calc-select">
+          <option value="0">0 decimal places</option>
+          <option value="1">1 decimal place</option>
+          <option value="2">2 decimal places</option>
+          <option value="3">3 decimal places</option>
+          <option value="4">4 decimal places</option>
+          <option value="5">5 decimal places</option>
+          <option value="6" selected>6 decimal places</option>
+          <option value="8">8 decimal places</option>
+          <option value="10">10 decimal places</option>
+        </select>
+        <span style="font-size:0.75rem;color:#64748b;">The exact answer is shown above this rounded value.</span>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this decimal calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool performs the four arithmetic operations — addition, subtraction, multiplication, and division — on decimal numbers with full precision, and shows the result both as an exact decimal and rounded to a number of decimal places you choose. It also converts terminating decimals to their simplest fractional form. The step-by-step block demonstrates the alignment for addition and subtraction, the decimal-place counting for multiplication, and the shift-the-decimal-point technique for division, so the process is transparent rather than a black box. This is useful for checking homework, verifying manual calculations, and understanding why certain decimal operations behave the way they do.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">How each operation works</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          For two decimals <span class="formula-inline">a</span> and <span class="formula-inline">b</span>, the four operations follow these rules.
+        </p>
+
+        <div class="formula-block">
+          <div class="formula-label">Addition and subtraction</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            Align the decimal points, pad with trailing zeros, then add or subtract digit by digit. The decimal point in the result sits directly below the others.
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Multiplication</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            Multiply as if there were no decimal points. If a has p decimal digits and b has q decimal digits, place the decimal point p + q digits from the right of the product.
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Division</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            Shift the decimal point in both numbers to the right by the same number of places until the divisor is a whole number. Then divide.
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Rounding to N decimal places</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            Let d = the (N+1)-th digit after the decimal point. If d ≥ 5, round the N-th digit up by one; otherwise leave it. Truncate all digits after position N.
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>a</strong> — the first number (the left operand).</li>
+          <li><strong>b</strong> — the second number (the right operand).</li>
+          <li><strong>p</strong> — number of decimal digits in a (for example, 12.75 has p = 2).</li>
+          <li><strong>q</strong> — number of decimal digits in b (for example, 4.5 has q = 1).</li>
+          <li><strong>N</strong> — the chosen rounding precision, in decimal places.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: 12.75 + 4.5</p>
+          <ol>
+            <li>Pad 4.5 to 4.50 so both have two decimal digits.</li>
+            <li>Align decimal points and add: 12.75 + 4.50 = <strong>17.25</strong>.</li>
+            <li>The decimal point stays in the same column.</li>
+          </ol>
+          <div class="alignment-block">  12.75
++  4.50
+-------
+  17.25</div>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: 10.4 − 3.275</p>
+          <ol>
+            <li>Pad 10.4 to 10.400 so both have three decimal digits.</li>
+            <li>Subtract digit by digit: 10.400 − 3.275 = <strong>7.125</strong>.</li>
+            <li>Note the padding — you need to line up all three decimal digits before subtracting.</li>
+          </ol>
+          <div class="alignment-block">  10.400
+−  3.275
+--------
+   7.125</div>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: 1.2 × 0.03</p>
+          <ol>
+            <li>Ignore decimal points: 12 × 3 = 36.</li>
+            <li>Count decimal digits: 1.2 has p = 1, 0.03 has q = 2. Total = 3.</li>
+            <li>Place the decimal point 3 places from the right of 36: <strong>0.036</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: 4.5 ÷ 0.15</p>
+          <ol>
+            <li>Shift the divisor 0.15 two places right to become 15.</li>
+            <li>Shift the dividend the same two places: 4.5 → 450.</li>
+            <li>Divide: 450 ÷ 15 = <strong>30</strong>.</li>
+            <li>Check: 30 × 0.15 = 4.5. ✓</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Rounding 3.14159 to 2 decimal places</p>
+          <ol>
+            <li>The (N+1)-th digit with N = 2 is the 3rd decimal digit, which is 1.</li>
+            <li>Since 1 &lt; 5, the 2nd digit stays the same.</li>
+            <li>Truncate: <strong>3.14</strong>.</li>
+          </ol>
+          <p class="text-sm text-gray-600 mt-2">Compare with rounding to 3 decimal places: the 4th digit is 5, so round up: <strong>3.142</strong>.</p>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Why decimal arithmetic matters in Class 9 &amp; 10</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Almost every quantitative problem in the Punjab board syllabus involves decimals somewhere. Physics numericals, chemistry molar-mass calculations, and maths word problems all require confident, accurate decimal arithmetic. Two habits pay off:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Estimate before you calculate.</strong> If 12.75 × 4.5 is roughly 13 × 4 = 52, then a final answer near 57 is plausible, but 5.7 or 570 would signal a decimal-place error. Estimates catch most decimal mistakes before they reach the answer sheet.</li>
+          <li><strong>Keep guard digits.</strong> Round only at the final step, not at every intermediate step. Rounding too early compounds error. This calculator keeps full precision internally and rounds only the displayed result.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Not lining up decimal points when adding or subtracting.</strong> Right-aligning numbers instead of decimal-aligning them is the single most common source of decimal errors. 12.75 + 4.5 = 17.25, not 12.80.</li>
+          <li><strong>Forgetting to count total decimal digits when multiplying.</strong> 0.3 × 0.4 = 0.12, not 1.2 or 0.012. The rule is p + q digits from the right.</li>
+          <li><strong>Forgetting to shift both numbers in division.</strong> When you move the divisor's decimal point, you must move the dividend's by the same amount. 4.5 ÷ 0.15 becomes 450 ÷ 15, not 45 ÷ 15.</li>
+          <li><strong>Rounding too early.</strong> Round only at the final step. Intermediate rounding accumulates error, sometimes enough to fail a physics numerical at the mark-scheme tolerance.</li>
+          <li><strong>Assuming 0.1 + 0.2 exactly equals 0.3 on a computer.</strong> Floating-point representations of decimal fractions are not exact, so 0.1 + 0.2 in JavaScript evaluates to 0.30000000000000004. The mathematical answer is 0.3, and this calculator's display rounds the artifact away.</li>
+          <li><strong>Confusing "decimal places" with "significant figures".</strong> 0.0012 has 2 significant figures but 4 decimal places. Rounding to 2 significant figures gives 0.0012; rounding to 2 decimal places gives 0.00.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>How do I add or subtract decimals correctly?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Line up the decimal points, pad the shorter number with trailing zeros if needed, then add or subtract as if the decimal point were not there. Place the decimal point in the answer directly below the others. The calculator does this automatically and shows the alignment step.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why is 0.1 + 0.2 not exactly 0.3 in some programming languages?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Binary floating-point cannot represent 0.1 or 0.2 exactly, so their sum is a tiny bit more than 0.3. This calculator rounds the final answer to a user-chosen number of decimal places, which hides the floating-point artifact. In mathematics, 0.1 + 0.2 is exactly 0.3.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I multiply decimals?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Multiply the numbers as if they had no decimal points, then count the total number of decimal digits in both factors and place the decimal point that many digits from the right of the product. For 1.2 times 0.03, multiply 12 times 3 = 36, then move the decimal three places left to get 0.036.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I divide decimals?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Shift the decimal point in both the divisor and the dividend to the right by the same number of places until the divisor becomes a whole number. Then divide normally. For 4.5 divided by 0.15, shift both two places: 450 divided by 15 equals 30.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What does 'round to N decimal places' mean?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Round to N decimal places means keep N digits after the decimal point and adjust the Nth digit up or down based on the next digit. If the next digit is 5 or more, round up; otherwise round down. This calculator lets you choose N from 0 to 10.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can the calculator convert the decimal result to a fraction?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Yes for terminating decimals. Enter 0.375 and the result panel shows 3/8 alongside the decimal. Repeating decimals such as 0.333... are approximated to the nearest simple fraction using continued-fraction expansion.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="fraction-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Fraction Calculator</a></li>
+          <li><a href="percentage-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Percentage Calculator</a></li>
+          <li><a href="ratio-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Ratio Calculator</a></li>
+          <li><a href="proportion-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Proportion Calculator</a></li>
+          <li><a href="average-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Average Calculator</a></li>
+          <li><a href="scientific-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Scientific Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Decimal arithmetic underpins numerical problems across the BISE Punjab board syllabus. Practise with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
+          especially the physics numericals and chemistry stoichiometry chapters where decimal precision matters.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div class="md:col-span-1 text-center md:text-left">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2">
+        <p class="text-base text-gray-200 text-center">
+          © 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators
+        </p>
+        <p class="text-sm text-gray-300 text-center">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum, gcd,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'decimal-calculator';
+
+    const inputA    = document.getElementById('input-a');
+    const inputB    = document.getElementById('input-b');
+    const precision = document.getElementById('precision');
+    const calcBtn   = document.getElementById('calc-btn');
+    const resetBtn  = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section   = document.querySelector('section[aria-label="Decimal calculator inputs"]');
+    const opButtons = document.querySelectorAll('.dec-op-toggle button');
+
+    let operation = '+';
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    opButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        operation = btn.dataset.op;
+        opButtons.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+      });
+    });
+
+    /* ============ Helpers — all string-safe ============ */
+
+    // Count decimal digits in a numeric string or number.
+    function countDecimals(input) {
+      const s = String(input).trim();
+      const dot = s.indexOf('.');
+      if (dot === -1) return 0;
+      // Guard against scientific notation like "1e-7"
+      if (s.indexOf('e') !== -1 || s.indexOf('E') !== -1) {
+        const n = Number(s);
+        if (!Number.isFinite(n)) return 0;
+        // Fallback: stringify with high precision and count again
+        const fixed = n.toFixed(20).replace(/0+$/, '');
+        const d2 = fixed.indexOf('.');
+        return d2 === -1 ? 0 : fixed.length - d2 - 1;
+      }
+      return s.length - dot - 1;
+    }
+
+    // Pad a numeric string with trailing zeros so it has exactly targetDecimals.
+    function padNumber(input, targetDecimals) {
+      let s = String(input).trim();
+      if (s.indexOf('.') === -1) s += '.';
+      const have = countDecimals(s);
+      if (have >= targetDecimals) return s;
+      return s + '0'.repeat(targetDecimals - have);
+    }
+
+    // Trim trailing zeros from a decimal string, but keep at least one digit after the dot.
+    // Always coerces input to string — the previous version failed when passed a number.
+    function trimZeros(input) {
+      const s = String(input);
+      if (s.indexOf('.') === -1) return s;
+      const trimmed = s.replace(/0+$/, '');
+      // If everything after the dot was zeros, drop the dot too
+      if (trimmed.endsWith('.')) return trimmed.slice(0, -1);
+      return trimmed;
+    }
+
+    // Round a number to N decimals and return a fixed-string.
+    function roundTo(n, decimals) {
+      if (!Number.isFinite(n)) return '0';
+      const f = Math.pow(10, decimals);
+      const rounded = Math.round((n + Number.EPSILON) * f) / f;
+      if (Math.abs(rounded) >= 1e21) return rounded.toExponential(10);
+      return rounded.toFixed(decimals);
+    }
+
+    // Continued-fraction based approximation to a simple rational.
+    function toFraction(value) {
+      if (!Number.isFinite(value)) return null;
+      const sign = value < 0 ? -1 : 1;
+      const x = Math.abs(value);
+      if (x === 0) return { n: 0, d: 1 };
+      if (Number.isInteger(x)) return { n: sign * x, d: 1 };
+
+      let h1 = 1, h0 = 0, k1 = 0, k0 = 1;
+      let b = x;
+      const maxIter = 25;
+      const tol = 1e-10;
+      for (let i = 0; i < maxIter; i++) {
+        const a = Math.floor(b);
+        const h2 = a * h1 + h0;
+        const k2 = a * k1 + k0;
+        h0 = h1; h1 = h2;
+        k0 = k1; k1 = k2;
+        if (Math.abs(x - h1 / k1) < tol) break;
+        const frac = b - a;
+        if (frac < 1e-12) break;
+        b = 1 / frac;
+      }
+      const g = gcd(Math.abs(h1), Math.abs(k1)) || 1;
+      return { n: sign * h1 / g, d: k1 / g };
+    }
+
+    function fractionHTML(n, d) {
+      return `<span style="display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;font-family:'JetBrains Mono',monospace;font-weight:600;line-height:1.1;font-size:0.95em;margin:0 0.3em;">
+        <span style="border-bottom:2px solid #0b1220;padding:0 0.25em 0.05em 0.25em;">${n}</span>
+        <span style="padding:0.05em 0.25em 0 0.25em;">${d}</span>
+      </span>`;
+    }
+
+    // Build a monospaced alignment diagram: aStr on top, bStr below with op, then a rule, then resStr.
+    function alignForDisplay(aStr, bStr, op, resStr) {
+      const a = String(aStr);
+      const b = String(bStr);
+      const r = String(resStr);
+      const w = Math.max(a.length, b.length + 2, r.length) + 1;
+      const pad = (s) => ' '.repeat(Math.max(0, w - s.length)) + s;
+      const opLine = ' '.repeat(Math.max(0, w - b.length - 2)) + op + ' ' + b;
+      return [
+        pad(a),
+        opLine,
+        '-'.repeat(w),
+        pad(r)
+      ].join('\n');
+    }
+
+    /* ============ Input validation ============ */
+    function readInputs() {
+      clearAllErrors(section);
+      const aStr = inputA.value.trim();
+      const bStr = inputB.value.trim();
+      const a = parseNum(aStr);
+      const b = parseNum(bStr);
+
+      let ok = true;
+      if (aStr === '' || !Number.isFinite(a)) { showError(inputA, 'Enter a valid decimal number.'); ok = false; }
+      if (bStr === '' || !Number.isFinite(b)) { showError(inputB, 'Enter a valid decimal number.'); ok = false; }
+      return { ok, aStr, bStr, a, b };
+    }
+
+    /* ============ Step builders ============ */
+    function buildAddSubSteps(aStr, bStr, a, b, result, isSub) {
+      const maxDec = Math.max(countDecimals(aStr), countDecimals(bStr));
+      const aPad = padNumber(aStr, maxDec);
+      const bPad = padNumber(bStr, maxDec);
+      const opSym = isSub ? '−' : '+';
+      const resultStr = trimZeros(roundTo(result, Math.max(maxDec, 10)));
+      const alignLines = alignForDisplay(aPad, bPad, opSym, resultStr);
+
+      return `
+        <ol>
+          <li>Count decimal digits: ${countDecimals(aStr)} and ${countDecimals(bStr)}. Pad both to <strong>${maxDec}</strong> decimal place${maxDec === 1 ? '' : 's'} with trailing zeros.</li>
+          <li>Padded values: <code>${aPad}</code> ${opSym} <code>${bPad}</code>.</li>
+          <li>Align the decimal points and ${isSub ? 'subtract' : 'add'} column by column.</li>
+          <li>Place the decimal point in the answer directly below the others.</li>
+          <li><strong>Result: ${resultStr}</strong></li>
+        </ol>
+        <div class="alignment-block">${alignLines}</div>
+      `;
+    }
+
+    function buildMulSteps(aStr, bStr, a, b, result, aDec, bDec) {
+      const aInt = Math.round(a * Math.pow(10, aDec));
+      const bInt = Math.round(b * Math.pow(10, bDec));
+      const totalDec = aDec + bDec;
+      const resultStr = trimZeros(roundTo(result, Math.max(totalDec, 10)));
+      return `
+        <ol>
+          <li>Remove the decimal points: <code>${aInt}</code> × <code>${bInt}</code> = <strong>${aInt * bInt}</strong>.</li>
+          <li>Count the total decimal digits in both factors: ${aDec} + ${bDec} = <strong>${totalDec}</strong>.</li>
+          <li>Place the decimal point <strong>${totalDec}</strong> digit${totalDec === 1 ? '' : 's'} from the right of the product.</li>
+          <li><strong>Result: ${resultStr}</strong></li>
+        </ol>
+      `;
+    }
+
+    function buildDivSteps(aStr, bStr, a, b, result, aDec, bDec) {
+      const shift = bDec;
+      const aShifted = a * Math.pow(10, shift);
+      const bShifted = b * Math.pow(10, shift);
+      const aShiftedInt = Math.round(aShifted);
+      const bShiftedInt = Math.round(bShifted);
+      const resultStr = trimZeros(roundTo(result, 10));
+
+      return `
+        <ol>
+          <li>The divisor has ${bDec} decimal digit${bDec === 1 ? '' : 's'}. Shift the decimal point in both numbers <strong>${shift}</strong> place${shift === 1 ? '' : 's'} to the right.</li>
+          <li>New expression: <code>${aShiftedInt}</code> ÷ <code>${bShiftedInt}</code>.</li>
+          <li>Perform the division.</li>
+          <li><strong>Result: ${resultStr}</strong></li>
+        </ol>
+      `;
+    }
+
+    /* ============ Main calculation ============ */
+    function calculate() {
+      const { ok, aStr, bStr, a, b } = readInputs();
+      if (!ok) { trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const aDec = countDecimals(aStr);
+      const bDec = countDecimals(bStr);
+      const prec = parseInt(precision.value, 10);
+
+      let exact;
+      let stepHtml;
+
+      if (operation === '+') {
+        exact = a + b;
+        stepHtml = buildAddSubSteps(aStr, bStr, a, b, exact, false);
+      } else if (operation === '-') {
+        exact = a - b;
+        stepHtml = buildAddSubSteps(aStr, bStr, a, b, exact, true);
+      } else if (operation === '×') {
+        exact = a * b;
+        stepHtml = buildMulSteps(aStr, bStr, a, b, exact, aDec, bDec);
+      } else if (operation === '÷') {
+        if (b === 0) {
+          showError(inputB, 'Cannot divide by zero.');
+          trackEvent(CALC_NAME, 'invalid_input');
+          return;
+        }
+        exact = a / b;
+        stepHtml = buildDivSteps(aStr, bStr, a, b, exact, aDec, bDec);
+      } else {
+        return;
+      }
+
+      // Rounded display
+      const roundedStr = trimZeros(roundTo(exact, prec));
+      // Exact as a string (may include floating-point artifacts like 0.30000000000000004)
+      const exactStr = trimZeros(String(exact));
+
+      // Fraction approximation
+      const frac = toFraction(exact);
+      const fracBlock = (frac && Math.abs(exact) < 1e12)
+        ? (frac.d === 1 ? String(frac.n) : fractionHTML(frac.n, frac.d))
+        : '—';
+
+      // Terminating-decimal heuristic
+      const terminates = String(exact).length <= 20 && !/(\d)\1{7,}/.test(String(exact).replace('.', ''));
+
+      let html = `
+        <div class="result-label">Result (rounded to ${prec} decimal place${prec === 1 ? '' : 's'})</div>
+        <div class="dec-result-value">${roundedStr}</div>
+        <div class="dec-summary">
+          <div class="dec-summary-unit">
+            <div class="dec-summary-value">${exactStr}</div>
+            <div class="dec-summary-label">Exact (JS float)</div>
+          </div>
+          <div class="dec-summary-unit">
+            <div class="dec-summary-value">${roundedStr}</div>
+            <div class="dec-summary-label">Rounded</div>
+          </div>
+          <div class="dec-summary-unit">
+            <div class="dec-summary-value">${fracBlock}</div>
+            <div class="dec-summary-label">As fraction</div>
+          </div>
+        </div>
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          ${stepHtml}
+        </div>
+        <div class="dec-context">
+          <p>🔹 Operation: <strong>${aStr}</strong> ${operation} <strong>${bStr}</strong>.</p>
+          <p>🔹 Exact decimal value: <strong>${exactStr}</strong>.</p>
+          <p>🔹 Rounded to <strong>${prec}</strong> decimal place${prec === 1 ? '' : 's'}: <strong>${roundedStr}</strong>.</p>
+          ${terminates ? `<p>🔹 This is a terminating decimal and can be written exactly as a fraction.</p>` : `<p>🔹 The fraction shown is the closest simple rational approximation.</p>`}
+        </div>
+      `;
+
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      inputA.value = '';
+      inputB.value = '';
+      precision.value = '6';
+      operation = '+';
+      opButtons.forEach(b => {
+        const active = b.dataset.op === '+';
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Ratio Calculator — Simplify, Compare &amp; Find Missing Values | Hira Science Academy</title>
+  <meta content="Free ratio calculator: simplify ratios to lowest terms, compare two ratios, and find a missing value in a proportion. Step-by-step working with GCD reduction." name="description"/>
+  <meta content="ratio calculator, simplify ratio, compare ratios, missing value ratio, ratio solver, proportions calculator, equivalent ratios" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/ratio-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Ratio Calculator — Simplify, Compare &amp; Find Missing Values" property="og:title"/>
+  <meta content="Simplify ratios, compare two ratios, and find missing values in a proportion." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/ratio-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Ratio Calculator", "item": "https://hiraacademy.com.pk/tools/ratio-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does it mean to simplify a ratio?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Simplifying a ratio means dividing both parts by their greatest common divisor so that the two numbers have no common factor other than 1. For example, 12 : 18 simplifies to 2 : 3 because gcd(12, 18) = 6." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I compare two ratios?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Convert each ratio to its decimal value by dividing the first number by the second, then compare the decimals. For example, 3 : 4 = 0.75 and 4 : 5 = 0.8, so 4 : 5 is the larger ratio. Equivalently, cross-multiply: a : b vs c : d, compare a times d with c times b." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find a missing value in a ratio?",
+        "acceptedAnswer": { "@type": "Answer", "text": "If you have a : b = c : x and need x, cross-multiply to get a times x = b times c, so x = (b times c) / a. This is the same as solving a proportion. For example, 3 : 4 = 9 : x gives x = (4 times 9) / 3 = 12." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a ratio have a zero in it?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The first number can be zero, giving a ratio like 0 : 5, which simplifies to 0 : 1. But the second number cannot be zero because a ratio is fundamentally a division, and division by zero is undefined. This calculator will show an error if either denominator position is zero where it matters." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a ratio and a fraction?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A ratio a : b compares two quantities of possibly different units and does not necessarily sum to a whole. A fraction a/b represents a part of a single whole. In practice they use the same arithmetic, but the interpretation differs. Ratios are often written with a colon, fractions with a horizontal bar." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can ratios have decimal or fractional terms?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, but the usual convention is to write ratios with whole numbers. To convert 1.5 : 2.5 to whole numbers, multiply both sides by 10 to get 15 : 25, then simplify to 3 : 5." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    .ratio-mode-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+    }
+    .ratio-mode-toggle button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .ratio-mode-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+    .ratio-display {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.15;
+      word-break: break-word;
+    }
+    .ratio-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .ratio-summary { grid-template-columns: repeat(3, 1fr); } }
+    .ratio-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.875rem 0.75rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .ratio-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .ratio-summary-label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .ratio-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .ratio-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .ratio-context strong { color: #0b1220; }
+    .formula-inline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9375rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e2e8f0;
+    }
+    .ratio-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.5rem; align-items: center; }
+    .ratio-colon {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0b1220;
+      text-align: center;
+    }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · 3 Modes · Step-by-Step</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Ratio Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Simplify ratios to lowest terms, compare two ratios, or find a missing value in a proportion.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Ratio Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Ratio calculator inputs">
+
+      <div class="mb-5">
+        <span class="calc-label">Mode</span>
+        <div class="ratio-mode-toggle" role="group" aria-label="Choose mode">
+          <button type="button" data-mode="simplify" class="is-active" aria-pressed="true">Simplify</button>
+          <button type="button" data-mode="compare" aria-pressed="false">Compare</button>
+          <button type="button" data-mode="missing" aria-pressed="false">Missing Value</button>
+        </div>
+      </div>
+
+      <!-- SIMPLIFY MODE -->
+      <div id="panel-simplify">
+        <div class="grid-2">
+          <div>
+            <label for="s-a" class="calc-label">First term</label>
+            <input type="text" inputmode="numeric" id="s-a" class="calc-input" placeholder="e.g. 12" autocomplete="off" />
+          </div>
+          <div>
+            <label for="s-b" class="calc-label">Second term</label>
+            <input type="text" inputmode="numeric" id="s-b" class="calc-input" placeholder="e.g. 18" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <!-- COMPARE MODE -->
+      <div id="panel-compare" class="hidden">
+        <div class="grid-2">
+          <div>
+            <label for="c-a1" class="calc-label">First ratio — left</label>
+            <input type="text" inputmode="numeric" id="c-a1" class="calc-input" placeholder="e.g. 3" autocomplete="off" />
+          </div>
+          <div>
+            <label for="c-b1" class="calc-label">First ratio — right</label>
+            <input type="text" inputmode="numeric" id="c-b1" class="calc-input" placeholder="e.g. 4" autocomplete="off" />
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:1rem;">
+          <div>
+            <label for="c-a2" class="calc-label">Second ratio — left</label>
+            <input type="text" inputmode="numeric" id="c-a2" class="calc-input" placeholder="e.g. 4" autocomplete="off" />
+          </div>
+          <div>
+            <label for="c-b2" class="calc-label">Second ratio — right</label>
+            <input type="text" inputmode="numeric" id="c-b2" class="calc-input" placeholder="e.g. 5" autocomplete="off" />
+          </div>
+        </div>
+      </div>
+
+      <!-- MISSING MODE -->
+      <div id="panel-missing" class="hidden">
+        <p style="font-size:0.875rem;color:#64748b;margin-bottom:1rem;">
+          Solve <span class="formula-inline">a : b = c : x</span>. Leave <strong>x</strong> blank — the calculator finds it.
+        </p>
+        <div class="grid-2">
+          <div>
+            <label for="m-a" class="calc-label">a (left of first ratio)</label>
+            <input type="text" inputmode="numeric" id="m-a" class="calc-input" placeholder="e.g. 3" autocomplete="off" />
+          </div>
+          <div>
+            <label for="m-b" class="calc-label">b (right of first ratio)</label>
+            <input type="text" inputmode="numeric" id="m-b" class="calc-input" placeholder="e.g. 4" autocomplete="off" />
+          </div>
+        </div>
+        <div class="grid-2" style="margin-top:1rem;">
+          <div>
+            <label for="m-c" class="calc-label">c (left of second ratio)</label>
+            <input type="text" inputmode="numeric" id="m-c" class="calc-input" placeholder="e.g. 9" autocomplete="off" />
+          </div>
+          <div>
+            <span class="calc-label">x (unknown)</span>
+            <div class="calc-input" style="background:#f1f5f9;color:#64748b;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;">?</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this ratio calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          A ratio expresses how two quantities compare. This calculator works in three modes. In <strong>Simplify</strong> mode, it reduces a ratio to its lowest whole-number terms by dividing both parts by their greatest common divisor. In <strong>Compare</strong> mode, it takes two ratios and tells you which is greater, along with each ratio's decimal value and cross-multiplication check. In <strong>Missing Value</strong> mode, it solves a proportion of the form <span class="formula-inline">a : b = c : x</span> for the unknown x using cross-multiplication. Every mode shows the working steps so you can see exactly how the answer was produced.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas used in each mode</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Simplify a ratio a : b</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            Let g = gcd(a, b). Then a : b simplifies to (a/g) : (b/g).
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Compare two ratios a : b and c : d</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            Compute a/b and c/d as decimals and compare. Equivalently, compare a·d with c·b (cross-multiplication).<br>
+            If a·d &gt; c·b, then a : b &gt; c : d.
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Find missing value in a : b = c : x</div>
+          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
+            Cross-multiply: a · x = b · c. Therefore x = (b · c) / a.
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>a, b, c, d</strong> — the four numbers in the two ratios you supply.</li>
+          <li><strong>x</strong> — the unknown value in the missing-value mode.</li>
+          <li><strong>gcd(a, b)</strong> — greatest common divisor of a and b.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Simplify 12 : 18</p>
+          <ol>
+            <li>Find gcd(12, 18). Euclid: gcd(18, 12) → gcd(12, 6) → gcd(6, 0) = 6.</li>
+            <li>Divide both parts by 6: 12 ÷ 6 = 2 and 18 ÷ 6 = 3.</li>
+            <li><strong>Result: 2 : 3</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Simplify 100 : 250</p>
+          <ol>
+            <li>gcd(100, 250) = 50.</li>
+            <li>Divide both by 50: 100 ÷ 50 = 2 and 250 ÷ 50 = 5.</li>
+            <li><strong>Result: 2 : 5</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Compare 3 : 4 with 4 : 5</p>
+          <ol>
+            <li>Decimal values: 3/4 = 0.75 and 4/5 = 0.80.</li>
+            <li>Since 0.80 &gt; 0.75, the second ratio is larger.</li>
+            <li>Cross-multiplication check: 3 × 5 = 15, 4 × 4 = 16. Since 15 &lt; 16, 3 : 4 &lt; 4 : 5. ✓</li>
+            <li><strong>Result: 4 : 5 is the greater ratio.</strong></li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Solve 3 : 4 = 9 : x</p>
+          <ol>
+            <li>Cross-multiply: 3 × x = 4 × 9.</li>
+            <li>Simplify: 3x = 36, so x = 36 ÷ 3.</li>
+            <li><strong>Result: x = 12</strong>. The second ratio is 9 : 12, which simplifies to 3 : 4. ✓</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Solve 5 : 8 = 15 : x</p>
+          <ol>
+            <li>Cross-multiply: 5 × x = 8 × 15 = 120.</li>
+            <li>Divide: x = 120 ÷ 5 = 24.</li>
+            <li><strong>Result: x = 24</strong>. Check: 15 : 24 simplifies to 5 : 8. ✓</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Where ratios appear in Class 9 &amp; 10</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Ratios are one of the most widely used mathematical ideas in the Punjab board syllabus, often without being called out by that name. You meet them in:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Trigonometry</strong> — sin, cos, and tan are ratios of triangle sides.</li>
+          <li><strong>Similar triangles</strong> — corresponding sides are in the same ratio.</li>
+          <li><strong>Chemical equations</strong> — mole ratios of reactants and products.</li>
+          <li><strong>Physics numericals</strong> — speed, density, and pressure are all ratios.</li>
+          <li><strong>Scale drawings</strong> — maps and diagrams use ratios like 1 : 50,000.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Simplifying only one side.</strong> A ratio is simplified by dividing <em>both</em> parts by the same number. Dividing only the first term changes the ratio's value entirely.</li>
+          <li><strong>Adding the same number instead of multiplying.</strong> To go from 2 : 3 to 4 : 6, multiply both sides by 2 — do not add 2 to each side, which would give 4 : 5 and a different ratio.</li>
+          <li><strong>Comparing ratios by comparing their parts.</strong> 5 : 8 and 7 : 10 — the first term is smaller in the first ratio but the second term is also smaller, so you cannot tell which is larger without computing decimals or cross-multiplying.</li>
+          <li><strong>Cross-multiplying the wrong pairs.</strong> For a : b = c : x, cross-multiplication gives a·x = b·c. Multiply the outer pair, then the inner pair — do not multiply a·b or c·x.</li>
+          <li><strong>Leaving decimal terms in a ratio.</strong> A finished ratio should have whole-number terms. Multiply both sides by 10 or 100 as needed to clear decimals before simplifying.</li>
+          <li><strong>Using zero as a denominator.</strong> A ratio like 5 : 0 is undefined because it corresponds to division by zero. This calculator will show an error.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What does it mean to simplify a ratio?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Simplifying a ratio means dividing both parts by their greatest common divisor so that the two numbers have no common factor other than 1. For example, 12 : 18 simplifies to 2 : 3 because gcd(12, 18) = 6.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I compare two ratios?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Convert each ratio to its decimal value by dividing the first number by the second, then compare the decimals. For example, 3 : 4 = 0.75 and 4 : 5 = 0.8, so 4 : 5 is the larger ratio. Equivalently, cross-multiply: a : b vs c : d, compare a times d with c times b.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I find a missing value in a ratio?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">If you have a : b = c : x and need x, cross-multiply to get a times x = b times c, so x = (b times c) / a. This is the same as solving a proportion. For example, 3 : 4 = 9 : x gives x = (4 times 9) / 3 = 12.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can a ratio have a zero in it?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">The first number can be zero, giving a ratio like 0 : 5, which simplifies to 0 : 1. But the second number cannot be zero because a ratio is fundamentally a division, and division by zero is undefined. This calculator will show an error if either denominator position is zero where it matters.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between a ratio and a fraction?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">A ratio a : b compares two quantities of possibly different units and does not necessarily sum to a whole. A fraction a/b represents a part of a single whole. In practice they use the same arithmetic, but the interpretation differs. Ratios are often written with a colon, fractions with a horizontal bar.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can ratios have decimal or fractional terms?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Yes, but the usual convention is to write ratios with whole numbers. To convert 1.5 : 2.5 to whole numbers, multiply both sides by 10 to get 15 : 25, then simplify to 3 : 5.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="proportion-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Proportion Calculator</a></li>
+          <li><a href="fraction-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Fraction Calculator</a></li>
+          <li><a href="lcm-gcf-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ LCM &amp; GCF Calculator</a></li>
+          <li><a href="percentage-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Percentage Calculator</a></li>
+          <li><a href="decimal-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Decimal Calculator</a></li>
+          <li><a href="average-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Average Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Ratios and proportions are used throughout the BISE Punjab mathematics and physics syllabi, from similar triangles to trigonometric ratios. Practise with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div class="md:col-span-1 text-center md:text-left">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2">
+        <p class="text-base text-gray-200 text-center">
+          © 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators
+        </p>
+        <p class="text-sm text-gray-300 text-center">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum, gcd,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'ratio-calculator';
+
+    const calcBtn   = document.getElementById('calc-btn');
+    const resetBtn  = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section   = document.querySelector('section[aria-label="Ratio calculator inputs"]');
+    const modeBtns  = document.querySelectorAll('.ratio-mode-toggle button');
+
+    const panelSimplify = document.getElementById('panel-simplify');
+    const panelCompare  = document.getElementById('panel-compare');
+    const panelMissing  = document.getElementById('panel-missing');
+
+    const sA = document.getElementById('s-a');
+    const sB = document.getElementById('s-b');
+    const cA1 = document.getElementById('c-a1');
+    const cB1 = document.getElementById('c-b1');
+    const cA2 = document.getElementById('c-a2');
+    const cB2 = document.getElementById('c-b2');
+    const mA = document.getElementById('m-a');
+    const mB = document.getElementById('m-b');
+    const mC = document.getElementById('m-c');
+
+    let mode = 'simplify';
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mode = btn.dataset.mode;
+        modeBtns.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        panelSimplify.classList.toggle('hidden', mode !== 'simplify');
+        panelCompare.classList.toggle('hidden', mode !== 'compare');
+        panelMissing.classList.toggle('hidden', mode !== 'missing');
+        clearAllErrors(section);
+        hideResult(resultPanel);
+      });
+    });
+
+    /* ---------- Helpers ---------- */
+    function parseIntStrict(str) {
+      const s = String(str).trim();
+      if (s === '') return NaN;
+      // Allow optional leading minus, digits only — no decimals in ratios
+      if (!/^-?\d+$/.test(s)) return NaN;
+      return parseInt(s, 10);
+    }
+
+    function readNum(el, name) {
+      const v = parseIntStrict(el.value);
+      if (!Number.isFinite(v)) {
+        showError(el, 'Enter a whole number.');
+        return null;
+      }
+      return v;
+    }
+
+    function fmtInt(n) {
+      return Number.isInteger(n) ? n.toLocaleString('en-US') : String(n);
+    }
+
+    /* ---------- Simplify mode ---------- */
+    function calcSimplify() {
+      const a = readNum(sA, 'First term');
+      const b = readNum(sB, 'Second term');
+      if (a === null || b === null) { trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (a === 0 && b === 0) {
+        showError(sA, 'Both terms cannot be zero — the ratio is undefined.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+      const g = gcd(Math.abs(a), Math.abs(b)) || 1;
+      const sa = a / g;
+      const sb = b / g;
+
+      const html = `
+        <div class="result-label">Simplified Ratio</div>
+        <div class="ratio-display">${sa} : ${sb}</div>
+        <div class="ratio-summary">
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${a} : ${b}</div>
+            <div class="ratio-summary-label">Original</div>
+          </div>
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${g}</div>
+            <div class="ratio-summary-label">GCD</div>
+          </div>
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${sa} : ${sb}</div>
+            <div class="ratio-summary-label">Simplified</div>
+          </div>
+        </div>
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Find gcd(${Math.abs(a)}, ${Math.abs(b)}) using Euclid's algorithm: <strong>${g}</strong>.</li>
+            <li>Divide both terms by ${g}: ${a} ÷ ${g} = ${sa}, and ${b} ÷ ${g} = ${sb}.</li>
+            <li><strong>Simplified ratio: ${sa} : ${sb}</strong></li>
+          </ol>
+        </div>
+        <div class="ratio-context">
+          <p>🔹 Decimal value of ${a} : ${b} is <strong>${(a / b).toFixed(6).replace(/0+$/, '').replace(/\.$/, '')}</strong>.</p>
+          <p>🔹 Decimal value of ${sa} : ${sb} is <strong>${(sa / sb).toFixed(6).replace(/0+$/, '').replace(/\.$/, '')}</strong>. Same value — the ratio is unchanged.</p>
+          <p>🔹 Every equivalent ratio of ${sa} : ${sb} is obtained by multiplying both terms by the same integer.</p>
+        </div>
+      `;
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ---------- Compare mode ---------- */
+    function calcCompare() {
+      const a1 = readNum(cA1, 'First ratio left');
+      const b1 = readNum(cB1, 'First ratio right');
+      const a2 = readNum(cA2, 'Second ratio left');
+      const b2 = readNum(cB2, 'Second ratio right');
+      if (a1 === null || b1 === null || a2 === null || b2 === null) {
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+      if (b1 === 0) { showError(cB1, 'Denominator cannot be zero.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (b2 === 0) { showError(cB2, 'Denominator cannot be zero.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const v1 = a1 / b1;
+      const v2 = a2 / b2;
+      const cross1 = a1 * b2;
+      const cross2 = a2 * b1;
+
+      let verdict, verdictClass;
+      if (Math.abs(v1 - v2) < 1e-12) {
+        verdict = 'The two ratios are equal.';
+        verdictClass = '#0ea5e9';
+      } else if (v1 > v2) {
+        verdict = `${a1} : ${b1} is the greater ratio.`;
+        verdictClass = '#10b981';
+      } else {
+        verdict = `${a2} : ${b2} is the greater ratio.`;
+        verdictClass = '#10b981';
+      }
+
+      const fmt = (n) => n.toFixed(6).replace(/0+$/, '').replace(/\.$/, '');
+
+      const html = `
+        <div class="result-label">Comparison Result</div>
+        <div class="ratio-display" style="font-size:1.25rem;color:${verdictClass};">${verdict}</div>
+        <div class="ratio-summary">
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${a1} : ${b1}</div>
+            <div class="ratio-summary-label">First ratio</div>
+          </div>
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${fmt(v1)}</div>
+            <div class="ratio-summary-label">First decimal</div>
+          </div>
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${a2} : ${b2}</div>
+            <div class="ratio-summary-label">Second ratio</div>
+          </div>
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${fmt(v2)}</div>
+            <div class="ratio-summary-label">Second decimal</div>
+          </div>
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${cross1}</div>
+            <div class="ratio-summary-label">${a1} × ${b2}</div>
+          </div>
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${cross2}</div>
+            <div class="ratio-summary-label">${a2} × ${b1}</div>
+          </div>
+        </div>
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Convert each ratio to a decimal: ${a1} ÷ ${b1} = <strong>${fmt(v1)}</strong> and ${a2} ÷ ${b2} = <strong>${fmt(v2)}</strong>.</li>
+            <li>Cross-multiplication check: ${a1} × ${b2} = <strong>${cross1}</strong>; ${a2} × ${b1} = <strong>${cross2}</strong>.</li>
+            <li>${cross1 > cross2 ? `Since ${cross1} &gt; ${cross2}, the first ratio is greater.` : cross1 < cross2 ? `Since ${cross1} &lt; ${cross2}, the second ratio is greater.` : `Since ${cross1} = ${cross2}, the ratios are equal.`}</li>
+            <li><strong>${verdict}</strong></li>
+          </ol>
+        </div>
+        <div class="ratio-context">
+          <p>🔹 Ratio ${a1} : ${b1} as decimal = <strong>${fmt(v1)}</strong>.</p>
+          <p>🔹 Ratio ${a2} : ${b2} as decimal = <strong>${fmt(v2)}</strong>.</p>
+          <p>🔹 Cross-multiplication is an integer-only check: no rounding errors from decimals.</p>
+        </div>
+      `;
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ---------- Missing value mode ---------- */
+    function calcMissing() {
+      const a = readNum(mA, 'a');
+      const b = readNum(mB, 'b');
+      const c = readNum(mC, 'c');
+      if (a === null || b === null || c === null) { trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (a === 0) {
+        showError(mA, 'The value of "a" cannot be zero — division by zero in cross-multiplication.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+      const x = (b * c) / a;
+
+      const xDisplay = Number.isInteger(x) ? String(x) : x.toFixed(6).replace(/0+$/, '').replace(/\.$/, '');
+
+      const html = `
+        <div class="result-label">Missing Value</div>
+        <div class="ratio-display">x = ${xDisplay}</div>
+        <div class="ratio-summary">
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${a} : ${b}</div>
+            <div class="ratio-summary-label">First ratio</div>
+          </div>
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${c} : ${xDisplay}</div>
+            <div class="ratio-summary-label">Second ratio</div>
+          </div>
+          <div class="ratio-summary-unit">
+            <div class="ratio-summary-value">${xDisplay}</div>
+            <div class="ratio-summary-label">Value of x</div>
+          </div>
+        </div>
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Proportion: ${a} : ${b} = ${c} : x.</li>
+            <li>Cross-multiply: ${a} × x = ${b} × ${c}.</li>
+            <li>Simplify: ${a}x = ${b * c}.</li>
+            <li>Divide both sides by ${a}: x = ${b * c} ÷ ${a}.</li>
+            <li><strong>Result: x = ${xDisplay}</strong></li>
+          </ol>
+        </div>
+        <div class="ratio-context">
+          <p>🔹 Check: the second ratio ${c} : ${xDisplay} should be equivalent to ${a} : ${b}.</p>
+          <p>🔹 Decimal of first ratio: <strong>${(a / b).toFixed(6).replace(/0+$/, '').replace(/\.$/, '')}</strong>.</p>
+          <p>🔹 Decimal of second ratio: <strong>${(c / x).toFixed(6).replace(/0+$/, '').replace(/\.$/, '')}</strong>. Same value, so the proportion holds.</p>
+        </div>
+      `;
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ---------- Dispatch ---------- */
+    function calculate() {
+      clearAllErrors(section);
+      if (mode === 'simplify') calcSimplify();
+      else if (mode === 'compare') calcCompare();
+      else calcMissing();
+    }
+
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      [sA, sB, cA1, cB1, cA2, cB2, mA, mB, mC].forEach(el => { el.value = ''; });
+      mode = 'simplify';
+      modeBtns.forEach(b => {
+        const active = b.dataset.mode === 'simplify';
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      panelSimplify.classList.remove('hidden');
+      panelCompare.classList.add('hidden');
+      panelMissing.classList.add('hidden');
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

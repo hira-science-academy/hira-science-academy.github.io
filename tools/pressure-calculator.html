@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Pressure Calculator — P = F/A with Real-World Context | Hira Science Academy</title>
+  <meta content="Free pressure calculator. Solve P = F/A for pressure, force or area with unit-aware inputs (N, kN, kgf, m², cm², mm²) and pressure output in Pa, kPa or atm, plus real-world scale comparisons." name="description"/>
+  <meta content="pressure calculator, P equals F over A, pressure formula, pascal calculator, atm pressure, tyre pressure, class 9 physics, class 10 physics" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/pressure-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Pressure Calculator — P = F/A with Real-World Context" property="og:title"/>
+  <meta content="Solve P = F/A for pressure, force or area with unit-aware inputs and real-world scale context." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/pressure-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Pressure Calculator", "item": "https://hiraacademy.com.pk/tools/pressure-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the formula for pressure?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Pressure is force per unit area: P = F / A. The SI unit is the pascal (Pa), where 1 Pa = 1 newton per square metre (N/m²). Pressure increases when force increases or when area decreases." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does a sharp knife cut better than a blunt one?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A sharp knife has a much smaller contact area. For the same force applied by your hand, pressure = force / area, so a smaller area produces a much larger pressure. The higher pressure concentrates the cutting effect on a narrow line, allowing it to slice through material that a blunt blade would only squash." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is atmospheric pressure?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Atmospheric pressure is the pressure exerted by the weight of air above a surface. At sea level, standard atmospheric pressure is 101,325 Pa (about 101.3 kPa or 1 atm). This is equivalent to about 10 newtons pressing on every square centimetre of surface — enough to crush an empty can." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the pressure of normal car tyres?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Typical car tyre pressures are around 30 to 35 psi (pounds per square inch) or roughly 200 to 240 kPa. Motorcycle tyres are usually a bit lower at 25 to 30 psi, and bicycle tyres range from 40 psi to over 100 psi depending on the type. These values are gauge pressure — the pressure above atmospheric." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between gauge pressure and absolute pressure?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Gauge pressure measures the difference from atmospheric pressure. Absolute pressure measures from a complete vacuum. Absolute pressure = gauge pressure + atmospheric pressure. A car tyre reading 200 kPa on a gauge has an absolute pressure of about 300 kPa (200 + 101 kPa)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why can area not be zero in the pressure formula?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Area is in the denominator of P = F / A. Dividing by zero is undefined, and physically a zero area would mean the force is concentrated on a mathematical point — mathematically infinite pressure. The calculator treats area = 0 as a domain error and explains why." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
+    .latex-frac.big { font-size: 1.2em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .latex-sup { vertical-align: super; font-size: 0.75em; }
+    .latex-sub { vertical-align: sub; font-size: 0.75em; }
+
+    /* Result */
+    .cgpa-big-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0b1220;
+      line-height: 1.1;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .cgpa-big-scale {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+    .cgpa-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .cgpa-summary { grid-template-columns: repeat(4, 1fr); } }
+    .cgpa-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cgpa-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .cgpa-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .cgpa-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .cgpa-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .cgpa-context strong { color: #0b1220; }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      margin-top: 0.5rem;
+    }
+    .status-ok    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .status-warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .status-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .status-secure{ background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+
+    /* Input rows */
+    .cgpa-input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-items: end;
+      margin-bottom: 0.75rem;
+    }
+    @media (max-width: 540px) { .cgpa-input-grid { grid-template-columns: 1fr; } }
+    .cgpa-group-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #0369a1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cgpa-group-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* Mode toggle */
+    .mode-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .mode-toggle button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .mode-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+
+    /* Value + unit inline control */
+    .value-unit {
+      display: flex;
+      gap: 0.4rem;
+      align-items: stretch;
+    }
+    .value-unit input {
+      flex: 1 1 auto;
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      font-family: 'JetBrains Mono', monospace;
+      background: #ffffff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .value-unit input:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+    .value-unit select {
+      flex: 0 0 auto;
+      padding: 0.5rem 0.6rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      background: #f1f5f9;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #0369a1;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .value-unit select:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+
+    /* Pressure diagram */
+    .pressure-diagram {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 0.6rem;
+      padding: 0.75rem 1rem;
+      margin: 0.5rem 0 1.25rem 0;
+    }
+    .pressure-svg {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+    .pressure-caption {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: #64748b;
+      margin-top: 0.35rem;
+    }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Three Solve Modes · Real-World Context</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Pressure Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Solve P = F / A for pressure, force or area — with unit-aware inputs and comparisons to atmospheric, tyre and blood pressure.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Pressure Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Pressure calculator inputs">
+
+      <div class="mode-toggle" role="group" aria-label="Solve mode">
+        <button type="button" data-mode="pressure" class="is-active" aria-pressed="true">Find Pressure (P)</button>
+        <button type="button" data-mode="force" aria-pressed="false">Find Force (F)</button>
+        <button type="button" data-mode="area" aria-pressed="false">Find Area (A)</button>
+      </div>
+
+      <!-- Find pressure -->
+      <div id="panel-pressure">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter force and area</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="p-force" class="calc-label">Force</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="p-force" placeholder="e.g. 500" autocomplete="off" />
+              <select id="p-force-unit" aria-label="Force unit">
+                <option value="N" selected>N</option>
+                <option value="kN">kN</option>
+                <option value="kgf">kgf</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="p-area" class="calc-label">Area</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="p-area" placeholder="e.g. 0.05" autocomplete="off" />
+              <select id="p-area-unit" aria-label="Area unit">
+                <option value="m2" selected>m²</option>
+                <option value="cm2">cm²</option>
+                <option value="mm2">mm²</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Pressure output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="p-out-unit" class="calc-label">Show pressure in</label>
+            <select id="p-out-unit" class="calc-select">
+              <option value="Pa" selected>Pa</option>
+              <option value="kPa">kPa</option>
+              <option value="atm">atm</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Find force -->
+      <div id="panel-force" class="hidden">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter pressure and area</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="f-pressure" class="calc-label">Pressure</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="f-pressure" placeholder="e.g. 101325" autocomplete="off" />
+              <select id="f-pressure-unit" aria-label="Pressure unit">
+                <option value="Pa" selected>Pa</option>
+                <option value="kPa">kPa</option>
+                <option value="atm">atm</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="f-area" class="calc-label">Area</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="f-area" placeholder="e.g. 0.01" autocomplete="off" />
+              <select id="f-area-unit" aria-label="Area unit">
+                <option value="m2" selected>m²</option>
+                <option value="cm2">cm²</option>
+                <option value="mm2">mm²</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Force output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="f-out-unit" class="calc-label">Show force in</label>
+            <select id="f-out-unit" class="calc-select">
+              <option value="N" selected>N</option>
+              <option value="kN">kN</option>
+              <option value="kgf">kgf</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Find area -->
+      <div id="panel-area" class="hidden">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter force and pressure</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="a-force" class="calc-label">Force</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="a-force" placeholder="e.g. 500" autocomplete="off" />
+              <select id="a-force-unit" aria-label="Force unit">
+                <option value="N" selected>N</option>
+                <option value="kN">kN</option>
+                <option value="kgf">kgf</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="a-pressure" class="calc-label">Pressure</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="a-pressure" placeholder="e.g. 50000" autocomplete="off" />
+              <select id="a-pressure-unit" aria-label="Pressure unit">
+                <option value="Pa" selected>Pa</option>
+                <option value="kPa">kPa</option>
+                <option value="atm">atm</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Area output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="a-out-unit" class="calc-label">Show area in</label>
+            <select id="a-out-unit" class="calc-select">
+              <option value="m2" selected>m²</option>
+              <option value="cm2">cm²</option>
+              <option value="mm2">mm²</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Pressure diagram -->
+      <div class="pressure-diagram" aria-hidden="true">
+        <svg class="pressure-svg" viewBox="0 0 340 100" width="340" height="100" xmlns="http://www.w3.org/2000/svg">
+          <!-- ground line -->
+          <line x1="10" y1="75" x2="330" y2="75" stroke="#cbd5e1" stroke-width="1.5" />
+          <!-- contact area bar -->
+          <line x1="120" y1="75" x2="220" y2="75" stroke="#0ea5e9" stroke-width="6" stroke-linecap="round" />
+          <text x="170" y="92" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#0369a1" font-weight="700">A</text>
+          <!-- block -->
+          <rect x="120" y="45" width="100" height="30" fill="#e0f2fe" stroke="#0369a1" stroke-width="1.5" rx="2" />
+          <text x="170" y="65" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#0369a1" font-weight="700">F</text>
+          <!-- downward force arrow -->
+          <line x1="170" y1="10" x2="170" y2="42" stroke="#dc2626" stroke-width="2.5" marker-end="url(#arrowP)" />
+          <text x="170" y="8" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#dc2626" font-weight="700">F</text>
+          <!-- pressure arrows up -->
+          <line x1="140" y1="78" x2="140" y2="68" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrowPr)" />
+          <line x1="170" y1="78" x2="170" y2="68" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrowPr)" />
+          <line x1="200" y1="78" x2="200" y2="68" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrowPr)" />
+          <text x="240" y="80" text-anchor="start" font-family="JetBrains Mono, monospace" font-size="11" fill="#166534" font-weight="700">P</text>
+          <defs>
+            <marker id="arrowP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#dc2626" />
+            </marker>
+            <marker id="arrowPr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#22c55e" />
+            </marker>
+          </defs>
+        </svg>
+        <div class="pressure-caption">force F distributed over area A produces pressure P = F / A</div>
+      </div>
+
+      <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        Preview: enter force and area
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this pressure calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool applies the pressure formula P = F / A in all three of its rearrangements. If you know force and area, it computes pressure. If you know pressure and area, it computes force. If you know force and pressure, it computes area. Inputs are unit-aware: force in newtons, kilonewtons or kilogram-force; area in square metres, square centimetres or square millimetres; pressure output in pascals, kilopascals or atmospheres. Beyond the number, the calculator places the result against real-world reference points — atmospheric pressure, car tyre pressure, blood pressure, hydraulic system pressure — so you can tell immediately whether a result is reasonable or a unit error.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas — three rearrangements</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Find pressure</div>
+          <div class="math-block">
+            <span>P = </span>
+            <span class="latex-frac big">
+              <span class="f-num">F</span>
+              <span class="f-den">A</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Find force</div>
+          <div class="math-block">
+            <span>F = P × A</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Find area</div>
+          <div class="math-block">
+            <span>A = </span>
+            <span class="latex-frac big">
+              <span class="f-num">F</span>
+              <span class="f-den">P</span>
+            </span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>P</strong> — pressure, in pascals (Pa), kilopascals (kPa), or atmospheres (atm).</li>
+          <li><strong>F</strong> — force perpendicular to the surface, in newtons (N).</li>
+          <li><strong>A</strong> — area over which the force is applied, in square metres (m²).</li>
+        </ul>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Unit conversions you need to know</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>1 Pa</strong> = 1 N/m²</li>
+          <li><strong>1 kPa</strong> = 1000 Pa</li>
+          <li><strong>1 atm</strong> = 101,325 Pa ≈ 101.3 kPa</li>
+          <li><strong>1 kgf</strong> (kilogram-force) = 9.8 N</li>
+          <li><strong>1 kN</strong> = 1000 N</li>
+          <li><strong>1 m²</strong> = 10,000 cm² = 1,000,000 mm²</li>
+        </ul>
+
+        <p class="leading-relaxed text-justify mt-3">
+          Pressure is a scalar — it has no direction, only magnitude. The force, however, must act <em>perpendicular</em> to the surface. A force acting at an angle contributes only its perpendicular component to the pressure.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Find pressure — a box on the floor</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            F = 500 N · A = 0.5 m²
+          </div>
+          <ol>
+            <li>P = F / A = 500 / 0.5.</li>
+            <li>P = <strong>1000 Pa</strong> = 1 kPa.</li>
+            <li>A 50 kg box (weight ≈ 490 N) resting on 0.5 m² exerts about 1 kPa on the floor — very comfortable for any building.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Find pressure — a nail tip</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            F = 50 N · A = 0.01 mm² = 1 × 10⁻⁸ m²
+          </div>
+          <ol>
+            <li>P = 50 / 1e-8.</li>
+            <li>P = <strong>5 × 10⁹ Pa</strong> = 5 GPa = about 49,000 atm.</li>
+            <li>A sharp nail tip concentrates the force into an area 50,000 times smaller than 0.5 m², producing a pressure 5 million times higher. This is why nails penetrate wood with a modest hammer tap.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Find pressure — a car tyre contact patch</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            F = 4000 N (one tyre bearing a quarter of the car's weight) · A = 0.02 m²
+          </div>
+          <ol>
+            <li>P = 4000 / 0.02.</li>
+            <li>P = <strong>200,000 Pa</strong> = 200 kPa.</li>
+            <li>200 kPa is a typical car tyre gauge pressure — the calculation and reality match.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Find force — atmospheric pressure on a window</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            P = 101,325 Pa · A = 1 m²
+          </div>
+          <ol>
+            <li>F = P × A = 101325 × 1.</li>
+            <li>F = <strong>101,325 N</strong> ≈ 10.3 tonnes-force.</li>
+            <li>A 1 m² window experiences about 10 tonnes of atmospheric pressure. It does not shatter because the pressure inside the room is the same.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Find force — hydraulic press</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            P = 5,000,000 Pa · A = 0.01 m²
+          </div>
+          <ol>
+            <li>F = P × A = 5000000 × 0.01.</li>
+            <li>F = <strong>50,000 N</strong> = 50 kN ≈ 5.1 tonnes-force.</li>
+            <li>A hydraulic press at 5 MPa on a 0.01 m² piston produces 5 tonnes of force — this is how a small pump pressure can lift a car.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 6: Find area — a foundation pad</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            F = 500,000 N (weight of a small building) · P = 200,000 Pa (allowable soil pressure)
+          </div>
+          <ol>
+            <li>A = F / P = 500000 / 200000.</li>
+            <li>A = <strong>2.5 m²</strong>.</li>
+            <li>A building weighing 500 kN needs a foundation pad of at least 2.5 m² to keep soil pressure at 200 kPa. This is why foundations are wider than the walls they support.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Pressure in perspective</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Pressure is one of those quantities where knowing typical values is more useful than knowing the formula alone. These reference points help you sanity-check any result.
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>~0.1 Pa</strong> — sound pressure in a very quiet room.</li>
+          <li><strong>~100 Pa</strong> — sound pressure during normal conversation.</li>
+          <li><strong>~1000 Pa = 1 kPa</strong> — a light breeze; also a box on the floor.</li>
+          <li><strong>~10 kPa</strong> — a person standing on two feet.</li>
+          <li><strong>~16 kPa</strong> — normal systolic blood pressure (120 mmHg).</li>
+          <li><strong>~101 kPa = 1 atm</strong> — atmospheric pressure at sea level.</li>
+          <li><strong>~200 kPa</strong> — car tyre gauge pressure.</li>
+          <li><strong>~1 MPa</strong> — high-pressure household water supply.</li>
+          <li><strong>~10 MPa</strong> — hydraulic systems, deep water (1000 m depth).</li>
+          <li><strong>~100 GPa</strong> — pressure at Earth's core.</li>
+        </ul>
+        <p class="leading-relaxed text-justify mt-2">
+          Notice how wide the range is — from 0.1 Pa to 100 GPa spans 12 orders of magnitude. The correct unit choice (Pa, kPa, MPa, atm) matters as much as the number itself.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Mixing cm² with m² or forgetting the square.</strong> 1 m² = 10,000 cm², not 100 cm². Squaring a length conversion factor gives the area conversion factor. Mixing 5 cm² with 1 Pa gives a result 10,000× wrong.</li>
+          <li><strong>Using mass instead of force.</strong> The formula uses force in newtons. A 5 kg mass has a weight of 5 × 9.8 = 49 N. The calculator converts kgf to N automatically if you choose that unit, but you must know the difference.</li>
+          <li><strong>Confusing gauge pressure with absolute pressure.</strong> Tyre gauges read gauge pressure (the excess above atmospheric). Absolute pressure = gauge + atmospheric. If a problem says "absolute", add 101 kPa.</li>
+          <li><strong>Assuming pressure depends only on force.</strong> Doubling the force doubles the pressure, but halving the area also doubles it. Both matter. A sharp knife works because of the small area, not a large force.</li>
+          <li><strong>Using the wrong angle for non-perpendicular forces.</strong> The formula P = F / A uses the component of force perpendicular to the surface. A force acting at 45° contributes only its perpendicular component.</li>
+          <li><strong>Setting area to zero.</strong> Division by zero is undefined. The calculator flags this as a domain error — a zero area would mean infinite pressure, which is physically impossible.</li>
+          <li><strong>Forgetting that atmospheric pressure pushes in all directions.</strong> It is not just downward. This is why you do not feel it — the pressure inside your body pushes outward with the same magnitude.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What is the formula for pressure?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Pressure is force per unit area: P = F / A. The SI unit is the pascal (Pa), where 1 Pa = 1 newton per square metre (N/m²). Pressure increases when force increases or when area decreases.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why does a sharp knife cut better than a blunt one?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">A sharp knife has a much smaller contact area. For the same force applied by your hand, pressure = force / area, so a smaller area produces a much larger pressure. The higher pressure concentrates the cutting effect on a narrow line, allowing it to slice through material that a blunt blade would only squash.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is atmospheric pressure?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Atmospheric pressure is the pressure exerted by the weight of air above a surface. At sea level, standard atmospheric pressure is 101,325 Pa (about 101.3 kPa or 1 atm). This is equivalent to about 10 newtons pressing on every square centimetre of surface — enough to crush an empty can.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the pressure of normal car tyres?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Typical car tyre pressures are around 30 to 35 psi (pounds per square inch) or roughly 200 to 240 kPa. Motorcycle tyres are usually a bit lower at 25 to 30 psi, and bicycle tyres range from 40 psi to over 100 psi depending on the type. These values are gauge pressure — the pressure above atmospheric.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between gauge pressure and absolute pressure?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Gauge pressure measures the difference from atmospheric pressure. Absolute pressure measures from a complete vacuum. Absolute pressure = gauge pressure + atmospheric pressure. A car tyre reading 200 kPa on a gauge has an absolute pressure of about 300 kPa (200 + 101 kPa).</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why can area not be zero in the pressure formula?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Area is in the denominator of P = F / A. Dividing by zero is undefined, and physically a zero area would mean the force is concentrated on a mathematical point — mathematically infinite pressure. The calculator treats area = 0 as a domain error and explains why.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="physics-formula-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Physics Formula Calculator</a></li>
+          <li><a href="force-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Force Calculator</a></li>
+          <li><a href="density-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Density Calculator</a></li>
+          <li><a href="work-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Work Calculator</a></li>
+          <li><a href="area-perimeter-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Area &amp; Perimeter Calculator</a></li>
+          <li><a href="unit-converter.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Unit Converter</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Revise the theory of force, pressure and matter with our
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
+          and track term progress with the free
+          <a href="https://hiraacademy.com.pk/student-portal.html" class="text-blue-700 font-semibold underline">Student Portal</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'pressure-calculator';
+
+    /* Mode toggle */
+    const modeBtns      = document.querySelectorAll('.mode-toggle button');
+    const panelPressure = document.getElementById('panel-pressure');
+    const panelForce    = document.getElementById('panel-force');
+    const panelArea     = document.getElementById('panel-area');
+
+    /* Pressure inputs */
+    const pForce = document.getElementById('p-force'), pForceUnit = document.getElementById('p-force-unit');
+    const pArea  = document.getElementById('p-area'),  pAreaUnit  = document.getElementById('p-area-unit');
+    const pOutUnit = document.getElementById('p-out-unit');
+
+    /* Force inputs */
+    const fPressure = document.getElementById('f-pressure'), fPressureUnit = document.getElementById('f-pressure-unit');
+    const fArea     = document.getElementById('f-area'),     fAreaUnit     = document.getElementById('f-area-unit');
+    const fOutUnit  = document.getElementById('f-out-unit');
+
+    /* Area inputs */
+    const aForce = document.getElementById('a-force'), aForceUnit = document.getElementById('a-force-unit');
+    const aPressure = document.getElementById('a-pressure'), aPressureUnit = document.getElementById('a-pressure-unit');
+    const aOutUnit = document.getElementById('a-out-unit');
+
+    const previewEl = document.getElementById('live-preview');
+    const calcBtn = document.getElementById('calc-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section = document.querySelector('section[aria-label="Pressure calculator inputs"]');
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    let mode = 'pressure';
+
+    /* ============ Unit conversions ============ */
+    const FORCE_TO_N = { N: 1, kN: 1000, kgf: 9.8 };
+    const AREA_TO_M2 = { m2: 1, cm2: 1e-4, mm2: 1e-6 };
+    const PRESS_TO_PA = { Pa: 1, kPa: 1000, atm: 101325 };
+
+    function forceToN(v, u) { return v * FORCE_TO_N[u]; }
+    function areaToM2(v, u) { return v * AREA_TO_M2[u]; }
+    function pressToPa(v, u) { return v * PRESS_TO_PA[u]; }
+
+    /* ============ Helpers ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 4;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) return String(x);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+    function round3(x) { return Math.round(x * 1000) / 1000; }
+    function round6(x) { return Math.round(x * 1e6) / 1e6; }
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+
+    /* Smart format for very small or very large numbers */
+    function smartFmt(x) {
+      if (!Number.isFinite(x)) return '—';
+      const abs = Math.abs(x);
+      if (abs === 0) return '0';
+      if (abs >= 0.01 && abs < 1e6) {
+        return fmtNum(round6(x), 6);
+      }
+      return x.toExponential(3);
+    }
+
+    function pressScale(pa) {
+      const a = Math.abs(pa);
+      if (a < 0.01) return 'sub-audible pressure range';
+      if (a < 1) return 'very faint sound pressure';
+      if (a < 10) return 'quiet room / whisper';
+      if (a < 100) return 'normal conversation sound pressure';
+      if (a < 1000) return 'light breeze; a shoebox on the floor';
+      if (a < 10000) return 'typical household water supply; a person on two feet';
+      if (a < 30000) return 'systolic blood pressure range (120 mmHg ≈ 16 kPa)';
+      if (a < 150000) return 'atmospheric pressure range (1 atm = 101.3 kPa)';
+      if (a < 500000) return 'car tyre pressure range (200–250 kPa)';
+      if (a < 5000000) return 'hydraulic system range (1–5 MPa)';
+      if (a < 1e8) return 'high-pressure industrial or deep-ocean range';
+      return 'extreme pressure (Earth\'s core is ~350 GPa)';
+    }
+
+    function pressComparisons(pa) {
+      const items = [];
+      items.push({ label: 'Atmospheric pressure (1 atm)', value: 101325, unit: 'Pa' });
+      items.push({ label: 'Car tyre gauge pressure (200 kPa)', value: 200000, unit: 'Pa' });
+      items.push({ label: 'Blood pressure systolic (120 mmHg)', value: 16000, unit: 'Pa' });
+      items.push({ label: 'Hydraulic press (10 MPa)', value: 10000000, unit: 'Pa' });
+      items.push({ label: 'Deep ocean at 1 km (≈ 10 MPa)', value: 10000000, unit: 'Pa' });
+      const chosen = [];
+      for (const item of items) {
+        const ratio = pa / item.value;
+        if (ratio >= 0.3 && ratio <= 3) {
+          chosen.push({ label: item.label, ratio });
+        }
+      }
+      return chosen;
+    }
+
+    /* ============ Mode switching ============ */
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mode = btn.dataset.mode;
+        modeBtns.forEach(b => {
+          const on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        panelPressure.classList.toggle('hidden', mode !== 'pressure');
+        panelForce.classList.toggle('hidden', mode !== 'force');
+        panelArea.classList.toggle('hidden', mode !== 'area');
+        clearAllErrors(section);
+        hideResult(resultPanel);
+        renderPreview();
+      });
+    });
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      if (mode === 'pressure') {
+        const fRaw = pForce.value.trim(), aRaw = pArea.value.trim();
+        if (!fRaw && !aRaw) { previewEl.innerHTML = 'Preview: enter force and area'; return; }
+        const F = parseNum(fRaw), A = parseNum(aRaw);
+        if (!Number.isFinite(F) || !Number.isFinite(A)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        if (F < 0) { previewEl.innerHTML = 'Preview: force cannot be negative'; return; }
+        if (A <= 0) { previewEl.innerHTML = 'Preview: area must be greater than 0 (division by zero)'; return; }
+        const FN = forceToN(F, pForceUnit.value);
+        const AM = areaToM2(A, pAreaUnit.value);
+        const pa = FN / AM;
+        const shown = pOutUnit.value === 'Pa' ? pa : pOutUnit.value === 'kPa' ? pa / 1000 : pa / 101325;
+        previewEl.innerHTML = `Preview: P = <span style="color:#0b1220;">${smartFmt(shown)} ${pOutUnit.value}</span>`;
+      } else if (mode === 'force') {
+        const pRaw = fPressure.value.trim(), aRaw = fArea.value.trim();
+        if (!pRaw && !aRaw) { previewEl.innerHTML = 'Preview: enter pressure and area'; return; }
+        const P = parseNum(pRaw), A = parseNum(aRaw);
+        if (!Number.isFinite(P) || !Number.isFinite(A)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        if (P < 0) { previewEl.innerHTML = 'Preview: pressure cannot be negative'; return; }
+        if (A < 0) { previewEl.innerHTML = 'Preview: area cannot be negative'; return; }
+        const pa = pressToPa(P, fPressureUnit.value);
+        const AM = areaToM2(A, fAreaUnit.value);
+        const FN = pa * AM;
+        const shown = fOutUnit.value === 'N' ? FN : fOutUnit.value === 'kN' ? FN / 1000 : FN / 9.8;
+        previewEl.innerHTML = `Preview: F = <span style="color:#0b1220;">${smartFmt(shown)} ${fOutUnit.value}</span>`;
+      } else {
+        const fRaw = aForce.value.trim(), pRaw = aPressure.value.trim();
+        if (!fRaw && !pRaw) { previewEl.innerHTML = 'Preview: enter force and pressure'; return; }
+        const F = parseNum(fRaw), P = parseNum(pRaw);
+        if (!Number.isFinite(F) || !Number.isFinite(P)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        if (P <= 0) { previewEl.innerHTML = 'Preview: pressure must be greater than 0 (division by zero)'; return; }
+        if (F < 0) { previewEl.innerHTML = 'Preview: force cannot be negative'; return; }
+        const FN = forceToN(F, aForceUnit.value);
+        const pa = pressToPa(P, aPressureUnit.value);
+        const AM = FN / pa;
+        const shown = aOutUnit.value === 'm2' ? AM : aOutUnit.value === 'cm2' ? AM * 1e4 : AM * 1e6;
+        previewEl.innerHTML = `Preview: A = <span style="color:#0b1220;">${smartFmt(shown)} ${aOutUnit.value}</span>`;
+      }
+    }
+
+    [pForce, pArea, fPressure, fArea, aForce, aPressure].forEach(el => {
+      el.addEventListener('input', renderPreview);
+    });
+    [pForceUnit, pAreaUnit, pOutUnit, fPressureUnit, fAreaUnit, fOutUnit,
+     aForceUnit, aPressureUnit, aOutUnit].forEach(el => {
+      el.addEventListener('change', () => { clearAllErrors(section); hideResult(resultPanel); renderPreview(); });
+    });
+
+    /* ============ Calculate ============ */
+    function calculate() {
+      clearAllErrors(section);
+      if (mode === 'pressure') calcPressure();
+      else if (mode === 'force') calcForce();
+      else calcArea();
+    }
+
+    /* ============ Find pressure ============ */
+    function calcPressure() {
+      const fRaw = pForce.value.trim(), aRaw = pArea.value.trim();
+      if (fRaw === '') { showError(pForce, 'Enter the force.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (aRaw === '') { showError(pArea, 'Enter the area.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const F = parseNum(fRaw), A = parseNum(aRaw);
+      if (!Number.isFinite(F)) { showError(pForce, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(A)) { showError(pArea, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (F < 0) { showError(pForce, 'Force cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (A <= 0) { showError(pArea, 'Area must be greater than 0 (division by zero).'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const FN = forceToN(F, pForceUnit.value);
+      const AM = areaToM2(A, pAreaUnit.value);
+      const pa = FN / AM;
+      const kPa = pa / 1000;
+      const atm = pa / 101325;
+
+      const outUnit = pOutUnit.value;
+      const shown = outUnit === 'Pa' ? pa : outUnit === 'kPa' ? kPa : atm;
+
+      const shownF = FN < 1 ? round6(FN) : round3(FN);
+      const shownA = AM < 0.01 ? round6(AM) : round3(AM);
+
+      const scale = pressScale(pa);
+      const comps = pressComparisons(pa);
+
+      let ctx = [];
+      ctx.push(`🔹 Pressure: <strong>${smartFmt(shown)} ${outUnit}</strong>.`);
+      ctx.push(`🔹 Equivalents: <strong>${smartFmt(pa)} Pa · ${smartFmt(kPa)} kPa · ${smartFmt(atm)} atm</strong>.`);
+      ctx.push(`🔹 Scale: this is in the <strong>${scale}</strong>.`);
+      if (comps.length > 0) {
+        const c = comps[0];
+        const timesWord = c.ratio > 1 ? `${c.ratio.toFixed(2)} ×` : `1 / ${(1 / c.ratio).toFixed(2)} ×`;
+        ctx.push(`🔹 For comparison: about <strong>${timesWord}</strong> the reference value of "${c.label}".`);
+      }
+      ctx.push(`🔹 Pressure uses the component of force perpendicular to the surface. If the force acts at an angle, use F cos θ.`);
+
+      const html = `
+        <div class="result-label">Pressure (P = F / A)</div>
+        <div class="cgpa-big-value">${smartFmt(shown)}<span class="cgpa-big-scale">${outUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${smartFmt(pa)} Pa</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Pressure computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(F, 4)}</div>
+            <div class="cgpa-summary-label">F (${pForceUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(A, 4)}</div>
+            <div class="cgpa-summary-label">A (${pAreaUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${smartFmt(shown)}</div>
+            <div class="cgpa-summary-label">P (${outUnit})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${smartFmt(pa)}</div>
+            <div class="cgpa-summary-label">P (Pa)</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: P = F / A.</li>
+            <li>Convert to SI: F = ${fmtNum(F, 4)} ${pForceUnit.value} = ${smartFmt(FN)} N; A = ${fmtNum(A, 4)} ${pAreaUnit.value} = ${smartFmt(AM)} m².</li>
+            <li>Pressure in Pa: ${smartFmt(FN)} / ${smartFmt(AM)} = <strong>${smartFmt(pa)} Pa</strong>.</li>
+            <li>In kPa: ${smartFmt(pa)} / 1000 = <strong>${smartFmt(kPa)} kPa</strong>.</li>
+            <li>In atm: ${smartFmt(pa)} / 101325 = <strong>${smartFmt(atm)} atm</strong>.</li>
+            <li>Result in your chosen unit: <strong>${smartFmt(shown)} ${outUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+        </div>
+      `;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Find force ============ */
+    function calcForce() {
+      const pRaw = fPressure.value.trim(), aRaw = fArea.value.trim();
+      if (pRaw === '') { showError(fPressure, 'Enter the pressure.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (aRaw === '') { showError(fArea, 'Enter the area.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const P = parseNum(pRaw), A = parseNum(aRaw);
+      if (!Number.isFinite(P)) { showError(fPressure, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(A)) { showError(fArea, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (P < 0) { showError(fPressure, 'Pressure cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (A < 0) { showError(fArea, 'Area cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const pa = pressToPa(P, fPressureUnit.value);
+      const AM = areaToM2(A, fAreaUnit.value);
+      const FN = pa * AM;
+      const kN = FN / 1000;
+      const kgf = FN / 9.8;
+
+      const outUnit = fOutUnit.value;
+      const shown = outUnit === 'N' ? FN : outUnit === 'kN' ? kN : kgf;
+
+      let ctx = [];
+      ctx.push(`🔹 Force: <strong>${smartFmt(shown)} ${outUnit}</strong>.`);
+      ctx.push(`🔹 Equivalents: <strong>${smartFmt(FN)} N · ${smartFmt(kN)} kN · ${smartFmt(kgf)} kgf</strong>.`);
+      ctx.push(`🔹 This is the total force acting perpendicular to the given area.`);
+      if (FN >= 9.8) {
+        ctx.push(`🔹 Equivalent to supporting the weight of roughly <strong>${smartFmt(FN / 9.8)} kg</strong> at Earth's surface.`);
+      }
+      ctx.push(`🔹 Real-world check: 1 m² window under atmospheric pressure experiences about 101,000 N — over 10 tonnes-force.`);
+
+      const html = `
+        <div class="result-label">Force (F = P × A)</div>
+        <div class="cgpa-big-value">${smartFmt(shown)}<span class="cgpa-big-scale">${outUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${smartFmt(FN)} N</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Force computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(P, 4)}</div>
+            <div class="cgpa-summary-label">P (${fPressureUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(A, 4)}</div>
+            <div class="cgpa-summary-label">A (${fAreaUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${smartFmt(shown)}</div>
+            <div class="cgpa-summary-label">F (${outUnit})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${smartFmt(FN)}</div>
+            <div class="cgpa-summary-label">F (N)</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: F = P × A.</li>
+            <li>Convert to SI: P = ${fmtNum(P, 4)} ${fPressureUnit.value} = ${smartFmt(pa)} Pa; A = ${fmtNum(A, 4)} ${fAreaUnit.value} = ${smartFmt(AM)} m².</li>
+            <li>Force in N: ${smartFmt(pa)} × ${smartFmt(AM)} = <strong>${smartFmt(FN)} N</strong>.</li>
+            <li>In kN: ${smartFmt(FN)} / 1000 = <strong>${smartFmt(kN)} kN</strong>.</li>
+            <li>In kgf: ${smartFmt(FN)} / 9.8 = <strong>${smartFmt(kgf)} kgf</strong>.</li>
+            <li>Result in your chosen unit: <strong>${smartFmt(shown)} ${outUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+        </div>
+      `;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Find area ============ */
+    function calcArea() {
+      const fRaw = aForce.value.trim(), pRaw = aPressure.value.trim();
+      if (fRaw === '') { showError(aForce, 'Enter the force.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (pRaw === '') { showError(aPressure, 'Enter the pressure.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      const F = parseNum(fRaw), P = parseNum(pRaw);
+      if (!Number.isFinite(F)) { showError(aForce, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(P)) { showError(aPressure, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (F < 0) { showError(aForce, 'Force cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (P <= 0) { showError(aPressure, 'Pressure must be greater than 0 (division by zero).'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const FN = forceToN(F, aForceUnit.value);
+      const pa = pressToPa(P, aPressureUnit.value);
+      const AM = FN / pa;
+      const cm2 = AM * 1e4;
+      const mm2 = AM * 1e6;
+
+      const outUnit = aOutUnit.value;
+      const shown = outUnit === 'm2' ? AM : outUnit === 'cm2' ? cm2 : mm2;
+
+      let ctx = [];
+      ctx.push(`🔹 Area: <strong>${smartFmt(shown)} ${outUnit}</strong>.`);
+      ctx.push(`🔹 Equivalents: <strong>${smartFmt(AM)} m² · ${smartFmt(cm2)} cm² · ${smartFmt(mm2)} mm²</strong>.`);
+      ctx.push(`🔹 This is the minimum area needed for the given force to produce the given pressure.`);
+      if (AM > 0.0001 && AM < 10) {
+        const sideM = Math.sqrt(AM);
+        ctx.push(`🔹 Equivalent to a square of side <strong>${smartFmt(sideM)} m</strong> (${smartFmt(sideM * 100)} cm).`);
+      }
+      ctx.push(`🔹 Real-world check: to support a 50 kg mass (490 N) at 1 kPa, you need about 0.49 m² — a bit less than a 70 × 70 cm tile.`);
+
+      const html = `
+        <div class="result-label">Area (A = F / P)</div>
+        <div class="cgpa-big-value">${smartFmt(shown)}<span class="cgpa-big-scale">${outUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${smartFmt(AM)} m²</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Area computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(F, 4)}</div>
+            <div class="cgpa-summary-label">F (${aForceUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(P, 4)}</div>
+            <div class="cgpa-summary-label">P (${aPressureUnit.value})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${smartFmt(shown)}</div>
+            <div class="cgpa-summary-label">A (${outUnit})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${smartFmt(AM)}</div>
+            <div class="cgpa-summary-label">A (m²)</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: A = F / P.</li>
+            <li>Convert to SI: F = ${fmtNum(F, 4)} ${aForceUnit.value} = ${smartFmt(FN)} N; P = ${fmtNum(P, 4)} ${aPressureUnit.value} = ${smartFmt(pa)} Pa.</li>
+            <li>Area in m²: ${smartFmt(FN)} / ${smartFmt(pa)} = <strong>${smartFmt(AM)} m²</strong>.</li>
+            <li>In cm²: ${smartFmt(AM)} × 10,000 = <strong>${smartFmt(cm2)} cm²</strong>.</li>
+            <li>In mm²: ${smartFmt(AM)} × 1,000,000 = <strong>${smartFmt(mm2)} mm²</strong>.</li>
+            <li>Result in your chosen unit: <strong>${smartFmt(shown)} ${outUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+        </div>
+      `;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      [pForce, pArea, fPressure, fArea, aForce, aPressure].forEach(el => { el.value = ''; });
+      [pForceUnit, fOutUnit, aForceUnit].forEach(el => { if (el) el.value = 'N'; });
+      [pAreaUnit, fAreaUnit, aOutUnit].forEach(el => { if (el) el.value = 'm2'; });
+      [pOutUnit, fPressureUnit, aPressureUnit].forEach(el => { if (el) el.value = 'Pa'; });
+      mode = 'pressure';
+      modeBtns.forEach(b => {
+        const on = b.dataset.mode === 'pressure';
+        b.classList.toggle('is-active', on);
+        b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      panelPressure.classList.remove('hidden');
+      panelForce.classList.add('hidden');
+      panelArea.classList.add('hidden');
+      previewEl.innerHTML = 'Preview: enter force and area';
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

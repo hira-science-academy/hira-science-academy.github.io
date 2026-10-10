@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Speed, Distance, Time Calculator — All Three Rearrangements | Hira Science Academy</title>
+  <meta content="Free speed, distance and time calculator. Solve s = d/t for any of the three variables, with unit-aware inputs in m or km, seconds, minutes or hours, and m/s or km/h outputs." name="description"/>
+  <meta content="speed distance time calculator, speed calculator, distance calculator, time calculator, s=d/t, km/h, m/s, class 9 physics, class 10 physics" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/speed-distance-time-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Speed, Distance, Time Calculator — All Three Rearrangements" property="og:title"/>
+  <meta content="Solve s = d/t for speed, distance or time with unit-aware inputs and outputs." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/speed-distance-time-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Speed, Distance, Time Calculator", "item": "https://hiraacademy.com.pk/tools/speed-distance-time-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the formula for speed, distance and time?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Speed = distance ÷ time (s = d/t). The same equation can be rearranged for the other two: distance = speed × time (d = st) and time = distance ÷ speed (t = d/s). All three forms are equivalent, and this calculator supports all three." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the SI units of speed?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Speed is measured in metres per second (m/s) in the SI system. Distance is in metres (m) and time in seconds (s). In everyday life, kilometres per hour (km/h) is more common in Pakistan. 1 m/s = 3.6 km/h." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I convert km/h to m/s?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Multiply by 5/18, or equivalently divide by 3.6. For example, 72 km/h = 72 × 5/18 = 20 m/s. To go the other way, multiply m/s by 3.6: 20 m/s = 72 km/h. This conversion factor comes from 1000 m per km divided by 3600 s per hour." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between speed and velocity?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Speed is a scalar — it tells you how fast, without direction. Velocity is a vector — it tells you how fast and in which direction. A car driving in a circle at constant speed has a changing velocity because its direction keeps changing. The formula s = d/t gives speed; the equivalent for velocity uses displacement rather than distance." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can speed be zero?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, speed can be zero if the object is at rest, which means distance = 0 over a positive time. In the speed calculator mode, d = 0 gives s = 0. In the time mode, a speed of zero is a domain error — the object would never arrive." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does the calculator reject zero speed or zero time?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Zero time would make speed undefined (division by zero) — no physical object travels a nonzero distance in zero time. Zero speed in the time formula means the object never moves, so the arrival time is infinite. Both are domain errors, and the calculator flags them with a friendly message instead of showing NaN." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
+    .latex-frac.big { font-size: 1.2em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+    .latex-sup { vertical-align: super; font-size: 0.75em; }
+    .latex-sub { vertical-align: sub; font-size: 0.75em; }
+
+    /* Result */
+    .cgpa-big-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #0b1220;
+      line-height: 1.1;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .cgpa-big-scale {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+    .cgpa-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .cgpa-summary { grid-template-columns: repeat(4, 1fr); } }
+    .cgpa-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cgpa-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .cgpa-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .cgpa-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .cgpa-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .cgpa-context strong { color: #0b1220; }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      margin-top: 0.5rem;
+    }
+    .status-ok    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .status-warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .status-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .status-secure{ background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+
+    /* Input rows */
+    .cgpa-input-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      align-items: end;
+      margin-bottom: 0.75rem;
+    }
+    @media (max-width: 540px) { .cgpa-input-grid { grid-template-columns: 1fr; } }
+    .cgpa-group-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #0369a1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cgpa-group-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #e0f2fe;
+      color: #0369a1;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* Mode toggle */
+    .mode-toggle {
+      display: inline-flex;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.25rem;
+      gap: 0.25rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.25rem;
+    }
+    .mode-toggle button {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: #64748b;
+      transition: all 0.15s;
+    }
+    .mode-toggle button.is-active {
+      background: linear-gradient(135deg, #0ea5e9, #0284c7);
+      color: #ffffff;
+      box-shadow: 0 2px 6px -1px rgba(14,165,233,0.5);
+    }
+
+    /* Value + unit inline control */
+    .value-unit {
+      display: flex;
+      gap: 0.4rem;
+      align-items: stretch;
+    }
+    .value-unit input {
+      flex: 1 1 auto;
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+      font-family: 'JetBrains Mono', monospace;
+      background: #ffffff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .value-unit input:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+    .value-unit select {
+      flex: 0 0 auto;
+      padding: 0.5rem 0.6rem;
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+      background: #f1f5f9;
+      font-size: 0.85rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: #0369a1;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .value-unit select:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+
+    /* Journey visualization */
+    .journey-wrap {
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 0.6rem;
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0 1.25rem 0;
+    }
+    .journey-svg {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+    }
+    .journey-caption {
+      text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-top: 0.4rem;
+    }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Three Solve Modes · Unit Aware</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Speed, Distance, Time Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Solve s = d/t for any of the three variables — with distance in m or km, time in seconds, minutes or hours, and speed in m/s or km/h.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Speed, Distance, Time Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Speed distance time calculator inputs">
+
+      <div class="mode-toggle" role="group" aria-label="Solve mode">
+        <button type="button" data-mode="speed" class="is-active" aria-pressed="true">Find Speed</button>
+        <button type="button" data-mode="distance" aria-pressed="false">Find Distance</button>
+        <button type="button" data-mode="time" aria-pressed="false">Find Time</button>
+      </div>
+
+      <!-- Speed panel -->
+      <div id="panel-speed">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter distance and time</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="sd-distance" class="calc-label">Distance</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="sd-distance" placeholder="e.g. 120" autocomplete="off" />
+              <select id="sd-distance-unit" aria-label="Distance unit">
+                <option value="m">m</option>
+                <option value="km" selected>km</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="sd-time" class="calc-label">Time</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="sd-time" placeholder="e.g. 2" autocomplete="off" />
+              <select id="sd-time-unit" aria-label="Time unit">
+                <option value="s">s</option>
+                <option value="min">min</option>
+                <option value="h" selected>h</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Speed output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="sd-out-unit" class="calc-label">Show speed in</label>
+            <select id="sd-out-unit" class="calc-select">
+              <option value="kmh" selected>km/h</option>
+              <option value="ms">m/s</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Distance panel -->
+      <div id="panel-distance" class="hidden">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter speed and time</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="ds-speed" class="calc-label">Speed</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="ds-speed" placeholder="e.g. 60" autocomplete="off" />
+              <select id="ds-speed-unit" aria-label="Speed unit">
+                <option value="kmh" selected>km/h</option>
+                <option value="ms">m/s</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="ds-time" class="calc-label">Time</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="ds-time" placeholder="e.g. 2" autocomplete="off" />
+              <select id="ds-time-unit" aria-label="Time unit">
+                <option value="s">s</option>
+                <option value="min">min</option>
+                <option value="h" selected>h</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Distance output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="ds-out-unit" class="calc-label">Show distance in</label>
+            <select id="ds-out-unit" class="calc-select">
+              <option value="km" selected>km</option>
+              <option value="m">m</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Time panel -->
+      <div id="panel-time" class="hidden">
+        <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Enter distance and speed</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="td-distance" class="calc-label">Distance</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="td-distance" placeholder="e.g. 120" autocomplete="off" />
+              <select id="td-distance-unit" aria-label="Distance unit">
+                <option value="m">m</option>
+                <option value="km" selected>km</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label for="td-speed" class="calc-label">Speed</label>
+            <div class="value-unit">
+              <input type="text" inputmode="decimal" id="td-speed" placeholder="e.g. 60" autocomplete="off" />
+              <select id="td-speed-unit" aria-label="Speed unit">
+                <option value="kmh" selected>km/h</option>
+                <option value="ms">m/s</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="cgpa-group-label" style="margin-top:0.75rem;"><span class="cgpa-group-num">2</span> Time output unit</div>
+        <div class="cgpa-input-grid">
+          <div>
+            <label for="td-out-unit" class="calc-label">Show time in</label>
+            <select id="td-out-unit" class="calc-select">
+              <option value="h" selected>hours</option>
+              <option value="min">minutes</option>
+              <option value="s">seconds</option>
+            </select>
+          </div>
+          <div></div>
+        </div>
+      </div>
+
+      <!-- Journey visualization -->
+      <div class="journey-wrap" aria-hidden="true">
+        <svg class="journey-svg" viewBox="0 0 340 80" width="340" height="80" xmlns="http://www.w3.org/2000/svg">
+          <!-- start marker -->
+          <circle cx="30" cy="45" r="6" fill="#0ea5e9" />
+          <text x="30" y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#64748b">start</text>
+          <!-- path -->
+          <line x1="30" y1="45" x2="310" y2="45" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4" />
+          <!-- end marker -->
+          <circle cx="310" cy="45" r="6" fill="#dc2626" />
+          <text x="310" y="68" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#64748b">end</text>
+          <!-- moving arrow above path -->
+          <line x1="80" y1="30" x2="140" y2="30" stroke="#0369a1" stroke-width="2.5" marker-end="url(#arrowSpeed)" />
+          <text x="110" y="22" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#0369a1" font-weight="700">s</text>
+          <!-- distance bracket -->
+          <line x1="30" y1="58" x2="310" y2="58" stroke="#94a3b8" stroke-width="1" />
+          <line x1="30" y1="55" x2="30" y2="61" stroke="#94a3b8" stroke-width="1" />
+          <line x1="310" y1="55" x2="310" y2="61" stroke="#94a3b8" stroke-width="1" />
+          <text x="170" y="72" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#64748b">d</text>
+          <defs>
+            <marker id="arrowSpeed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#0369a1" />
+            </marker>
+          </defs>
+        </svg>
+        <div class="journey-caption">distance d covered at speed s in time t</div>
+      </div>
+
+      <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        Preview: enter distance and time
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this speed, distance, time calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          This tool solves the equation s = d / t for any one of its three variables. Choose the quantity you want to find — speed, distance or time — and the input panel rebuilds itself to ask for the other two. Every input is unit-aware: distance can be entered in metres or kilometres, time in seconds, minutes or hours, and speed in metres per second or kilometres per hour. The output is returned in whichever unit you choose, with an automatic conversion of the other representations (a speed given as 60 km/h is also shown as 16.67 m/s). The result panel includes step-by-step working, a unit-consistency check, and a real-world scale comparison — so a student can immediately tell whether "72 km/h" is a walking pace, a car speed, or a highway speed.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas — three rearrangements</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Find speed</div>
+          <div class="math-block">
+            <span>s = </span>
+            <span class="latex-frac big">
+              <span class="f-num">d</span>
+              <span class="f-den">t</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Find distance</div>
+          <div class="math-block">
+            <span>d = s × t</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Find time</div>
+          <div class="math-block">
+            <span>t = </span>
+            <span class="latex-frac big">
+              <span class="f-num">d</span>
+              <span class="f-den">s</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Unit conversion (km/h ↔ m/s)</div>
+          <div class="math-block">
+            <span>1 m/s = 3.6 km/h &nbsp; · &nbsp; 1 km/h = </span>
+            <span class="latex-frac">
+              <span class="f-num">5</span>
+              <span class="f-den">18</span>
+            </span>
+            <span> m/s</span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>s</strong> — speed, in m/s or km/h.</li>
+          <li><strong>d</strong> — distance travelled, in m or km.</li>
+          <li><strong>t</strong> — time taken, in s, min, or h.</li>
+        </ul>
+
+        <p class="leading-relaxed text-justify mt-3">
+          The unit consistency rule is important: the three quantities must be in matching units before the formula is applied. If d is in km and t is in h, s comes out in km/h. If d is in m and t is in s, s comes out in m/s. This calculator does the unit conversion internally, so you can mix km, minutes and m/s in the same problem and it will still produce a correct answer.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Find speed — a bus journey</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            d = 180 km · t = 3 h
+          </div>
+          <ol>
+            <li>s = d / t = 180 / 3.</li>
+            <li>s = <strong>60 km/h</strong>.</li>
+            <li>Equivalent: 60 × 5/18 = <strong>16.67 m/s</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Find speed — a running athlete</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            d = 400 m · t = 50 s
+          </div>
+          <ol>
+            <li>s = 400 / 50.</li>
+            <li>s = <strong>8 m/s</strong>.</li>
+            <li>Equivalent: 8 × 3.6 = <strong>28.8 km/h</strong> — sprinting pace.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Find distance — a train journey</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            s = 90 km/h · t = 2.5 h
+          </div>
+          <ol>
+            <li>d = s × t = 90 × 2.5.</li>
+            <li>d = <strong>225 km</strong>.</li>
+            <li>Equivalent: 225 × 1000 = <strong>225,000 m</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Find distance — a short walk</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            s = 1.4 m/s · t = 15 min
+          </div>
+          <ol>
+            <li>Convert time to seconds: 15 × 60 = 900 s.</li>
+            <li>d = 1.4 × 900.</li>
+            <li>d = <strong>1260 m = 1.26 km</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: Find time — a car journey</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            d = 240 km · s = 80 km/h
+          </div>
+          <ol>
+            <li>t = d / s = 240 / 80.</li>
+            <li>t = <strong>3 h</strong>.</li>
+            <li>The journey takes 3 hours.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 6: Find time — converting units</p>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
+            d = 5 km · s = 72 km/h — but you want the answer in minutes
+          </div>
+          <ol>
+            <li>t = d / s = 5 / 72 = 0.06944 h.</li>
+            <li>Convert to minutes: 0.06944 × 60 = <strong>4.17 min</strong> (about 4 min 10 s).</li>
+            <li>Alternative: convert 5 km to 5000 m and 72 km/h to 20 m/s first. Then t = 5000 / 20 = 250 s = <strong>4.17 min</strong>. Same answer.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Speed scale — knowing what's fast</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          For physics sanity checks, it helps to know roughly how fast typical things move.
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>1.4 m/s (5 km/h)</strong> — normal walking pace.</li>
+          <li><strong>3 m/s (11 km/h)</strong> — brisk jogging pace.</li>
+          <li><strong>8 m/s (29 km/h)</strong> — sprinting athlete.</li>
+          <li><strong>13.9 m/s (50 km/h)</strong> — typical city driving in Pakistan.</li>
+          <li><strong>27.8 m/s (100 km/h)</strong> — motorway speed.</li>
+          <li><strong>83.3 m/s (300 km/h)</strong> — high-speed rail (not present in Pakistan, but useful as a benchmark).</li>
+          <li><strong>340 m/s</strong> — speed of sound in air.</li>
+          <li><strong>3 × 10⁸ m/s</strong> — speed of light (a fundamental constant).</li>
+        </ul>
+        <p class="leading-relaxed text-justify mt-2">
+          The calculator returns the answer, but the interpretation is often the more useful output. Knowing that 240 km/h is far above normal highway speed is a good check on unit errors.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Mixing units silently.</strong> If distance is in km and time is in seconds, converting everything to one system first avoids an answer that is 3600× off. The calculator handles this automatically, but students should understand the principle.</li>
+          <li><strong>Using km/h in a calculation with metres and seconds.</strong> Convert km/h to m/s (multiply by 5/18) before mixing with m and s, or convert m and s to km and h. The two systems should not be blended in the arithmetic.</li>
+          <li><strong>Confusing average speed with instantaneous speed.</strong> s = d / t gives average speed over the journey. A car can cruise at different speeds throughout and still average 60 km/h if 180 km takes 3 hours.</li>
+          <li><strong>Mixing up speed and velocity.</strong> Speed has no direction; velocity does. A car going around a roundabout at constant speed has changing velocity, so s = d / t gives the speed but not the (changing) velocity.</li>
+          <li><strong>Forgetting to convert minutes to hours (or seconds).</strong> "2 hours 30 minutes" is 2.5 hours, not 2.3 or 230. Convert mixed time units to a single unit before using the formula.</li>
+          <li><strong>Using zero speed in the time formula.</strong> If speed is zero, the object never moves and the arrival time is infinite. The calculator flags this as a domain error.</li>
+          <li><strong>Using zero time in the speed formula.</strong> Dividing by zero is undefined. The calculator flags this and explains why.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What is the formula for speed, distance and time?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Speed = distance ÷ time (s = d/t). The same equation can be rearranged for the other two: distance = speed × time (d = st) and time = distance ÷ speed (t = d/s). All three forms are equivalent, and this calculator supports all three.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What are the SI units of speed?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Speed is measured in metres per second (m/s) in the SI system. Distance is in metres (m) and time in seconds (s). In everyday life, kilometres per hour (km/h) is more common in Pakistan. 1 m/s = 3.6 km/h.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I convert km/h to m/s?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Multiply by 5/18, or equivalently divide by 3.6. For example, 72 km/h = 72 × 5/18 = 20 m/s. To go the other way, multiply m/s by 3.6: 20 m/s = 72 km/h. This conversion factor comes from 1000 m per km divided by 3600 s per hour.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between speed and velocity?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Speed is a scalar — it tells you how fast, without direction. Velocity is a vector — it tells you how fast and in which direction. A car driving in a circle at constant speed has a changing velocity because its direction keeps changing. The formula s = d/t gives speed; the equivalent for velocity uses displacement rather than distance.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can speed be zero?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Yes, speed can be zero if the object is at rest, which means distance = 0 over a positive time. In the speed calculator mode, d = 0 gives s = 0. In the time mode, a speed of zero is a domain error — the object would never arrive.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why does the calculator reject zero speed or zero time?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Zero time would make speed undefined (division by zero) — no physical object travels a nonzero distance in zero time. Zero speed in the time formula means the object never moves, so the arrival time is infinite. Both are domain errors, and the calculator flags them with a friendly message instead of showing NaN.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="physics-formula-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Physics Formula Calculator</a></li>
+          <li><a href="acceleration-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Acceleration Calculator</a></li>
+          <li><a href="force-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Force Calculator</a></li>
+          <li><a href="kinetic-energy-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Kinetic Energy Calculator</a></li>
+          <li><a href="time-duration-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Time Duration Calculator</a></li>
+          <li><a href="scientific-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Scientific Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Revise the theory behind motion with our
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
+          and track term progress with the free
+          <a href="https://hiraacademy.com.pk/student-portal.html" class="text-blue-700 font-semibold underline">Student Portal</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'speed-distance-time-calculator';
+
+    const modeBtns       = document.querySelectorAll('.mode-toggle button');
+    const panelSpeed     = document.getElementById('panel-speed');
+    const panelDistance  = document.getElementById('panel-distance');
+    const panelTime      = document.getElementById('panel-time');
+
+    /* Speed panel */
+    const sdDistance     = document.getElementById('sd-distance');
+    const sdDistanceUnit = document.getElementById('sd-distance-unit');
+    const sdTime         = document.getElementById('sd-time');
+    const sdTimeUnit     = document.getElementById('sd-time-unit');
+    const sdOutUnit      = document.getElementById('sd-out-unit');
+
+    /* Distance panel */
+    const dsSpeed        = document.getElementById('ds-speed');
+    const dsSpeedUnit    = document.getElementById('ds-speed-unit');
+    const dsTime         = document.getElementById('ds-time');
+    const dsTimeUnit     = document.getElementById('ds-time-unit');
+    const dsOutUnit      = document.getElementById('ds-out-unit');
+
+    /* Time panel */
+    const tdDistance     = document.getElementById('td-distance');
+    const tdDistanceUnit = document.getElementById('td-distance-unit');
+    const tdSpeed        = document.getElementById('td-speed');
+    const tdSpeedUnit    = document.getElementById('td-speed-unit');
+    const tdOutUnit      = document.getElementById('td-out-unit');
+
+    const previewEl      = document.getElementById('live-preview');
+    const calcBtn        = document.getElementById('calc-btn');
+    const resetBtn       = document.getElementById('reset-btn');
+    const resultPanel    = document.getElementById('result-panel');
+    const section        = document.querySelector('section[aria-label="Speed distance time calculator inputs"]');
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    let mode = 'speed';
+
+    /* ============ Unit conversion constants ============ */
+    // distance → metres
+    const DIST_TO_M = { m: 1, km: 1000 };
+    // time → seconds
+    const TIME_TO_S = { s: 1, min: 60, h: 3600 };
+    // speed → m/s
+    const SPEED_TO_MS = { ms: 1, kmh: 1000 / 3600 };
+
+    function toMetres(v, u) { return v * DIST_TO_M[u]; }
+    function toSeconds(v, u) { return v * TIME_TO_S[u]; }
+    function toMps(v, u) { return v * SPEED_TO_MS[u]; }
+
+    function fromMps(v, u) { return v / SPEED_TO_MS[u]; }
+    function fromMetres(v, u) { return v / DIST_TO_M[u]; }
+    function fromSeconds(v, u) { return v / TIME_TO_S[u]; }
+
+    /* ============ Helpers ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 4;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) return String(x);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+    function round2(x) { return Math.round(x * 100) / 100; }
+    function round3(x) { return Math.round(x * 1000) / 1000; }
+
+    /* Pretty time: e.g. 2.5 h = "2 h 30 min" */
+    function prettyTimeFromHours(h) {
+      if (!Number.isFinite(h) || h < 0) return '—';
+      const totalMin = h * 60;
+      const hrs = Math.floor(totalMin / 60);
+      const mins = Math.floor(totalMin - hrs * 60);
+      const secs = Math.round(((totalMin - hrs * 60) - mins) * 60);
+      if (hrs === 0 && mins === 0) return `${secs} s`;
+      if (hrs === 0) return `${mins} min ${secs > 0 ? secs + ' s' : ''}`.trim();
+      return `${hrs} h ${mins > 0 ? mins + ' min' : ''}`.trim();
+    }
+
+    function speedScale(mps) {
+      const a = Math.abs(mps);
+      if (a < 0.5) return 'very slow (slower than a slow walk)';
+      if (a < 2) return 'walking pace';
+      if (a < 5) return 'jogging pace';
+      if (a < 12) return 'sprinting / cycling pace';
+      if (a < 20) return 'city-driving speed';
+      if (a < 35) return 'motorway speed';
+      if (a < 100) return 'high-speed rail range';
+      if (a < 340) return 'subsonic aircraft range';
+      return 'supersonic / ballistic range';
+    }
+
+    /* ============ Mode switching ============ */
+    modeBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mode = btn.dataset.mode;
+        modeBtns.forEach(b => {
+          const active = b === btn;
+          b.classList.toggle('is-active', active);
+          b.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        panelSpeed.classList.toggle('hidden', mode !== 'speed');
+        panelDistance.classList.toggle('hidden', mode !== 'distance');
+        panelTime.classList.toggle('hidden', mode !== 'time');
+        clearAllErrors(section);
+        hideResult(resultPanel);
+        renderPreview();
+      });
+    });
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      if (mode === 'speed') {
+        const dRaw = sdDistance.value.trim();
+        const tRaw = sdTime.value.trim();
+        if (dRaw === '' && tRaw === '') { previewEl.innerHTML = 'Preview: enter distance and time'; return; }
+        const d = parseNum(dRaw);
+        const t = parseNum(tRaw);
+        if (!Number.isFinite(d) || !Number.isFinite(t)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        if (d < 0) { previewEl.innerHTML = 'Preview: distance cannot be negative'; return; }
+        if (t <= 0) { previewEl.innerHTML = 'Preview: time must be greater than 0'; return; }
+        const dM = toMetres(d, sdDistanceUnit.value);
+        const tS = toSeconds(t, sdTimeUnit.value);
+        const mps = dM / tS;
+        const shown = fromMps(mps, sdOutUnit.value === 'kmh' ? 'kmh' : 'ms');
+        const unitStr = sdOutUnit.value === 'kmh' ? 'km/h' : 'm/s';
+        previewEl.innerHTML = `Preview: s = <span style="color:#0b1220;">${fmtNum(round3(shown), 4)} ${unitStr}</span>`;
+      } else if (mode === 'distance') {
+        const sRaw = dsSpeed.value.trim();
+        const tRaw = dsTime.value.trim();
+        if (sRaw === '' && tRaw === '') { previewEl.innerHTML = 'Preview: enter speed and time'; return; }
+        const s = parseNum(sRaw);
+        const t = parseNum(tRaw);
+        if (!Number.isFinite(s) || !Number.isFinite(t)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        if (s < 0) { previewEl.innerHTML = 'Preview: speed cannot be negative'; return; }
+        if (t < 0) { previewEl.innerHTML = 'Preview: time cannot be negative'; return; }
+        const mps = toMps(s, dsSpeedUnit.value);
+        const tS = toSeconds(t, dsTimeUnit.value);
+        const dM = mps * tS;
+        const shown = fromMetres(dM, dsOutUnit.value);
+        previewEl.innerHTML = `Preview: d = <span style="color:#0b1220;">${fmtNum(round3(shown), 4)} ${dsOutUnit.value}</span>`;
+      } else {
+        const dRaw = tdDistance.value.trim();
+        const sRaw = tdSpeed.value.trim();
+        if (dRaw === '' && sRaw === '') { previewEl.innerHTML = 'Preview: enter distance and speed'; return; }
+        const d = parseNum(dRaw);
+        const s = parseNum(sRaw);
+        if (!Number.isFinite(d) || !Number.isFinite(s)) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
+        if (d < 0) { previewEl.innerHTML = 'Preview: distance cannot be negative'; return; }
+        if (s <= 0) { previewEl.innerHTML = 'Preview: speed must be greater than 0 (division by zero)'; return; }
+        const dM = toMetres(d, tdDistanceUnit.value);
+        const mps = toMps(s, tdSpeedUnit.value);
+        const tS = dM / mps;
+        const shown = fromSeconds(tS, tdOutUnit.value);
+        const unitStr = tdOutUnit.value === 'h' ? 'hours' : tdOutUnit.value === 'min' ? 'minutes' : 'seconds';
+        previewEl.innerHTML = `Preview: t = <span style="color:#0b1220;">${fmtNum(round3(shown), 4)} ${unitStr}</span>`;
+      }
+    }
+
+    [sdDistance, sdTime, dsSpeed, dsTime, tdDistance, tdSpeed].forEach(el => el.addEventListener('input', renderPreview));
+    [sdDistanceUnit, sdTimeUnit, sdOutUnit, dsSpeedUnit, dsTimeUnit, dsOutUnit,
+     tdDistanceUnit, tdSpeedUnit, tdOutUnit].forEach(el => el.addEventListener('change', () => { hideResult(resultPanel); clearAllErrors(section); renderPreview(); }));
+
+    /* ============ Calculate ============ */
+    function calculate() {
+      clearAllErrors(section);
+      if (mode === 'speed') calcSpeed();
+      else if (mode === 'distance') calcDistance();
+      else calcTime();
+    }
+
+    /* ============ Find speed ============ */
+    function calcSpeed() {
+      const dRaw = sdDistance.value.trim();
+      const tRaw = sdTime.value.trim();
+      if (dRaw === '') { showError(sdDistance, 'Enter the distance.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (tRaw === '') { showError(sdTime, 'Enter the time.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const d = parseNum(dRaw);
+      const t = parseNum(tRaw);
+      if (!Number.isFinite(d)) { showError(sdDistance, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(t)) { showError(sdTime, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (d < 0) { showError(sdDistance, 'Distance cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (t <= 0) { showError(sdTime, 'Time must be greater than 0.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const dUnit = sdDistanceUnit.value;
+      const tUnit = sdTimeUnit.value;
+      const outUnit = sdOutUnit.value;
+      const dM = toMetres(d, dUnit);
+      const tS = toSeconds(t, tUnit);
+      const mps = dM / tS;
+      const kmh = mps * 3.6;
+      const shownValue = outUnit === 'kmh' ? kmh : mps;
+      const shownUnit = outUnit === 'kmh' ? 'km/h' : 'm/s';
+      const otherValue = outUnit === 'kmh' ? mps : kmh;
+      const otherUnit = outUnit === 'kmh' ? 'm/s' : 'km/h';
+
+      const scale = speedScale(mps);
+
+      const html = `
+        <div class="result-label">Speed (s = d / t)</div>
+        <div class="cgpa-big-value">${fmtNum(round3(shownValue), 4)}<span class="cgpa-big-scale">${shownUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Equivalent: ${fmtNum(round3(otherValue), 4)} ${otherUnit}</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Speed computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(d, 4)}</div>
+            <div class="cgpa-summary-label">Distance (${dUnit})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(t, 4)}</div>
+            <div class="cgpa-summary-label">Time (${tUnit})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(round3(shownValue), 4)}</div>
+            <div class="cgpa-summary-label">Speed (${shownUnit})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(round3(otherValue), 4)}</div>
+            <div class="cgpa-summary-label">Speed (${otherUnit})</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: s = d / t.</li>
+            <li>Convert to matching SI units: d = ${fmtNum(d, 4)} ${dUnit} = ${fmtNum(dM, 4)} m; t = ${fmtNum(t, 4)} ${tUnit} = ${fmtNum(tS, 4)} s.</li>
+            <li>Speed in m/s: ${fmtNum(dM, 4)} / ${fmtNum(tS, 4)} = <strong>${fmtNum(round3(mps), 4)} m/s</strong>.</li>
+            <li>Convert to km/h: ${fmtNum(round3(mps), 4)} × 3.6 = <strong>${fmtNum(round3(kmh), 4)} km/h</strong>.</li>
+            <li>Result (in your chosen unit): <strong>${fmtNum(round3(shownValue), 4)} ${shownUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          <p>🔹 Speed: <strong>${fmtNum(round3(shownValue), 4)} ${shownUnit}</strong> (= ${fmtNum(round3(otherValue), 4)} ${otherUnit}).</p>
+          <p>🔹 Scale: this is <strong>${scale}</strong>.</p>
+          <p>🔹 Conversion factor used: 1 m/s = 3.6 km/h (equivalently, 1 km/h = 5/18 m/s).</p>
+          <p>🔹 This is an average speed. Real journeys usually involve varying instantaneous speeds.</p>
+        </div>
+      `;
+
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Find distance ============ */
+    function calcDistance() {
+      const sRaw = dsSpeed.value.trim();
+      const tRaw = dsTime.value.trim();
+      if (sRaw === '') { showError(dsSpeed, 'Enter the speed.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (tRaw === '') { showError(dsTime, 'Enter the time.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const s = parseNum(sRaw);
+      const t = parseNum(tRaw);
+      if (!Number.isFinite(s)) { showError(dsSpeed, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(t)) { showError(dsTime, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (s < 0) { showError(dsSpeed, 'Speed cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (t < 0) { showError(dsTime, 'Time cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const sUnit = dsSpeedUnit.value;
+      const tUnit = dsTimeUnit.value;
+      const outUnit = dsOutUnit.value;
+      const mps = toMps(s, sUnit);
+      const tS = toSeconds(t, tUnit);
+      const dM = mps * tS;
+      const dKm = dM / 1000;
+      const shownValue = outUnit === 'km' ? dKm : dM;
+      const shownUnit = outUnit;
+      const otherValue = outUnit === 'km' ? dM : dKm;
+      const otherUnit = outUnit === 'km' ? 'm' : 'km';
+
+      const html = `
+        <div class="result-label">Distance (d = s × t)</div>
+        <div class="cgpa-big-value">${fmtNum(round3(shownValue), 4)}<span class="cgpa-big-scale">${shownUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Equivalent: ${fmtNum(round3(otherValue), 4)} ${otherUnit}</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Distance computed</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(s, 4)}</div>
+            <div class="cgpa-summary-label">Speed (${sUnit === 'ms' ? 'm/s' : 'km/h'})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(t, 4)}</div>
+            <div class="cgpa-summary-label">Time (${tUnit})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(round3(shownValue), 4)}</div>
+            <div class="cgpa-summary-label">Distance (${shownUnit})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(round3(otherValue), 4)}</div>
+            <div class="cgpa-summary-label">Distance (${otherUnit})</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: d = s × t.</li>
+            <li>Convert to SI: s = ${fmtNum(s, 4)} ${sUnit === 'ms' ? 'm/s' : 'km/h'} = ${fmtNum(round3(mps), 4)} m/s; t = ${fmtNum(t, 4)} ${tUnit} = ${fmtNum(tS, 4)} s.</li>
+            <li>Distance in metres: ${fmtNum(round3(mps), 4)} × ${fmtNum(tS, 4)} = <strong>${fmtNum(round3(dM), 4)} m</strong>.</li>
+            <li>Distance in kilometres: ${fmtNum(round3(dM), 4)} / 1000 = <strong>${fmtNum(round3(dKm), 4)} km</strong>.</li>
+            <li>Result (in your chosen unit): <strong>${fmtNum(round3(shownValue), 4)} ${shownUnit}</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          <p>🔹 Distance: <strong>${fmtNum(round3(shownValue), 4)} ${shownUnit}</strong> (= ${fmtNum(round3(otherValue), 4)} ${otherUnit}).</p>
+          <p>🔹 Assuming constant speed. Real journeys with stops and speed changes cover less than the ideal d = s × t.</p>
+          <p>🔹 Unit note: keeping speed in m/s and time in s gives distance in m directly. km/h × hours gives km directly.</p>
+        </div>
+      `;
+
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Find time ============ */
+    function calcTime() {
+      const dRaw = tdDistance.value.trim();
+      const sRaw = tdSpeed.value.trim();
+      if (dRaw === '') { showError(tdDistance, 'Enter the distance.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (sRaw === '') { showError(tdSpeed, 'Enter the speed.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const d = parseNum(dRaw);
+      const s = parseNum(sRaw);
+      if (!Number.isFinite(d)) { showError(tdDistance, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (!Number.isFinite(s)) { showError(tdSpeed, 'Enter a valid number.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (d < 0) { showError(tdDistance, 'Distance cannot be negative.'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+      if (s <= 0) { showError(tdSpeed, 'Speed must be greater than 0 (division by zero).'); trackEvent(CALC_NAME, 'invalid_input'); return; }
+
+      const dUnit = tdDistanceUnit.value;
+      const sUnit = tdSpeedUnit.value;
+      const outUnit = tdOutUnit.value;
+      const dM = toMetres(d, dUnit);
+      const mps = toMps(s, sUnit);
+      const tS = dM / mps;
+      const tMin = tS / 60;
+      const tH = tS / 3600;
+      const shownValue = outUnit === 'h' ? tH : outUnit === 'min' ? tMin : tS;
+      const shownUnit = outUnit;
+
+      const pretty = prettyTimeFromHours(tH);
+
+      const html = `
+        <div class="result-label">Time (t = d / s)</div>
+        <div class="cgpa-big-value">${fmtNum(round3(shownValue), 4)}<span class="cgpa-big-scale">${shownUnit}</span></div>
+        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Equivalent: ${fmtNum(round3(tH), 4)} h · ${fmtNum(round3(tMin), 4)} min · ${fmtNum(round3(tS), 4)} s</p>
+        <div style="text-align:center;">
+          <span class="status-badge status-ok">✓ Time computed · ${pretty}</span>
+        </div>
+
+        <div class="cgpa-summary">
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(d, 4)}</div>
+            <div class="cgpa-summary-label">Distance (${dUnit})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(s, 4)}</div>
+            <div class="cgpa-summary-label">Speed (${sUnit === 'ms' ? 'm/s' : 'km/h'})</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(round3(tH), 4)}</div>
+            <div class="cgpa-summary-label">Hours</div>
+          </div>
+          <div class="cgpa-summary-unit">
+            <div class="cgpa-summary-value">${fmtNum(round3(tMin), 4)}</div>
+            <div class="cgpa-summary-label">Minutes</div>
+          </div>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          <ol>
+            <li>Formula: t = d / s.</li>
+            <li>Convert to SI: d = ${fmtNum(d, 4)} ${dUnit} = ${fmtNum(dM, 4)} m; s = ${fmtNum(s, 4)} ${sUnit === 'ms' ? 'm/s' : 'km/h'} = ${fmtNum(round3(mps), 4)} m/s.</li>
+            <li>Time in seconds: ${fmtNum(dM, 4)} / ${fmtNum(round3(mps), 4)} = <strong>${fmtNum(round3(tS), 4)} s</strong>.</li>
+            <li>Convert to minutes: ${fmtNum(round3(tS), 4)} / 60 = <strong>${fmtNum(round3(tMin), 4)} min</strong>.</li>
+            <li>Convert to hours: ${fmtNum(round3(tS), 4)} / 3600 = <strong>${fmtNum(round3(tH), 4)} h</strong>.</li>
+            <li>Result (in your chosen unit): <strong>${fmtNum(round3(shownValue), 4)} ${shownUnit}</strong> (≈ ${pretty}).</li>
+          </ol>
+        </div>
+
+        <div class="cgpa-context">
+          <p>🔹 Time: <strong>${fmtNum(round3(shownValue), 4)} ${shownUnit}</strong>, which is approximately <strong>${pretty}</strong>.</p>
+          <p>🔹 Assumes constant speed throughout. Traffic, stops, and acceleration would increase the real travel time.</p>
+          <p>🔹 For mixed-unit answers (e.g. "2 h 30 min"), the tool reports the human-readable form above the summary tiles.</p>
+        </div>
+      `;
+
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      [sdDistance, sdTime, dsSpeed, dsTime, tdDistance, tdSpeed].forEach(el => { el.value = ''; });
+      [sdDistanceUnit, sdTimeUnit, sdOutUnit, dsSpeedUnit, dsTimeUnit, dsOutUnit,
+       tdDistanceUnit, tdSpeedUnit, tdOutUnit].forEach(el => {
+        if (el.id === 'sd-out-unit') el.value = 'kmh';
+        else if (el.id === 'ds-out-unit') el.value = 'km';
+        else if (el.id === 'td-out-unit') el.value = 'h';
+        else if (el.id === 'sd-time-unit' || el.id === 'ds-time-unit') el.value = 'h';
+        else if (el.id === 'sd-distance-unit' || el.id === 'td-distance-unit') el.value = 'km';
+        else if (el.id === 'ds-speed-unit' || el.id === 'td-speed-unit') el.value = 'kmh';
+        else if (el.id === 'ds-speed-unit') el.value = 'kmh';
+      });
+      mode = 'speed';
+      modeBtns.forEach(b => {
+        const active = b.dataset.mode === 'speed';
+        b.classList.toggle('is-active', active);
+        b.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      panelSpeed.classList.remove('hidden');
+      panelDistance.classList.add('hidden');
+      panelTime.classList.add('hidden');
+      previewEl.innerHTML = 'Preview: enter distance and time';
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>

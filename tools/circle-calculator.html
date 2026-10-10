@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="en" language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <title>Circle Calculator — Radius, Diameter, Circumference &amp; Area | Hira Science Academy</title>
+  <meta content="Free circle calculator. Enter any one of radius, diameter, circumference, or area to find the other three, with step-by-step working and a to-scale diagram." name="description"/>
+  <meta content="circle calculator, radius calculator, diameter calculator, circumference calculator, area of circle, circle formulas, pi" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/circle-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Circle Calculator — Radius, Diameter, Circumference &amp; Area" property="og:title"/>
+  <meta content="Enter any one circle measurement to find the other three." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/circle-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+      { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+      { "@type": "ListItem", "position": 3, "name": "Circle Calculator", "item": "https://hiraacademy.com.pk/tools/circle-calculator.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is pi?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Pi (π) is the ratio of a circle's circumference to its diameter. It is an irrational number, approximately 3.14159265358979. Every circle, no matter its size, has this same ratio, which is why π appears in both the circumference and area formulas." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find the radius from the circumference?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use r = C / (2π). Divide the circumference by 2π. For example, if C = 31.4159, then r = 31.4159 / 6.2832 ≈ 5." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find the diameter from the area?",
+        "acceptedAnswer": { "@type": "Answer", "text": "First find the radius using r = √(A / π), then double it: d = 2√(A / π). For A = 78.5398, r = √(78.5398 / 3.1416) = √25 = 5, so d = 10." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the circumference 2πr and not πr?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Because C = πd and d = 2r. Substituting gives C = π × 2r = 2πr. The two formulas are equivalent — one uses the diameter, the other the radius." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can a circle have negative radius?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. A radius, diameter, circumference, or area is a physical measurement and must be positive (or zero for a degenerate point). This calculator rejects zero and negative values." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between circumference and perimeter?",
+        "acceptedAnswer": { "@type": "Answer", "text": "They are the same concept — the distance around the boundary of the shape. For a circle, we use the special word 'circumference' instead of 'perimeter'. For polygons, we say perimeter." }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com/"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #1f2937; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* LaTeX-style HTML/CSS math */
+    .latex-radical {
+      display: inline-flex;
+      align-items: stretch;
+      font-family: 'JetBrains Mono', monospace;
+      vertical-align: middle;
+      line-height: 1;
+      color: #0b1220;
+    }
+    .latex-radical .r-sign {
+      display: inline-block;
+      font-size: 1.15em;
+      transform: translateY(0.02em);
+      padding-right: 0.02em;
+    }
+    .latex-radical .r-body {
+      display: inline-block;
+      border-top: 1.5px solid currentColor;
+      padding: 0.15em 0.25em 0.05em 0.25em;
+      margin-top: 0.1em;
+    }
+    .latex-frac {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      vertical-align: middle;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1em;
+      line-height: 1.15;
+      margin: 0 0.15em;
+      color: #0b1220;
+    }
+    .latex-frac .f-num {
+      padding: 0 0.35em 0.05em 0.35em;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
+    .latex-frac.big { font-size: 1.35em; }
+    .latex-frac.big .f-num { border-bottom-width: 2px; }
+    .latex-sup {
+      display: inline-block;
+      font-size: 0.72em;
+      vertical-align: super;
+      line-height: 0;
+      font-weight: 600;
+    }
+    .math-block {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.05rem;
+      color: #0b1220;
+      background: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      border-left: 4px solid #0ea5e9;
+      margin: 0.35rem 0 0 0;
+      flex-wrap: wrap;
+      gap: 0.3em;
+      text-align: center;
+      overflow-x: auto;
+    }
+
+    /* Circle diagram */
+    .circle-diagram-wrap {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .circle-diagram-wrap canvas {
+      display: block;
+      width: 100%;
+      height: 280px;
+      border-radius: 0.5rem;
+      background: #ffffff;
+    }
+
+    /* Result cards */
+    .circ-quad-result {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 0.5rem;
+    }
+    .circ-big-card {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.875rem;
+      padding: 1rem 0.9rem;
+      text-align: center;
+    }
+    .circ-big-label {
+      font-size: 0.6875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0369a1;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.35rem;
+    }
+    .circ-big-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #0b1220;
+      line-height: 1.15;
+      word-break: break-word;
+    }
+    .circ-big-unit {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: #64748b;
+      margin-left: 0.2rem;
+    }
+    .circ-big-card.is-answer {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border-color: #a7f3d0;
+    }
+    .circ-big-card.is-answer .circ-big-label { color: #047857; }
+
+    .circ-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1rem;
+    }
+    .circ-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .circ-context strong { color: #0b1220; }
+
+    /* Known-value row */
+    .known-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 0.75rem;
+      align-items: center;
+    }
+    @media (max-width: 480px) {
+      .known-row { grid-template-columns: 1fr; }
+    }
+
+    .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+  </style>
+</head>
+
+<body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Any One Input · Full Working</span>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Circle Calculator</h1>
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Enter any one of radius, diameter, circumference, or area — get the other three with step-by-step working.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
+    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
+        <ol class="flex items-center gap-2 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Circle Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-6 py-10">
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Circle calculator inputs">
+
+      <label for="known-type" class="calc-label">What do you know?</label>
+      <select id="known-type" class="calc-select">
+        <option value="r" selected>Radius (r)</option>
+        <option value="d">Diameter (d)</option>
+        <option value="C">Circumference (C)</option>
+        <option value="A">Area (A)</option>
+      </select>
+
+      <div style="margin-top:1rem;">
+        <label for="known-value" class="calc-label" id="known-value-label">Radius r</label>
+        <input type="text" inputmode="decimal" id="known-value" class="calc-input" placeholder="e.g. 5" autocomplete="off" />
+      </div>
+
+      <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
+        Preview: enter the value you know
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-6">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Calculate</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+
+    <!-- AD -->
+    <div class="my-8 text-center no-print">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this circle calculator does</h2>
+        <p class="leading-relaxed text-justify">
+          A circle is completely determined by any one of its four key measurements: radius, diameter, circumference, or area. This tool takes whichever one you know, computes the other three exactly, and shows every step. It also draws the circle to scale so you can see the actual size against a reference grid. Because π is irrational, most circle answers involve π — the calculator reports both the exact form (like 25π) and the decimal approximation to enough precision to satisfy any school or entrance-test requirement.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Circle formulas</h2>
+
+        <div class="formula-block">
+          <div class="formula-label">Diameter from radius</div>
+          <div class="math-block">
+            <span>d = 2 r</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Circumference</div>
+          <div class="math-block">
+            <span>C = 2 π r</span>
+            <span>&nbsp;&nbsp;=&nbsp;&nbsp;</span>
+            <span>π d</span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Area</div>
+          <div class="math-block">
+            <span>A = π r<sup>2</sup></span>
+            <span>&nbsp;&nbsp;=&nbsp;&nbsp;</span>
+            <span>π <span class="latex-frac"><span class="f-num">d<sup>2</sup></span><span class="f-den">4</span></span></span>
+          </div>
+        </div>
+
+        <div class="formula-block">
+          <div class="formula-label">Inverse formulas</div>
+          <div class="math-block" style="flex-direction:column;align-items:flex-start;gap:0.4rem;">
+            <span>r = d / 2 = C / (2π) = √(A / π)</span>
+            <span>d = 2r = C / π = 2√(A / π)</span>
+            <span>C = 2πr = πd = 2√(π A)</span>
+            <span>A = πr² = πd² / 4 = C² / (4π)</span>
+          </div>
+        </div>
+
+        <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+          <li><strong>r</strong> — radius, the distance from centre to edge.</li>
+          <li><strong>d</strong> — diameter, the distance across the circle through the centre.</li>
+          <li><strong>C</strong> — circumference, the distance around the circle.</li>
+          <li><strong>A</strong> — area, the space enclosed.</li>
+          <li><strong>π</strong> — the constant 3.141592653589793…</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: Given radius r = 5</p>
+          <ol>
+            <li>Diameter: d = 2r = 2 × 5 = <strong>10</strong>.</li>
+            <li>Circumference: C = 2πr = 10π ≈ <strong>31.4159</strong>.</li>
+            <li>Area: A = πr² = 25π ≈ <strong>78.5398</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: Given diameter d = 14</p>
+          <ol>
+            <li>Radius: r = d / 2 = 14 / 2 = <strong>7</strong>.</li>
+            <li>Circumference: C = πd = 14π ≈ <strong>43.9823</strong>.</li>
+            <li>Area: A = πd² / 4 = π × 196 / 4 = 49π ≈ <strong>153.9380</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: Given circumference C = 62.8319 (which is 20π)</p>
+          <ol>
+            <li>Radius: r = C / (2π) = 62.8319 / 6.2832 ≈ <strong>10</strong>.</li>
+            <li>Diameter: d = 2r = <strong>20</strong>.</li>
+            <li>Area: A = πr² = 100π ≈ <strong>314.1593</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: Given area A = 78.5398 (which is 25π)</p>
+          <ol>
+            <li>Radius: r = √(A / π) = √(78.5398 / 3.1416) = √25 = <strong>5</strong>.</li>
+            <li>Diameter: d = 2r = <strong>10</strong>.</li>
+            <li>Circumference: C = 2πr = 10π ≈ <strong>31.4159</strong>.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: A wheel with radius 30 cm rolls once — how far does it travel?</p>
+          <ol>
+            <li>The distance travelled in one revolution equals the circumference.</li>
+            <li>C = 2πr = 2π × 30 = 60π ≈ <strong>188.4956 cm</strong> ≈ 1.885 m.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Where circles appear in Class 9 &amp; 10</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          Circle geometry is one of the largest topics in the Punjab board syllabus, and the formulas here connect to it directly:
+        </p>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Circle theorems</strong> — chord properties, tangents, inscribed angles, cyclic quadrilaterals.</li>
+          <li><strong>Sectors and arcs</strong> — area and arc length are fractions of the full circle.</li>
+          <li><strong>Physics</strong> — circular motion, angular velocity, and the period of a pendulum.</li>
+          <li><strong>Real-life problems</strong> — wheel rotations, area of circular fields, and design problems.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+          <li><strong>Confusing radius with diameter.</strong> The radius is from centre to edge; the diameter is across the whole circle. d = 2r, not r/2.</li>
+          <li><strong>Using the diameter where the radius belongs.</strong> A = πr², not πd². If you know the diameter, halve it first.</li>
+          <li><strong>Forgetting to square the radius for area.</strong> A = πr², not πr. Area grows with the square of the radius.</li>
+          <li><strong>Writing the wrong units.</strong> Circumference and diameter are in linear units (cm, m). Area is in square units (cm², m²). Always attach the correct exponent.</li>
+          <li><strong>Rounding π too early.</strong> Keep π as a symbol until the final step. Rounding to 3.14 too soon introduces avoidable error.</li>
+          <li><strong>Assuming a chord is a diameter.</strong> A diameter is the longest chord — every diameter is a chord, but not every chord is a diameter.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What is pi?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Pi (π) is the ratio of a circle's circumference to its diameter. It is an irrational number, approximately 3.14159265358979. Every circle, no matter its size, has this same ratio, which is why π appears in both the circumference and area formulas.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I find the radius from the circumference?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Use r = C / (2π). Divide the circumference by 2π. For example, if C = 31.4159, then r = 31.4159 / 6.2832 ≈ 5.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I find the diameter from the area?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">First find the radius using r = √(A / π), then double it: d = 2√(A / π). For A = 78.5398, r = √(78.5398 / 3.1416) = √25 = 5, so d = 10.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why is the circumference 2πr and not πr?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Because C = πd and d = 2r. Substituting gives C = π × 2r = 2πr. The two formulas are equivalent — one uses the diameter, the other the radius.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can a circle have negative radius?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">No. A radius, diameter, circumference, or area is a physical measurement and must be positive (or zero for a degenerate point). This calculator rejects zero and negative values.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between circumference and perimeter?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">They are the same concept — the distance around the boundary of the shape. For a circle, we use the special word 'circumference' instead of 'perimeter'. For polygons, we say perimeter.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="area-perimeter-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Area &amp; Perimeter Calculator</a></li>
+          <li><a href="triangle-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Triangle Calculator</a></li>
+          <li><a href="pythagorean-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Pythagorean Theorem Calculator</a></li>
+          <li><a href="square-root-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Square Root Calculator</a></li>
+          <li><a href="scientific-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Scientific Calculator</a></li>
+          <li><a href="physics-formula-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Physics Formula Calculator</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed text-justify">
+          Circle formulas and theorems appear throughout the Class 9 and 10 geometry chapters. Revise with our free
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 52 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <div class="back-to-top" id="backToTop">↑</div>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'circle-calculator';
+
+    const knownTypeEl = document.getElementById('known-type');
+    const knownValueEl = document.getElementById('known-value');
+    const knownLabelEl = document.getElementById('known-value-label');
+    const previewEl = document.getElementById('live-preview');
+    const calcBtn = document.getElementById('calc-btn');
+    const resetBtn = document.getElementById('reset-btn');
+    const resultPanel = document.getElementById('result-panel');
+    const section = document.querySelector('section[aria-label="Circle calculator inputs"]');
+
+    let lastResult = null;
+
+    attachCopyButton(resultPanel, CALC_NAME);
+
+    /* ============ LaTeX helpers ============ */
+    function fracHTML(numHTML, denHTML, big) {
+      const cls = 'latex-frac' + (big ? ' big' : '');
+      return `<span class="${cls}"><span class="f-num">${numHTML}</span><span class="f-den">${denHTML}</span></span>`;
+    }
+
+    /* ============ Number formatting ============ */
+    function fmtNum(x, maxDecimals) {
+      if (maxDecimals === undefined) maxDecimals = 6;
+      if (!Number.isFinite(x)) return '—';
+      if (Number.isInteger(x)) {
+        if (Math.abs(x) < 1e15) return x.toLocaleString('en-US');
+        return x.toExponential(6);
+      }
+      const abs = Math.abs(x);
+      if (abs < 1e-6 || abs >= 1e12) return x.toExponential(6);
+      let s = x.toFixed(maxDecimals);
+      s = s.replace(/0+$/, '');
+      if (s.endsWith('.')) s = s.slice(0, -1);
+      return s;
+    }
+
+    /* ============ Exact π form — try to write r² π as kπ for small k, if k is nice ============ */
+    function piExact(value) {
+      // Try to express value as k × π for nice k.
+      // If value/π is close to a small integer, half-integer, quarter-integer, or simple fraction, return the string.
+      if (!Number.isFinite(value)) return null;
+      const ratio = value / Math.PI;
+      // Try small integer denominators up to 12
+      for (let d = 1; d <= 12; d++) {
+        const num = ratio * d;
+        if (Math.abs(num - Math.round(num)) < 1e-9) {
+          const n = Math.round(num);
+          if (n === 0) return '0';
+          if (d === 1) return `${n}π`;
+          return `${n}π/${d}`;
+        }
+      }
+      // Try simple square roots? Not supported here. Return null.
+      return null;
+    }
+
+    /* ============ Known type change ============ */
+    const KNOWN_LABELS = {
+      r: 'Radius r',
+      d: 'Diameter d',
+      C: 'Circumference C',
+      A: 'Area A'
+    };
+    const KNOWN_PLACEHOLDERS = {
+      r: 'e.g. 5',
+      d: 'e.g. 10',
+      C: 'e.g. 31.4159',
+      A: 'e.g. 78.5398'
+    };
+
+    knownTypeEl.addEventListener('change', () => {
+      const t = knownTypeEl.value;
+      knownLabelEl.textContent = KNOWN_LABELS[t];
+      knownValueEl.placeholder = KNOWN_PLACEHOLDERS[t];
+      knownValueEl.value = '';
+      previewEl.innerHTML = 'Preview: enter the value you know';
+      hideResult(resultPanel);
+      clearAllErrors(section);
+      lastResult = null;
+    });
+
+    /* ============ Preview ============ */
+    function renderPreview() {
+      const t = knownTypeEl.value;
+      const raw = knownValueEl.value.trim();
+      if (raw === '') {
+        previewEl.innerHTML = 'Preview: enter the value you know';
+        return;
+      }
+      const v = parseNum(raw);
+      if (!Number.isFinite(v)) {
+        previewEl.innerHTML = 'Preview: enter a valid number';
+        return;
+      }
+      previewEl.innerHTML = `Find all other circle measurements given ${KNOWN_LABELS[t]} = <span style="color:#0b1220;">${fmtNum(v)}</span>`;
+    }
+    knownValueEl.addEventListener('input', renderPreview);
+
+    /* ============ Main ============ */
+    function calculate() {
+      clearAllErrors(section);
+      const t = knownTypeEl.value;
+      const raw = knownValueEl.value.trim();
+
+      if (raw === '') {
+        showError(knownValueEl, `Enter the ${KNOWN_LABELS[t].toLowerCase()}.`);
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+      const v = parseNum(raw);
+      if (!Number.isFinite(v)) {
+        showError(knownValueEl, 'Enter a valid number.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+      if (v <= 0) {
+        showError(knownValueEl, 'Value must be positive.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      // Compute all four from the known value
+      let r, d, C, A;
+      let stepHTML;
+
+      if (t === 'r') {
+        r = v;
+        d = 2 * r;
+        C = 2 * Math.PI * r;
+        A = Math.PI * r * r;
+        stepHTML = `
+          <ol>
+            <li>Known: radius r = ${fmtNum(r)}.</li>
+            <li>Diameter: d = 2r = 2 × ${fmtNum(r)} = <strong>${fmtNum(d)}</strong>.</li>
+            <li>Circumference: C = 2πr = 2 × π × ${fmtNum(r)} = <strong>${fmtNum(C, 8)}</strong>.</li>
+            <li>Area: A = πr² = π × ${fmtNum(r)}² = π × ${fmtNum(r * r)} = <strong>${fmtNum(A, 8)}</strong>.</li>
+          </ol>
+        `;
+      } else if (t === 'd') {
+        d = v;
+        r = d / 2;
+        C = Math.PI * d;
+        A = Math.PI * d * d / 4;
+        stepHTML = `
+          <ol>
+            <li>Known: diameter d = ${fmtNum(d)}.</li>
+            <li>Radius: r = d / 2 = ${fmtNum(d)} / 2 = <strong>${fmtNum(r)}</strong>.</li>
+            <li>Circumference: C = πd = π × ${fmtNum(d)} = <strong>${fmtNum(C, 8)}</strong>.</li>
+            <li>Area: A = πd² / 4 = π × ${fmtNum(d * d)} / 4 = <strong>${fmtNum(A, 8)}</strong>.</li>
+          </ol>
+        `;
+      } else if (t === 'C') {
+        C = v;
+        r = C / (2 * Math.PI);
+        d = 2 * r;
+        A = Math.PI * r * r;
+        stepHTML = `
+          <ol>
+            <li>Known: circumference C = ${fmtNum(C)}.</li>
+            <li>Radius: r = C / (2π) = ${fmtNum(C)} / (2π) ≈ <strong>${fmtNum(r, 8)}</strong>.</li>
+            <li>Diameter: d = 2r = <strong>${fmtNum(d, 8)}</strong>.</li>
+            <li>Area: A = πr² = π × ${fmtNum(r, 8)}² ≈ <strong>${fmtNum(A, 8)}</strong>.</li>
+          </ol>
+        `;
+      } else {
+        A = v;
+        r = Math.sqrt(A / Math.PI);
+        d = 2 * r;
+        C = 2 * Math.PI * r;
+        stepHTML = `
+          <ol>
+            <li>Known: area A = ${fmtNum(A)}.</li>
+            <li>Radius: r = √(A / π) = √(${fmtNum(A)} / π) ≈ <strong>${fmtNum(r, 8)}</strong>.</li>
+            <li>Diameter: d = 2r = <strong>${fmtNum(d, 8)}</strong>.</li>
+            <li>Circumference: C = 2πr = <strong>${fmtNum(C, 8)}</strong>.</li>
+          </ol>
+        `;
+      }
+
+      // Exact π forms where nice
+      const cExact = piExact(C);
+      const aExact = piExact(A);
+      const dExact = piExact(d);
+      const rExact = piExact(r);
+
+      const exactBadge = (val) => val ? `<div style="font-size:0.6875rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.15rem;">${val}</div>` : '';
+
+      const html = `
+        <div class="result-label">Results</div>
+        <div class="circ-quad-result">
+          <div class="circ-big-card ${t === 'r' ? 'is-answer' : ''}">
+            <div class="circ-big-label">Radius (r)</div>
+            <div class="circ-big-value">${fmtNum(r, 6)}<span class="circ-big-unit">units</span></div>
+            ${exactBadge(rExact)}
+          </div>
+          <div class="circ-big-card ${t === 'd' ? 'is-answer' : ''}">
+            <div class="circ-big-label">Diameter (d)</div>
+            <div class="circ-big-value">${fmtNum(d, 6)}<span class="circ-big-unit">units</span></div>
+            ${exactBadge(dExact)}
+          </div>
+          <div class="circ-big-card ${t === 'C' ? 'is-answer' : ''}">
+            <div class="circ-big-label">Circumference (C)</div>
+            <div class="circ-big-value">${fmtNum(C, 6)}<span class="circ-big-unit">units</span></div>
+            ${exactBadge(cExact)}
+          </div>
+          <div class="circ-big-card ${t === 'A' ? 'is-answer' : ''}">
+            <div class="circ-big-label">Area (A)</div>
+            <div class="circ-big-value">${fmtNum(A, 6)}<span class="circ-big-unit">units²</span></div>
+            ${exactBadge(aExact)}
+          </div>
+        </div>
+
+        <div class="circle-diagram-wrap">
+          <canvas id="circle-canvas" aria-label="Diagram of the circle drawn to scale"></canvas>
+        </div>
+
+        <div class="steps-block">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
+          ${stepHTML}
+        </div>
+
+        <div class="circ-context">
+          <p>🔹 Given <strong>${KNOWN_LABELS[t]} = ${fmtNum(v)}</strong>, the full circle is determined.</p>
+          <p>🔹 Diameter is always twice the radius; circumference is π times the diameter; area is π times the square of the radius.</p>
+          <p>🔹 Exact values where applicable: C = ${cExact || fmtNum(C, 8) + ' (no simple π multiple)'}, A = ${aExact || fmtNum(A, 8) + ' (no simple π multiple)'}.</p>
+          <p>🔹 Decimal approximations use π ≈ 3.14159265358979.</p>
+        </div>
+      `;
+
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+
+      lastResult = { r, d, C, A };
+      requestAnimationFrame(() => drawCircle(r));
+
+      trackEvent(CALC_NAME, 'calculate');
+    }
+
+    /* ============ Circle diagram ============ */
+    function drawCircle(radius) {
+      const canvas = document.getElementById('circle-canvas');
+      if (!canvas) return;
+      const wrap = canvas.parentElement;
+      const W = wrap.clientWidth - 16, H = 280;
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.floor(W * dpr);
+      canvas.height = Math.floor(H * dpr);
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      const ctx = canvas.getContext('2d');
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      const cx = W / 2, cy = H / 2;
+      const maxR = Math.min(W, H) / 2 - 30;
+
+      // We always draw the circle scaled to fill the canvas (so its relative size on the canvas is normalised).
+      // This is a visualisation aid, not an exact scale against a background grid.
+      const drawR = maxR;
+
+      // Fill
+      ctx.beginPath();
+      ctx.arc(cx, cy, drawR, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(14, 165, 233, 0.12)';
+      ctx.fill();
+      ctx.strokeStyle = '#0284c7';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Centre dot
+      ctx.fillStyle = '#0b1220';
+      ctx.beginPath();
+      ctx.arc(cx, cy, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Radius line
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + drawR, cy);
+      ctx.strokeStyle = '#8b5cf6';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Diameter line (dashed, thin)
+      ctx.beginPath();
+      ctx.moveTo(cx - drawR, cy);
+      ctx.lineTo(cx + drawR, cy);
+      ctx.setLineDash([4, 4]);
+      ctx.strokeStyle = '#94a3b8';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Radius label
+      ctx.fillStyle = '#8b5cf6';
+      ctx.font = "bold 13px 'JetBrains Mono', monospace";
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(`r = ${fmtNum(radius, 4)}`, cx + drawR / 2, cy - 12);
+
+      // Centre label
+      ctx.fillStyle = '#0b1220';
+      ctx.font = "11px 'JetBrains Mono', monospace";
+      ctx.fillText('centre', cx, cy + 16);
+    }
+
+    /* ============ Wiring ============ */
+    calcBtn.addEventListener('click', calculate);
+    bindEnterKey(section, calcBtn);
+
+    resetBtn.addEventListener('click', () => {
+      knownTypeEl.value = 'r';
+      knownLabelEl.textContent = KNOWN_LABELS['r'];
+      knownValueEl.placeholder = KNOWN_PLACEHOLDERS['r'];
+      knownValueEl.value = '';
+      previewEl.innerHTML = 'Preview: enter the value you know';
+      hideResult(resultPanel);
+      clearAllErrors(section);
+      lastResult = null;
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (lastResult && resultPanel.classList.contains('is-visible')) {
+          drawCircle(lastResult.r);
+        }
+      }, 200);
+    });
+
+    // Mobile menu + back-to-top
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>
