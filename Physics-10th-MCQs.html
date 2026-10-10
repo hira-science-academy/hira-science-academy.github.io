@@ -121,44 +121,274 @@
 </head>
 <body class="text-gray-800 antialiased">
 
-<!-- Navigation Bar -->
-<nav class="bg-white shadow-lg border-b border-gray-200 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-20">
-      <div class="flex items-center">
-        <a href="index.html" class="flex items-center space-x-3">
-          <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy" class="h-10 w-auto rounded-xl shadow-md" />
-          <span class="text-2xl font-bold bg-gradient-to-r from-teal-600 to-cyan-500 bg-clip-text text-transparent">Hira Science Academy</span>
+
+<!-- HIRA SCIENCE ACADEMY NAVIGATION -->
+<style>
+  .hira-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    background: #ffffff !important;
+    color: #1f2937 !important;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    font-family: Arial, sans-serif;
+  }
+
+  .hira-navbar *,
+  .hira-navbar *::before,
+  .hira-navbar *::after {
+    box-sizing: border-box;
+  }
+
+  .hira-navbar .nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .hira-navbar .nav-row {
+    min-height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .hira-navbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .hira-navbar .brand img {
+    display: block;
+    width: auto;
+    height: 44px;
+    object-fit: contain;
+  }
+
+  .hira-navbar .brand-name {
+    color: #0f766e !important;
+    font-size: 21px;
+    font-weight: 800;
+    white-space: nowrap;
+  }
+
+  .hira-navbar .desktop-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+
+  .hira-navbar .desktop-links > a,
+  .hira-navbar .mobile-links > a {
+    color: #374151 !important;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  .hira-navbar .desktop-links > a:hover,
+  .hira-navbar .mobile-links > a:hover {
+    color: #0d9488 !important;
+  }
+
+  .hira-navbar a.portal-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: #facc15 !important;
+    color: #111827 !important;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .hira-navbar .mobile-toggle {
+    display: none;
+    background: #f3f4f6;
+    color: #111827 !important;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 23px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .hira-navbar .mobile-menu {
+    display: none;
+    background: #ffffff !important;
+    border-top: 1px solid #e5e7eb;
+    padding: 12px 20px 20px;
+  }
+
+  .hira-navbar .mobile-menu.is-open {
+    display: block;
+  }
+
+  .hira-navbar .mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .hira-navbar .mobile-links > a:not(.portal-link) {
+    display: block;
+    padding: 12px;
+    border-radius: 6px;
+  }
+
+  .hira-navbar .mobile-links > a.portal-link {
+    margin-top: 12px;
+  }
+
+  @media (max-width: 1100px) {
+    .hira-navbar .desktop-links {
+      gap: 12px;
+    }
+
+    .hira-navbar .desktop-links > a {
+      font-size: 13px;
+    }
+
+    .hira-navbar .brand-name {
+      font-size: 18px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hira-navbar .desktop-links {
+      display: none !important;
+    }
+
+    .hira-navbar .mobile-toggle {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hira-navbar .nav-row {
+      min-height: 72px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .hira-navbar .nav-container {
+      padding: 0 12px;
+    }
+
+    .hira-navbar .brand {
+      gap: 8px;
+    }
+
+    .hira-navbar .brand img {
+      height: 36px;
+    }
+
+    .hira-navbar .brand-name {
+      font-size: 16px;
+      white-space: normal;
+    }
+  }
+</style>
+
+<nav class="hira-navbar" aria-label="Main navigation">
+  <div class="nav-container">
+    <div class="nav-row">
+
+      <a href="index.html" class="brand">
+        <img
+          src="https://hiraacademy.com.pk/images/logo.webp"
+          alt="Hira Science Academy Logo"
+        />
+        <span class="brand-name">Hira Science Academy</span>
+      </a>
+
+      <div class="desktop-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#notes">Notes</a>
+        <a href="index.html#courses">Courses</a>
+        <a href="index.html#features">Why Us</a>
+        <a href="index.html#tools">Tools &amp; Calculators</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="index.html#blog-preview">Blog</a>
+        <a href="student-portal.html" class="portal-link">
+          🎓 Student Portal
         </a>
       </div>
-      <div class="md:flex space-x-8">
-        <a href="index.html" class="text-gray-700 hover:text-teal-600">Home</a>
-        <a href="index.html#notes" class="text-gray-700 hover:text-teal-600">Notes</a>
-        <a href="index.html#courses" class="text-gray-700 hover:text-teal-600">Courses</a>
-        <a href="index.html#features" class="text-gray-700 hover:text-teal-600">Why Us</a>
-        <a href="index.html#testimonials" class="text-gray-700 hover:text-teal-600">Testimonials</a>
-        <a href="index.html#contact" class="text-gray-700 hover:text-teal-600">Contact</a>
-        <a href="index.html#blog-preview" class="text-gray-700 hover:text-teal-600">Blog</a>
-      </div>
-      <div class="md:hidden">
-        <button id="mobile-menu-button" class="text-gray-700 hover:text-teal-600 p-2">
-          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-        </button>
-      </div>
+
+      <button
+        type="button"
+        class="mobile-toggle"
+        id="hira-mobile-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="hira-mobile-menu"
+      >
+        ☰
+      </button>
+
     </div>
   </div>
-  <div id="mobile-menu" class="md:hidden hidden bg-white shadow-lg absolute top-full left-0 right-0">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-teal-600">Home</a>
-      <a href="index.html#notes" class="block px-3 py-2 text-gray-700 hover:text-teal-600">Notes</a>
-      <a href="index.html#courses" class="block px-3 py-2 text-gray-700 hover:text-teal-600">Courses</a>
-      <a href="index.html#features" class="block px-3 py-2 text-gray-700 hover:text-teal-600">Why Us</a>
-      <a href="index.html#testimonials" class="block px-3 py-2 text-gray-700 hover:text-teal-600">Testimonials</a>
-      <a href="index.html#contact" class="block px-3 py-2 text-gray-700 hover:text-teal-600">Contact</a>
-      <a href="index.html#blog-preview" class="block px-3 py-2 text-gray-700 hover:text-teal-600">Blog</a>
+
+  <div class="mobile-menu" id="hira-mobile-menu">
+    <div class="mobile-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#notes">Notes</a>
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#features">Why Us</a>
+      <a href="index.html#tools">Tools &amp; Calculators</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="index.html#blog-preview">Blog</a>
+      <a href="student-portal.html" class="portal-link">
+        🎓 Student Portal
+      </a>
     </div>
   </div>
 </nav>
+
+<script>
+(function () {
+  const button = document.getElementById("hira-mobile-toggle");
+  const menu = document.getElementById("hira-mobile-menu");
+
+  if (!button || !menu || button.dataset.initialized) return;
+  button.dataset.initialized = "true";
+
+  button.addEventListener("click", function () {
+    const isOpen = menu.classList.toggle("is-open");
+    button.setAttribute("aria-expanded", String(isOpen));
+    button.setAttribute(
+      "aria-label",
+      isOpen ? "Close navigation menu" : "Open navigation menu"
+    );
+    button.textContent = isOpen ? "✕" : "☰";
+  });
+
+  menu.querySelectorAll("a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      menu.classList.remove("is-open");
+      button.setAttribute("aria-expanded", "false");
+      button.setAttribute("aria-label", "Open navigation menu");
+      button.textContent = "☰";
+    });
+  });
+})();
+</script>
+```
 
 <!-- Header -->
 <header class="test-header">
