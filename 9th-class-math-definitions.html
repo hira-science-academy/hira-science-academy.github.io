@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Analytics (same as index) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -64,10 +64,7 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Poppins', 'Inter', 'sans-serif'],
-            display: ['Montserrat', 'sans-serif']
-          },
+          fontFamily: { sans: ['Poppins','Inter','sans-serif'], display: ['Montserrat','sans-serif'] },
           colors: {
             primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
             secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
@@ -77,7 +74,17 @@
     };
   </script>
 
-  <!-- Scroll-Spy & portal animation -->
+  <!-- MathJax for LaTeX rendering (deferred) -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$','$'], ['\\(','\\)']], displayMath: [['$$','$$'], ['\\[','\\]']] },
+      svg: { fontCache: 'global' },
+      options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Styles -->
   <style>
     section { scroll-margin-top: 120px; padding-top: 40px; }
     .nav-link.active { color: #0ea5e9 !important; font-weight: 600; position: relative; }
@@ -105,45 +112,13 @@
       content: ''; position: absolute; top: -6px; right: -6px; width: 10px; height: 10px;
       background: #22c55e; border-radius: 50%; animation: portalPulse 1.8s infinite;
     }
-    .overflow-x-auto::-webkit-scrollbar { display: none; }
-    .overflow-x-auto { -ms-overflow-style: none; scrollbar-width: none; }
 
-    @keyframes scroll-x {
-      0% { transform: translateX(0); opacity: 0; }
-      5% { opacity: 1; }
-      100% { transform: translateX(-50%); opacity: 1; }
-    }
-    .scrolling-text { display: inline-flex; animation: scroll-x 30s linear infinite; white-space: nowrap; }
-    .scrolling-text:hover { animation-play-state: paused; }
-    .announcement-link { color: #ffeb99; font-weight: 600; text-decoration: underline; transition: all 0.3s ease-in-out; }
-    .announcement-link:hover { color: #fff; text-shadow: 0 0 8px rgba(255, 255, 255, 0.9); }
-    .pattern-bg {
-      background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.1) 2%, transparent 2%),
-                        radial-gradient(circle at 75px 75px, rgba(255,255,255,0.1) 2%, transparent 2%);
-      background-size: 100px 100px;
-    }
+    .chapter-card { transition: all 0.2s ease; }
+    .chapter-card .chapter-content { display: none; }
+    .chapter-card.open .chapter-content { display: block; }
+    .toggle-arrow { transition: transform 0.3s; }
+    .chapter-card.open .toggle-arrow { transform: rotate(180deg); }
 
-    /* accordion card styling */
-    .chapter-card {
-      transition: all 0.2s ease;
-    }
-    .chapter-card .chapter-content {
-      display: none;
-    }
-    .chapter-card.open .chapter-content {
-      display: block;
-    }
-    .toggle-arrow {
-      transition: transform 0.3s;
-    }
-    .chapter-card.open .toggle-arrow {
-      transform: rotate(180deg);
-    }
-    .search-highlight {
-      background-color: #fef3c7;
-      border-radius: 4px;
-      padding: 0 2px;
-    }
     .back-to-top {
       position: fixed; bottom: 6rem; right: 1.5rem; background: #0284c7; color: white;
       width: 3.5rem; height: 3.5rem; border-radius: 9999px; display: flex; align-items: center;
@@ -153,18 +128,18 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
-    /* New badge style */
     .new-badge {
       background: linear-gradient(135deg, #8b5cf6, #d4af37);
-      color: white;
-      padding: 0.25rem 0.75rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      box-shadow: 0 2px 5px rgba(139, 92, 246, 0.2);
+      color: white; padding: 0.25rem 0.75rem; border-radius: 50px;
+      font-size: 0.75rem; font-weight: 600; box-shadow: 0 2px 5px rgba(139, 92, 246, 0.2);
     }
     .toc-link { transition: all 0.2s; }
     .toc-link:hover { color: #0284c7; padding-left: 4px; }
+
+    /* Justified text default for prose blocks */
+    .justify-text, .justify-text p, .justify-text li { text-align: justify; }
+    /* MathJax display tweak: keep scroll on small screens */
+    mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
   </style>
 
   <!-- Structured Data: BreadcrumbList + LearningResource (NO FAQPage) -->
@@ -198,20 +173,14 @@
     "educationalLevel": "Secondary",
     "learningResourceType": "Study Guide",
     "inLanguage": ["en", "ur"],
-    "audience": {
-      "@type": "EducationalAudience",
-      "educationalRole": "student"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Class 9 Mathematics Definitions, Punjab Board"
-    }
+    "audience": { "@type": "EducationalAudience", "educationalRole": "student" },
+    "about": { "@type": "Thing", "name": "Class 9 Mathematics Definitions, Punjab Board" }
   }
   </script>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
 
-<!-- ========== NAVIGATION (identical to index) ========== -->
+<!-- ========== NAVIGATION ========== -->
 <nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
@@ -234,8 +203,8 @@
       <div class="flex items-center md:hidden">
         <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
           <span class="sr-only">Open main menu</span>
-          <svg class="block h-6 w-6" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-          <svg class="hidden h-6 w-6" id="menu-icon-close" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+          <svg class="block h-6 w-6" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="hidden h-6 w-6" id="menu-icon-close" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
     </div>
@@ -254,15 +223,10 @@
   </div>
 </nav>
 
-<!-- HERO SECTION -->
+<!-- ========== HERO SECTION ========== -->
 <section class="bg-gradient-to-r from-primary-700 via-secondary-700 to-primary-800 text-white relative py-20 md:py-28 overflow-hidden text-center shadow-lg">
   <div class="absolute inset-0 pointer-events-none"
-       style="
-         background-image:
-           linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-           linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-         background-size: 40px 40px;
-       ">
+       style="background-image:linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;">
   </div>
 
   <div class="max-w-5xl mx-auto px-6 relative z-10">
@@ -294,16 +258,16 @@
   </svg>
 </section>
 
-<!-- INTRO SECTION (80-120 words) -->
+<!-- ========== INTRO (80-120 words) ========== -->
 <section id="intro" class="max-w-6xl mx-auto px-6 mt-12 mb-8">
   <div class="bg-white rounded-2xl shadow-md p-8 border border-gray-100">
-    <p class="text-lg text-gray-700 leading-relaxed text-justify">
+    <p class="text-lg text-gray-700 leading-relaxed justify-text">
       These <strong class="text-primary-600">9th class math definitions for Punjab Board 2027</strong> collect every important term and theorem from the current textbook in one place. They are written for Class 9 students of all Punjab BISE boards who want clear, exam-ready wording for short questions and MCQs. Each chapter's definitions are grouped together and explained in simple English, with Urdu terms where helpful, so both English and Urdu medium students can revise quickly. Use the table of contents to jump to any chapter, then move on to the solved exercises, formula sheet and past papers linked on this page.
     </p>
   </div>
 </section>
 
-<!-- TABLE OF CONTENTS -->
+<!-- ========== TABLE OF CONTENTS ========== -->
 <section id="toc" class="max-w-6xl mx-auto px-6 mb-10">
   <div class="bg-gradient-to-br from-primary-50 via-white to-secondary-50 rounded-2xl shadow-md p-8 border border-gray-200">
     <h2 class="text-2xl font-bold text-gray-900 mb-5 flex items-center"><span class="mr-3">📑</span> Table of Contents</h2>
@@ -327,12 +291,12 @@
   </div>
 </section>
 
-<!-- BOOK INTRO + IMAGE -->
+<!-- ========== BOOK INTRO + IMAGE ========== -->
 <section class="max-w-6xl mx-auto px-6 mb-12 flex flex-col md:flex-row items-center justify-between gap-10">
   <div class="md:w-2/3 text-center md:text-left">
     <h2 class="text-3xl font-bold text-gray-900 mb-4">9th Class Math Definitions – Clear, Chapter-Wise Reference</h2>
-    <p class="text-gray-700 leading-relaxed text-justify mb-4">A precise definition is often the difference between solving a question confidently and getting stuck halfway through it. This page gathers every important <strong class="text-primary-600">definition and theorem</strong> from Class 9 Mathematics, chapter by chapter, explained in <strong class="text-primary-600">clear, student-friendly language</strong> rather than dense textbook wording.</p>
-    <p class="text-gray-700 leading-relaxed text-justify">These definitions follow the <strong class="text-primary-600">Punjab Board 2027 syllabus</strong> and are designed for quick reference — whether you're reviewing a term while solving an exercise, or doing a fast revision pass the night before a board exam.</p>
+    <p class="text-gray-700 leading-relaxed justify-text mb-4">A precise definition is often the difference between solving a question confidently and getting stuck halfway through it. This page gathers every important <strong class="text-primary-600">definition and theorem</strong> from Class 9 Mathematics, chapter by chapter, explained in <strong class="text-primary-600">clear, student-friendly language</strong> rather than dense textbook wording.</p>
+    <p class="text-gray-700 leading-relaxed justify-text">These definitions follow the <strong class="text-primary-600">Punjab Board 2027 syllabus</strong> and are designed for quick reference — whether you're reviewing a term while solving an exercise, or doing a fast revision pass the night before a board exam.</p>
   </div>
   <div class="md:w-1/3 w-full flex justify-center">
     <div class="relative group">
@@ -342,7 +306,7 @@
   </div>
 </section>
 
-<!-- MODAL for image -->
+<!-- ========== MODAL ========== -->
 <div id="imageModal" class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50 p-4" onclick="if(event.target===this) closeModal()">
   <div class="relative max-w-4xl w-full">
     <span class="absolute -top-12 right-0 text-white text-4xl cursor-pointer hover:text-gray-300" onclick="closeModal()">&times;</span>
@@ -350,13 +314,13 @@
   </div>
 </div>
 
-<!-- PRACTICE BANNER -->
+<!-- ========== PRACTICE BANNER ========== -->
 <section class="max-w-6xl mx-auto px-6 my-10">
   <div class="practice-banner bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-8 md:p-10 shadow-xl relative overflow-hidden">
     <div class="relative z-10 flex flex-col md:flex-row items-center justify-between">
       <div class="mb-6 md:mb-0 md:pr-8 text-white">
         <h2 class="text-2xl md:text-3xl font-bold mb-3">Test How Well You Know the Terms</h2>
-        <p class="text-blue-100 text-lg">After reviewing definitions, take our interactive MCQs test tailored to the Punjab syllabus.</p>
+        <p class="text-blue-100 text-lg justify-text">After reviewing definitions, take our interactive MCQs test tailored to the Punjab syllabus.</p>
         <p class="text-blue-50 text-sm mt-2">Test your knowledge with 100 questions and instant results</p>
       </div>
       <a href="https://hiraacademy.com.pk/Mathematics-9th-MCQs.html" class="student-portal-blink bg-yellow-400 text-gray-900 hover:bg-yellow-500 font-bold px-8 py-4 rounded-full shadow-lg transition-all transform hover:-translate-y-1 flex items-center gap-3 text-lg">
@@ -366,7 +330,7 @@
   </div>
 </section>
 
-<!-- SEARCH SECTION -->
+<!-- ========== SEARCH ========== -->
 <section class="max-w-4xl mx-auto px-6 mt-12 mb-8">
   <div class="relative max-w-md mx-auto md:max-w-2xl">
     <span class="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 text-xl">🔍</span>
@@ -375,11 +339,11 @@
   <p class="text-sm text-gray-500 mt-2 text-center">Try "Rational number", "Logarithm", "Trigonometry"</p>
 </section>
 
-<!-- MAIN CHAPTERS ACCORDION -->
+<!-- ========== MAIN CHAPTERS ========== -->
 <main class="max-w-6xl mx-auto px-6 pb-20">
   <div class="mb-10 text-center">
     <h2 class="text-3xl font-bold text-gray-900 mb-3">Definitions – All 13 Chapters</h2>
-    <p class="text-gray-600 max-w-3xl mx-auto">Click on any chapter to open its key terms, definitions, and theorems.</p>
+    <p class="text-gray-600 max-w-3xl mx-auto justify-text">Click on any chapter to open its key terms, definitions, and theorems.</p>
   </div>
 
   <div id="chaptersContainer">
@@ -399,23 +363,23 @@
         </div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Real numbers form the foundation of mathematics. This chapter covers rational and irrational numbers, decimal representation, and operations on real numbers.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Real numbers form the foundation of mathematics. This chapter covers rational and irrational numbers, decimal representation, and operations on real numbers.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
-            <li><strong>Rational number:</strong> A number that can be written as p/q, where p and q are integers and q ≠ 0.</li>
+            <li><strong>Rational number:</strong> A number that can be written as \(\tfrac{p}{q}\), where \(p\) and \(q\) are integers and \(q \neq 0\).</li>
             <li><strong>Irrational number:</strong> A number that cannot be written as a simple fraction; its decimal form does not repeat or end.</li>
-            <li><strong>Terminating decimal:</strong> A decimal that ends after a finite number of digits (e.g., 0.25).</li>
-            <li><strong>Recurring decimal:</strong> A decimal in which a digit or group of digits repeats without ending (e.g., 0.333...).</li>
-            <li><strong>Additive inverse:</strong> The number that gives 0 when added to the original number (e.g., −5 for 5).</li>
-            <li><strong>Multiplicative inverse:</strong> The number that gives 1 when multiplied by the original number (e.g., 1/5 for 5).</li>
+            <li><strong>Terminating decimal:</strong> A decimal that ends after a finite number of digits (e.g., \(0.25\)).</li>
+            <li><strong>Recurring decimal:</strong> A decimal in which a digit or group of digits repeats without ending (e.g., \(0.333\ldots\)).</li>
+            <li><strong>Additive inverse:</strong> The number that gives \(0\) when added to the original number (e.g., \(-5\) for \(5\)).</li>
+            <li><strong>Multiplicative inverse:</strong> The number that gives \(1\) when multiplied by the original number (e.g., \(\tfrac{1}{5}\) for \(5\)).</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Show that 0.333... (recurring) is a rational number.</p>
-          <p class="text-sm text-gray-700 mb-2">Let x = 0.333... Then 10x = 3.333... Subtracting: 9x = 3, so x = 1/3. Since 1/3 is a fraction of two integers, 0.333... is rational.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Simplify √50. Answer: √50 = √(25×2) = 5√2.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Show that \(0.333\ldots\) (recurring) is a rational number.</p>
+          <p class="text-sm text-gray-700 mb-2">Let \(x = 0.333\ldots\). Then \(10x = 3.333\ldots\). Subtracting: \(9x = 3\), so \(x = \tfrac{1}{3}\). Since \(\tfrac{1}{3}\) is a fraction of two integers, \(0.333\ldots\) is rational.</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Simplify \(\sqrt{50}\). Answer: \(\sqrt{50} = \sqrt{25 \times 2} = 5\sqrt{2}\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.1.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Exercise 1.1 Solved</a>
@@ -442,22 +406,22 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Logarithms help simplify complex calculations. This chapter covers laws, common logarithms, and applications in solving exponential equations.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Logarithms help simplify complex calculations. This chapter covers laws, common logarithms, and applications in solving exponential equations.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
-            <li><strong>Logarithm:</strong> If aˣ = y, then logₐ y = x.</li>
-            <li><strong>Common logarithm:</strong> A logarithm with base 10, written as log x.</li>
-            <li><strong>Natural logarithm:</strong> A logarithm with base e, written as ln x.</li>
-            <li><strong>Product law:</strong> logₐ (mn) = logₐ m + logₐ n</li>
-            <li><strong>Quotient law:</strong> logₐ (m/n) = logₐ m − logₐ n</li>
-            <li><strong>Power law:</strong> logₐ (mⁿ) = n logₐ m</li>
+            <li><strong>Logarithm:</strong> If \(a^x = y\), then \(\log_a y = x\).</li>
+            <li><strong>Common logarithm:</strong> A logarithm with base \(10\), written as \(\log x\).</li>
+            <li><strong>Natural logarithm:</strong> A logarithm with base \(e\), written as \(\ln x\).</li>
+            <li><strong>Product law:</strong> \(\log_a (mn) = \log_a m + \log_a n\)</li>
+            <li><strong>Quotient law:</strong> \(\log_a \left(\tfrac{m}{n}\right) = \log_a m - \log_a n\)</li>
+            <li><strong>Power law:</strong> \(\log_a (m^n) = n \log_a m\)</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Find log₂ 32. Since 2⁵ = 32, log₂ 32 = 5.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Solve log x = 2.5. Then x = 10^2.5 ≈ 316.23.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Find \(\log_2 32\). Since \(2^5 = 32\), \(\log_2 32 = 5\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Solve \(\log x = 2.5\). Then \(x = 10^{2.5} \approx 316.23\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter2_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 2 MCQs</a>
@@ -483,23 +447,23 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Sets and functions are fundamental concepts in mathematics with applications in computer science and data analysis.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Sets and functions are fundamental concepts in mathematics with applications in computer science and data analysis.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
             <li><strong>Set:</strong> A well-defined collection of distinct objects.</li>
             <li><strong>Subset:</strong> A set whose every element belongs to another set.</li>
-            <li><strong>Union:</strong> A ∪ B = {x | x ∈ A or x ∈ B}</li>
-            <li><strong>Intersection:</strong> A ∩ B = {x | x ∈ A and x ∈ B}</li>
+            <li><strong>Union:</strong> \(A \cup B = \{x \mid x \in A \text{ or } x \in B\}\)</li>
+            <li><strong>Intersection:</strong> \(A \cap B = \{x \mid x \in A \text{ and } x \in B\}\)</li>
             <li><strong>Function:</strong> A relation where each input has exactly one output.</li>
             <li><strong>Domain:</strong> The set of all possible inputs of a function.</li>
             <li><strong>Range:</strong> The set of all possible outputs of a function.</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> If A = {1, 2, 3} and B = {3, 4, 5}, find A ∪ B and A ∩ B. A ∪ B = {1, 2, 3, 4, 5}; A ∩ B = {3}.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> If f(x) = 2x + 1, find f(3). f(3) = 2(3) + 1 = 7.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> If \(A = \{1, 2, 3\}\) and \(B = \{3, 4, 5\}\), find \(A \cup B\) and \(A \cap B\). \(A \cup B = \{1, 2, 3, 4, 5\}\); \(A \cap B = \{3\}\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> If \(f(x) = 2x + 1\), find \(f(3)\). \(f(3) = 2(3) + 1 = 7\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter3_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 3 MCQs</a>
@@ -524,21 +488,21 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Factorization simplifies algebraic expressions and equations. This chapter covers various factorization techniques and simplification.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Factorization simplifies algebraic expressions and equations. This chapter covers various factorization techniques and simplification.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
             <li><strong>Factorization:</strong> Writing an expression as a product of its factors.</li>
             <li><strong>Common factor:</strong> A factor shared by every term of an expression.</li>
-            <li><strong>a² − b² = (a + b)(a − b)</strong></li>
-            <li><strong>a³ + b³ = (a + b)(a² − ab + b²)</strong></li>
-            <li><strong>a³ − b³ = (a − b)(a² + ab + b²)</strong></li>
+            <li>\(a^2 - b^2 = (a + b)(a - b)\)</li>
+            <li>\(a^3 + b^3 = (a + b)(a^2 - ab + b^2)\)</li>
+            <li>\(a^3 - b^3 = (a - b)(a^2 + ab + b^2)\)</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Factorize x² − 9. x² − 9 = (x + 3)(x − 3).</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Factorize x³ + 8. x³ + 8 = (x + 2)(x² − 2x + 4).</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Factorize \(x^2 - 9\). \(x^2 - 9 = (x + 3)(x - 3)\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Factorize \(x^3 + 8\). \(x^3 + 8 = (x + 2)(x^2 - 2x + 4)\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter4_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 4 MCQs</a>
@@ -564,20 +528,20 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Linear equations and inequalities are essential for solving real-world problems in economics, physics, and engineering.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Linear equations and inequalities are essential for solving real-world problems in economics, physics, and engineering.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
-            <li><strong>Linear equation:</strong> An equation of the form ax + b = 0, where a ≠ 0.</li>
-            <li><strong>Inequality:</strong> A statement that one quantity is greater or less than another (e.g., x > 5).</li>
+            <li><strong>Linear equation:</strong> An equation of the form \(ax + b = 0\), where \(a \neq 0\).</li>
+            <li><strong>Inequality:</strong> A statement that one quantity is greater or less than another (e.g., \(x > 5\)).</li>
             <li><strong>Solution set:</strong> All values that satisfy the equation or inequality.</li>
-            <li><strong>Linear inequality:</strong> An inequality of the form ax + b &lt; 0, ax + b &gt; 0, and so on.</li>
+            <li><strong>Linear inequality:</strong> An inequality of the form \(ax + b < 0\), \(ax + b > 0\), and so on.</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Solve 3x − 7 = 8. 3x = 15, so x = 5.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Solve 2x + 3 > 9. 2x > 6, so x > 3.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Solve \(3x - 7 = 8\). \(3x = 15\), so \(x = 5\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Solve \(2x + 3 > 9\). \(2x > 6\), so \(x > 3\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter5_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 5 MCQs</a>
@@ -601,21 +565,21 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Trigonometry deals with relationships between angles and sides of triangles with applications in architecture and navigation.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Trigonometry deals with relationships between angles and sides of triangles with applications in architecture and navigation.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
-            <li><strong>sin θ = </strong> perpendicular / hypotenuse</li>
-            <li><strong>cos θ = </strong> base / hypotenuse</li>
-            <li><strong>tan θ = </strong> perpendicular / base</li>
-            <li><strong>sin²θ + cos²θ = 1</strong></li>
-            <li><strong>1 + tan²θ = sec²θ</strong></li>
+            <li>\(\sin\theta = \dfrac{\text{perpendicular}}{\text{hypotenuse}}\)</li>
+            <li>\(\cos\theta = \dfrac{\text{base}}{\text{hypotenuse}}\)</li>
+            <li>\(\tan\theta = \dfrac{\text{perpendicular}}{\text{base}}\)</li>
+            <li>\(\sin^2\theta + \cos^2\theta = 1\)</li>
+            <li>\(1 + \tan^2\theta = \sec^2\theta\)</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> In a right triangle, if sin θ = 3/5, find cos θ. cos θ = 4/5 (using sin²θ + cos²θ = 1).</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Find the value of tan 45°. tan 45° = 1.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> In a right triangle, if \(\sin\theta = \tfrac{3}{5}\), find \(\cos\theta\). Using \(\sin^2\theta + \cos^2\theta = 1\), \(\cos\theta = \tfrac{4}{5}\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Find the value of \(\tan 45^\circ\). \(\tan 45^\circ = 1\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter6_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 6 MCQs</a>
@@ -644,20 +608,20 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Coordinate geometry connects algebra and geometry with applications in computer graphics and engineering.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Coordinate geometry connects algebra and geometry with applications in computer graphics and engineering.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
             <li><strong>Cartesian plane:</strong> A plane formed by two perpendicular number lines called axes.</li>
-            <li><strong>Distance formula:</strong> d = √[(x₂ − x₁)² + (y₂ − y₁)²]</li>
-            <li><strong>Midpoint formula:</strong> M = ((x₁ + x₂)/2, (y₁ + y₂)/2)</li>
-            <li><strong>Slope of a line:</strong> m = (y₂ − y₁) / (x₂ − x₁)</li>
+            <li><strong>Distance formula:</strong> \(d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\)</li>
+            <li><strong>Midpoint formula:</strong> \(M = \left(\dfrac{x_1 + x_2}{2},\ \dfrac{y_1 + y_2}{2}\right)\)</li>
+            <li><strong>Slope of a line:</strong> \(m = \dfrac{y_2 - y_1}{x_2 - x_1}\)</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Find the distance between A(1, 2) and B(4, 6). d = √[(4−1)² + (6−2)²] = √(9 + 16) = √25 = 5.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Find the midpoint of A(1, 2) and B(4, 6). M = ((1+4)/2, (2+6)/2) = (2.5, 4).</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Find the distance between \(A(1, 2)\) and \(B(4, 6)\). \(d = \sqrt{(4-1)^2 + (6-2)^2} = \sqrt{9 + 16} = \sqrt{25} = 5\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Find the midpoint of \(A(1, 2)\) and \(B(4, 6)\). \(M = \left(\tfrac{1+4}{2}, \tfrac{2+6}{2}\right) = (2.5,\ 4)\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter7_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 7 MCQs</a>
@@ -682,21 +646,21 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Logic forms the basis of mathematical reasoning and computer programming.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Logic forms the basis of mathematical reasoning and computer programming.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
             <li><strong>Statement:</strong> A sentence that is either true or false, but not both.</li>
-            <li><strong>Negation:</strong> The opposite of a statement (~p).</li>
-            <li><strong>Conjunction:</strong> p ∧ q (true only when both p and q are true).</li>
-            <li><strong>Disjunction:</strong> p ∨ q (true when at least one of p or q is true).</li>
+            <li><strong>Negation:</strong> The opposite of a statement, written \(\sim p\).</li>
+            <li><strong>Conjunction:</strong> \(p \land q\) (true only when both \(p\) and \(q\) are true).</li>
+            <li><strong>Disjunction:</strong> \(p \lor q\) (true when at least one of \(p\) or \(q\) is true).</li>
             <li><strong>Truth table:</strong> A table showing all possible truth values of a statement.</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> If p is true and q is false, find the truth value of p ∧ q. p ∧ q is false because q is false.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> If p is true and q is false, find p ∨ q. p ∨ q is true because p is true.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> If \(p\) is true and \(q\) is false, find \(p \land q\). \(p \land q\) is false because \(q\) is false.</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> If \(p\) is true and \(q\) is false, find \(p \lor q\). \(p \lor q\) is true because \(p\) is true.</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter8_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 8 MCQs</a>
@@ -718,20 +682,20 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Similar figures have the same shape but different sizes with applications in map reading and scale models.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Similar figures have the same shape but different sizes with applications in map reading and scale models.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
             <li><strong>Similar figures:</strong> Figures with the same shape but not necessarily the same size.</li>
             <li><strong>Congruent figures:</strong> Figures with the same shape and the same size.</li>
-            <li><strong>Ratio of areas:</strong> If sides are in ratio a:b, areas are in ratio a²:b².</li>
-            <li><strong>Ratio of volumes:</strong> If sides are in ratio a:b, volumes are in ratio a³:b³.</li>
+            <li><strong>Ratio of areas:</strong> If sides are in ratio \(a : b\), areas are in ratio \(a^2 : b^2\).</li>
+            <li><strong>Ratio of volumes:</strong> If sides are in ratio \(a : b\), volumes are in ratio \(a^3 : b^3\).</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Two triangles are similar with sides in ratio 2:3. If the area of the smaller is 20 cm², find the area of the larger. Area ratio = 4:9, so larger area = 20 × (9/4) = 45 cm².</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> If two cubes have sides in ratio 1:2, find the ratio of their volumes. Volume ratio = 1³:2³ = 1:8.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Two triangles are similar with sides in ratio \(2:3\). If the area of the smaller is \(20\text{ cm}^2\), find the area of the larger. Area ratio = \(4:9\), so larger area = \(20 \times \tfrac{9}{4} = 45\text{ cm}^2\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> If two cubes have sides in ratio \(1:2\), find the ratio of their volumes. Volume ratio = \(1^3 : 2^3 = 1:8\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter9_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 9 MCQs</a>
@@ -757,20 +721,20 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Graphs provide visual representations of functions with applications in economics and science.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Graphs provide visual representations of functions with applications in economics and science.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
-            <li><strong>Linear function:</strong> f(x) = mx + c; its graph is a straight line.</li>
-            <li><strong>Quadratic function:</strong> f(x) = ax² + bx + c; its graph is a parabola.</li>
+            <li><strong>Linear function:</strong> \(f(x) = mx + c\); its graph is a straight line.</li>
+            <li><strong>Quadratic function:</strong> \(f(x) = ax^2 + bx + c\); its graph is a parabola.</li>
             <li><strong>Vertex:</strong> The turning point of a parabola.</li>
             <li><strong>Intercept:</strong> The point where a graph crosses an axis.</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Graph f(x) = 2x + 1. Plot points (0,1), (1,3), (2,5) and draw a straight line.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Graph f(x) = x². Plot points (0,0), (1,1), (2,4), (−1,1), (−2,4) and draw a parabola.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Graph \(f(x) = 2x + 1\). Plot points \((0,1)\), \((1,3)\), \((2,5)\) and draw a straight line.</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Graph \(f(x) = x^2\). Plot points \((0,0)\), \((1,1)\), \((2,4)\), \((-1,1)\), \((-2,4)\) and draw a parabola.</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter10_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 10 MCQs</a>
@@ -794,8 +758,8 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Loci are sets of points satisfying specific conditions with applications in engineering design.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Loci are sets of points satisfying specific conditions with applications in engineering design.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
             <li><strong>Locus:</strong> A set of points that satisfy a given condition.</li>
@@ -803,10 +767,10 @@
             <li><strong>Locus of points equidistant from two points:</strong> The perpendicular bisector of the line segment.</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Construct the locus of points equidistant from two given points A and B. Draw the perpendicular bisector of AB.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Construct the locus of points at a distance of 3 cm from a fixed point O. Draw a circle with center O and radius 3 cm.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Construct the locus of points equidistant from two given points \(A\) and \(B\). Draw the perpendicular bisector of \(AB\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Construct the locus of points at a distance of \(3\text{ cm}\) from a fixed point \(O\). Draw a circle with center \(O\) and radius \(3\text{ cm}\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter11_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 11 MCQs</a>
@@ -830,8 +794,8 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Information handling is crucial in data analysis and decision making.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Information handling is crucial in data analysis and decision making.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
             <li><strong>Mean:</strong> Sum of all values divided by the number of values.</li>
@@ -840,10 +804,10 @@
             <li><strong>Frequency:</strong> The number of times a value occurs.</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Find the mean of 4, 8, 6, 10, 12. Mean = (4+8+6+10+12)/5 = 40/5 = 8.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Find the median of 3, 5, 7, 9, 11. Median = 7 (middle value).</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> Find the mean of \(4, 8, 6, 10, 12\). Mean \(= \dfrac{4+8+6+10+12}{5} = \dfrac{40}{5} = 8\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> Find the median of \(3, 5, 7, 9, 11\). Median \(= 7\) (middle value).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter12_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 12 MCQs</a>
@@ -867,20 +831,20 @@
         <div class="flex items-center gap-3"><span class="new-badge">Updated 2027</span><span class="toggle-arrow text-2xl text-primary-600">↓</span></div>
       </div>
       <div class="chapter-content bg-gray-50 p-5 border-t border-gray-200 rounded-b-2xl">
-        <p class="text-gray-700 mb-3 text-justify">Probability quantifies uncertainty in scientific research and finance.</p>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <p class="text-gray-700 mb-3 justify-text">Probability quantifies uncertainty in scientific research and finance.</p>
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Key Definitions &amp; Theorems</h4>
           <ul class="text-sm text-gray-700 space-y-2 list-disc pl-5">
-            <li><strong>Probability:</strong> P(E) = Number of favourable outcomes / Total number of possible outcomes.</li>
+            <li><strong>Probability:</strong> \(P(E) = \dfrac{\text{number of favourable outcomes}}{\text{total number of possible outcomes}}\)</li>
             <li><strong>Sample space:</strong> The set of all possible outcomes.</li>
             <li><strong>Event:</strong> A subset of the sample space.</li>
-            <li><strong>Complement:</strong> P(not E) = 1 − P(E).</li>
+            <li><strong>Complement:</strong> \(P(\text{not } E) = 1 - P(E)\).</li>
           </ul>
         </div>
-        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200">
+        <div class="bg-white rounded-lg p-4 mb-4 border border-gray-200 justify-text">
           <h4 class="font-semibold text-primary-700 mb-2">Worked Example</h4>
-          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> A fair die is rolled. Find the probability of getting an even number. Favorable outcomes: 2, 4, 6. P(even) = 3/6 = 1/2.</p>
-          <p class="text-sm text-gray-700"><strong>Example 2:</strong> A coin is tossed. Find the probability of getting heads. P(heads) = 1/2.</p>
+          <p class="text-sm text-gray-700 mb-2"><strong>Example 1:</strong> A fair die is rolled. Find the probability of getting an even number. Favorable outcomes: \(2, 4, 6\). \(P(\text{even}) = \tfrac{3}{6} = \tfrac{1}{2}\).</p>
+          <p class="text-sm text-gray-700"><strong>Example 2:</strong> A coin is tossed. Find the probability of getting heads. \(P(\text{heads}) = \tfrac{1}{2}\).</p>
         </div>
         <div class="flex flex-wrap gap-2 mb-4">
           <a href="https://hiraacademy.com.pk/notes/math9/Chapter13_MCQs.html" class="text-xs bg-primary-100 text-primary-700 px-3 py-1 rounded-full hover:bg-primary-200">Chapter 13 MCQs</a>
@@ -899,7 +863,7 @@
     </div>
   </div>
 
-  <!-- RELATED PAGES SECTION -->
+  <!-- RELATED PAGES -->
   <section id="related" class="mt-16">
     <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
       <h2 class="text-2xl font-bold text-gray-900 mb-6 flex items-center"><span class="mr-3">🔗</span> Related Pages</h2>
@@ -917,10 +881,10 @@
     </div>
   </section>
 
-  <!-- FAQ SECTION (HTML only, no FAQ schema) -->
+  <!-- FAQ (HTML only, no FAQ schema) -->
   <section id="faq" class="mt-16 mb-12">
     <h2 class="text-2xl font-bold text-center text-gray-900 mb-8">Frequently Asked Questions About Math Definitions</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-justify max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 justify-text max-w-6xl mx-auto">
       <div class="bg-white rounded-2xl shadow-md p-6 border border-gray-100">
         <h3 class="text-lg font-bold text-primary-600 mb-2">Are definitions provided for every chapter?</h3>
         <p class="text-gray-700 text-sm">Yes, key definitions and theorems are provided for all 13 chapters under the Punjab Board 2027 syllabus.</p>
@@ -956,13 +920,12 @@
     </div>
   </section>
 
-  <!-- LAST UPDATED -->
   <div class="text-center text-sm text-gray-500 mt-8 mb-4">
     <p>Last updated: 11 October 2026</p>
   </div>
 </main>
 
-<!-- 🧭 Internal Linking Section (Accordion) -->
+<!-- ========== INTERNAL LINKING ACCORDION ========== -->
 <section class="max-w-7xl mx-auto px-6 pb-14">
   <details class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
     <summary class="text-2xl md:text-3xl font-bold text-primary-700 cursor-pointer hover:text-primary-600 list-none flex items-center justify-center gap-3 text-center">
@@ -971,7 +934,7 @@
 
     <div class="mt-8">
       <h2 class="text-2xl font-bold text-center text-primary-700 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
-      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
+      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto justify-text">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Class 9 Resources -->
@@ -1013,11 +976,11 @@
   </details>
 </section>
 
-<!-- FOOTER -->
+<!-- ========== FOOTER ========== -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
   <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
-      <div class="md:col-span-1 text-center md:text-left"><a href="https://hiraacademy.com.pk/index.html" class="flex flex-col md:flex-row items-center md:items-start gap-3 group"><img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" width="40" height="40" /><span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span></a><p class="mt-4 text-sm text-gray-200">Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p></div>
+      <div class="md:col-span-1 text-center md:text-left"><a href="https://hiraacademy.com.pk/index.html" class="flex flex-col md:flex-row items-center md:items-start gap-3 group"><img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" width="40" height="40" /><span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span></a><p class="mt-4 text-sm text-gray-200 justify-text">Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p></div>
       <div class="text-center md:text-left"><h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3><ul class="space-y-2"><li><a href="https://hiraacademy.com.pk/courses-details.html#class9" class="hover:text-cyan-400">9th Class</a></li><li><a href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li><li><a href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical/Pre-Engineering)</a></li><li><a href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li></ul></div>
       <div class="text-center md:text-left"><h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3><ul class="space-y-2"><li><a href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li><li><a href="https://hiraacademy.com.pk/career-services.html">Career Guidance</a></li><li><a href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li><li><a href="https://hiraacademy.com.pk/alumni-network.html">Alumni Network</a></li><li><a href="https://hiraacademy.com.pk/events.html">Events &amp; Workshops</a></li></ul></div>
       <div class="text-center md:text-left"><h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3><ul class="space-y-2"><li><a href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li><li><a href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li><li><a href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li><li><a href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li></ul></div>
@@ -1027,15 +990,9 @@
   </div>
 </footer>
 
-<!-- BACK TO TOP -->
 <div class="back-to-top" id="backToTop">↑</div>
 
-<!-- WHATSAPP FLOATING BUTTON -->
-<a href="https://wa.me/923007242631?text=Assalam-o-Alaikum%2C%20I%20want%20information%20about%20admission%20at%20Hira%20Science%20Academy."
-target="_blank"
-rel="noopener noreferrer"
-aria-label="Chat with Hira Science Academy on WhatsApp"
-class="fixed bottom-6 left-6 z-50 group">
+<a href="https://wa.me/923007242631?text=Assalam-o-Alaikum%2C%20I%20want%20information%20about%20admission%20at%20Hira%20Science%20Academy." target="_blank" rel="noopener noreferrer" aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group">
   <div class="flex items-center gap-3">
     <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-focus-visible:ring-4 group-focus-visible:ring-green-400/50">
       <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
@@ -1049,7 +1006,6 @@ class="fixed bottom-6 left-6 z-50 group">
   <span class="sr-only">Chat with Hira Science Academy on WhatsApp</span>
 </a>
 
-<!-- JAVASCRIPT -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const btn = document.getElementById('mobile-menu-button');
@@ -1063,7 +1019,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   document.querySelectorAll('.chapter-header').forEach(header => {
-    header.addEventListener('click', function(e) {
+    header.addEventListener('click', function() {
       const card = this.closest('.chapter-card');
       const isOpen = card.classList.contains('open');
       document.querySelectorAll('.chapter-card').forEach(c => {
