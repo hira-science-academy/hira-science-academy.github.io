@@ -53,7 +53,7 @@
         "image": { "@type": "ImageObject", "url": "https://hiraacademy.com.pk/images/og-image-osm.jpg", "width": 1200, "height": 630 },
         "datePublished": "2026-10-27T08:00:00+05:00",
         "dateModified": "2026-10-27T14:30:00+05:00",
-        "wordCount": 4500,
+        "wordCount": 5500,
         "articleSection": "Examination",
         "inLanguage": ["en", "ur"],
         "author": {
@@ -125,6 +125,10 @@
     .card-rose { border-top: 4px solid #be123c; }
     .card-teal { border-top: 4px solid #0f766e; }
     .card-cyan { border-top: 4px solid #0e7490; }
+    .card-indigo { border-top: 4px solid #4338ca; }
+    .card-sky { border-top: 4px solid #0369a1; }
+    .card-emerald { border-top: 4px solid #047857; }
+    .card-orange { border-top: 4px solid #c2410c; }
 
     nav.bg-white\/80 { background: rgba(255, 255, 255, 0.95) !important; backdrop-filter: blur(12px); border-bottom: 1px solid #e2e8f0; }
     .bg-blue-900 { background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important; }
@@ -338,87 +342,104 @@
 
     .comment-item { border-left: 3px solid #1e40af; padding: 0.75rem 1rem; margin-bottom: 1rem; background: #ffffff; border-radius: 0.75rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
     .comment-item .role-badge { font-size: 0.7rem; background: #dbeafe; color: #1e3a8a; padding: 0.15rem 0.7rem; border-radius: 999px; font-weight: 700; }
-/* ===== READING PROGRESS BAR (Below Navigation) ===== */
-.reading-progress-container {
-  position: fixed;
-  top: 80px; /* Height of your navigation bar (h-20 = 5rem = 80px) */
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: rgba(30, 64, 175, 0.08);
-  z-index: 45; /* Below nav (z-50) but above content */
-  pointer-events: none;
-  transition: top 0.3s ease;
-}
 
-/* Mobile adjustment (mobile menu height is also 80px) */
-@media (max-width: 768px) {
-  .reading-progress-container {
-    top: 80px;
-  }
-}
+    /* ===== Related Article Cards ===== */
+    .related-card {
+      display: block;
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid #e2e8f0;
+      border-top: 4px solid #1e40af;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      height: 100%;
+    }
+    .related-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(30,64,175,0.15);
+      border-top-color: #6d28d9;
+    }
+    .related-card:hover h3 { color: #1e40af; }
+    .related-emoji { font-size: 2.25rem; display: block; margin-bottom: 0.5rem; }
 
-.reading-progress-bar {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #1e40af 0%, #6d28d9 50%, #be123c 100%);
-  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.5);
-  transition: width 0.1s ease-out;
-  border-radius: 0 3px 3px 0;
-  position: relative;
-}
+    /* ===== READING PROGRESS BAR (Below Navigation) ===== */
+    .reading-progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(30, 64, 175, 0.08);
+      z-index: 45;
+      pointer-events: none;
+      transition: top 0.3s ease;
+    }
 
-.reading-progress-bar::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 40px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7));
-  animation: shimmer 1.5s infinite;
-}
+    @media (max-width: 768px) {
+      .reading-progress-container { top: 80px; }
+    }
 
-@keyframes shimmer {
-  0% { opacity: 0.3; }
-  50% { opacity: 1; }
-  100% { opacity: 0.3; }
-}
+    .reading-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #1e40af 0%, #6d28d9 50%, #be123c 100%);
+      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.5);
+      transition: width 0.1s ease-out;
+      border-radius: 0 3px 3px 0;
+      position: relative;
+    }
 
-/* Percentage Badge */
-.reading-progress-badge {
-  position: fixed;
-  top: 92px; /* Just below the progress bar (80px nav + 4px bar + 8px gap) */
-  right: 16px;
-  background: linear-gradient(135deg, #1e40af, #6d28d9);
-  color: white;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 45;
-  pointer-events: none;
-  letter-spacing: 0.03em;
-}
+    .reading-progress-bar::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 40px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.7));
+      animation: shimmer 1.5s infinite;
+    }
 
-.reading-progress-badge.show {
-  opacity: 1;
-  visibility: visible;
-}
+    @keyframes shimmer {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
 
-@media (max-width: 640px) {
-  .reading-progress-badge {
-    top: 92px;
-    right: 12px;
-    font-size: 0.65rem;
-    padding: 0.3rem 0.7rem;
-  }
-}
-</style>
+    .reading-progress-badge {
+      position: fixed;
+      top: 92px;
+      right: 16px;
+      background: linear-gradient(135deg, #1e40af, #6d28d9);
+      color: white;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(30, 64, 175, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 45;
+      pointer-events: none;
+      letter-spacing: 0.03em;
+    }
+
+    .reading-progress-badge.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 640px) {
+      .reading-progress-badge {
+        top: 92px;
+        right: 12px;
+        font-size: 0.65rem;
+        padding: 0.3rem 0.7rem;
+      }
+    }
+  </style>
 </head>
 <body class="bg-slate-50 text-black font-sans antialiased">
 <!-- ===== READING PROGRESS BAR ===== -->
@@ -441,7 +462,7 @@
         <a href="https://hiraacademy.com.pk/index.html#home" class="text-black hover:text-blue-700 px-2 py-2 text-sm font-bold">Home</a>
         <a href="https://hiraacademy.com.pk/index.html#notes" class="text-black hover:text-blue-700 px-2 py-2 text-sm font-bold">Notes</a>
         <a href="https://hiraacademy.com.pk/index.html#courses" class="text-black hover:text-blue-700 px-2 py-2 text-sm font-bold">Courses</a>
-        <a href="https://hiraacademy.com.pk/index.html#blog-preview" class="text-black hover:text-blue-700 px-2 py-2 text-sm font-bold">Blog</a>
+        <a href="https://hiraacademy.com.pk/blog.html" class="text-black hover:text-blue-700 px-2 py-2 text-sm font-bold">Blog</a>
         <a href="https://hiraacademy.com.pk/index.html#contact" class="text-black hover:text-blue-700 px-2 py-2 text-sm font-bold">Contact</a>
         <a href="https://hiraacademy.com.pk/student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105"><span>🎓</span> Student Portal</a>
       </div>
@@ -459,7 +480,7 @@
       <a href="https://hiraacademy.com.pk/index.html#home" class="block px-3 py-3 rounded-md text-base font-bold text-black hover:text-blue-700 hover:bg-gray-50">Home</a>
       <a href="https://hiraacademy.com.pk/index.html#notes" class="block px-3 py-3 rounded-md text-base font-bold text-black hover:text-blue-700 hover:bg-gray-50">Notes</a>
       <a href="https://hiraacademy.com.pk/index.html#courses" class="block px-3 py-3 rounded-md text-base font-bold text-black hover:text-blue-700 hover:bg-gray-50">Courses</a>
-      <a href="https://hiraacademy.com.pk/index.html#blog-preview" class="block px-3 py-3 rounded-md text-base font-bold text-black hover:text-blue-700 hover:bg-gray-50">Blog</a>
+      <a href="https://hiraacademy.com.pk/blog.html" class="block px-3 py-3 rounded-md text-base font-bold text-black hover:text-blue-700 hover:bg-gray-50">Blog</a>
       <a href="https://hiraacademy.com.pk/index.html#contact" class="block px-3 py-3 rounded-md text-base font-bold text-black hover:text-blue-700 hover:bg-gray-50">Contact</a>
       <div class="pt-4"><a href="https://hiraacademy.com.pk/student-portal.html" class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-black bg-yellow-400">🎓 Student Portal</a></div>
     </div>
@@ -478,15 +499,15 @@
       On-Screen Marking (OSM) System in Punjab Boards 2027
     </h1>
     <p class="text-lg md:text-xl text-blue-100 mb-2 font-light">Complete Guide for Students and Teachers</p>
-    <p class="text-sm text-blue-200/90 mb-1">Published: October 27, 2026</p>
-    <p class="text-sm text-blue-100/80 max-w-2xl mx-auto">Understand OSM, E-Sheets, Answer-Sheet Rules, Digital Marking, Sample OSM Sheet and How Students Should Prepare</p>
+    <p class="text-sm text-blue-200/90 mb-1">Published: October 27, 2026 · Updated: October 27, 2026</p>
+    <p class="text-sm text-blue-100/80 max-w-2xl mx-auto">Understand OSM, E-Sheets, Answer-Sheet Rules, Digital Marking, AI Marking, Sample OSM Sheet and How Students Should Prepare</p>
   </div>
   <svg class="absolute bottom-0 left-0 w-full text-slate-50" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
     <path fill="currentColor" d="M0,32 C240,60 480,0 720,16 C960,32 1200,60 1440,24 L1440,60 L0,60 Z"></path>
   </svg>
 </header>
 
-<!-- ===== AUTHOR BYLINE (FIXED ALIGNMENT) ===== -->
+<!-- ===== AUTHOR BYLINE ===== -->
 <div class="max-w-4xl mx-auto px-4 sm:px-6 mt-6 relative z-20">
   <div class="bg-white rounded-2xl p-5 md:p-6 shadow-lg border border-slate-200">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
@@ -502,41 +523,29 @@
       </div>
       <div class="flex flex-wrap items-center gap-2 sm:justify-end">
         <span class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-900 px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">📅 Oct 27, 2026</span>
-        <span class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-900 px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">⏱️ 12 min read</span>
+        <span class="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-900 px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">⏱️ 15 min read</span>
         <span class="inline-flex items-center gap-1.5 bg-green-50 border border-green-200 text-green-900 px-3 py-1.5 rounded-full text-xs font-bold whitespace-nowrap">✅ Fact-checked</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===== TABLE OF CONTENTS (FIXED ALIGNMENT) ===== -->
+<!-- ===== TABLE OF CONTENTS ===== -->
 <div class="max-w-4xl mx-auto px-4 sm:px-6 mt-6 relative z-20">
   <div class="bg-white/95 backdrop-blur-md rounded-2xl p-5 shadow-lg border border-slate-200">
     <p class="text-black font-bold mb-4 text-base flex items-center gap-2">
       <span class="text-blue-700">📑</span> In This Article:
     </p>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-      <a href="#what-is-osm" class="flex items-center gap-2 text-blue-800 hover:text-blue-950 hover:bg-blue-50 transition rounded-lg px-3 py-2 text-sm font-bold">
-        <span>📖</span> What is OSM
-      </a>
-      <a href="#sample-sheet" class="flex items-center gap-2 text-emerald-800 hover:text-emerald-950 hover:bg-emerald-50 transition rounded-lg px-3 py-2 text-sm font-bold">
-        <span>📄</span> Sample Sheet + Download
-      </a>
-      <a href="#how-osm-works" class="flex items-center gap-2 text-rose-800 hover:text-rose-950 hover:bg-rose-50 transition rounded-lg px-3 py-2 text-sm font-bold">
-        <span>⚙️</span> How OSM Works
-      </a>
-      <a href="#student-rules" class="flex items-center gap-2 text-indigo-800 hover:text-indigo-950 hover:bg-indigo-50 transition rounded-lg px-3 py-2 text-sm font-bold">
-        <span>📝</span> Student Rules
-      </a>
-      <a href="#teachers-guide" class="flex items-center gap-2 text-teal-800 hover:text-teal-950 hover:bg-teal-50 transition rounded-lg px-3 py-2 text-sm font-bold">
-        <span>👩‍🏫</span> Teachers Guide
-      </a>
-      <a href="#faqs" class="flex items-center gap-2 text-cyan-800 hover:text-cyan-950 hover:bg-cyan-50 transition rounded-lg px-3 py-2 text-sm font-bold">
-        <span>❓</span> FAQs
-      </a>
-      <a href="#share" class="flex items-center gap-2 text-purple-800 hover:text-purple-950 hover:bg-purple-50 transition rounded-lg px-3 py-2 text-sm font-bold sm:col-span-2">
-        <span>📢</span> Share This Guide
-      </a>
+      <a href="#what-is-osm" class="flex items-center gap-2 text-blue-800 hover:text-blue-950 hover:bg-blue-50 transition rounded-lg px-3 py-2 text-sm font-bold"><span>📖</span> What is OSM</a>
+      <a href="#why-digital" class="flex items-center gap-2 text-green-800 hover:text-green-950 hover:bg-green-50 transition rounded-lg px-3 py-2 text-sm font-bold"><span>🎯</span> Why Digital</a>
+      <a href="#sample-sheet" class="flex items-center gap-2 text-emerald-800 hover:text-emerald-950 hover:bg-emerald-50 transition rounded-lg px-3 py-2 text-sm font-bold"><span>📄</span> Sample Sheet + Download</a>
+      <a href="#student-rules" class="flex items-center gap-2 text-indigo-800 hover:text-indigo-950 hover:bg-indigo-50 transition rounded-lg px-3 py-2 text-sm font-bold"><span>📝</span> Student Rules</a>
+      <a href="#punjab-reforms" class="flex items-center gap-2 text-purple-800 hover:text-purple-950 hover:bg-purple-50 transition rounded-lg px-3 py-2 text-sm font-bold"><span>🆕</span> Punjab Exam Reforms</a>
+      <a href="#teachers-guide" class="flex items-center gap-2 text-teal-800 hover:text-teal-950 hover:bg-teal-50 transition rounded-lg px-3 py-2 text-sm font-bold"><span>👩‍🏫</span> Teachers Guide</a>
+      <a href="#faqs" class="flex items-center gap-2 text-cyan-800 hover:text-cyan-950 hover:bg-cyan-50 transition rounded-lg px-3 py-2 text-sm font-bold"><span>❓</span> FAQs</a>
+      <a href="#related" class="flex items-center gap-2 text-amber-800 hover:text-amber-950 hover:bg-amber-50 transition rounded-lg px-3 py-2 text-sm font-bold"><span>🔗</span> Related Articles</a>
+      <a href="#share" class="flex items-center gap-2 text-purple-800 hover:text-purple-950 hover:bg-purple-50 transition rounded-lg px-3 py-2 text-sm font-bold sm:col-span-2"><span>📢</span> Share This Guide</a>
     </div>
   </div>
 </div>
@@ -573,6 +582,12 @@
         This transition affects every student appearing in matriculation (Class 9 and 10) and intermediate examinations across all Punjab boards — <strong>Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, D.G. Khan, Bahawalpur, and Sahiwal</strong>.
       </p>
       <p class="content-text text-justify mt-4">
+        If you're preparing for Class 9 or Class 10 board exams, we also recommend our detailed guides on 
+        <a href="smart-syllabus-9th-class-2027-punjab.html" class="text-blue-800 font-bold underline hover:text-blue-950">Smart Syllabus for 9th Class 2027</a>, 
+        <a href="smart-syllabus-10th-class-2027-punjab.html" class="text-blue-800 font-bold underline hover:text-blue-950">Smart Syllabus for 10th Class 2027</a>, and 
+        <a href="structural-crisis-punjab-board-results.html" class="text-blue-800 font-bold underline hover:text-blue-950">our analysis of Punjab Board results</a>.
+      </p>
+      <p class="content-text text-justify mt-4">
         This comprehensive guide explains everything you need to know about OSM — what it is, how it works, what the e-sheet looks like, and most importantly, how students should prepare.
       </p>
       <div class="highlight-box mt-6">
@@ -580,14 +595,14 @@
       </div>
     </div>
 
-    <!-- SECTION 1 -->
+    <!-- SECTION 1: WHAT IS OSM -->
     <section id="what-is-osm" class="scroll-mt-20">
       <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
         <span class="text-blue-700 text-4xl">📖</span> 1. What is OSM?
       </h2>
       <div class="glass-card card-blue rounded-3xl p-6 md:p-8 mb-8">
         <p class="content-text text-justify mb-6"><strong>OSM stands for On-Screen Marking.</strong></p>
-        <p class="content-text text-justify mb-6">In simple terms, OSM is a digital evaluation system where answer scripts are scanned and examiners mark them on computer screens instead of physically checking paper copies.</p>
+        <p class="content-text text-justify mb-6">In simple terms, OSM is a digital evaluation system where answer scripts are scanned and examiners mark them on computer screens instead of physically checking paper copies. It is a fundamental shift in how student answers are evaluated — moving from paper-based manual marking to a transparent, technology-driven, and standardized digital process.</p>
         
         <div class="grid md:grid-cols-2 gap-6 mb-6">
           <div class="bg-gray-100 rounded-2xl p-6 border-2 border-gray-300">
@@ -613,18 +628,18 @@
         </div>
 
         <div class="tip-card mt-6">
-          <p class="text-black text-base font-bold pt-2"><strong>Important:</strong> OSM does <strong>not</strong> mean a computer checks everything automatically. The examiner remains central to the evaluation process.</p>
+          <p class="text-black text-base font-bold pt-2"><strong>Important:</strong> OSM does <strong>not</strong> mean a computer checks everything automatically. The examiner remains central to the evaluation process. They view the scanned answer sheet on screen and assign marks according to the marking scheme.</p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 2 -->
+    <!-- SECTION 2: WHY DIGITAL -->
     <section id="why-digital" class="scroll-mt-20">
       <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
         <span class="text-green-700 text-4xl">🎯</span> 2. Why Punjab Boards Are Moving Towards Digital Marking
       </h2>
       <div class="glass-card card-green rounded-3xl p-6 md:p-8 mb-8">
-        <p class="content-text text-justify mb-4">The Punjab government has approved a complete overhaul of the examination system. The key objectives include:</p>
+        <p class="content-text text-justify mb-4">The Punjab government has approved a complete overhaul of the examination system for matriculation and intermediate levels. The Board Committee of Chairmen, representing all nine educational boards, approved these reforms. The key objectives include:</p>
         <ul class="list-disc pl-6 space-y-3 content-text">
           <li><strong>Transparency:</strong> Eliminating human error, bias, and doubts in marking</li>
           <li><strong>Accuracy:</strong> Ensuring consistent grading standards across all scripts</li>
@@ -632,6 +647,7 @@
           <li><strong>Digital Records:</strong> Secure handling and storage of answer scripts</li>
           <li><strong>Standardization:</strong> Uniform marking procedures across all boards</li>
           <li><strong>Monitoring:</strong> Real-time tracking of evaluation progress</li>
+          <li><strong>AI Integration:</strong> Preparing for automated marking assistance in the near future</li>
         </ul>
       </div>
     </section>
@@ -642,7 +658,7 @@
         <span class="text-red-700 text-4xl">📄</span> 3. OSM Sample Sheet PDF (Free Download)
       </h2>
       <div class="glass-card card-rose rounded-3xl p-6 md:p-8 mb-8">
-        <p class="content-text text-justify mb-6"><strong>Students can view and download the sample OSM sheet below to become familiar with the answer-sheet layout before practicing.</strong></p>
+        <p class="content-text text-justify mb-6"><strong>Students can view and download the sample OSM sheet below to become familiar with the answer-sheet layout before practicing. Download the PDF and practice writing on it as part of your exam preparation.</strong></p>
         
         <div class="pdf-embed-container mb-6">
           <iframe src="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/preview" allow="autoplay" title="OSM Sample Sheet PDF - Punjab Boards 2027"></iframe>
@@ -660,7 +676,7 @@
           <a href="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/view" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all text-base">
             <span>👁️</span> View Full PDF
           </a>
-          <a href="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/view" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all text-base">
+          <a href="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/view" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-600 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all text-base">
             <span>🔗</span> Open in New Tab
           </a>
         </div>
@@ -746,12 +762,99 @@
           </div>
         </div>
       </div>
+
+      <div class="mt-6 bg-blue-50 border-l-4 border-blue-700 p-5 rounded-r-xl">
+        <p class="text-black text-base font-bold">
+          📚 <strong>Recommended Reading:</strong> 
+          <a href="math-mistakes.html" class="text-blue-800 underline hover:text-blue-950">5 Common Math Mistakes Students Should Avoid</a>, 
+          <a href="physics-numericals.html" class="text-blue-800 underline hover:text-blue-950">How to Solve Physics Numericals Effectively</a>, and 
+          <a href="physics-formulas.html" class="text-blue-800 underline hover:text-blue-950">Essential Physics Formulas</a>.
+        </p>
+      </div>
     </section>
 
-    <!-- SECTION 5: TEACHERS GUIDE -->
+    <!-- ===== NEW SECTION 5: PUNJAB EXAM REFORMS ===== -->
+    <section id="punjab-reforms" class="scroll-mt-20">
+      <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
+        <span class="text-purple-700 text-4xl">🆕</span> 5. Punjab Exam System — Key Reforms (Matric & Inter)
+      </h2>
+      <div class="glass-card card-purple rounded-3xl p-6 md:p-8 mb-8">
+        <p class="content-text text-justify mb-6">Punjab's examination system is going through major reforms. Here are the key changes that every student and teacher must understand. This is a comprehensive overview of the E-Sheet System and Digital Marking reforms being introduced in Matriculation and Intermediate examinations.</p>
+
+        <!-- Reform 1 -->
+        <div class="mb-8 bg-blue-50 rounded-2xl p-6 border-l-4 border-blue-700">
+          <h3 class="text-xl font-bold text-black mb-4 flex items-center gap-3">
+            <span class="text-2xl">①</span> E-Sheet (ای شیٹ) System
+          </h3>
+          <ul class="list-disc pl-6 space-y-3 content-text">
+            <li>Traditional answer sheets will be replaced with <strong>A4-sized E-Sheets</strong></li>
+            <li>Each question will have a <strong>specific designated space</strong> on the sheet</li>
+            <li>Students must write answers <strong>within the prescribed boundaries</strong></li>
+            <li>Separate spaces for <strong>short questions and detailed questions</strong></li>
+          </ul>
+        </div>
+
+        <!-- Reform 2 -->
+        <div class="mb-8 bg-green-50 rounded-2xl p-6 border-l-4 border-green-700">
+          <h3 class="text-xl font-bold text-black mb-4 flex items-center gap-3">
+            <span class="text-2xl">②</span> Digital Scanning & Marking
+          </h3>
+          <ul class="list-disc pl-6 space-y-3 content-text">
+            <li>Answer sheets will be <strong>scanned and stored digitally</strong></li>
+            <li>Examiners will check answers on an <strong>online portal</strong></li>
+            <li>Different questions may be graded by <strong>different examiners</strong></li>
+            <li><strong>MCQs will be auto-graded</strong> by the digital system</li>
+          </ul>
+        </div>
+
+        <!-- Reform 3 -->
+        <div class="mb-8 bg-purple-50 rounded-2xl p-6 border-l-4 border-purple-700">
+          <h3 class="text-xl font-bold text-black mb-4 flex items-center gap-3">
+            <span class="text-2xl">③</span> Role of Artificial Intelligence (AI)
+          </h3>
+          <ul class="list-disc pl-6 space-y-3 content-text">
+            <li><strong>AI will be trained</strong> to assist human examiners in marking</li>
+            <li>Goal of <strong>automated marking within 2-3 years</strong></li>
+            <li>Aims to <strong>speed up paper checking</strong> significantly</li>
+            <li>Human oversight will remain for quality assurance</li>
+          </ul>
+        </div>
+
+        <!-- Reform 4 -->
+        <div class="mb-8 bg-amber-50 rounded-2xl p-6 border-l-4 border-amber-700">
+          <h3 class="text-xl font-bold text-black mb-4 flex items-center gap-3">
+            <span class="text-2xl">④</span> Changes in Re-checking Process
+          </h3>
+          <ul class="list-disc pl-6 space-y-3 content-text">
+            <li>Instead of just <strong>re-counting marks</strong>, students will be able to request <strong>re-evaluation of answers</strong></li>
+            <li><strong>Sargodha Board</strong> has already conducted a successful digital results display pilot</li>
+            <li>Plans to <strong>extend this system to other boards</strong> in the future</li>
+          </ul>
+        </div>
+
+        <!-- Reform 5 -->
+        <div class="bg-cyan-50 rounded-2xl p-6 border-l-4 border-cyan-700">
+          <h3 class="text-xl font-bold text-black mb-4 flex items-center gap-3">
+            <span class="text-2xl">⑤</span> Pilot Tests and Mock Exercises
+          </h3>
+          <ul class="list-disc pl-6 space-y-3 content-text">
+            <li><strong>E-Sheet pilot tested</strong> in Second Year Computer Science supplementary exam</li>
+            <li><strong>Mock practice sessions</strong> conducted in Lahore, Gujranwala and other boards</li>
+            <li>Preparing for <strong>phase-wise implementation</strong> across Punjab</li>
+            <li>More subjects will be added in subsequent phases</li>
+          </ul>
+        </div>
+
+        <div class="tip-card mt-8">
+          <p class="text-black text-base font-bold pt-2"><strong>Note:</strong> These reforms are being introduced phase-wise. Not all changes will apply to every board at the same time. Always check your board's official notification for the specific changes applicable to your examination.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: TEACHERS GUIDE -->
     <section id="teachers-guide" class="scroll-mt-20">
       <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
-        <span class="text-teal-700 text-4xl">👩‍🏫</span> 5. OSM Guide for Teachers
+        <span class="text-teal-700 text-4xl">👩‍🏫</span> 6. OSM Guide for Teachers
       </h2>
       <div class="glass-card card-teal rounded-3xl p-6 md:p-8 mb-8">
         <p class="content-text text-justify mb-6">Teachers play a crucial role in preparing students for OSM. Here is what you can do:</p>
@@ -770,10 +873,10 @@
       </div>
     </section>
 
-    <!-- SECTION 6: MYTHS -->
+    <!-- SECTION 7: MYTHS -->
     <section id="myths-facts" class="scroll-mt-20">
       <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
-        <span class="text-amber-700 text-4xl">💡</span> 6. OSM Myths vs Facts
+        <span class="text-amber-700 text-4xl">💡</span> 7. OSM Myths vs Facts
       </h2>
       <div class="space-y-4 mb-8">
         <div class="glass-card card-amber rounded-3xl p-6">
@@ -800,13 +903,21 @@
             <p class="text-black text-base font-bold"><strong>✅ Fact:</strong> OSM and online examination are different concepts. Students still write on paper.</p>
           </div>
         </div>
+        <div class="glass-card card-amber rounded-3xl p-6">
+          <div class="myth-card rounded-xl p-4 mb-3">
+            <p class="text-black text-base font-bold"><strong>❌ Myth:</strong> "AI will immediately replace human examiners."</p>
+          </div>
+          <div class="fact-card rounded-xl p-4">
+            <p class="text-black text-base font-bold"><strong>✅ Fact:</strong> AI will assist human examiners initially. Full automation is targeted over 2-3 years, with human oversight remaining for quality.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ===== FAQ SECTION (JUSTIFIED TEXT) ===== -->
+    <!-- ===== FAQ SECTION ===== -->
     <section id="faqs" class="scroll-mt-20">
       <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
-        <span class="text-cyan-700 text-4xl">❓</span> 7. Frequently Asked Questions
+        <span class="text-cyan-700 text-4xl">❓</span> 8. Frequently Asked Questions
       </h2>
       <div class="mb-8" id="faqContainer">
         
@@ -839,7 +950,7 @@
             <span class="flex items-center"><span class="faq-number">4</span>Will a computer check my board exam answers?</span>
             <span class="faq-icon">+</span>
           </div>
-          <div class="faq-answer"><p>No. Under OSM, human examiners still check answers. The computer only displays the scanned answer sheet on screen; examiners still assign marks according to the marking scheme. OSM does not use AI to grade answers automatically.</p></div>
+          <div class="faq-answer"><p>No. Under OSM, human examiners still check answers. The computer only displays the scanned answer sheet on screen; examiners still assign marks according to the marking scheme. OSM does not use AI to grade answers automatically at this stage.</p></div>
         </div>
 
         <div class="faq-item">
@@ -863,7 +974,7 @@
             <span class="flex items-center"><span class="faq-number">7</span>Does OSM apply to all Punjab boards?</span>
             <span class="faq-icon">+</span>
           </div>
-          <div class="faq-answer"><p>Yes, all nine Punjab boards including <strong>Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, D.G. Khan, Bahawalpur, and Sahiwal</strong> are moving towards OSM. Implementation timelines may vary slightly by board.</p></div>
+          <div class="faq-answer"><p>Yes, all nine Punjab boards including <strong>Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, D.G. Khan, Bahawalpur, and Sahiwal</strong> are moving towards OSM. Implementation timelines may vary slightly by board. See our <a href="structural-crisis-punjab-board-results.html" class="text-blue-800 underline font-bold">analysis of Punjab Board results</a> for more context.</p></div>
         </div>
 
         <div class="faq-item">
@@ -879,7 +990,7 @@
             <span class="flex items-center"><span class="faq-number">9</span>How can teachers prepare students for OSM exams?</span>
             <span class="faq-icon">+</span>
           </div>
-          <div class="faq-answer"><p>Teachers should conduct practice tests using OSM-style sheets, explain the layout, teach proper answer numbering, emphasize clear presentation, and use realistic examination timings.</p></div>
+          <div class="faq-answer"><p>Teachers should conduct practice tests using OSM-style sheets, explain the layout, teach proper answer numbering, emphasize clear presentation, and use realistic examination timings. Read our <a href="smart-syllabus-9th-class-2027-punjab.html" class="text-blue-800 underline font-bold">Smart Syllabus guide for 9th Class</a> and <a href="smart-syllabus-10th-class-2027-punjab.html" class="text-blue-800 underline font-bold">10th Class</a> for related preparation tips.</p></div>
         </div>
 
         <div class="faq-item">
@@ -889,6 +1000,81 @@
           </div>
           <div class="faq-answer"><p>You can find and download the OSM sample sheet for 9th class on Hira Science Academy website (see <a href="#sample-sheet" class="text-blue-800 underline font-bold">section 3 above</a>). Sample sheets are also available through official BISE channels.</p></div>
         </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="flex items-center"><span class="faq-number">11</span>Will AI check my paper in the future?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer"><p>Punjab boards plan to train AI to assist human examiners. The goal is automated marking within 2-3 years, but human oversight will remain. See the <a href="#punjab-reforms" class="text-blue-800 underline font-bold">Punjab Exam Reforms section</a> for more details.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="flex items-center"><span class="faq-number">12</span>What is the new re-checking process?</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer"><p>Instead of just re-counting marks, students may be able to request <strong>re-evaluation of answers</strong>. Sargodha Board has already conducted a digital results display pilot, and plans exist to extend this to other boards.</p></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== RELATED ARTICLES ===== -->
+    <section id="related" class="scroll-mt-20 mb-10">
+      <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
+        <span class="text-indigo-700 text-4xl">🔗</span> 9. Related Articles You Should Read
+      </h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        
+        <a href="smart-syllabus-9th-class-2027-punjab.html" class="related-card">
+          <span class="related-emoji">📘</span>
+          <span class="inline-block text-xs font-bold text-blue-800 bg-blue-50 px-2 py-1 rounded-full border border-blue-200 mb-3">Class 9</span>
+          <h3 class="font-bold text-black text-lg leading-snug transition-colors">Smart Syllabus for 9th Class 2027 in Punjab: Will It Be Announced?</h3>
+          <p class="text-black text-sm mt-2 font-medium">What PECTAA has published and what 9th class students should study until a 2027 notification arrives.</p>
+          <span class="inline-block mt-4 text-blue-700 font-bold text-sm">Read →</span>
+        </a>
+
+        <a href="smart-syllabus-10th-class-2027-punjab.html" class="related-card" style="border-top-color: #6d28d9;">
+          <span class="related-emoji">📗</span>
+          <span class="inline-block text-xs font-bold text-purple-800 bg-purple-50 px-2 py-1 rounded-full border border-purple-200 mb-3">Class 10</span>
+          <h3 class="font-bold text-black text-lg leading-snug transition-colors">Smart Syllabus for 10th Class 2027 in Punjab: Official Status</h3>
+          <p class="text-black text-sm mt-2 font-medium">PECTAA updates for matric students and what to prepare while the 2027 notification is pending.</p>
+          <span class="inline-block mt-4 text-purple-700 font-bold text-sm">Read →</span>
+        </a>
+
+        <a href="structural-crisis-punjab-board-results.html" class="related-card" style="border-top-color: #b45309;">
+          <span class="related-emoji">📊</span>
+          <span class="inline-block text-xs font-bold text-amber-800 bg-amber-50 px-2 py-1 rounded-full border border-amber-200 mb-3">Analysis</span>
+          <h3 class="font-bold text-black text-lg leading-snug transition-colors">The Structural Crisis Behind Punjab's 9th Class Board Results</h3>
+          <p class="text-black text-sm mt-2 font-medium">Why 2026 board results dropped: teacher shortages, automatic promotion, and policy failures.</p>
+          <span class="inline-block mt-4 text-amber-700 font-bold text-sm">Read →</span>
+        </a>
+
+        <a href="math-mistakes.html" class="related-card" style="border-top-color: #be123c;">
+          <span class="related-emoji">🔢</span>
+          <span class="inline-block text-xs font-bold text-rose-800 bg-rose-50 px-2 py-1 rounded-full border border-rose-200 mb-3">Mathematics</span>
+          <h3 class="font-bold text-black text-lg leading-snug transition-colors">5 Common Math Mistakes Students Should Avoid</h3>
+          <p class="text-black text-sm mt-2 font-medium">The errors that cost marks most often in algebra and geometry in BISE board exams.</p>
+          <span class="inline-block mt-4 text-rose-700 font-bold text-sm">Read →</span>
+        </a>
+
+        <a href="physics-numericals.html" class="related-card" style="border-top-color: #0e7490;">
+          <span class="related-emoji">⚛️</span>
+          <span class="inline-block text-xs font-bold text-cyan-800 bg-cyan-50 px-2 py-1 rounded-full border border-cyan-200 mb-3">Physics</span>
+          <h3 class="font-bold text-black text-lg leading-snug transition-colors">How to Solve Physics Numericals Effectively for BISE Exams</h3>
+          <p class="text-black text-sm mt-2 font-medium">Step-by-step method for solving numericals, with everyday examples and paper patterns.</p>
+          <span class="inline-block mt-4 text-cyan-700 font-bold text-sm">Read →</span>
+        </a>
+
+        <a href="mathematics-formulas.html" class="related-card" style="border-top-color: #047857;">
+          <span class="related-emoji">📐</span>
+          <span class="inline-block text-xs font-bold text-green-800 bg-green-50 px-2 py-1 rounded-full border border-green-200 mb-3">Study Notes</span>
+          <h3 class="font-bold text-black text-lg leading-snug transition-colors">Complete Mathematics Formulas Guide for Class 9 & 10</h3>
+          <p class="text-black text-sm mt-2 font-medium">All 48 essential formulas for Class 9 and 10, from algebra to geometry.</p>
+          <span class="inline-block mt-4 text-green-700 font-bold text-sm">Read →</span>
+        </a>
 
       </div>
     </section>
@@ -974,6 +1160,63 @@
       </div>
     </section>
 
+    <!-- Urdu Punjab Reforms -->
+    <section id="urdu-reforms" class="scroll-mt-20">
+      <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
+        <span class="text-purple-700 text-4xl">🆕</span> پنجاب کے امتحانی نظام میں اہم اصلاحات
+      </h2>
+      <div class="glass-card card-purple rounded-3xl p-6 md:p-8 mb-8">
+        <p class="text-black text-justify mb-6 text-lg font-medium"><strong>میٹرک و انٹرمیڈیٹ | ای شیٹ اور ڈیجیٹل مارکنگ</strong></p>
+
+        <div class="mb-6 bg-blue-50 rounded-2xl p-5 border-r-4 border-blue-700">
+          <h3 class="text-lg font-bold text-black mb-3">① ای شیٹ (E-Sheet) کا نظام</h3>
+          <ul class="list-disc pr-6 space-y-2 text-black text-base font-medium">
+            <li>روایتی جوابی کاپی کی جگہ A4 سائز کی ای شیٹ</li>
+            <li>ہر سوال کے جواب کے لیے مخصوص جگہ</li>
+            <li>مقررہ حدود کے اندر جواب لکھنا ضروری</li>
+            <li>مختصر اور تفصیلی سوالات کے لیے الگ جگہ</li>
+          </ul>
+        </div>
+
+        <div class="mb-6 bg-green-50 rounded-2xl p-5 border-r-4 border-green-700">
+          <h3 class="text-lg font-bold text-black mb-3">② ڈیجیٹل اسکیننگ اور مارکنگ</h3>
+          <ul class="list-disc pr-6 space-y-2 text-black text-base font-medium">
+            <li>جوابی شیٹس اسکین کرکے ڈیجیٹل ریکارڈ بنایا جائے گا</li>
+            <li>ممتحن آن لائن پورٹل پر جوابات چیک کریں گے</li>
+            <li>مختلف سوالات کی جانچ مختلف ممتحن کریں گے</li>
+            <li>MCQs کی جانچ خودکار نظام سے ہوگی</li>
+          </ul>
+        </div>
+
+        <div class="mb-6 bg-purple-50 rounded-2xl p-5 border-r-4 border-purple-700">
+          <h3 class="text-lg font-bold text-black mb-3">③ مصنوعی ذہانت (AI) کا کردار</h3>
+          <ul class="list-disc pr-6 space-y-2 text-black text-base font-medium">
+            <li>AI کو انسانی مارکنگ کی مدد سے تربیت دینے کا منصوبہ</li>
+            <li>آئندہ 2 تا 3 سال میں خودکار جانچ کا ہدف</li>
+            <li>پرچوں کی جانچ تیز کرنے کی کوشش</li>
+          </ul>
+        </div>
+
+        <div class="mb-6 bg-amber-50 rounded-2xl p-5 border-r-4 border-amber-700">
+          <h3 class="text-lg font-bold text-black mb-3">④ ری چیکنگ میں تبدیلی</h3>
+          <ul class="list-disc pr-6 space-y-2 text-black text-base font-medium">
+            <li>صرف نمبروں کی دوبارہ گنتی کے بجائے جوابات کی دوبارہ جانچ کی مجوزہ سہولت</li>
+            <li>سرگودھا بورڈ میں ڈیجیٹل نتائج کی نمائش کا تجربہ</li>
+            <li>مستقبل میں نظام کو دیگر بورڈز تک توسیع دینے کا منصوبہ</li>
+          </ul>
+        </div>
+
+        <div class="bg-cyan-50 rounded-2xl p-5 border-r-4 border-cyan-700">
+          <h3 class="text-lg font-bold text-black mb-3">⑤ آزمائشی مشقیں</h3>
+          <ul class="list-disc pr-6 space-y-2 text-black text-base font-medium">
+            <li>سیکنڈ ایئر کمپیوٹر سائنس کے ضمنی امتحان میں ای شیٹ کی آزمائش</li>
+            <li>لاہور، گوجرانوالہ اور دیگر بورڈز میں ماک پریکٹس</li>
+            <li>مرحلہ وار نفاذ کے لیے تیاری</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- Urdu FAQ -->
     <section id="urdu-faqs" class="scroll-mt-20">
       <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
@@ -1010,7 +1253,7 @@
             <span class="flex items-center"><span class="faq-number">4</span>کیا کمپیوٹر میرے جوابات چیک کرے گا؟</span>
             <span class="faq-icon">+</span>
           </div>
-          <div class="faq-answer"><p>نہیں۔ OSM میں نمبر آج بھی انسانی ممتحن ہی لگاتے ہیں۔ کمپیوٹر صرف اسکین شدہ کاپی اسکرین پر دکھاتا ہے۔ OSM میں کوئی AI خودکار طور پر جوابات چیک نہیں کرتا۔</p></div>
+          <div class="faq-answer"><p>نہیں۔ OSM میں نمبر آج بھی انسانی ممتحن ہی لگاتے ہیں۔ کمپیوٹر صرف اسکین شدہ کاپی اسکرین پر دکھاتا ہے۔ OSM میں کوئی AI ابھی خودکار طور پر جوابات چیک نہیں کرتا۔</p></div>
         </div>
 
         <div class="faq-item">
@@ -1061,6 +1304,51 @@
           <div class="faq-answer"><p>آپ نویں جماعت کی OSM نمونہ شیٹ ہیرا سائنس اکیڈمی کی ویب سائٹ سے (اوپر نمونہ شیٹ والا سیکشن دیکھیں) ڈاؤن لوڈ کر سکتے ہیں۔ نمونہ شیٹس سرکاری BISE چینلز پر بھی دستیاب ہیں۔</p></div>
         </div>
 
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="flex items-center"><span class="faq-number">11</span>کیا آئندہ AI میرے پرچے کی جانچ کرے گا؟</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer"><p>پنجاب بورڈز کا منصوبہ ہے کہ AI کو انسانی ممتحنوں کی مدد کے لیے تربیت دی جائے۔ 2 سے 3 سال میں خودکار جانچ کا ہدف ہے، لیکن انسانی نگرانی برقرار رہے گی۔</p></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span class="flex items-center"><span class="faq-number">12</span>نیا ری چیکنگ کا طریقہ کیا ہے؟</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer"><p>صرف نمبروں کی دوبارہ گنتی کے بجائے اب <strong>جوابات کی دوبارہ جانچ</strong> کی سہولت دی جا سکتی ہے۔ سرگودھا بورڈ میں ڈیجیٹل نتائج کی نمائش کا تجربہ کامیاب رہا ہے اور اسے دیگر بورڈز تک توسیع دینے کا منصوبہ ہے۔</p></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Urdu Related -->
+    <section id="urdu-related" class="scroll-mt-20 mb-8">
+      <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
+        <span class="text-indigo-700 text-4xl">🔗</span> مزید پڑھیں
+      </h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <a href="smart-syllabus-9th-class-2027-punjab.html" class="related-card">
+          <span class="related-emoji">📘</span>
+          <h3 class="font-bold text-black text-lg">نویں جماعت کا اسمارٹ سلیبس 2027</h3>
+          <span class="inline-block mt-3 text-blue-700 font-bold text-sm">پڑھیں →</span>
+        </a>
+        <a href="smart-syllabus-10th-class-2027-punjab.html" class="related-card" style="border-top-color: #6d28d9;">
+          <span class="related-emoji">📗</span>
+          <h3 class="font-bold text-black text-lg">دسویں جماعت کا اسمارٹ سلیبس 2027</h3>
+          <span class="inline-block mt-3 text-purple-700 font-bold text-sm">پڑھیں →</span>
+        </a>
+        <a href="structural-crisis-punjab-board-results.html" class="related-card" style="border-top-color: #b45309;">
+          <span class="related-emoji">📊</span>
+          <h3 class="font-bold text-black text-lg">پنجاب بورڈ نتائج کا بحران — مکمل تجزیہ</h3>
+          <span class="inline-block mt-3 text-amber-700 font-bold text-sm">پڑھیں →</span>
+        </a>
+        <a href="math-mistakes.html" class="related-card" style="border-top-color: #be123c;">
+          <span class="related-emoji">🔢</span>
+          <h3 class="font-bold text-black text-lg">5 عام ریاضی کی غلطیاں جن سے بچیں</h3>
+          <span class="inline-block mt-3 text-rose-700 font-bold text-sm">پڑھیں →</span>
+        </a>
       </div>
     </section>
 
@@ -1110,6 +1398,15 @@
             <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold border border-blue-300">🏫 Govt. Christian High School</span>
             <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold border border-blue-300">📝 Curriculum Analyst</span>
             <span class="bg-blue-100 text-blue-900 px-3 py-1 rounded-full font-bold border border-blue-300">🎯 Punjab Board Expert</span>
+          </div>
+          <div class="mt-5 pt-5 border-t border-blue-200">
+            <p class="text-sm font-bold text-blue-900 mb-2">📖 More from this author:</p>
+            <div class="flex flex-wrap gap-2">
+              <a href="structural-crisis-punjab-board-results.html" class="text-xs bg-white border border-blue-300 text-blue-800 font-bold px-3 py-1.5 rounded-full hover:bg-blue-50 transition">Punjab Board Crisis Analysis</a>
+              <a href="smart-syllabus-9th-class-2027-punjab.html" class="text-xs bg-white border border-blue-300 text-blue-800 font-bold px-3 py-1.5 rounded-full hover:bg-blue-50 transition">Smart Syllabus 9th 2027</a>
+              <a href="why-students-fail-class-9-math-punjab.html" class="text-xs bg-white border border-blue-300 text-blue-800 font-bold px-3 py-1.5 rounded-full hover:bg-blue-50 transition">Why Students Fail Math</a>
+              <a href="single-math-curriculum-punjab.html" class="text-xs bg-white border border-blue-300 text-blue-800 font-bold px-3 py-1.5 rounded-full hover:bg-blue-50 transition">Single Math Curriculum</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1517,6 +1814,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   loadComments();
 });
+
 // ===== READING PROGRESS BAR =====
 const progressBar = document.getElementById('readingProgressBar');
 const progressBadge = document.getElementById('readingProgressBadge');
