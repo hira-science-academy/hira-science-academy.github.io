@@ -119,7 +119,7 @@
         "inLanguage": "en-PK",
         "isPartOf": { "@id": "https://hiraacademy.com.pk/#website" },
         "about": { "@id": "https://hiraacademy.com.pk/#organization" },
-        "dateModified": "2026-10-14",
+        "dateModified": "2026-10-27",
         "breadcrumb": { "@id": "https://hiraacademy.com.pk/blog.html#breadcrumb" },
         "mainEntity": { "@id": "https://hiraacademy.com.pk/blog.html#blog" }
       },
@@ -131,6 +131,7 @@
         "inLanguage": "en-PK",
         "publisher": { "@id": "https://hiraacademy.com.pk/#organization" },
         "blogPost": [
+          { "@type": "BlogPosting", "headline": "On-Screen Marking (OSM) System in Punjab Boards 2027 – Complete Guide for Students and Teachers", "url": "https://hiraacademy.com.pk/on-screen-marking-osm-system-punjab-boards-2027.html", "author": { "@id": "https://hiraacademy.com.pk/about.html#muhammad-tayyab" }, "datePublished": "2026-10-27", "image": "https://hiraacademy.com.pk/images/og-image-osm.jpg" },
           { "@type": "BlogPosting", "headline": "The Structural Crisis Behind Punjab's 9th Class Board Results", "url": "https://hiraacademy.com.pk/structural-crisis-punjab-board-results.html", "author": { "@id": "https://hiraacademy.com.pk/about.html#muhammad-tayyab" } },
           { "@type": "BlogPosting", "headline": "Smart Syllabus for 9th Class 2027 in Punjab: Will It Be Announced?", "url": "https://hiraacademy.com.pk/smart-syllabus-9th-class-2027-punjab.html", "author": { "@id": "https://hiraacademy.com.pk/about.html#muhammad-tayyab" } },
           { "@type": "BlogPosting", "headline": "Smart Syllabus for 10th Class 2027 in Punjab: Will It Be Announced?", "url": "https://hiraacademy.com.pk/smart-syllabus-10th-class-2027-punjab.html", "author": { "@id": "https://hiraacademy.com.pk/about.html#muhammad-tayyab" } },
@@ -156,6 +157,7 @@
         "@type": "FAQPage",
         "@id": "https://hiraacademy.com.pk/blog.html#faq",
         "mainEntity": [
+          { "@type": "Question", "name": "What is the OSM system in Punjab Boards 2027?", "acceptedAnswer": { "@type": "Answer", "text": "OSM stands for On-Screen Marking. It is a digital evaluation system where answer scripts are scanned and examiners mark them on computer screens. It will be implemented across all 9 BISE Punjab boards starting 2027." } },
           { "@type": "Question", "name": "What topics does the Hira Science Academy blog cover?", "acceptedAnswer": { "@type": "Answer", "text": "Physics, Mathematics and Chemistry guides, exam strategies, study tips, Punjab Board syllabus updates and career guidance for Class 9 and 10 students." } },
           { "@type": "Question", "name": "Who writes the articles?", "acceptedAnswer": { "@type": "Answer", "text": "Articles are written by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry), both experienced Class 9 and 10 teachers." } },
           { "@type": "Question", "name": "Are the articles aligned with the Punjab Board syllabus?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Articles follow the current Punjab Board syllabus and paper patterns, and syllabus-related posts are updated when official notifications change." } },
@@ -174,9 +176,9 @@
   <link rel="icon" type="image/png" sizes="16x16" href="https://hiraacademy.com.pk/images/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.com.pk/images/apple-touch-icon.png">
   <link rel="manifest" href="https://hiraacademy.com.pk/images/site.webmanifest">
-  <meta name="theme-color" content="#0369a1">
+  <meta name="theme-color" content="#0f172a">
 
-  <!-- Fonts (Poppins was referenced but never loaded in the original) -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="https://hiraacademy.com.pk/images/logo.webp">
@@ -210,7 +212,7 @@
     #mobile-menu { transition: max-height .3s ease-in-out; max-height: 0; overflow: hidden; }
     #mobile-menu.open { max-height: 520px; }
 
-    /* Cards: whole card is one link (stretched link), subject colour lives in the left edge */
+    /* Cards */
     .post-card { position: relative; transition: border-color .2s, box-shadow .2s; }
     .post-card:hover, .post-card:focus-within { border-color: #7dd3fc; box-shadow: 0 8px 24px -12px rgba(3,105,161,.35); }
     .post-card a.stretch::after { content: ''; position: absolute; inset: 0; border-radius: inherit; }
@@ -222,6 +224,59 @@
     .back-to-top { position: fixed; bottom: 6rem; right: 1.5rem; background: #0284c7; color: #fff; width: 3rem; height: 3rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity .3s, visibility .3s; cursor: pointer; z-index: 40; border: 0; }
     .back-to-top.show { opacity: 1; visibility: visible; }
 
+    /* E-E-A-T Author Box */
+    .author-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      align-items: center;
+      background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+      border: 1px solid #99f6e4;
+      border-left: 4px solid #0f766e;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem auto;
+      max-width: 56rem;
+      box-shadow: 0 4px 20px rgba(15,118,110,0.08);
+    }
+    .author-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #0f172a 0%, #134e4a 100%);
+      color: white; display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.35rem; flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(15,23,42,0.25);
+      border: 3px solid white;
+    }
+    .author-info { flex: 1; min-width: 220px; }
+    .author-name { font-weight: 700; color: #0f172a; font-size: 1.05rem; margin: 0; }
+    .author-title { display: inline-block; background: #ccfbf1; color: #0f766e; font-size: 0.75rem; font-weight: 600; padding: 0.2rem 0.6rem; border-radius: 50px; margin-left: 0.5rem; vertical-align: middle; }
+    .author-desc { font-size: 0.875rem; color: #334155; margin: 0.25rem 0 0; line-height: 1.5; }
+    .author-meta { font-size: 0.75rem; color: #64748b; margin-top: 0.5rem; }
+    .author-meta a { color: #0f766e; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(15,118,110,0.3); text-underline-offset: 3px; }
+    .author-meta a:hover { color: #134e4a; text-decoration-color: #134e4a; }
+
+    /* Reading Progress Bar */
+    .reading-progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      z-index: 1001;
+      pointer-events: none;
+    }
+    .reading-progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #0f172a 0%, #134e4a 50%, #14b8a6 100%);
+      transition: width 0.1s ease-out;
+      box-shadow: 0 0 8px rgba(20,184,166,0.5);
+    }
+    @media (max-width: 768px) {
+      .reading-progress-container { top: 64px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       * { transition: none !important; }
@@ -229,6 +284,9 @@
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased">
+
+<!-- Reading Progress Bar -->
+<div class="reading-progress-container"><div class="reading-progress-bar" id="readingProgressBar"></div></div>
 
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg">Skip to main content</a>
 
@@ -276,9 +334,12 @@
 <main id="main">
 
   <!-- ===== HERO ===== -->
-  <section class="bg-primary-900 text-white" aria-labelledby="page-title">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-14 lg:pb-20">
-      <nav aria-label="Breadcrumb" class="text-sm text-primary-200">
+  <section class="text-white relative overflow-hidden" aria-labelledby="page-title" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #134e4a 100%);">
+    <div class="absolute inset-0 pointer-events-none"
+         style="background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-6 pb-14 lg:pb-20 relative z-10">
+      <nav aria-label="Breadcrumb" class="text-sm text-teal-200">
         <ol class="flex items-center gap-2">
           <li><a href="/" class="hover:text-white underline-offset-4 hover:underline">Home</a></li>
           <li aria-hidden="true">/</li>
@@ -289,14 +350,29 @@
       <h1 id="page-title" class="font-display font-extrabold text-4xl md:text-5xl lg:text-6xl leading-tight mt-8 max-w-3xl">
         Study tips and exam guides for Class 9 &amp; 10 in Punjab
       </h1>
-      <p class="prose-p text-lg md:text-xl text-primary-100 mt-5 max-w-2xl">
+      <p class="prose-p text-lg md:text-xl text-slate-300 mt-5 max-w-2xl">
         Syllabus updates, Math and Physics guides, and exam strategies for BISE Punjab students, written by the teachers at Hira Science Academy in Daska.
       </p>
-      <p class="text-sm text-primary-200 mt-6">
-        Last updated <time datetime="2026-10-14">14 October 2026</time> · 11 articles
+      <p class="text-sm text-slate-400 mt-6">
+        Last updated <time datetime="2026-10-27">27 October 2026</time> · 12 articles
       </p>
     </div>
+
+    <div class="absolute bottom-0 left-0 right-0 h-1" style="background: linear-gradient(90deg, #14b8a6 0%, #2dd4bf 50%, #14b8a6 100%);" aria-hidden="true"></div>
   </section>
+
+  <!-- ===== E-E-A-T AUTHOR BYLINE ===== -->
+  <div class="author-box" itemscope itemtype="https://schema.org/Person">
+    <div class="author-avatar" aria-hidden="true">MT</div>
+    <div class="author-info">
+      <p class="author-name">
+        <a href="about.html#muhammad-tayyab" class="hover:text-teal-700 transition-colors" itemprop="name" itemprop="url">Muhammad Tayyab</a>
+        <span class="author-title" itemprop="jobTitle">Subject Specialist Mathematics &amp; Physics</span>
+      </p>
+      <p class="author-desc" itemprop="description">MSc Mathematics · Govt Christian High School Daska, Sialkot, Punjab · Author of the Hira Science Academy blog, writing about Punjab Board study tips, exam strategies, and curriculum updates for Class 9 and 10 students.</p>
+      <p class="author-meta">📖 <a href="about.html#muhammad-tayyab" rel="author">Read full author profile →</a></p>
+    </div>
+  </div>
 
   <!-- ===== LATEST ARTICLES ===== -->
   <section id="latest-articles" class="max-w-6xl mx-auto px-4 sm:px-6 py-12" aria-labelledby="articles-heading" style="scroll-margin-top:100px">
@@ -308,6 +384,7 @@
       <div role="group" aria-label="Filter articles by topic" class="flex flex-wrap gap-2">
         <button type="button" class="chip px-4 py-2 rounded-full border border-slate-300 bg-white text-sm font-medium" data-filter="all" aria-pressed="true">All</button>
         <button type="button" class="chip px-4 py-2 rounded-full border border-slate-300 bg-white text-sm font-medium" data-filter="updates" aria-pressed="false">Official updates</button>
+        <button type="button" class="chip px-4 py-2 rounded-full border border-slate-300 bg-white text-sm font-medium" data-filter="osm" aria-pressed="false">OSM System</button>
         <button type="button" class="chip px-4 py-2 rounded-full border border-slate-300 bg-white text-sm font-medium" data-filter="analysis" aria-pressed="false">Analysis</button>
         <button type="button" class="chip px-4 py-2 rounded-full border border-slate-300 bg-white text-sm font-medium" data-filter="math" aria-pressed="false">Mathematics</button>
         <button type="button" class="chip px-4 py-2 rounded-full border border-slate-300 bg-white text-sm font-medium" data-filter="physics" aria-pressed="false">Physics</button>
@@ -316,24 +393,82 @@
     </div>
     <p id="filter-status" class="sr-only" role="status" aria-live="polite"></p>
 
-    <!-- Featured -->
-    <article class="post-card bg-white rounded-2xl border border-slate-200 border-l-8 border-l-primary-800 p-6 md:p-10 mb-6" data-cat="analysis">
-      <div class="flex flex-wrap items-center gap-3 text-sm">
-        <span class="font-semibold text-primary-800">Featured analysis</span>
-        <span class="text-slate-500">12 min read</span>
-        <span class="bg-primary-50 text-primary-800 font-semibold text-xs px-2 py-0.5 rounded">New</span>
-      </div>
-      <h3 class="font-display font-extrabold text-2xl md:text-4xl text-slate-900 leading-tight mt-3 max-w-3xl">
-        <a class="stretch" href="structural-crisis-punjab-board-results.html">The Structural Crisis Behind Punjab's 9th Class Board Results</a>
-      </h3>
-      <p class="prose-p text-slate-600 mt-4 max-w-3xl">
-        An in-depth look at the 2026 BISE Gujranwala 9th class results: teacher shortages, automatic promotion, unannounced closures, and the frontline educators who keep classrooms running.
-      </p>
-      <p class="text-sm text-slate-500 mt-5">By Muhammad Tayyab</p>
-    </article>
+    <!-- Featured Grid: OSM + Structural Crisis -->
+    <div class="grid lg:grid-cols-2 gap-6 mb-6">
+
+      <!-- FEATURED: OSM Article (NEW) -->
+      <article class="post-card bg-white rounded-2xl border border-slate-200 border-l-8 border-l-indigo-700 p-6 md:p-8 relative overflow-hidden" data-cat="updates osm">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-full blur-2xl opacity-60 pointer-events-none"></div>
+
+        <div class="relative">
+          <div class="flex flex-wrap items-center gap-3 text-sm mb-3">
+            <span class="inline-flex items-center gap-1.5 bg-indigo-50 text-indigo-800 font-bold text-xs px-3 py-1 rounded-full border border-indigo-200">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-500 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
+              </span>
+              FEATURED
+            </span>
+            <span class="text-slate-500 font-medium">12 min read</span>
+            <span class="bg-green-50 text-green-700 font-bold text-xs px-2 py-0.5 rounded border border-green-200">📥 Free PDF</span>
+          </div>
+
+          <h3 class="font-display font-extrabold text-2xl md:text-3xl text-slate-900 leading-tight mt-3">
+            <a class="stretch hover:text-indigo-700 transition-colors" href="on-screen-marking-osm-system-punjab-boards-2027.html">
+              OSM System Punjab Boards 2027: Complete Guide + Free Sample Sheet PDF
+            </a>
+          </h3>
+
+          <p class="prose-p text-slate-600 mt-4">
+            Master the new <strong>On-Screen Marking (OSM) System</strong> before board exams 2027. Learn the digital marking process, download the free OSM sample sheet PDF, and get expert preparation tips for all 9 BISE Punjab boards.
+          </p>
+
+          <div class="flex flex-wrap gap-2 mt-5">
+            <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-1 rounded-full">📄 Sample Sheet</span>
+            <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-1 rounded-full">🎓 9th &amp; 10th</span>
+            <span class="bg-slate-100 text-slate-700 text-xs font-semibold px-2.5 py-1 rounded-full">✅ All BISE</span>
+          </div>
+
+          <p class="text-sm text-slate-500 mt-5">
+            By <a href="about.html#muhammad-tayyab" class="hover:text-teal-700 underline-offset-2 hover:underline font-semibold">Muhammad Tayyab</a>
+          </p>
+        </div>
+      </article>
+
+      <!-- FEATURED: Structural Crisis (Original) -->
+      <article class="post-card bg-white rounded-2xl border border-slate-200 border-l-8 border-l-primary-800 p-6 md:p-8" data-cat="analysis">
+        <div class="flex flex-wrap items-center gap-3 text-sm">
+          <span class="font-semibold text-primary-800">Featured analysis</span>
+          <span class="text-slate-500">12 min read</span>
+          <span class="bg-primary-50 text-primary-800 font-semibold text-xs px-2 py-0.5 rounded">Analysis</span>
+        </div>
+        <h3 class="font-display font-extrabold text-2xl md:text-3xl text-slate-900 leading-tight mt-3">
+          <a class="stretch hover:text-primary-700 transition-colors" href="structural-crisis-punjab-board-results.html">The Structural Crisis Behind Punjab's 9th Class Board Results</a>
+        </h3>
+        <p class="prose-p text-slate-600 mt-4">
+          An in-depth look at the 2026 BISE Gujranwala 9th class results: teacher shortages, automatic promotion, unannounced closures, and the frontline educators who keep classrooms running.
+        </p>
+        <p class="text-sm text-slate-500 mt-5">By <a href="about.html#muhammad-tayyab" class="hover:text-teal-700 underline-offset-2 hover:underline">Muhammad Tayyab</a></p>
+      </article>
+
+    </div>
 
     <!-- Grid -->
     <div id="post-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- OSM CARD -->
+      <article class="post-card bg-white rounded-xl border border-slate-200 border-l-4 border-l-indigo-600 p-6 flex flex-col" data-cat="updates osm">
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <span class="font-semibold text-indigo-700">OSM System · Complete Guide</span>
+          <span>12 min</span>
+          <span class="ml-auto bg-indigo-50 text-indigo-700 font-semibold px-2 py-0.5 rounded">FEATURED</span>
+        </div>
+        <h3 class="font-bold text-lg text-slate-900 leading-snug mt-3">
+          <a class="stretch" href="on-screen-marking-osm-system-punjab-boards-2027.html">OSM System Punjab Boards 2027: Complete Guide + Sample Sheet PDF</a>
+        </h3>
+        <p class="prose-p text-sm text-slate-600 mt-2 flex-1">What OSM is, how digital marking works, download the free sample sheet PDF, and how students should prepare for BISE exams.</p>
+        <p class="text-xs text-slate-500 mt-4">By Muhammad Tayyab</p>
+      </article>
 
       <article class="post-card bg-white rounded-xl border border-slate-200 border-l-4 border-l-rose-500 p-6 flex flex-col" data-cat="updates">
         <div class="flex items-center gap-2 text-xs text-slate-500">
@@ -464,7 +599,7 @@
     <p id="no-results" class="hidden text-center text-slate-600 py-10">No articles match this topic yet. Choose "All" to see every article.</p>
   </section>
 
-  <!-- ===== PRINCIPLES (kept compact, one idea per block) ===== -->
+  <!-- ===== PRINCIPLES ===== -->
   <section class="bg-white border-y border-slate-200" aria-labelledby="principles-heading">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
       <h2 id="principles-heading" class="font-display font-extrabold text-3xl text-slate-900">How we write for students</h2>
@@ -536,10 +671,14 @@
     </div>
   </section>
 
-  <!-- ===== FAQ (matches FAQPage schema) ===== -->
+  <!-- ===== FAQ ===== -->
   <section class="max-w-3xl mx-auto px-4 sm:px-6 py-14" aria-labelledby="faq-heading">
     <h2 id="faq-heading" class="font-display font-extrabold text-3xl text-slate-900">Frequently asked questions</h2>
     <div class="mt-8 divide-y divide-slate-200 border-y border-slate-200">
+      <details class="group py-4">
+        <summary class="cursor-pointer font-semibold text-slate-900 list-none flex justify-between gap-4">What is the OSM system in Punjab Boards 2027?<span aria-hidden="true" class="text-primary-600 group-open:rotate-45 transition-transform">+</span></summary>
+        <p class="prose-p text-slate-600 mt-3">OSM stands for On-Screen Marking. It is a digital evaluation system where answer scripts are scanned and examiners mark them on computer screens. It will be implemented across all 9 BISE Punjab boards starting 2027. <a href="on-screen-marking-osm-system-punjab-boards-2027.html" class="text-primary-700 font-semibold hover:underline">Read the complete OSM guide</a>.</p>
+      </details>
       <details class="group py-4">
         <summary class="cursor-pointer font-semibold text-slate-900 list-none flex justify-between gap-4">What topics does the Hira Science Academy blog cover?<span aria-hidden="true" class="text-primary-600 group-open:rotate-45 transition-transform">+</span></summary>
         <p class="prose-p text-slate-600 mt-3">Physics, Mathematics and Chemistry guides, exam strategies, study tips, Punjab Board syllabus updates and career guidance for Class 9 and 10 students.</p>
@@ -579,7 +718,7 @@
     </div>
   </section>
 
-  <!-- ===== LEARNING RESOURCES (internal links) ===== -->
+  <!-- ===== LEARNING RESOURCES ===== -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 pb-16" aria-labelledby="resources-heading">
     <h2 id="resources-heading" class="font-display font-extrabold text-3xl text-slate-900">Notes and resources by class</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
@@ -606,6 +745,7 @@
       <div class="bg-white rounded-xl border border-slate-200 p-6">
         <h3 class="font-bold text-lg text-primary-700">Exam preparation</h3>
         <ul class="mt-4 space-y-3 text-sm">
+          <li><a href="on-screen-marking-osm-system-punjab-boards-2027.html" class="hover:text-primary-600 hover:underline">OSM System complete guide</a></li>
           <li><a href="fsc-entry-test.html" class="hover:text-primary-600 hover:underline">F.Sc entry test preparation</a></li>
           <li><a href="physics-numericals.html" class="hover:text-primary-600 hover:underline">Physics numericals guide</a></li>
           <li><a href="math-mistakes.html" class="hover:text-primary-600 hover:underline">Common math mistakes</a></li>
@@ -679,7 +819,7 @@
       Near Masjid Usman Ghani, Model Town, Daska 51010, Punjab, Pakistan
     </address>
     <p class="mt-6 border-t border-slate-700 pt-6 text-center text-sm text-slate-400 leading-relaxed">
-      © 2026 Hira Science Academy. All rights reserved. Serving students across all 9 BISE Punjab boards (Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, Sahiwal) and FBISE.
+      © Hira Science Academy. All rights reserved. Serving students across all 9 BISE Punjab boards (Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, Sahiwal) and FBISE.
     </p>
   </div>
 </footer>
@@ -712,7 +852,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', function () { top.classList.toggle('show', window.scrollY > 300); }, { passive: true });
   top.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 
-  // Topic filter (all articles stay in the HTML, so crawlers always see them)
+  // Topic filter
   var chips = document.querySelectorAll('.chip');
   var cards = document.querySelectorAll('.post-card[data-cat]');
   var empty = document.getElementById('no-results');
@@ -730,6 +870,21 @@ document.addEventListener('DOMContentLoaded', function () {
       status.textContent = shown + (shown === 1 ? ' article shown' : ' articles shown');
     });
   });
+
+  // Reading Progress Bar
+  (function() {
+    var progressBar = document.getElementById('readingProgressBar');
+    if (!progressBar) return;
+    function updateProgressBar() {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      var scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    }
+    window.addEventListener('scroll', updateProgressBar, { passive: true });
+    window.addEventListener('resize', updateProgressBar);
+    updateProgressBar();
+  })();
 });
 </script>
 </body>
