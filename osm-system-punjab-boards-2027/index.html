@@ -313,15 +313,38 @@
     .back-to-top:hover { transform: translateY(-5px) scale(1.05); box-shadow: 0 15px 30px -5px rgba(30,64,175,0.6); }
 
     .pdf-embed-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 75%;
-      height: 0;
-      overflow: hidden;
-      border-radius: var(--radius-lg);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      border: 2px solid #e2e8f0;
-    }
+  position: relative;
+  width: 100%;
+  padding-bottom: 140%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e2e8f0;
+}
+
+.pdf-embed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Extra tall view on mobile — shows full A4 sheet */
+@media (max-width: 640px) {
+  .pdf-embed-container {
+    padding-bottom: 160%;
+  }
+}
+
+/* Extra tall view on larger screens */
+@media (min-width: 1024px) {
+  .pdf-embed-container {
+    padding-bottom: 120%;
+  }
+}
     .pdf-embed-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
     .checklist-item { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.7rem 0; border-bottom: 1px solid #e2e8f0; }
@@ -874,60 +897,60 @@
         </ul>
       </div>
     </section>
+<!-- ===== SECTION 3: SAMPLE SHEET PDF ===== -->
+<section id="sample-sheet" class="scroll-mt-20">
+  <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
+    <span class="text-red-700 text-4xl">📄</span> OSM Sample Sheet PDF Download: Free E-Sheet Template for Practice
+  </h2>
+  <div class="glass-card card-rose rounded-2xl p-6 md:p-8 mb-8">
+    <p class="content-text text-justify mb-6"><strong>Students can view and download the sample OSM sheet below to become familiar with the answer-sheet layout before practicing. Download the PDF and practice writing on it as part of your exam preparation.</strong></p>
+    <p class="content-text text-justify mb-6 text-sm text-gray-700"><em>Note: This sample E-sheet is for practice only. Official E-sheets will be provided at exam centers with unique QR codes and serial numbers.</em></p>
+    
+    <!-- PDF Viewer — Taller view (uses .pdf-embed-container with padding-bottom: 140%) -->
+    <div class="pdf-embed-container mb-6" style="padding-bottom: 140%;">
+      <iframe src="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/preview" allow="autoplay" title="OSM Sample Sheet PDF - Punjab Boards 2027 E-Sheet Template" loading="lazy"></iframe>
+    </div>
 
-    <!-- ===== SECTION 3: SAMPLE SHEET PDF ===== -->
-    <section id="sample-sheet" class="scroll-mt-20">
-      <h2 class="text-3xl font-bold text-black mb-6 flex items-center gap-3">
-        <span class="text-red-700 text-4xl">📄</span> OSM Sample Sheet PDF Download: Free E-Sheet Template for Practice
-      </h2>
-      <div class="glass-card card-rose rounded-2xl p-6 md:p-8 mb-8">
-        <p class="content-text text-justify mb-6"><strong>Students can view and download the sample OSM sheet below to become familiar with the answer-sheet layout before practicing. Download the PDF and practice writing on it as part of your exam preparation.</strong></p>
-        <p class="content-text text-justify mb-6 text-sm text-gray-700"><em>Note: This sample E-sheet is for practice only. Official E-sheets will be provided at exam centers with unique QR codes and serial numbers.</em></p>
-        
-        <div class="pdf-embed-container mb-6">
-          <iframe src="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/preview" allow="autoplay" title="OSM Sample Sheet PDF - Punjab Boards 2027 E-Sheet Template"></iframe>
-        </div>
+    <!-- ===== CTA BOX ===== -->
+    <div class="cta-box">
+      <h3>📄 Download Your Free OSM Practice Sheet</h3>
+      <p style="color: #1f2937; margin-bottom: 0.5rem;">Get exam-ready for <strong>OSM System Punjab Boards 2027</strong> with our free sample E-sheet.</p>
+      <p style="color: #1f2937; font-weight: 600; margin-bottom: 0.25rem;">What you'll get:</p>
+      <ul>
+        <li>✓ Complete E-sheet layout</li>
+        <li>✓ Bubble grid practice</li>
+        <li>✓ Question space boundaries</li>
+      </ul>
+      <p class="cta-trust">Updated according to available board guidance.</p>
+      <a href="https://drive.google.com/uc?export=download&id=17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ" target="_blank" rel="noopener" download class="download-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+        </svg>
+        📥 Download Sample E-Sheet PDF
+      </a>
+    </div>
 
-        <!-- ===== CTA BOX ===== -->
-        <div class="cta-box">
-          <h3>📄 Download Your Free OSM Practice Sheet</h3>
-          <p style="color: #1f2937; margin-bottom: 0.5rem;">Get exam-ready for <strong>OSM System Punjab Boards 2027</strong> with our free sample E-sheet.</p>
-          <p style="color: #1f2937; font-weight: 600; margin-bottom: 0.25rem;">What you'll get:</p>
-          <ul>
-            <li>✓ Complete E-sheet layout</li>
-            <li>✓ Bubble grid practice</li>
-            <li>✓ Question space boundaries</li>
-          </ul>
-          <p class="cta-trust">Updated according to available board guidance.</p>
-          <a href="https://drive.google.com/uc?export=download&id=17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ" target="_blank" rel="noopener" download class="download-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-            📥 Download Sample E-Sheet PDF
-          </a>
-        </div>
+    <!-- Download Instructions -->
+    <div class="mt-6 bg-gray-50 rounded-xl p-4 border border-gray-200">
+      <p class="text-black text-sm font-bold mb-2">📋 How to Download:</p>
+      <ol class="text-black text-sm font-medium list-decimal pl-5 space-y-1">
+        <li>Click the green "Download Sample E-Sheet PDF" button above</li>
+        <li>The PDF will open in a new tab</li>
+        <li>Click the download icon in the top-right corner</li>
+        <li>Save the file to your device for practice</li>
+      </ol>
+    </div>
 
-        <!-- Download Instructions -->
-        <div class="mt-6 bg-gray-50 rounded-xl p-4 border border-gray-200">
-          <p class="text-black text-sm font-bold mb-2">📋 How to Download:</p>
-          <ol class="text-black text-sm font-medium list-decimal pl-5 space-y-1">
-            <li>Click the green "Download Sample E-Sheet PDF" button above</li>
-            <li>The PDF will open in a new tab</li>
-            <li>Click the download icon in the top-right corner</li>
-            <li>Save the file to your device for practice</li>
-          </ol>
-        </div>
-
-        <div class="flex flex-wrap gap-4 justify-center mt-6">
-          <a href="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/view" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-blue-800 hover:bg-blue-900 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all text-base">
-            <span>👁️</span> View Full PDF
-          </a>
-          <a href="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/view" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all text-base">
-            <span>🔗</span> Open in New Tab
-          </a>
-        </div>
-      </div>
-    </section>
+    <div class="flex flex-wrap gap-4 justify-center mt-6">
+      <a href="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/view" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-blue-800 hover:bg-blue-900 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all text-base">
+        <span>👁️</span> View Full PDF
+      </a>
+      <a href="https://drive.google.com/file/d/17IZ31DCye69LFWnBNVRffP9AqtP1-uZQ/view" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all text-base">
+        <span>🔗</span> Open in New Tab
+      </a>
+    </div>
+  </div>
+</section>
 
     <!-- ===== SECTION 4: E-SHEET FILLING RULES ===== -->
     <section id="e-sheet-rules" class="scroll-mt-20">
