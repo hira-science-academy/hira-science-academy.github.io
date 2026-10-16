@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Define the ad container markup
     function createAdSlot(slotId) {
         const adWrapper = document.createElement("div");
-        adWrapper.className = "ad-slot max-w-7xl mx-auto px-6 my-8 text-center min-h-[90px]";
+        adWrapper.className = "ad-slot container mx-auto px-6 my-8 text-center min-h-[90px]";
         adWrapper.setAttribute("aria-label", "Advertisement");
 
         adWrapper.innerHTML = `
@@ -17,27 +17,19 @@ document.addEventListener("DOMContentLoaded", function () {
         return adWrapper;
     }
 
-    // 1. Inject an ad above the main footer (Slot: Pairing Scheme - Bottom Banner)
+    // Example 1: Inject an ad above the main footer
     const footer = document.querySelector("footer");
     if (footer) {
-        const footerAd = createAdSlot("3074931418");
+        const footerAd = createAdSlot("1695682396");
         footer.parentNode.insertBefore(footerAd, footer);
-        try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+        (adsbygoogle = window.adsbygoogle || []).push({});
     }
 
-    // 2. Inject an ad near the top after the first available section or header container
-    const topTarget = document.querySelector("main section, article section, header + div, section");
-    if (topTarget) {
-        const topAd = createAdSlot("1796763903"); // Pairing Scheme - Top Banner
-        topTarget.after(topAd);
-        try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
-    }
-
-    // 3. Inject a middle ad further down the page (targeting later sections if available)
-    const allSections = document.querySelectorAll("section");
-    if (allSections.length > 2) {
-        const middleAd = createAdSlot("7998201012"); // Pairing Scheme - Middle 1
-        allSections[Math.floor(allSections.length / 2)].after(middleAd);
-        try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+    // Example 2: Inject an ad after the first heading/article section
+    const firstSection = document.querySelector("main section, article section");
+    if (firstSection) {
+        const topAd = createAdSlot("1695682396");
+        firstSection.after(topAd);
+        (adsbygoogle = window.adsbygoogle || []).push({});
     }
 });
