@@ -15,15 +15,18 @@
   <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
   <meta content="en" name="language"/>
   <meta content="Hira Science Academy" name="author"/>
-  <title>Simultaneous Equations Solver — 2×2 Systems by Cramer's Rule | Hira Science Academy</title>
-  <meta content="Free simultaneous equations solver. Solve two equations in two variables using Cramer's rule with determinant analysis, step-by-step working, and special case detection." name="description"/>
-  <meta content="simultaneous equations solver, system of equations, Cramer's rule, 2x2 linear system, two variables, determinant method" name="keywords"/>
+
+  <!-- CTR OPTIMIZATION: Exact-match title targeting the 131 impressions -->
+  <title>Simultaneous Equations Solver – 2x2 System Calculator with Steps</title>
+  <meta content="Free simultaneous equations solver. Solve two equations in two variables instantly using Cramer's rule. See the step-by-step determinant working and exact fractions." name="description"/>
+  <meta content="simultaneous equations solver, system of equations, Cramer's rule, 2x2 linear system, two equation solver" name="keywords"/>
+  
   <link href="https://hiraacademy.com.pk/tools/simultaneous-equations-solver.html" rel="canonical"/>
 
   <meta content="website" property="og:type"/>
   <meta content="en_PK" property="og:locale"/>
   <meta content="Hira Science Academy" property="og:site_name"/>
-  <meta content="Simultaneous Equations Solver — 2×2 Systems by Cramer's Rule" property="og:title"/>
+  <meta content="Simultaneous Equations Solver – 2x2 System Calculator with Steps" property="og:title"/>
   <meta content="Solve two simultaneous linear equations in two variables with Cramer's rule and full working." property="og:description"/>
   <meta content="https://hiraacademy.com.pk/tools/simultaneous-equations-solver.html" property="og:url"/>
   <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
@@ -31,6 +34,24 @@
   <meta content="@hiraacademyDSK" name="twitter:site"/>
 
   <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <!-- KaTeX for perfect math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
 
   <script type="application/ld+json">
   {
@@ -57,27 +78,12 @@
       {
         "@type": "Question",
         "name": "What is Cramer's rule?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Cramer's rule is a formula for solving systems of linear equations using determinants. For the system a₁x + b₁y = c₁, a₂x + b₂y = c₂, the solution is x = Dx / D and y = Dy / D, where D is the determinant of the coefficient matrix and Dx, Dy are determinants with the corresponding column replaced by the constants." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Cramer's rule is a formula for solving systems of linear equations using determinants. For the system a₁x + b₁y = c₁, a₂x + b₂y = c₂, the solution is x = Dx / D and y = Dy / D, where D is the determinant of the coefficient matrix." }
       },
       {
         "@type": "Question",
         "name": "What does the determinant tell you?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The determinant D determines the nature of the system. If D ≠ 0, there is exactly one unique solution. If D = 0 and the equations are consistent (one is a multiple of the other), there are infinitely many solutions. If D = 0 and the equations are inconsistent, there is no solution." }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between substitution and elimination?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Substitution solves one equation for one variable and substitutes into the other. Elimination adds or subtracts multiples of the equations to cancel one variable. Cramer's rule uses determinants and is faster for 2×2 and 3×3 systems, but substitution and elimination are more intuitive and are what students learn first." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can there be more than one solution?",
-        "acceptedAnswer": { "@type": "Answer", "text": "A 2×2 linear system can have exactly one solution (D ≠ 0), infinitely many solutions (D = 0 with consistent equations), or no solution (D = 0 with inconsistent equations). It cannot have exactly two or three distinct solutions." }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I check my solution?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Substitute the values of x and y back into both original equations and verify that both sides equal. Both equations must be satisfied. This substitution check catches sign errors and arithmetic mistakes." }
+        "acceptedAnswer": { "@type": "Answer", "text": "The determinant D determines the nature of the system. If D ≠ 0, there is exactly one unique solution. If D = 0 and the equations are consistent, there are infinitely many solutions. If D = 0 and the equations are inconsistent, there is no solution." }
       }
     ]
   }
@@ -146,59 +152,6 @@
     }
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
-
-    /* LaTeX-style HTML/CSS math */
-    .latex-frac {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      vertical-align: middle;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1em;
-      line-height: 1.15;
-      margin: 0 0.15em;
-      color: #0b1220;
-    }
-    .latex-frac .f-num {
-      padding: 0 0.35em 0.05em 0.35em;
-      border-bottom: 1.5px solid currentColor;
-    }
-    .latex-frac .f-den {
-      padding: 0.05em 0.35em 0 0.35em;
-    }
-    .latex-frac.big { font-size: 1.35em; }
-    .latex-frac.big .f-num { border-bottom-width: 2px; }
-    .latex-sup {
-      display: inline-block;
-      font-size: 0.72em;
-      vertical-align: super;
-      line-height: 0;
-      font-weight: 600;
-    }
-    .latex-sub {
-      display: inline-block;
-      font-size: 0.72em;
-      vertical-align: sub;
-      line-height: 0;
-      font-weight: 600;
-    }
-    .math-block {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.05rem;
-      color: #0b1220;
-      background: #f8fafc;
-      padding: 1rem 1.25rem;
-      border-radius: 0.5rem;
-      border-left: 4px solid #0ea5e9;
-      margin: 0.35rem 0 0 0;
-      flex-wrap: wrap;
-      gap: 0.3em;
-      text-align: center;
-      overflow-x: auto;
-    }
 
     /* Determinant display */
     .det-matrix {
@@ -363,15 +316,11 @@
       font-size: 0.75rem;
       font-weight: 700;
     }
-    .sim-coef-hint {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: #64748b;
-      text-align: center;
-      padding: 0.2rem 0;
-    }
     .hero-centered { text-align: center; }
     .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+    
+    /* KaTeX overrides */
+    .katex { font-size: 1.1em; }
   </style>
 </head>
 
@@ -427,8 +376,11 @@
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
       <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Cramer's Rule · Step-by-Step</span>
+      
+      <!-- CTR OPTIMIZATION: Exact-match H1 -->
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Simultaneous Equations Solver</h1>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Solve two equations in x and y using Cramer's rule, with determinant analysis for every case.</p>
+      
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Solve two equations in x and y using Cramer's rule, with determinant analysis and step-by-step working.</p>
     </div>
   </header>
 
@@ -525,52 +477,39 @@
         <div class="formula-block">
           <div class="formula-label">Standard form</div>
           <div class="math-block">
-            <span>a<sub>1</sub>x + b<sub>1</sub>y = c<sub>1</sub></span>
-          </div>
-          <div class="math-block" style="margin-top:0.35rem;">
-            <span>a<sub>2</sub>x + b<sub>2</sub>y = c<sub>2</sub></span>
+            \[ a_1 x + b_1 y = c_1 \]
+            \[ a_2 x + b_2 y = c_2 \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Main determinant</div>
           <div class="math-block">
-            <span>D = </span>
-            <span class="det-matrix det-big"><span>a<sub>1</sub></span><span>b<sub>1</sub></span><span>a<sub>2</sub></span><span>b<sub>2</sub></span></span>
-            <span>= a<sub>1</sub>b<sub>2</sub> − a<sub>2</sub>b<sub>1</sub></span>
+            \[ D = \begin{vmatrix} a_1 & b_1 \\ a_2 & b_2 \end{vmatrix} = a_1 b_2 - a_2 b_1 \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Determinants for the numerators</div>
           <div class="math-block">
-            <span>D<sub>x</sub> = </span>
-            <span class="det-matrix det-big"><span>c<sub>1</sub></span><span>b<sub>1</sub></span><span>c<sub>2</sub></span><span>b<sub>2</sub></span></span>
-            <span>= c<sub>1</sub>b<sub>2</sub> − c<sub>2</sub>b<sub>1</sub></span>
-          </div>
-          <div class="math-block" style="margin-top:0.5rem;">
-            <span>D<sub>y</sub> = </span>
-            <span class="det-matrix det-big"><span>a<sub>1</sub></span><span>c<sub>1</sub></span><span>a<sub>2</sub></span><span>c<sub>2</sub></span></span>
-            <span>= a<sub>1</sub>c<sub>2</sub> − a<sub>2</sub>c<sub>1</sub></span>
+            \[ D_x = \begin{vmatrix} c_1 & b_1 \\ c_2 & b_2 \end{vmatrix} = c_1 b_2 - c_2 b_1 \]
+            <br>
+            \[ D_y = \begin{vmatrix} a_1 & c_1 \\ a_2 & c_2 \end{vmatrix} = a_1 c_2 - a_2 c_1 \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Solution (when D ≠ 0)</div>
           <div class="math-block">
-            <span>x = </span>
-            <span class="latex-frac big"><span class="f-num">D<sub>x</sub></span><span class="f-den">D</span></span>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>y = </span>
-            <span class="latex-frac big"><span class="f-num">D<sub>y</sub></span><span class="f-den">D</span></span>
+            \[ x = \frac{D_x}{D} \qquad y = \frac{D_y}{D} \]
           </div>
         </div>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">The three cases</h3>
         <ul class="list-disc pl-6 space-y-1 leading-relaxed">
-          <li><strong>D ≠ 0</strong> — unique solution. The two lines intersect at exactly one point.</li>
-          <li><strong>D = 0 and D<sub>x</sub> = D<sub>y</sub> = 0</strong> — infinitely many solutions. The two equations represent the same line.</li>
-          <li><strong>D = 0 and at least one of D<sub>x</sub>, D<sub>y</sub> is non-zero</strong> — no solution. The lines are parallel.</li>
+          <li><strong>\(D \neq 0\)</strong> — unique solution. The two lines intersect at exactly one point.</li>
+          <li><strong>\(D = 0\) and \(D_x = D_y = 0\)</strong> — infinitely many solutions. The two equations represent the same line.</li>
+          <li><strong>\(D = 0\) and at least one of \(D_x, D_y\) is non-zero</strong> — no solution. The lines are parallel.</li>
         </ul>
       </section>
 
@@ -579,65 +518,65 @@
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 1: Unique solution</p>
-          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">2x + 3y = 12 &nbsp;&nbsp;&nbsp; 4x − y = 5</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">\(2x + 3y = 12\) &nbsp;&nbsp;&nbsp; \(4x - y = 5\)</p>
           <ol>
-            <li>Identify coefficients: a₁=2, b₁=3, c₁=12; a₂=4, b₂=−1, c₂=5.</li>
-            <li>D = a₁b₂ − a₂b₁ = 2(−1) − 4(3) = −2 − 12 = <strong>−14</strong>. D ≠ 0 → unique solution.</li>
-            <li>Dₓ = c₁b₂ − c₂b₁ = 12(−1) − 5(3) = −12 − 15 = <strong>−27</strong>.</li>
-            <li>D_y = a₁c₂ − a₂c₁ = 2(5) − 4(12) = 10 − 48 = <strong>−38</strong>.</li>
-            <li>x = Dₓ / D = −27 / −14 = <strong>27/14 ≈ 1.928571</strong>.</li>
-            <li>y = D_y / D = −38 / −14 = <strong>19/7 ≈ 2.714286</strong>.</li>
+            <li>Identify coefficients: \(a_1=2, b_1=3, c_1=12\); \(a_2=4, b_2=-1, c_2=5\).</li>
+            <li>\(D = a_1b_2 - a_2b_1 = 2(-1) - 4(3) = -2 - 12 = \mathbf{-14}\). \(D \neq 0 \rightarrow\) unique solution.</li>
+            <li>\(D_x = c_1b_2 - c_2b_1 = 12(-1) - 5(3) = -12 - 15 = \mathbf{-27}\).</li>
+            <li>\(D_y = a_1c_2 - a_2c_1 = 2(5) - 4(12) = 10 - 48 = \mathbf{-38}\).</li>
+            <li>\(x = \frac{D_x}{D} = \frac{-27}{-14} = \mathbf{\frac{27}{14} \approx 1.928571}\).</li>
+            <li>\(y = \frac{D_y}{D} = \frac{-38}{-14} = \mathbf{\frac{19}{7} \approx 2.714286}\).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 2: Clean integer solution</p>
-          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">x + y = 7 &nbsp;&nbsp;&nbsp; x − y = 1</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">\(x + y = 7\) &nbsp;&nbsp;&nbsp; \(x - y = 1\)</p>
           <ol>
-            <li>a₁=1, b₁=1, c₁=7; a₂=1, b₂=−1, c₂=1.</li>
-            <li>D = 1(−1) − 1(1) = −1 − 1 = <strong>−2</strong>.</li>
-            <li>Dₓ = 7(−1) − 1(1) = −7 − 1 = <strong>−8</strong>.</li>
-            <li>D_y = 1(1) − 1(7) = 1 − 7 = <strong>−6</strong>.</li>
-            <li>x = −8 / −2 = <strong>4</strong>, y = −6 / −2 = <strong>3</strong>.</li>
-            <li>Check: 4 + 3 = 7 ✓, 4 − 3 = 1 ✓.</li>
+            <li>\(a_1=1, b_1=1, c_1=7\); \(a_2=1, b_2=-1, c_2=1\).</li>
+            <li>\(D = 1(-1) - 1(1) = -1 - 1 = \mathbf{-2}\).</li>
+            <li>\(D_x = 7(-1) - 1(1) = -7 - 1 = \mathbf{-8}\).</li>
+            <li>\(D_y = 1(1) - 1(7) = 1 - 7 = \mathbf{-6}\).</li>
+            <li>\(x = \frac{-8}{-2} = \mathbf{4}\), \(y = \frac{-6}{-2} = \mathbf{3}\).</li>
+            <li>Check: \(4 + 3 = 7\) ✓, \(4 - 3 = 1\) ✓.</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 3: No solution (parallel lines)</p>
-          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">x + y = 3 &nbsp;&nbsp;&nbsp; 2x + 2y = 8</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">\(x + y = 3\) &nbsp;&nbsp;&nbsp; \(2x + 2y = 8\)</p>
           <ol>
-            <li>a₁=1, b₁=1, c₁=3; a₂=2, b₂=2, c₂=8.</li>
-            <li>D = 1(2) − 2(1) = 2 − 2 = <strong>0</strong>.</li>
-            <li>Dₓ = 3(2) − 8(1) = 6 − 8 = <strong>−2</strong> ≠ 0.</li>
-            <li>Since D = 0 but Dₓ ≠ 0, the system is <strong>inconsistent</strong>: no solution.</li>
+            <li>\(a_1=1, b_1=1, c_1=3\); \(a_2=2, b_2=2, c_2=8\).</li>
+            <li>\(D = 1(2) - 2(1) = 2 - 2 = \mathbf{0}\).</li>
+            <li>\(D_x = 3(2) - 8(1) = 6 - 8 = \mathbf{-2} \neq 0\).</li>
+            <li>Since \(D = 0\) but \(D_x \neq 0\), the system is <strong>inconsistent</strong>: no solution.</li>
             <li>Geometrically, the lines are parallel and never meet.</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 4: Infinitely many solutions</p>
-          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">x + y = 3 &nbsp;&nbsp;&nbsp; 2x + 2y = 6</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">\(x + y = 3\) &nbsp;&nbsp;&nbsp; \(2x + 2y = 6\)</p>
           <ol>
-            <li>a₁=1, b₁=1, c₁=3; a₂=2, b₂=2, c₂=6.</li>
-            <li>D = 1(2) − 2(1) = <strong>0</strong>.</li>
-            <li>Dₓ = 3(2) − 6(1) = 6 − 6 = <strong>0</strong>.</li>
-            <li>D_y = 1(6) − 2(3) = 6 − 6 = <strong>0</strong>.</li>
-            <li>All three determinants are zero → <strong>infinitely many solutions</strong>.</li>
+            <li>\(a_1=1, b_1=1, c_1=3\); \(a_2=2, b_2=2, c_2=6\).</li>
+            <li>\(D = 1(2) - 2(1) = \mathbf{0}\).</li>
+            <li>\(D_x = 3(2) - 6(1) = 6 - 6 = \mathbf{0}\).</li>
+            <li>\(D_y = 1(6) - 2(3) = 6 - 6 = \mathbf{0}\).</li>
+            <li>All three determinants are zero \(\rightarrow\) <strong>infinitely many solutions</strong>.</li>
             <li>The second equation is twice the first — they represent the same line.</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 5: Negative coefficients</p>
-          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">3x − 2y = 5 &nbsp;&nbsp;&nbsp; −x + 4y = 7</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:0.9375rem;color:#334155;margin-top:0.25rem;">\(3x - 2y = 5\) &nbsp;&nbsp;&nbsp; \(-x + 4y = 7\)</p>
           <ol>
-            <li>a₁=3, b₁=−2, c₁=5; a₂=−1, b₂=4, c₂=7.</li>
-            <li>D = 3(4) − (−1)(−2) = 12 − 2 = <strong>10</strong>.</li>
-            <li>Dₓ = 5(4) − 7(−2) = 20 + 14 = <strong>34</strong>.</li>
-            <li>D_y = 3(7) − (−1)(5) = 21 + 5 = <strong>26</strong>.</li>
-            <li>x = 34 / 10 = <strong>17/5 = 3.4</strong>.</li>
-            <li>y = 26 / 10 = <strong>13/5 = 2.6</strong>.</li>
+            <li>\(a_1=3, b_1=-2, c_1=5\); \(a_2=-1, b_2=4, c_2=7\).</li>
+            <li>\(D = 3(4) - (-1)(-2) = 12 - 2 = \mathbf{10}\).</li>
+            <li>\(D_x = 5(4) - 7(-2) = 20 + 14 = \mathbf{34}\).</li>
+            <li>\(D_y = 3(7) - (-1)(5) = 21 + 5 = \mathbf{26}\).</li>
+            <li>\(x = \frac{34}{10} = \mathbf{\frac{17}{5} = 3.4}\).</li>
+            <li>\(y = \frac{26}{10} = \mathbf{\frac{13}{5} = 2.6}\).</li>
           </ol>
         </div>
       </section>
@@ -659,11 +598,10 @@
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
         <ul class="list-disc pl-6 space-y-2 leading-relaxed">
-          <li><strong>Getting the coefficients out of order.</strong> Write each equation in the form ax + by = c before identifying coefficients. Don't grab the numbers as they appear — check which one multiplies x and which multiplies y.</li>
-          <li><strong>Forgetting the minus sign in the determinant.</strong> D = a₁b₂ − a₂b₁, not a₁b₂ + a₂b₁. The determinant formula has a specific sign pattern.</li>
-          <li><strong>Sign errors when moving terms.</strong> If the equation is 2x − 3y = 5, then b₁ = −3, not 3. Keep the sign attached to the coefficient.</li>
-          <li><strong>Confusing the "no solution" and "infinite solutions" cases.</strong> When D = 0, you must check Dₓ and D_y. If both are zero, infinitely many. If either is non-zero, no solution.</li>
-          <li><strong>Misreading the constants.</strong> c₁, c₂ are the numbers on the right side of the equals signs. If an equation is rearranged, they may have moved.</li>
+          <li><strong>Getting the coefficients out of order.</strong> Write each equation in the form \(ax + by = c\) before identifying coefficients. Don't grab the numbers as they appear — check which one multiplies \(x\) and which multiplies \(y\).</li>
+          <li><strong>Forgetting the minus sign in the determinant.</strong> \(D = a_1b_2 - a_2b_1\), not \(a_1b_2 + a_2b_1\). The determinant formula has a specific sign pattern.</li>
+          <li><strong>Sign errors when moving terms.</strong> If the equation is \(2x - 3y = 5\), then \(b_1 = -3\), not \(3\). Keep the sign attached to the coefficient.</li>
+          <li><strong>Confusing the "no solution" and "infinite solutions" cases.</strong> When \(D = 0\), you must check \(D_x\) and \(D_y\). If both are zero, infinitely many. If either is non-zero, no solution.</li>
           <li><strong>Not verifying the solution.</strong> Always substitute the answer into both original equations. Both must hold — checking only one is not enough.</li>
         </ul>
       </section>
@@ -673,15 +611,15 @@
         <div class="space-y-3">
           <details class="faq-item">
             <summary>What are simultaneous equations?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Simultaneous equations are two or more equations in the same variables that must be satisfied at the same time. A 2×2 linear system has two equations in two unknowns, x and y. Solving means finding the pair (x, y) that satisfies both equations at once.</p>
+            <p class="faq-answer">Simultaneous equations are two or more equations in the same variables that must be satisfied at the same time. A 2×2 linear system has two equations in two unknowns, \(x\) and \(y\). Solving means finding the pair \((x, y)\) that satisfies both equations at once.</p>
           </details>
           <details class="faq-item">
             <summary>What is Cramer's rule?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Cramer's rule is a formula for solving systems of linear equations using determinants. For the system a₁x + b₁y = c₁, a₂x + b₂y = c₂, the solution is x = Dx / D and y = Dy / D, where D is the determinant of the coefficient matrix and Dx, Dy are determinants with the corresponding column replaced by the constants.</p>
+            <p class="faq-answer">Cramer's rule is a formula for solving systems of linear equations using determinants. For the system \(a_1x + b_1y = c_1\), \(a_2x + b_2y = c_2\), the solution is \(x = \frac{D_x}{D}\) and \(y = \frac{D_y}{D}\), where \(D\) is the determinant of the coefficient matrix.</p>
           </details>
           <details class="faq-item">
             <summary>What does the determinant tell you?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">The determinant D determines the nature of the system. If D ≠ 0, there is exactly one unique solution. If D = 0 and the equations are consistent (one is a multiple of the other), there are infinitely many solutions. If D = 0 and the equations are inconsistent, there is no solution.</p>
+            <p class="faq-answer">The determinant \(D\) determines the nature of the system. If \(D \neq 0\), there is exactly one unique solution. If \(D = 0\) and the equations are consistent, there are infinitely many solutions. If \(D = 0\) and the equations are inconsistent, there is no solution.</p>
           </details>
           <details class="faq-item">
             <summary>What is the difference between substitution and elimination?<span aria-hidden="true">▾</span></summary>
@@ -689,11 +627,11 @@
           </details>
           <details class="faq-item">
             <summary>Can there be more than one solution?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">A 2×2 linear system can have exactly one solution (D ≠ 0), infinitely many solutions (D = 0 with consistent equations), or no solution (D = 0 with inconsistent equations). It cannot have exactly two or three distinct solutions.</p>
+            <p class="faq-answer">A 2×2 linear system can have exactly one solution (\(D \neq 0\)), infinitely many solutions (\(D = 0\) with consistent equations), or no solution (\(D = 0\) with inconsistent equations). It cannot have exactly two or three distinct solutions.</p>
           </details>
           <details class="faq-item">
             <summary>How do I check my solution?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Substitute the values of x and y back into both original equations and verify that both sides equal. Both equations must be satisfied. This substitution check catches sign errors and arithmetic mistakes.</p>
+            <p class="faq-answer">Substitute the values of \(x\) and \(y\) back into both original equations and verify that both sides equal. Both equations must be satisfied. This substitution check catches sign errors and arithmetic mistakes.</p>
           </details>
         </div>
       </section>
@@ -724,14 +662,13 @@
   </main>
 
   <!-- FOOTER -->
- <!-- FOOTER -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
   <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     
     <!-- Main Footer Layout -->
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
       
-      <!-- Brand & Info (Reduced to 3 of 12 columns on Desktop) -->
+      <!-- Brand & Info -->
       <div class="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left">
         <a class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
           <img alt="Hira Science Academy logo" width="40" height="40" loading="lazy" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" src="https://hiraacademy.com.pk/images/logo.webp"/>
@@ -745,7 +682,7 @@
         </p>
       </div>
 
-      <!-- Links Grid (Expanded to 9 of 12 columns on Desktop) -->
+      <!-- Links Grid -->
       <div class="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         
         <!-- Programs -->
@@ -900,7 +837,6 @@
 
     /* ============ Equation text ============ */
     function eqText(a, b, c, varFirst, varSecond) {
-      // Returns e.g. "2 x + 3 y = 12"
       const parts = [];
       if (a === 1) parts.push(varFirst);
       else if (a === -1) parts.push('−' + varFirst);
@@ -938,7 +874,6 @@
     function calculate() {
       clearAllErrors(section);
 
-      // Read all values
       const readings = [
         { el: a1El, name: 'a₁' },
         { el: b1El, name: 'b₁' },
@@ -972,7 +907,6 @@
         return;
       }
 
-      // Compute determinants
       const D  = a1 * b2 - a2 * b1;
       const Dx = c1 * b2 - c2 * b1;
       const Dy = a1 * c2 - a2 * c1;
@@ -984,7 +918,6 @@
         const x = Dx / D;
         const y = Dy / D;
 
-        // Exact fractions
         const xFrac = decimalToFraction(x);
         const yFrac = decimalToFraction(y);
         const xExact = xFrac && Math.abs(xFrac.n) < 1e9 && xFrac.d < 1e9
@@ -994,7 +927,6 @@
           ? (yFrac.d === 1 ? String(yFrac.n) : fracHTML(yFrac.n, yFrac.d, true))
           : fmtNum(y);
 
-        // Substitution check
         const lhs1 = a1 * x + b1 * y;
         const lhs2 = a2 * x + b2 * y;
         const ok1 = Math.abs(lhs1 - c1) < 1e-9;
@@ -1061,11 +993,9 @@
       }
 
       /* ====== Case: D = 0 ====== */
-      // Check Dx, Dy
       const consistent = Math.abs(Dx) < EPS && Math.abs(Dy) < EPS;
 
       if (consistent) {
-        // Infinitely many solutions
         const html = `
           <div class="result-label">Result</div>
           <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#0ea5e9;text-align:center;padding:0.5rem 0;">
@@ -1115,7 +1045,6 @@
         return;
       }
 
-      // No solution (inconsistent)
       const html = `
         <div class="result-label">Result</div>
         <div style="font-family:'JetBrains Mono',monospace;font-size:1.5rem;font-weight:700;color:#ef4444;text-align:center;padding:0.5rem 0;">
@@ -1175,7 +1104,6 @@
       trackEvent(CALC_NAME, 'reset');
     });
 
-    // Mobile menu + back-to-top
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
     const io = document.getElementById('menu-icon-open');

@@ -15,15 +15,17 @@
   <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
   <meta content="en" name="language"/>
   <meta content="Hira Science Academy" name="author"/>
-  <title>Triangle Calculator — SSS, Heron's Formula, Area &amp; Angles | Hira Science Academy</title>
-  <meta content="Free triangle calculator. Enter three sides to get area via Heron's formula, perimeter, angles via the law of cosines, and triangle type. Triangle inequality checked." name="description"/>
-  <meta content="triangle calculator, SSS triangle, Heron's formula, triangle area, triangle angles, law of cosines, triangle inequality, triangle type" name="keywords"/>
+
+  <title>Triangle Calculator (SSS) – Area, Angles & Heron's Formula</title>
+  <meta content="Free SSS triangle calculator. Enter 3 sides to get the area using Heron's formula, calculate angles using the law of cosines, and check the triangle inequality." name="description"/>
+  <meta content="triangle calculator, sss triangle calculator, how to find the angle of a triangle given 3 sides, area of scalene triangle heron's formula, law of cosines" name="keywords"/>
+  
   <link href="https://hiraacademy.com.pk/tools/triangle-calculator.html" rel="canonical"/>
 
   <meta content="website" property="og:type"/>
   <meta content="en_PK" property="og:locale"/>
   <meta content="Hira Science Academy" property="og:site_name"/>
-  <meta content="Triangle Calculator — SSS, Heron's Formula, Area &amp; Angles" property="og:title"/>
+  <meta content="Triangle Calculator (SSS) – Area, Angles & Heron's Formula" property="og:title"/>
   <meta content="Solve any SSS triangle: area, perimeter, angles, and type — with triangle inequality checked." property="og:description"/>
   <meta content="https://hiraacademy.com.pk/tools/triangle-calculator.html" property="og:url"/>
   <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
@@ -31,6 +33,24 @@
   <meta content="@hiraacademyDSK" name="twitter:site"/>
 
   <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <!-- KaTeX for perfect math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
 
   <script type="application/ld+json">
   {
@@ -57,27 +77,12 @@
       {
         "@type": "Question",
         "name": "What is Heron's formula?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Heron's formula gives the area of a triangle from its three sides: A = √(s(s − a)(s − b)(s − c)), where s is the semi-perimeter, s = (a + b + c) / 2. It works for every triangle, whether acute, right, or obtuse." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Heron's formula gives the area of a triangle from its three sides: A = √(s(s − a)(s − b)(s − c)), where s is the semi-perimeter, s = (a + b + c) / 2. It works for every triangle." }
       },
       {
         "@type": "Question",
         "name": "How do I find the angles of a triangle given three sides?",
         "acceptedAnswer": { "@type": "Answer", "text": "Use the law of cosines. For angle A opposite side a: cos A = (b² + c² − a²) / (2bc), so A = arccos((b² + c² − a²) / (2bc)). Repeat for each angle. The three angles should sum to 180°." }
-      },
-      {
-        "@type": "Question",
-        "name": "How do I classify a triangle by its sides?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Equilateral: all three sides equal. Isosceles: exactly two sides equal. Scalene: no sides equal. This calculator also classifies by angles using the Pythagorean check: if a² + b² = c² it is right; if greater, obtuse; if less, acute (assuming c is the longest side)." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can a triangle have a side of length zero?",
-        "acceptedAnswer": { "@type": "Answer", "text": "No. A triangle must have three positive side lengths. A zero-length side would make the shape degenerate to a line segment." }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the semi-perimeter?",
-        "acceptedAnswer": { "@type": "Answer", "text": "The semi-perimeter is half the perimeter: s = (a + b + c) / 2. It is used in Heron's formula and appears in many other triangle formulas such as the inradius and circumradius." }
       }
     ]
   }
@@ -146,77 +151,6 @@
     }
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
-
-    /* LaTeX-style HTML/CSS math */
-    .latex-radical {
-      display: inline-flex;
-      align-items: stretch;
-      font-family: 'JetBrains Mono', monospace;
-      vertical-align: middle;
-      line-height: 1;
-      color: #0b1220;
-    }
-    .latex-radical .r-sign {
-      display: inline-block;
-      font-size: 1.15em;
-      transform: translateY(0.02em);
-      padding-right: 0.02em;
-    }
-    .latex-radical .r-body {
-      display: inline-block;
-      border-top: 1.5px solid currentColor;
-      padding: 0.15em 0.25em 0.05em 0.25em;
-      margin-top: 0.1em;
-    }
-    .latex-frac {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      vertical-align: middle;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1em;
-      line-height: 1.15;
-      margin: 0 0.15em;
-      color: #0b1220;
-    }
-    .latex-frac .f-num {
-      padding: 0 0.35em 0.05em 0.35em;
-      border-bottom: 1.5px solid currentColor;
-    }
-    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
-    .latex-frac.big { font-size: 1.35em; }
-    .latex-frac.big .f-num { border-bottom-width: 2px; }
-    .latex-sup {
-      display: inline-block;
-      font-size: 0.72em;
-      vertical-align: super;
-      line-height: 0;
-      font-weight: 600;
-    }
-    .latex-sub {
-      display: inline-block;
-      font-size: 0.72em;
-      vertical-align: sub;
-      line-height: 0;
-      font-weight: 600;
-    }
-    .math-block {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.05rem;
-      color: #0b1220;
-      background: #f8fafc;
-      padding: 1rem 1.25rem;
-      border-radius: 0.5rem;
-      border-left: 4px solid #0ea5e9;
-      margin: 0.35rem 0 0 0;
-      flex-wrap: wrap;
-      gap: 0.3em;
-      text-align: center;
-      overflow-x: auto;
-    }
 
     /* Graph canvas */
     .graph-canvas-wrap {
@@ -332,6 +266,9 @@
     .tri-error-banner.is-visible { display: block; }
     .hero-centered { text-align: center; }
     .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+    
+    /* KaTeX overrides */
+    .katex { font-size: 1.1em; }
   </style>
 </head>
 
@@ -387,8 +324,10 @@
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
       <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · SSS · Heron's Formula · Graph</span>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Triangle Calculator</h1>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Enter three sides to get area, perimeter, all angles, and triangle type — with the triangle inequality checked.</p>
+      
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Triangle Calculator (SSS)</h1>
+      
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Enter 3 sides to instantly get the area using Heron's formula, calculate all angles, and check the triangle inequality.</p>
     </div>
   </header>
 
@@ -458,7 +397,7 @@
     <article class="space-y-8 text-gray-700 mt-8">
 
       <section>
-        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this triangle calculator does</h2>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this SSS triangle calculator does</h2>
         <p class="leading-relaxed text-justify">
           This tool takes the three side lengths of a triangle (the SSS case in geometry) and returns everything that can be derived from them: the area, the perimeter, the semi-perimeter, all three angles, the classification by sides (equilateral, isosceles, or scalene), and the classification by angles (acute, right, or obtuse). It verifies the triangle inequality before computing anything, so impossible inputs are rejected with a clear explanation rather than a nonsensical output. A graph draws the triangle at the correct shape so you can see it.
         </p>
@@ -470,53 +409,60 @@
         <div class="formula-block">
           <div class="formula-label">Triangle inequality</div>
           <div class="math-block">
-            <span>a + b &gt; c &nbsp;&nbsp; and &nbsp;&nbsp; b + c &gt; a &nbsp;&nbsp; and &nbsp;&nbsp; c + a &gt; b</span>
+            \[ a + b > c \quad \text{and} \quad b + c > a \quad \text{and} \quad c + a > b \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Perimeter and semi-perimeter</div>
           <div class="math-block">
-            <span>P = a + b + c</span>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>s = </span>
-            <span class="latex-frac big"><span class="f-num">a + b + c</span><span class="f-den">2</span></span>
+            \[ P = a + b + c \qquad s = \frac{a + b + c}{2} \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Area — Heron's formula</div>
           <div class="math-block">
-            <span>A = </span>
-            <span class="latex-radical"><span class="r-sign">√</span><span class="r-body">s(s − a)(s − b)(s − c)</span></span>
+            \[ A = \sqrt{s(s - a)(s - b)(s - c)} \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Angles — law of cosines</div>
           <div class="math-block">
-            <span>cos A = </span>
-            <span class="latex-frac big"><span class="f-num">b<sup>2</sup> + c<sup>2</sup> − a<sup>2</sup></span><span class="f-den">2bc</span></span>
+            \[ \cos A = \frac{b^2 + c^2 - a^2}{2bc} \]
           </div>
           <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">and similarly for B and C. Angles sum to 180°.</p>
         </div>
 
         <div class="formula-block">
-          <div class="formula-label">Classify by angles (using longest side c)</div>
+          <div class="formula-label">Classify by angles (using longest side \(c\))</div>
           <div class="math-block" style="flex-direction:column;align-items:flex-start;gap:0.35rem;">
-            <span>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup> &nbsp;→&nbsp; <strong>Right</strong></span>
-            <span>a<sup>2</sup> + b<sup>2</sup> &gt; c<sup>2</sup> &nbsp;→&nbsp; <strong>Acute</strong></span>
-            <span>a<sup>2</sup> + b<sup>2</sup> &lt; c<sup>2</sup> &nbsp;→&nbsp; <strong>Obtuse</strong></span>
+            <span>\(a^2 + b^2 = c^2\) &nbsp;→&nbsp; <strong>Right</strong></span>
+            <span>\(a^2 + b^2 > c^2\) &nbsp;→&nbsp; <strong>Acute</strong></span>
+            <span>\(a^2 + b^2 < c^2\) &nbsp;→&nbsp; <strong>Obtuse</strong></span>
           </div>
         </div>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
         <ul class="list-disc pl-6 space-y-1 leading-relaxed">
-          <li><strong>a, b, c</strong> — the three side lengths.</li>
-          <li><strong>P</strong> — perimeter.</li>
-          <li><strong>s</strong> — semi-perimeter (half the perimeter).</li>
-          <li><strong>A, B, C</strong> — the three interior angles, in degrees.</li>
+          <li><strong>\(a, b, c\)</strong> — the three side lengths.</li>
+          <li><strong>\(P\)</strong> — perimeter.</li>
+          <li><strong>\(s\)</strong> — semi-perimeter (half the perimeter).</li>
+          <li><strong>\(A, B, C\)</strong> — the three interior angles, in degrees.</li>
         </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">How to find the angle of a triangle given 3 sides</h2>
+        <p class="leading-relaxed text-justify mb-3">
+          If you know all three sides of a triangle (SSS), you cannot use the basic SOH CAH TOA trigonometry because you don't have a right angle. Instead, you must use the <strong>Law of Cosines</strong>. 
+        </p>
+        <p class="leading-relaxed text-justify mb-3">
+          To find the angle opposite side \(a\), use the formula:
+          \[ \cos A = \frac{b^2 + c^2 - a^2}{2bc} \]
+          Then, use the inverse cosine function (\(\arccos\) or \(\cos^{-1}\)) to find the angle in degrees. Repeat the process for the other two angles. As a built-in check, your three angles must add up to exactly \(180^\circ\). This calculator does all of this for you instantly.
+        </p>
       </section>
 
       <section>
@@ -525,10 +471,10 @@
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 1: 3-4-5 right triangle</p>
           <ol>
-            <li>Triangle inequality: 3+4 &gt; 5 ✓, 4+5 &gt; 3 ✓, 5+3 &gt; 4 ✓. Valid.</li>
-            <li>Perimeter: P = 3 + 4 + 5 = 12, so s = 6.</li>
-            <li>Area (Heron): A = √(6 × 3 × 2 × 1) = √36 = <strong>6</strong>.</li>
-            <li>Angles: cos C = (3² + 4² − 5²) / (2 × 3 × 4) = 0, so C = 90°. A = 36.87°, B = 53.13°.</li>
+            <li>Triangle inequality: \(3+4 > 5\) ✓, \(4+5 > 3\) ✓, \(5+3 > 4\) ✓. Valid.</li>
+            <li>Perimeter: \(P = 3 + 4 + 5 = 12\), so \(s = 6\).</li>
+            <li>Area (Heron): \(A = \sqrt{6 \times 3 \times 2 \times 1} = \sqrt{36} = \mathbf{6}\).</li>
+            <li>Angles: \(\cos C = (3^2 + 4^2 - 5^2) / (2 \times 3 \times 4) = 0\), so \(C = 90^\circ\). \(A = 36.87^\circ\), \(B = 53.13^\circ\).</li>
             <li>Classification: <strong>Scalene, right triangle.</strong></li>
           </ol>
         </div>
@@ -537,39 +483,28 @@
           <p class="font-semibold text-gray-900">Example 2: Equilateral triangle with side 6</p>
           <ol>
             <li>All three sides equal, so equilateral.</li>
-            <li>Perimeter: 18, s = 9.</li>
-            <li>Area: A = √(9 × 3 × 3 × 3) = √243 = 9√3 ≈ <strong>15.588</strong>.</li>
-            <li>Angles: all 60°.</li>
+            <li>Perimeter: 18, \(s = 9\).</li>
+            <li>Area: \(A = \sqrt{9 \times 3 \times 3 \times 3} = \sqrt{243} = 9\sqrt{3} \approx \mathbf{15.588}\).</li>
+            <li>Angles: all \(60^\circ\).</li>
             <li>Classification: <strong>Equilateral, acute.</strong></li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 3: Isosceles 5-5-6</p>
+          <p class="font-semibold text-gray-900">Example 3: Obtuse triangle 2-3-4</p>
           <ol>
-            <li>Triangle inequality: 5+5 &gt; 6 ✓, etc. Valid.</li>
-            <li>Perimeter: 16, s = 8.</li>
-            <li>Area: A = √(8 × 3 × 3 × 2) = √144 = <strong>12</strong>.</li>
-            <li>Angles: the angle opposite the base 6 satisfies cos C = (25 + 25 − 36) / (2 × 5 × 5) = 14/50 = 0.28, so C ≈ 73.74°. The other two are (180 − 73.74)/2 ≈ 53.13°.</li>
-            <li>Classification: <strong>Isosceles, acute.</strong></li>
-          </ol>
-        </div>
-
-        <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 4: Obtuse triangle 2-3-4</p>
-          <ol>
-            <li>Triangle inequality: 2+3 &gt; 4 ✓. Valid.</li>
-            <li>Perimeter: 9, s = 4.5.</li>
-            <li>Area: A = √(4.5 × 2.5 × 1.5 × 0.5) = √8.4375 ≈ <strong>2.9047</strong>.</li>
-            <li>Longest side c = 4: a² + b² = 4 + 9 = 13, c² = 16. Since 13 &lt; 16, the triangle is obtuse.</li>
+            <li>Triangle inequality: \(2+3 > 4\) ✓. Valid.</li>
+            <li>Perimeter: 9, \(s = 4.5\).</li>
+            <li>Area: \(A = \sqrt{4.5 \times 2.5 \times 1.5 \times 0.5} = \sqrt{8.4375} \approx \mathbf{2.9047}\).</li>
+            <li>Longest side \(c = 4\): \(a^2 + b^2 = 4 + 9 = 13\), \(c^2 = 16\). Since \(13 < 16\), the triangle is obtuse.</li>
             <li>Classification: <strong>Scalene, obtuse.</strong></li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 5: Impossible triangle 1-2-5</p>
+          <p class="font-semibold text-gray-900">Example 4: Impossible triangle 1-2-5</p>
           <ol>
-            <li>Check the triangle inequality: 1 + 2 = 3, and 3 &lt; 5. Fails.</li>
+            <li>Check the triangle inequality: \(1 + 2 = 3\), and \(3 < 5\). Fails.</li>
             <li>No triangle with sides 1, 2, 5 exists.</li>
             <li><strong>Result: Invalid triangle.</strong></li>
           </ol>
@@ -579,20 +514,18 @@
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Why Heron's formula is useful</h2>
         <p class="leading-relaxed text-justify mb-3">
-          In Class 9 and 10 problems, you often know the three sides of a triangle but not its height. Heron's formula lets you find the area without computing a height first. It is exact when the sides are integers and the semi-perimeter times the three differences is a perfect square, and reduces to the familiar ½ × base × height otherwise. It is one of the most elegant results in elementary geometry because it depends only on the three side lengths, symmetric in a, b, c.
+          In Class 9 and 10 problems, you often know the three sides of a triangle but not its height. Heron's formula lets you find the area without computing a height first. It is exact when the sides are integers and the semi-perimeter times the three differences is a perfect square, and reduces to the familiar \(\frac{1}{2} \times \text{base} \times \text{height}\) otherwise. It is one of the most elegant results in elementary geometry because it depends only on the three side lengths, symmetric in \(a, b, c\).
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
         <ul class="list-disc pl-6 space-y-2 leading-relaxed">
-          <li><strong>Not checking the triangle inequality.</strong> Sides 2, 3, 7 will not form a triangle. Always verify a + b &gt; c for the longest side c before computing anything.</li>
-          <li><strong>Using Heron's formula for an invalid triangle.</strong> If the inequality fails, one of the factors (s − a), (s − b), or (s − c) becomes negative, and the formula gives a meaningless answer or a NaN. Check validity first.</li>
-          <li><strong>Forgetting to take the square root.</strong> Heron's formula involves √(...), not just the product. Skipping the square root gives the square of the area.</li>
-          <li><strong>Mixing up which angle goes with which side.</strong> Angle A is opposite side a. The law of cosines formula for A uses sides b and c in the numerator and 2bc in the denominator.</li>
-          <li><strong>Assuming every 3-4-5-shaped triple is right.</strong> Multiples like 6-8-10 are also right, but 3-4-6 is not — always check the Pythagorean identity a² + b² = c².</li>
-          <li><strong>Rounding angles too early.</strong> Keep full precision in intermediate steps. Round the final angle values only at the end.</li>
-          <li><strong>Using degrees and radians interchangeably.</strong> This calculator reports degrees. When using trigonometry functions, remember that JavaScript's math functions work in radians unless you convert.</li>
+          <li><strong>Not checking the triangle inequality.</strong> Sides 2, 3, 7 will not form a triangle. Always verify \(a + b > c\) for the longest side \(c\) before computing anything.</li>
+          <li><strong>Using Heron's formula for an invalid triangle.</strong> If the inequality fails, one of the factors \((s - a)\), \((s - b)\), or \((s - c)\) becomes negative, and the formula gives a meaningless answer. Check validity first.</li>
+          <li><strong>Forgetting to take the square root.</strong> Heron's formula involves \(\sqrt{\dots}\), not just the product. Skipping the square root gives the square of the area.</li>
+          <li><strong>Mixing up which angle goes with which side.</strong> Angle \(A\) is opposite side \(a\). The law of cosines formula for \(A\) uses sides \(b\) and \(c\) in the numerator and \(2bc\) in the denominator.</li>
+          <li><strong>Assuming every 3-4-5-shaped triple is right.</strong> Multiples like 6-8-10 are also right, but 3-4-6 is not — always check the Pythagorean identity \(a^2 + b^2 = c^2\).</li>
         </ul>
       </section>
 
@@ -601,27 +534,19 @@
         <div class="space-y-3">
           <details class="faq-item">
             <summary>What is the triangle inequality?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">The triangle inequality states that the sum of any two sides of a triangle must be greater than the third side. If a + b ≤ c for any ordering of sides a, b, c, then no triangle with those side lengths exists.</p>
+            <p class="faq-answer">The triangle inequality states that the sum of any two sides of a triangle must be greater than the third side. If \(a + b \le c\) for any ordering of sides \(a, b, c\), then no triangle with those side lengths exists.</p>
           </details>
           <details class="faq-item">
             <summary>What is Heron's formula?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Heron's formula gives the area of a triangle from its three sides: A = √(s(s − a)(s − b)(s − c)), where s is the semi-perimeter, s = (a + b + c) / 2. It works for every triangle, whether acute, right, or obtuse.</p>
+            <p class="faq-answer">Heron's formula gives the area of a triangle from its three sides: \(A = \sqrt{s(s - a)(s - b)(s - c)}\), where \(s\) is the semi-perimeter, \(s = \frac{a + b + c}{2}\). It works for every triangle, whether acute, right, or obtuse.</p>
           </details>
           <details class="faq-item">
             <summary>How do I find the angles of a triangle given three sides?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Use the law of cosines. For angle A opposite side a: cos A = (b² + c² − a²) / (2bc), so A = arccos((b² + c² − a²) / (2bc)). Repeat for each angle. The three angles should sum to 180°.</p>
+            <p class="faq-answer">Use the law of cosines. For angle \(A\) opposite side \(a\): \(\cos A = \frac{b^2 + c^2 - a^2}{2bc}\), so \(A = \arccos\left(\frac{b^2 + c^2 - a^2}{2bc}\right)\). Repeat for each angle. The three angles should sum to \(180^\circ\).</p>
           </details>
           <details class="faq-item">
             <summary>How do I classify a triangle by its sides?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Equilateral: all three sides equal. Isosceles: exactly two sides equal. Scalene: no sides equal. This calculator also classifies by angles using the Pythagorean check: if a² + b² = c² it is right; if greater, obtuse; if less, acute (assuming c is the longest side).</p>
-          </details>
-          <details class="faq-item">
-            <summary>Can a triangle have a side of length zero?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">No. A triangle must have three positive side lengths. A zero-length side would make the shape degenerate to a line segment.</p>
-          </details>
-          <details class="faq-item">
-            <summary>What is the semi-perimeter?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">The semi-perimeter is half the perimeter: s = (a + b + c) / 2. It is used in Heron's formula and appears in many other triangle formulas such as the inradius and circumradius.</p>
+            <p class="faq-answer">Equilateral: all three sides equal. Isosceles: exactly two sides equal. Scalene: no sides equal. This calculator also classifies by angles using the Pythagorean check: if \(a^2 + b^2 = c^2\) it is right; if greater, acute; if less, obtuse (assuming \(c\) is the longest side).</p>
           </details>
         </div>
       </section>
@@ -652,14 +577,13 @@
   </main>
 
   <!-- FOOTER -->
- <!-- FOOTER -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
   <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     
     <!-- Main Footer Layout -->
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
       
-      <!-- Brand & Info (Reduced to 3 of 12 columns on Desktop) -->
+      <!-- Brand & Info -->
       <div class="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left">
         <a class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
           <img alt="Hira Science Academy logo" width="40" height="40" loading="lazy" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" src="https://hiraacademy.com.pk/images/logo.webp"/>
@@ -673,7 +597,7 @@
         </p>
       </div>
 
-      <!-- Links Grid (Expanded to 9 of 12 columns on Desktop) -->
+      <!-- Links Grid -->
       <div class="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         
         <!-- Programs -->
@@ -768,16 +692,6 @@
 
     attachCopyButton(resultPanel, CALC_NAME);
 
-    /* ============ LaTeX-style helpers ============ */
-    function fracHTML(numHTML, denHTML, big) {
-      const cls = 'latex-frac' + (big ? ' big' : '');
-      return `<span class="${cls}"><span class="f-num">${numHTML}</span><span class="f-den">${denHTML}</span></span>`;
-    }
-    function radicalHTML(radicandHTML, big) {
-      const cls = 'latex-radical' + (big ? ' big' : '');
-      return `<span class="${cls}"><span class="r-sign">√</span><span class="r-body">${radicandHTML}</span></span>`;
-    }
-
     /* ============ Number formatting ============ */
     function fmtNum(x, maxDecimals) {
       if (maxDecimals === undefined) maxDecimals = 6;
@@ -794,7 +708,7 @@
       return s;
     }
 
-    /* ============ Simplify a square root √n = outside √inside ============ */
+    /* ============ Simplify a square root ============ */
     function simplifySqrt(n) {
       if (!Number.isFinite(n) || n < 0) return { outside: 1, inside: n };
       if (n === 0) return { outside: 0, inside: 1 };
@@ -836,7 +750,6 @@
         previewEl.innerHTML = 'Preview: sides must be positive';
         return;
       }
-      // Triangle inequality check
       const sorted = [a, b, c].sort((x, y) => x - y);
       if (sorted[0] + sorted[1] <= sorted[2]) {
         previewEl.innerHTML = `Preview: <span style="color:#b91c1c;">${fmtNum(a)}, ${fmtNum(b)}, ${fmtNum(c)} cannot form a triangle</span>`;
@@ -888,7 +801,6 @@
         return;
       }
 
-      // Triangle inequality
       const sorted = [a, b, c].sort((x, y) => x - y);
       if (sorted[0] + sorted[1] <= sorted[2]) {
         bannerEl.textContent = `Triangle inequality fails: ${fmtNum(sorted[0])} + ${fmtNum(sorted[1])} = ${fmtNum(sorted[0] + sorted[1])} ≤ ${fmtNum(sorted[2])}. No triangle with these sides exists.`;
@@ -901,12 +813,9 @@
       /* ============ Compute ============ */
       const P = a + b + c;
       const s = P / 2;
-
-      // Heron's formula
       const heronProduct = s * (s - a) * (s - b) * (s - c);
       const area = Math.sqrt(heronProduct);
 
-      // Angles via law of cosines
       const A = Math.acos(Math.max(-1, Math.min(1, (b * b + c * c - a * a) / (2 * b * c)))) * 180 / Math.PI;
       const B = Math.acos(Math.max(-1, Math.min(1, (a * a + c * c - b * b) / (2 * a * c)))) * 180 / Math.PI;
       const C = 180 - A - B;
@@ -920,21 +829,20 @@
       else if (sidesEqual(a, b) || sidesEqual(b, c) || sidesEqual(a, c)) bySides = 'Isosceles';
       else bySides = 'Scalene';
 
-      // Angle classification using largest side
-      const [x, y, z] = sorted; // x ≤ y ≤ z
+      const [x, y, z] = sorted;
       const lhs = x * x + y * y;
       const rhs = z * z;
       let byAngles;
       let pythNote;
       if (Math.abs(lhs - rhs) < EPS * Math.max(1, rhs)) {
         byAngles = 'Right';
-        pythNote = `${fmtNum(x)}² + ${fmtNum(y)}² = ${fmtNum(lhs)} = ${fmtNum(z)}²`;
+        pythNote = `${fmtNum(x)}^2 + ${fmtNum(y)}^2 = ${fmtNum(lhs)} = ${fmtNum(z)}^2`;
       } else if (lhs > rhs) {
         byAngles = 'Acute';
-        pythNote = `${fmtNum(x)}² + ${fmtNum(y)}² = ${fmtNum(lhs)} > ${fmtNum(z)}² = ${fmtNum(rhs)}`;
+        pythNote = `${fmtNum(x)}^2 + ${fmtNum(y)}^2 = ${fmtNum(lhs)} > ${fmtNum(z)}^2 = ${fmtNum(rhs)}`;
       } else {
         byAngles = 'Obtuse';
-        pythNote = `${fmtNum(x)}² + ${fmtNum(y)}² = ${fmtNum(lhs)} < ${fmtNum(z)}² = ${fmtNum(rhs)}`;
+        pythNote = `${fmtNum(x)}^2 + ${fmtNum(y)}^2 = ${fmtNum(lhs)} < ${fmtNum(z)}^2 = ${fmtNum(rhs)}`;
       }
 
       const badgeClass = `tri-type-${byAngles.toLowerCase()}`;
@@ -945,23 +853,23 @@
       const isAreaPerfect = Math.abs(areaInt - heronProduct) < 1e-9 && Math.abs(Math.sqrt(areaInt) - Math.round(Math.sqrt(areaInt))) < 1e-9;
       let areaHTML;
       if (isAreaPerfect) {
-        areaHTML = `<span style="font-weight:800;">${Math.round(Math.sqrt(areaInt))}</span>`;
+        areaHTML = `\\[ ${Math.round(Math.sqrt(areaInt))} \\]`;
       } else if (Math.abs(areaInt - heronProduct) < 1e-9) {
         const simp = simplifySqrt(areaInt);
         if (simp.outside === 1) {
-          areaHTML = radicalHTML(`${areaInt}`, true);
+          areaHTML = `\\[ \\sqrt{${areaInt}} \\]`;
         } else {
-          areaHTML = `<span style="font-weight:800;">${simp.outside}</span>${radicalHTML(`${simp.inside}`, true)}`;
+          areaHTML = `\\[ ${simp.outside}\\sqrt{${simp.inside}} \\]`;
         }
       } else {
-        areaHTML = `<span style="font-weight:800;">${fmtNum(area, 6)}</span>`;
+        areaHTML = `\\[ ${fmtNum(area, 6)} \\]`;
       }
 
       /* ============ Render ============ */
       const html = `
         <div class="result-label">Area</div>
-        <div class="tri-result-value">A = ${areaHTML}</div>
-        ${!isAreaPerfect ? `<p style="text-align:center;font-size:0.9375rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.35rem;">≈ ${fmtNum(area, 10)}</p>` : ''}
+        <div class="tri-result-value">${areaHTML}</div>
+        ${!isAreaPerfect ? `<p style="text-align:center;font-size:0.9375rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.35rem;">\\(\\approx ${fmtNum(area, 10)}\\)</p>` : ''}
 
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem;">
           <span class="tri-type-badge ${sidesBadgeClass}">${bySides}</span>
@@ -970,35 +878,35 @@
 
         <div class="tri-summary">
           <div class="tri-summary-unit">
-            <div class="tri-summary-value">${fmtNum(a)}</div>
+            <div class="tri-summary-value">\\( ${fmtNum(a)} \\)</div>
             <div class="tri-summary-label">Side a</div>
           </div>
           <div class="tri-summary-unit">
-            <div class="tri-summary-value">${fmtNum(b)}</div>
+            <div class="tri-summary-value">\\( ${fmtNum(b)} \\)</div>
             <div class="tri-summary-label">Side b</div>
           </div>
           <div class="tri-summary-unit">
-            <div class="tri-summary-value">${fmtNum(c)}</div>
+            <div class="tri-summary-value">\\( ${fmtNum(c)} \\)</div>
             <div class="tri-summary-label">Side c</div>
           </div>
           <div class="tri-summary-unit">
-            <div class="tri-summary-value">${fmtNum(P)}</div>
+            <div class="tri-summary-value">\\( ${fmtNum(P)} \\)</div>
             <div class="tri-summary-label">Perimeter</div>
           </div>
           <div class="tri-summary-unit">
-            <div class="tri-summary-value">${fmtNum(s)}</div>
+            <div class="tri-summary-value">\\( ${fmtNum(s)} \\)</div>
             <div class="tri-summary-label">Semi-perimeter</div>
           </div>
           <div class="tri-summary-unit">
-            <div class="tri-summary-value">${fmtNum(A, 4)}°</div>
+            <div class="tri-summary-value">\\( ${fmtNum(A, 4)}^\\circ \\)</div>
             <div class="tri-summary-label">Angle A</div>
           </div>
           <div class="tri-summary-unit">
-            <div class="tri-summary-value">${fmtNum(B, 4)}°</div>
+            <div class="tri-summary-value">\\( ${fmtNum(B, 4)}^\\circ \\)</div>
             <div class="tri-summary-label">Angle B</div>
           </div>
           <div class="tri-summary-unit">
-            <div class="tri-summary-value">${fmtNum(C, 4)}°</div>
+            <div class="tri-summary-value">\\( ${fmtNum(C, 4)}^\\circ \\)</div>
             <div class="tri-summary-label">Angle C</div>
           </div>
         </div>
@@ -1010,29 +918,42 @@
         <div class="steps-block">
           <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
           <ol>
-            <li>Triangle inequality check: ${fmtNum(sorted[0])} + ${fmtNum(sorted[1])} = ${fmtNum(sorted[0] + sorted[1])} > ${fmtNum(sorted[2])} ✓. Valid triangle.</li>
-            <li>Perimeter: P = a + b + c = ${fmtNum(a)} + ${fmtNum(b)} + ${fmtNum(c)} = <strong>${fmtNum(P)}</strong>.</li>
-            <li>Semi-perimeter: s = P / 2 = <strong>${fmtNum(s)}</strong>.</li>
-            <li>Heron's formula: A = √(s(s − a)(s − b)(s − c)) = √(${fmtNum(s)} × ${fmtNum(s - a)} × ${fmtNum(s - b)} × ${fmtNum(s - c)}) = √${fmtNum(heronProduct, 6)} ≈ <strong>${fmtNum(area, 8)}</strong>.</li>
-            <li>Angle A (opposite side a): cos A = (b² + c² − a²) / (2bc) = (${fmtNum(b * b)} + ${fmtNum(c * c)} − ${fmtNum(a * a)}) / ${fmtNum(2 * b * c)} = ${fmtNum((b * b + c * c - a * a) / (2 * b * c), 6)}. So A = arccos(...) = <strong>${fmtNum(A, 4)}°</strong>.</li>
-            <li>Angle B (opposite side b): similarly, B = <strong>${fmtNum(B, 4)}°</strong>.</li>
-            <li>Angle C (opposite side c): C = 180° − A − B = <strong>${fmtNum(C, 4)}°</strong>.</li>
-            <li>Angle sum check: A + B + C = ${fmtNum(A + B + C, 4)}°. Should be exactly 180°.</li>
+            <li>Triangle inequality check: \\( ${fmtNum(sorted[0])} + ${fmtNum(sorted[1])} = ${fmtNum(sorted[0] + sorted[1])} > ${fmtNum(sorted[2])} \\) ✓. Valid triangle.</li>
+            <li>Perimeter: \\( P = a + b + c = ${fmtNum(a)} + ${fmtNum(b)} + ${fmtNum(c)} = ${fmtNum(P)} \\).</li>
+            <li>Semi-perimeter: \\( s = P / 2 = ${fmtNum(s)} \\).</li>
+            <li>Heron's formula: \\( A = \\sqrt{s(s - a)(s - b)(s - c)} = \\sqrt{${fmtNum(s)} \\times ${fmtNum(s - a)} \\times ${fmtNum(s - b)} \\times ${fmtNum(s - c)}} = \\sqrt{${fmtNum(heronProduct, 6)}} \\approx ${fmtNum(area, 8)} \\).</li>
+            <li>Angle A (opposite side a): \\( \\cos A = \\frac{b^2 + c^2 - a^2}{2bc} = \\frac{${fmtNum(b * b)} + ${fmtNum(c * c)} - ${fmtNum(a * a)}}{${fmtNum(2 * b * c)}} = ${fmtNum((b * b + c * c - a * a) / (2 * b * c), 6)} \\). So \\( A = \\arccos(\\dots) = ${fmtNum(A, 4)}^\\circ \\).</li>
+            <li>Angle B (opposite side b): similarly, \\( B = ${fmtNum(B, 4)}^\\circ \\).</li>
+            <li>Angle C (opposite side c): \\( C = 180^\\circ - A - B = ${fmtNum(C, 4)}^\\circ \\).</li>
+            <li>Angle sum check: \\( A + B + C = ${fmtNum(A + B + C, 4)}^\\circ \\). Should be exactly \\(180^\\circ\\).</li>
             <li>By sides: <strong>${bySides}</strong>.</li>
-            <li>By angles (Pythagorean check): ${pythNote}, so <strong>${byAngles}</strong>.</li>
+            <li>By angles (Pythagorean check): \\( ${pythNote} \\), so <strong>${byAngles}</strong>.</li>
           </ol>
         </div>
 
         <div class="tri-context">
           <p>🔹 Classification: <strong>${bySides}</strong> by sides, <strong>${byAngles}</strong> by angles.</p>
-          <p>🔹 Angles: A = ${fmtNum(A, 4)}°, B = ${fmtNum(B, 4)}°, C = ${fmtNum(C, 4)}°.</p>
-          <p>🔹 Area ≈ <strong>${fmtNum(area, 8)}</strong> square units. Perimeter = <strong>${fmtNum(P)}</strong>.</p>
+          <p>🔹 Angles: \\( A = ${fmtNum(A, 4)}^\\circ \\), \\( B = ${fmtNum(B, 4)}^\\circ \\), \\( C = ${fmtNum(C, 4)}^\\circ \\).</p>
+          <p>🔹 Area \\(\\approx ${fmtNum(area, 8)}\\) square units. Perimeter \\(= ${fmtNum(P)}\\).</p>
           ${byAngles === 'Right' ? '<p>🔹 This is a right triangle — the Pythagorean relation holds exactly.</p>' : ''}
         </div>
       `;
 
       resultPanel.innerHTML = html;
       showResult(resultPanel, html);
+
+      // Crucial: Tell KaTeX to render the newly injected math in the result panel
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(resultPanel, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
 
       lastResult = { a, b, c, A, B, C, area };
       requestAnimationFrame(() => drawTriangle(a, b, c, A, B, C));
@@ -1056,19 +977,6 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
 
-      // Construct triangle: place side a along the bottom
-      // Vertices: B = (0, 0), C = (a, 0), A computed from sides b and c
-      // A is at distance c from B and distance b from C
-      const Ar = Adeg * Math.PI / 180;
-      const Bx = 0, By = 0;
-      const Cx = a, Cy = 0;
-      const Ax = c * Math.cos(Br());
-      const Ay = -c * Math.sin(Br());
-      function Br() { return Bdeg * Math.PI / 180; }
-
-      // Actually compute A directly from sides for robustness:
-      // x_A = (c² + a² − b²) / (2a)
-      // y_A = sqrt(c² − x_A²)
       const xA = (c * c + a * a - b * b) / (2 * a);
       const yA = Math.sqrt(Math.max(0, c * c - xA * xA));
 
@@ -1078,7 +986,6 @@
         { x: xA, y: yA, label: 'A' }
       ];
 
-      // Compute bounding box and scale to fit with padding
       const xs = pts.map(p => p.x);
       const ys = pts.map(p => p.y);
       let xMin = Math.min(...xs), xMax = Math.max(...xs);
@@ -1089,7 +996,6 @@
       const sx = (x) => ((x - xMin) / (xMax - xMin)) * W;
       const sy = (y) => H - ((y - yMin) / (yMax - yMin)) * H;
 
-      // Draw triangle fill
       ctx.beginPath();
       ctx.moveTo(sx(pts[0].x), sy(pts[0].y));
       ctx.lineTo(sx(pts[1].x), sy(pts[1].y));
@@ -1101,7 +1007,6 @@
       ctx.lineWidth = 2.5;
       ctx.stroke();
 
-      // Draw vertices
       pts.forEach((p, i) => {
         const colors = ['#0ea5e9', '#8b5cf6', '#10b981'];
         ctx.fillStyle = colors[i];
@@ -1113,25 +1018,20 @@
         ctx.stroke();
       });
 
-      // Side length labels
       ctx.font = "12px 'JetBrains Mono', monospace";
       ctx.fillStyle = '#0b1220';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
-      // Label side a (between B and C, bottom)
       const midBC = { x: (pts[0].x + pts[1].x) / 2, y: (pts[0].y + pts[1].y) / 2 };
       ctx.fillText(`a = ${fmtNum(a)}`, sx(midBC.x), sy(midBC.y) + 18);
 
-      // Label side b (between A and C)
       const midAC = { x: (pts[1].x + pts[2].x) / 2, y: (pts[1].y + pts[2].y) / 2 };
       ctx.fillText(`b = ${fmtNum(b)}`, sx(midAC.x) + 25, sy(midAC.y));
 
-      // Label side c (between A and B)
       const midAB = { x: (pts[0].x + pts[2].x) / 2, y: (pts[0].y + pts[2].y) / 2 };
       ctx.fillText(`c = ${fmtNum(c)}`, sx(midAB.x) - 25, sy(midAB.y));
 
-      // Vertex labels
       ctx.font = "bold 14px 'Montserrat', sans-serif";
       ctx.fillStyle = '#0b1220';
       const offsets = [{ dx: -14, dy: 14 }, { dx: 14, dy: 14 }, { dx: 0, dy: -16 }];
@@ -1165,7 +1065,6 @@
       }, 200);
     });
 
-    // Mobile menu + back-to-top
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
     const io = document.getElementById('menu-icon-open');
