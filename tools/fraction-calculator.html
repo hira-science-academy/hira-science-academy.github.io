@@ -15,15 +15,18 @@
   <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
   <meta content="en" name="language"/>
   <meta content="Hira Science Academy" name="author"/>
-  <title>Fraction Calculator — Add, Subtract, Multiply &amp; Divide Fractions | Hira Science Academy</title>
-  <meta content="Free fraction calculator: add, subtract, multiply and divide fractions. Simplifies to lowest terms, converts between mixed and improper fractions, shows step-by-step working." name="description"/>
+
+  <!-- CTR OPTIMIZATION: Exact-match title targeting the 629 impressions -->
+  <title>Fraction Calculator with Steps – Add, Subtract, Multiply, Divide</title>
+  <meta content="Free online fraction calculator with step-by-step solutions. Add, subtract, multiply, and divide fractions, mixed numbers, and whole numbers. Auto-simplifies to lowest terms." name="description"/>
   <meta content="fraction calculator, add fractions, subtract fractions, multiply fractions, divide fractions, simplify fractions, mixed numbers, improper fractions" name="keywords"/>
+  
   <link href="https://hiraacademy.com.pk/tools/fraction-calculator.html" rel="canonical"/>
 
   <meta content="website" property="og:type"/>
   <meta content="en_PK" property="og:locale"/>
   <meta content="Hira Science Academy" property="og:site_name"/>
-  <meta content="Fraction Calculator — Add, Subtract, Multiply &amp; Divide" property="og:title"/>
+  <meta content="Fraction Calculator with Steps – Add, Subtract, Multiply, Divide" property="og:title"/>
   <meta content="Add, subtract, multiply and divide fractions with simplification and step-by-step working." property="og:description"/>
   <meta content="https://hiraacademy.com.pk/tools/fraction-calculator.html" property="og:url"/>
   <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
@@ -31,6 +34,24 @@
   <meta content="@hiraacademyDSK" name="twitter:site"/>
 
   <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <!-- KaTeX for perfect math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
 
   <script type="application/ld+json">
   {
@@ -63,21 +84,6 @@
         "@type": "Question",
         "name": "What is the difference between an improper fraction and a mixed number?",
         "acceptedAnswer": { "@type": "Answer", "text": "An improper fraction has a numerator greater than or equal to its denominator, like 7/4. A mixed number writes the same value as a whole number plus a proper fraction, like 1 3/4. They are the same quantity in different notation." }
-      },
-      {
-        "@type": "Question",
-        "name": "How does the calculator simplify a fraction?",
-        "acceptedAnswer": { "@type": "Answer", "text": "It divides the numerator and denominator by their greatest common divisor using the Euclidean algorithm. For 18/24, the GCD is 6, giving 3/4. A fraction is in lowest terms when the GCD of numerator and denominator is 1." }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I enter negative fractions?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Put the minus sign in front of either the numerator or the whole fraction. The calculator normalizes the sign so the denominator stays positive. For example -3/4 and 3/-4 both become -3/4 in the result." }
-      },
-      {
-        "@type": "Question",
-        "name": "What happens if I enter a zero denominator?",
-        "acceptedAnswer": { "@type": "Answer", "text": "A fraction with denominator zero is undefined, so the calculator will show an error. Zero numerators are fine — 0/5 equals 0. Division by a fraction whose numerator is zero, like 3/4 ÷ 0/5, is also an error because it is equivalent to dividing by zero." }
       }
     ]
   }
@@ -118,7 +124,6 @@
       -webkit-backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.4);
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     nav.bg-white\/80 {
       background: rgba(255, 255, 255, 0.85) !important;
@@ -267,6 +272,9 @@
       color: #475569;
     }
     .frac-mixed-toggle input { accent-color: #0ea5e9; }
+    
+    /* KaTeX overrides */
+    .katex { font-size: 1.1em; }
   </style>
 </head>
 
@@ -315,17 +323,25 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="header-gradient text-white relative py-16 md:py-20 overflow-hidden text-center shadow-lg">
-    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
-    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
-    <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Auto-Simplify · Step-by-Step</span>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg">Fraction Calculator</h1>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">Add, subtract, multiply and divide fractions. Auto-simplified, with mixed-number and decimal forms.</p>
-    </div>
-  </header>
+ <!-- HERO -->
+<header class="header-gradient text-white relative py-16 md:py-20 overflow-hidden text-center shadow-lg">
+  <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+  <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+  
+  <div class="max-w-4xl mx-auto px-4 relative z-10 flex flex-col items-center justify-center">
+    <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">
+      Free Tool · Auto-Simplify · Step-by-Step
+    </span>
+    <!-- CTR OPTIMIZATION: Exact-match H1 -->
+    <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg">
+      Fraction Calculator with Steps
+    </h1>
+    <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
+      Add, subtract, multiply and divide fractions. Auto-simplified, with mixed-number and decimal forms.
+    </p>
+  </div>
+</header>
 
   <!-- BREADCRUMB -->
   <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
@@ -429,51 +445,51 @@
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas used in each operation</h2>
         <p class="leading-relaxed text-justify mb-3">
-          For two fractions <span class="formula-inline">a/b</span> and <span class="formula-inline">c/d</span>, the four operations are defined as follows.
+          For two fractions \( \frac{a}{b} \) and \( \frac{c}{d} \), the four operations are defined as follows.
         </p>
 
         <div class="formula-block">
           <div class="formula-label">Addition</div>
-          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
-            a/b + c/d = (a·d + c·b) / (b·d)
+          <div class="math-block">
+            \[ \frac{a}{b} + \frac{c}{d} = \frac{a \cdot d + c \cdot b}{b \cdot d} \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Subtraction</div>
-          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
-            a/b − c/d = (a·d − c·b) / (b·d)
+          <div class="math-block">
+            \[ \frac{a}{b} - \frac{c}{d} = \frac{a \cdot d - c \cdot b}{b \cdot d} \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Multiplication</div>
-          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
-            a/b × c/d = (a·c) / (b·d)
+          <div class="math-block">
+            \[ \frac{a}{b} \times \frac{c}{d} = \frac{a \cdot c}{b \cdot d} \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Division</div>
-          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
-            a/b ÷ c/d = a/b × d/c = (a·d) / (b·c)
+          <div class="math-block">
+            \[ \frac{a}{b} \div \frac{c}{d} = \frac{a}{b} \times \frac{d}{c} = \frac{a \cdot d}{b \cdot c} \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Simplification</div>
-          <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
-            Let g = gcd(|numerator|, denominator). Then n/d simplifies to (n/g) / (d/g).
+          <div class="math-block">
+            \[ \text{Let } g = \gcd(|n|, d). \quad \text{Then } \frac{n}{d} = \frac{n/g}{d/g} \]
           </div>
         </div>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
         <ul class="list-disc pl-6 space-y-1 leading-relaxed">
-          <li><strong>a</strong> — numerator of the first fraction.</li>
-          <li><strong>b</strong> — denominator of the first fraction (must be non-zero).</li>
-          <li><strong>c</strong> — numerator of the second fraction.</li>
-          <li><strong>d</strong> — denominator of the second fraction (must be non-zero).</li>
-          <li><strong>gcd(n, d)</strong> — greatest common divisor of numerator and denominator.</li>
+          <li><strong>\(a\)</strong> — numerator of the first fraction.</li>
+          <li><strong>\(b\)</strong> — denominator of the first fraction (must be non-zero).</li>
+          <li><strong>\(c\)</strong> — numerator of the second fraction.</li>
+          <li><strong>\(d\)</strong> — denominator of the second fraction (must be non-zero).</li>
+          <li><strong>\(\gcd(n, d)\)</strong> — greatest common divisor of numerator and denominator.</li>
         </ul>
       </section>
 
@@ -481,52 +497,52 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 1: 1/2 + 1/3</p>
+          <p class="font-semibold text-gray-900">Example 1: \( \frac{1}{2} + \frac{1}{3} \)</p>
           <ol>
-            <li>Common denominator: <code>2 × 3 = 6</code>.</li>
-            <li>Convert: <code>1/2 = 3/6</code> and <code>1/3 = 2/6</code>.</li>
-            <li>Add numerators: <code>3 + 2 = 5</code>.</li>
-            <li>Result: <code>5/6</code>. Decimal value: <strong>0.833333…</strong></li>
+            <li>Common denominator: \( 2 \times 3 = 6 \).</li>
+            <li>Convert: \( \frac{1}{2} = \frac{3}{6} \) and \( \frac{1}{3} = \frac{2}{6} \).</li>
+            <li>Add numerators: \( 3 + 2 = 5 \).</li>
+            <li>Result: \( \frac{5}{6} \). Decimal value: <strong>0.833333…</strong></li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 2: 3/4 − 1/6</p>
+          <p class="font-semibold text-gray-900">Example 2: \( \frac{3}{4} - \frac{1}{6} \)</p>
           <ol>
             <li>Least common denominator is 12.</li>
-            <li>Convert: <code>3/4 = 9/12</code> and <code>1/6 = 2/12</code>.</li>
-            <li>Subtract: <code>9 − 2 = 7</code>.</li>
-            <li>Result: <code>7/12</code>. Decimal value: <strong>0.583333…</strong></li>
+            <li>Convert: \( \frac{3}{4} = \frac{9}{12} \) and \( \frac{1}{6} = \frac{2}{12} \).</li>
+            <li>Subtract: \( 9 - 2 = 7 \).</li>
+            <li>Result: \( \frac{7}{12} \). Decimal value: <strong>0.583333…</strong></li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 3: 2/3 × 9/4</p>
+          <p class="font-semibold text-gray-900">Example 3: \( \frac{2}{3} \times \frac{9}{4} \)</p>
           <ol>
-            <li>Multiply numerators: <code>2 × 9 = 18</code>.</li>
-            <li>Multiply denominators: <code>3 × 4 = 12</code>.</li>
-            <li>Result before simplification: <code>18/12</code>.</li>
-            <li>Divide both by gcd(18, 12) = 6: <code>3/2</code>.</li>
+            <li>Multiply numerators: \( 2 \times 9 = 18 \).</li>
+            <li>Multiply denominators: \( 3 \times 4 = 12 \).</li>
+            <li>Result before simplification: \( \frac{18}{12} \).</li>
+            <li>Divide both by gcd(18, 12) = 6: \( \frac{3}{2} \).</li>
             <li>Mixed form: <strong>1 1/2</strong>. Decimal value: <strong>1.5</strong></li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 4: 3/5 ÷ 2/7</p>
+          <p class="font-semibold text-gray-900">Example 4: \( \frac{3}{5} \div \frac{2}{7} \)</p>
           <ol>
-            <li>Flip the divisor: <code>2/7 → 7/2</code>.</li>
-            <li>Multiply: <code>3/5 × 7/2 = 21/10</code>.</li>
+            <li>Flip the divisor: \( \frac{2}{7} \rightarrow \frac{7}{2} \).</li>
+            <li>Multiply: \( \frac{3}{5} \times \frac{7}{2} = \frac{21}{10} \).</li>
             <li>gcd(21, 10) = 1, so the fraction is already in lowest terms.</li>
             <li>Mixed form: <strong>2 1/10</strong>. Decimal value: <strong>2.1</strong></li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 5: 18/24 simplified</p>
+          <p class="font-semibold text-gray-900">Example 5: \( \frac{18}{24} \) simplified</p>
           <ol>
             <li>Find gcd(18, 24). Euclid's algorithm: gcd(24, 18) → gcd(18, 6) → gcd(6, 0) = <strong>6</strong>.</li>
-            <li>Divide: <code>18/6 = 3</code>, <code>24/6 = 4</code>.</li>
-            <li>Result: <strong>3/4</strong>, which is the same fraction in lowest terms.</li>
+            <li>Divide: \( \frac{18}{6} = 3 \), \( \frac{24}{6} = 4 \).</li>
+            <li>Result: \( \frac{3}{4} \), which is the same fraction in lowest terms.</li>
           </ol>
         </div>
       </section>
@@ -545,12 +561,12 @@
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
         <ul class="list-disc pl-6 space-y-2 leading-relaxed">
-          <li><strong>Adding numerators and denominators directly.</strong> 1/2 + 1/3 is <em>not</em> 2/5. You must find a common denominator first.</li>
-          <li><strong>Forgetting to simplify.</strong> An answer like 18/12 is not considered "finished" in exams. Always reduce to lowest terms and, if it's an improper fraction, consider the mixed form.</li>
-          <li><strong>Sign errors when subtracting.</strong> Subtracting a negative fraction becomes addition: 1/2 − (−1/3) = 1/2 + 1/3 = 5/6.</li>
-          <li><strong>Flipping the wrong fraction when dividing.</strong> You flip the <em>divisor</em> (the second fraction), not the dividend. 3/4 ÷ 2/5 = 3/4 × 5/2 = 15/8.</li>
-          <li><strong>Zero denominators.</strong> Any fraction with denominator 0 is undefined. 5/0 has no value. Even 0/0 is undefined, not zero.</li>
-          <li><strong>Mixing up improper fractions and mixed numbers.</strong> 7/4 and 1 3/4 are the same value. Learn to convert both ways.</li>
+          <li><strong>Adding numerators and denominators directly.</strong> \( \frac{1}{2} + \frac{1}{3} \) is <em>not</em> \( \frac{2}{5} \). You must find a common denominator first.</li>
+          <li><strong>Forgetting to simplify.</strong> An answer like \( \frac{18}{12} \) is not considered "finished" in exams. Always reduce to lowest terms and, if it's an improper fraction, consider the mixed form.</li>
+          <li><strong>Sign errors when subtracting.</strong> Subtracting a negative fraction becomes addition: \( \frac{1}{2} - \left(-\frac{1}{3}\right) = \frac{1}{2} + \frac{1}{3} = \frac{5}{6} \).</li>
+          <li><strong>Flipping the wrong fraction when dividing.</strong> You flip the <em>divisor</em> (the second fraction), not the dividend. \( \frac{3}{4} \div \frac{2}{5} = \frac{3}{4} \times \frac{5}{2} = \frac{15}{8} \).</li>
+          <li><strong>Zero denominators.</strong> Any fraction with denominator 0 is undefined. \( \frac{5}{0} \) has no value. Even \( \frac{0}{0} \) is undefined, not zero.</li>
+          <li><strong>Mixing up improper fractions and mixed numbers.</strong> \( \frac{7}{4} \) and \( 1\frac{3}{4} \) are the same value. Learn to convert both ways.</li>
         </ul>
       </section>
 
@@ -559,27 +575,27 @@
         <div class="space-y-3">
           <details class="faq-item">
             <summary>How do I add fractions with different denominators?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Find a common denominator, convert both fractions, then add the numerators. For 1/2 + 1/3, the least common denominator is 6, giving 3/6 + 2/6 = 5/6. This calculator does that automatically and shows each step.</p>
+            <p class="faq-answer">Find a common denominator, convert both fractions, then add the numerators. For \( \frac{1}{2} + \frac{1}{3} \), the least common denominator is 6, giving \( \frac{3}{6} + \frac{2}{6} = \frac{5}{6} \). This calculator does that automatically and shows each step.</p>
           </details>
           <details class="faq-item">
             <summary>Why does dividing fractions involve flipping the second one?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Dividing by a fraction is the same as multiplying by its reciprocal. So a/b ÷ c/d equals a/b × d/c, which is ad/bc. The flip is not a magic rule — it follows from the definition of division.</p>
+            <p class="faq-answer">Dividing by a fraction is the same as multiplying by its reciprocal. So \( \frac{a}{b} \div \frac{c}{d} \) equals \( \frac{a}{b} \times \frac{d}{c} \), which is \( \frac{ad}{bc} \). The flip is not a magic rule — it follows from the definition of division.</p>
           </details>
           <details class="faq-item">
             <summary>What is the difference between an improper fraction and a mixed number?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">An improper fraction has a numerator greater than or equal to its denominator, like 7/4. A mixed number writes the same value as a whole number plus a proper fraction, like 1 3/4. They are the same quantity in different notation.</p>
+            <p class="faq-answer">An improper fraction has a numerator greater than or equal to its denominator, like \( \frac{7}{4} \). A mixed number writes the same value as a whole number plus a proper fraction, like \( 1\frac{3}{4} \). They are the same quantity in different notation.</p>
           </details>
           <details class="faq-item">
             <summary>How does the calculator simplify a fraction?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">It divides the numerator and denominator by their greatest common divisor using the Euclidean algorithm. For 18/24, the GCD is 6, giving 3/4. A fraction is in lowest terms when the GCD of numerator and denominator is 1.</p>
+            <p class="faq-answer">It divides the numerator and denominator by their greatest common divisor using the Euclidean algorithm. For \( \frac{18}{24} \), the GCD is 6, giving \( \frac{3}{4} \). A fraction is in lowest terms when the GCD of numerator and denominator is 1.</p>
           </details>
           <details class="faq-item">
             <summary>Can I enter negative fractions?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Yes. Put the minus sign in front of either the numerator or the whole fraction. The calculator normalizes the sign so the denominator stays positive. For example -3/4 and 3/-4 both become -3/4 in the result.</p>
+            <p class="faq-answer">Yes. Put the minus sign in front of either the numerator or the whole fraction. The calculator normalizes the sign so the denominator stays positive. For example \( -\frac{3}{4} \) and \( \frac{3}{-4} \) both become \( -\frac{3}{4} \) in the result.</p>
           </details>
           <details class="faq-item">
             <summary>What happens if I enter a zero denominator?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">A fraction with denominator zero is undefined, so the calculator will show an error. Zero numerators are fine — 0/5 equals 0. Division by a fraction whose numerator is zero, like 3/4 ÷ 0/5, is also an error because it is equivalent to dividing by zero.</p>
+            <p class="faq-answer">A fraction with denominator zero is undefined, so the calculator will show an error. Zero numerators are fine — \( \frac{0}{5} \) equals 0. Division by a fraction whose numerator is zero, like \( \frac{3}{4} \div \frac{0}{5} \), is also an error because it is equivalent to dividing by zero.</p>
           </details>
         </div>
       </section>
@@ -610,7 +626,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <!-- FOOTER -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
   <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
@@ -763,7 +778,6 @@
     }
 
     function toMixed(f) {
-      // Returns {whole, n, d} or null if not improper
       if (Math.abs(f.n) < f.d) return null;
       const sign = f.n < 0 ? -1 : 1;
       const absN = Math.abs(f.n);
@@ -773,14 +787,13 @@
       return { whole, n: rem, d: f.d };
     }
 
-    /* ---------- HTML rendering helpers (no MathJax) ---------- */
+    /* ---------- HTML rendering helpers ---------- */
     function fracHTML(n, d, big) {
       const cls = 'frac-stack' + (big ? ' big' : '');
       return `<span class="${cls}"><span class="frac-num">${n}</span><span class="frac-den">${d}</span></span>`;
     }
 
     function mixedHTML(m) {
-      // m is {whole, n, d}; if n===0 show just whole
       if (m.n === 0) return `<span class="mixed">${m.whole}</span>`;
       const sign = m.whole < 0 ? '−' : '';
       const w = Math.abs(m.whole);
@@ -789,16 +802,10 @@
 
     function decimalString(n, d) {
       const val = n / d;
-      // Show up to 10 decimals, trim trailing zeros
       let s = val.toFixed(10);
       s = s.replace(/0+$/, '').replace(/\.$/, '');
-      // If repeating, indicate with ellipsis when it doesn't terminate neatly
       if (s.length > 12) s = val.toFixed(6) + '…';
       return s;
-    }
-
-    function fmtInt(n) {
-      return Number.isInteger(n) ? n.toLocaleString('en-US') : String(n);
     }
 
     /* ---------- Read inputs ---------- */
@@ -828,7 +835,6 @@
       const f1 = makeFraction(aN, aD);
       const f2 = makeFraction(bN, bD);
 
-      // For display, use the user-entered fractions (before normalization)
       const f1Disp = { n: aN, d: aD };
       const f2Disp = { n: bN, d: bD };
 
@@ -862,7 +868,6 @@
         return;
       }
 
-      // Normalize raw for display (sign to numerator)
       let rawDisplay = { n: raw.n, d: raw.d };
       if (rawDisplay.d < 0) { rawDisplay.n = -rawDisplay.n; rawDisplay.d = -rawDisplay.d; }
 
@@ -908,7 +913,6 @@
       trackEvent(CALC_NAME, 'calculate');
     }
 
-    /* ---------- Step builders ---------- */
     function buildAddSteps(f1, f2, raw, result) {
       const common = f1.d * f2.d;
       const conv1n = f1.n * f2.d;
@@ -985,7 +989,6 @@
       trackEvent(CALC_NAME, 'reset');
     });
 
-    // Mobile menu + back-to-top
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
     const io = document.getElementById('menu-icon-open');
