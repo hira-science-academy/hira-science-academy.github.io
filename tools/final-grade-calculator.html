@@ -13,17 +13,20 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
-  <meta content="en" language"/>
+  <meta content="en" name="language"/>
   <meta content="Hira Science Academy" name="author"/>
-  <title>Final Grade Calculator — What Score Do I Need on My Final Exam? | Hira Science Academy</title>
-  <meta content="Free final grade calculator for BISE Punjab students. Enter your current grade, the final exam weight, and your target grade to find the exact score you need on the final." name="description"/>
-  <meta content="final grade calculator, final exam calculator, what do I need on my final, required exam score, target grade calculator, BISE Punjab" name="keywords"/>
+  
+  <!-- CTR OPTIMIZATION: Targeting exact Trends queries -->
+  <title>Final Grade Calculator – What Score Do I Need on My Final Exam?</title>
+  <meta content="Free final grade calculator. Enter your current grade, final exam weight, and target grade to instantly find out what score you need on the final to pass." name="description"/>
+  <meta content="final grade calculator, final exam calculator, what do i need on my final, required exam score, target grade calculator" name="keywords"/>
+  
   <link href="https://hiraacademy.com.pk/tools/final-grade-calculator.html" rel="canonical"/>
 
   <meta content="website" property="og:type"/>
   <meta content="en_PK" property="og:locale"/>
   <meta content="Hira Science Academy" property="og:site_name"/>
-  <meta content="Final Grade Calculator — What Score Do I Need on My Final Exam?" property="og:title"/>
+  <meta content="Final Grade Calculator – What Score Do I Need on My Final Exam?" property="og:title"/>
   <meta content="Enter your current grade, final weight and target grade to find the score you need on your final exam." property="og:description"/>
   <meta content="https://hiraacademy.com.pk/tools/final-grade-calculator.html" property="og:url"/>
   <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
@@ -31,6 +34,24 @@
   <meta content="@hiraacademyDSK" name="twitter:site"/>
 
   <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <!-- KaTeX for perfect math rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
 
   <script type="application/ld+json">
   {
@@ -63,21 +84,6 @@
         "@type": "Question",
         "name": "What if the required score is above 100%?",
         "acceptedAnswer": { "@type": "Answer", "text": "If the required score is above 100%, no score on the final can bring you to that target with the given weights. The calculator flags this as an impossible target and shows the highest overall grade you can still reach with a perfect final score." }
-      },
-      {
-        "@type": "Question",
-        "name": "What if the required score is below 0%?",
-        "acceptedAnswer": { "@type": "Answer", "text": "If the required score is below 0%, you have already secured the target regardless of how the final goes. Even a score of 0 on the final would still leave your overall grade above the target. The calculator shows this as a positive outcome, not an error." }
-      },
-      {
-        "@type": "Question",
-        "name": "Does this calculator work for BISE Punjab class 9 and 10?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Yes. It works with any marks or percentage scheme. If your school reports marks out of 100 or as a percentage, use those directly. If your final exam is combined with practicals, first combine them into a single percentage and enter that combined weight." }
-      },
-      {
-        "@type": "Question",
-        "name": "Should I use my current percentage or my current letter grade?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Use the numeric percentage if you have it. Letter grades vary between schools, so converting to a percentage first gives a more accurate required-score result." }
       }
     ]
   }
@@ -146,43 +152,6 @@
     }
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
-
-    /* LaTeX-style HTML/CSS math */
-    .latex-frac {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      vertical-align: middle;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1em;
-      line-height: 1.15;
-      margin: 0 0.15em;
-      color: #0b1220;
-    }
-    .latex-frac .f-num {
-      padding: 0 0.35em 0.05em 0.35em;
-      border-bottom: 1.5px solid currentColor;
-    }
-    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
-    .latex-frac.big { font-size: 1.2em; }
-    .latex-frac.big .f-num { border-bottom-width: 2px; }
-    .math-block {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1rem;
-      color: #0b1220;
-      background: #f8fafc;
-      padding: 1rem 1.25rem;
-      border-radius: 0.5rem;
-      border-left: 4px solid #0ea5e9;
-      margin: 0.35rem 0 0 0;
-      flex-wrap: wrap;
-      gap: 0.3em;
-      text-align: center;
-      overflow-x: auto;
-    }
 
     /* Result */
     .cgpa-big-value {
@@ -298,6 +267,9 @@
     }
     .hero-centered { text-align: center; }
     .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+    
+    /* KaTeX overrides */
+    .katex { font-size: 1.1em; }
   </style>
 </head>
 
@@ -353,8 +325,11 @@
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
       <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Instant Result · Step-by-Step</span>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Final Grade Calculator</h1>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Find the exact score you need on your final exam to reach your target overall grade — with a clear warning if the target is out of reach.</p>
+      
+      <!-- CTR OPTIMIZATION: Exact match H1 -->
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">What score do I need on my final exam?</h1>
+      
+      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Enter your current grade, final weight, and target grade. Get the exact score you need on the final to reach your goal.</p>
     </div>
   </header>
 
@@ -441,18 +416,14 @@
         <div class="formula-block">
           <div class="formula-label">Required final exam score</div>
           <div class="math-block">
-            <span>Required = </span>
-            <span class="latex-frac big">
-              <span class="f-num">Target − Current × (1 − w<sub>f</sub>)</span>
-              <span class="f-den">w<sub>f</sub></span>
-            </span>
+            \[ \text{Required} = \frac{\text{Target} - \text{Current} \times (1 - w_f)}{w_f} \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Equivalent form (weighted-average rearrange)</div>
           <div class="math-block">
-            <span>Target = Current × (1 − w<sub>f</sub>) + Required × w<sub>f</sub></span>
+            \[ \text{Target} = \text{Current} \times (1 - w_f) + \text{Required} \times w_f \]
           </div>
         </div>
 
@@ -460,7 +431,7 @@
         <ul class="list-disc pl-6 space-y-1 leading-relaxed">
           <li><strong>Target</strong> — the overall grade you want, as a percentage (e.g. 80).</li>
           <li><strong>Current</strong> — your current grade before the final, as a percentage (e.g. 72).</li>
-          <li><strong>w<sub>f</sub></strong> — the weight of the final exam as a decimal (e.g. 30% → 0.30).</li>
+          <li><strong>\(w_f\)</strong> — the weight of the final exam as a decimal (e.g. 30% → 0.30).</li>
           <li><strong>Required</strong> — the score you need on the final exam, as a percentage.</li>
         </ul>
       </section>
@@ -474,9 +445,9 @@
             Current grade: 72%, final weight: 30%, target: 80%
           </div>
           <ol>
-            <li>Non-final contribution: 72 × (1 − 0.30) = 72 × 0.70 = <strong>50.4</strong>.</li>
-            <li>Points needed from the final: 80 − 50.4 = <strong>29.6</strong>.</li>
-            <li>Required final score: 29.6 / 0.30 = <strong>98.67%</strong>.</li>
+            <li>Non-final contribution: \(72 \times (1 - 0.30) = 72 \times 0.70 = \mathbf{50.4}\).</li>
+            <li>Points needed from the final: \(80 - 50.4 = \mathbf{29.6}\).</li>
+            <li>Required final score: \(29.6 / 0.30 = \mathbf{98.67\%}\).</li>
             <li>Result: reachable, but the final must be nearly perfect. The margin is only 1.33 percentage points.</li>
           </ol>
         </div>
@@ -487,10 +458,10 @@
             Current grade: 85%, final weight: 20%, target: 90%
           </div>
           <ol>
-            <li>Non-final contribution: 85 × 0.80 = <strong>68.0</strong>.</li>
-            <li>Points needed from the final: 90 − 68 = <strong>22.0</strong>.</li>
-            <li>Required final score: 22 / 0.20 = <strong>110%</strong> — above 100, so impossible.</li>
-            <li>Highest reachable overall: 68 + 100 × 0.20 = <strong>88%</strong>. That is the ceiling even with a perfect final.</li>
+            <li>Non-final contribution: \(85 \times 0.80 = \mathbf{68.0}\).</li>
+            <li>Points needed from the final: \(90 - 68 = \mathbf{22.0}\).</li>
+            <li>Required final score: \(22 / 0.20 = \mathbf{110\%}\) — above 100, so impossible.</li>
+            <li>Highest reachable overall: \(68 + 100 \times 0.20 = \mathbf{88\%}\). That is the ceiling even with a perfect final.</li>
           </ol>
         </div>
 
@@ -500,9 +471,9 @@
             Current grade: 60%, final weight: 50%, target: 70%
           </div>
           <ol>
-            <li>Non-final contribution: 60 × 0.50 = <strong>30.0</strong>.</li>
-            <li>Points needed from the final: 70 − 30 = <strong>40.0</strong>.</li>
-            <li>Required final score: 40 / 0.50 = <strong>80%</strong>.</li>
+            <li>Non-final contribution: \(60 \times 0.50 = \mathbf{30.0}\).</li>
+            <li>Points needed from the final: \(70 - 30 = \mathbf{40.0}\).</li>
+            <li>Required final score: \(40 / 0.50 = \mathbf{80\%}\).</li>
             <li>Result: a strong final can lift a 60% average to 70% overall. Very achievable.</li>
           </ol>
         </div>
@@ -513,9 +484,9 @@
             Current grade: 78%, final weight: 40%, target: 75%
           </div>
           <ol>
-            <li>Non-final contribution: 78 × 0.60 = <strong>46.8</strong>.</li>
-            <li>Points needed from the final: 75 − 46.8 = <strong>28.2</strong>.</li>
-            <li>Required final score: 28.2 / 0.40 = <strong>70.5%</strong>.</li>
+            <li>Non-final contribution: \(78 \times 0.60 = \mathbf{46.8}\).</li>
+            <li>Points needed from the final: \(75 - 46.8 = \mathbf{28.2}\).</li>
+            <li>Required final score: \(28.2 / 0.40 = \mathbf{70.5\%}\).</li>
             <li>Result: you can score well below your current average and still hit the target.</li>
           </ol>
         </div>
@@ -526,9 +497,9 @@
             Current grade: 92%, final weight: 20%, target: 80%
           </div>
           <ol>
-            <li>Non-final contribution: 92 × 0.80 = <strong>73.6</strong>.</li>
-            <li>Points needed from the final: 80 − 73.6 = <strong>6.4</strong>.</li>
-            <li>Required final score: 6.4 / 0.20 = <strong>32%</strong> — well below any passing grade.</li>
+            <li>Non-final contribution: \(92 \times 0.80 = \mathbf{73.6}\).</li>
+            <li>Points needed from the final: \(80 - 73.6 = \mathbf{6.4}\).</li>
+            <li>Required final score: \(6.4 / 0.20 = \mathbf{32\%}\) — well below any passing grade.</li>
             <li>Even a score of 0 leaves you at <strong>73.6%</strong>, still above the target of 80% only if you actually score above the threshold. The calculator will flag this as "target secured with a low final score".</li>
           </ol>
         </div>
@@ -539,9 +510,9 @@
             Current grade: 65%, final (theory + practical combined): 40%, target: 75%
           </div>
           <ol>
-            <li>Non-final contribution: 65 × 0.60 = <strong>39.0</strong>.</li>
-            <li>Points needed from the final: 75 − 39 = <strong>36.0</strong>.</li>
-            <li>Required final score: 36 / 0.40 = <strong>90%</strong>.</li>
+            <li>Non-final contribution: \(65 \times 0.60 = \mathbf{39.0}\).</li>
+            <li>Points needed from the final: \(75 - 39 = \mathbf{36.0}\).</li>
+            <li>Required final score: \(36 / 0.40 = \mathbf{90\%}\).</li>
             <li>This 90% is the combined theory + practical score. If theory is 80% of the final and practical is 20%, you would need approximately 90% overall, weighted across both.</li>
           </ol>
         </div>
@@ -633,14 +604,13 @@
   </main>
 
   <!-- FOOTER -->
- <!-- FOOTER -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
   <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     
     <!-- Main Footer Layout -->
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
       
-      <!-- Brand & Info (Reduced to 3 of 12 columns on Desktop) -->
+      <!-- Brand & Info -->
       <div class="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left">
         <a class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
           <img alt="Hira Science Academy logo" width="40" height="40" loading="lazy" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" src="https://hiraacademy.com.pk/images/logo.webp"/>
@@ -654,7 +624,7 @@
         </p>
       </div>
 
-      <!-- Links Grid (Expanded to 9 of 12 columns on Desktop) -->
+      <!-- Links Grid -->
       <div class="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         
         <!-- Programs -->
@@ -908,16 +878,16 @@
           <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
           <ol>
             <li>Inputs: current = ${fmtNum(current, 2)}%, final weight = ${fmtNum(weight, 2)}%, target = ${fmtNum(target, 2)}%.</li>
-            <li>Final weight as decimal: w<sub>f</sub> = ${fmtNum(weight, 2)} / 100 = <strong>${fmtNum(wf, 4)}</strong>.</li>
-            <li>Non-final weight: 1 − w<sub>f</sub> = 1 − ${fmtNum(wf, 4)} = <strong>${fmtNum(1 - wf, 4)}</strong>.</li>
-            <li>Non-final contribution: ${fmtNum(current, 2)} × ${fmtNum(1 - wf, 4)} = <strong>${fmtNum(nonFinalContribution, 4)}</strong>.</li>
-            <li>Points needed from the final: ${fmtNum(target, 2)} − ${fmtNum(nonFinalContribution, 4)} = <strong>${fmtNum(pointsNeeded, 4)}</strong>.</li>
-            <li>Required score: ${fmtNum(pointsNeeded, 4)} / ${fmtNum(wf, 4)} = <strong>${fmtNum(requiredRounded, 4)}</strong>.</li>
+            <li>Final weight as decimal: \\( w_f = ${fmtNum(weight, 2)} / 100 = ${fmtNum(wf, 4)} \\).</li>
+            <li>Non-final weight: \\( 1 - w_f = 1 - ${fmtNum(wf, 4)} = ${fmtNum(1 - wf, 4)} \\).</li>
+            <li>Non-final contribution: \\( ${fmtNum(current, 2)} \\times ${fmtNum(1 - wf, 4)} = ${fmtNum(nonFinalContribution, 4)} \\).</li>
+            <li>Points needed from the final: \\( ${fmtNum(target, 2)} - ${fmtNum(nonFinalContribution, 4)} = ${fmtNum(pointsNeeded, 4)} \\).</li>
+            <li>Required score: \\( ${fmtNum(pointsNeeded, 4)} / ${fmtNum(wf, 4)} = ${fmtNum(requiredRounded, 4)} \\).</li>
             <li>${required > 100
-              ? `Since ${fmtNum(requiredRounded, 2)}% > 100%, the target is impossible. Highest reachable overall = ${fmtNum(ceilingRounded, 2)}%.`
+              ? `Since \\( ${fmtNum(requiredRounded, 2)}\\% > 100\\% \\), the target is impossible. Highest reachable overall = \\( ${fmtNum(ceilingRounded, 2)}\\% \\).`
               : required < 0
-                ? `Since the required score is negative, the target is already secured. Lowest possible overall = ${fmtNum(floorRounded, 2)}%.`
-                : `Since ${fmtNum(requiredRounded, 2)}% is between 0% and 100%, this score is achievable on the final exam.`}</li>
+                ? `Since the required score is negative, the target is already secured. Lowest possible overall = \\( ${fmtNum(floorRounded, 2)}\\% \\).`
+                : `Since \\( ${fmtNum(requiredRounded, 2)}\\% \\) is between 0% and 100%, this score is achievable on the final exam.`}</li>
           </ol>
         </div>
 
@@ -927,6 +897,20 @@
       `;
 
       showResult(resultPanel, html);
+      
+      // Render KaTeX in the result panel dynamically
+      if (typeof renderMathInElement === 'function') {
+        renderMathInElement(resultPanel, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+          ],
+          throwOnError: false
+        });
+      }
+      
       trackEvent(CALC_NAME, 'calculate');
     }
 
