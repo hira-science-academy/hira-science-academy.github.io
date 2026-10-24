@@ -382,15 +382,79 @@
       </div>
     </div>
 
-    <!-- Social Sharing Buttons -->
-    <div class="text-center my-8">
-      <p class="font-semibold mb-3 text-primary-700">Useful? Share with your friends.</p>
-      <div class="flex justify-center gap-4 flex-wrap">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.2.html" target="_blank" rel="noopener" class="bg-primary-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primary-700 transition shadow-md">Facebook</a>
-        <a href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%202.2%20Solutions%20https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.2.html" target="_blank" rel="noopener" class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md">WhatsApp</a>
-        <a href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%202.2%20Solutions&url=https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.2.html" target="_blank" rel="noopener" class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md">Twitter</a>
-      </div>
-    </div>
+<!-- Social Sharing Buttons -->
+<div class="text-center my-8">
+  <p class="font-semibold mb-3 text-primary-700">Useful? Share with your friends.</p>
+  <div class="flex justify-center gap-4 flex-wrap">
+    
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.2.html" 
+       onclick="shareOnFacebook(event)" 
+       target="_blank" 
+       rel="noopener" 
+       class="bg-primary-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primary-700 transition shadow-md">
+       Facebook
+    </a>
+
+    <!-- WhatsApp -->
+    <a href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%202.2%20Solutions%20https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.2.html" 
+       onclick="shareOnWhatsApp(event)" 
+       target="_blank" 
+       rel="noopener" 
+       class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md">
+       WhatsApp
+    </a>
+
+    <!-- Twitter / X -->
+    <a href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%202.2%20Solutions&url=https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.2.html" 
+       onclick="shareOnTwitter(event)" 
+       target="_blank" 
+       rel="noopener" 
+       class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md">
+       Twitter
+    </a>
+
+  </div>
+</div>
+
+<!-- JavaScript Handler for Mobile App Triggers -->
+<script>
+  const shareUrl = "https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.2.html";
+  const shareText = "Check out Class 9 Math Exercise 2.2 Solutions " + shareUrl;
+
+  function shareOnWhatsApp(e) {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      e.preventDefault();
+      window.location.href = "whatsapp://send?text=" + encodeURIComponent(shareText);
+      
+      setTimeout(() => {
+        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shareText), '_blank');
+      }, 500);
+    }
+  }
+
+  function shareOnFacebook(e) {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      e.preventDefault();
+      window.location.href = "fb://facewebmodal/f?href=" + encodeURIComponent(shareUrl);
+      
+      setTimeout(() => {
+        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl), '_blank');
+      }, 500);
+    }
+  }
+
+  function shareOnTwitter(e) {
+    if (/Mobi|Android/i.test(navigator.userAgent)) {
+      e.preventDefault();
+      window.location.href = "twitter://post?message=" + encodeURIComponent(shareText);
+      
+      setTimeout(() => {
+        window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(shareUrl), '_blank');
+      }, 500);
+    }
+  }
+</script>
 
     <!-- Embedded PDF (Expanded to show full page) -->
     <div class="flex flex-col items-center justify-center mb-8 w-full">
