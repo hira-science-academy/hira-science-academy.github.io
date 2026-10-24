@@ -238,9 +238,58 @@
     }
     /* Ad Slot Styling */
     .ad-slot { margin: 2rem auto; text-align: center; width: 100%; min-height: 90px; overflow: hidden; }
+
+    /* ===== FAQ Accordion Styles ===== */
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #2563eb;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 600;
+      color: #0f172a;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .faq-question:hover { background: #f8fafc; }
+    .faq-question:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 2px;
+    }
+    .faq-icon {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #2563eb;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 20px 18px 20px;
+      color: #334155;
+      line-height: 1.7;
+      text-align: justify;
+      font-size: 0.95rem;
+    }
+    .faq-answer[hidden] { display: none; }
+    .faq-answer .equation { margin: 8px 0; }
   </style>
 
-  <!-- Structured Data: Article + BreadcrumbList + Organization -->
+  <!-- Structured Data: Article + BreadcrumbList + Organization + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -298,6 +347,60 @@
           "targetName": "Class 9 Mathematics – Real Numbers",
           "targetUrl": "https://hiraacademy.com.pk/Mathematics-9th.html"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://hiraacademy.com.pk/notes/math9/Chapter1_ReviewExercise.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What topics are covered in Class 9 Math Review Exercise 1 (Real Numbers)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Review Exercise 1 consolidates the entire Chapter 1 (Real Numbers). It covers verification of distributive and associative properties using rational numbers, whether zero is a rational number, the trichotomy property of real numbers, finding rational numbers between two integers, simplifying radical expressions with exponents, and real-world word problems involving consecutive odd integers, sharing objects into buckets, and simple interest spread across multiple time periods. Full step-by-step working is shown on this page and in the embedded PDF."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I verify the distributive property with a = 3/2, b = 5/3, c = 7/5?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Simplify both sides separately. For (i) a(b + c) = ab + ac: the left side becomes (3/2)((5/3) + (7/5)) = (3/2)(46/15) = 138/30, and the right side becomes (15/6) + (21/10) = 138/30. Since both sides equal 138/30, the property holds. For (ii) (a + b)c = ac + bc: the left side becomes (19/6)(7/5) = 133/30 and the right side becomes (21/10) + (35/15) = 133/30, so the property again holds."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I verify the associative property for a = 4/3, b = 5/2, c = 7/4?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For addition, evaluate a + (b + c) and (a + b) + c separately. The left side becomes (4/3) + (17/4) = 67/12 and the right side becomes (23/6) + (7/4) = 67/12, so they match. For multiplication, evaluate a(bc) and (ab)c. The left side becomes (4/3)(35/8) = 140/24 and the right side becomes (20/6)(7/4) = 140/24, so both are equal. This confirms the associative property under addition and multiplication."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is 0 a rational number, and what is the trichotomy property?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, 0 is a rational number. It can be written as p/q with q not zero, for example 0/2 or 0/(-9), which satisfies the definition of a rational number. The trichotomy property states that for any two real numbers a and b, exactly one of the following is true: a = b, or a > b, or a < b. There is no fourth possibility."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I find two rational numbers between 4 and 5?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the averaging method. The first rational number is (4 + 5)/2 = 9/2. The second rational number is (4 + 9/2)/2 = (17/2) times (1/2) = 17/4. So 9/2 and 17/4 are both rational numbers between 4 and 5."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I download the complete Review Exercise 1 solutions PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The complete PDF for Class 9 Math Chapter 1 Review Exercise (Real Numbers) is embedded on this page and can be downloaded free of cost using the 'Download PDF - Review Exercise 1 Solutions (Free)' button located directly above the FAQ section. The PDF contains the full set of solved questions for this review exercise."
+            }
+          }
+        ]
       }
     ]
   }
@@ -331,7 +434,7 @@
           <a href="https://hiraacademy.com.pk/student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105 whitespace-nowrap">🎓 Student Portal</a>
         </div>
         <div class="flex items-center md:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
@@ -402,80 +505,6 @@
       </div>
     </div>
 
-   <!-- Social Sharing Buttons -->
-<div class="text-center my-8">
-  <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
-  <div class="flex justify-center gap-4 flex-wrap">
-    
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://hiraacademy.com.pk/notes/math9/Chapter1_ReviewExercise.html" 
-       onclick="shareOnFacebook(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">
-       Facebook
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Review%20Exercise%201%20Solutions%20https://hiraacademy.com.pk/notes/math9/Chapter1_ReviewExercise.html" 
-       onclick="shareOnWhatsApp(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md">
-       WhatsApp
-    </a>
-
-    <!-- Twitter / X -->
-    <a href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Review%20Exercise%201%20Solutions&url=https://hiraacademy.com.pk/notes/math9/Chapter1_ReviewExercise.html" 
-       onclick="shareOnTwitter(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md">
-       Twitter
-    </a>
-
-  </div>
-</div>
-
-<!-- JavaScript Handler for Mobile App Triggers -->
-<script>
-  const shareUrl = "https://hiraacademy.com.pk/notes/math9/Chapter1_ReviewExercise.html";
-  const shareText = "Check out Class 9 Math Review Exercise 1 Solutions " + shareUrl;
-
-  function shareOnWhatsApp(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "whatsapp://send?text=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shareText), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnFacebook(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "fb://facewebmodal/f?href=" + encodeURIComponent(shareUrl);
-      
-      setTimeout(() => {
-        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnTwitter(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "twitter://post?message=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-</script>
-
     <!-- Embedded PDF (Expanded to show full page) -->
     <div class="flex flex-col items-center justify-center mb-8 w-full">
       <div class="w-full relative rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-50" style="height: 1200px; min-height: 85vh;">
@@ -489,41 +518,140 @@
         ></iframe>
       </div>
       <p class="text-sm text-gray-500 mt-3 text-center">
-        If the PDF does not load, <a href="https://drive.google.com/file/d/1rspe6AMg1EDDwjP8kdQAXut4-lTg0sEb/view" target="_blank" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
+        If the PDF does not load, <a href="https://drive.google.com/file/d/1rspe6AMg1EDDwjP8kdQAXut4-lTg0sEb/view" target="_blank" rel="noopener" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
       </p>
     </div>
 
     <!-- Download PDF Button -->
-    <div class="flex justify-center mb-8">
+    <div class="flex justify-center mb-4">
       <a href="https://drive.google.com/uc?export=download&id=1rspe6AMg1EDDwjP8kdQAXut4-lTg0sEb"
          class="dark-glass-btn inline-flex items-center gap-2 font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
         ⬇️ Download PDF – Review Exercise 1 Solutions (Free)
       </a>
     </div>
 
-    <!-- Ad Slot: Review Exercise 1 9th -->
-<div class="ad-slot my-6 text-center">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-       crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="2473926490"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+    <!-- ============ SOCIAL SHARING (placed directly below Download button) ============ -->
+    <div class="text-center my-6">
+      <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
+      <div class="flex justify-center gap-4 flex-wrap">
 
-    <!-- Quick Links (Moved Above Related Resources) -->
+        <!-- Facebook -->
+        <a id="shareFacebook"
+           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_ReviewExercise.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Facebook"
+           class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md focus:outline-none focus:ring-4 focus:ring-blue-300">
+           Facebook
+        </a>
+
+        <!-- WhatsApp -->
+        <a id="shareWhatsApp"
+           href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Review%20Exercise%201%20Solutions%20https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_ReviewExercise.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on WhatsApp"
+           class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">
+           WhatsApp
+        </a>
+
+        <!-- Twitter / X -->
+        <a id="shareTwitter"
+           href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Review%20Exercise%201%20Solutions&url=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_ReviewExercise.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Twitter"
+           class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300">
+           Twitter
+        </a>
+
+        <!-- Copy Link fallback -->
+        <button id="shareCopy" type="button"
+           aria-label="Copy this page link to clipboard"
+           class="bg-gray-700 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">
+           Copy Link
+        </button>
+
+      </div>
+    </div>
+
+    <!-- JavaScript: Web Share API with graceful fallbacks (no blind setTimeout) -->
+    <script>
+      (function () {
+        const shareUrl  = "https://hiraacademy.com.pk/notes/math9/Chapter1_ReviewExercise.html";
+        const shareText = "Class 9 Math Review Exercise 1 Solutions – Real Numbers (Punjab Board)";
+
+        function isMobile() {
+          return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        async function tryNativeShare(data) {
+          if (navigator.share && (!navigator.canShare || navigator.canShare(data))) {
+            try {
+              await navigator.share(data);
+              return true;
+            } catch (err) {
+              if (err && err.name === "AbortError") return true;
+              return false;
+            }
+          }
+          return false;
+        }
+
+        async function copyLink() {
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            alert("Link copied to clipboard: " + shareUrl);
+          } catch (_) {
+            window.prompt("Copy this link:", shareUrl);
+          }
+        }
+
+        const fb  = document.getElementById("shareFacebook");
+        const wa  = document.getElementById("shareWhatsApp");
+        const tw  = document.getElementById("shareTwitter");
+        const cp  = document.getElementById("shareCopy");
+
+        if (wa) wa.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+
+        if (fb) fb.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+
+        if (tw) tw.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+
+        if (cp) cp.addEventListener("click", async function (e) {
+          e.preventDefault();
+          await copyLink();
+        });
+      })();
+    </script>
+
+    <!-- Ad Slot: Review Exercise 1 9th -->
+    <div class="ad-slot my-6 text-center">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="2473926490"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Quick Links -->
     <div class="text-center my-8 bg-blue-50 p-4 rounded-xl border border-blue-200">
       <p class="font-bold mb-4 text-blue-800 text-lg">🔗 Quick Links – Chapter 1: Real Numbers</p>
       <div class="flex flex-wrap justify-center gap-3">
         <a href="Chapter1_Exercise1.1.html" class="btn-view">🔢 Exercise 1.1</a>
         <a href="Chapter1_Exercise1.2.html" class="btn-view">📋 Exercise 1.2</a>
         <a href="Chapter1_Exercise1.3.html" class="btn-view">📝 Exercise 1.3</a>
-        <a href="Chapter1_ReviewExercise.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;">📖 Review Exercise</a>
+        <a href="Chapter1_ReviewExercise.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;" aria-current="page">📖 Review Exercise</a>
         <a href="Chapter1_Definitions.html" class="btn-view">📘 Definitions</a>
         <a href="Chapter1_MCQs.html" class="btn-view">✅ MCQs</a>
       </div>
@@ -575,7 +703,7 @@
             <div class="eq-line"><span class="eq-content">\(\frac{133}{30} = \frac{133}{30}\)</span><span class="eq-label">(Proved)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer2" aria-expanded="false" aria-controls="answer2">Show Solution</button>
       </div>
 
       <!-- Question 3 -->
@@ -603,7 +731,7 @@
             <div class="eq-line"><span class="eq-content">\(\frac{140}{24} = \frac{140}{24}\)</span><span class="eq-label">(Proved)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer3" aria-expanded="false" aria-controls="answer3">Show Solution</button>
       </div>
 
       <!-- Question 4 -->
@@ -616,7 +744,7 @@
           <div class="block-lbl">Solution</div>
           <p class="sol-text">Yes, zero (0) is a rational number. It satisfies the definition of rational numbers. For example, \(\frac{0}{2}, \frac{0}{-9}\) both are rational numbers.</p>
         </div>
-        <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer4" aria-expanded="false" aria-controls="answer4">Show Solution</button>
       </div>
 
       <!-- Question 5 -->
@@ -629,7 +757,7 @@
           <div class="block-lbl">Solution</div>
           <p class="sol-text">\(\forall a, b \in \mathbb{R}\), either \(a = b\) or \(a > b\) or \(a < b\).</p>
         </div>
-        <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer5" aria-expanded="false" aria-controls="answer5">Show Solution</button>
       </div>
 
       <!-- Question 6 -->
@@ -656,7 +784,7 @@
             <div class="eq-line"><span class="eq-content">\(= \frac{17}{4}\)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer6" aria-expanded="false" aria-controls="answer6">Show Solution</button>
       </div>
 
       <!-- Question 7 -->
@@ -690,7 +818,7 @@
             <div class="eq-line"><span class="eq-content">\(= 27\)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer7">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer7" aria-expanded="false" aria-controls="answer7">Show Solution</button>
       </div>
 
       <!-- Question 8 -->
@@ -722,7 +850,7 @@
           </div>
           <div class="ans-box">✅ The three consecutive odd integers are 15, 17, and 19</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer8">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer8" aria-expanded="false" aria-controls="answer8">Show Solution</button>
       </div>
 
       <!-- Question 9 -->
@@ -754,7 +882,7 @@
           </div>
           <div class="ans-box">✅ First bucket = 34 balls, Second bucket = 62 balls</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer9">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer9" aria-expanded="false" aria-controls="answer9">Show Solution</button>
       </div>
 
       <!-- Question 10 -->
@@ -794,7 +922,7 @@
           </div>
           <div class="ans-box">✅ Total amount at the end of 7 years = Rs. 540,750</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer10">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer10" aria-expanded="false" aria-controls="answer10">Show Solution</button>
       </div>
     </div>
 
@@ -806,9 +934,113 @@
       </p>
     </div>
 
+    <!-- ===================== FAQ SECTION (exercise-specific, MathJax) ===================== -->
+    <section class="content-section" id="faq-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">❓ Frequently Asked Questions – Review Exercise 1</h2>
+
+      <!-- FAQ 1 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" id="faq1-question">
+          <span>What topics are covered in Class 9 Math Review Exercise 1 (Real Numbers)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-question" hidden>
+          <p>Review Exercise 1 consolidates the entire Chapter 1 (Real Numbers). It covers: verification of distributive and associative properties using rational numbers, whether zero is a rational number, the trichotomy property of real numbers, finding rational numbers between two integers, simplifying radical expressions with exponents, and real-world word problems involving consecutive odd integers, sharing objects into buckets, and simple interest spread across multiple time periods. Full step-by-step working is shown on this page and in the embedded PDF.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" id="faq2-question">
+          <span>How do I verify the distributive property with \(a = \tfrac{3}{2}\), \(b = \tfrac{5}{3}\), \(c = \tfrac{7}{5}\)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2-question" hidden>
+          <p>Simplify both sides separately. For <strong>(i)</strong> \(a(b+c) = ab + ac\):</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(\text{LHS} = \tfrac{3}{2}\left(\tfrac{5}{3} + \tfrac{7}{5}\right) = \tfrac{3}{2}\cdot\tfrac{46}{15} = \tfrac{138}{30}\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(\text{RHS} = \tfrac{15}{6} + \tfrac{21}{10} = \tfrac{75+63}{30} = \tfrac{138}{30}\)</span></div>
+          </div>
+          <p>For <strong>(ii)</strong> \((a+b)c = ac + bc\):</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(\text{LHS} = \tfrac{19}{6}\cdot\tfrac{7}{5} = \tfrac{133}{30}\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(\text{RHS} = \tfrac{21}{10} + \tfrac{35}{15} = \tfrac{133}{30}\)</span></div>
+          </div>
+          <p>Since LHS = RHS in both cases, the distributive property is verified.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" id="faq3-question">
+          <span>How do I verify the associative property for \(a = \tfrac{4}{3}\), \(b = \tfrac{5}{2}\), \(c = \tfrac{7}{4}\)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3-question" hidden>
+          <p><strong>Under addition</strong> \(a + (b+c) = (a+b) + c\):</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(\text{LHS} = \tfrac{4}{3} + \tfrac{17}{4} = \tfrac{16+51}{12} = \tfrac{67}{12}\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(\text{RHS} = \tfrac{23}{6} + \tfrac{7}{4} = \tfrac{46+21}{12} = \tfrac{67}{12}\)</span></div>
+          </div>
+          <p><strong>Under multiplication</strong> \(a(bc) = (ab)c\):</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(\text{LHS} = \tfrac{4}{3}\cdot\tfrac{35}{8} = \tfrac{140}{24}\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(\text{RHS} = \tfrac{20}{6}\cdot\tfrac{7}{4} = \tfrac{140}{24}\)</span></div>
+          </div>
+          <p>Both sides are equal, so the associative property is verified.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer" id="faq4-question">
+          <span>Is 0 a rational number, and what is the trichotomy property?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq4-answer" role="region" aria-labelledby="faq4-question" hidden>
+          <p>Yes, \(0\) is a rational number. It can be written in the form \(\tfrac{p}{q}\) with \(q \neq 0\), for example \(\tfrac{0}{2}\) or \(\tfrac{0}{-9}\), which satisfies the definition of a rational number.</p>
+          <p>The <strong>trichotomy property</strong> states that for any two real numbers \(a\) and \(b\), exactly one of the following is true:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(a = b \quad \text{or} \quad a > b \quad \text{or} \quad a < b\)</span></div>
+          </div>
+          <p>There is no fourth possibility.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer" id="faq5-question">
+          <span>How do I find two rational numbers between 4 and 5?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq5-answer" role="region" aria-labelledby="faq5-question" hidden>
+          <p>Use the averaging method. The first rational number is:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(r_1 = \tfrac{4 + 5}{2} = \tfrac{9}{2}\)</span></div>
+          </div>
+          <p>The second rational number is:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(r_2 = \tfrac{4 + \tfrac{9}{2}}{2} = \tfrac{17}{4}\)</span></div>
+          </div>
+          <p>So \(\tfrac{9}{2}\) and \(\tfrac{17}{4}\) are both rational numbers between \(4\) and \(5\).</p>
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer" id="faq6-question">
+          <span>Where can I download the complete Review Exercise 1 solutions PDF?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq6-answer" role="region" aria-labelledby="faq6-question" hidden>
+          <p>The complete PDF for Class 9 Math Chapter 1 Review Exercise (Real Numbers) is embedded on this page and can be downloaded free of cost using the <strong>“⬇️ Download PDF – Review Exercise 1 Solutions (Free)”</strong> button located directly above this FAQ section. The PDF contains the full set of solved questions for this review exercise.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Other Chapters Dropdown (with full chapter links) -->
     <div class="text-center mt-10 mb-16">
-      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
+      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1" aria-expanded="false" aria-controls="chaptersList">
         📚 Explore Other Math Chapters (1–13)
       </button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
@@ -1004,7 +1236,7 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop">↑</button>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
     (function(){
@@ -1012,7 +1244,10 @@
       const menuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       if(menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        menuButton.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.toggle('hidden');
+          menuButton.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
       // Back to top
       const backToTopButton = document.getElementById('backToTop');
@@ -1026,7 +1261,10 @@
       const toggleBtn = document.getElementById('toggleChapters');
       const chaptersList = document.getElementById('chaptersList');
       if(toggleBtn && chaptersList){
-        toggleBtn.addEventListener('click', () => chaptersList.classList.toggle('hidden'));
+        toggleBtn.addEventListener('click', () => {
+          const isHidden = chaptersList.classList.toggle('hidden');
+          toggleBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
 
       // Reading Progress Bar
@@ -1046,12 +1284,32 @@
       // Show/Hide answer toggles
       const toggleBtns = document.querySelectorAll('.toggle-answer-btn');
       toggleBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function() {
           const targetId = this.getAttribute('data-target');
           const answerDiv = document.getElementById(targetId);
           if (answerDiv) {
             answerDiv.classList.toggle('show');
-            this.textContent = answerDiv.classList.contains('show') ? 'Hide Solution' : 'Show Solution';
+            const isShown = answerDiv.classList.contains('show');
+            this.textContent = isShown ? 'Hide Solution' : 'Show Solution';
+            this.setAttribute('aria-expanded', String(isShown));
+            // Re-typeset any MathJax content revealed
+            if (isShown && window.MathJax && MathJax.typesetPromise) {
+              MathJax.typesetPromise([answerDiv]).catch(function(){});
+            }
+          }
+        });
+      });
+
+      // FAQ accordion (accessible, keyboard-native)
+      document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const answer = document.getElementById(this.getAttribute('aria-controls'));
+          this.setAttribute('aria-expanded', String(!expanded));
+          if (answer) answer.hidden = expanded;
+          // Re-typeset MathJax inside the revealed answer
+          if (!expanded && answer && window.MathJax && MathJax.typesetPromise) {
+            MathJax.typesetPromise([answer]).catch(function(){});
           }
         });
       });

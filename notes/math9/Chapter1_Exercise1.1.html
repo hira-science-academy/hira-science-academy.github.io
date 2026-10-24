@@ -238,9 +238,57 @@
     }
     /* Ad Slot Styling */
     .ad-slot { margin: 2rem auto; text-align: center; width: 100%; min-height: 90px; overflow: hidden; }
+
+    /* ===== FAQ Accordion Styles ===== */
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #2563eb;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 600;
+      color: #0f172a;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .faq-question:hover { background: #f8fafc; }
+    .faq-question:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 2px;
+    }
+    .faq-icon {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #2563eb;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 20px 18px 20px;
+      color: #334155;
+      line-height: 1.7;
+      text-align: justify;
+      font-size: 0.95rem;
+    }
+    .faq-answer[hidden] { display: none; }
   </style>
 
-  <!-- Structured Data: Article + BreadcrumbList + Organization -->
+  <!-- Structured Data: Article + BreadcrumbList + Organization + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -298,6 +346,60 @@
           "targetName": "Class 9 Mathematics – Real Numbers",
           "targetUrl": "https://hiraacademy.com.pk/Mathematics-9th.html"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.1.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What topics are covered in Class 9 Mathematics Exercise 1.1 (Real Numbers)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Exercise 1.1 of Unit 1 (Real Numbers) covers: identifying numbers as rational or irrational, representing numbers such as square root of 2, square root of 3, 4 and one-third, negative 2 and one-seventh, 5 over 8, and 2 and three-quarters on the number line, converting recurring decimals into p/q form, naming properties of real numbers and inequalities, and finding rational numbers between two given rational numbers. Full step-by-step working is shown on this page and in the embedded PDF."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I convert a recurring decimal like 0.4 or 0.37 into p/q form?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Let x equal the recurring decimal. Multiply both sides by 10, 100 or 1000 depending on how many digits repeat, subtract the original equation from the multiplied one so the repeating part cancels, then solve for x. For example, 0.4 recurring gives 9x = 4, so x = 4/9; 0.37 recurring gives 99x = 37, so x = 37/99; 0.21 recurring gives 99x = 21, so x = 21/99."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I represent square root of 2 and square root of 3 on the number line?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use a right-angled triangle and the Pythagoras theorem. Mark 0 and 1 on the number line, draw a perpendicular of length 1 at 1, and join the origin to its top. The hypotenuse equals the square root of 2; draw an arc of that radius from 0 to hit the number line. Repeat the construction on top of square root of 2 by drawing another perpendicular of length 1 and joining the origin to obtain square root of 3, which you then transfer to the number line with an arc. Diagrams are shown in the Q2 solution above."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between a rational and an irrational number?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A rational number can be written as p/q where p and q are integers and q is not zero, and its decimal either terminates or repeats (for example, 15/4 = 3.75, and 0.37 recurring). An irrational number cannot be written this way, and its decimal neither terminates nor repeats (for example, square root of 7, pi, e, and 5 plus square root of 11). This classification is exactly what Q1 of Exercise 1.1 tests."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I find rational numbers between two given rational numbers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Take the average of the two numbers: (a plus b) divided by 2. That average is one rational number between them. Repeat the process using the average and one of the original numbers to get a second rational number. For example, between 1/3 and 1/4 the first rational number is (1/3 + 1/4)/2 = 7/24, and the second is (1/3 + 7/24)/2 = 15/48. Q6 of Exercise 1.1 works through three such pairs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I download the complete Exercise 1.1 solutions PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The complete PDF for Class 9 Mathematics Exercise 1.1 (Real Numbers) is embedded on this page and can be downloaded free of cost using the 'Download PDF - Exercise 1.1 Solutions (Free)' button located directly above the FAQ section. The PDF contains the full set of solved questions for this exercise."
+            }
+          }
+        ]
       }
     ]
   }
@@ -331,7 +433,7 @@
           <a href="https://hiraacademy.com.pk/student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105 whitespace-nowrap">🎓 Student Portal</a>
         </div>
         <div class="flex items-center md:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
@@ -402,80 +504,6 @@
       </div>
     </div>
 
-        <!-- Social Sharing Buttons -->
-<div class="text-center my-8">
-  <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
-  <div class="flex justify-center gap-4 flex-wrap">
-    
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.1.html" 
-       onclick="shareOnFacebook(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">
-       Facebook
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%201.1%20Solutions%20https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.1.html" 
-       onclick="shareOnWhatsApp(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md">
-       WhatsApp
-    </a>
-
-    <!-- Twitter / X -->
-    <a href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%201.1%20Solutions&url=https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.1.html" 
-       onclick="shareOnTwitter(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md">
-       Twitter
-    </a>
-
-  </div>
-</div>
-
-<!-- JavaScript Handler for Mobile App Triggers -->
-<script>
-  const shareUrl = "https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.1.html";
-  const shareText = "Check out Class 9 Math Exercise 1.1 Solutions " + shareUrl;
-
-  function shareOnWhatsApp(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "whatsapp://send?text=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shareText), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnFacebook(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "fb://facewebmodal/f?href=" + encodeURIComponent(shareUrl);
-      
-      setTimeout(() => {
-        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnTwitter(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "twitter://post?message=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-</script>
-
     <!-- Embedded PDF (Expanded to show full page) -->
     <div class="flex flex-col items-center justify-center mb-8 w-full">
       <div class="w-full relative rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-50" style="height: 1200px; min-height: 85vh;">
@@ -489,17 +517,121 @@
         ></iframe>
       </div>
       <p class="text-sm text-gray-500 mt-3 text-center">
-        If the PDF does not load, <a href="https://drive.google.com/file/d/1eEg0gPHxVSbLOP9pavcsxyxitk-rmyUy/view" target="_blank" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
+        If the PDF does not load, <a href="https://drive.google.com/file/d/1eEg0gPHxVSbLOP9pavcsxyxitk-rmyUy/view" target="_blank" rel="noopener" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
       </p>
     </div>
 
     <!-- Download PDF Button -->
-    <div class="flex justify-center mb-8">
+    <div class="flex justify-center mb-4">
       <a href="https://drive.google.com/uc?export=download&id=1eEg0gPHxVSbLOP9pavcsxyxitk-rmyUy"
          class="dark-glass-btn inline-flex items-center gap-2 font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
         ⬇️ Download PDF – Exercise 1.1 Solutions (Free)
       </a>
     </div>
+
+    <!-- ============ SOCIAL SHARING (placed directly below Download button) ============ -->
+    <div class="text-center my-6">
+      <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
+      <div class="flex justify-center gap-4 flex-wrap">
+
+        <!-- Facebook -->
+        <a id="shareFacebook"
+           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_Exercise1.1.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Facebook"
+           class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md focus:outline-none focus:ring-4 focus:ring-blue-300">
+           Facebook
+        </a>
+
+        <!-- WhatsApp -->
+        <a id="shareWhatsApp"
+           href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%201.1%20Solutions%20https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_Exercise1.1.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on WhatsApp"
+           class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">
+           WhatsApp
+        </a>
+
+        <!-- Twitter / X -->
+        <a id="shareTwitter"
+           href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%201.1%20Solutions&url=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_Exercise1.1.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Twitter"
+           class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300">
+           Twitter
+        </a>
+
+        <!-- Copy Link fallback -->
+        <button id="shareCopy" type="button"
+           aria-label="Copy this page link to clipboard"
+           class="bg-gray-700 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">
+           Copy Link
+        </button>
+
+      </div>
+    </div>
+
+    <!-- JavaScript: Web Share API with graceful fallbacks (no blind setTimeout) -->
+    <script>
+      (function () {
+        const shareUrl  = "https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.1.html";
+        const shareText = "Class 9 Math Exercise 1.1 Solutions – Real Numbers (Punjab Board)";
+
+        function isMobile() {
+          return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        async function tryNativeShare(data) {
+          if (navigator.share && (!navigator.canShare || navigator.canShare(data))) {
+            try {
+              await navigator.share(data);
+              return true;                       // handed off to OS / shared successfully
+            } catch (err) {
+              if (err && err.name === "AbortError") return true; // user cancelled – not an error
+              return false;                      // share failed – fall back to URL
+            }
+          }
+          return false;
+        }
+
+        async function copyLink() {
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            alert("Link copied to clipboard: " + shareUrl);
+          } catch (_) {
+            window.prompt("Copy this link:", shareUrl);
+          }
+        }
+
+        const fb  = document.getElementById("shareFacebook");
+        const wa  = document.getElementById("shareWhatsApp");
+        const tw  = document.getElementById("shareTwitter");
+        const cp  = document.getElementById("shareCopy");
+
+        if (wa) wa.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+          // desktop or native-share unavailable: default href opens WhatsApp Web
+        });
+
+        if (fb) fb.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+          // desktop: default href opens Facebook sharer
+        });
+
+        if (tw) tw.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+          // desktop: default href opens Twitter intent
+        });
+
+        if (cp) cp.addEventListener("click", async function (e) {
+          e.preventDefault();
+          await copyLink();
+        });
+      })();
+    </script>
 
    <!-- Ad Slot: 9th ex 1.1 -->
 <div class="ad-slot my-6 text-center">
@@ -514,11 +646,11 @@
   </script>
 </div>
 
-    <!-- Quick Links (Moved Above Related Resources) -->
+    <!-- Quick Links -->
     <div class="text-center my-8 bg-blue-50 p-4 rounded-xl border border-blue-200">
       <p class="font-bold mb-4 text-blue-800 text-lg">🔗 Quick Links – Chapter 1: Real Numbers</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="Chapter1_Exercise1.1.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;">🔢 Exercise 1.1</a>
+        <a href="Chapter1_Exercise1.1.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;" aria-current="page">🔢 Exercise 1.1</a>
         <a href="Chapter1_Exercise1.2.html" class="btn-view">📋 Exercise 1.2</a>
         <a href="Chapter1_Exercise1.3.html" class="btn-view">📝 Exercise 1.3</a>
         <a href="Chapter1_ReviewExercise.html" class="btn-view">📖 Review Exercise</a>
@@ -571,7 +703,7 @@
             </table>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer1" aria-expanded="false" aria-controls="answer1">Show Solution</button>
       </div>
 
       <!-- Question 2 -->
@@ -683,7 +815,7 @@
           <img src="images/Chapter1_Ex1.1_Q2vi.jpg" alt="Number line showing the location of 2 3/4" class="graph-image" loading="lazy" />
           <p class="graph-caption">Figure: Representation of \(2\frac{3}{4}\) on the number line.</p>
         </div>
-        <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer2" aria-expanded="false" aria-controls="answer2">Show Solution</button>
       </div>
 
       <!-- Question 3 -->
@@ -727,7 +859,7 @@
             <div class="eq-line"><span class="eq-content">\(x = \frac{21}{99}\)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer3" aria-expanded="false" aria-controls="answer3">Show Solution</button>
       </div>
 
       <!-- Question 4 -->
@@ -756,7 +888,7 @@
             </table>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer4" aria-expanded="false" aria-controls="answer4">Show Solution</button>
       </div>
 
       <!-- Question 5 -->
@@ -783,7 +915,7 @@
             </table>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer5" aria-expanded="false" aria-controls="answer5">Show Solution</button>
       </div>
 
       <!-- Question 6 -->
@@ -826,7 +958,7 @@
             <div class="eq-line"><span class="eq-content">= \(\left(\frac{6 + 7}{10}\right) \times \frac{1}{2} = \frac{13}{10} \times \frac{1}{2} = \frac{13}{20}\)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer6" aria-expanded="false" aria-controls="answer6">Show Solution</button>
       </div>
     </div>
 
@@ -838,9 +970,137 @@
       </p>
     </div>
 
+    <!-- ===================== FAQ SECTION (exercise-specific) ===================== -->
+<section class="content-section" id="faq-section" aria-labelledby="faq-heading">
+  <h2 id="faq-heading">❓ Frequently Asked Questions – Exercise 1.1</h2>
+
+  <!-- FAQ 1 -->
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" id="faq1-question">
+      <span>What topics are covered in Class 9 Mathematics Exercise 1.1 (Real Numbers)?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-question" hidden>
+      <p>Exercise 1.1 of Unit 1 (Real Numbers) covers: identifying numbers as rational or irrational, representing numbers such as \(\sqrt{2}\), \(\sqrt{3}\), \(4\frac{1}{3}\), \(-2\frac{1}{7}\), \(\frac{5}{8}\) and \(2\frac{3}{4}\) on the number line, converting recurring decimals \(\left(0.\overline{4},\; 0.\overline{37},\; 0.\overline{21}\right)\) into \(\frac{p}{q}\) form, naming properties of real numbers and inequalities, and finding rational numbers between two given rational numbers. Full step-by-step working is shown on this page and in the embedded PDF.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 2 -->
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" id="faq2-question">
+      <span>How do I convert a recurring decimal like \(0.\overline{4}\) or \(0.\overline{37}\) into \(\frac{p}{q}\) form?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2-question" hidden>
+      <p>Let \(x\) equal the recurring decimal. Multiply both sides by \(10\), \(100\) or \(1000\) depending on how many digits repeat (\(10\) for one repeating digit, \(100\) for two, and so on). Subtract the original equation from the multiplied one so the repeating part cancels, then solve for \(x\).</p>
+      <p><strong>Example 1:</strong></p>
+      \[
+        \begin{aligned}
+        x &= 0.\overline{4} = 0.444\ldots \\
+        10x &= 4.444\ldots \\
+        10x - x &= 4.444\ldots - 0.444\ldots \\
+        9x &= 4 \quad\Rightarrow\quad x = \frac{4}{9}
+        \end{aligned}
+      \]
+      <p><strong>Example 2:</strong></p>
+      \[
+        \begin{aligned}
+        x &= 0.\overline{37} = 0.373737\ldots \\
+        100x &= 37.373737\ldots \\
+        100x - x &= 37.373737\ldots - 0.373737\ldots \\
+        99x &= 37 \quad\Rightarrow\quad x = \frac{37}{99}
+        \end{aligned}
+      \]
+      <p>The same method gives \(0.\overline{21} = \dfrac{21}{99}\).</p>
+    </div>
+  </div>
+
+  <!-- FAQ 3 -->
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" id="faq3-question">
+      <span>How do I represent \(\sqrt{2}\) and \(\sqrt{3}\) on the number line?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3-question" hidden>
+      <p>Use a right-angled triangle and the Pythagoras theorem.</p>
+
+      <p><strong>For \(\sqrt{2}\):</strong> Mark \(A=0\) and \(B=1\) on the number line. At \(B\), draw a perpendicular \(BC = 1\) unit. Join \(A\) to \(C\) to form a right-angled triangle \(\triangle ABC\). By Pythagoras:</p>
+      \[
+        \begin{aligned}
+        (AC)^{2} &= (AB)^{2} + (BC)^{2} \\
+        (AC)^{2} &= 1^{2} + 1^{2} = 2 \\
+        AC &= \sqrt{2}
+        \end{aligned}
+      \]
+      <p>With \(A\) as centre and radius \(AC = \sqrt{2}\), draw an arc cutting the number line at \(P\).</p>
+
+      <p><strong>For \(\sqrt{3}\):</strong> At \(C\), draw another perpendicular \(CE = 1\) unit and join \(A\) to \(E\). Then:</p>
+      \[
+        \begin{aligned}
+        (AE)^{2} &= (AC)^{2} + (CE)^{2} \\
+        (AE)^{2} &= (\sqrt{2})^{2} + 1^{2} = 2 + 1 = 3 \\
+        AE &= \sqrt{3}
+        \end{aligned}
+      \]
+      <p>With \(A\) as centre and radius \(AE = \sqrt{3}\), draw an arc cutting the number line at \(F\). Diagrams are shown in the Q2 solution above.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 4 -->
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer" id="faq4-question">
+      <span>What is the difference between a rational and an irrational number?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-answer" id="faq4-answer" role="region" aria-labelledby="faq4-question" hidden>
+      <p>A <strong>rational number</strong> can be written as \(\dfrac{p}{q}\) where \(p\) and \(q\) are integers and \(q \neq 0\) — its decimal either terminates or repeats. For example, \(\frac{15}{4} = 3.75\) (terminating) and \(0.\overline{37} = \frac{37}{99}\) (repeating).</p>
+      <p>An <strong>irrational number</strong> cannot be written in the form \(\dfrac{p}{q}\), and its decimal neither terminates nor repeats. For example, \(\sqrt{7},\; \pi,\; e,\; 5 + \sqrt{11}\). This classification is exactly what Q1 of Exercise 1.1 tests.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 5 -->
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer" id="faq5-question">
+      <span>How do I find rational numbers between two given rational numbers?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-answer" id="faq5-answer" role="region" aria-labelledby="faq5-question" hidden>
+      <p>Take the average of the two numbers: \(\dfrac{a + b}{2}\). That average is one rational number between them. Repeat the process using the average and one of the original numbers to get a second.</p>
+
+      <p><strong>Example: between \(\dfrac{1}{3}\) and \(\dfrac{1}{4}\):</strong></p>
+      \[
+        \begin{aligned}
+        \text{1st rational number} &= \left(\frac{1}{3} + \frac{1}{4}\right) \div 2 \\
+        &= \left(\frac{4+3}{12}\right) \times \frac{1}{2} \\
+        &= \frac{7}{12} \times \frac{1}{2} = \frac{7}{24}
+        \end{aligned}
+      \]
+      \[
+        \begin{aligned}
+        \text{2nd rational number} &= \left(\frac{1}{3} + \frac{7}{24}\right) \div 2 \\
+        &= \left(\frac{8+7}{24}\right) \times \frac{1}{2} \\
+        &= \frac{15}{24} \times \frac{1}{2} = \frac{15}{48}
+        \end{aligned}
+      \]
+      <p>Q6 of Exercise 1.1 works through three such pairs.</p>
+    </div>
+  </div>
+
+  <!-- FAQ 6 -->
+  <div class="faq-item">
+    <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer" id="faq6-question">
+      <span>Where can I download the complete Exercise 1.1 solutions PDF?</span>
+      <span class="faq-icon" aria-hidden="true">+</span>
+    </button>
+    <div class="faq-answer" id="faq6-answer" role="region" aria-labelledby="faq6-question" hidden>
+      <p>The complete PDF for Class 9 Mathematics Exercise 1.1 (Real Numbers) is embedded on this page and can be downloaded free of cost using the <strong>“⬇️ Download PDF – Exercise 1.1 Solutions (Free)”</strong> button located directly above this FAQ section. The PDF contains the full set of solved questions for this exercise.</p>
+    </div>
+  </div>
+</section>
+
     <!-- Other Chapters Dropdown (with full chapter links) -->
     <div class="text-center mt-10 mb-16">
-      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
+      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1" aria-expanded="false" aria-controls="chaptersList">
         📚 Explore Other Math Chapters (1–13)
       </button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
@@ -1036,15 +1296,18 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop">↑</button>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
     (function(){
-      // Mobile menu toggle
+      // Mobile menu toggle (with aria-expanded sync)
       const menuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       if(menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        menuButton.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.toggle('hidden');
+          menuButton.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
       // Back to top
       const backToTopButton = document.getElementById('backToTop');
@@ -1054,11 +1317,14 @@
       });
       backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-      // Chapters toggle
+      // Chapters toggle (aria-expanded sync)
       const toggleBtn = document.getElementById('toggleChapters');
       const chaptersList = document.getElementById('chaptersList');
       if(toggleBtn && chaptersList){
-        toggleBtn.addEventListener('click', () => chaptersList.classList.toggle('hidden'));
+        toggleBtn.addEventListener('click', () => {
+          const isHidden = chaptersList.classList.toggle('hidden');
+          toggleBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
 
       // Reading Progress Bar
@@ -1075,16 +1341,28 @@
       window.addEventListener('resize', updateProgressBar);
       updateProgressBar();
 
-      // Show/Hide answer toggles
+      // Show/Hide answer toggles (aria-expanded + aria-controls sync)
       const toggleBtns = document.querySelectorAll('.toggle-answer-btn');
       toggleBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function() {
           const targetId = this.getAttribute('data-target');
           const answerDiv = document.getElementById(targetId);
           if (answerDiv) {
             answerDiv.classList.toggle('show');
-            this.textContent = answerDiv.classList.contains('show') ? 'Hide Solution' : 'Show Solution';
+            const isShown = answerDiv.classList.contains('show');
+            this.textContent = isShown ? 'Hide Solution' : 'Show Solution';
+            this.setAttribute('aria-expanded', String(isShown));
           }
+        });
+      });
+
+      // FAQ accordion (accessible, keyboard-native because it uses <button>)
+      document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const answer = document.getElementById(this.getAttribute('aria-controls'));
+          this.setAttribute('aria-expanded', String(!expanded));
+          if (answer) answer.hidden = expanded;
         });
       });
     })();

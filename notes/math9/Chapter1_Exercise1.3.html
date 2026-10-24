@@ -238,9 +238,58 @@
     }
     /* Ad Slot Styling */
     .ad-slot { margin: 2rem auto; text-align: center; width: 100%; min-height: 90px; overflow: hidden; }
+
+    /* ===== FAQ Accordion Styles ===== */
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #2563eb;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 600;
+      color: #0f172a;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .faq-question:hover { background: #f8fafc; }
+    .faq-question:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 2px;
+    }
+    .faq-icon {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #2563eb;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 20px 18px 20px;
+      color: #334155;
+      line-height: 1.7;
+      text-align: justify;
+      font-size: 0.95rem;
+    }
+    .faq-answer[hidden] { display: none; }
+    .faq-answer .equation { margin: 8px 0; }
   </style>
 
-  <!-- Structured Data: Article + BreadcrumbList + Organization -->
+  <!-- Structured Data: Article + BreadcrumbList + Organization + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -298,6 +347,60 @@
           "targetName": "Class 9 Mathematics – Real Numbers",
           "targetUrl": "https://hiraacademy.com.pk/Mathematics-9th.html"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.3.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What topics are covered in Class 9 Mathematics Exercise 1.3 (Real Numbers)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Exercise 1.3 of Unit 1 (Real Numbers) applies the number system to real-world situations. It covers: consecutive integer problems, geometry with radicals (area of a right-angled triangle and area of a rectangle involving surds), sum-and-difference problems, age problems, temperature conversion between Celsius and Fahrenheit, profit percentage, income tax calculation on taxable income, and compound markup for one year. Full step-by-step working is shown on this page and in the embedded PDF."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I set up the sum of three consecutive integers equal to forty-two?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Let the three consecutive integers be x, x+1, and x+2. Their sum equals 42, so x + (x+1) + (x+2) = 42. This simplifies to 3x + 3 = 42, so 3x = 39 and x = 13. The three integers are therefore 13, 14, and 15."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I find the area of a rectangle whose sides are of the form a + b*sqrt(2)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Simplify each side to the form p + q*sqrt(2) first. For example, sqrt(18) = 3*sqrt(2), and 4/sqrt(2) rationalizes to 2*sqrt(2). Then multiply the two binomials using the distributive law. In the example from Exercise 1.3, (2 + 3*sqrt(2))(5 - 2*sqrt(2)) expands to 10 - 4*sqrt(2) + 15*sqrt(2) - 6(2) = -2 + 11*sqrt(2). The area is therefore (11*sqrt(2) - 2) square metres."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I convert 48 degrees Celsius to Fahrenheit using F = (9/5)C + 32?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Substitute C = 48 into F = (9/5)C + 32. That gives F = (9/5)(48) + 32 = 9 x 9.6 + 32 = 86.4 + 32 = 118.4 degrees Fahrenheit. This is the same formula the textbook uses for the Lahore summer temperature problem in Exercise 1.3."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I solve the age problem where the father's age six years ago was 2 times the son's age?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Let the present ages be x (father) and y (son). The first condition gives x + y = 72. Six years ago the father was x - 6 and the son was y - 6, and the condition x - 6 = 2(y - 6) simplifies to x = 2y - 6. Substituting into x + y = 72 gives 3y = 78, so y = 26 (son's present age). Six years ago the son was 26 - 6 = 20 years old."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I download the complete Exercise 1.3 solutions PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The complete PDF for Class 9 Mathematics Exercise 1.3 (Real Numbers) is embedded on this page and can be downloaded free of cost using the 'Download PDF - Exercise 1.3 Solutions (Free)' button located directly above the FAQ section. The PDF contains the full set of solved questions for this exercise, including all word problems, geometry applications, profit percentage, tax, and compound markup questions."
+            }
+          }
+        ]
       }
     ]
   }
@@ -331,7 +434,7 @@
           <a href="https://hiraacademy.com.pk/student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105 whitespace-nowrap">🎓 Student Portal</a>
         </div>
         <div class="flex items-center md:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
@@ -402,80 +505,6 @@
       </div>
     </div>
 
-    <!-- Social Sharing Buttons -->
-<div class="text-center my-8">
-  <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
-  <div class="flex justify-center gap-4 flex-wrap">
-    
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.3.html" 
-       onclick="shareOnFacebook(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">
-       Facebook
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%201.3%20Solutions%20https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.3.html" 
-       onclick="shareOnWhatsApp(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md">
-       WhatsApp
-    </a>
-
-    <!-- Twitter / X -->
-    <a href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%201.3%20Solutions&url=https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.3.html" 
-       onclick="shareOnTwitter(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md">
-       Twitter
-    </a>
-
-  </div>
-</div>
-
-<!-- JavaScript Handler for Mobile App Triggers -->
-<script>
-  const shareUrl = "https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.3.html";
-  const shareText = "Check out Class 9 Math Exercise 1.3 Solutions " + shareUrl;
-
-  function shareOnWhatsApp(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "whatsapp://send?text=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shareText), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnFacebook(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "fb://facewebmodal/f?href=" + encodeURIComponent(shareUrl);
-      
-      setTimeout(() => {
-        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnTwitter(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "twitter://post?message=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-</script>
-
     <!-- Embedded PDF (Expanded to show full page) -->
     <div class="flex flex-col items-center justify-center mb-8 w-full">
       <div class="w-full relative rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-50" style="height: 1200px; min-height: 85vh;">
@@ -489,40 +518,139 @@
         ></iframe>
       </div>
       <p class="text-sm text-gray-500 mt-3 text-center">
-        If the PDF does not load, <a href="https://drive.google.com/file/d/1boWaVAHS9DnSA1ClSt5Gpe1FVxKlZlGo/view" target="_blank" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
+        If the PDF does not load, <a href="https://drive.google.com/file/d/1boWaVAHS9DnSA1ClSt5Gpe1FVxKlZlGo/view" target="_blank" rel="noopener" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
       </p>
     </div>
 
     <!-- Download PDF Button -->
-    <div class="flex justify-center mb-8">
+    <div class="flex justify-center mb-4">
       <a href="https://drive.google.com/uc?export=download&id=1boWaVAHS9DnSA1ClSt5Gpe1FVxKlZlGo"
          class="dark-glass-btn inline-flex items-center gap-2 font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
         ⬇️ Download PDF – Exercise 1.3 Solutions (Free)
       </a>
     </div>
 
-    <!-- Ad Slot: 9th ex 1.3 -->
-<div class="ad-slot my-6 text-center">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-       crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="6165845219"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+    <!-- ============ SOCIAL SHARING (placed directly below Download button) ============ -->
+    <div class="text-center my-6">
+      <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
+      <div class="flex justify-center gap-4 flex-wrap">
 
-    <!-- Quick Links (Moved Above Related Resources) -->
+        <!-- Facebook -->
+        <a id="shareFacebook"
+           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_Exercise1.3.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Facebook"
+           class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md focus:outline-none focus:ring-4 focus:ring-blue-300">
+           Facebook
+        </a>
+
+        <!-- WhatsApp -->
+        <a id="shareWhatsApp"
+           href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%201.3%20Solutions%20https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_Exercise1.3.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on WhatsApp"
+           class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">
+           WhatsApp
+        </a>
+
+        <!-- Twitter / X -->
+        <a id="shareTwitter"
+           href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%201.3%20Solutions&url=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_Exercise1.3.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Twitter"
+           class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300">
+           Twitter
+        </a>
+
+        <!-- Copy Link fallback -->
+        <button id="shareCopy" type="button"
+           aria-label="Copy this page link to clipboard"
+           class="bg-gray-700 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">
+           Copy Link
+        </button>
+
+      </div>
+    </div>
+
+    <!-- JavaScript: Web Share API with graceful fallbacks (no blind setTimeout) -->
+    <script>
+      (function () {
+        const shareUrl  = "https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.3.html";
+        const shareText = "Class 9 Math Exercise 1.3 Solutions – Real Numbers (Punjab Board)";
+
+        function isMobile() {
+          return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        async function tryNativeShare(data) {
+          if (navigator.share && (!navigator.canShare || navigator.canShare(data))) {
+            try {
+              await navigator.share(data);
+              return true;
+            } catch (err) {
+              if (err && err.name === "AbortError") return true;
+              return false;
+            }
+          }
+          return false;
+        }
+
+        async function copyLink() {
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            alert("Link copied to clipboard: " + shareUrl);
+          } catch (_) {
+            window.prompt("Copy this link:", shareUrl);
+          }
+        }
+
+        const fb  = document.getElementById("shareFacebook");
+        const wa  = document.getElementById("shareWhatsApp");
+        const tw  = document.getElementById("shareTwitter");
+        const cp  = document.getElementById("shareCopy");
+
+        if (wa) wa.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+
+        if (fb) fb.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+
+        if (tw) tw.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+
+        if (cp) cp.addEventListener("click", async function (e) {
+          e.preventDefault();
+          await copyLink();
+        });
+      })();
+    </script>
+
+    <!-- Ad Slot: 9th ex 1.3 -->
+    <div class="ad-slot my-6 text-center">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="6165845219"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Quick Links -->
     <div class="text-center my-8 bg-blue-50 p-4 rounded-xl border border-blue-200">
       <p class="font-bold mb-4 text-blue-800 text-lg">🔗 Quick Links – Chapter 1: Real Numbers</p>
       <div class="flex flex-wrap justify-center gap-3">
         <a href="Chapter1_Exercise1.1.html" class="btn-view">🔢 Exercise 1.1</a>
         <a href="Chapter1_Exercise1.2.html" class="btn-view">📋 Exercise 1.2</a>
-        <a href="Chapter1_Exercise1.3.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;">📝 Exercise 1.3</a>
+        <a href="Chapter1_Exercise1.3.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;" aria-current="page">📝 Exercise 1.3</a>
         <a href="Chapter1_ReviewExercise.html" class="btn-view">📖 Review Exercise</a>
         <a href="Chapter1_Definitions.html" class="btn-view">📘 Definitions</a>
         <a href="Chapter1_MCQs.html" class="btn-view">✅ MCQs</a>
@@ -576,7 +704,7 @@
           </div>
           <div class="ans-box">✅ The three consecutive integers are 13, 14, and 15</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer1" aria-expanded="false" aria-controls="answer1">Show Solution</button>
       </div>
 
       <!-- Question 2 -->
@@ -609,7 +737,7 @@
           </div>
           <div class="ans-box">✅ \(\overline{AB} = (4\sqrt{3} - 2\sqrt{5})\text{ cm}\)</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer2" aria-expanded="false" aria-controls="answer2">Show Solution</button>
       </div>
 
       <!-- Question 3 -->
@@ -644,7 +772,7 @@
           </div>
           <div class="ans-box">✅ Area \(= (11\sqrt{2} - 2)\text{ m}^2\)</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer3" aria-expanded="false" aria-controls="answer3">Show Solution</button>
       </div>
 
       <!-- Question 4 -->
@@ -678,7 +806,7 @@
           </div>
           <div class="ans-box">✅ First number = 45, Second number = 23</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer4" aria-expanded="false" aria-controls="answer4">Show Solution</button>
       </div>
 
       <!-- Question 5 -->
@@ -697,7 +825,7 @@
           </div>
           <div class="ans-box">✅ Temperature \(= 118.4^\circ\text{F}\)</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer5" aria-expanded="false" aria-controls="answer5">Show Solution</button>
       </div>
 
       <!-- Question 6 -->
@@ -737,7 +865,7 @@
           </div>
           <div class="ans-box">✅ Son's age six years ago = 20 years</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer6" aria-expanded="false" aria-controls="answer6">Show Solution</button>
       </div>
 
       <!-- Question 7 -->
@@ -762,7 +890,7 @@
           </div>
           <div class="ans-box">✅ Profit percentage \(= 1.33\%\)</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer7">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer7" aria-expanded="false" aria-controls="answer7">Show Solution</button>
       </div>
 
       <!-- Question 8 -->
@@ -787,7 +915,7 @@
           </div>
           <div class="ans-box">✅ Tax amount = Rs. 6,225</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer8">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer8" aria-expanded="false" aria-controls="answer8">Show Solution</button>
       </div>
 
       <!-- Question 9 -->
@@ -812,7 +940,7 @@
           </div>
           <div class="ans-box">✅ Compound markup = Rs. 52,500</div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer9">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer9" aria-expanded="false" aria-controls="answer9">Show Solution</button>
       </div>
     </div>
 
@@ -824,9 +952,103 @@
       </p>
     </div>
 
+    <!-- ===================== FAQ SECTION (exercise-specific, MathJax) ===================== -->
+    <section class="content-section" id="faq-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">❓ Frequently Asked Questions – Exercise 1.3</h2>
+
+      <!-- FAQ 1 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" id="faq1-question">
+          <span>What topics are covered in Class 9 Mathematics Exercise 1.3 (Real Numbers)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-question" hidden>
+          <p>Exercise 1.3 of Unit 1 (Real Numbers) applies the number system to real-world situations. It covers: consecutive integer problems, geometry with radicals (area of a right-angled triangle and area of a rectangle involving surds), sum-and-difference problems, age problems, temperature conversion between Celsius and Fahrenheit, profit percentage, income tax calculation on taxable income, and compound markup for one year. Full step-by-step working is shown on this page and in the embedded PDF.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" id="faq2-question">
+          <span>How do I set up "the sum of three consecutive integers equals 42"?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2-question" hidden>
+          <p>Let the three consecutive integers be \(x\), \(x+1\), and \(x+2\). Their sum equals \(42\):</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(x + (x+1) + (x+2) = 42\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(3x + 3 = 42 \;\Rightarrow\; 3x = 39 \;\Rightarrow\; x = 13\)</span></div>
+          </div>
+          <p>The three integers are therefore \(13,\; 14,\; 15\).</p>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" id="faq3-question">
+          <span>How do I find the area of a rectangle whose sides are of the form \(a + b\sqrt{2}\)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3-question" hidden>
+          <p>First simplify each side to the form \(p + q\sqrt{2}\). For the Q3 example, \(\sqrt{18} = 3\sqrt{2}\) and \(\dfrac{4}{\sqrt{2}} = 2\sqrt{2}\). Then multiply the two binomials using the distributive law:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\((2 + 3\sqrt{2})(5 - 2\sqrt{2})\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(= 10 - 4\sqrt{2} + 15\sqrt{2} - 6(\sqrt{2})^2\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(= 10 + 11\sqrt{2} - 12 = -2 + 11\sqrt{2}\)</span></div>
+          </div>
+          <p>The area is therefore \((11\sqrt{2} - 2)\ \text{m}^2\).</p>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer" id="faq4-question">
+          <span>How do I convert \(48^\circ\text{C}\) to Fahrenheit using \(\text{F} = \tfrac{9}{5}\text{C} + 32\)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq4-answer" role="region" aria-labelledby="faq4-question" hidden>
+          <p>Substitute \(C = 48\) into the formula:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(\text{F} = \dfrac{9}{5}(48) + 32 = 9 \times 9.6 + 32 = 86.4 + 32 = 118.4\)</span></div>
+          </div>
+          <p>So the temperature is \(118.4^\circ\text{F}\). This is the same formula used for the Lahore summer temperature problem in Q5 of Exercise 1.3.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer" id="faq5-question">
+          <span>How do I solve the age problem where the father's age six years ago was twice the son's age?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq5-answer" role="region" aria-labelledby="faq5-question" hidden>
+          <p>Let the present ages be \(x\) (father) and \(y\) (son). From the sum:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(x + y = 72 \quad \dots (i)\)</span></div>
+          </div>
+          <p>Six years ago, the father was \(x-6\) and the son was \(y-6\). The condition "father was twice the son" gives:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(x - 6 = 2(y - 6) \;\Rightarrow\; x = 2y - 6 \quad \dots (ii)\)</span></div>
+          </div>
+          <p>Substituting \((ii)\) into \((i)\): \((2y - 6) + y = 72 \Rightarrow 3y = 78 \Rightarrow y = 26\). Six years ago the son was \(26 - 6 = 20\) years old.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer" id="faq6-question">
+          <span>Where can I download the complete Exercise 1.3 solutions PDF?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq6-answer" role="region" aria-labelledby="faq6-question" hidden>
+          <p>The complete PDF for Class 9 Mathematics Exercise 1.3 (Real Numbers) is embedded on this page and can be downloaded free of cost using the <strong>“⬇️ Download PDF – Exercise 1.3 Solutions (Free)”</strong> button located directly above this FAQ section. The PDF contains the full set of solved questions for this exercise, including all word problems, geometry applications, profit percentage, tax, and compound markup questions.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Other Chapters Dropdown (with full chapter links) -->
     <div class="text-center mt-10 mb-16">
-      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
+      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1" aria-expanded="false" aria-controls="chaptersList">
         📚 Explore Other Math Chapters (1–13)
       </button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
@@ -1022,7 +1244,7 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop">↑</button>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
     (function(){
@@ -1030,7 +1252,10 @@
       const menuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       if(menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        menuButton.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.toggle('hidden');
+          menuButton.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
       // Back to top
       const backToTopButton = document.getElementById('backToTop');
@@ -1044,7 +1269,10 @@
       const toggleBtn = document.getElementById('toggleChapters');
       const chaptersList = document.getElementById('chaptersList');
       if(toggleBtn && chaptersList){
-        toggleBtn.addEventListener('click', () => chaptersList.classList.toggle('hidden'));
+        toggleBtn.addEventListener('click', () => {
+          const isHidden = chaptersList.classList.toggle('hidden');
+          toggleBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
 
       // Reading Progress Bar
@@ -1064,12 +1292,32 @@
       // Show/Hide answer toggles
       const toggleBtns = document.querySelectorAll('.toggle-answer-btn');
       toggleBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function() {
           const targetId = this.getAttribute('data-target');
           const answerDiv = document.getElementById(targetId);
           if (answerDiv) {
             answerDiv.classList.toggle('show');
-            this.textContent = answerDiv.classList.contains('show') ? 'Hide Solution' : 'Show Solution';
+            const isShown = answerDiv.classList.contains('show');
+            this.textContent = isShown ? 'Hide Solution' : 'Show Solution';
+            this.setAttribute('aria-expanded', String(isShown));
+            // Re-typeset any MathJax content revealed
+            if (isShown && window.MathJax && MathJax.typesetPromise) {
+              MathJax.typesetPromise([answerDiv]).catch(function(){});
+            }
+          }
+        });
+      });
+
+      // FAQ accordion (accessible, keyboard-native)
+      document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const answer = document.getElementById(this.getAttribute('aria-controls'));
+          this.setAttribute('aria-expanded', String(!expanded));
+          if (answer) answer.hidden = expanded;
+          // Re-typeset MathJax inside the revealed answer
+          if (!expanded && answer && window.MathJax && MathJax.typesetPromise) {
+            MathJax.typesetPromise([answer]).catch(function(){});
           }
         });
       });

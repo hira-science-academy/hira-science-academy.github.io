@@ -238,9 +238,58 @@
     }
     /* Ad Slot Styling */
     .ad-slot { margin: 2rem auto; text-align: center; width: 100%; min-height: 90px; overflow: hidden; }
+
+    /* ===== FAQ Accordion Styles ===== */
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #2563eb;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 600;
+      color: #0f172a;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .faq-question:hover { background: #f8fafc; }
+    .faq-question:focus-visible {
+      outline: 3px solid #2563eb;
+      outline-offset: 2px;
+    }
+    .faq-icon {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #2563eb;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 20px 18px 20px;
+      color: #334155;
+      line-height: 1.7;
+      text-align: justify;
+      font-size: 0.95rem;
+    }
+    .faq-answer[hidden] { display: none; }
+    .faq-answer .equation { margin: 8px 0; }
   </style>
 
-  <!-- Structured Data: Article + BreadcrumbList + Organization -->
+  <!-- Structured Data: Article + BreadcrumbList + Organization + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -298,6 +347,60 @@
           "targetName": "Class 9 Mathematics – Real Numbers",
           "targetUrl": "https://hiraacademy.com.pk/Mathematics-9th.html"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.2.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What topics are covered in Class 9 Mathematics Exercise 1.2 (Real Numbers)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Exercise 1.2 of Unit 1 (Real Numbers) covers: rationalizing denominators of surds (single and binomial), simplifying expressions with fractional and negative exponents, applying the laws of exponents to complex fractions, using the algebraic identity (x+y)(x^2 - xy + y^2) = x^3 + y^3, and evaluating expressions of the form x + 1/x when x is of the type a + sqrt(b). Full step-by-step working is shown on this page and in the embedded PDF."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I rationalize a denominator of the form 4 + sqrt(3)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Multiply both numerator and denominator by the conjugate of the denominator, 4 - sqrt(3). Then use the difference-of-squares identity (a + b)(a - b) = a^2 - b^2 in the denominator so the surd disappears. For example, 13 / (4 + sqrt(3)) multiplied by (4 - sqrt(3))/(4 - sqrt(3)) gives 13(4 - sqrt(3)) / (16 - 3) = 13(4 - sqrt(3)) / 13 = 4 - sqrt(3)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I simplify expressions with fractional exponents such as (81/16)^(-3/4)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Use the law a^(-m/n) = 1 / a^(m/n) to remove the negative exponent, then express the base as a power of prime factors. Apply (a^m)^n = a^(mn) and simplify. For example, (81/16)^(-3/4) = (16/81)^(3/4) = ((2^4)/(3^4))^(3/4) = 2^3 / 3^3 = 8/27."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "If x = 3 + sqrt(8), how do I find x + 1/x?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "First rationalize 1/x by multiplying numerator and denominator by 3 - sqrt(8). Since (3 + sqrt(8))(3 - sqrt(8)) = 9 - 8 = 1, we get 1/x = 3 - sqrt(8). Then x + 1/x = (3 + sqrt(8)) + (3 - sqrt(8)) = 6. The same pair of values (x and 1/x are conjugates) is then used to find x - 1/x, x^2 + 1/x^2, x^2 - 1/x^2, x^4 + 1/x^4, and (x - 1/x)^2."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I find rational numbers p and q if (8 - 3 sqrt(2)) / (4 + 3 sqrt(2)) = p + q sqrt(2)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Rationalize the left-hand side by multiplying the numerator and denominator by the conjugate 4 - 3 sqrt(2). Expand the numerator and denominator using (a + b)(a - b) = a^2 - b^2. The result reduces to -25 + 18 sqrt(2). Comparing coefficients with p + q sqrt(2) gives p = -25 and q = 18, since p and q must both be rational and sqrt(2) is irrational."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I download the complete Exercise 1.2 solutions PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The complete PDF for Class 9 Mathematics Exercise 1.2 (Real Numbers) is embedded on this page and can be downloaded free of cost using the 'Download PDF - Exercise 1.2 Solutions (Free)' button located directly above the FAQ section. The PDF contains the full set of solved questions for this exercise."
+            }
+          }
+        ]
       }
     ]
   }
@@ -331,7 +434,7 @@
           <a href="https://hiraacademy.com.pk/student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105 whitespace-nowrap">🎓 Student Portal</a>
         </div>
         <div class="flex items-center md:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
@@ -402,79 +505,6 @@
       </div>
     </div>
 
-      <!-- Social Sharing Buttons -->
-<div class="text-center my-8">
-  <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
-  <div class="flex flex-wrap justify-center gap-4">
-    
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.2.html" 
-       onclick="shareOnFacebook(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">
-       Facebook
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%201.2%20Solutions%20https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.2.html" 
-       onclick="shareOnWhatsApp(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md">
-       WhatsApp
-    </a>
-
-    <!-- Twitter / X -->
-    <a href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%201.2%20Solutions&url=https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.2.html" 
-       onclick="shareOnTwitter(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md">
-       Twitter
-    </a>
-
-  </div>
-</div>
-
-<!-- JavaScript Handler for Mobile App Triggers -->
-<script>
-  const shareUrl = "https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.2.html";
-  const shareText = "Check out Class 9 Math Exercise 1.2 Solutions " + shareUrl;
-
-  function shareOnWhatsApp(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "whatsapp://send?text=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shareText), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnFacebook(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "fb://facewebmodal/f?href=" + encodeURIComponent(shareUrl);
-      
-      setTimeout(() => {
-        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnTwitter(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "twitter://post?message=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-</script>
     <!-- Embedded PDF (Expanded to show full page) -->
     <div class="flex flex-col items-center justify-center mb-8 w-full">
       <div class="w-full relative rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-50" style="height: 1200px; min-height: 85vh;">
@@ -488,39 +518,138 @@
         ></iframe>
       </div>
       <p class="text-sm text-gray-500 mt-3 text-center">
-        If the PDF does not load, <a href="https://drive.google.com/file/d/1b0II_dLe7fG06j-WIOtngbU2yVbruCjf/view" target="_blank" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
+        If the PDF does not load, <a href="https://drive.google.com/file/d/1b0II_dLe7fG06j-WIOtngbU2yVbruCjf/view" target="_blank" rel="noopener" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
       </p>
     </div>
 
     <!-- Download PDF Button -->
-    <div class="flex justify-center mb-8">
+    <div class="flex justify-center mb-4">
       <a href="https://drive.google.com/uc?export=download&id=1b0II_dLe7fG06j-WIOtngbU2yVbruCjf"
          class="dark-glass-btn inline-flex items-center gap-2 font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
         ⬇️ Download PDF – Exercise 1.2 Solutions (Free)
       </a>
     </div>
 
-    <!-- Ad Slot: 9th ex 1.2 -->
-<div class="ad-slot my-6 text-center">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-       crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="5591044420"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+    <!-- ============ SOCIAL SHARING (placed directly below Download button) ============ -->
+    <div class="text-center my-6">
+      <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
+      <div class="flex justify-center gap-4 flex-wrap">
 
-    <!-- Quick Links (Moved Above Related Resources) -->
+        <!-- Facebook -->
+        <a id="shareFacebook"
+           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_Exercise1.2.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Facebook"
+           class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md focus:outline-none focus:ring-4 focus:ring-blue-300">
+           Facebook
+        </a>
+
+        <!-- WhatsApp -->
+        <a id="shareWhatsApp"
+           href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%201.2%20Solutions%20https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_Exercise1.2.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on WhatsApp"
+           class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">
+           WhatsApp
+        </a>
+
+        <!-- Twitter / X -->
+        <a id="shareTwitter"
+           href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%201.2%20Solutions&url=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_Exercise1.2.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Twitter"
+           class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300">
+           Twitter
+        </a>
+
+        <!-- Copy Link fallback -->
+        <button id="shareCopy" type="button"
+           aria-label="Copy this page link to clipboard"
+           class="bg-gray-700 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">
+           Copy Link
+        </button>
+
+      </div>
+    </div>
+
+    <!-- JavaScript: Web Share API with graceful fallbacks (no blind setTimeout) -->
+    <script>
+      (function () {
+        const shareUrl  = "https://hiraacademy.com.pk/notes/math9/Chapter1_Exercise1.2.html";
+        const shareText = "Class 9 Math Exercise 1.2 Solutions – Real Numbers (Punjab Board)";
+
+        function isMobile() {
+          return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        async function tryNativeShare(data) {
+          if (navigator.share && (!navigator.canShare || navigator.canShare(data))) {
+            try {
+              await navigator.share(data);
+              return true;
+            } catch (err) {
+              if (err && err.name === "AbortError") return true;
+              return false;
+            }
+          }
+          return false;
+        }
+
+        async function copyLink() {
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            alert("Link copied to clipboard: " + shareUrl);
+          } catch (_) {
+            window.prompt("Copy this link:", shareUrl);
+          }
+        }
+
+        const fb  = document.getElementById("shareFacebook");
+        const wa  = document.getElementById("shareWhatsApp");
+        const tw  = document.getElementById("shareTwitter");
+        const cp  = document.getElementById("shareCopy");
+
+        if (wa) wa.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+
+        if (fb) fb.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+
+        if (tw) tw.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+
+        if (cp) cp.addEventListener("click", async function (e) {
+          e.preventDefault();
+          await copyLink();
+        });
+      })();
+    </script>
+
+    <!-- Ad Slot: 9th ex 1.2 -->
+    <div class="ad-slot my-6 text-center">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="5591044420"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Quick Links -->
     <div class="text-center my-8 bg-blue-50 p-4 rounded-xl border border-blue-200">
       <p class="font-bold mb-4 text-blue-800 text-lg">🔗 Quick Links – Chapter 1: Real Numbers</p>
       <div class="flex flex-wrap justify-center gap-3">
         <a href="Chapter1_Exercise1.1.html" class="btn-view">🔢 Exercise 1.1</a>
-        <a href="Chapter1_Exercise1.2.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;">📋 Exercise 1.2</a>
+        <a href="Chapter1_Exercise1.2.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;" aria-current="page">📋 Exercise 1.2</a>
         <a href="Chapter1_Exercise1.3.html" class="btn-view">📝 Exercise 1.3</a>
         <a href="Chapter1_ReviewExercise.html" class="btn-view">📖 Review Exercise</a>
         <a href="Chapter1_Definitions.html" class="btn-view">📘 Definitions</a>
@@ -573,7 +702,7 @@
             <div class="eq-line"><span class="eq-content">\(\frac{\sqrt{2}-1}{\sqrt{5}} = \frac{\sqrt{2}-1}{\sqrt{5}} \times \frac{\sqrt{5}}{\sqrt{5}}\)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer1" aria-expanded="false" aria-controls="answer1">Show Solution</button>
       </div>
 
       <!-- Question 2 -->
@@ -662,7 +791,7 @@
             <div class="eq-line"><span class="eq-content">\(= \frac{5^{n+1}(19)}{5^{n+1}} = 19\)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer2" aria-expanded="false" aria-controls="answer2">Show Solution</button>
       </div>
 
       <!-- Question 3 -->
@@ -728,7 +857,7 @@
             <div class="eq-line"><span class="eq-content">\(= 4 \cdot 8 = 32\)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer3" aria-expanded="false" aria-controls="answer3">Show Solution</button>
       </div>
 
       <!-- Question 4 -->
@@ -756,7 +885,7 @@
             <div class="eq-line"><span class="eq-content"><strong>\(p = -25\) and \(q = 18\)</strong></span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer4" aria-expanded="false" aria-controls="answer4">Show Solution</button>
       </div>
 
       <!-- Question 5 -->
@@ -807,7 +936,7 @@
             <div class="eq-line"><span class="eq-content">\(= a + b^2\)</span></div>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer5" aria-expanded="false" aria-controls="answer5">Show Solution</button>
       </div>
     </div>
 
@@ -819,9 +948,96 @@
       </p>
     </div>
 
+    <!-- ===================== FAQ SECTION (exercise-specific, MathJax) ===================== -->
+    <section class="content-section" id="faq-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">❓ Frequently Asked Questions – Exercise 1.2</h2>
+
+      <!-- FAQ 1 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" id="faq1-question">
+          <span>What topics are covered in Class 9 Mathematics Exercise 1.2 (Real Numbers)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-question" hidden>
+          <p>Exercise 1.2 of Unit 1 (Real Numbers) covers: rationalizing denominators of surds (single and binomial), simplifying expressions with fractional and negative exponents, applying the laws of exponents to complex fractions, using the algebraic identity \((x+y)(x^2 - xy + y^2) = x^3 + y^3\), and evaluating expressions of the form \(x + \dfrac{1}{x}\) when \(x\) is of the type \(a + \sqrt{b}\). Full step-by-step working is shown on this page and in the embedded PDF.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" id="faq2-question">
+          <span>How do I rationalize a denominator of the form \(4 + \sqrt{3}\)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2-question" hidden>
+          <p>Multiply both numerator and denominator by the <strong>conjugate</strong> of the denominator, \(4 - \sqrt{3}\). Then apply the difference-of-squares identity \((a+b)(a-b) = a^2 - b^2\) in the denominator so the surd disappears:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(\dfrac{13}{4+\sqrt{3}} \times \dfrac{4-\sqrt{3}}{4-\sqrt{3}} = \dfrac{13(4-\sqrt{3})}{4^2 - (\sqrt{3})^2} = \dfrac{13(4-\sqrt{3})}{16-3} = 4-\sqrt{3}\)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" id="faq3-question">
+          <span>How do I simplify expressions with fractional exponents such as \(\left(\dfrac{81}{16}\right)^{-\frac{3}{4}}\)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3-question" hidden>
+          <p>Use the law \(a^{-m/n} = \dfrac{1}{a^{m/n}}\) to remove the negative exponent, express the base as a power of prime factors, then apply \((a^m)^n = a^{mn}\):</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(\left(\dfrac{81}{16}\right)^{-\frac{3}{4}} = \left(\dfrac{16}{81}\right)^{\frac{3}{4}} = \left(\dfrac{2^4}{3^4}\right)^{\frac{3}{4}} = \dfrac{2^3}{3^3} = \dfrac{8}{27}\)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer" id="faq4-question">
+          <span>If \(x = 3 + \sqrt{8}\), how do I find \(x + \dfrac{1}{x}\) and related expressions?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq4-answer" role="region" aria-labelledby="faq4-question" hidden>
+          <p>First rationalize \(\dfrac{1}{x}\) by multiplying numerator and denominator by \(3 - \sqrt{8}\). Since \((3+\sqrt{8})(3-\sqrt{8}) = 9 - 8 = 1\), we get \(\dfrac{1}{x} = 3 - \sqrt{8}\). Then:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(x + \dfrac{1}{x} = (3+\sqrt{8}) + (3-\sqrt{8}) = 6\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(x - \dfrac{1}{x} = (3+\sqrt{8}) - (3-\sqrt{8}) = 2\sqrt{8}\)</span></div>
+          </div>
+          <p>Using \(\left(x + \dfrac{1}{x}\right)^2 = x^2 + \dfrac{1}{x^2} + 2\), we get \(x^2 + \dfrac{1}{x^2} = 36 - 2 = 34\). Squaring again gives \(x^4 + \dfrac{1}{x^4} = 34^2 - 2 = 1154\). The same pair of values is used for \(x^2 - \dfrac{1}{x^2} = (x+\frac{1}{x})(x-\frac{1}{x}) = 12\sqrt{8}\) and \(\left(x-\frac{1}{x}\right)^2 = (2\sqrt{8})^2 = 32\).</p>
+        </div>
+      </div>
+
+      <!-- FAQ 5 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer" id="faq5-question">
+          <span>How do I find rational numbers \(p\) and \(q\) if \(\dfrac{8-3\sqrt{2}}{4+3\sqrt{2}} = p + q\sqrt{2}\)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq5-answer" role="region" aria-labelledby="faq5-question" hidden>
+          <p>Rationalize the left-hand side by multiplying the numerator and denominator by the conjugate \(4 - 3\sqrt{2}\). Expand the numerator and denominator using \((a+b)(a-b) = a^2 - b^2\):</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(\dfrac{(8-3\sqrt{2})(4-3\sqrt{2})}{4^2 - (3\sqrt{2})^2} = \dfrac{32 - 24\sqrt{2} - 12\sqrt{2} + 9(2)}{16 - 18}\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(= \dfrac{50 - 36\sqrt{2}}{-2} = -25 + 18\sqrt{2}\)</span></div>
+          </div>
+          <p>Comparing with \(p + q\sqrt{2}\) gives \(p = -25\) and \(q = 18\), because \(p\) and \(q\) are rational while \(\sqrt{2}\) is irrational.</p>
+        </div>
+      </div>
+
+      <!-- FAQ 6 -->
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer" id="faq6-question">
+          <span>Where can I download the complete Exercise 1.2 solutions PDF?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq6-answer" role="region" aria-labelledby="faq6-question" hidden>
+          <p>The complete PDF for Class 9 Mathematics Exercise 1.2 (Real Numbers) is embedded on this page and can be downloaded free of cost using the <strong>“⬇️ Download PDF – Exercise 1.2 Solutions (Free)”</strong> button located directly above this FAQ section. The PDF contains the full set of solved questions for this exercise.</p>
+        </div>
+      </div>
+    </section>
+
     <!-- Other Chapters Dropdown (with full chapter links) -->
     <div class="text-center mt-10 mb-16">
-      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
+      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1" aria-expanded="false" aria-controls="chaptersList">
         📚 Explore Other Math Chapters (1–13)
       </button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
@@ -1017,7 +1233,7 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop">↑</button>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
     (function(){
@@ -1025,7 +1241,10 @@
       const menuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       if(menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        menuButton.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.toggle('hidden');
+          menuButton.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
       // Back to top
       const backToTopButton = document.getElementById('backToTop');
@@ -1039,7 +1258,10 @@
       const toggleBtn = document.getElementById('toggleChapters');
       const chaptersList = document.getElementById('chaptersList');
       if(toggleBtn && chaptersList){
-        toggleBtn.addEventListener('click', () => chaptersList.classList.toggle('hidden'));
+        toggleBtn.addEventListener('click', () => {
+          const isHidden = chaptersList.classList.toggle('hidden');
+          toggleBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
 
       // Reading Progress Bar
@@ -1059,12 +1281,32 @@
       // Show/Hide answer toggles
       const toggleBtns = document.querySelectorAll('.toggle-answer-btn');
       toggleBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function() {
           const targetId = this.getAttribute('data-target');
           const answerDiv = document.getElementById(targetId);
           if (answerDiv) {
             answerDiv.classList.toggle('show');
-            this.textContent = answerDiv.classList.contains('show') ? 'Hide Solution' : 'Show Solution';
+            const isShown = answerDiv.classList.contains('show');
+            this.textContent = isShown ? 'Hide Solution' : 'Show Solution';
+            this.setAttribute('aria-expanded', String(isShown));
+            // Re-typeset any MathJax content revealed
+            if (isShown && window.MathJax && MathJax.typesetPromise) {
+              MathJax.typesetPromise([answerDiv]).catch(function(){});
+            }
+          }
+        });
+      });
+
+      // FAQ accordion (accessible, keyboard-native)
+      document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const answer = document.getElementById(this.getAttribute('aria-controls'));
+          this.setAttribute('aria-expanded', String(!expanded));
+          if (answer) answer.hidden = expanded;
+          // Re-typeset MathJax inside the revealed answer
+          if (!expanded && answer && window.MathJax && MathJax.typesetPromise) {
+            MathJax.typesetPromise([answer]).catch(function(){});
           }
         });
       });

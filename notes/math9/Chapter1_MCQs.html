@@ -206,9 +206,54 @@
     }
     .highlight-box { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 2px solid #2563eb; border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
     .ad-slot { margin: 2rem auto; text-align: center; width: 100%; min-height: 90px; overflow: hidden; }
+
+    /* ===== FAQ Accordion Styles ===== */
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #2563eb;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 600;
+      color: #0f172a;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .faq-question:hover { background: #f8fafc; }
+    .faq-question:focus-visible { outline: 3px solid #2563eb; outline-offset: 2px; }
+    .faq-icon {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #2563eb;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 20px 18px 20px;
+      color: #334155;
+      line-height: 1.7;
+      text-align: justify;
+      font-size: 0.95rem;
+    }
+    .faq-answer[hidden] { display: none; }
   </style>
 
-  <!-- Structured Data: Article + BreadcrumbList + Organization -->
+  <!-- Structured Data: Article + BreadcrumbList + Organization + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -247,9 +292,7 @@
           "worksFor": { "@type": "Organization", "name": "Govt Christian High School Daska" },
           "url": "https://hiraacademy.com.pk/about.html#muhammad-tayyab"
         },
-        "publisher": {
-          "@id": "https://hiraacademy.com.pk/#organization"
-        },
+        "publisher": { "@id": "https://hiraacademy.com.pk/#organization" },
         "datePublished": "2025-10-18",
         "dateModified": "2026-10-24",
         "inLanguage": "en-PK",
@@ -266,6 +309,60 @@
           "targetName": "Class 9 Mathematics – Real Numbers",
           "targetUrl": "https://hiraacademy.com.pk/Mathematics-9th.html"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://hiraacademy.com.pk/notes/math9/Chapter1_MCQs.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What topics are covered in Class 9 Math Chapter 1 MCQs (Real Numbers)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The MCQs on this page cover: classification of numbers as rational, irrational, integer, or natural; identifying famous irrationals such as pi and e; the square root of a non-perfect square; properties of real numbers (reflexive, symmetric, transitive, trichotomy); solving exponent equations like 2^x times 8^x = 64; simplification of radical expressions such as square root of 75 plus square root of 27; and product of conjugates like (3 + sqrt(5))(3 - sqrt(5)). Each question has a detailed step-by-step explanation and an interactive check-answer feature."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the square root of 7 a rational or irrational number?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The square root of 7 is an irrational number. It cannot be expressed in the form p/q where p and q are integers with q not equal to zero. Its decimal expansion is non-terminating and non-repeating. In general, if n is not a perfect square, then the square root of n is irrational."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the reflexive, symmetric, and transitive properties of real numbers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Reflexive property: for all real x, x = x. Symmetric property: if a = b then b = a. Transitive property: if a is greater than b and b is greater than c, then a is greater than c (the same transitive pattern holds for equality). These three properties are commonly tested in the Chapter 1 MCQs because they form the logical foundation for comparing and equating real numbers."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I solve 2^x times 8^x equals 64?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Write 8 as 2 cubed so 8^x becomes 2 to the power 3x. The left side becomes 2^x times 2 to the power 3x = 2 to the power (x + 3x) = 2 to the power 4x. The right side is 64 = 2 to the power 6. Since the bases match, equate exponents: 4x = 6, so x = 6/4 = 3/2. That is why the correct answer to this MCQ is 3/2."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I simplify the square root of 75 plus the square root of 27?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Write each radical as a product of a perfect square and a small prime: the square root of 75 equals the square root of 25 times 3 which equals 5 times the square root of 3. Similarly, the square root of 27 equals the square root of 9 times 3 which equals 3 times the square root of 3. Adding them gives (5 + 3) times the square root of 3 = 8 times the square root of 3."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I download the complete Chapter 1 MCQs PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The complete PDF for Class 9 Math Chapter 1 MCQs (Real Numbers) is embedded on this page and can be downloaded free of cost using the 'Download PDF - Chapter 1 MCQs (Free)' button located directly above the FAQ section. The PDF contains all multiple choice questions with detailed solutions prepared according to the PECTAA 2025 syllabus."
+            }
+          }
+        ]
       }
     ]
   }
@@ -299,7 +396,7 @@
           <a href="https://hiraacademy.com.pk/student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105 whitespace-nowrap">🎓 Student Portal</a>
         </div>
         <div class="flex items-center md:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
@@ -370,80 +467,6 @@
       </div>
     </div>
 
-    <!-- Social Sharing Buttons -->
-<div class="text-center my-8">
-  <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
-  <div class="flex justify-center gap-4 flex-wrap">
-    
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://hiraacademy.com.pk/notes/math9/Chapter1_MCQs.html" 
-       onclick="shareOnFacebook(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md">
-       Facebook
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Chapter%201%20MCQs%20https://hiraacademy.com.pk/notes/math9/Chapter1_MCQs.html" 
-       onclick="shareOnWhatsApp(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md">
-       WhatsApp
-    </a>
-
-    <!-- Twitter / X -->
-    <a href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Chapter%201%20MCQs&url=https://hiraacademy.com.pk/notes/math9/Chapter1_MCQs.html" 
-       onclick="shareOnTwitter(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md">
-       Twitter
-    </a>
-
-  </div>
-</div>
-
-<!-- JavaScript Handler for Mobile App Triggers -->
-<script>
-  const shareUrl = "https://hiraacademy.com.pk/notes/math9/Chapter1_MCQs.html";
-  const shareText = "Check out Class 9 Math Chapter 1 MCQs " + shareUrl;
-
-  function shareOnWhatsApp(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "whatsapp://send?text=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shareText), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnFacebook(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "fb://facewebmodal/f?href=" + encodeURIComponent(shareUrl);
-      
-      setTimeout(() => {
-        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnTwitter(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "twitter://post?message=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-</script>
-
     <!-- Embedded PDF (Expanded to show full page) -->
     <div class="flex flex-col items-center justify-center mb-8 w-full">
       <div class="w-full relative rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-50" style="height: 1200px; min-height: 85vh;">
@@ -457,34 +480,125 @@
         ></iframe>
       </div>
       <p class="text-sm text-gray-500 mt-3 text-center">
-        If the PDF does not load, <a href="https://drive.google.com/file/d/1CreRVB4JE-6rKGbCGiXrhk4QdiHrE959/view" target="_blank" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
+        If the PDF does not load, <a href="https://drive.google.com/file/d/1CreRVB4JE-6rKGbCGiXrhk4QdiHrE959/view" target="_blank" rel="noopener" class="text-blue-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
       </p>
     </div>
 
     <!-- Download PDF Button -->
-    <div class="flex justify-center mb-8">
+    <div class="flex justify-center mb-4">
       <a href="https://drive.google.com/uc?export=download&id=1CreRVB4JE-6rKGbCGiXrhk4QdiHrE959"
          class="dark-glass-btn inline-flex items-center gap-2 font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
         ⬇️ Download PDF – Chapter 1 MCQs (Free)
       </a>
     </div>
 
-   <!-- Ad Slot: 9th Math Ch 1 MCQs -->
-<div class="ad-slot my-6 text-center">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-       crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="2062862959"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+    <!-- ============ SOCIAL SHARING (placed directly below Download button) ============ -->
+    <div class="text-center my-6">
+      <p class="font-semibold mb-3 text-blue-700">Useful? Share with your friends.</p>
+      <div class="flex justify-center gap-4 flex-wrap">
 
-    <!-- Quick Links (Moved Above Related Resources) -->
+        <!-- Facebook -->
+        <a id="shareFacebook"
+           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_MCQs.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Facebook"
+           class="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-blue-700 transition shadow-md focus:outline-none focus:ring-4 focus:ring-blue-300">
+           Facebook
+        </a>
+
+        <!-- WhatsApp -->
+        <a id="shareWhatsApp"
+           href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Chapter%201%20MCQs%20https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_MCQs.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on WhatsApp"
+           class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">
+           WhatsApp
+        </a>
+
+        <!-- Twitter / X -->
+        <a id="shareTwitter"
+           href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Chapter%201%20MCQs&url=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter1_MCQs.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Twitter"
+           class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300">
+           Twitter
+        </a>
+
+        <!-- Copy Link fallback -->
+        <button id="shareCopy" type="button"
+           aria-label="Copy this page link to clipboard"
+           class="bg-gray-700 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">
+           Copy Link
+        </button>
+
+      </div>
+    </div>
+
+    <!-- JavaScript: Web Share API with graceful fallbacks -->
+    <script>
+      (function () {
+        const shareUrl  = "https://hiraacademy.com.pk/notes/math9/Chapter1_MCQs.html";
+        const shareText = "Class 9 Math Chapter 1 MCQs – Real Numbers (Punjab Board)";
+
+        function isMobile() {
+          return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        async function tryNativeShare(data) {
+          if (navigator.share && (!navigator.canShare || navigator.canShare(data))) {
+            try { await navigator.share(data); return true; }
+            catch (err) { if (err && err.name === "AbortError") return true; return false; }
+          }
+          return false;
+        }
+
+        async function copyLink() {
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            alert("Link copied to clipboard: " + shareUrl);
+          } catch (_) {
+            window.prompt("Copy this link:", shareUrl);
+          }
+        }
+
+        const fb  = document.getElementById("shareFacebook");
+        const wa  = document.getElementById("shareWhatsApp");
+        const tw  = document.getElementById("shareTwitter");
+        const cp  = document.getElementById("shareCopy");
+
+        if (wa) wa.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+        if (fb) fb.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+        if (tw) tw.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+        if (cp) cp.addEventListener("click", async function (e) {
+          e.preventDefault();
+          await copyLink();
+        });
+      })();
+    </script>
+
+    <!-- Ad Slot: 9th Math Ch 1 MCQs -->
+    <div class="ad-slot my-6 text-center">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="2062862959"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    <!-- Quick Links -->
     <div class="text-center my-8 bg-blue-50 p-4 rounded-xl border border-blue-200">
       <p class="font-bold mb-4 text-blue-800 text-lg">🔗 Quick Links – Chapter 1: Real Numbers</p>
       <div class="flex flex-wrap justify-center gap-3">
@@ -493,7 +607,7 @@
         <a href="Chapter1_Exercise1.3.html" class="btn-view">📝 Exercise 1.3</a>
         <a href="Chapter1_ReviewExercise.html" class="btn-view">📖 Review Exercise</a>
         <a href="Chapter1_Definitions.html" class="btn-view">📘 Definitions</a>
-        <a href="Chapter1_MCQs.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;">✅ MCQs</a>
+        <a href="Chapter1_MCQs.html" class="btn-view" style="background: linear-gradient(135deg, #1d4ed8, #2563eb) !important;" aria-current="page">✅ MCQs</a>
       </div>
     </div>
 
@@ -521,18 +635,10 @@
       <div id="q1" class="mcq-box">
         <p class="font-semibold text-lg">1. \(\sqrt{7}\) is:</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="1" data-option="A">
-            <input type="radio" name="mcq1" value="A" class="mr-2"> A) integer
-          </label>
-          <label class="mcq-option" data-question="1" data-option="B">
-            <input type="radio" name="mcq1" value="B" class="mr-2"> B) rational number
-          </label>
-          <label class="mcq-option" data-question="1" data-option="C">
-            <input type="radio" name="mcq1" value="C" class="mr-2"> C) irrational number
-          </label>
-          <label class="mcq-option" data-question="1" data-option="D">
-            <input type="radio" name="mcq1" value="D" class="mr-2"> D) natural number
-          </label>
+          <label class="mcq-option" data-question="1" data-option="A"><input type="radio" name="mcq1" value="A" class="mr-2"> A) integer</label>
+          <label class="mcq-option" data-question="1" data-option="B"><input type="radio" name="mcq1" value="B" class="mr-2"> B) rational number</label>
+          <label class="mcq-option" data-question="1" data-option="C"><input type="radio" name="mcq1" value="C" class="mr-2"> C) irrational number</label>
+          <label class="mcq-option" data-question="1" data-option="D"><input type="radio" name="mcq1" value="D" class="mr-2"> D) natural number</label>
         </div>
         <div class="explanation-box" id="explanation1">
           <strong>✅ Correct Answer: (C) irrational number</strong><br>
@@ -546,18 +652,10 @@
       <div id="q2" class="mcq-box">
         <p class="font-semibold text-lg">2. \(\pi\) and \(e\) are:</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="2" data-option="A">
-            <input type="radio" name="mcq2" value="A" class="mr-2"> A) natural numbers
-          </label>
-          <label class="mcq-option" data-question="2" data-option="B">
-            <input type="radio" name="mcq2" value="B" class="mr-2"> B) integers
-          </label>
-          <label class="mcq-option" data-question="2" data-option="C">
-            <input type="radio" name="mcq2" value="C" class="mr-2"> C) rational numbers
-          </label>
-          <label class="mcq-option" data-question="2" data-option="D">
-            <input type="radio" name="mcq2" value="D" class="mr-2"> D) irrational numbers
-          </label>
+          <label class="mcq-option" data-question="2" data-option="A"><input type="radio" name="mcq2" value="A" class="mr-2"> A) natural numbers</label>
+          <label class="mcq-option" data-question="2" data-option="B"><input type="radio" name="mcq2" value="B" class="mr-2"> B) integers</label>
+          <label class="mcq-option" data-question="2" data-option="C"><input type="radio" name="mcq2" value="C" class="mr-2"> C) rational numbers</label>
+          <label class="mcq-option" data-question="2" data-option="D"><input type="radio" name="mcq2" value="D" class="mr-2"> D) irrational numbers</label>
         </div>
         <div class="explanation-box" id="explanation2">
           <strong>✅ Correct Answer: (D) irrational numbers</strong><br>
@@ -571,18 +669,10 @@
       <div id="q3" class="mcq-box">
         <p class="font-semibold text-lg">3. If \(n\) is not a perfect square, then \(\sqrt{n}\) is:</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="3" data-option="A">
-            <input type="radio" name="mcq3" value="A" class="mr-2"> A) rational number
-          </label>
-          <label class="mcq-option" data-question="3" data-option="B">
-            <input type="radio" name="mcq3" value="B" class="mr-2"> B) natural number
-          </label>
-          <label class="mcq-option" data-question="3" data-option="C">
-            <input type="radio" name="mcq3" value="C" class="mr-2"> C) integer
-          </label>
-          <label class="mcq-option" data-question="3" data-option="D">
-            <input type="radio" name="mcq3" value="D" class="mr-2"> D) irrational number
-          </label>
+          <label class="mcq-option" data-question="3" data-option="A"><input type="radio" name="mcq3" value="A" class="mr-2"> A) rational number</label>
+          <label class="mcq-option" data-question="3" data-option="B"><input type="radio" name="mcq3" value="B" class="mr-2"> B) natural number</label>
+          <label class="mcq-option" data-question="3" data-option="C"><input type="radio" name="mcq3" value="C" class="mr-2"> C) integer</label>
+          <label class="mcq-option" data-question="3" data-option="D"><input type="radio" name="mcq3" value="D" class="mr-2"> D) irrational number</label>
         </div>
         <div class="explanation-box" id="explanation3">
           <strong>✅ Correct Answer: (D) irrational number</strong><br>
@@ -596,18 +686,10 @@
       <div id="q4" class="mcq-box">
         <p class="font-semibold text-lg">4. \(\sqrt{5} + 5\) is:</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="4" data-option="A">
-            <input type="radio" name="mcq4" value="A" class="mr-2"> A) whole number
-          </label>
-          <label class="mcq-option" data-question="4" data-option="B">
-            <input type="radio" name="mcq4" value="B" class="mr-2"> B) integer
-          </label>
-          <label class="mcq-option" data-question="4" data-option="C">
-            <input type="radio" name="mcq4" value="C" class="mr-2"> C) rational number
-          </label>
-          <label class="mcq-option" data-question="4" data-option="D">
-            <input type="radio" name="mcq4" value="D" class="mr-2"> D) irrational number
-          </label>
+          <label class="mcq-option" data-question="4" data-option="A"><input type="radio" name="mcq4" value="A" class="mr-2"> A) whole number</label>
+          <label class="mcq-option" data-question="4" data-option="B"><input type="radio" name="mcq4" value="B" class="mr-2"> B) integer</label>
+          <label class="mcq-option" data-question="4" data-option="C"><input type="radio" name="mcq4" value="C" class="mr-2"> C) rational number</label>
+          <label class="mcq-option" data-question="4" data-option="D"><input type="radio" name="mcq4" value="D" class="mr-2"> D) irrational number</label>
         </div>
         <div class="explanation-box" id="explanation4">
           <strong>✅ Correct Answer: (D) irrational number</strong><br>
@@ -621,18 +703,10 @@
       <div id="q5" class="mcq-box">
         <p class="font-semibold text-lg">5. For all \(x \in \mathbb{R}, x = x\) is called:</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="5" data-option="A">
-            <input type="radio" name="mcq5" value="A" class="mr-2"> A) reflexive property
-          </label>
-          <label class="mcq-option" data-question="5" data-option="B">
-            <input type="radio" name="mcq5" value="B" class="mr-2"> B) transitive number
-          </label>
-          <label class="mcq-option" data-question="5" data-option="C">
-            <input type="radio" name="mcq5" value="C" class="mr-2"> C) symmetric property
-          </label>
-          <label class="mcq-option" data-question="5" data-option="D">
-            <input type="radio" name="mcq5" value="D" class="mr-2"> D) trichotomy property
-          </label>
+          <label class="mcq-option" data-question="5" data-option="A"><input type="radio" name="mcq5" value="A" class="mr-2"> A) reflexive property</label>
+          <label class="mcq-option" data-question="5" data-option="B"><input type="radio" name="mcq5" value="B" class="mr-2"> B) transitive number</label>
+          <label class="mcq-option" data-question="5" data-option="C"><input type="radio" name="mcq5" value="C" class="mr-2"> C) symmetric property</label>
+          <label class="mcq-option" data-question="5" data-option="D"><input type="radio" name="mcq5" value="D" class="mr-2"> D) trichotomy property</label>
         </div>
         <div class="explanation-box" id="explanation5">
           <strong>✅ Correct Answer: (A) reflexive property</strong><br>
@@ -646,18 +720,10 @@
       <div id="q6" class="mcq-box">
         <p class="font-semibold text-lg">6. Let \(a, b, c \in \mathbb{R}\), then \(a > b\) and \(b > c \Rightarrow a > c\) is called ________ property:</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="6" data-option="A">
-            <input type="radio" name="mcq6" value="A" class="mr-2"> A) trichotomy
-          </label>
-          <label class="mcq-option" data-question="6" data-option="B">
-            <input type="radio" name="mcq6" value="B" class="mr-2"> B) transitive
-          </label>
-          <label class="mcq-option" data-question="6" data-option="C">
-            <input type="radio" name="mcq6" value="C" class="mr-2"> C) additive
-          </label>
-          <label class="mcq-option" data-question="6" data-option="D">
-            <input type="radio" name="mcq6" value="D" class="mr-2"> D) multiplicative
-          </label>
+          <label class="mcq-option" data-question="6" data-option="A"><input type="radio" name="mcq6" value="A" class="mr-2"> A) trichotomy</label>
+          <label class="mcq-option" data-question="6" data-option="B"><input type="radio" name="mcq6" value="B" class="mr-2"> B) transitive</label>
+          <label class="mcq-option" data-question="6" data-option="C"><input type="radio" name="mcq6" value="C" class="mr-2"> C) additive</label>
+          <label class="mcq-option" data-question="6" data-option="D"><input type="radio" name="mcq6" value="D" class="mr-2"> D) multiplicative</label>
         </div>
         <div class="explanation-box" id="explanation6">
           <strong>✅ Correct Answer: (B) transitive</strong><br>
@@ -671,18 +737,10 @@
       <div id="q7" class="mcq-box">
         <p class="font-semibold text-lg">7. \(2^x \times 8^x = 64\) then \(x =\)</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="7" data-option="A">
-            <input type="radio" name="mcq7" value="A" class="mr-2"> A) \(\frac{3}{2}\)
-          </label>
-          <label class="mcq-option" data-question="7" data-option="B">
-            <input type="radio" name="mcq7" value="B" class="mr-2"> B) \(\frac{3}{4}\)
-          </label>
-          <label class="mcq-option" data-question="7" data-option="C">
-            <input type="radio" name="mcq7" value="C" class="mr-2"> C) \(\frac{5}{6}\)
-          </label>
-          <label class="mcq-option" data-question="7" data-option="D">
-            <input type="radio" name="mcq7" value="D" class="mr-2"> D) \(\frac{2}{3}\)
-          </label>
+          <label class="mcq-option" data-question="7" data-option="A"><input type="radio" name="mcq7" value="A" class="mr-2"> A) \(\frac{3}{2}\)</label>
+          <label class="mcq-option" data-question="7" data-option="B"><input type="radio" name="mcq7" value="B" class="mr-2"> B) \(\frac{3}{4}\)</label>
+          <label class="mcq-option" data-question="7" data-option="C"><input type="radio" name="mcq7" value="C" class="mr-2"> C) \(\frac{5}{6}\)</label>
+          <label class="mcq-option" data-question="7" data-option="D"><input type="radio" name="mcq7" value="D" class="mr-2"> D) \(\frac{2}{3}\)</label>
         </div>
         <div class="explanation-box" id="explanation7">
           <strong>✅ Correct Answer: (A) \(\frac{3}{2}\)</strong><br>
@@ -701,18 +759,10 @@
       <div id="q8" class="mcq-box">
         <p class="font-semibold text-lg">8. If \(a = b \Rightarrow b = a\) is called ________ property:</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="8" data-option="A">
-            <input type="radio" name="mcq8" value="A" class="mr-2"> A) reflexive
-          </label>
-          <label class="mcq-option" data-question="8" data-option="B">
-            <input type="radio" name="mcq8" value="B" class="mr-2"> B) symmetric
-          </label>
-          <label class="mcq-option" data-question="8" data-option="C">
-            <input type="radio" name="mcq8" value="C" class="mr-2"> C) transitive
-          </label>
-          <label class="mcq-option" data-question="8" data-option="D">
-            <input type="radio" name="mcq8" value="D" class="mr-2"> D) additive
-          </label>
+          <label class="mcq-option" data-question="8" data-option="A"><input type="radio" name="mcq8" value="A" class="mr-2"> A) reflexive</label>
+          <label class="mcq-option" data-question="8" data-option="B"><input type="radio" name="mcq8" value="B" class="mr-2"> B) symmetric</label>
+          <label class="mcq-option" data-question="8" data-option="C"><input type="radio" name="mcq8" value="C" class="mr-2"> C) transitive</label>
+          <label class="mcq-option" data-question="8" data-option="D"><input type="radio" name="mcq8" value="D" class="mr-2"> D) additive</label>
         </div>
         <div class="explanation-box" id="explanation8">
           <strong>✅ Correct Answer: (B) symmetric</strong><br>
@@ -726,18 +776,10 @@
       <div id="q9" class="mcq-box">
         <p class="font-semibold text-lg">9. \(\sqrt{75} + \sqrt{27} = ?\)</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="9" data-option="A">
-            <input type="radio" name="mcq9" value="A" class="mr-2"> A) \(\sqrt{102}\)
-          </label>
-          <label class="mcq-option" data-question="9" data-option="B">
-            <input type="radio" name="mcq9" value="B" class="mr-2"> B) \(9\sqrt{3}\)
-          </label>
-          <label class="mcq-option" data-question="9" data-option="C">
-            <input type="radio" name="mcq9" value="C" class="mr-2"> C) \(5\sqrt{3}\)
-          </label>
-          <label class="mcq-option" data-question="9" data-option="D">
-            <input type="radio" name="mcq9" value="D" class="mr-2"> D) \(8\sqrt{3}\)
-          </label>
+          <label class="mcq-option" data-question="9" data-option="A"><input type="radio" name="mcq9" value="A" class="mr-2"> A) \(\sqrt{102}\)</label>
+          <label class="mcq-option" data-question="9" data-option="B"><input type="radio" name="mcq9" value="B" class="mr-2"> B) \(9\sqrt{3}\)</label>
+          <label class="mcq-option" data-question="9" data-option="C"><input type="radio" name="mcq9" value="C" class="mr-2"> C) \(5\sqrt{3}\)</label>
+          <label class="mcq-option" data-question="9" data-option="D"><input type="radio" name="mcq9" value="D" class="mr-2"> D) \(8\sqrt{3}\)</label>
         </div>
         <div class="explanation-box" id="explanation9">
           <strong>✅ Correct Answer: (D) \(8\sqrt{3}\)</strong><br>
@@ -754,18 +796,10 @@
       <div id="q10" class="mcq-box">
         <p class="font-semibold text-lg">10. The product of \((3 + \sqrt{5})(3 - \sqrt{5})\) is:</p>
         <div class="mt-3">
-          <label class="mcq-option" data-question="10" data-option="A">
-            <input type="radio" name="mcq10" value="A" class="mr-2"> A) prime number
-          </label>
-          <label class="mcq-option" data-question="10" data-option="B">
-            <input type="radio" name="mcq10" value="B" class="mr-2"> B) odd number
-          </label>
-          <label class="mcq-option" data-question="10" data-option="C">
-            <input type="radio" name="mcq10" value="C" class="mr-2"> C) irrational number
-          </label>
-          <label class="mcq-option" data-question="10" data-option="D">
-            <input type="radio" name="mcq10" value="D" class="mr-2"> D) rational number
-          </label>
+          <label class="mcq-option" data-question="10" data-option="A"><input type="radio" name="mcq10" value="A" class="mr-2"> A) prime number</label>
+          <label class="mcq-option" data-question="10" data-option="B"><input type="radio" name="mcq10" value="B" class="mr-2"> B) odd number</label>
+          <label class="mcq-option" data-question="10" data-option="C"><input type="radio" name="mcq10" value="C" class="mr-2"> C) irrational number</label>
+          <label class="mcq-option" data-question="10" data-option="D"><input type="radio" name="mcq10" value="D" class="mr-2"> D) rational number</label>
         </div>
         <div class="explanation-box" id="explanation10">
           <strong>✅ Correct Answer: (D) rational number</strong><br>
@@ -797,51 +831,103 @@
       </p>
     </div>
 
-    <!-- Other Chapters Dropdown (with full chapter links) -->
+    <!-- ===================== FAQ SECTION (exercise-specific, MathJax) ===================== -->
+    <section class="content-section" id="faq-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">❓ Frequently Asked Questions – Chapter 1 MCQs</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" id="faq1-question">
+          <span>What topics are covered in Class 9 Math Chapter 1 MCQs (Real Numbers)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-question" hidden>
+          <p>The MCQs on this page cover: classification of numbers as rational, irrational, integer, or natural; identifying famous irrationals such as \(\pi\) and \(e\); the square root of a non-perfect square; properties of real numbers (reflexive, symmetric, transitive, trichotomy); solving exponent equations like \(2^x \cdot 8^x = 64\); simplification of radical expressions such as \(\sqrt{75} + \sqrt{27}\); and product of conjugates like \((3 + \sqrt{5})(3 - \sqrt{5})\). Each question has a detailed step-by-step explanation and an interactive check-answer feature.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" id="faq2-question">
+          <span>Is \(\sqrt{7}\) a rational or irrational number?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2-question" hidden>
+          <p>\(\sqrt{7}\) is an <strong>irrational number</strong>. It cannot be expressed in the form \(\tfrac{p}{q}\) where \(p\) and \(q\) are integers with \(q \neq 0\). Its decimal expansion is non-terminating and non-repeating. In general, if \(n\) is not a perfect square, then \(\sqrt{n}\) is irrational.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" id="faq3-question">
+          <span>What are the reflexive, symmetric, and transitive properties of real numbers?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3-question" hidden>
+          <p><strong>Reflexive:</strong> for all real \(x\), \(x = x\).</p>
+          <p><strong>Symmetric:</strong> if \(a = b\) then \(b = a\).</p>
+          <p><strong>Transitive:</strong> if \(a > b\) and \(b > c\), then \(a > c\) (the same transitive pattern holds for equality).</p>
+          <p>These three properties are commonly tested in the Chapter 1 MCQs because they form the logical foundation for comparing and equating real numbers.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer" id="faq4-question">
+          <span>How do I solve \(2^x \cdot 8^x = 64\)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq4-answer" role="region" aria-labelledby="faq4-question" hidden>
+          <p>Write \(8\) as \(2^3\) so \(8^x\) becomes \(2^{3x}\). Then:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(2^x \cdot 2^{3x} = 2^{x+3x} = 2^{4x}\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(64 = 2^6 \;\Rightarrow\; 4x = 6 \;\Rightarrow\; x = \tfrac{6}{4} = \tfrac{3}{2}\)</span></div>
+          </div>
+          <p>That is why the correct answer to MCQ 7 is \(\tfrac{3}{2}\).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer" id="faq5-question">
+          <span>How do I simplify \(\sqrt{75} + \sqrt{27}\)?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq5-answer" role="region" aria-labelledby="faq5-question" hidden>
+          <p>Write each radical as a product of a perfect square and a small prime:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(\sqrt{75} = \sqrt{25 \cdot 3} = 5\sqrt{3}\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(\sqrt{27} = \sqrt{9 \cdot 3} = 3\sqrt{3}\)</span></div>
+            <div class="eq-line"><span class="eq-content">\(\sqrt{75} + \sqrt{27} = 5\sqrt{3} + 3\sqrt{3} = 8\sqrt{3}\)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer" id="faq6-question">
+          <span>Where can I download the complete Chapter 1 MCQs PDF?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq6-answer" role="region" aria-labelledby="faq6-question" hidden>
+          <p>The complete PDF for Class 9 Math Chapter 1 MCQs (Real Numbers) is embedded on this page and can be downloaded free of cost using the <strong>“⬇️ Download PDF – Chapter 1 MCQs (Free)”</strong> button located directly above this FAQ section. The PDF contains all multiple choice questions with detailed solutions prepared according to the PECTAA 2025 syllabus.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Chapters Dropdown -->
     <div class="text-center mt-10 mb-16">
-      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
+      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1" aria-expanded="false" aria-controls="chaptersList">
         📚 Explore Other Math Chapters (1–13)
       </button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-1-real-numbers.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold">
-          <span>Chapter 1</span><span>✨ Real Numbers</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-2-logarithms.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 2</span><span>Logarithms</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-3-sets-and-functions.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 3</span><span>Sets and Functions</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-4-factorization.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 4</span><span>Factorization</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-5-linear-equations.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 5</span><span>Linear Equations and Inequalities</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-6-trigonometry.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 6</span><span>Trigonometry</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-7-coordinate-geometry.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 7</span><span>Coordinate Geometry</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-8-logic.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 8</span><span>Logic</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-9-similar-figures.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 9</span><span>Similar Figures</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-10-graphs-of-functions.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 10</span><span>Graphs of Functions</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-11-loci-and-construction.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 11</span><span>Loci and Construction</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-12-information-handling.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 12</span><span>Information Handling</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-13-probability.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 13</span><span>Probability</span>
-        </a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-1-real-numbers.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold"><span>Chapter 1</span><span>✨ Real Numbers</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-2-logarithms.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 2</span><span>Logarithms</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-3-sets-and-functions.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 3</span><span>Sets and Functions</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-4-factorization.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 4</span><span>Factorization</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-5-linear-equations.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 5</span><span>Linear Equations and Inequalities</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-6-trigonometry.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 6</span><span>Trigonometry</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-7-coordinate-geometry.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 7</span><span>Coordinate Geometry</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-8-logic.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 8</span><span>Logic</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-9-similar-figures.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 9</span><span>Similar Figures</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-10-graphs-of-functions.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 10</span><span>Graphs of Functions</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-11-loci-and-construction.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 11</span><span>Loci and Construction</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-12-information-handling.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 12</span><span>Information Handling</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-13-probability.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 13</span><span>Probability</span></a>
       </div>
       <p class="text-xs text-gray-500 mt-3">📖 Complete syllabus coverage for Class 9 Mathematics – Chapters 1 to 13</p>
     </div>
@@ -850,15 +936,14 @@
     <div class="mt-12 text-center text-gray-600">
       <p class="mb-2">Created by <strong class="text-blue-700">Hira Science Academy</strong> | Aligned with <strong class="text-blue-700">PECTAA Syllabus</strong></p>
       <p class="mt-6">
-        <a href="https://hiraacademy.com.pk/Mathematics-9th.html"
-           class="dark-glass-btn inline-block px-6 py-3 font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+        <a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="dark-glass-btn inline-block px-6 py-3 font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
           ← Back to Class 9 Mathematics Notes
         </a>
       </p>
     </div>
   </main>
 
-  <!-- Internal Linking Section (with tools) -->
+  <!-- Internal Linking Section -->
   <section class="max-w-7xl mx-auto px-6 pb-14">
     <details class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
       <summary class="text-2xl md:text-3xl font-bold text-blue-800 cursor-pointer hover:text-blue-600 list-none flex items-center justify-center gap-3 text-center">
@@ -894,40 +979,19 @@
           </article>
         </div>
 
-        <!-- Tools section (some selected from the tools page) -->
         <div class="mt-10 pt-8 border-t border-blue-200">
           <h2 class="text-2xl font-bold text-center text-blue-800 mb-3 tracking-wide">🧮 Free Online Tools &amp; Calculators</h2>
           <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Use these tools for quick calculations and step-by-step solutions.</p>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
-            <a href="https://hiraacademy.com.pk/tools/percentage-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all">
-              <span class="text-2xl">％</span>
-              <span class="font-semibold text-gray-800">Percentage Calculator</span>
-            </a>
-            <a href="https://hiraacademy.com.pk/tools/scientific-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all">
-              <span class="text-2xl">🧮</span>
-              <span class="font-semibold text-gray-800">Scientific Calculator</span>
-            </a>
-            <a href="https://hiraacademy.com.pk/tools/unit-converter.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all">
-              <span class="text-2xl">🔄</span>
-              <span class="font-semibold text-gray-800">Unit Converter</span>
-            </a>
-            <a href="https://hiraacademy.com.pk/tools/gpa-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all">
-              <span class="text-2xl">🎓</span>
-              <span class="font-semibold text-gray-800">GPA Calculator</span>
-            </a>
-            <a href="https://hiraacademy.com.pk/tools/quadratic-solver.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all">
-              <span class="text-2xl">x²</span>
-              <span class="font-semibold text-gray-800">Quadratic Solver</span>
-            </a>
-            <a href="https://hiraacademy.com.pk/tools/slope-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all">
-              <span class="text-2xl">⟋</span>
-              <span class="font-semibold text-gray-800">Slope Calculator</span>
-            </a>
+            <a href="https://hiraacademy.com.pk/tools/percentage-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all"><span class="text-2xl">％</span><span class="font-semibold text-gray-800">Percentage Calculator</span></a>
+            <a href="https://hiraacademy.com.pk/tools/scientific-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all"><span class="text-2xl">🧮</span><span class="font-semibold text-gray-800">Scientific Calculator</span></a>
+            <a href="https://hiraacademy.com.pk/tools/unit-converter.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all"><span class="text-2xl">🔄</span><span class="font-semibold text-gray-800">Unit Converter</span></a>
+            <a href="https://hiraacademy.com.pk/tools/gpa-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all"><span class="text-2xl">🎓</span><span class="font-semibold text-gray-800">GPA Calculator</span></a>
+            <a href="https://hiraacademy.com.pk/tools/quadratic-solver.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all"><span class="text-2xl">x²</span><span class="font-semibold text-gray-800">Quadratic Solver</span></a>
+            <a href="https://hiraacademy.com.pk/tools/slope-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-blue-300 transition-all"><span class="text-2xl">⟋</span><span class="font-semibold text-gray-800">Slope Calculator</span></a>
           </div>
           <div class="mt-6 text-center">
-            <a href="https://hiraacademy.com.pk/tools/" class="inline-flex items-center text-blue-700 font-semibold hover:text-blue-800 transition">
-              View all 53 tools &amp; calculators →
-            </a>
+            <a href="https://hiraacademy.com.pk/tools/" class="inline-flex items-center text-blue-700 font-semibold hover:text-blue-800 transition">View all 53 tools &amp; calculators →</a>
           </div>
         </div>
 
@@ -995,116 +1059,49 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop">↑</button>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
     // Store correct answers
-    const correctAnswers = {
-      1: 'C',
-      2: 'D',
-      3: 'D',
-      4: 'D',
-      5: 'A',
-      6: 'B',
-      7: 'A',
-      8: 'B',
-      9: 'D',
-      10: 'D'
-    };
+    const correctAnswers = { 1:'C',2:'D',3:'D',4:'D',5:'A',6:'B',7:'A',8:'B',9:'D',10:'D' };
 
-    // Check individual MCQ
     function checkMCQ(questionNum, correctAnswer) {
       const radioName = 'mcq' + questionNum;
       const selectedRadio = document.querySelector(`input[name="${radioName}"]:checked`);
       const explanationBox = document.getElementById('explanation' + questionNum);
       const optionLabels = document.querySelectorAll(`label[data-question="${questionNum}"]`);
-      
-      // Reset all option styles first
-      optionLabels.forEach(label => {
-        label.classList.remove('selected-correct', 'selected-wrong', 'show-correct');
-      });
-
-      if (!selectedRadio) {
-        alert('Please select an answer first!');
-        return;
-      }
-
+      optionLabels.forEach(label => label.classList.remove('selected-correct', 'selected-wrong', 'show-correct'));
+      if (!selectedRadio) { alert('Please select an answer first!'); return; }
       const selectedValue = selectedRadio.value;
       const selectedLabel = document.querySelector(`label[data-question="${questionNum}"][data-option="${selectedValue}"]`);
-      
-      // Show correct answer highlighting
       optionLabels.forEach(label => {
-        const option = label.getAttribute('data-option');
-        if (option === correctAnswer) {
-          label.classList.add('show-correct');
-        }
+        if (label.getAttribute('data-option') === correctAnswer) label.classList.add('show-correct');
       });
-
-      if (selectedValue === correctAnswer) {
-        selectedLabel.classList.add('selected-correct');
-      } else {
-        selectedLabel.classList.add('selected-wrong');
-      }
-
-      // Show explanation
+      if (selectedValue === correctAnswer) selectedLabel.classList.add('selected-correct');
+      else selectedLabel.classList.add('selected-wrong');
       explanationBox.classList.add('show');
-      
-      // Disable radio buttons after checking
-      const radios = document.querySelectorAll(`input[name="${radioName}"]`);
-      radios.forEach(radio => radio.disabled = true);
+      if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([explanationBox]).catch(function(){});
+      document.querySelectorAll(`input[name="${radioName}"]`).forEach(r => r.disabled = true);
     }
 
-    // Reset individual MCQ
     function resetMCQ(questionNum) {
       const radioName = 'mcq' + questionNum;
-      const radios = document.querySelectorAll(`input[name="${radioName}"]`);
-      const explanationBox = document.getElementById('explanation' + questionNum);
-      const optionLabels = document.querySelectorAll(`label[data-question="${questionNum}"]`);
-      
-      radios.forEach(radio => {
-        radio.checked = false;
-        radio.disabled = false;
-      });
-      
-      optionLabels.forEach(label => {
-        label.classList.remove('selected-correct', 'selected-wrong', 'show-correct');
-      });
-      
-      explanationBox.classList.remove('show');
+      document.querySelectorAll(`input[name="${radioName}"]`).forEach(r => { r.checked = false; r.disabled = false; });
+      document.querySelectorAll(`label[data-question="${questionNum}"]`).forEach(l => l.classList.remove('selected-correct','selected-wrong','show-correct'));
+      document.getElementById('explanation' + questionNum).classList.remove('show');
     }
 
-    // Calculate total score
     function calculateScore() {
-      let score = 0;
-      let total = Object.keys(correctAnswers).length;
-      
+      let score = 0, total = Object.keys(correctAnswers).length;
       for (let q in correctAnswers) {
-        const radioName = 'mcq' + q;
-        const selectedRadio = document.querySelector(`input[name="${radioName}"]:checked`);
-        if (selectedRadio && selectedRadio.value === correctAnswers[q]) {
-          score++;
-        }
+        const sel = document.querySelector(`input[name="mcq${q}"]:checked`);
+        if (sel && sel.value === correctAnswers[q]) score++;
       }
-      
-      document.getElementById('scoreDisplay').textContent = score;
-      
-      // Optional: Show a message based on score
-      let message = '';
-      if (score === total) {
-        message = '🎉 Perfect score! Excellent work!';
-      } else if (score >= total * 0.8) {
-        message = '🌟 Great job! You\'re well prepared!';
-      } else if (score >= total * 0.6) {
-        message = '📚 Good effort! Review the explanations for incorrect answers.';
-      } else {
-        message = '💪 Keep practicing! Go through the chapter again.';
-      }
-      
-      // Show message in a subtle way
-      const scoreDisplay = document.getElementById('scoreDisplay');
-      scoreDisplay.textContent = score + ' / ' + total;
-      
-      // Add a temporary message
+      document.getElementById('scoreDisplay').textContent = score + ' / ' + total;
+      let message = score === total ? '🎉 Perfect score! Excellent work!'
+                  : score >= total*0.8 ? '🌟 Great job! You\'re well prepared!'
+                  : score >= total*0.6 ? '📚 Good effort! Review the explanations for incorrect answers.'
+                  : '💪 Keep practicing! Go through the chapter again.';
       let msgDiv = document.getElementById('scoreMessage');
       if (!msgDiv) {
         msgDiv = document.createElement('p');
@@ -1115,11 +1112,8 @@
       msgDiv.textContent = message;
     }
 
-    // Reset all MCQs
     function resetAllMCQs() {
-      for (let q in correctAnswers) {
-        resetMCQ(parseInt(q));
-      }
+      for (let q in correctAnswers) resetMCQ(parseInt(q));
       document.getElementById('scoreDisplay').textContent = '0';
       const msgDiv = document.getElementById('scoreMessage');
       if (msgDiv) msgDiv.textContent = '';
@@ -1129,7 +1123,10 @@
     const menuButton = document.getElementById('mobile-menu-button');
     const mobileMenu = document.getElementById('mobile-menu');
     if (menuButton && mobileMenu) {
-      menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+      menuButton.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.toggle('hidden');
+        menuButton.setAttribute('aria-expanded', String(!isHidden));
+      });
     }
 
     // Back to top
@@ -1144,7 +1141,10 @@
     const toggleBtn = document.getElementById('toggleChapters');
     const chaptersList = document.getElementById('chaptersList');
     if (toggleBtn && chaptersList) {
-      toggleBtn.addEventListener('click', () => chaptersList.classList.toggle('hidden'));
+      toggleBtn.addEventListener('click', () => {
+        const isHidden = chaptersList.classList.toggle('hidden');
+        toggleBtn.setAttribute('aria-expanded', String(!isHidden));
+      });
     }
 
     // Reading Progress Bar
@@ -1154,12 +1154,24 @@
       const winHeight = window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
       const maxScroll = docHeight - winHeight;
-      const scrollPercent = (scrollTop / maxScroll) * 100;
-      if (progressBar) progressBar.style.width = scrollPercent + '%';
+      if (progressBar) progressBar.style.width = ((scrollTop / maxScroll) * 100) + '%';
     }
     window.addEventListener('scroll', updateProgressBar);
     window.addEventListener('resize', updateProgressBar);
     updateProgressBar();
+
+    // FAQ accordion (accessible, keyboard-native)
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        const answer = document.getElementById(this.getAttribute('aria-controls'));
+        this.setAttribute('aria-expanded', String(!expanded));
+        if (answer) answer.hidden = expanded;
+        if (!expanded && answer && window.MathJax && MathJax.typesetPromise) {
+          MathJax.typesetPromise([answer]).catch(function(){});
+        }
+      });
+    });
   </script>
 </body>
 </html>
