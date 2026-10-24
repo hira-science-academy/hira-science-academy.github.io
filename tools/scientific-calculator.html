@@ -38,6 +38,11 @@
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
 
+  <!-- KaTeX (CSS + JS). Loaded from CDN, no local library needed. -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous"/>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -185,7 +190,7 @@
   <link rel="stylesheet" href="assets/tools.css" />
 
   <style>
-    body { background: #f9fafb; color: #1f2937; }
+    body { background: #f9fafb; color: #0f172a; }
     .skip-link { position: absolute; left: -999px; top: 0; background: #0369a1; color: #fff; padding: .75rem 1rem; z-index: 100; border-radius: 0 0 .5rem 0; }
     .skip-link:focus { left: 0; }
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
@@ -200,7 +205,6 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
-    
     .hero-centered { text-align: center; }
     .mode-toggle { display: inline-flex; background: #fff; border: 1.5px solid #e2e8f0; border-radius: .75rem; padding: .25rem; gap: .25rem; }
     .mode-toggle button { padding: .4rem .9rem; border-radius: .5rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: .8125rem; cursor: pointer; border: none; background: transparent; color: #475569; transition: all .15s; }
@@ -217,7 +221,46 @@
     .grade-table th { background: #f0f9ff; color: #0369a1; text-align: left; padding: .5rem .75rem; border-bottom: 1.5px solid #bae6fd; }
     .grade-table td { padding: .45rem .75rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
     .math-block { display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #0b1220; background: #f8fafc; padding: 1rem 1.25rem; border-radius: .5rem; border-left: 4px solid #0ea5e9; margin: .35rem 0 0 0; flex-wrap: wrap; text-align: center; overflow-x: auto; }
+
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1rem;
+    }
+    .answer-box .answer-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; }
+    .answer-box .answer-heading { font-size: .8rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #0369a1; }
+    .answer-box .answer-value { font-family: 'Montserrat', sans-serif; font-size: 1.875rem; font-weight: 800; color: #0b1220; line-height: 1.15; word-break: break-word; }
+    .answer-box .answer-value .katex { font-size: 1.875rem; }
+    .copy-btn { border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary { cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; margin-top: .5rem; user-select: none; }
+    .answer-box details > summary:hover { text-decoration: underline; }
+
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label { font-size: .625rem; text-transform: uppercase; letter-spacing: .1em; color: #94a3b8; text-align: center; margin-bottom: .25rem; font-weight: 600; }
+
+    /* Readability */
+    article p { color: #0f172a; }
+    .prose-justify { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .sign-btn{min-width:48px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+      .sci-key { min-height: 48px; }
+    }
+
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+    /* Keep KaTeX readable on small screens */
+    .katex { font-size: 1.02em; }
+    .math-block .katex-display { margin: 0; }
   </style>
 </head>
 
@@ -225,7 +268,7 @@
   <a class="skip-link" href="#main-content">Skip to calculator</a>
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm" aria-label="Main navigation">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm" aria-label="Main navigation">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -268,27 +311,26 @@
   </nav>
 
   <!-- HERO -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <p class="inline-block bg-yellow-400/20 text-yellow-100 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free. No signup. Runs in your browser.</p>
-     <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">
-  Scientific Calculator: Sin, Cos, Tan, Log, Powers &amp; More
-</h1>
-
-<p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">
-  Trigonometry in degrees or radians, inverse trig, logarithms, powers, roots, factorials, memory and history, with live results as you type.
-</p>
+      <p class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free. No signup. Runs in your browser.</p>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">
+        Scientific Calculator: Sin, Cos, Tan, Log, Powers &amp; More
+      </h1>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">
+        Trigonometry in degrees or radians, inverse trig, logarithms, powers, roots, factorials, memory and history, with live results as you type.
+      </p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/">Tools &amp; Calculators</a></li>
@@ -300,9 +342,12 @@
   </div>
 
   <!-- MAIN -->
-  <main id="main-content" class="max-w-3xl mx-auto px-6 py-10">
+  <main id="main-content" class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
 
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-7" aria-label="Scientific calculator" id="calc-section">
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-7" aria-label="Scientific calculator" id="calc-section">
 
       <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
         <div class="mode-toggle" role="group" aria-label="Angle unit">
@@ -377,8 +422,10 @@
       <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc w-full">Reset</button>
     </section>
 
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <section id="result-panel" class="result-panel mt-5" role="region" aria-label="Scientific Calculator result"></section>
 
+    <!-- HISTORY -->
     <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 mt-5" aria-label="Calculation history">
       <div class="flex items-center justify-between mb-3">
         <h2 class="text-sm font-bold uppercase tracking-wider text-slate-600">History</h2>
@@ -389,8 +436,10 @@
       </div>
     </section>
 
+    <!-- FIRST AD: after result + history -->
     <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <div class="ad-label">Advertisement</div>
+      <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
@@ -398,8 +447,8 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What this scientific calculator does</h2>
-        <p class="leading-relaxed">
-          This is a full scientific calculator that runs in your browser. It covers what you need for algebra, geometry, trigonometry, pre-calculus, chemistry and physics: <strong>sin, cos and tan</strong> with a degrees/radians switch, <strong>inverse trig</strong> (sin⁻¹, cos⁻¹, tan⁻¹), <strong>logarithms</strong> (log base 10 and natural ln), powers, roots, factorials, and the constants π and e. It also has a memory register, an Ans key, brackets, and a history of your last 20 calculations. A live preview shows the answer as you type, and pressing = records the full working below the keypad.
+        <p class="leading-relaxed prose-justify">
+          This is a full scientific calculator that runs in your browser. It covers what you need for algebra, geometry, trigonometry, pre-calculus, chemistry and physics: <strong>sin, cos and tan</strong> with a degrees/radians switch, <strong>inverse trig</strong> (\( \sin^{-1} \), \( \cos^{-1} \), \( \tan^{-1} \)), <strong>logarithms</strong> (log base 10 and natural ln), powers, roots, factorials, and the constants \( \pi \) and \( e \). It also has a memory register, an Ans key, brackets, and a history of your last 20 calculations. A live preview shows the answer as you type, and pressing \( = \) records the full working below the keypad.
         </p>
       </section>
 
@@ -409,7 +458,7 @@
           <li>Check the angle mode (<strong>DEG</strong> or <strong>RAD</strong>) before using trig functions.</li>
           <li>Tap the keys or type on your keyboard. Function keys such as <code>sin(</code> open a bracket for you.</li>
           <li>Press <strong>=</strong> (or Enter) to get the result. Any brackets you left open are closed automatically.</li>
-          <li>After pressing =, type a new number to start over, or press an operator like <code>+</code> or <code>×</code> to keep going from the result.</li>
+          <li>After pressing \( = \), type a new number to start over, or press an operator like \( + \) or \( \times \) to keep going from the result.</li>
           <li>Use <strong>M+</strong>, <strong>MR</strong> and <strong>MC</strong> to store, recall and clear a value, and click any history entry to reuse it.</li>
         </ol>
       </section>
@@ -420,20 +469,20 @@
           <table class="grade-table">
             <thead><tr><th>Key</th><th>What it does</th><th>Example</th></tr></thead>
             <tbody>
-              <tr><td>sin, cos, tan</td><td>Trig functions in the selected angle mode</td><td>sin(30) = 0.5 in DEG</td></tr>
-              <tr><td>sin⁻¹, cos⁻¹, tan⁻¹</td><td>Inverse trig (asin, acos, atan)</td><td>asin(0.5) = 30 in DEG</td></tr>
-              <tr><td>log</td><td>Logarithm base 10</td><td>log(1000) = 3</td></tr>
-              <tr><td>ln</td><td>Natural logarithm (base e)</td><td>ln(e) = 1</td></tr>
-              <tr><td>√</td><td>Square root</td><td>sqrt(81) = 9</td></tr>
-              <tr><td>x², 10ˣ, ^</td><td>Square, ten to a power, any power</td><td>2^10 = 1024</td></tr>
-              <tr><td>exp</td><td>e raised to a power</td><td>exp(1) = 2.71828…</td></tr>
-              <tr><td>|x|</td><td>Absolute value</td><td>abs(-7) = 7</td></tr>
-              <tr><td>n!</td><td>Factorial of a whole number</td><td>5! = 120</td></tr>
-              <tr><td>π, e</td><td>The constants 3.14159… and 2.71828…</td><td>2π = 6.28318…</td></tr>
-              <tr><td>Ans</td><td>Inserts your last result</td><td>Ans × 2</td></tr>
+              <tr><td>sin, cos, tan</td><td>Trig functions in the selected angle mode</td><td>\( \sin(30) = 0.5 \) in DEG</td></tr>
+              <tr><td>sin⁻¹, cos⁻¹, tan⁻¹</td><td>Inverse trig (asin, acos, atan)</td><td>\( \sin^{-1}(0.5) = 30 \) in DEG</td></tr>
+              <tr><td>log</td><td>Logarithm base 10</td><td>\( \log(1000) = 3 \)</td></tr>
+              <tr><td>ln</td><td>Natural logarithm (base \( e \))</td><td>\( \ln(e) = 1 \)</td></tr>
+              <tr><td>√</td><td>Square root</td><td>\( \sqrt{81} = 9 \)</td></tr>
+              <tr><td>x², 10ˣ, ^</td><td>Square, ten to a power, any power</td><td>\( 2^{10} = 1024 \)</td></tr>
+              <tr><td>exp</td><td>\( e \) raised to a power</td><td>\( e^{1} = 2.71828\ldots \)</td></tr>
+              <tr><td>|x|</td><td>Absolute value</td><td>\( |-7| = 7 \)</td></tr>
+              <tr><td>n!</td><td>Factorial of a whole number</td><td>\( 5! = 120 \)</td></tr>
+              <tr><td>π, e</td><td>The constants \( 3.14159\ldots \) and \( 2.71828\ldots \)</td><td>\( 2\pi = 6.28318\ldots \)</td></tr>
+              <tr><td>Ans</td><td>Inserts your last result</td><td>\( \text{Ans} \times 2 \)</td></tr>
               <tr><td>M+, MR, MC</td><td>Add to, recall, clear memory</td><td>M+ then MR</td></tr>
-              <tr><td>±</td><td>Flip the sign of the last number</td><td>5 → (-5)</td></tr>
-              <tr><td>1/x</td><td>Reciprocal of the current value</td><td>8 → 1/(8) = 0.125</td></tr>
+              <tr><td>±</td><td>Flip the sign of the last number</td><td>\( 5 \to (-5) \)</td></tr>
+              <tr><td>1/x</td><td>Reciprocal of the current value</td><td>\( 8 \to \frac{1}{8} = 0.125 \)</td></tr>
             </tbody>
           </table>
         </div>
@@ -441,47 +490,54 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Degrees vs radians</h2>
-        <p class="leading-relaxed">
-          Angles can be measured in degrees (a full circle is 360°) or radians (a full circle is 2π). Most high school geometry and trigonometry work uses <strong>degrees</strong>, while calculus, AP Calculus and many physics problems use <strong>radians</strong>. The calculator starts in DEG mode. To convert by hand:
+        <p class="leading-relaxed prose-justify">
+          Angles can be measured in degrees (a full circle is \( 360^\circ \)) or radians (a full circle is \( 2\pi \)). Most high school geometry and trigonometry work uses <strong>degrees</strong>, while calculus, AP Calculus and many physics problems use <strong>radians</strong>. The calculator starts in DEG mode. To convert by hand:
         </p>
         <div class="formula-block">
           <div class="formula-label">Conversion</div>
-          <div class="math-block"><span>radians = degrees × π ÷ 180</span></div>
+          <div class="math-block">\( \text{radians} = \text{degrees} \times \frac{\pi}{180} \)</div>
         </div>
         <div class="formula-block">
           <div class="formula-label">Trig in DEG mode</div>
-          <div class="math-block"><span>sin θ = sin(θ × π ÷ 180), and the same for cos and tan</span></div>
+          <div class="math-block">\( \sin\theta = \sin\left(\theta \times \frac{\pi}{180}\right) \)</div>
         </div>
         <div class="formula-block">
           <div class="formula-label">Logarithms and roots</div>
-          <div class="math-block"><span>log x = ln x ÷ ln 10, and the n-th root of x = x^(1/n)</span></div>
+          <div class="math-block">\( \log x = \frac{\ln x}{\ln 10}, \qquad \sqrt[n]{x} = x^{1/n} \)</div>
         </div>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Order of operations (PEMDAS)</h2>
-        <p class="leading-relaxed">
-          The calculator follows PEMDAS: <strong>P</strong>arentheses first, then <strong>E</strong>xponents, then <strong>M</strong>ultiplication and <strong>D</strong>ivision from left to right, then <strong>A</strong>ddition and <strong>S</strong>ubtraction from left to right. Exponents stack from the right, so 2^3^2 means 2^(3^2) = 512. A minus sign in front of a power is applied after the power, so <code>-2^2</code> equals −4, while <code>(-2)^2</code> equals 4.
+        <p class="leading-relaxed prose-justify">
+          The calculator follows PEMDAS: <strong>P</strong>arentheses first, then <strong>E</strong>xponents, then <strong>M</strong>ultiplication and <strong>D</strong>ivision from left to right, then <strong>A</strong>ddition and <strong>S</strong>ubtraction from left to right. Exponents stack from the right, so \( 2^{3^2} = 2^{9} = 512 \). A minus sign in front of a power is applied after the power, so \( -2^2 = -4 \), while \( (-2)^2 = 4 \).
         </p>
       </section>
+
+      <!-- SECOND AD: natural break between article sections -->
+      <div class="my-8 text-center no-print">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 1: sin(30°) in degree mode</p>
+          <p class="font-semibold text-gray-900">Example 1: \( \sin(30^\circ) \) in degree mode</p>
           <ol>
             <li>Make sure the mode shows <strong>DEG</strong>.</li>
-            <li>Enter <code>sin(30)</code> and press =.</li>
-            <li>Result: <strong>0.5</strong>. In RAD mode the same keys give about −0.98803, so the mode matters.</li>
+            <li>Enter <code>sin(30)</code> and press \( = \).</li>
+            <li>Result: <strong>0.5</strong>. In RAD mode the same keys give about \( -0.98803 \), so the mode matters.</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 2: The height of a tree</p>
-          <p class="text-sm text-gray-600">You stand 50 feet from a tree and the angle up to the top is 40°.</p>
+          <p class="text-sm text-gray-600">You stand 50 feet from a tree and the angle up to the top is \( 40^\circ \).</p>
           <ol>
-            <li>Height = distance × tan(angle) = 50 × tan(40°).</li>
+            <li>\( \text{Height} = \text{distance} \times \tan(\text{angle}) = 50 \times \tan(40^\circ) \).</li>
             <li>Enter <code>50*tan(40)</code> in DEG mode.</li>
             <li>Result: <strong>about 41.95 feet</strong>.</li>
           </ol>
@@ -491,7 +547,7 @@
           <p class="font-semibold text-gray-900">Example 3: Compound interest</p>
           <p class="text-sm text-gray-600">$1,000 at 5% annual interest, compounded monthly for 10 years.</p>
           <ol>
-            <li>Formula: A = P × (1 + r ÷ n)^(n × t) with P = 1000, r = 0.05, n = 12, t = 10.</li>
+            <li>\( A = P\left(1+\frac{r}{n}\right)^{nt} \) with \( P=1000,\ r=0.05,\ n=12,\ t=10 \).</li>
             <li>Enter <code>1000*(1+0.05/12)^120</code>.</li>
             <li>Result: <strong>about $1,647.01</strong>.</li>
           </ol>
@@ -501,7 +557,7 @@
           <p class="font-semibold text-gray-900">Example 4: Logs and powers together</p>
           <ol>
             <li>Enter <code>log(1000)+2^3</code>.</li>
-            <li>log(1000) = 3 and 2³ = 8.</li>
+            <li>\( \log(1000) = 3 \) and \( 2^3 = 8 \).</li>
             <li>Result: <strong>3 + 8 = 11</strong>.</li>
           </ol>
         </div>
@@ -509,34 +565,34 @@
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 5: Cube roots, including negatives</p>
           <ol>
-            <li><code>27^(1/3)</code> gives <strong>3</strong>.</li>
-            <li><code>(-8)^(1/3)</code> gives <strong>−2</strong>, because −2 × −2 × −2 = −8. Odd roots of negative numbers are real.</li>
-            <li><code>(-8)^(1/2)</code> shows an error, because an even root of a negative number is not real.</li>
+            <li>\( 27^{1/3} = 3 \).</li>
+            <li>\( (-8)^{1/3} = -2 \), because \( -2 \times -2 \times -2 = -8 \). Odd roots of negative numbers are real.</li>
+            <li>\( (-8)^{1/2} \) shows an error, because an even root of a negative number is not real.</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 6: Negatives and exponents</p>
           <ol>
-            <li><code>-2^2</code> = <strong>−4</strong> (the power is done first).</li>
-            <li><code>(-2)^2</code> = <strong>4</strong>.</li>
-            <li><code>10^-3</code> = <strong>0.001</strong>.</li>
+            <li>\( -2^2 = -4 \) (the power is done first).</li>
+            <li>\( (-2)^2 = 4 \).</li>
+            <li>\( 10^{-3} = 0.001 \).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 7: Inverse trig and factorials</p>
           <ol>
-            <li><code>asin(0.5)</code> in DEG mode gives <strong>30</strong>, the angle whose sine is 0.5.</li>
-            <li>Ordered arrangements of 3 items from 8: <code>8!/(8-3)!</code> = 40320 ÷ 120 = <strong>336</strong>.</li>
+            <li>\( \sin^{-1}(0.5) = 30 \) in DEG mode, the angle whose sine is \( 0.5 \).</li>
+            <li>Ordered arrangements of 3 items from 8: \( \frac{8!}{(8-3)!} = \frac{40320}{120} = 336 \).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 8: Keep going with the last answer</p>
           <ol>
-            <li>Enter <code>5+3</code> and press =. Result: <strong>8</strong>.</li>
-            <li>Now press <code>×</code> then <code>2</code> and press =. The calculator continues from 8.</li>
+            <li>Enter <code>5+3</code> and press \( = \). Result: <strong>8</strong>.</li>
+            <li>Now press \( \times \) then <code>2</code> and press \( = \). The calculator continues from 8.</li>
             <li>Result: <strong>16</strong>.</li>
           </ol>
         </div>
@@ -545,11 +601,11 @@
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
         <ul class="list-disc pl-6 space-y-2 leading-relaxed">
-          <li><strong>Wrong angle mode.</strong> If sin(30) shows about −0.988 instead of 0.5, you are in RAD mode. Check the DEG/RAD indicator first.</li>
-          <li><strong>Confusing log and ln.</strong> log is base 10 and ln is base e. Use the change-of-base rule for other bases, such as <code>log(8)/log(2)</code> for log base 2 of 8.</li>
-          <li><strong>Inverse trig out of range.</strong> sin⁻¹ and cos⁻¹ only accept values from −1 to 1.</li>
-          <li><strong>Forgetting brackets around a fraction exponent.</strong> Write <code>8^(1/3)</code>, not <code>8^1/3</code>, which means (8^1) ÷ 3.</li>
-          <li><strong>Typing a negative base without brackets.</strong> <code>-3^2</code> is −9 but <code>(-3)^2</code> is 9.</li>
+          <li><strong>Wrong angle mode.</strong> If \( \sin(30) \) shows about \( -0.988 \) instead of \( 0.5 \), you are in RAD mode. Check the DEG/RAD indicator first.</li>
+          <li><strong>Confusing log and ln.</strong> log is base 10 and ln is base \( e \). Use the change-of-base rule for other bases, such as \( \frac{\log 8}{\log 2} \) for log base 2 of 8.</li>
+          <li><strong>Inverse trig out of range.</strong> \( \sin^{-1} \) and \( \cos^{-1} \) only accept values from \( -1 \) to \( 1 \).</li>
+          <li><strong>Forgetting brackets around a fraction exponent.</strong> Write \( 8^{1/3} \), not \( 8^1/3 \), which means \( (8^1)/3 \).</li>
+          <li><strong>Typing a negative base without brackets.</strong> \( -3^2 = -9 \) but \( (-3)^2 = 9 \).</li>
           <li><strong>Even roots of negative numbers.</strong> These have no real result, so the calculator shows an error.</li>
         </ul>
       </section>
@@ -559,27 +615,27 @@
         <div class="space-y-3">
           <details class="faq-item">
             <summary>How do I switch between degrees and radians?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Use the DEG/RAD toggle above the display. DEG is the default and is what most high school geometry and trigonometry classes use. Switch to RAD for calculus, physics problems that use radians, and any formula with angles written in terms of π. To convert by hand, radians = degrees × π ÷ 180.</p>
+            <p class="faq-answer">Use the DEG/RAD toggle above the display. DEG is the default and is what most high school geometry and trigonometry classes use. Switch to RAD for calculus, physics problems that use radians, and any formula with angles written in terms of \( \pi \). To convert by hand, \( \text{radians} = \text{degrees} \times \pi \div 180 \).</p>
           </details>
           <details class="faq-item">
             <summary>How do I find inverse trig values like sin⁻¹?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Use the sin⁻¹, cos⁻¹ and tan⁻¹ keys, which appear as asin, acos and atan in the expression. For example, asin(0.5) gives 30 in DEG mode and about 0.5236 in RAD mode. asin and acos only accept values from -1 to 1.</p>
+            <p class="faq-answer">Use the \( \sin^{-1} \), \( \cos^{-1} \) and \( \tan^{-1} \) keys, which appear as asin, acos and atan in the expression. For example, \( \sin^{-1}(0.5) \) gives 30 in DEG mode and about 0.5236 in RAD mode. asin and acos only accept values from \( -1 \) to \( 1 \).</p>
           </details>
           <details class="faq-item">
             <summary>How do I enter exponents, roots and negative powers?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Use ^ for powers: 2^10 = 1024 and 10^-3 = 0.001. Use the square root key or sqrt( for square roots, and a fractional exponent for other roots, for example 27^(1/3) = 3. Odd roots of negative numbers work too, so (-8)^(1/3) = -2. Exponents stack from the right, so 2^3^2 = 2^9 = 512.</p>
+            <p class="faq-answer">Use <code>^</code> for powers: \( 2^{10} = 1024 \) and \( 10^{-3} = 0.001 \). Use the square root key or <code>sqrt(</code> for square roots, and a fractional exponent for other roots, for example \( 27^{1/3} = 3 \). Odd roots of negative numbers work too, so \( (-8)^{1/3} = -2 \). Exponents stack from the right, so \( 2^{3^2} = 2^{9} = 512 \).</p>
           </details>
           <details class="faq-item">
             <summary>What is the difference between log and ln?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">log is the base-10 logarithm and ln is the natural logarithm (base e). This matches most US scientific calculators. For another base, use the change-of-base rule: log base 2 of 8 is log(8)/log(2) = 3.</p>
+            <p class="faq-answer">\( \log \) is the base-10 logarithm and \( \ln \) is the natural logarithm (base \( e \)). This matches most US scientific calculators. For another base, use the change-of-base rule: log base 2 of 8 is \( \frac{\log 8}{\log 2} = 3 \).</p>
           </details>
           <details class="faq-item">
             <summary>How do I enter scientific notation?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">There is no EE key. Type the number times a power of 10, for example 6.02*10^23. Very large or very small results are also shown in scientific notation in the result panel.</p>
+            <p class="faq-answer">There is no EE key. Type the number times a power of 10, for example \( 6.02 \times 10^{23} \). Very large or very small results are also shown in scientific notation in the result panel.</p>
           </details>
           <details class="faq-item">
             <summary>Does it follow the order of operations (PEMDAS)?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Yes. Brackets come first, then exponents, then multiplication and division from left to right, then addition and subtraction from left to right. A minus sign in front of a power is applied after the power, so -2^2 = -4 while (-2)^2 = 4.</p>
+            <p class="faq-answer">Yes. Brackets come first, then exponents, then multiplication and division from left to right, then addition and subtraction from left to right. A minus sign in front of a power is applied after the power, so \( -2^2 = -4 \) while \( (-2)^2 = 4 \).</p>
           </details>
           <details class="faq-item">
             <summary>Can I use this calculator on the SAT, ACT or AP exams?<span aria-hidden="true">▾</span></summary>
@@ -587,9 +643,8 @@
           </details>
           <details class="faq-item">
             <summary>What do Ans and the memory keys do, and is my work saved?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Ans inserts your last result, and after pressing = you can keep going by pressing an operator such as + or ×. M+ adds the current value to memory, MR recalls it and MC clears it. The last 20 calculations appear in the history panel. Everything stays in your browser tab and is cleared when you reload the page.</p>
+            <p class="faq-answer">Ans inserts your last result, and after pressing \( = \) you can keep going by pressing an operator such as \( + \) or \( \times \). M+ adds the current value to memory, MR recalls it and MC clears it. The last 20 calculations appear in the history panel. Everything stays in your browser tab and is cleared when you reload the page.</p>
           </details>
-
         </div>
       </section>
 
@@ -604,6 +659,13 @@
           <li><a href="unit-converter.html" class="text-blue-600 underline hover:text-blue-800 font-medium">Unit Converter</a></li>
         </ul>
       </section>
+
+      <!-- THIRD AD: natural break near end of article -->
+      <div class="my-8 text-center no-print">
+        <div class="ad-label">Advertisement</div>
+        <ins class="adsbygoogle ad-slot" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
 
     </article>
   </main>
@@ -663,6 +725,7 @@
     </div>
   </div>
 </footer>
+
   <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
     <div class="flex items-center gap-3">
       <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
@@ -694,6 +757,8 @@
     const resetBtn     = document.getElementById('reset-btn');
     const clearHistBtn = document.getElementById('clear-history');
     const modeButtons  = document.querySelectorAll('.mode-toggle button');
+    const siteNav      = document.getElementById('site-nav');
+    const answerLive   = document.getElementById('answer-live');
 
     let expression = '';
     let angleMode = 'DEG';
@@ -704,15 +769,90 @@
     const MAX_HISTORY = 20;
     const MAX_LEN = 200;
 
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur(); // close keyboard
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
+    }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    /* ---------- Copy answer ---------- */
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
+
+    /* ---------- KaTeX helpers ---------- */
+    function katexReady() {
+      return typeof window.katex !== 'undefined' && typeof window.katex.render === 'function';
+    }
+    function renderKatexInto(el, latex, displayMode) {
+      if (!el) return;
+      if (!katexReady()) { el.textContent = latex; return; }
+      try {
+        window.katex.render(latex, el, { throwOnError: false, displayMode: !!displayMode });
+      } catch (e) { el.textContent = latex; }
+    }
+    function autoRenderBodyMath(root) {
+      if (!katexReady()) return;
+      if (typeof window.renderMathInElement !== 'function') return;
+      window.renderMathInElement(root, {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '\\(', right: '\\)', display: false }
+        ],
+        ignoredTags: ['script','noscript','style','textarea','pre','code'],
+        throwOnError: false
+      });
+    }
+
     /* =====================================================
-       Expression evaluator (no eval). Precedence, high to low:
-       factorial, power (right-assoc), unary minus, * / and
-       implicit multiplication, + -
+       Expression evaluator (no eval)
        ===================================================== */
     class CalcError extends Error { constructor(code) { super(code); this.code = code; } }
 
     const NAMES = ['asin','acos','atan','sqrt','sin','cos','tan','log','exp','abs','ln','pi','e'];
-    const FUNCS = ['asin','acos','atan','sqrt','sin','cos','tan','log','exp','abs','ln'];
 
     function tokenize(src) {
       const s = src.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-').replace(/π/g, 'pi').replace(/√/g, 'sqrt').toLowerCase();
@@ -751,7 +891,6 @@
       if (b === 0 && e === 0) throw new CalcError('zero0');
       if (b === 0 && e < 0) throw new CalcError('div0');
       if (b < 0 && !Number.isInteger(e)) {
-        // Odd roots of negative numbers are real: (-8)^(1/3) = -2
         for (let q = 3; q <= 99; q += 2) {
           const pq = e * q;
           if (Math.abs(pq - Math.round(pq)) < 1e-9) {
@@ -843,7 +982,7 @@
       function parseExponent() {
         const tk = peek();
         if (tk && tk.t === '-') { next(); return -parseExponent(); }
-        if (tk && tk.t === '+') { next(); return parseExponent(); }
+        if (tk && tk.t === '+') { return parseExponent(); }
         return parsePower();
       }
       function parsePostfix() {
@@ -924,6 +1063,79 @@
     function escapeHtml(s) {
       return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
+    
+    function latexExpression(s) {
+      let t = String(s)
+        .replace(/×/g, '*').replace(/÷/g, '/').replace(/π/g, '\\pi ');
+        
+      let out = '';
+      let i = 0;
+      while (i < t.length) {
+        if (t.startsWith('sqrt(', i)) {
+          let depth = 1; let j = i + 5;
+          while (j < t.length && depth > 0) {
+            if (t[j] === '(') depth++;
+            else if (t[j] === ')') depth--;
+            j++;
+          }
+          const inner = t.slice(i + 5, j - 1);
+          out += '\\sqrt{' + latexExpression(inner) + '}';
+          i = j;
+          continue;
+        }
+        if (t.startsWith('pi', i) && (i === 0 || /[^a-zA-Z]/.test(t[i-1]))) {
+          out += '\\pi '; i += 2; continue;
+        }
+        if (/[a-zA-Z]/.test(t[i])) {
+          const m = t.slice(i).match(/^(asin|acos|atan|sin|cos|tan|log|ln|exp|abs)/);
+          if (m) {
+            const name = m[1];
+            const map = { sin:'\\sin', cos:'\\cos', tan:'\\tan', asin:'\\arcsin', acos:'\\arccos', atan:'\\arctan', log:'\\log', ln:'\\ln', exp:'\\exp', abs:'\\left|' };
+            if (name === 'abs') {
+              let j = i + 3;
+              if (t[j] === '(') {
+                let depth = 1; let k = j + 1;
+                while (k < t.length && depth > 0) {
+                  if (t[k] === '(') depth++;
+                  else if (t[k] === ')') depth--;
+                  k++;
+                }
+                const inner = t.slice(j + 1, k - 1);
+                out += '\\left|' + latexExpression(inner) + '\\right|';
+                i = k;
+                continue;
+              }
+            }
+            out += map[name] + ' ';
+            i += name.length;
+            continue;
+          }
+          out += t[i]; i++; continue;
+        }
+        if (t[i] === '*') { out += '\\cdot '; i++; continue; }
+        if (t[i] === '^') { out += '^{'; i++;
+          let j = i;
+          if (t[j] === '(') {
+            let depth = 1; j++;
+            while (j < t.length && depth > 0) {
+              if (t[j] === '(') depth++;
+              else if (t[j] === ')') depth--;
+              j++;
+            }
+            out += latexExpression(t.slice(i, j)) + '}';
+            i = j;
+          } else {
+            let m = t.slice(j).match(/^[-+]?(\d*\.?\d+|pi|[a-zA-Z]+)/);
+            if (m) { out += latexExpression(m[0]) + '}'; i += m[0].length; }
+            else { out += '}'; }
+          }
+          continue;
+        }
+        if (t[i] === '!') { out += '!'; i++; continue; }
+        out += t[i]; i++;
+      }
+      return out;
+    }
 
     /* ---------- Display ---------- */
     function updatePreview() {
@@ -933,7 +1145,7 @@
         const b = balanced(expression);
         if (b.close > b.open) return;
         previewEl.textContent = '= ' + formatNumber(compute(b.text), 10);
-      } catch (e) { /* incomplete expression: no preview */ }
+      } catch (e) {}
     }
     function renderDisplay() {
       displayEl.textContent = expression === '' ? '0' : pretty(expression);
@@ -952,7 +1164,6 @@
         expression = /^[+\-*/^!]/.test(text) ? toExpr(lastAns) : '';
         justEvaluated = false;
       }
-      // Pressing two operators in a row replaces the first one
       if (/^[+*/^]$/.test(text) && /[+*/^]$/.test(expression)) expression = expression.slice(0, -1);
       if (expression.length + text.length > MAX_LEN) return;
       expression += text;
@@ -975,6 +1186,7 @@
       renderDisplay();
       hideResult(resultPanel);
       clearAllErrors(document);
+      if (answerLive) answerLive.textContent = '';
     }
 
     function toggleSign() {
@@ -1005,13 +1217,13 @@
       if (expression.trim() === '') {
         showError(displayEl, 'Enter an expression first.');
         trackEvent(CALC_NAME, 'invalid_input');
-        return;
+        return; // no scroll on error
       }
       const b = balanced(expression);
       if (b.close > b.open) {
         showError(displayEl, MESSAGES.extra);
         trackEvent(CALC_NAME, 'invalid_input');
-        return;
+        return; // no scroll on error
       }
       expression = b.text;
 
@@ -1021,7 +1233,7 @@
       } catch (err) {
         showError(displayEl, friendly(err));
         trackEvent(CALC_NAME, 'invalid_input');
-        return;
+        return; // no scroll on error
       }
 
       lastAns = value;
@@ -1032,26 +1244,52 @@
       const pretty10 = formatNumber(value, 10);
       const sci = (Math.abs(value) >= 1e6 || (value !== 0 && Math.abs(value) < 1e-4))
         ? Number(value.toPrecision(10)).toExponential() : '';
-      const html = `
-        <div class="result-label">Result</div>
-        <div class="result-value">${pretty10}</div>
-        <div class="steps-block">
-          <div class="formula-label" style="margin-bottom:0.5rem;">Expression</div>
-          <code style="font-family:'JetBrains Mono',monospace;color:#0b1220;">${escapeHtml(pretty(expression))}</code>
-          <div class="formula-label" style="margin-top:0.75rem;margin-bottom:0.5rem;">Working</div>
-          <ol>
-            <li>Angle mode: <strong>${angleMode}</strong>${angleMode === 'DEG' ? ' (angles are in degrees)' : ' (angles are in radians)'}.</li>
-            <li>Expression evaluated with brackets first, then exponents, then × ÷, then + −.</li>
-            <li>Value: <strong>${pretty10}</strong></li>
-            ${sci ? `<li>Scientific notation: <strong>${sci}</strong></li>` : ''}
-            ${Number.isInteger(value) && Math.abs(value) < 1e15 ? `<li>With separators: <strong>${value.toLocaleString('en-US')}</strong></li>` : ''}
-            ${value !== 0 ? `<li>Reciprocal 1/x: <strong>${formatNumber(1 / value, 10)}</strong></li>` : ''}
-          </ol>
+      const exprLatex = latexExpression(pretty(expression));
+      const valueLatex = formatNumber(value, 10);
+
+      // ---------- Primary answer box (rendered with KaTeX) ----------
+      const answerHtml = `
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">Result</span>
+            <button type="button" class="copy-btn" data-copy="${escapeHtml(pretty10)}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="answer-value" id="answer-value-slot"></div>
         </div>
       `;
-      resultPanel.innerHTML = html;
-      showResult(resultPanel, html);
+
+      const workingHtml = `
+        <div class="steps-block" style="margin-top:1.25rem;">
+          <details open>
+            <summary>Show / Hide step-by-step working</summary>
+            <div class="formula-label" style="margin:0.5rem 0;">Expression</div>
+            <div id="working-expr-slot" style="font-family:'JetBrains Mono',monospace;color:#0b1220;padding:0.5rem 0;"></div>
+            <div class="formula-label" style="margin-top:0.75rem;margin-bottom:0.5rem;">Working</div>
+            <ol>
+              <li>Angle mode: <strong>${angleMode}</strong>${angleMode === 'DEG' ? ' (angles are in degrees)' : ' (angles are in radians)'}.</li>
+              <li>Expression evaluated with brackets first, then exponents, then × ÷, then + −.</li>
+              <li>Value: <strong>${pretty10}</strong></li>
+              ${sci ? `<li>Scientific notation: <strong>${escapeHtml(sci)}</strong></li>` : ''}
+              ${Number.isInteger(value) && Math.abs(value) < 1e15 ? `<li>With separators: <strong>${value.toLocaleString('en-US')}</strong></li>` : ''}
+              ${value !== 0 ? `<li>Reciprocal 1/x: <strong>${escapeHtml(formatNumber(1 / value, 10))}</strong></li>` : ''}
+            </ol>
+          </details>
+        </div>
+      `;
+
+      resultPanel.innerHTML = answerHtml + workingHtml;
+      
+      // Answer value slot with KaTeX (fallback to plain text if KaTeX isn't ready)
+      const valueSlot = document.getElementById('answer-value-slot');
+      renderKatexInto(valueSlot, valueLatex, false);
+      // Working expression slot with KaTeX
+      const exprSlot = document.getElementById('working-expr-slot');
+      renderKatexInto(exprSlot, exprLatex, true);
+
+      showResult(resultPanel, resultPanel.innerHTML);
       trackEvent(CALC_NAME, 'calculate');
+      announce(`Result: ${pretty10}`);
+      revealResult();
     }
 
     /* ---------- History ---------- */
@@ -1068,7 +1306,7 @@
       historyEl.innerHTML = history.map((h, i) => `
         <div class="sci-history-item" data-index="${i}" role="button" tabindex="0" aria-label="Reuse result ${escapeHtml(formatNumber(h.value, 10))}">
           <span style="color:#475569;">${escapeHtml(pretty(h.expr))}</span>
-          <span style="float:right;font-weight:700;color:#0b1220;">${formatNumber(h.value, 10)}</span>
+          <span style="float:right;font-weight:700;color:#0b1220;">${escapeHtml(formatNumber(h.value, 10))}</span>
         </div>
       `).join('');
     }
@@ -1096,7 +1334,7 @@
       if (action === 'M+') {
         let v = lastAns;
         if (expression !== '') {
-          try { v = compute(balanced(expression).text); } catch (e) { /* use last answer */ }
+          try { v = compute(balanced(expression).text); } catch (e) {}
         }
         memory = Number((memory + v).toPrecision(15));
         updateMemoryBadge();
@@ -1107,6 +1345,13 @@
         updateMemoryBadge();
       }
     }
+
+    /* ---------- Copy-button delegation ---------- */
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
 
     /* ---------- Event wiring ---------- */
     calcSection.addEventListener('click', (e) => {
@@ -1135,17 +1380,27 @@
       });
     });
 
-    // Physical keyboard support (does not interfere with links, FAQ, buttons or browser shortcuts)
+    // Global Enter key support (no required focus on specific inputs)
     document.addEventListener('keydown', (e) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
+      
+      // If user is typing in a text input somewhere else on the page, let it behave normally.
       const t = e.target;
-      if (t.closest && t.closest('input, textarea, select, summary, a, details, [contenteditable]')) return;
-      const onButton = t.closest && t.closest('button, [role="button"]');
-      if ((e.key === 'Enter' || e.key === ' ') && onButton) return;
-      if (e.key === 'Enter' || e.key === '=') { e.preventDefault(); calculate(); }
-      else if (e.key === 'Escape') { e.preventDefault(); clearAll(); }
-      else if (e.key === 'Backspace') { e.preventDefault(); backspace(); }
-      else if (/^[0-9.+\-*/^()!a-zA-Z]$/.test(e.key)) { e.preventDefault(); insert(e.key); }
+      if (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA') return;
+
+      if (e.key === 'Enter' || e.key === '=') {
+        e.preventDefault();
+        calculate();
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        clearAll();
+      } else if (e.key === 'Backspace') {
+        e.preventDefault();
+        backspace();
+      } else if (/^[0-9.+\-*/^()!a-zA-Z]$/.test(e.key)) {
+        e.preventDefault();
+        insert(e.key);
+      }
     });
 
     resetBtn.addEventListener('click', () => {
@@ -1161,6 +1416,15 @@
     /* ---------- Init ---------- */
     renderDisplay();
     updateMemoryBadge();
+    
+    function tryAutoRender() {
+      if (typeof window.renderMathInElement === 'function') {
+        autoRenderBodyMath(document.body);
+      } else {
+        setTimeout(tryAutoRender, 60);
+      }
+    }
+    tryAutoRender();
 
     // Mobile menu + back-to-top
     const btn = document.getElementById('mobile-menu-button');
