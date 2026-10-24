@@ -94,7 +94,7 @@
   <link rel="stylesheet" href="assets/tools.css" />
 
   <style>
-    body { background: #f9fafb; color: #1f2937; }
+    body { background: #f9fafb; color: #0f172a; }
     .header-gradient {
       background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
       position: relative;
@@ -206,13 +206,66 @@
       .example-table { font-size: 0.8rem; }
       .example-table th, .example-table td { padding: 0.5rem 0.4rem; }
     }
+
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1rem 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1rem;
+    }
+    .answer-box .answer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;
+    }
+    .answer-box .answer-heading {
+      font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #0369a1;
+    }
+    .answer-box .answer-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.875rem; font-weight: 800; color: #0b1220;
+      line-height: 1.15; word-break: break-word;
+    }
+    .answer-box .answer-value small { font-size: 0.95rem; font-weight: 500; color: #475569; }
+    .copy-btn {
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1;
+      border-radius: 0.5rem; padding: 0.4rem 0.7rem; font-size: 0.75rem;
+      font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary {
+      cursor: pointer; font-weight: 700; color: #0369a1; font-size: 0.9rem;
+      margin-top: 0.5rem; user-select: none;
+    }
+    .answer-box details > summary:hover { text-decoration: underline; }
+
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label {
+      font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em;
+      color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600;
+    }
+
+    /* Readability */
+    article p { color: #0f172a; }
+    .prose-justify { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .sign-btn{min-width:48px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+    }
   </style>
 </head>
 
 <body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -255,22 +308,22 @@
   </nav>
 
   <!-- HERO -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Pakistan · Jazz · Telenor · Zong · Ufone</span>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Mobile Balance Calculator and Load Tax Calculator for Pakistan</h1>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Enter your recharge amount to see the exact withholding tax deduction and the balance credited to your account. Works for Jazz, Telenor, Zong and Ufone.</p>
+      <span class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Pakistan · Jazz · Telenor · Zong · Ufone</span>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">Mobile Balance Calculator and Load Tax Calculator for Pakistan</h1>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Enter your recharge amount to see the exact tax deduction and the balance credited to your account. Works for Jazz, Telenor, Zong and Ufone.</p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
@@ -282,10 +335,13 @@
   </div>
 
   <!-- MAIN -->
-  <main class="max-w-3xl mx-auto px-6 py-10">
+  <main class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
+
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <!-- CALCULATOR SWITCHER & WRAPPER -->
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Calculator options">
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Calculator options">
 
       <div class="calc-toggle-btns" role="tablist" aria-label="Calculator mode">
         <button type="button" id="tab-tax" class="active" role="tab" aria-selected="true" aria-controls="form-tax-wrapper">Calculate Balance After Tax</button>
@@ -333,31 +389,49 @@
 
     </section>
 
-    <!-- RESULT -->
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT (primary answer at top, role=region, no aria-live on panel) -->
+    <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Mobile Balance Calculator result"></section>
 
-    <!-- AD -->
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    <!-- EXAMPLE CHIPS (moved below result) -->
+    <div class="mt-4 flex flex-wrap items-center gap-2 no-print">
+      <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide">Try an example:</span>
+      <button type="button" class="example-chip px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-slate-800 text-sm font-semibold border border-slate-200" data-example="100">Rs 100</button>
+      <button type="button" class="example-chip px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-slate-800 text-sm font-semibold border border-slate-200" data-example="250">Rs 250</button>
+      <button type="button" class="example-chip px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-slate-800 text-sm font-semibold border border-slate-200" data-example="500">Rs 500</button>
+      <button type="button" class="example-chip px-3 py-1.5 rounded-full bg-slate-100 hover:bg-blue-100 text-slate-800 text-sm font-semibold border border-slate-200" data-example="1000">Rs 1000</button>
     </div>
+
+    <!-- Ad Slot: load tax 1 -->
+<div class="ad-slot my-6 text-center">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="2049228549"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     <!-- EDUCATIONAL CONTENT -->
     <article class="space-y-8 text-gray-700 mt-8">
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Mobile Balance Calculator for Pakistan</h2>
-        <p class="leading-relaxed text-justify">
+        <p class="leading-relaxed prose-justify">
           If you recharge Rs 100 and receive less than Rs 100 in your account, the difference is tax. This calculator shows you exactly how much withholding tax is deducted from your mobile load and what balance is credited to your account. It works for all major Pakistani prepaid networks: <strong>Jazz, Telenor, Zong and Ufone</strong>.
         </p>
-        <p class="leading-relaxed text-justify mt-3">
+        <p class="leading-relaxed prose-justify mt-3">
           Enter your recharge amount, click calculate, and the tool will show the tax deducted and the balance you receive after the first deduction. The result reflects what actually lands in your account immediately after loading.
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">How Much Balance Do You Get on a Mobile Load in Pakistan?</h2>
-        <p class="leading-relaxed text-justify mb-2">
+        <p class="leading-relaxed prose-justify mb-2">
           Here is a quick reference for common recharge amounts. All values are calculated using the exact deduction formula used by telecom networks.
         </p>
         <table class="example-table">
@@ -382,9 +456,23 @@
         </p>
       </section>
 
+      <!-- Ad Slot: load tax 2 -->
+<div class="ad-slot my-6 text-center">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="2686900670"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">How Mobile Recharge Tax Is Calculated in Pakistan</h2>
-        <p class="leading-relaxed text-justify mb-3">
+        <p class="leading-relaxed prose-justify mb-3">
           Mobile recharge in Pakistan involves deductions that happen at different stages:
         </p>
         <ol class="list-decimal pl-6 space-y-3 leading-relaxed">
@@ -402,14 +490,14 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">How to Calculate the Recharge Needed for a Mobile Package</h2>
-        <p class="leading-relaxed text-justify">
+        <p class="leading-relaxed prose-justify">
           If you want to activate a package that costs Rs 450 but your current balance is only Rs 25, you need to load enough so that the balance after tax covers the package cost. Use the <strong>Package Calculator</strong> tab above. Enter the package cost and your current balance. The calculator works out the gross recharge required so that the amount remaining after the initial withholding tax is sufficient to cover the package.
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Network Compatibility</h2>
-        <p class="leading-relaxed text-justify">
+        <p class="leading-relaxed prose-justify">
           The withholding tax applies uniformly across all Pakistani telecom operators. Whether you use <strong>Jazz, Telenor, Zong, or Ufone</strong>, the deduction logic is the same. This calculator therefore produces the same result regardless of which network you use.
         </p>
       </section>
@@ -450,9 +538,23 @@
         </ul>
       </section>
 
+      <!-- Ad Slot: Load Tax 3 -->
+<div class="ad-slot my-6 text-center">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="6187910414"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
       <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
         <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy Resources</h2>
-        <p class="text-gray-700 leading-relaxed text-justify">
+        <p class="text-gray-700 leading-relaxed prose-justify">
           Explore more study notes and math resources with our free
           <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
           <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
@@ -540,7 +642,7 @@
     const { trackEvent, parseNum, showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'load-tax-calculator';
     // Reverted to 0.1304 to ensure exactly Rs 13.04 is deducted on Rs 100 (Result: Rs 86.96)
-    const TAX_RATE = 0.1304; 
+    const TAX_RATE = 0.1304;
 
     const tabTax = document.getElementById('tab-tax');
     const tabPkg = document.getElementById('tab-package');
@@ -559,10 +661,83 @@
 
     const resultPanel = document.getElementById('result-panel');
     const section = document.querySelector('section[aria-label="Calculator options"]');
+    const siteNav = document.getElementById('site-nav');
+    const answerLive = document.getElementById('answer-live');
 
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur(); // close keyboard
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80; // clear of WhatsApp / back-to-top buttons
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350); // re-check after keyboard closes
+      });
+    }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    /* ---------- Copy answer ---------- */
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) { /* noop */ }
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else {
+        fail();
+      }
+    }
+
+    /* ---------- Build answer-box HTML ---------- */
+    function answerBox(heading, answerMainHtml, answerPlainText) {
+      return `
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">${heading}</span>
+            <button type="button" class="copy-btn" data-copy="${answerPlainText.replace(/"/g, '&quot;')}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="answer-value">${answerMainHtml}</div>
+        </div>
+      `;
+    }
+
+    /* ---------- Tab switching ---------- */
     function switchTab(isPkg) {
       hideResult(resultPanel);
       clearAllErrors(section);
+      if (answerLive) answerLive.textContent = '';
       if (isPkg) {
         tabPkg.classList.add('active');
         tabTax.classList.remove('active');
@@ -586,6 +761,7 @@
     tabPkg.addEventListener('click', () => switchTab(true));
     switchToPkgBtn.addEventListener('click', () => switchTab(formPkg.style.display === 'none'));
 
+    /* ---------- TAX calculation ---------- */
     function calculateTax() {
       clearAllErrors(section);
       const rechargeAmount = parseNum(rechargeInput.value);
@@ -593,7 +769,7 @@
       if (!Number.isFinite(rechargeAmount) || rechargeAmount <= 0) {
         showError(rechargeInput, 'Please enter a valid recharge amount.');
         trackEvent(CALC_NAME, 'invalid_tax_input');
-        return;
+        return; // no scroll on error
       }
 
       const taxAmount = rechargeAmount * TAX_RATE;
@@ -601,9 +777,14 @@
       const salesTax = balanceAfterTax * 0.195;
       const finalUsableBalance = balanceAfterTax - salesTax;
 
-      const html = `
-        <div class="result-label">Balance Credited After Tax</div>
-        <div class="avg-result-value">PKR ${balanceAfterTax.toFixed(2)}</div>
+      const answerHtml = answerBox(
+        'Result',
+        `PKR ${balanceAfterTax.toFixed(2)}`,
+        `PKR ${balanceAfterTax.toFixed(2)} (Balance credited after tax)`
+      );
+
+      const html = answerHtml + `
+        <div class="result-label" style="margin-top:0.25rem;">Balance Credited After Tax</div>
         <div class="avg-summary">
           <div class="avg-summary-unit">
             <div class="avg-summary-value">PKR ${rechargeAmount.toFixed(2)}</div>
@@ -614,15 +795,16 @@
             <div class="avg-summary-label">Tax Deducted</div>
           </div>
         </div>
-        <div class="steps-block" style="margin-top:1.5rem;">
-          <div class="formula-label" style="margin-bottom:0.5rem;">Calculation Breakdown</div>
+        <details open class="steps-block" style="margin-top:1.25rem;">
+          <summary>Show / Hide step-by-step working</summary>
+          <div class="formula-label" style="margin:0.5rem 0;">Calculation Breakdown</div>
           <ol>
             <li>Recharge Amount: <strong>PKR ${rechargeAmount.toFixed(2)}</strong>.</li>
             <li>Applied Withholding Tax Rate: <strong>13.04%</strong>.</li>
             <li>Tax Deducted = ${rechargeAmount.toFixed(2)} × 0.1304 = <strong>PKR ${taxAmount.toFixed(2)}</strong>.</li>
             <li>Balance Credited = ${rechargeAmount.toFixed(2)} − ${taxAmount.toFixed(2)} = <strong>PKR ${balanceAfterTax.toFixed(2)}</strong>.</li>
           </ol>
-        </div>
+        </details>
         <div class="note-box" style="margin-top:1rem;">
           <strong>Note on Sales Tax:</strong> A further 19.5% sales tax applies when you use the balance. <br>
           Estimated usable balance after sales tax: <strong>PKR ${finalUsableBalance.toFixed(2)}</strong>.
@@ -632,8 +814,11 @@
       resultPanel.innerHTML = html;
       showResult(resultPanel, html);
       trackEvent(CALC_NAME, 'calculate_tax');
+      announce(`Result: PKR ${balanceAfterTax.toFixed(2)} balance credited after tax.`);
+      revealResult();
     }
 
+    /* ---------- PACKAGE calculation ---------- */
     function calculatePackageRecharge() {
       clearAllErrors(section);
       const pkgCost = parseNum(packageCostInput.value);
@@ -642,29 +827,36 @@
       if (!Number.isFinite(pkgCost) || pkgCost <= 0) {
         showError(packageCostInput, 'Please enter a valid package cost.');
         trackEvent(CALC_NAME, 'invalid_pkg_input');
-        return;
+        return; // no scroll on error
       }
 
       if (!Number.isFinite(curBal) || curBal < 0) {
         showError(currentBalanceInput, 'Please enter a valid current balance (0 or more).');
-        return;
+        return; // no scroll on error
       }
 
       if (curBal >= pkgCost) {
-        const html = `
-          <div class="result-label">No Recharge Needed</div>
-          <div class="avg-result-value">PKR 0</div>
-          <div class="steps-block" style="margin-top:1.5rem;">
-            <ol>
+        const answerHtml = answerBox(
+          'Result',
+          `PKR 0`,
+          `PKR 0 (No recharge needed)`
+        );
+        const html = answerHtml + `
+          <div class="result-label" style="margin-top:0.25rem;">No Recharge Needed</div>
+          <details open class="steps-block" style="margin-top:1rem;">
+            <summary>Show / Hide step-by-step working</summary>
+            <ol style="margin-top:0.5rem;">
               <li>Package Cost: <strong>PKR ${pkgCost.toFixed(2)}</strong>.</li>
               <li>Current Balance: <strong>PKR ${curBal.toFixed(2)}</strong>.</li>
               <li>Your current balance already covers the package cost.</li>
             </ol>
-          </div>
+          </details>
         `;
         resultPanel.innerHTML = html;
         showResult(resultPanel, html);
         trackEvent(CALC_NAME, 'package_no_recharge_needed');
+        announce('Result: No recharge needed. Your balance already covers the package.');
+        revealResult();
         return;
       }
 
@@ -672,9 +864,14 @@
       const grossRecharge = netNeeded / (1 - TAX_RATE);
       const taxDeducted = grossRecharge * TAX_RATE;
 
-      const html = `
-        <div class="result-label">Recharge Required</div>
-        <div class="avg-result-value">PKR ${Math.ceil(grossRecharge)} <span style="font-size:1rem; font-weight:normal; color:#64748b;">(Exact: ${grossRecharge.toFixed(2)})</span></div>
+      const answerHtml = answerBox(
+        'Result',
+        `PKR ${Math.ceil(grossRecharge)} <small>(Exact: ${grossRecharge.toFixed(2)})</small>`,
+        `PKR ${Math.ceil(grossRecharge)} (Exact: ${grossRecharge.toFixed(2)}) recharge required`
+      );
+
+      const html = answerHtml + `
+        <div class="result-label" style="margin-top:0.25rem;">Recharge Required</div>
         <div class="avg-summary">
           <div class="avg-summary-unit">
             <div class="avg-summary-value">PKR ${pkgCost.toFixed(2)}</div>
@@ -685,8 +882,9 @@
             <div class="avg-summary-label">Est. Tax Deduction</div>
           </div>
         </div>
-        <div class="steps-block" style="margin-top:1.5rem;">
-          <div class="formula-label" style="margin-bottom:0.5rem;">Calculation Breakdown</div>
+        <details open class="steps-block" style="margin-top:1.25rem;">
+          <summary>Show / Hide step-by-step working</summary>
+          <div class="formula-label" style="margin:0.5rem 0;">Calculation Breakdown</div>
           <ol>
             <li>Package Cost: <strong>PKR ${pkgCost.toFixed(2)}</strong>.</li>
             <li>Current Balance: <strong>PKR ${curBal.toFixed(2)}</strong>.</li>
@@ -694,7 +892,7 @@
             <li>Gross Recharge Required = ${netNeeded.toFixed(2)} ÷ (1 − 0.1304) = <strong>PKR ${grossRecharge.toFixed(2)}</strong>.</li>
             <li>Recommended Load: <strong>PKR ${Math.ceil(grossRecharge)}</strong> (rounded up to ensure sufficient balance).</li>
           </ol>
-        </div>
+        </details>
         <div class="note-box" style="margin-top:1rem;">
           <strong>Note:</strong> This calculation accounts for the standard 13.04% withholding tax. If your network also applies sales tax before the package is purchased, you may need to load a slightly higher amount. Check your network's package purchase process for exact requirements.
         </div>
@@ -703,15 +901,35 @@
       resultPanel.innerHTML = html;
       showResult(resultPanel, html);
       trackEvent(CALC_NAME, 'calculate_package');
+      announce(`Result: Recharge required PKR ${Math.ceil(grossRecharge)}.`);
+      revealResult();
     }
 
     calcTaxBtn.addEventListener('click', calculateTax);
     calcPkgBtn.addEventListener('click', calculatePackageRecharge);
 
+    /* Copy-button delegation (answer box) */
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
+
+    /* ---------- Example chips ---------- */
+    document.querySelectorAll('.example-chip').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        if (formTax.style.display === 'none') switchTab(false);
+        rechargeInput.value = chip.getAttribute('data-example');
+        calculateTax();
+      });
+    });
+
+    /* ---------- Resets ---------- */
     resetTaxBtn.addEventListener('click', () => {
       rechargeInput.value = '';
       clearAllErrors(section);
       hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
     });
 
     resetPkgBtn.addEventListener('click', () => {
@@ -719,9 +937,24 @@
       currentBalanceInput.value = '0';
       clearAllErrors(section);
       hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
     });
 
-    // Mobile menu + back-to-top
+    /* ---------- Enter key (desktop) fallback ---------- */
+    section.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+      const t = e.target;
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.tagName === 'A' || t.tagName === 'SUMMARY') return;
+      e.preventDefault();
+      // Route to the active tab's calculate button
+      if (formPkg.style.display !== 'none') {
+        calcPkgBtn.click();
+      } else {
+        calcTaxBtn.click();
+      }
+    });
+
+    /* ---------- Mobile menu + back-to-top ---------- */
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
     const io = document.getElementById('menu-icon-open');
