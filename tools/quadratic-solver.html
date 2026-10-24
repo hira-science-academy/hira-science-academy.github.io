@@ -211,6 +211,33 @@
       .root-card-value { font-size: 1.5rem; }
     }
     .ad-slot { min-height: 100px; }
+
+    /* ---- Stronger text contrast (replaces dim greys) ---- */
+    body { color: #0f172a; }
+    article, article p, article li, article .text-gray-700 { color: #0f172a; }
+    article h2, article h3, article .text-gray-900 { color: #020617; }
+    .hint-line, .quick-label, .root-dec, .quad-summary-label, .quad-eq-hint { color: #1e293b; }
+    .quad-context p { color: #0f172a; }
+    nav[aria-label="Breadcrumb"], nav[aria-label="Breadcrumb"] a { color: #1e293b; }
+    nav[aria-label="Breadcrumb"] li[aria-current="page"] { color: #020617; }
+    article .text-slate-600 { color: #1e293b; }
+    .worked-example, .worked-example li, .faq-answer, .steps-block li, .formula-label { color: #0f172a; }
+
+    /* ---- Justified reading text (UI labels, formulas and link lists stay unjustified) ---- */
+    article section > p,
+    article ul:not(.grid) li,
+    article ol li,
+    .faq-answer,
+    .worked-example li,
+    .steps-block li,
+    .quad-context p {
+      text-align: justify;
+      text-justify: inter-word;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+      overflow-wrap: break-word;
+    }
+    .worked-example > p.font-semibold, .math-block, .formula-label { text-align: left; hyphens: manual; }
   </style>
 </head>
 
