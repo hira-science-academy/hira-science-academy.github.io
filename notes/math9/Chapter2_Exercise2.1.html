@@ -218,9 +218,55 @@
     .comparison-table th { background: linear-gradient(135deg, #059669 0%, #047857 100%); color: white; font-weight: 600; }
     @media (max-width: 640px) { .comparison-table th, .comparison-table td { padding: 0.6rem; font-size: 0.875rem; } }
     .ad-slot { margin: 2rem auto; text-align: center; width: 100%; min-height: 90px; overflow: hidden; }
+
+    /* ===== FAQ Accordion Styles ===== */
+    .faq-item {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-left: 5px solid #059669;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: #ffffff;
+      border: none;
+      font-weight: 600;
+      color: #0f172a;
+      font-size: 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .faq-question:hover { background: #f8fafc; }
+    .faq-question:focus-visible { outline: 3px solid #059669; outline-offset: 2px; }
+    .faq-icon {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #059669;
+      transition: transform 0.2s ease;
+      flex-shrink: 0;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      padding: 0 20px 18px 20px;
+      color: #334155;
+      line-height: 1.7;
+      text-align: justify;
+      font-size: 0.95rem;
+    }
+    .faq-answer[hidden] { display: none; }
+    .faq-answer .equation { margin: 8px 0; }
   </style>
 
-  <!-- Structured Data: Article + BreadcrumbList + Organization -->
+  <!-- Structured Data: Article + BreadcrumbList + Organization + FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -259,9 +305,7 @@
           "worksFor": { "@type": "Organization", "name": "Govt Christian High School Daska" },
           "url": "https://hiraacademy.com.pk/about.html#muhammad-tayyab"
         },
-        "publisher": {
-          "@id": "https://hiraacademy.com.pk/#organization"
-        },
+        "publisher": { "@id": "https://hiraacademy.com.pk/#organization" },
         "datePublished": "2025-10-18",
         "dateModified": "2026-10-24",
         "inLanguage": "en-PK",
@@ -278,6 +322,60 @@
           "targetName": "Class 9 Mathematics – Logarithms",
           "targetUrl": "https://hiraacademy.com.pk/Mathematics-9th.html"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.1.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is scientific notation and how do I write a number in it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Scientific notation writes a number as a times 10 to the power n, where a is between 1 (inclusive) and 10 (exclusive), and n is an integer. To convert a large number, move the decimal point to the left until exactly one non-zero digit remains to the left of the point; the number of places moved is the positive exponent. To convert a small number, move the point to the right; the number of places moved is the negative exponent. For example, 48,900 becomes 4.89 times 10 to the power 4, and 0.0042 becomes 4.2 times 10 to the power negative 3."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I convert scientific notation back to ordinary notation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Look at the exponent. If the exponent is positive, move the decimal point that many places to the right (adding zeros as needed). If the exponent is negative, move the decimal point that many places to the left. For example, 8.04 times 10 to the power 2 becomes 804, and 1.5 times 10 to the power negative 2 becomes 0.015."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is the speed of light written in standard form?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The speed of light is approximately 3 times 10 to the power 8 metres per second in scientific notation. In ordinary (standard) form this is 300,000,000 metres per second, obtained by moving the decimal point 8 places to the right."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I write the Earth's circumference in scientific notation?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The circumference of the Earth at the equator is about 40,075,000 metres. Move the decimal point 7 places to the left to place one non-zero digit before the decimal, giving 4.0075 times 10 to the power 7 metres. The exponent is positive because the original number is greater than 1."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between the diameters of Earth and Mars in standard form?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The diameter of Mars is 6.779 times 10 to the power 3 km, which is 6,779 km in standard form. The diameter of Earth is 1.2756 times 10 to the power 4 km, which is 12,756 km in standard form. To convert, move the decimal point to the right by the number of places equal to the exponent."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I download the complete Exercise 2.1 solutions PDF?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The complete PDF for Class 9 Math Exercise 2.1 (Scientific Notation) is embedded on this page and can be downloaded free of cost using the 'Download PDF - Exercise 2.1 Solutions (Free)' button located directly above the FAQ section. The PDF contains the full set of solved questions for this exercise, prepared according to the PECTAA 2025 syllabus."
+            }
+          }
+        ]
       }
     ]
   }
@@ -311,7 +409,7 @@
           <a href="https://hiraacademy.com.pk/student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105 whitespace-nowrap">🎓 Student Portal</a>
         </div>
         <div class="flex items-center md:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-700 hover:bg-gray-100 focus:outline-none">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-700 hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-menu">
             <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
             <svg class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
@@ -382,80 +480,6 @@
       </div>
     </div>
 
-    <!-- Social Sharing Buttons -->
-<div class="text-center my-8">
-  <p class="font-semibold mb-3 text-primary-700">Useful? Share with your friends.</p>
-  <div class="flex justify-center gap-4 flex-wrap">
-    
-    <!-- Facebook -->
-    <a href="https://www.facebook.com/sharer/sharer.php?u=https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.1.html" 
-       onclick="shareOnFacebook(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-primary-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primary-700 transition shadow-md">
-       Facebook
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%202.1%20Solutions%20https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.1.html" 
-       onclick="shareOnWhatsApp(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md">
-       WhatsApp
-    </a>
-
-    <!-- Twitter / X -->
-    <a href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%202.1%20Solutions&url=https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.1.html" 
-       onclick="shareOnTwitter(event)" 
-       target="_blank" 
-       rel="noopener" 
-       class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md">
-       Twitter
-    </a>
-
-  </div>
-</div>
-
-<!-- JavaScript Handler for Mobile App Triggers -->
-<script>
-  const shareUrl = "https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.1.html";
-  const shareText = "Check out Class 9 Math Exercise 2.1 Solutions " + shareUrl;
-
-  function shareOnWhatsApp(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "whatsapp://send?text=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(shareText), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnFacebook(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "fb://facewebmodal/f?href=" + encodeURIComponent(shareUrl);
-      
-      setTimeout(() => {
-        window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-
-  function shareOnTwitter(e) {
-    if (/Mobi|Android/i.test(navigator.userAgent)) {
-      e.preventDefault();
-      window.location.href = "twitter://post?message=" + encodeURIComponent(shareText);
-      
-      setTimeout(() => {
-        window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(shareUrl), '_blank');
-      }, 500);
-    }
-  }
-</script>
-
     <!-- Embedded PDF (Expanded to show full page) -->
     <div class="flex flex-col items-center justify-center mb-8 w-full">
       <div class="w-full relative rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-gray-50" style="height: 1200px; min-height: 85vh;">
@@ -469,38 +493,125 @@
         ></iframe>
       </div>
       <p class="text-sm text-gray-500 mt-3 text-center">
-        If the PDF does not load, <a href="https://drive.google.com/file/d/1dl8pJkBldCN24ur1IwOFfZv5QusSW_PF/view" target="_blank" class="text-primary-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
+        If the PDF does not load, <a href="https://drive.google.com/file/d/1dl8pJkBldCN24ur1IwOFfZv5QusSW_PF/view" target="_blank" rel="noopener" class="text-primary-600 font-semibold hover:underline">click here to view it directly on Google Drive</a>.
       </p>
     </div>
 
     <!-- Download PDF Button -->
-    <div class="flex justify-center mb-8">
+    <div class="flex justify-center mb-4">
       <a href="https://drive.google.com/uc?export=download&id=1dl8pJkBldCN24ur1IwOFfZv5QusSW_PF"
          class="dark-glass-btn inline-flex items-center gap-2 font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-base">
         ⬇️ Download PDF – Exercise 2.1 Solutions (Free)
       </a>
     </div>
 
-   <!-- Ad Slot: 9th Ex 2.1 -->
-<div class="ad-slot my-6 text-center">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-       crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="5531334672"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+    <!-- ============ SOCIAL SHARING (placed directly below Download button) ============ -->
+    <div class="text-center my-6">
+      <p class="font-semibold mb-3 text-primary-700">Useful? Share with your friends.</p>
+      <div class="flex justify-center gap-4 flex-wrap">
+
+        <a id="shareFacebook"
+           href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter2_Exercise2.1.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Facebook"
+           class="bg-primary-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primary-700 transition shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300">
+           Facebook
+        </a>
+
+        <a id="shareWhatsApp"
+           href="https://api.whatsapp.com/send?text=Check%20out%20Class%209%20Math%20Exercise%202.1%20Solutions%20https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter2_Exercise2.1.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on WhatsApp"
+           class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">
+           WhatsApp
+        </a>
+
+        <a id="shareTwitter"
+           href="https://twitter.com/intent/tweet?text=Class%209%20Math%20Exercise%202.1%20Solutions&url=https%3A%2F%2Fhiraacademy.com.pk%2Fnotes%2Fmath9%2FChapter2_Exercise2.1.html"
+           target="_blank" rel="noopener"
+           aria-label="Share on Twitter"
+           class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300">
+           Twitter
+        </a>
+
+        <button id="shareCopy" type="button"
+           aria-label="Copy this page link to clipboard"
+           class="bg-gray-700 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">
+           Copy Link
+        </button>
+
+      </div>
+    </div>
+
+    <!-- JavaScript: Web Share API with graceful fallbacks (no blind setTimeout) -->
+    <script>
+      (function () {
+        const shareUrl  = "https://hiraacademy.com.pk/notes/math9/Chapter2_Exercise2.1.html";
+        const shareText = "Class 9 Math Exercise 2.1 Solutions – Scientific Notation (Punjab Board)";
+
+        function isMobile() {
+          return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        async function tryNativeShare(data) {
+          if (navigator.share && (!navigator.canShare || navigator.canShare(data))) {
+            try { await navigator.share(data); return true; }
+            catch (err) { if (err && err.name === "AbortError") return true; return false; }
+          }
+          return false;
+        }
+
+        async function copyLink() {
+          try {
+            await navigator.clipboard.writeText(shareUrl);
+            alert("Link copied to clipboard: " + shareUrl);
+          } catch (_) {
+            window.prompt("Copy this link:", shareUrl);
+          }
+        }
+
+        const fb  = document.getElementById("shareFacebook");
+        const wa  = document.getElementById("shareWhatsApp");
+        const tw  = document.getElementById("shareTwitter");
+        const cp  = document.getElementById("shareCopy");
+
+        if (wa) wa.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+        if (fb) fb.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+        if (tw) tw.addEventListener("click", async function (e) {
+          const data = { title: shareText, text: shareText, url: shareUrl };
+          if (isMobile() && await tryNativeShare(data)) { e.preventDefault(); return; }
+        });
+        if (cp) cp.addEventListener("click", async function (e) {
+          e.preventDefault();
+          await copyLink();
+        });
+      })();
+    </script>
+
+    <!-- Ad Slot: 9th Ex 2.1 -->
+    <div class="ad-slot my-6 text-center">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="5531334672"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
 
     <!-- Quick Links -->
     <div class="text-center my-8 bg-primary-50 p-4 rounded-xl border border-primary-200">
       <p class="font-bold mb-4 text-primary-800 text-lg">🔗 Quick Links – Chapter 2: Logarithms</p>
       <div class="flex flex-wrap justify-center gap-3">
-        <a href="Chapter2_Exercise2.1.html" class="btn-view" style="background: linear-gradient(135deg, #047857, #059669) !important;">🔢 Exercise 2.1</a>
+        <a href="Chapter2_Exercise2.1.html" class="btn-view" style="background: linear-gradient(135deg, #047857, #059669) !important;" aria-current="page">🔢 Exercise 2.1</a>
         <a href="Chapter2_Exercise2.2.html" class="btn-view">📋 Exercise 2.2</a>
         <a href="Chapter2_Exercise2.3.html" class="btn-view">📝 Exercise 2.3</a>
         <a href="Chapter2_Exercise2.4.html" class="btn-view">📝 Exercise 2.4</a>
@@ -550,7 +661,7 @@
             </table>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer1">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer1" aria-expanded="false" aria-controls="answer1">Show Solution</button>
       </div>
 
       <!-- Question 2 -->
@@ -577,7 +688,7 @@
             </table>
           </div>
         </div>
-        <button class="toggle-answer-btn" data-target="answer2">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer2" aria-expanded="false" aria-controls="answer2">Show Solution</button>
       </div>
 
       <!-- Question 3 -->
@@ -594,7 +705,7 @@
           </div>
           <p class="sol-text">Move the decimal point 8 places to the right.</p>
         </div>
-        <button class="toggle-answer-btn" data-target="answer3">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer3" aria-expanded="false" aria-controls="answer3">Show Solution</button>
       </div>
 
       <!-- Question 4 -->
@@ -611,7 +722,7 @@
           </div>
           <p class="sol-text">The decimal point moves 7 places to the left.</p>
         </div>
-        <button class="toggle-answer-btn" data-target="answer4">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer4" aria-expanded="false" aria-controls="answer4">Show Solution</button>
       </div>
 
       <!-- Question 5 -->
@@ -628,7 +739,7 @@
           </div>
           <p class="sol-text">Move the decimal point 3 places to the right.</p>
         </div>
-        <button class="toggle-answer-btn" data-target="answer5">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer5" aria-expanded="false" aria-controls="answer5">Show Solution</button>
       </div>
 
       <!-- Question 6 -->
@@ -645,7 +756,7 @@
           </div>
           <p class="sol-text">Move the decimal point 4 places to the right.</p>
         </div>
-        <button class="toggle-answer-btn" data-target="answer6">Show Solution</button>
+        <button class="toggle-answer-btn" data-target="answer6" aria-expanded="false" aria-controls="answer6">Show Solution</button>
       </div>
     </div>
 
@@ -657,51 +768,111 @@
       </p>
     </div>
 
-    <!-- Other Chapters Dropdown (with full chapter links) -->
+    <!-- ===================== FAQ SECTION (exercise-specific, MathJax) ===================== -->
+    <section class="content-section" id="faq-section" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">❓ Frequently Asked Questions – Exercise 2.1</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1-answer" id="faq1-question">
+          <span>What is scientific notation and how do I write a number in it?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq1-answer" role="region" aria-labelledby="faq1-question" hidden>
+          <p>Scientific notation writes a number as \(a \times 10^{n}\), where \(1 \leq a < 10\) and \(n\) is an integer.</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content"><strong>Large number:</strong> move the point <strong>left</strong>; the count of moves becomes a <strong>positive</strong> exponent.</span></div>
+            <div class="eq-line"><span class="eq-content"><strong>Small number:</strong> move the point <strong>right</strong>; the count of moves becomes a <strong>negative</strong> exponent.</span></div>
+          </div>
+          <p>Examples: \(48,900 = 4.89 \times 10^{4}\) and \(0.0042 = 4.2 \times 10^{-3}\).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2-answer" id="faq2-question">
+          <span>How do I convert scientific notation back to ordinary notation?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq2-answer" role="region" aria-labelledby="faq2-question" hidden>
+          <p>Use the exponent to decide the direction of the shift:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content"><strong>Positive exponent:</strong> move the decimal point to the <strong>right</strong></span></div>
+            <div class="eq-line"><span class="eq-content"><strong>Negative exponent:</strong> move the decimal point to the <strong>left</strong></span></div>
+          </div>
+          <p>Examples: \(8.04 \times 10^{2} = 804\) and \(1.5 \times 10^{-2} = 0.015\).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3-answer" id="faq3-question">
+          <span>How is the speed of light written in standard form?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq3-answer" role="region" aria-labelledby="faq3-question" hidden>
+          <p>The speed of light is approximately \(3 \times 10^{8}\ \text{m s}^{-1}\) in scientific notation. Moving the decimal point \(8\) places to the right gives:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(3 \times 10^{8} = 300{,}000{,}000\ \text{m s}^{-1}\)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4-answer" id="faq4-question">
+          <span>How do I write the Earth's circumference in scientific notation?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq4-answer" role="region" aria-labelledby="faq4-question" hidden>
+          <p>The Earth's equatorial circumference is about \(40{,}075{,}000\ \text{m}\). Move the decimal point \(7\) places to the left so that only one non-zero digit remains in front:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">\(40{,}075{,}000\ \text{m} = 4.0075 \times 10^{7}\ \text{m}\)</span></div>
+          </div>
+          <p>The exponent is positive because the original number is greater than \(1\).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5-answer" id="faq5-question">
+          <span>How do I write the diameters of Earth and Mars in standard form?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq5-answer" role="region" aria-labelledby="faq5-question" hidden>
+          <p>Move the decimal point to the right by the number of places equal to the exponent:</p>
+          <div class="equation">
+            <div class="eq-line"><span class="eq-content">Diameter of Mars: \(6.779 \times 10^{3} = 6{,}779\ \text{km}\)</span></div>
+            <div class="eq-line"><span class="eq-content">Diameter of Earth: \(1.2756 \times 10^{4} = 12{,}756\ \text{km}\)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq6-answer" id="faq6-question">
+          <span>Where can I download the complete Exercise 2.1 solutions PDF?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq6-answer" role="region" aria-labelledby="faq6-question" hidden>
+          <p>The complete PDF for Class 9 Math Exercise 2.1 (Scientific Notation) is embedded on this page and can be downloaded free of cost using the <strong>“⬇️ Download PDF – Exercise 2.1 Solutions (Free)”</strong> button located directly above the FAQ section. The PDF contains the full set of solved questions for this exercise, prepared according to the PECTAA 2025 syllabus.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Chapters Dropdown -->
     <div class="text-center mt-10 mb-16">
-      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1">
+      <button id="toggleChapters" class="dark-glass-btn px-8 py-4 rounded-xl shadow-xl transition-all duration-300 font-bold text-lg transform hover:-translate-y-1" aria-expanded="false" aria-controls="chaptersList">
         📚 Explore Other Math Chapters (1–13)
       </button>
       <div id="chaptersList" class="hidden mt-6 space-y-3 max-w-2xl mx-auto text-left">
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-1-real-numbers.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 1</span><span>Real Numbers</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-2-logarithms.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold">
-          <span>Chapter 2</span><span>✨ Logarithms</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-3-sets-and-functions.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 3</span><span>Sets and Functions</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-4-factorization.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 4</span><span>Factorization</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-5-linear-equations.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 5</span><span>Linear Equations and Inequalities</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-6-trigonometry.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 6</span><span>Trigonometry</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-7-coordinate-geometry.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 7</span><span>Coordinate Geometry</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-8-logic.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 8</span><span>Logic</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-9-similar-figures.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 9</span><span>Similar Figures</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-10-graphs-of-functions.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 10</span><span>Graphs of Functions</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-11-loci-and-construction.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 11</span><span>Loci and Construction</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-12-information-handling.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 12</span><span>Information Handling</span>
-        </a>
-        <a href="https://hiraacademy.com.pk/notes/math9/chapter-13-probability.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1">
-          <span>Chapter 13</span><span>Probability</span>
-        </a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-1-real-numbers.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 1</span><span>Real Numbers</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-2-logarithms.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg ring-2 ring-yellow-300 font-semibold"><span>Chapter 2</span><span>✨ Logarithms</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-3-sets-and-functions.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 3</span><span>Sets and Functions</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-4-factorization.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 4</span><span>Factorization</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-5-linear-equations.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 5</span><span>Linear Equations and Inequalities</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-6-trigonometry.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 6</span><span>Trigonometry</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-7-coordinate-geometry.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 7</span><span>Coordinate Geometry</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-8-logic.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 8</span><span>Logic</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-9-similar-figures.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 9</span><span>Similar Figures</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-10-graphs-of-functions.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 10</span><span>Graphs of Functions</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-11-loci-and-construction.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 11</span><span>Loci and Construction</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-12-information-handling.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 12</span><span>Information Handling</span></a>
+        <a href="https://hiraacademy.com.pk/notes/math9/chapter-13-probability.html" class="flex justify-between items-center px-6 py-4 bg-gradient-to-r from-primary-600 to-secondary-600 text-white rounded-xl shadow-lg hover:from-primary-700 hover:to-secondary-700 transition-all duration-300 font-semibold transform hover:-translate-y-1"><span>Chapter 13</span><span>Probability</span></a>
       </div>
       <p class="text-xs text-gray-500 mt-3">📖 Complete syllabus coverage for Class 9 Mathematics – Chapters 1 to 13</p>
     </div>
@@ -710,8 +881,7 @@
     <div class="mt-12 text-center text-gray-600">
       <p class="mb-2">Created by <strong class="text-primary-700">Hira Science Academy</strong> | Aligned with <strong class="text-primary-700">PECTAA Syllabus</strong></p>
       <p class="mt-6">
-        <a href="https://hiraacademy.com.pk/Mathematics-9th.html"
-           class="dark-glass-btn inline-block px-6 py-3 font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+        <a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="dark-glass-btn inline-block px-6 py-3 font-semibold rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
           ← Back to Class 9 Mathematics Notes
         </a>
       </p>
@@ -719,84 +889,64 @@
   </main>
 
   <!-- Internal Linking Section -->
-<section class="max-w-7xl mx-auto px-6 pb-14">
-  <details class="bg-gradient-to-br from-primary-50 via-white to-primary-100 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
-    <summary class="text-2xl md:text-3xl font-bold text-primary-800 cursor-pointer hover:text-primary-600 list-none flex items-center justify-center gap-3 text-center">
-      <span class="text-3xl">📚</span> Explore Complete Learning Resources (Class 9, 10 &amp; More)
-    </summary>
-    <div class="mt-8">
-      <h2 class="text-2xl font-bold text-center text-primary-800 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
-      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-          <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-primary-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
-          <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/Islamiat-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li><li><a href="https://hiraacademy.com.pk/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li></ul></nav>
-        </article>
-        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-          <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-secondary-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
-          <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/PakistanStudies-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li></ul></nav>
-        </article>
-        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-          <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-amber-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
-          <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li><li><a href="https://hiraacademy.com.pk/physics-numericals.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li><li><a href="https://hiraacademy.com.pk/math-mistakes.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li><li><a href="https://hiraacademy.com.pk/physics-formulas.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li><li><a href="https://hiraacademy.com.pk/blog.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li></ul>
-        </article>
-        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-          <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
-          <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/courses-details.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li><li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li><li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li><li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li><li><a href="https://hiraacademy.com.pk/student-portal.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li></ul>
-        </article>
-        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-          <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-primary-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions &amp; Key Resources</h3>
-          <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/9th-class-math-definitions.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul>
-        </article>
-        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-          <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support &amp; Policies</h3>
-          <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li><li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li><li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li><li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li><li><a href="https://hiraacademy.com.pk/mission.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li></ul>
-        </article>
-      </div>
-
-      <!-- Tools section -->
-      <div class="mt-10 pt-8 border-t border-primary-200">
-        <h2 class="text-2xl font-bold text-center text-primary-800 mb-3 tracking-wide">🧮 Free Online Tools &amp; Calculators</h2>
-        <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Use these tools for quick calculations and step-by-step solutions.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
-          <a href="https://hiraacademy.com.pk/tools/percentage-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all">
-            <span class="text-2xl">％</span>
-            <span class="font-semibold text-gray-800">Percentage Calculator</span>
-          </a>
-          <a href="https://hiraacademy.com.pk/tools/scientific-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all">
-            <span class="text-2xl">🧮</span>
-            <span class="font-semibold text-gray-800">Scientific Calculator</span>
-          </a>
-          <a href="https://hiraacademy.com.pk/tools/unit-converter.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all">
-            <span class="text-2xl">🔄</span>
-            <span class="font-semibold text-gray-800">Unit Converter</span>
-          </a>
-          <a href="https://hiraacademy.com.pk/tools/gpa-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all">
-            <span class="text-2xl">🎓</span>
-            <span class="font-semibold text-gray-800">GPA Calculator</span>
-          </a>
-          <a href="https://hiraacademy.com.pk/tools/quadratic-solver.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all">
-            <span class="text-2xl">x²</span>
-            <span class="font-semibold text-gray-800">Quadratic Solver</span>
-          </a>
-          <a href="https://hiraacademy.com.pk/tools/slope-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all">
-            <span class="text-2xl">⟋</span>
-            <span class="font-semibold text-gray-800">Slope Calculator</span>
-          </a>
+  <section class="max-w-7xl mx-auto px-6 pb-14">
+    <details class="bg-gradient-to-br from-primary-50 via-white to-primary-100 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
+      <summary class="text-2xl md:text-3xl font-bold text-primary-800 cursor-pointer hover:text-primary-600 list-none flex items-center justify-center gap-3 text-center">
+        <span class="text-3xl">📚</span> Explore Complete Learning Resources (Class 9, 10 &amp; More)
+      </summary>
+      <div class="mt-8">
+        <h2 class="text-2xl font-bold text-center text-primary-800 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
+        <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-primary-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
+            <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/Islamiat-9th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li><li><a href="https://hiraacademy.com.pk/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li></ul></nav>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-secondary-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
+            <nav><ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/Mathematics-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li><li><a href="https://hiraacademy.com.pk/Physics-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li><li><a href="https://hiraacademy.com.pk/Chemistry-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li><li><a href="https://hiraacademy.com.pk/Biology-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li><li><a href="https://hiraacademy.com.pk/PakistanStudies-10th.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li></ul></nav>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-amber-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/fsc-entry-test.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li><li><a href="https://hiraacademy.com.pk/physics-numericals.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li><li><a href="https://hiraacademy.com.pk/math-mistakes.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li><li><a href="https://hiraacademy.com.pk/physics-formulas.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li><li><a href="https://hiraacademy.com.pk/blog.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li></ul>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-purple-100 p-3 rounded-xl text-2xl mr-3">🔗</span> Quick Links</h3>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/courses-details.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🎓</span>Courses Overview</a></li><li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📞</span>Contact Us</a></li><li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">ℹ️</span>About Us</a></li><li><a href="https://hiraacademy.com.pk/career-services.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">💼</span>Career Services</a></li><li><a href="https://hiraacademy.com.pk/student-portal.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">🚪</span>Student Portal</a></li></ul>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-primary-100 p-3 rounded-xl text-2xl mr-3">📖</span> Definitions &amp; Key Resources</h3>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/9th-class-math-definitions.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📘</span>Math 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li><li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📋</span>Math Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li><li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">📄</span>Model Paper 2026</a></li></ul>
+          </article>
+          <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+            <h3 class="text-xl font-bold text-primary-700 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3">🛡️</span> Support &amp; Policies</h3>
+            <ul class="space-y-4 text-sm"><li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">📜</span>Terms of Service</a></li><li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">🔒</span>Privacy Policy</a></li><li><a href="https://hiraacademy.com.pk/refund-policy.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">💳</span>Refund Policy</a></li><li><a href="https://hiraacademy.com.pk/accessibility.html" class="hover:text-primary-600 transition inline-flex items-center"><span class="mr-2">♿</span>Accessibility</a></li><li><a href="https://hiraacademy.com.pk/mission.html" class="text-primary-600 font-semibold hover:text-primary-700 inline-flex items-center mt-2"><span class="mr-2">🎯</span>Our Mission</a></li></ul>
+          </article>
         </div>
-        <div class="mt-6 text-center">
-          <a href="https://hiraacademy.com.pk/tools/" class="inline-flex items-center text-primary-700 font-semibold hover:text-primary-800 transition">
-            View all 53 tools &amp; calculators →
-          </a>
+
+        <!-- Tools section -->
+        <div class="mt-10 pt-8 border-t border-primary-200">
+          <h2 class="text-2xl font-bold text-center text-primary-800 mb-3 tracking-wide">🧮 Free Online Tools &amp; Calculators</h2>
+          <p class="text-center text-gray-600 mb-6 max-w-2xl mx-auto">Use these tools for quick calculations and step-by-step solutions.</p>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
+            <a href="https://hiraacademy.com.pk/tools/percentage-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all"><span class="text-2xl">％</span><span class="font-semibold text-gray-800">Percentage Calculator</span></a>
+            <a href="https://hiraacademy.com.pk/tools/scientific-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all"><span class="text-2xl">🧮</span><span class="font-semibold text-gray-800">Scientific Calculator</span></a>
+            <a href="https://hiraacademy.com.pk/tools/unit-converter.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all"><span class="text-2xl">🔄</span><span class="font-semibold text-gray-800">Unit Converter</span></a>
+            <a href="https://hiraacademy.com.pk/tools/gpa-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all"><span class="text-2xl">🎓</span><span class="font-semibold text-gray-800">GPA Calculator</span></a>
+            <a href="https://hiraacademy.com.pk/tools/quadratic-solver.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all"><span class="text-2xl">x²</span><span class="font-semibold text-gray-800">Quadratic Solver</span></a>
+            <a href="https://hiraacademy.com.pk/tools/slope-calculator.html" class="flex items-center gap-3 p-4 bg-white rounded-xl shadow-md border border-gray-200 hover:shadow-lg hover:border-primary-300 transition-all"><span class="text-2xl">⟋</span><span class="font-semibold text-gray-800">Slope Calculator</span></a>
+          </div>
+          <div class="mt-6 text-center">
+            <a href="https://hiraacademy.com.pk/tools/" class="inline-flex items-center text-primary-700 font-semibold hover:text-primary-800 transition">View all 53 tools &amp; calculators →</a>
+          </div>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a href="https://hiraacademy.com.pk/" class="inline-flex items-center homepage-btn px-8 py-4 rounded-full font-bold shadow-lg transition"><span class="mr-3">🏠</span>Return to Homepage</a>
         </div>
       </div>
-
-      <div class="mt-10 text-center">
-        <a href="https://hiraacademy.com.pk/" class="inline-flex items-center homepage-btn px-8 py-4 rounded-full font-bold shadow-lg transition"><span class="mr-3">🏠</span>Return to Homepage</a>
-      </div>
-    </div>
-  </details>
-</section>
+    </details>
+  </section>
 
   <!-- Footer -->
   <footer class="footer-dark-glass text-gray-100 shadow-xl relative z-10">
@@ -855,17 +1005,18 @@
     </div>
   </footer>
 
-  <button class="back-to-top" id="backToTop">↑</button>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script>
     (function(){
-      // Mobile menu toggle
       const menuButton = document.getElementById('mobile-menu-button');
       const mobileMenu = document.getElementById('mobile-menu');
       if(menuButton && mobileMenu) {
-        menuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        menuButton.addEventListener('click', () => {
+          const isHidden = mobileMenu.classList.toggle('hidden');
+          menuButton.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
-      // Back to top
       const backToTopButton = document.getElementById('backToTop');
       window.addEventListener('scroll', () => {
         if (window.pageYOffset > 300) backToTopButton.classList.add('show');
@@ -873,14 +1024,15 @@
       });
       backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-      // Chapters toggle
       const toggleBtn = document.getElementById('toggleChapters');
       const chaptersList = document.getElementById('chaptersList');
       if(toggleBtn && chaptersList){
-        toggleBtn.addEventListener('click', () => chaptersList.classList.toggle('hidden'));
+        toggleBtn.addEventListener('click', () => {
+          const isHidden = chaptersList.classList.toggle('hidden');
+          toggleBtn.setAttribute('aria-expanded', String(!isHidden));
+        });
       }
 
-      // Reading Progress Bar
       const progressBar = document.getElementById('readingProgressBar');
       function updateProgressBar() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -897,20 +1049,30 @@
       // Show/Hide answer toggles
       const toggleBtns = document.querySelectorAll('.toggle-answer-btn');
       toggleBtns.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function() {
           const targetId = this.getAttribute('data-target');
           const answerDiv = document.getElementById(targetId);
           if (answerDiv) {
             answerDiv.classList.toggle('show');
-            this.textContent = answerDiv.classList.contains('show') ? 'Hide Solution' : 'Show Solution';
-            // Re-render MathJax for the newly shown content
-            if (answerDiv.classList.contains('show')) {
-              if (window.MathJax && window.MathJax.typesetPromise) {
-                MathJax.typesetPromise([answerDiv]).catch(function (err) {
-                  console.log('MathJax error: ', err.message);
-                });
-              }
+            const isShown = answerDiv.classList.contains('show');
+            this.textContent = isShown ? 'Hide Solution' : 'Show Solution';
+            this.setAttribute('aria-expanded', String(isShown));
+            if (isShown && window.MathJax && MathJax.typesetPromise) {
+              MathJax.typesetPromise([answerDiv]).catch(function(){});
             }
+          }
+        });
+      });
+
+      // FAQ accordion (accessible, keyboard-native)
+      document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const expanded = this.getAttribute('aria-expanded') === 'true';
+          const answer = document.getElementById(this.getAttribute('aria-controls'));
+          this.setAttribute('aria-expanded', String(!expanded));
+          if (answer) answer.hidden = expanded;
+          if (!expanded && answer && window.MathJax && MathJax.typesetPromise) {
+            MathJax.typesetPromise([answer]).catch(function(){});
           }
         });
       });
