@@ -104,7 +104,7 @@
   <link rel="stylesheet" href="assets/tools.css" />
 
   <style>
-    body { background: #f9fafb; color: #1f2937; }
+    body { background: #f9fafb; color: #0f172a; }
     .header-gradient {
       background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
       position: relative;
@@ -152,6 +152,36 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1.5rem;
+    }
+    .answer-box .answer-head { 
+      display: flex; align-items: center; justify-content: space-between; 
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
+    }
+    .answer-box .answer-heading { 
+      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
+      text-transform: uppercase; color: #0369a1; 
+    }
+    .answer-box .answer-value { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 2rem; font-weight: 800; color: #0b1220; 
+      line-height: 1.15; word-break: break-word; text-align: center;
+    }
+    .answer-box .answer-value .katex { font-size: 2rem; }
+    .copy-btn { 
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
+      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
+      font-weight: 700; cursor: pointer; white-space: nowrap; 
+    }
+    .copy-btn:hover { background: #bae6fd; }
+
     /* Graph canvas */
     .graph-canvas-wrap {
       position: relative;
@@ -159,7 +189,7 @@
       border: 1px solid #e2e8f0;
       border-radius: 0.75rem;
       padding: 0.5rem;
-      margin-top: 0.75rem;
+      margin-top: 1.5rem;
     }
     .graph-canvas-wrap canvas {
       display: block;
@@ -169,20 +199,6 @@
       background: #ffffff;
     }
 
-    /* Result */
-    .tri-result-value {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 0.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.875rem;
-      font-weight: 700;
-      color: #0b1220;
-      line-height: 1.2;
-      flex-wrap: wrap;
-      text-align: center;
-    }
     .tri-summary {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -191,7 +207,7 @@
     }
     @media (min-width: 640px) { .tri-summary { grid-template-columns: repeat(4, 1fr); } }
     .tri-summary-unit {
-      background: #ffffff;
+      background: #f8fafc;
       border: 1px solid #e2e8f0;
       border-radius: 0.75rem;
       padding: 0.75rem 0.6rem;
@@ -250,7 +266,9 @@
       gap: 0.75rem;
       align-items: end;
     }
-    @media (max-width: 540px) { .tri-input-row { grid-template-columns: 1fr 1fr 1fr; } }
+    @media (max-width: 540px) { 
+      .tri-input-row { grid-template-columns: 1fr 1fr 1fr; gap: 0.5rem; } 
+    }
 
     .tri-error-banner {
       display: none;
@@ -269,13 +287,24 @@
     
     /* KaTeX overrides */
     .katex { font-size: 1.1em; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .sign-btn{min-width:48px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+    }
+
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
   </style>
 </head>
 
 <body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -318,24 +347,24 @@
   </nav>
 
   <!-- HERO -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · SSS · Heron's Formula · Graph</span>
+      <span class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · SSS · Heron's Formula · Graph</span>
       
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Triangle Calculator (SSS)</h1>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">Triangle Calculator (SSS)</h1>
       
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Enter 3 sides to instantly get the area using Heron's formula, calculate all angles, and check the triangle inequality.</p>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Enter 3 sides to instantly get the area using Heron's formula, calculate all angles, and check the triangle inequality.</p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
@@ -347,10 +376,13 @@
   </div>
 
   <!-- MAIN -->
-  <main class="max-w-3xl mx-auto px-6 py-10">
+  <main class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
+
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <!-- CALCULATOR -->
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Triangle calculator inputs">
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Triangle calculator inputs">
 
       <p style="font-size:0.875rem;color:#64748b;margin-bottom:1rem;">
         Enter the three side lengths in any units. The calculator determines the triangle and its properties.
@@ -384,21 +416,31 @@
 
     </section>
 
-    <!-- RESULT -->
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Triangle Calculator result"></section>
 
-    <!-- AD -->
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+   <!-- Ad Slot: Triangle Calculator 1 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="1084591695"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     <!-- EDUCATIONAL CONTENT -->
     <article class="space-y-8 text-gray-700 mt-8">
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What this SSS triangle calculator does</h2>
-        <p class="leading-relaxed text-justify">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           This tool takes the three side lengths of a triangle (the SSS case in geometry) and returns everything that can be derived from them: the area, the perimeter, the semi-perimeter, all three angles, the classification by sides (equilateral, isosceles, or scalene), and the classification by angles (acute, right, or obtuse). It verifies the triangle inequality before computing anything, so impossible inputs are rejected with a clear explanation rather than a nonsensical output. A graph draws the triangle at the correct shape so you can see it.
         </p>
       </section>
@@ -455,10 +497,10 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">How to find the angle of a triangle given 3 sides</h2>
-        <p class="leading-relaxed text-justify mb-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mb-3">
           If you know all three sides of a triangle (SSS), you cannot use the basic SOH CAH TOA trigonometry because you don't have a right angle. Instead, you must use the <strong>Law of Cosines</strong>. 
         </p>
-        <p class="leading-relaxed text-justify mb-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mb-3">
           To find the angle opposite side \(a\), use the formula:
           \[ \cos A = \frac{b^2 + c^2 - a^2}{2bc} \]
           Then, use the inverse cosine function (\(\arccos\) or \(\cos^{-1}\)) to find the angle in degrees. Repeat the process for the other two angles. As a built-in check, your three angles must add up to exactly \(180^\circ\). This calculator does all of this for you instantly.
@@ -511,16 +553,32 @@
         </div>
       </section>
 
+      <!-- Ad Slot: Triangle Calculator 2 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="7901989321"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Why Heron's formula is useful</h2>
-        <p class="leading-relaxed text-justify mb-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mb-3">
           In Class 9 and 10 problems, you often know the three sides of a triangle but not its height. Heron's formula lets you find the area without computing a height first. It is exact when the sides are integers and the semi-perimeter times the three differences is a perfect square, and reduces to the familiar \(\frac{1}{2} \times \text{base} \times \text{height}\) otherwise. It is one of the most elegant results in elementary geometry because it depends only on the three side lengths, symmetric in \(a, b, c\).
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li><strong>Not checking the triangle inequality.</strong> Sides 2, 3, 7 will not form a triangle. Always verify \(a + b > c\) for the longest side \(c\) before computing anything.</li>
           <li><strong>Using Heron's formula for an invalid triangle.</strong> If the inequality fails, one of the factors \((s - a)\), \((s - b)\), or \((s - c)\) becomes negative, and the formula gives a meaningless answer. Check validity first.</li>
           <li><strong>Forgetting to take the square root.</strong> Heron's formula involves \(\sqrt{\dots}\), not just the product. Skipping the square root gives the square of the area.</li>
@@ -565,12 +623,28 @@
 
       <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
         <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
-        <p class="text-gray-700 leading-relaxed text-justify">
+        <p class="text-gray-700 leading-relaxed prose-justify">
           Heron's formula and the triangle inequality are covered in Class 9 mathematics. Revise the theory with our free
           <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
           <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
         </p>
       </section>
+
+      <!-- Ad Slot: Triangle Calculator 3 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="9526062188"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     </article>
 
@@ -674,7 +748,7 @@
   <script>
   (function () {
     'use strict';
-    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+    const { trackEvent, attachCopyButton, parseNum,
             showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'triangle-calculator';
 
@@ -687,10 +761,43 @@
     const resetBtn = document.getElementById('reset-btn');
     const resultPanel = document.getElementById('result-panel');
     const section = document.querySelector('section[aria-label="Triangle calculator inputs"]');
+    const siteNav = document.getElementById('site-nav');
+    const answerLive = document.getElementById('answer-live');
 
     let lastResult = null;
 
     attachCopyButton(resultPanel, CALC_NAME);
+
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur(); // close keyboard
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
+    }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
 
     /* ============ Number formatting ============ */
     function fmtNum(x, maxDecimals) {
@@ -852,24 +959,34 @@
       const areaInt = Math.round(area * area);
       const isAreaPerfect = Math.abs(areaInt - heronProduct) < 1e-9 && Math.abs(Math.sqrt(areaInt) - Math.round(Math.sqrt(areaInt))) < 1e-9;
       let areaHTML;
+      let areaPlain;
       if (isAreaPerfect) {
         areaHTML = `\\[ ${Math.round(Math.sqrt(areaInt))} \\]`;
+        areaPlain = String(Math.round(Math.sqrt(areaInt)));
       } else if (Math.abs(areaInt - heronProduct) < 1e-9) {
         const simp = simplifySqrt(areaInt);
         if (simp.outside === 1) {
           areaHTML = `\\[ \\sqrt{${areaInt}} \\]`;
+          areaPlain = `sqrt(${areaInt})`;
         } else {
           areaHTML = `\\[ ${simp.outside}\\sqrt{${simp.inside}} \\]`;
+          areaPlain = `${simp.outside} sqrt(${simp.inside})`;
         }
       } else {
         areaHTML = `\\[ ${fmtNum(area, 6)} \\]`;
+        areaPlain = fmtNum(area, 6);
       }
 
       /* ============ Render ============ */
       const html = `
-        <div class="result-label">Area</div>
-        <div class="tri-result-value">${areaHTML}</div>
-        ${!isAreaPerfect ? `<p style="text-align:center;font-size:0.9375rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.35rem;">\\(\\approx ${fmtNum(area, 10)}\\)</p>` : ''}
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">Area</span>
+            <button type="button" class="copy-btn" data-copy="${areaPlain}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="answer-value">${areaHTML}</div>
+          ${!isAreaPerfect ? `<p style="text-align:center;font-size:0.9375rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.35rem;">\\(\\approx ${fmtNum(area, 10)}\\)</p>` : ''}
+        </div>
 
         <div style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;margin-top:1rem;">
           <span class="tri-type-badge ${sidesBadgeClass}">${bySides}</span>
@@ -915,20 +1032,23 @@
           <canvas id="graph-canvas" aria-label="Graph of the triangle"></canvas>
         </div>
 
-        <div class="steps-block">
-          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
-          <ol>
-            <li>Triangle inequality check: \\( ${fmtNum(sorted[0])} + ${fmtNum(sorted[1])} = ${fmtNum(sorted[0] + sorted[1])} > ${fmtNum(sorted[2])} \\) ✓. Valid triangle.</li>
-            <li>Perimeter: \\( P = a + b + c = ${fmtNum(a)} + ${fmtNum(b)} + ${fmtNum(c)} = ${fmtNum(P)} \\).</li>
-            <li>Semi-perimeter: \\( s = P / 2 = ${fmtNum(s)} \\).</li>
-            <li>Heron's formula: \\( A = \\sqrt{s(s - a)(s - b)(s - c)} = \\sqrt{${fmtNum(s)} \\times ${fmtNum(s - a)} \\times ${fmtNum(s - b)} \\times ${fmtNum(s - c)}} = \\sqrt{${fmtNum(heronProduct, 6)}} \\approx ${fmtNum(area, 8)} \\).</li>
-            <li>Angle A (opposite side a): \\( \\cos A = \\frac{b^2 + c^2 - a^2}{2bc} = \\frac{${fmtNum(b * b)} + ${fmtNum(c * c)} - ${fmtNum(a * a)}}{${fmtNum(2 * b * c)}} = ${fmtNum((b * b + c * c - a * a) / (2 * b * c), 6)} \\). So \\( A = \\arccos(\\dots) = ${fmtNum(A, 4)}^\\circ \\).</li>
-            <li>Angle B (opposite side b): similarly, \\( B = ${fmtNum(B, 4)}^\\circ \\).</li>
-            <li>Angle C (opposite side c): \\( C = 180^\\circ - A - B = ${fmtNum(C, 4)}^\\circ \\).</li>
-            <li>Angle sum check: \\( A + B + C = ${fmtNum(A + B + C, 4)}^\\circ \\). Should be exactly \\(180^\\circ\\).</li>
-            <li>By sides: <strong>${bySides}</strong>.</li>
-            <li>By angles (Pythagorean check): \\( ${pythNote} \\), so <strong>${byAngles}</strong>.</li>
-          </ol>
+        <div class="steps-block mt-6">
+          <details open>
+            <summary>Show / Hide step-by-step working</summary>
+            <div class="formula-label" style="margin:0.5rem 0;">Calculation Breakdown</div>
+            <ol class="mt-2 space-y-2 text-[0.95rem]">
+              <li>Triangle inequality check: \\( ${fmtNum(sorted[0])} + ${fmtNum(sorted[1])} = ${fmtNum(sorted[0] + sorted[1])} > ${fmtNum(sorted[2])} \\) ✓. Valid triangle.</li>
+              <li>Perimeter: \\( P = a + b + c = ${fmtNum(a)} + ${fmtNum(b)} + ${fmtNum(c)} = ${fmtNum(P)} \\).</li>
+              <li>Semi-perimeter: \\( s = P / 2 = ${fmtNum(s)} \\).</li>
+              <li>Heron's formula: \\( A = \\sqrt{s(s - a)(s - b)(s - c)} = \\sqrt{${fmtNum(s)} \\times ${fmtNum(s - a)} \\times ${fmtNum(s - b)} \\times ${fmtNum(s - c)}} = \\sqrt{${fmtNum(heronProduct, 6)}} \\approx ${fmtNum(area, 8)} \\).</li>
+              <li>Angle A (opposite side a): \\( \\cos A = \\frac{b^2 + c^2 - a^2}{2bc} = \\frac{${fmtNum(b * b)} + ${fmtNum(c * c)} - ${fmtNum(a * a)}}{${fmtNum(2 * b * c)}} = ${fmtNum((b * b + c * c - a * a) / (2 * b * c), 6)} \\). So \\( A = \\arccos(\\dots) = ${fmtNum(A, 4)}^\\circ \\).</li>
+              <li>Angle B (opposite side b): similarly, \\( B = ${fmtNum(B, 4)}^\\circ \\).</li>
+              <li>Angle C (opposite side c): \\( C = 180^\\circ - A - B = ${fmtNum(C, 4)}^\\circ \\).</li>
+              <li>Angle sum check: \\( A + B + C = ${fmtNum(A + B + C, 4)}^\\circ \\). Should be exactly \\(180^\\circ\\).</li>
+              <li>By sides: <strong>${bySides}</strong>.</li>
+              <li>By angles (Pythagorean check): \\( ${pythNote} \\), so <strong>${byAngles}</strong>.</li>
+            </ol>
+          </details>
         </div>
 
         <div class="tri-context">
@@ -957,6 +1077,9 @@
 
       lastResult = { a, b, c, A, B, C, area };
       requestAnimationFrame(() => drawTriangle(a, b, c, A, B, C));
+      
+      announce(`Result: Area is ${fmtNum(area, 4)} square units.`);
+      revealResult();
 
       trackEvent(CALC_NAME, 'calculate');
     }
@@ -1042,7 +1165,44 @@
 
     /* ============ Wiring ============ */
     calcBtn.addEventListener('click', calculate);
-    bindEnterKey(section, calcBtn);
+
+    // Explicit fallback for Enter key across all inputs
+    section.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+      const t = e.target;
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.tagName === 'A' || t.tagName === 'SUMMARY') return;
+      e.preventDefault();
+      calcBtn.click();
+    });
+
+    // Copy button delegation
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
+
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
 
     resetBtn.addEventListener('click', () => {
       [aEl, bEl, cEl].forEach(el => { el.value = ''; });
@@ -1052,6 +1212,7 @@
       bannerEl.textContent = '';
       clearAllErrors(section);
       hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
       trackEvent(CALC_NAME, 'reset');
     });
 

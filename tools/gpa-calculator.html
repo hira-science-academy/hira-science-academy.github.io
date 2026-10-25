@@ -179,13 +179,47 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
-    .gpa-big-value { display: flex; align-items: baseline; justify-content: center; gap: .5rem; font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 800; color: #0b1220; line-height: 1.1; flex-wrap: wrap; text-align: center; }
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1.5rem;
+    }
+    .answer-box .answer-head { 
+      display: flex; align-items: center; justify-content: space-between; 
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
+    }
+    .answer-box .answer-heading { 
+      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
+      text-transform: uppercase; color: #0369a1; 
+    }
+    .answer-box .answer-value { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 2.5rem; font-weight: 800; color: #0b1220; 
+      line-height: 1.15; word-break: break-word; text-align: center;
+    }
+    .answer-box .answer-value .katex { font-size: 2.5rem; }
+    .copy-btn { 
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
+      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
+      font-weight: 700; cursor: pointer; white-space: nowrap; 
+    }
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary { 
+      cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; 
+      margin-top: .75rem; user-select: none; 
+    }
+    .answer-box details > summary:hover { text-decoration: underline; }
+
     .gpa-big-scale { font-size: 1.125rem; font-weight: 500; color: #64748b; }
     .gpa-summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: .75rem; margin-top: 1rem; }
     .gpa-summary-unit { background: #fff; border: 1px solid #e2e8f0; border-radius: .75rem; padding: .875rem .75rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: .3rem; }
     .gpa-summary-value { font-family: 'Montserrat', sans-serif; font-size: 1.125rem; font-weight: 700; color: #0b1220; line-height: 1.2; word-break: break-word; }
     .gpa-summary-label { font-size: .75rem; color: #475569; font-weight: 600; }
-    .gpa-context { background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%); border: 1px solid #bae6fd; border-radius: .75rem; padding: 1rem 1.25rem; margin-top: 1rem; }
+    .gpa-context { background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%); border: 1px solid #bae6fd; border-radius: .75rem; padding: 1rem 1.25rem; margin-top: 1.5rem; }
     .gpa-context p { margin: .25rem 0; color: #334155; line-height: 1.6; font-size: .9375rem; }
     .gpa-context strong { color: #0b1220; }
 
@@ -227,10 +261,22 @@
     .grade-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #e2e8f0; font-size: .9rem; }
     .grade-table th { background: #f0f9ff; color: #0369a1; text-align: left; padding: .5rem .75rem; border-bottom: 1.5px solid #bae6fd; }
     .grade-table td { padding: .45rem .75rem; border-bottom: 1px solid #e2e8f0; }
+    
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
+
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
     
     /* KaTeX overrides */
     .katex { font-size: 1.1em; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .sign-btn{min-width:48px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+    }
   </style>
 </head>
 
@@ -238,7 +284,7 @@
   <a class="skip-link" href="#main-content">Skip to calculator</a>
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm" aria-label="Main navigation">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm" aria-label="Main navigation">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -281,27 +327,27 @@
   </nav>
 
   <!-- HERO -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <p class="inline-block bg-yellow-400/20 text-yellow-100 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free. No signup. Weighted and unweighted.</p>
+      <p class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free. No signup. Weighted and unweighted.</p>
       
       <!-- SEO OPTIMIZATION: H1 targeting exact intent -->
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">
         GPA Calculator with Credits
       </h1>
       
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">Calculate your semester or cumulative GPA instantly. Supports weighted and unweighted grades, Honors, and AP classes.</p>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Calculate your semester or cumulative GPA instantly. Supports weighted and unweighted grades, Honors, and AP classes.</p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/">Tools &amp; Calculators</a></li>
@@ -313,9 +359,12 @@
   </div>
 
   <!-- MAIN -->
-  <main id="main-content" class="max-w-3xl mx-auto px-6 py-10">
+  <main id="main-content" class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
 
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="GPA calculator inputs" id="calc-section">
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="GPA calculator inputs" id="calc-section">
 
       <div class="scale-row">
         <label for="gpa-type">GPA type</label>
@@ -373,28 +422,40 @@
       </div>
     </section>
 
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT -->
+    <section id="result-panel" class="result-panel mt-5" role="region" aria-label="GPA Calculator result"></section>
 
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+    <!-- Ad Slot: GPA 1 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="2548968178"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     <article class="space-y-8 text-gray-700 mt-8">
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What this GPA calculator does</h2>
-        <p class="leading-relaxed">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           This calculator works out your grade point average the way most universities and high schools do. Choose a letter grade (A+ through F) for each course, enter its credits, and the tool converts each grade to points on the standard 4.0 scale, weights it by credits, and averages the result. For high school, switch to weighted GPA to add Honors, AP, IB or dual-enrollment points. If you enter your current GPA and credits, it also shows your new cumulative GPA.
         </p>
-        <p class="leading-relaxed mt-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mt-3">
           It is an estimate. Schools differ on how they treat plus/minus grades, A+, repeated courses and weighting, so use your official transcript for anything that is submitted or graded.
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">How to use it</h2>
-        <ol class="list-decimal pl-6 space-y-2 leading-relaxed">
+        <ol class="list-decimal pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li>Choose <strong>Unweighted</strong> (college, or high school without Honors/AP points) or <strong>Weighted</strong> (high school with Honors/AP/IB).</li>
           <li>For each course, pick the letter grade and enter the credits. College courses are usually 3 or 4 credits. High school courses are often 1 credit for a year or 0.5 for a semester.</li>
           <li>In weighted mode, set each course's level to Regular, Honors or AP/IB/Dual.</li>
@@ -419,7 +480,7 @@
           </div>
         </div>
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Standard US 4.0 grade scale</h3>
-        <p class="leading-relaxed mb-3">The percentage ranges below are typical, not universal. Your school's syllabus or handbook is the final word.</p>
+        <p class="leading-relaxed mb-3 text-[#0f172a]">The percentage ranges below are typical, not universal. Your school's syllabus or handbook is the final word.</p>
         <div style="overflow-x:auto;">
           <table class="grade-table">
             <thead><tr><th>Letter</th><th>Grade points</th><th>Typical percentage</th></tr></thead>
@@ -442,12 +503,28 @@
         </div>
       </section>
 
+      <!-- Ad Slot: GPA 2 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="6412191565"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Weighted vs unweighted GPA</h2>
-        <p class="leading-relaxed">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           An <strong>unweighted</strong> GPA treats every course the same, so the maximum is 4.0 (or 4.3 if your school counts A+). A <strong>weighted</strong> GPA gives extra points for harder classes. The most common system adds 0.5 for Honors and 1.0 for AP, IB or dual-enrollment, so an A in an AP class counts as 5.0 and the weighted maximum is 5.0. The bonus is normally added only when you pass, so this calculator does not add it to an F.
         </p>
-        <p class="leading-relaxed mt-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mt-3">
           Weighting rules differ between schools and districts. Some use 0.5 and 1.0, some use a flat 5.0 scale for AP, and some do not weight at all. You can edit the two bonus values above to match your school. Many universities also recalculate your GPA with their own method, often unweighted and using core academic courses only.
         </p>
       </section>
@@ -512,14 +589,14 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What is a good GPA?</h2>
-        <p class="leading-relaxed">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           A 3.0 is a B average, and a 2.0 is a C average, which is the usual minimum to stay in good academic standing and graduate. Many scholarships ask for a 3.0 to 3.5. Dean's list cutoffs are often around 3.5, and Latin honors such as cum laude, magna cum laude and summa cum laude commonly start somewhere between 3.5 and 3.9, but each school sets its own numbers. For competitive university admissions, applicants often have unweighted GPAs of 3.5 or higher, with the most selective schools seeing much higher averages. A "good" GPA also depends on the course difficulty and your goal, so check the requirements of the program or scholarship you want.
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li><strong>Averaging letters instead of weighting by credits.</strong> A 4-credit class counts more than a 1-credit class.</li>
           <li><strong>Mixing weighted and unweighted values.</strong> Use one type for your current GPA and for this term, or the cumulative result will be wrong.</li>
           <li><strong>Assuming A+ is 4.3.</strong> At most schools an A+ is 4.0. Use the A+ setting to match your school.</li>
@@ -567,6 +644,21 @@
         </div>
       </section>
 
+     <!-- Ad Slot: GPA 3 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="4356873863"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -699,8 +791,71 @@
     const resetBtn = document.getElementById('reset-btn');
     const resultPanel = document.getElementById('result-panel');
     const section = document.getElementById('calc-section');
+    const siteNav = document.getElementById('site-nav');
+    const answerLive = document.getElementById('answer-live');
+
+    let lastResult = null;
 
     attachCopyButton(resultPanel, CALC_NAME);
+
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur(); // close keyboard
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
+    }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
+
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
 
     const LETTERS = ['A+','A','A-','B+','B','B-','C+','C','C-','D+','D','D-','F'];
     const POINTS = { 'A':4.0,'A-':3.7,'B+':3.3,'B':3.0,'B-':2.7,'C+':2.3,'C':2.0,'C-':1.7,'D+':1.3,'D':1.0,'D-':0.7,'F':0 };
@@ -882,6 +1037,8 @@
 
       renderResult(res, { totalCredits, totalQ, totalQU, gpaUnw, gpaW, headline, headQ, prior, cumulative });
       trackEvent(CALC_NAME, 'calculate');
+      announce(`Result: ${weighted ? 'Weighted' : 'Unweighted'} GPA is ${fmt2(headline)}`);
+      revealResult();
     }
 
     function renderResult(res, s) {
@@ -907,9 +1064,14 @@
       const sample = res.parsed.slice(0, 3).map(p => `${fmtNum(weighted ? p.used : p.gp, 2)} × ${fmtNum(p.c)} = ${fmtNum(weighted ? p.q : p.qu, 3)}`).join('; ') + (res.parsed.length > 3 ? '; …' : '');
 
       const html = `
-        <div class="result-label">${weighted ? 'Weighted GPA' : 'Unweighted GPA'}</div>
-        <div class="gpa-big-value">${fmt2(s.headline)}<span class="gpa-big-scale">${weighted ? 'weighted' : '/ ' + maxLabel}</span></div>
-        <p style="text-align:center;font-size:.875rem;color:#475569;margin-top:.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${fmtNum(s.headline, 6)}</p>
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">${weighted ? 'Weighted GPA' : 'Unweighted GPA'}</span>
+            <button type="button" class="copy-btn" data-copy="${fmt2(s.headline)}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="answer-value">${fmt2(s.headline)}<span class="gpa-big-scale" style="font-size:1rem;margin-left:0.5rem;">${weighted ? 'weighted' : '/ ' + maxLabel}</span></div>
+          <p style="text-align:center;font-size:.875rem;color:#475569;margin-top:.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${fmtNum(s.headline, 6)}</p>
+        </div>
 
         <div class="gpa-summary">
           <div class="gpa-summary-unit"><div class="gpa-summary-value">${res.parsed.length}</div><div class="gpa-summary-label">Courses</div></div>
@@ -933,16 +1095,19 @@
           </table>
         </div>
 
-        <div class="steps-block">
-          <div class="formula-label" style="margin-bottom:.5rem;">Step-by-step</div>
-          <ol>
-            <li>Convert each letter grade to grade points${weighted ? ' and add the Honors/AP bonus to passing grades' : ''}.</li>
-            <li>Multiply by credits: ${sample}.</li>
-            <li>Add the results: quality points = <strong>${fmtNum(s.headQ, 3)}</strong>.</li>
-            <li>Add the credits: <strong>${fmtNum(s.totalCredits)}</strong>.</li>
-            <li>Divide: ${fmtNum(s.headQ, 3)} / ${fmtNum(s.totalCredits)} = <strong>${fmt2(s.headline)}</strong>.</li>
-            ${s.cumulative !== null ? `<li>Cumulative: (${fmtNum(s.prior.gpa, 3)} × ${fmtNum(s.prior.credits)} + ${fmtNum(s.headQ, 3)}) / (${fmtNum(s.prior.credits)} + ${fmtNum(s.totalCredits)}) = <strong>${fmt2(s.cumulative)}</strong>.</li>` : ''}
-          </ol>
+        <div class="steps-block" style="margin-top:1.5rem;">
+          <details open>
+            <summary>Show / Hide step-by-step working</summary>
+            <div class="formula-label" style="margin-bottom:.5rem;margin-top:0.75rem;">Calculation Breakdown</div>
+            <ol>
+              <li>Convert each letter grade to grade points${weighted ? ' and add the Honors/AP bonus to passing grades' : ''}.</li>
+              <li>Multiply by credits: ${sample}.</li>
+              <li>Add the results: quality points = <strong>${fmtNum(s.headQ, 3)}</strong>.</li>
+              <li>Add the credits: <strong>${fmtNum(s.totalCredits)}</strong>.</li>
+              <li>Divide: ${fmtNum(s.headQ, 3)} / ${fmtNum(s.totalCredits)} = <strong>${fmt2(s.headline)}</strong>.</li>
+              ${s.cumulative !== null ? `<li>Cumulative: (${fmtNum(s.prior.gpa, 3)} × ${fmtNum(s.prior.credits)} + ${fmtNum(s.headQ, 3)}) / (${fmtNum(s.prior.credits)} + ${fmtNum(s.totalCredits)}) = <strong>${fmt2(s.cumulative)}</strong>.</li>` : ''}
+            </ol>
+          </details>
         </div>
 
         <div class="gpa-context">
@@ -959,7 +1124,15 @@
     /* ============ Wiring ============ */
     addRowBtn.addEventListener('click', () => { addRow(); renderPreview(); });
     calcBtn.addEventListener('click', calculate);
-    bindEnterKey(section, calcBtn);
+
+    // Explicit fallback for Enter key across all inputs (since this page has many grid inputs)
+    section.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+      const t = e.target;
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.tagName === 'A' || t.tagName === 'SUMMARY') return;
+      e.preventDefault();
+      calcBtn.click();
+    });
 
     resetBtn.addEventListener('click', () => {
       rowsContainer.innerHTML = '';
@@ -976,6 +1149,7 @@
       previewEl.textContent = 'Preview: choose a grade and enter credits for at least one course';
       clearAllErrors(section);
       hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
       trackEvent(CALC_NAME, 'reset');
     });
 
