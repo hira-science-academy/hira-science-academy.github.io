@@ -40,6 +40,24 @@
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
 
+  <!-- KaTeX for perfect math rendering in the article -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -195,7 +213,7 @@
   <link rel="stylesheet" href="assets/tools.css" />
 
   <style>
-    body { background: #f9fafb; color: #1f2937; }
+    body { background: #f9fafb; color: #0f172a; }
     .skip-link { position: absolute; left: -999px; top: 0; background: #0369a1; color: #fff; padding: .75rem 1rem; z-index: 100; border-radius: 0 0 .5rem 0; }
     .skip-link:focus { left: 0; }
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
@@ -210,7 +228,41 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
-    
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1.5rem;
+    }
+    .answer-box .answer-head { 
+      display: flex; align-items: center; justify-content: space-between; 
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
+    }
+    .answer-box .answer-heading { 
+      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
+      text-transform: uppercase; color: #0369a1; 
+    }
+    .answer-box .answer-value { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 2.5rem; font-weight: 800; color: #0b1220; 
+      line-height: 1.1; word-break: break-word; text-align: center;
+    }
+    .answer-box .answer-value .katex { font-size: 2.5rem; }
+    .copy-btn { 
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
+      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
+      font-weight: 700; cursor: pointer; white-space: nowrap; 
+    }
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary { 
+      cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; 
+      margin-top: .75rem; user-select: none; 
+    }
+    .answer-box details > summary:hover { text-decoration: underline; }
+
     /* Centered hero (H1 and text always centered) */
     .hero-centered, .hero-centered .hero-inner { text-align: center !important; }
     .hero-centered .hero-inner { display: flex; flex-direction: column; align-items: center; }
@@ -218,18 +270,14 @@
     .hero-title { text-wrap: balance; line-height: 1.15; }
     .hero-sub { text-wrap: balance; }
 
-    .latex-frac { display: inline-flex; flex-direction: column; align-items: center; vertical-align: middle; font-family: 'JetBrains Mono', monospace; font-size: 1em; line-height: 1.15; margin: 0 .15em; color: #0b1220; }
-    .latex-frac .f-num { padding: 0 .35em .05em .35em; border-bottom: 1.5px solid currentColor; }
-    .latex-frac .f-den { padding: .05em .35em 0 .35em; }
     .math-block { display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #0b1220; background: #f8fafc; padding: 1rem 1.25rem; border-radius: .5rem; border-left: 4px solid #0ea5e9; margin: .35rem 0 0 0; flex-wrap: wrap; gap: .3em; text-align: center; overflow-x: auto; }
 
-    .temp-big-value { display: flex; align-items: baseline; justify-content: center; gap: .5rem; font-family: 'Montserrat', sans-serif; font-size: 3rem; font-weight: 800; color: #0b1220; line-height: 1.1; flex-wrap: wrap; text-align: center; }
     .temp-big-scale { font-size: 1.125rem; font-weight: 500; color: #475569; }
     .temp-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin-top: 1rem; }
-    .temp-summary-unit { background: #fff; border: 1px solid #e2e8f0; border-radius: .75rem; padding: .75rem .6rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+    .temp-summary-unit { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .75rem; padding: .75rem .6rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: .3rem; }
     .temp-summary-value { font-family: 'Montserrat', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #0b1220; line-height: 1.2; word-break: break-word; }
     .temp-summary-label { font-size: .8125rem; color: #475569; font-weight: 600; }
-    .temp-context { background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%); border: 1px solid #bae6fd; border-radius: .75rem; padding: 1rem 1.25rem; margin-top: 1rem; }
+    .temp-context { background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%); border: 1px solid #bae6fd; border-radius: .75rem; padding: 1rem 1.25rem; margin-top: 1.5rem; }
     .temp-context p { margin: .25rem 0; color: #334155; line-height: 1.6; font-size: .9375rem; }
     .temp-context strong { color: #0b1220; }
 
@@ -276,6 +324,18 @@
 
     .info-note { background: #eff6ff; border-left: 4px solid #0ea5e9; border-radius: .5rem; padding: .75rem 1rem; margin: 1rem 0 .5rem 0; font-size: .875rem; color: #1e40af; line-height: 1.6; }
     .info-note strong { color: #0c4a6e; }
+
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .sign-btn{min-width:48px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+    }
+
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
   </style>
 </head>
@@ -284,7 +344,7 @@
   <a class="skip-link" href="#main-content">Skip to converter</a>
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm" aria-label="Main navigation">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm" aria-label="Main navigation">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -327,22 +387,22 @@
   </nav>
 
   <!-- HERO (centered) -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="hero-inner max-w-4xl mx-auto px-4 relative z-10">
-      <p class="hero-badge inline-block bg-yellow-400/20 text-yellow-100 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free. Instant. °C, °F and K.</p>
-      <h1 class="hero-title text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg">Temperature Converter: Celsius to Fahrenheit, Fahrenheit to Celsius &amp; Kelvin</h1>
-      <p class="hero-sub text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed">Convert any temperature in one step, with the formula, oven gas marks, weather and food-safety charts, and an absolute-zero check.</p>
+      <p class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free. Instant. °C, °F and K.</p>
+      <h1 class="hero-title text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg">Temperature Converter: Celsius to Fahrenheit, Fahrenheit to Celsius &amp; Kelvin</h1>
+      <p class="hero-sub text-base md:text-xl text-blue-100 max-w-2xl leading-relaxed">Convert any temperature in one step, with the formula, oven gas marks, weather and food-safety charts, and an absolute-zero check.</p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/">Tools &amp; Calculators</a></li>
@@ -354,9 +414,12 @@
   </div>
 
   <!-- MAIN -->
-  <main id="main-content" class="max-w-3xl mx-auto px-6 py-10">
+  <main id="main-content" class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
 
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Temperature converter inputs">
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Temperature converter inputs" id="calc-section">
 
       <div class="temp-group-label"><span class="temp-group-num">1</span> Enter the temperature to convert</div>
 
@@ -413,18 +476,30 @@
       </div>
     </section>
 
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Temperature Converter result"></section>
 
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+  <!-- Ad Slot: Temperature Converter -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="1904603360"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     <article class="space-y-8 text-gray-700 mt-8">
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What this temperature converter does</h2>
-        <p class="leading-relaxed">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           This converter changes temperatures between <strong>Celsius (°C)</strong>, <strong>Fahrenheit (°F)</strong> and <strong>Kelvin (K)</strong>. Use it for weather forecasts, recipes, body temperature, science homework and travel. In the US, everyday temperatures are given in Fahrenheit, while the UK and Canada use Celsius for weather. Recipes vary: UK recipes use °C and gas marks, and many Canadian recipes list oven temperatures in °F. The converter shows the answer on all three scales, explains the formula step by step, and rejects any input below absolute zero.
         </p>
       </section>
@@ -435,108 +510,114 @@
         <div class="formula-block">
           <div class="formula-label">Celsius to Fahrenheit and back</div>
           <div class="math-block">
-            <span>°F = (°C × </span>
-            <span class="latex-frac"><span class="f-num">9</span><span class="f-den">5</span></span>
-            <span>) + 32</span>
+            \[ ^\circ\text{F} = \left(^\circ\text{C} \times \frac{9}{5}\right) + 32 \]
           </div>
           <div class="math-block" style="margin-top:.4rem;">
-            <span>°C = (°F − 32) × </span>
-            <span class="latex-frac"><span class="f-num">5</span><span class="f-den">9</span></span>
+            \[ ^\circ\text{C} = \left(^\circ\text{F} - 32\right) \times \frac{5}{9} \]
           </div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Celsius to Kelvin and back</div>
-          <div class="math-block"><span>K = °C + 273.15</span></div>
-          <div class="math-block" style="margin-top:.4rem;"><span>°C = K − 273.15</span></div>
+          <div class="math-block">\[ \text{K} = ^\circ\text{C} + 273.15 \]</div>
+          <div class="math-block" style="margin-top:.4rem;">\[ ^\circ\text{C} = \text{K} - 273.15 \]</div>
         </div>
 
         <div class="formula-block">
           <div class="formula-label">Fahrenheit to Kelvin and back</div>
           <div class="math-block">
-            <span>K = (°F + 459.67) × </span>
-            <span class="latex-frac"><span class="f-num">5</span><span class="f-den">9</span></span>
+            \[ \text{K} = \left(^\circ\text{F} + 459.67\right) \times \frac{5}{9} \]
           </div>
           <div class="math-block" style="margin-top:.4rem;">
-            <span>°F = (K × </span>
-            <span class="latex-frac"><span class="f-num">9</span><span class="f-den">5</span></span>
-            <span>) − 459.67</span>
+            \[ ^\circ\text{F} = \left(\text{K} \times \frac{9}{5}\right) - 459.67 \]
           </div>
         </div>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">A quick mental shortcut</h3>
-        <p class="leading-relaxed">
+        <p class="leading-relaxed text-[#0f172a]">
           For everyday temperatures, <strong>double the Celsius value and add 30</strong> to estimate Fahrenheit. For example, 20 °C is about 70 °F (the exact answer is 68 °F). To go the other way, subtract 30 from Fahrenheit and halve it. The shortcut is close between about 0 °C and 30 °C and gets less accurate outside that range.
         </p>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Why the offset matters</h3>
-        <p class="leading-relaxed">
+        <p class="leading-relaxed text-[#0f172a]">
           Water freezes at 0 °C and boils at 100 °C. On the Fahrenheit scale the same two points are 32 °F and 212 °F, so there are 180 Fahrenheit degrees for every 100 Celsius degrees, a ratio of 9 to 5. Because the zero points also differ, the 32 appears when you convert an <em>absolute</em> temperature. When you convert a <em>change</em> in temperature, such as "a 10 °C rise", you multiply by 9/5 and do not add 32.
         </p>
       </section>
+
+      <!-- SECOND AD: natural break between article sections -->
+      <div class="ad-slot my-8 text-center no-print" aria-label="Advertisement">
+        <p class="ad-label">Advertisement</p>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-4029002473204443"
+             data-ad-slot="auto"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      </div>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 1: 72 °F to °C (a US thermostat)</p>
           <ol>
-            <li>°C = (72 − 32) × 5/9.</li>
-            <li>40 × 5/9 = 22.22.</li>
+            <li>\( ^\circ\text{C} = (72 - 32) \times \frac{5}{9} \).</li>
+            <li>\( 40 \times \frac{5}{9} = 22.22 \).</li>
             <li><strong>72 °F = 22.2 °C</strong>, a comfortable room temperature.</li>
           </ol>
         </div>
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 2: 350 °F to °C (a baking temperature)</p>
           <ol>
-            <li>°C = (350 − 32) × 5/9.</li>
-            <li>318 × 5/9 = 176.67.</li>
+            <li>\( ^\circ\text{C} = (350 - 32) \times \frac{5}{9} \).</li>
+            <li>\( 318 \times \frac{5}{9} = 176.67 \).</li>
             <li><strong>350 °F = 176.7 °C</strong>. UK and Canadian recipes usually round this to 180 °C, which is Gas Mark 4.</li>
           </ol>
         </div>
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 3: 20 °C to °F (a mild UK day)</p>
           <ol>
-            <li>°F = (20 × 9/5) + 32.</li>
-            <li>20 × 1.8 = 36, and 36 + 32 = 68.</li>
+            <li>\( ^\circ\text{F} = (20 \times \frac{9}{5}) + 32 \).</li>
+            <li>\( 20 \times 1.8 = 36 \), and \( 36 + 32 = 68 \).</li>
             <li><strong>20 °C = 68 °F</strong>.</li>
           </ol>
         </div>
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 4: 100.4 °F to °C (fever threshold)</p>
           <ol>
-            <li>°C = (100.4 − 32) × 5/9.</li>
-            <li>68.4 × 5/9 = 38.</li>
+            <li>\( ^\circ\text{C} = (100.4 - 32) \times \frac{5}{9} \).</li>
+            <li>\( 68.4 \times \frac{5}{9} = 38 \).</li>
             <li><strong>100.4 °F = 38 °C</strong>, the level health agencies commonly treat as a fever.</li>
           </ol>
         </div>
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 5: −10 °C to °F (a Canadian winter day)</p>
           <ol>
-            <li>°F = (−10 × 9/5) + 32.</li>
-            <li>−10 × 1.8 = −18, and −18 + 32 = 14.</li>
+            <li>\( ^\circ\text{F} = (-10 \times \frac{9}{5}) + 32 \).</li>
+            <li>\( -10 \times 1.8 = -18 \), and \( -18 + 32 = 14 \).</li>
             <li><strong>−10 °C = 14 °F</strong>.</li>
           </ol>
         </div>
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 6: 165 °F to °C (safe poultry temperature)</p>
           <ol>
-            <li>°C = (165 − 32) × 5/9.</li>
-            <li>133 × 5/9 = 73.89.</li>
+            <li>\( ^\circ\text{C} = (165 - 32) \times \frac{5}{9} \).</li>
+            <li>\( 133 \times \frac{5}{9} = 73.89 \).</li>
             <li><strong>165 °F = 73.9 °C</strong>, the USDA safe internal temperature for poultry.</li>
           </ol>
         </div>
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 7: Celsius to Kelvin</p>
           <ol>
-            <li>100 °C: K = 100 + 273.15 = <strong>373.15 K</strong> (water boils at sea level).</li>
-            <li>300 K: °C = 300 − 273.15 = <strong>26.85 °C</strong> (a warm room in many physics problems).</li>
-            <li>0 K: °C = 0 − 273.15 = <strong>−273.15 °C</strong>, absolute zero.</li>
+            <li>\( 100 \text{ °C}: \text{K} = 100 + 273.15 = \mathbf{373.15 \text{ K}} \) (water boils at sea level).</li>
+            <li>\( 300 \text{ K}: ^\circ\text{C} = 300 - 273.15 = \mathbf{26.85 \text{ °C}} \) (a warm room in many physics problems).</li>
+            <li>\( 0 \text{ K}: ^\circ\text{C} = 0 - 273.15 = \mathbf{-273.15 \text{ °C}} \), absolute zero.</li>
           </ol>
         </div>
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 8: The point where the scales match</p>
           <ol>
-            <li>°F = (−40 × 9/5) + 32 = −72 + 32.</li>
+            <li>\( ^\circ\text{F} = (-40 \times \frac{9}{5}) + 32 = -72 + 32 \).</li>
             <li><strong>−40 °C = −40 °F</strong>. This is the only temperature that is the same on both scales.</li>
           </ol>
         </div>
@@ -545,7 +626,7 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Celsius to Fahrenheit chart</h2>
-        <p class="leading-relaxed mb-3">Handy for UK and Canadian weather forecasts and for checking a thermostat.</p>
+        <p class="leading-relaxed mb-3 text-[#0f172a]">Handy for UK and Canadian weather forecasts and for checking a thermostat.</p>
         <div class="ref-table-wrap">
           <table class="ref-table" aria-label="Celsius to Fahrenheit chart">
             <thead><tr><th style="text-align:right;">°C</th><th style="text-align:right;">°F</th><th>Feels like</th></tr></thead>
@@ -571,7 +652,7 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Fahrenheit to Celsius chart</h2>
-        <p class="leading-relaxed mb-3">Useful for US weather forecasts, home thermostats and body temperature.</p>
+        <p class="leading-relaxed mb-3 text-[#0f172a]">Useful for US weather forecasts, home thermostats and body temperature.</p>
         <div class="ref-table-wrap">
           <table class="ref-table" aria-label="Fahrenheit to Celsius chart">
             <thead><tr><th style="text-align:right;">°F</th><th style="text-align:right;">°C</th><th>Typical meaning</th></tr></thead>
@@ -598,7 +679,7 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Oven temperature conversion chart (°F, °C and gas mark)</h2>
-        <p class="leading-relaxed mb-3">US recipes use °F, UK recipes use °C or gas mark, and Canadian recipes use either. These are the usual rounded recipe equivalents. Exact conversions differ slightly (350 °F is 176.7 °C, which recipes round to 180 °C). A common UK guideline is to lower the temperature by about 20 °C for a fan oven.</p>
+        <p class="leading-relaxed mb-3 text-[#0f172a]">US recipes use °F, UK recipes use °C or gas mark, and Canadian recipes use either. These are the usual rounded recipe equivalents. Exact conversions differ slightly (350 °F is 176.7 °C, which recipes round to 180 °C). A common UK guideline is to lower the temperature by about 20 °C for a fan oven.</p>
         <div class="ref-table-wrap">
           <table class="ref-table" aria-label="Oven temperature conversion chart">
             <thead><tr><th style="text-align:right;">°F</th><th style="text-align:right;">°C</th><th style="text-align:right;">Gas mark</th><th>Oven heat</th></tr></thead>
@@ -620,7 +701,7 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Food safety temperatures</h2>
-        <p class="leading-relaxed mb-3">These figures follow guidance published by the US Department of Agriculture (USDA). Check the current guidance for your food and country.</p>
+        <p class="leading-relaxed mb-3 text-[#0f172a]">These figures follow guidance published by the US Department of Agriculture (USDA). Check the current guidance for your food and country.</p>
         <div class="ref-table-wrap">
           <table class="ref-table" aria-label="Food safety temperatures">
             <thead><tr><th>What</th><th style="text-align:right;">°F</th><th style="text-align:right;">°C</th></tr></thead>
@@ -662,33 +743,33 @@
             </tbody>
           </table>
         </div>
-        <p class="leading-relaxed mt-3">
+        <p class="leading-relaxed mt-3 text-[#0f172a]">
           Two anchors help you check any answer: <strong>−40</strong> is the same on the Celsius and Fahrenheit scales, and water freezes at 0 °C, 32 °F and 273.15 K.
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Why Kelvin matters in science</h2>
-        <p class="leading-relaxed mb-3">
+        <p class="leading-relaxed mb-3 text-[#0f172a]">
           Kelvin is the SI base unit of temperature because it starts at absolute zero. That makes it the right scale for physics and chemistry:
         </p>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li><strong>Kelvin is proportional to average molecular kinetic energy.</strong> Doubling the Kelvin temperature doubles the average kinetic energy. Celsius and Fahrenheit do not have this property.</li>
-          <li><strong>Gas laws need Kelvin.</strong> In the ideal gas law PV = nRT, T must be in kelvin. Using Celsius gives a wrong answer.</li>
+          <li><strong>Gas laws need Kelvin.</strong> In the ideal gas law \( PV = nRT \), \( T \) must be in kelvin. Using Celsius gives a wrong answer.</li>
           <li><strong>Absolute zero is only meaningful in Kelvin.</strong> At 0 K molecular motion is at its minimum, while at 0 °C water is just freezing.</li>
         </ul>
-        <p class="leading-relaxed mt-2">
+        <p class="leading-relaxed mt-2 text-[#0f172a]">
           Write kelvin without a degree symbol: "300 K", not "300 °K".
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
-          <li><strong>Forgetting the 32.</strong> °C × 9/5 alone gives the right answer only at −40, where the two scales meet.</li>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
+          <li><strong>Forgetting the 32.</strong> \( ^\circ\text{C} \times \frac{9}{5} \) alone gives the right answer only at −40, where the two scales meet.</li>
           <li><strong>Adding 32 to a temperature change.</strong> A 10 °C rise is an 18 °F rise, not 50 °F. Intervals use only the 9/5 factor.</li>
           <li><strong>Writing "°K".</strong> Kelvin has no degree symbol.</li>
-          <li><strong>Using Celsius in gas-law formulas.</strong> PV = nRT needs kelvin.</li>
+          <li><strong>Using Celsius in gas-law formulas.</strong> \( PV = nRT \) needs kelvin.</li>
           <li><strong>Mixing up hot days.</strong> 100 °F is a very hot day (37.8 °C), while 100 °C is boiling water.</li>
           <li><strong>Assuming 1 °C equals 1 °F.</strong> One Celsius degree is 1.8 Fahrenheit degrees, so a 5 °C change is a 9 °F change.</li>
           <li><strong>Going below absolute zero.</strong> Nothing can be colder than 0 K (−273.15 °C or −459.67 °F), so the converter rejects those inputs.</li>
@@ -700,11 +781,11 @@
         <div class="space-y-3">
           <details class="faq-item">
             <summary>How do I convert Celsius to Fahrenheit?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Multiply the Celsius temperature by 9/5 (or 1.8) and add 32: °F = (°C × 9/5) + 32. For example, 37 °C = (37 × 1.8) + 32 = 98.6 °F. For a quick estimate, double the Celsius value and add 30.</p>
+            <p class="faq-answer">Multiply the Celsius temperature by 9/5 (or 1.8) and add 32: \( ^\circ\text{F} = (^\circ\text{C} \times \frac{9}{5}) + 32 \). For example, \( 37 \text{ °C} = (37 \times 1.8) + 32 = 98.6 \text{ °F} \). For a quick estimate, double the Celsius value and add 30.</p>
           </details>
           <details class="faq-item">
             <summary>How do I convert Fahrenheit to Celsius?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Subtract 32 from the Fahrenheit temperature and multiply by 5/9: °C = (°F − 32) × 5/9. For example, 72 °F = (72 − 32) × 5/9 = 22.2 °C. For a quick estimate, subtract 30 and halve it.</p>
+            <p class="faq-answer">Subtract 32 from the Fahrenheit temperature and multiply by 5/9: \( ^\circ\text{C} = (^\circ\text{F} - 32) \times \frac{5}{9} \). For example, \( 72 \text{ °F} = (72 - 32) \times \frac{5}{9} = 22.2 \text{ °C} \). For a quick estimate, subtract 30 and halve it.</p>
           </details>
           <details class="faq-item">
             <summary>What is 350 °F in Celsius?<span aria-hidden="true">▾</span></summary>
@@ -720,7 +801,7 @@
           </details>
           <details class="faq-item">
             <summary>How do I convert Celsius to Kelvin?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Add 273.15: K = °C + 273.15. For example, 25 °C = 298.15 K. To go back, subtract 273.15. Kelvin is the SI base unit of temperature and is written without a degree symbol, as in 298 K.</p>
+            <p class="faq-answer">Add 273.15: \( \text{K} = ^\circ\text{C} + 273.15 \). For example, \( 25 \text{ °C} = 298.15 \text{ K} \). To go back, subtract 273.15. Kelvin is the SI base unit of temperature and is written without a degree symbol, as in 298 K.</p>
           </details>
           <details class="faq-item">
             <summary>What is absolute zero?<span aria-hidden="true">▾</span></summary>
@@ -728,15 +809,30 @@
           </details>
           <details class="faq-item">
             <summary>Why are −40 °C and −40 °F the same?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">The two scales are linear with different zero points and degree sizes, so their lines cross at exactly one point. Setting °F = °C in the conversion formula gives −40.</p>
+            <p class="faq-answer">The two scales are linear with different zero points and degree sizes, so their lines cross at exactly one point. Setting \( ^\circ\text{F} = ^\circ\text{C} \) in the conversion formula gives −40.</p>
           </details>
           <details class="faq-item">
             <summary>Is a 1 °C change the same as a 1 °F change?<span aria-hidden="true">▾</span></summary>
             <p class="faq-answer">No. One Celsius degree is 1.8 times larger than one Fahrenheit degree, so a 1 °C change equals a 1.8 °F change. Temperature differences use only the 9/5 factor, and the offset of 32 applies only to absolute temperatures.</p>
           </details>
-
         </div>
       </section>
+
+      <!-- Ad Slot: Temperature Converter 3 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="2012328850"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Other converters</h2>
@@ -850,12 +946,73 @@
     const calcBtn     = document.getElementById('calc-btn');
     const resetBtn    = document.getElementById('reset-btn');
     const resultPanel = document.getElementById('result-panel');
-    const section     = document.querySelector('section[aria-label="Temperature converter inputs"]');
+    const section     = document.getElementById('calc-section');
+    const siteNav     = document.getElementById('site-nav');
+    const answerLive  = document.getElementById('answer-live');
 
     attachCopyButton(resultPanel, CALC_NAME);
 
     const SYMBOL = { C: '°C', F: '°F', K: 'K' };
     let lastResult = null;
+
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur(); // close keyboard
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
+    }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
+
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
 
     /* ============ Conversion (local, exact formulas) ============ */
     function toCelsius(v, u) {
@@ -926,7 +1083,7 @@
     fromUnitEl.addEventListener('change', renderPreview);
     toUnitEl.addEventListener('change', renderPreview);
 
-    /* ============ Sign toggle (iOS decimal keypad has no minus key) ============ */
+    /* ============ Sign toggle ============ */
     signBtn.addEventListener('click', () => {
       const cur = fromValueEl.value.trim().replace(/[−–]/g, '-');
       fromValueEl.value = cur.startsWith('-') ? cur.slice(1) : '-' + cur;
@@ -1037,10 +1194,15 @@
       }
 
       const html = `
-        <div class="result-label">Temperature conversion</div>
-        <div class="temp-big-value">${shown}<span class="temp-big-scale">${SYMBOL[toU]}</span></div>
-        <p style="text-align:center;font-size:.875rem;color:#475569;margin-top:.5rem;font-family:'JetBrains Mono',monospace;">From ${smartFmt(v)} ${SYMBOL[fromU]}</p>
-        <div style="text-align:center;"><span class="status-badge ${cat.cls}">${escapeHtml(cat.label)}</span></div>
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">Temperature conversion</span>
+            <button type="button" class="copy-btn" data-copy="${escapeHtml(shown)}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="answer-value">${shown}<span class="temp-big-scale" style="font-size:1.25rem;margin-left:0.5rem;">${SYMBOL[toU]}</span></div>
+          <p style="text-align:center;font-size:.875rem;color:#475569;margin-top:.5rem;font-family:'JetBrains Mono',monospace;">From ${smartFmt(v)} ${SYMBOL[fromU]}</p>
+          <div style="text-align:center;"><span class="status-badge ${cat.cls}">${escapeHtml(cat.label)}</span></div>
+        </div>
 
         <div class="temp-summary">
           <div class="temp-summary-unit"><div class="temp-summary-value">${smartFmt(celsius)}</div><div class="temp-summary-label">°C</div></div>
@@ -1048,13 +1210,16 @@
           <div class="temp-summary-unit"><div class="temp-summary-value">${smartFmt(kelvin)}</div><div class="temp-summary-label">K</div></div>
         </div>
 
-        <div class="steps-block">
-          <div class="formula-label" style="margin-bottom:.5rem;">Step-by-step</div>
-          <ol>
-            <li>Input: <strong>${smartFmt(v)} ${SYMBOL[fromU]}</strong>.</li>
-            <li>${stepFor(v, fromU, toU, shown)}</li>
-            <li>Full scale comparison: ${smartFmt(celsius)} °C · ${smartFmt(fahrenheit)} °F · ${smartFmt(kelvin)} K.</li>
-          </ol>
+        <div class="steps-block" style="margin-top:1.5rem;">
+          <details open>
+            <summary>Show / Hide step-by-step working</summary>
+            <div class="formula-label" style="margin-bottom:.5rem;margin-top:0.75rem;">Calculation Breakdown</div>
+            <ol>
+              <li>Input: <strong>${smartFmt(v)} ${SYMBOL[fromU]}</strong>.</li>
+              <li>${stepFor(v, fromU, toU, shown)}</li>
+              <li>Full scale comparison: ${smartFmt(celsius)} °C · ${smartFmt(fahrenheit)} °F · ${smartFmt(kelvin)} K.</li>
+            </ol>
+          </details>
         </div>
 
         <div class="temp-context">
@@ -1064,6 +1229,8 @@
       resultPanel.innerHTML = html;
       showResult(resultPanel, html);
       trackEvent(CALC_NAME, 'calculate');
+      announce(`Result: ${shown} ${SYMBOL[toU]}`);
+      revealResult();
     }
 
     calcBtn.addEventListener('click', calculate);
@@ -1078,6 +1245,7 @@
       previewEl.textContent = 'Preview: enter a temperature to convert';
       clearAllErrors(section);
       hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
       trackEvent(CALC_NAME, 'reset');
     });
 
