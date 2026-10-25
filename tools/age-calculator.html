@@ -38,6 +38,24 @@
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
   <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
 
+  <!-- KaTeX for perfect math rendering in the article -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -177,7 +195,7 @@
   <link rel="stylesheet" href="assets/tools.css" />
 
   <style>
-    body { background: #f9fafb; color: #1f2937; }
+    body { background: #f9fafb; color: #0f172a; }
     .skip-link { position: absolute; left: -999px; top: 0; background: #0369a1; color: #fff; padding: .75rem 1rem; z-index: 100; border-radius: 0 0 .5rem 0; }
     .skip-link:focus { left: 0; }
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
@@ -192,12 +210,47 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
-    
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1.5rem;
+    }
+    .answer-box .answer-head { 
+      display: flex; align-items: center; justify-content: space-between; 
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
+    }
+    .answer-box .answer-heading { 
+      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
+      text-transform: uppercase; color: #0369a1; 
+    }
+    .answer-box .answer-value { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 1.875rem; font-weight: 800; color: #0b1220; 
+      line-height: 1.2; word-break: break-word; text-align: center;
+    }
+    .answer-box .answer-value .katex { font-size: 1.875rem; }
+    .copy-btn { 
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
+      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
+      font-weight: 700; cursor: pointer; white-space: nowrap; 
+    }
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary { 
+      cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; 
+      margin-top: .75rem; user-select: none; 
+    }
+    .answer-box details > summary:hover { text-decoration: underline; }
+
     .hero-centered { text-align: center; }
+    .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
     .age-display { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1rem; }
     @media (min-width: 640px) { .age-display { grid-template-columns: repeat(4, 1fr); } }
-    .age-unit { background: #fff; border: 1px solid #e2e8f0; border-radius: .75rem; padding: 1rem; text-align: center; }
-    .age-unit-value { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 700; color: #0b1220; line-height: 1.1; }
+    .age-unit { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: .75rem; padding: 1rem; text-align: center; }
+    .age-unit-value { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; font-weight: 700; color: #0b1220; line-height: 1.1; }
     .age-unit-label { font-size: .8125rem; color: #475569; font-weight: 600; margin-top: .25rem; }
     .age-summary { background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%); border: 1px solid #bae6fd; border-radius: 1rem; padding: 1.25rem 1.5rem; margin-top: 1.25rem; }
     .age-summary p { margin: .25rem 0; color: #334155; line-height: 1.6; }
@@ -206,6 +259,17 @@
     .grade-table th { background: #f0f9ff; color: #0369a1; text-align: left; padding: .5rem .75rem; border-bottom: 1.5px solid #bae6fd; }
     .grade-table td { padding: .45rem .75rem; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .sign-btn{min-width:48px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+    }
   </style>
 </head>
 
@@ -213,7 +277,7 @@
   <a class="skip-link" href="#main-content">Skip to calculator</a>
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm" aria-label="Main navigation">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm" aria-label="Main navigation">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -256,26 +320,26 @@
   </nav>
 
   <!-- HERO -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <p class="inline-block bg-yellow-400/20 text-yellow-100 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free. No signup. Instant result.</p>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">
-  Age Calculator: How Old Am I?
-</h1>
-     <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">
+      <p class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-sm font-semibold px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free. No signup. Instant result.</p>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">
+        Age Calculator: How Old Am I?
+      </h1>
+     <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">
   Enter your date of birth to get your exact age in years, months, days and hours. You can also check your age on any past or future date.
 </p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/">Tools &amp; Calculators</a></li>
@@ -287,10 +351,13 @@
   </div>
 
   <!-- MAIN -->
-  <main id="main-content" class="max-w-3xl mx-auto px-6 py-10">
+  <main id="main-content" class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
 
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Age calculator inputs">
-      <div class="grid-2">
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Age calculator inputs" id="calc-section">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label for="dob" class="calc-label">Date of birth</label>
           <input type="date" id="dob" class="calc-input" />
@@ -307,28 +374,40 @@
       </div>
     </section>
 
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Age Calculator result"></section>
 
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+   <!-- Ad Slot: Age Calculator after result panel -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="5582325625"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     <article class="space-y-8 text-gray-700 mt-8">
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What this age calculator does</h2>
-        <p class="leading-relaxed">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           This tool works out your <strong>exact age</strong> from your date of birth to today, or to any other date you choose. It shows your age in years, months and days, plus your total age in months, weeks, days and hours. It also shows the day of the week you were born on and how many days remain until your next birthday. Leap years and the different lengths of months are handled for you.
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">How to calculate age from a date of birth</h2>
-        <p class="leading-relaxed mb-3">Age is counted in calendar units, not by dividing a number of days by 365. The calculator follows these steps:</p>
+        <p class="leading-relaxed text-[#0f172a] mb-3">Age is counted in calendar units, not by dividing a number of days by 365. The calculator follows these steps:</p>
         <div class="formula-block">
           <div class="formula-label">Steps</div>
-          <ol class="list-decimal pl-5 space-y-2 text-gray-700">
+          <ol class="list-decimal pl-5 space-y-2 text-[#0f172a]">
             <li>Subtract the birth year from the current year to get a first estimate of the years.</li>
             <li>Subtract the birth month from the current month. If the current day of the month is earlier than the birth day, borrow one month.</li>
             <li>Subtract the days, adding the length of the previous month when you borrowed a month. If months go below zero, borrow one year.</li>
@@ -337,6 +416,21 @@
         </div>
       </section>
 
+      <!-- Ad Slot: Age Calculator 2 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="1822958293"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
 
@@ -373,7 +467,7 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common uses</h2>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li>Checking whether you or your child meets an age requirement on a deadline, such as a kindergarten cutoff date, a sports league or a program start date.</li>
           <li>Filling out forms that ask for your exact age on a specific date, such as applications, insurance and benefits paperwork.</li>
           <li>Finding a baby's age in months and weeks.</li>
@@ -384,7 +478,7 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common age milestones in the United States</h2>
-        <p class="leading-relaxed mb-3">These are typical rules, and many of them vary by state, school district or organization, so confirm the exact requirement before you rely on it.</p>
+        <p class="leading-relaxed text-[#0f172a] mb-3">These are typical rules, and many of them vary by state, school district or organization, so confirm the exact requirement before you rely on it.</p>
         <div style="overflow-x:auto;">
           <table class="grade-table">
             <thead><tr><th>Age</th><th>What it usually means</th></tr></thead>
@@ -433,9 +527,24 @@
             <summary>Is my date of birth saved or sent anywhere?<span aria-hidden="true">▾</span></summary>
             <p class="faq-answer">No. The calculation runs in your web browser and the date you enter is not stored or tracked.</p>
           </details>
-
         </div>
       </section>
+
+      <!-- Ad Slot: Age Calculator near the end -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="4429026058"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
@@ -449,7 +558,7 @@
 
     </article>
   </main>
-<!-- FOOTER -->
+
 <!-- FOOTER -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
   <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
@@ -548,15 +657,75 @@
   <script>
   (function () {
     'use strict';
-    const { trackEvent, bindEnterKey, attachCopyButton } = ToolsCommon;
+    const { trackEvent, parseNum, showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'age-calculator';
     const dobEl = document.getElementById('dob');
     const asofEl = document.getElementById('asof');
     const calcBtn = document.getElementById('calc-btn');
     const resetBtn = document.getElementById('reset-btn');
     const resultPanel = document.getElementById('result-panel');
+    const section = document.getElementById('calc-section');
+    const siteNav = document.getElementById('site-nav');
+    const answerLive = document.getElementById('answer-live');
 
-    attachCopyButton(resultPanel, CALC_NAME);
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur(); // close keyboard
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
+    }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
+
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
 
     function todayStr() {
       const t = new Date();
@@ -592,24 +761,8 @@
       return { years, months, days };
     }
 
-    function showError(inputEl, message) {
-      inputEl.classList.add('is-invalid');
-      let errEl = inputEl.parentElement.querySelector('.calc-error');
-      if (!errEl) {
-        errEl = document.createElement('p');
-        errEl.className = 'calc-error';
-        inputEl.parentElement.appendChild(errEl);
-      }
-      errEl.textContent = message;
-      errEl.classList.add('is-visible');
-    }
-    function clearErrors() {
-      [dobEl, asofEl].forEach(el => el.classList.remove('is-invalid'));
-      document.querySelectorAll('.calc-error').forEach(e => { e.textContent = ''; e.classList.remove('is-visible'); });
-    }
-
     function calculate() {
-      clearErrors();
+      clearAllErrors(section);
       const dobStr = dobEl.value;
       const asofStr = asofEl.value;
 
@@ -639,9 +792,20 @@
         ? `<strong>Next birthday:</strong> that is the birthday itself. Happy birthday!`
         : `<strong>Next birthday:</strong> ${fmtDate(nextBday, true)} <strong>(${plural(daysToNext, 'day')} after the as-of date)</strong>`;
 
+      const answerPlain = `${ymd.years} years, ${ymd.months} months, ${ymd.days} days`;
+
       resultPanel.innerHTML = `
-        <div class="result-label">Exact age</div>
-        <div class="result-value">${ymd.years} <span class="result-unit">${ymd.years === 1 ? 'year' : 'years'}</span> ${ymd.months} <span class="result-unit">${ymd.months === 1 ? 'month' : 'months'}</span> ${ymd.days} <span class="result-unit">${ymd.days === 1 ? 'day' : 'days'}</span></div>
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">Exact Age</span>
+            <button type="button" class="copy-btn" data-copy="${answerPlain}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="answer-value">
+            ${ymd.years} <span style="font-size:1rem;font-weight:600;color:#475569;">${ymd.years === 1 ? 'year' : 'years'}</span>
+            ${ymd.months} <span style="font-size:1rem;font-weight:600;color:#475569;">${ymd.months === 1 ? 'month' : 'months'}</span>
+            ${ymd.days} <span style="font-size:1rem;font-weight:600;color:#475569;">${ymd.days === 1 ? 'day' : 'days'}</span>
+          </div>
+        </div>
 
         <div class="age-display">
           <div class="age-unit"><div class="age-unit-value">${totalMonths.toLocaleString('en-US')}</div><div class="age-unit-label">Total months</div></div>
@@ -650,25 +814,50 @@
           <div class="age-unit"><div class="age-unit-value">${totalHours.toLocaleString('en-US')}</div><div class="age-unit-label">Total hours</div></div>
         </div>
 
+        <div class="steps-block mt-6">
+          <details open>
+            <summary>Show / Hide step-by-step working</summary>
+            <div class="formula-label" style="margin:0.5rem 0;">Calculation Breakdown</div>
+            <ol class="mt-2 space-y-2 text-[0.95rem]">
+              <li>Date of birth: <strong>${fmtDate(dob, true)}</strong>.</li>
+              <li>Calculated as of: <strong>${fmtDate(asof, true)}</strong>.</li>
+              <li>Years: from ${dob.getUTCFullYear()} to ${asof.getUTCFullYear()} gives ${ymd.years} full years.</li>
+              <li>Months: ${ymd.months} month(s) after the last full year.</li>
+              <li>Days: ${ymd.days} day(s) after the last full month.</li>
+              <li>Total days: ${totalDays.toLocaleString('en-US')} days.</li>
+            </ol>
+          </details>
+        </div>
+
         <div class="age-summary">
           <p>📅 ${nextLine}</p>
           <p>🎂 <strong>Date of birth:</strong> ${fmtDate(dob, true)}</p>
           <p>📆 <strong>Calculated as of:</strong> ${fmtDate(asof, true)}</p>
         </div>
       `;
-      resultPanel.classList.add('is-visible');
+      showResult(resultPanel, resultPanel.innerHTML);
       trackEvent(CALC_NAME, 'calculate');
+      announce(`Result: ${answerPlain}`);
+      revealResult();
     }
 
     calcBtn.addEventListener('click', calculate);
-    bindEnterKey(document.querySelector('section[aria-label="Age calculator inputs"]'), calcBtn);
+
+    // Explicit fallback for Enter key across all inputs
+    section.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+      const t = e.target;
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.tagName === 'A' || t.tagName === 'SUMMARY') return;
+      e.preventDefault();
+      calcBtn.click();
+    });
 
     resetBtn.addEventListener('click', () => {
       dobEl.value = '';
       asofEl.value = todayStr();
-      clearErrors();
-      resultPanel.classList.remove('is-visible');
-      resultPanel.innerHTML = '';
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
       trackEvent(CALC_NAME, 'reset');
     });
 

@@ -32,6 +32,24 @@
 
   <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
 
+  <!-- KaTeX for perfect math rendering in the article -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -99,7 +117,7 @@
   <link rel="stylesheet" href="assets/tools.css" />
 
   <style>
-    body { background: #f9fafb; color: #1f2937; }
+    body { background: #f9fafb; color: #0f172a; }
     .header-gradient {
       background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
       position: relative;
@@ -147,6 +165,41 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1.5rem;
+    }
+    .answer-box .answer-head { 
+      display: flex; align-items: center; justify-content: space-between; 
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
+    }
+    .answer-box .answer-heading { 
+      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
+      text-transform: uppercase; color: #0369a1; 
+    }
+    .answer-box .answer-value { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 2.5rem; font-weight: 800; color: #0b1220; 
+      line-height: 1.15; word-break: break-word; text-align: center;
+    }
+    .answer-box .answer-value .katex { font-size: 2.5rem; }
+    .copy-btn { 
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
+      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
+      font-weight: 700; cursor: pointer; white-space: nowrap; 
+    }
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary { 
+      cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; 
+      margin-top: .75rem; user-select: none; 
+    }
+    .answer-box details > summary:hover { text-decoration: underline; }
+
     /* LaTeX-style HTML/CSS math */
     .latex-frac {
       display: inline-flex;
@@ -187,24 +240,7 @@
     .latex-sub { vertical-align: sub; font-size: 0.75em; }
 
     /* Result */
-    .cgpa-big-value {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 0.5rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      color: #0b1220;
-      line-height: 1.1;
-      flex-wrap: wrap;
-      text-align: center;
-    }
-    .cgpa-big-scale {
-      font-size: 1.125rem;
-      font-weight: 500;
-      color: #64748b;
-    }
+    .cgpa-big-scale { font-size: 1.125rem; font-weight: 500; color: #64748b; }
     .cgpa-summary {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -243,7 +279,7 @@
       border: 1px solid #bae6fd;
       border-radius: 0.75rem;
       padding: 1rem 1.25rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
     .cgpa-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
     .cgpa-context strong { color: #0b1220; }
@@ -261,9 +297,6 @@
       margin-top: 0.5rem;
     }
     .status-ok    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
-    .status-warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-    .status-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
-    .status-secure{ background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
 
     /* Input rows */
     .cgpa-input-grid {
@@ -457,13 +490,24 @@
     .quick-table td.arrow { text-align: center; color: #0ea5e9; font-weight: 700; }
     .quick-table td.num { font-weight: 700; color: #0b1220; }
     .quick-table-wrap { overflow-x: auto; }
+
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .sign-btn{min-width:48px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+    }
   </style>
 </head>
 
 <body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -506,22 +550,22 @@
   </nav>
 
   <!-- HERO -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · 6 Categories · Instant Conversion</span>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Unit Converter</h1>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Convert between length, mass, area, volume, speed and time units — with instant results as you type.</p>
+      <span class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · 6 Categories · Instant Conversion</span>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">Unit Converter</h1>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Convert between length, mass, area, volume, speed and time units — with instant results as you type.</p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
@@ -533,10 +577,13 @@
   </div>
 
   <!-- MAIN -->
-  <main class="max-w-3xl mx-auto px-6 py-10">
+  <main class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
+
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <!-- CALCULATOR -->
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Unit converter inputs">
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Unit converter inputs" id="calc-section">
 
       <div class="cgpa-group-label"><span class="cgpa-group-num">1</span> Choose a category</div>
       <div class="cat-pills" role="group" aria-label="Conversion category">
@@ -581,26 +628,31 @@
 
     </section>
 
-    <!-- RESULT -->
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Unit Converter result"></section>
 
-    <!-- AD -->
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle"
-           style="display:block"
-           data-ad-client="ca-pub-4029002473204443"
-           data-ad-slot="auto"
-           data-ad-format="auto"
-           data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+    <!-- Ad Slot: Unit Converter 1 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="5977825721"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     <!-- EDUCATIONAL CONTENT -->
     <article class="space-y-8 text-gray-700 mt-8">
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What this unit converter does</h2>
-        <p class="leading-relaxed text-justify">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           This tool converts between units across six physical quantities: length, mass, area, volume, speed and time. Choose a category, pick the "from" and "to" units, and enter the value — the result appears instantly. All conversions use exact or standard factors, and the page includes a quick-reference table of common equivalents for the selected category so you can sanity-check any result. The converter uses the same unit tables shared by the individual length, mass, area, volume, speed and time converters, so a value converted here matches the result you'd get from the dedicated page for that category.
         </p>
       </section>
@@ -619,24 +671,40 @@
           </div>
         </div>
 
-        <p class="leading-relaxed text-justify mt-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mt-3">
           Every unit in the converter is defined by a factor that converts it to the SI base unit of its category — metres for length, kilograms for mass, square metres for area, cubic metres for volume, metres per second for speed, and seconds for time. To convert from unit A to unit B, multiply the value by A's factor and divide by B's factor. This two-step path through SI guarantees consistency: it does not matter how many intermediate units you go through, the result is the same.
         </p>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Example: 10 metres to feet</h3>
-        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed text-[#0f172a]">
           <li>metre → SI: 1 m = 1 m, factor = 1</li>
           <li>foot → SI: 1 ft = 0.3048 m, factor = 0.3048</li>
           <li>result = 10 × 1 / 0.3048 = <strong>32.8084 ft</strong></li>
         </ul>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Example: 72 km/h to m/s</h3>
-        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed text-[#0f172a]">
           <li>km/h → SI: 1 km/h = 1000/3600 m/s ≈ 0.277778 m/s</li>
           <li>m/s → SI: 1 m/s = 1 m/s, factor = 1</li>
           <li>result = 72 × 0.277778 / 1 = <strong>20 m/s</strong></li>
         </ul>
       </section>
+
+      <!-- Ad Slot: Unit Converter 2 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="7518845942"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
@@ -716,7 +784,7 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common conversion factors at a glance</h2>
-        <p class="leading-relaxed text-justify mb-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mb-3">
           These are the most frequently used factors. Memorising a few makes quick mental estimates possible, and having them on hand is useful for exam checks.
         </p>
 
@@ -746,14 +814,14 @@
           </table>
         </div>
 
-        <p class="leading-relaxed text-justify mt-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mt-3">
           Note that "gallon" here means the US gallon (3.785 L). The UK imperial gallon is larger at 4.546 L. For most Pakistani contexts, litres and millilitres are the standard for volume, and gallons appear mainly in imported or US-context problems.
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li><strong>Confusing mass and weight.</strong> The mass converter converts between mass units (kg, g, lb, oz). Weight is a force in newtons — W = mg. If a problem gives weight and asks for mass, divide by 9.8 first.</li>
           <li><strong>Using a linear conversion factor for area or volume.</strong> Since 1 m = 100 cm, one might assume 1 m² = 100 cm², but it is actually <strong>10,000 cm²</strong> — the factor is squared. Similarly, 1 m³ = <strong>1,000,000 cm³</strong>. The converter handles this correctly, but students often get it wrong by hand.</li>
           <li><strong>Mixing up litres and cubic metres.</strong> 1 m³ = 1000 L. A 1-litre bottle is 0.001 m³, not 1 m³. And 1 L = 1000 mL = 1000 cm³, so liquids measured in mL and solids measured in cm³ share the same scale.</li>
@@ -794,6 +862,22 @@
         </div>
       </section>
 
+      <!-- Ad Slot: Unit Converter 3 -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="6791465516"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Dedicated converters for each category</h2>
         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -804,7 +888,7 @@
           <li><a href="speed-unit-converter.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Speed Unit Converter</a></li>
           <li><a href="temperature-converter.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Temperature Converter</a></li>
         </ul>
-        <p class="leading-relaxed text-justify mt-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mt-3">
           Each dedicated converter offers the same conversion but with more room for worked examples, unit-specific context, and category-tailored tips. This master page is ideal for quick lookups across categories; the dedicated pages are better for deep study of a single conversion type.
         </p>
       </section>
@@ -821,7 +905,7 @@
 
       <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
         <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
-        <p class="text-gray-700 leading-relaxed text-justify">
+        <p class="text-gray-700 leading-relaxed prose-justify">
           Practice unit conversions with our
           <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
           <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
@@ -835,14 +919,13 @@
   </main>
 
   <!-- FOOTER -->
- <!-- FOOTER -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
   <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     
     <!-- Main Footer Layout -->
     <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
       
-      <!-- Brand & Info (Reduced to 3 of 12 columns on Desktop) -->
+      <!-- Brand & Info -->
       <div class="lg:col-span-3 flex flex-col items-center lg:items-start text-center lg:text-left">
         <a class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
           <img alt="Hira Science Academy logo" width="40" height="40" loading="lazy" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" src="https://hiraacademy.com.pk/images/logo.webp"/>
@@ -856,7 +939,7 @@
         </p>
       </div>
 
-      <!-- Links Grid (Expanded to 9 of 12 columns on Desktop) -->
+      <!-- Links Grid -->
       <div class="lg:col-span-9 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         
         <!-- Programs -->
@@ -947,16 +1030,76 @@
     const calcBtn       = document.getElementById('calc-btn');
     const resetBtn      = document.getElementById('reset-btn');
     const resultPanel   = document.getElementById('result-panel');
-    const section       = document.querySelector('section[aria-label="Unit converter inputs"]');
+    const section       = document.getElementById('calc-section');
+    const siteNav       = document.getElementById('site-nav');
+    const answerLive    = document.getElementById('answer-live');
 
     attachCopyButton(resultPanel, CALC_NAME);
 
     let category = 'length';
-    let lastResult = null; // { fromValue, fromUnit, toValue, toUnit, result }
+    let lastResult = null;
+
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur(); // close keyboard
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
+    }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
+
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
 
     /* =========================================================
-       Unit registry — labels and preferred defaults per category.
-       Actual factors come from ToolsCommon.CONVERSIONS.
+       Unit registry
        ========================================================= */
     const UNIT_LABELS = {
       length: {
@@ -986,7 +1129,6 @@
       }
     };
 
-    /* Preferred default from/to pairs per category */
     const DEFAULT_PAIRS = {
       length: ['m', 'ft'],
       mass:   ['kg', 'lb'],
@@ -997,7 +1139,6 @@
     };
 
     function getConversionsTable() {
-      // Defensive: ToolsCommon.CONVERSIONS should exist per the brief
       return (ToolsCommon && ToolsCommon.CONVERSIONS) || {};
     }
 
@@ -1005,7 +1146,6 @@
       const table = getConversionsTable();
       const catTable = table[cat] || {};
       const keys = Object.keys(catTable);
-      // Ensure the labels registry has entries for all keys we're about to render
       const labels = UNIT_LABELS[cat] || {};
       return keys.map(k => ({ key: k, label: labels[k] || k }));
     }
@@ -1024,7 +1164,6 @@
     function rebuildUnitSelects() {
       const units = unitKeysFor(category);
       if (units.length === 0) {
-        // Fallback: shouldn't happen since CONVERSIONS should be populated
         fromUnitEl.innerHTML = '<option value="">—</option>';
         toUnitEl.innerHTML = '<option value="">—</option>';
         return;
@@ -1122,7 +1261,6 @@
       const oldToUnit = toUnitEl.value;
       fromUnitEl.value = oldToUnit;
       toUnitEl.value = oldFromUnit;
-      // If the output already had a value, carry it into the input for a "continue converting" flow
       const current = toValueEl.textContent.trim();
       if (current !== '—' && current !== '' && Number.isFinite(parseNum(current))) {
         fromValueEl.value = current;
@@ -1175,7 +1313,7 @@
       const ratio = v === 0 ? 0 : result / v;
       const shownResult = smartFmt(result);
 
-      // Summary tiles: input, output, ratio
+      // Summary tiles
       const tile1 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${smartFmt(v)}</div><div class="cgpa-summary-label">Input (${escapeHtml(fromU)})</div></div>`;
       const tile2 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${shownResult}</div><div class="cgpa-summary-label">Output (${escapeHtml(toU)})</div></div>`;
       const tile3 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${ratio === 0 ? '—' : smartFmt(ratio)}</div><div class="cgpa-summary-label">Ratio out/in</div></div>`;
@@ -1192,33 +1330,44 @@
       ctx.push(`🔹 Category: <strong>${escapeHtml(catLabel)}</strong>.`);
 
       const html = `
-        <div class="result-label">${escapeHtml(catLabel)} conversion</div>
-        <div class="cgpa-big-value">${shownResult}<span class="cgpa-big-scale">${escapeHtml(toU)}</span></div>
-        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">From ${smartFmt(v)} ${escapeHtml(fromU)}</p>
-        <div style="text-align:center;">
-          <span class="status-badge status-ok">✓ Conversion complete</span>
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">${escapeHtml(catLabel)} conversion</span>
+            <button type="button" class="copy-btn" data-copy="${escapeHtml(shownResult)}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="answer-value">${shownResult}<span class="cgpa-big-scale" style="font-size:1.25rem;margin-left:0.5rem;">${escapeHtml(toU)}</span></div>
+          <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">From ${smartFmt(v)} ${escapeHtml(fromU)}</p>
+          <div style="text-align:center;">
+            <span class="status-badge status-ok">✓ Conversion complete</span>
+          </div>
         </div>
 
         <div class="cgpa-summary">
           ${tile1}${tile2}${tile3}${tile4}
         </div>
 
-        <div class="steps-block">
-          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
-          <ol>
-            <li>Input: <strong>${smartFmt(v)} ${escapeHtml(fromU)}</strong>.</li>
-            <li>Convert ${escapeHtml(fromU)} to the ${escapeHtml(catLabel.toLowerCase())} SI base unit.</li>
-            <li>Convert from the SI base to ${escapeHtml(toU)}.</li>
-            <li>Result: <strong>${shownResult} ${escapeHtml(toU)}</strong>.</li>
-          </ol>
+        <div class="steps-block" style="margin-top:1.5rem;">
+          <details open>
+            <summary>Show / Hide step-by-step working</summary>
+            <div class="formula-label" style="margin-bottom:0.5rem;margin-top:0.75rem;">Calculation Breakdown</div>
+            <ol>
+              <li>Input: <strong>${smartFmt(v)} ${escapeHtml(fromU)}</strong>.</li>
+              <li>Convert ${escapeHtml(fromU)} to the ${escapeHtml(catLabel.toLowerCase())} SI base unit.</li>
+              <li>Convert from the SI base to ${escapeHtml(toU)}.</li>
+              <li>Result: <strong>${shownResult} ${escapeHtml(toU)}</strong>.</li>
+            </ol>
+          </details>
         </div>
 
         <div class="cgpa-context">
           ${ctx.map(l => `<p>${l}</p>`).join('')}
         </div>
       `;
+      resultPanel.innerHTML = html;
       showResult(resultPanel, html);
       trackEvent(CALC_NAME, 'calculate');
+      announce(`Result: ${shownResult} ${toU}`);
+      revealResult();
     }
 
     calcBtn.addEventListener('click', calculate);
@@ -1238,6 +1387,7 @@
       previewEl.innerHTML = 'Preview: enter a value to convert';
       clearAllErrors(section);
       hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
       trackEvent(CALC_NAME, 'reset');
     });
 
