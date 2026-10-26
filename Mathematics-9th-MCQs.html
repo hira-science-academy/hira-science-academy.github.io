@@ -135,26 +135,12 @@
     }
 
     /* accordion card styling */
-    .chapter-card {
-      transition: all 0.2s ease;
-    }
-    .chapter-card .chapter-content {
-      display: none;
-    }
-    .chapter-card.open .chapter-content {
-      display: block;
-    }
-    .toggle-arrow {
-      transition: transform 0.3s;
-    }
-    .chapter-card.open .toggle-arrow {
-      transform: rotate(180deg);
-    }
-    .search-highlight {
-      background-color: #fef3c7;
-      border-radius: 4px;
-      padding: 0 2px;
-    }
+    .chapter-card { transition: all 0.2s ease; }
+    .chapter-card .chapter-content { display: none; }
+    .chapter-card.open .chapter-content { display: block; }
+    .toggle-arrow { transition: transform 0.3s; }
+    .chapter-card.open .toggle-arrow { transform: rotate(180deg); }
+    .search-highlight { background-color: #fef3c7; border-radius: 4px; padding: 0 2px; }
     .back-to-top {
       position: fixed; bottom: 6rem; right: 1.5rem; background: #0284c7; color: white;
       width: 3.5rem; height: 3.5rem; border-radius: 9999px; display: flex; align-items: center;
@@ -283,6 +269,28 @@
     .score-good { --score-color: #f59e0b; }
     .score-average { --score-color: #f97316; }
     .score-poor { --score-color: #ef4444; }
+
+    /* ===== AdSense slot styling ===== */
+    .ad-slot {
+      max-width: 100%;
+      overflow: hidden;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 10px;
+    }
+    .ad-slot .ad-label {
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .ad-slot ins.adsbygoogle { min-height: 90px; }
+    @media print {
+      .no-print { display: none !important; }
+    }
   </style>
 
   <!-- Structured Data (FAQ & Article) - SAME AS A.txt -->
@@ -453,6 +461,27 @@
   </div>
 </section>
 
+<!-- ============================================================ -->
+<!-- AD #1 — Premium above-the-fold slot (below stats cards)      -->
+<!-- ============================================================ -->
+<div class="max-w-5xl mx-auto px-6 mt-8">
+  <!-- Ad Slot: Math 9th MCQs Test -->
+  <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+    <p class="ad-label">Advertisement</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+         crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4029002473204443"
+         data-ad-slot="4312625929"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</div>
+
 <!-- ========== STUDENT REGISTRATION (FULLY WORKING WITH FEEDBACK) ========== -->
 <section id="student-info" class="max-w-2xl mx-auto px-6 mt-12 mb-8">
   <div class="bg-white rounded-3xl shadow-lg p-8 md:p-10 border border-gray-100">
@@ -496,6 +525,26 @@
     </form>
   </div>
 </section>
+
+<!-- ============================================================ -->
+<!-- AD #2 — Mid-funnel slot (between registration & chapter select) -->
+<!-- ============================================================ -->
+<div class="max-w-5xl mx-auto px-6 my-6">
+  <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+    <p class="ad-label">Advertisement</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+         crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4029002473204443"
+         data-ad-slot="1699824895"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</div>
 
 <!-- ========== CHAPTER SELECTION (preserved from B.txt) ========== -->
 <section id="chapter-select-section" class="max-w-2xl mx-auto px-6 mb-10 hidden">
@@ -544,6 +593,26 @@
     </div>
   </div>
 
+  <!-- ============================================================ -->
+  <!-- AD #3 — In-test slot (between header & progress bar)         -->
+  <!-- Placed before progress bar to avoid interrupting question UI   -->
+  <!-- ============================================================ -->
+  <div class="max-w-5xl mx-auto px-6 my-6">
+    <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+      <p class="ad-label">Advertisement</p>
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+           crossorigin="anonymous"></script>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="6569008197"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </div>
   <!-- Progress bar -->
   <div class="mb-8">
     <div class="flex justify-between items-center mb-3">
@@ -579,6 +648,26 @@
     </div>
     <div id="question-numbers" class="grid grid-cols-10 gap-2"></div>
   </div>
+
+  <!-- ============================================================ -->
+<!-- AD #4 — Bottom-of-test slot (after question grid)            -->
+<!-- Users scrolling to jump between questions see this ad        -->
+<!-- ============================================================ -->
+<div class="max-w-5xl mx-auto px-6 my-6">
+  <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+    <p class="ad-label">Advertisement</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+         crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4029002473204443"
+         data-ad-slot="8902607622"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 </main>
 
 <!-- ========== TEST CONTROLS FOOTER (preserved from B.txt) ========== -->
@@ -602,6 +691,24 @@
       <p class="text-gray-600" id="result-school-name"></p>
       <p class="text-gray-500 text-sm mt-2" id="test-date-display"></p>
     </div>
+
+    <!-- ============================================================ -->
+<!-- AD #5 — High-engagement results page slot (above score circle) -->
+<!-- ============================================================ -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="5514026951"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     <div class="text-center mb-10">
       <h2 class="text-3xl font-bold text-gray-900 mb-8">📊 Test Results</h2>
@@ -646,8 +753,47 @@
       <div id="wrong-answers-container"></div>
       <div class="text-center mt-8"><button id="hide-wrong-answers" class="bg-gray-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-700 transition">⬆️ Back to Summary</button></div>
     </div>
+
+    <!-- ============================================================ -->
+<!-- AD #6 — Deep-dwell results page slot (after review section)  -->
+<!-- ============================================================ -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="8327892550"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
   </div>
 </section>
+
+<!-- ============================================================ -->
+<!-- AD #7 — Pre-footer slot (before footer)                    -->
+<!-- ============================================================ -->
+<div class="max-w-5xl mx-auto px-6">
+  <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+    <p class="ad-label">Advertisement</p>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+         crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4029002473204443"
+         data-ad-slot="2677864648"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+</div>
+</div>
 
 <!-- ========== FOOTER (identical to A.txt) ========== -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
