@@ -12,10 +12,10 @@
 
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
-  <meta content="en" language"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
+  <meta content="en" name="language"/>
   <meta content="Hira Science Academy" name="author"/>
-  <title>Physics Formula Calculator — 15 Common Formulas in One Tool | Hira Science Academy</title>
+  <title>Physics Formula Calculator — 15 Common Formulas in One Tool</title>
   <meta content="Free physics formula calculator with 15 common class 9, 10 and F.Sc formulas: motion, force, work, energy, density, pressure, Ohm's law, speed and more." name="description"/>
   <meta content="physics formula calculator, physics formulas, motion equations, force calculator, work energy, Ohm's law, density pressure, class 9 physics, class 10 physics" name="keywords"/>
   <link href="https://hiraacademy.com.pk/tools/physics-formula-calculator.html" rel="canonical"/>
@@ -31,6 +31,26 @@
   <meta content="@hiraacademyDSK" name="twitter:site"/>
 
   <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+
+  <!-- KaTeX for perfect math rendering in the article -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
 
   <script type="application/ld+json">
   {
@@ -99,7 +119,7 @@
   <link rel="stylesheet" href="assets/tools.css" />
 
   <style>
-    body { background: #f9fafb; color: #1f2937; }
+    body { background: #f9fafb; color: #0f172a; }
     .header-gradient {
       background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
       position: relative;
@@ -147,64 +167,44 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
-    /* LaTeX-style HTML/CSS math */
-    .latex-frac {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      vertical-align: middle;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1em;
-      line-height: 1.15;
-      margin: 0 0.15em;
-      color: #0b1220;
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1.5rem;
     }
-    .latex-frac .f-num {
-      padding: 0 0.35em 0.05em 0.35em;
-      border-bottom: 1.5px solid currentColor;
+    .answer-box .answer-head { 
+      display: flex; align-items: center; justify-content: space-between; 
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
     }
-    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
-    .latex-frac.big { font-size: 1.2em; }
-    .latex-frac.big .f-num { border-bottom-width: 2px; }
-    .math-block {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1rem;
-      color: #0b1220;
-      background: #f8fafc;
-      padding: 1rem 1.25rem;
-      border-radius: 0.5rem;
-      border-left: 4px solid #0ea5e9;
-      margin: 0.35rem 0 0 0;
-      flex-wrap: wrap;
-      gap: 0.3em;
-      text-align: center;
-      overflow-x: auto;
+    .answer-box .answer-heading { 
+      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
+      text-transform: uppercase; color: #0369a1; 
     }
-    .latex-sup { vertical-align: super; font-size: 0.75em; }
-    .latex-sub { vertical-align: sub; font-size: 0.75em; }
+    .answer-box .answer-value { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 2.5rem; font-weight: 800; color: #0b1220; 
+      line-height: 1.1; word-break: break-word; text-align: center;
+    }
+    .answer-box .answer-value .katex { font-size: 2.5rem; }
+    .copy-btn { 
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
+      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
+      font-weight: 700; cursor: pointer; white-space: nowrap; 
+    }
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary { 
+      cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; 
+      margin-top: .75rem; user-select: none; 
+    }
+    .answer-box details > summary:hover { text-decoration: underline; }
 
-    /* Result */
-    .cgpa-big-value {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 0.5rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 3rem;
-      font-weight: 800;
-      color: #0b1220;
-      line-height: 1.1;
-      flex-wrap: wrap;
-      text-align: center;
-    }
-    .cgpa-big-scale {
-      font-size: 1.125rem;
-      font-weight: 500;
-      color: #64748b;
-    }
+    .math-block { display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #0b1220; background: #f8fafc; padding: 1rem 1.25rem; border-radius: .5rem; border-left: 4px solid #0ea5e9; margin: .35rem 0 0 0; flex-wrap: wrap; gap: .3em; text-align: center; overflow-x: auto; }
+
+    .cgpa-big-scale { font-size: 1.125rem; font-weight: 500; color: #64748b; }
     .cgpa-summary {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -243,12 +243,11 @@
       border: 1px solid #bae6fd;
       border-radius: 0.75rem;
       padding: 1rem 1.25rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
     .cgpa-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
     .cgpa-context strong { color: #0b1220; }
 
-    /* Status badge */
     .status-badge {
       display: inline-flex;
       align-items: center;
@@ -261,19 +260,8 @@
       margin-top: 0.5rem;
     }
     .status-ok    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
-    .status-warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
-    .status-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
-    .status-secure{ background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
 
     /* Input rows */
-    .cgpa-input-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      align-items: end;
-      margin-bottom: 0.75rem;
-    }
-    @media (max-width: 540px) { .cgpa-input-grid { grid-template-columns: 1fr; } }
     .cgpa-group-label {
       display: flex;
       align-items: center;
@@ -335,7 +323,6 @@
       box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
     }
 
-    /* Dynamic inputs grid */
     .dyn-inputs {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -380,7 +367,6 @@
       box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
     }
 
-    /* Formula badge + description above inputs */
     .formula-hero {
       background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
       border: 1px solid #bae6fd;
@@ -408,7 +394,6 @@
       line-height: 1.5;
     }
 
-    /* Formula reference table (article) */
     .pf-table {
       width: 100%;
       border-collapse: separate;
@@ -443,13 +428,21 @@
       font-weight: 700;
     }
     .pf-table-wrap { overflow-x: auto; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+    }
+
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
   </style>
 </head>
 
 <body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -492,22 +485,22 @@
   </nav>
 
   <!-- HERO -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · 15 Formulas · SI Units</span>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Physics Formula Calculator</h1>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Pick a formula, enter the values you know, and get the answer with SI units — motion, force, work, energy, density, pressure, Ohm's law and more.</p>
+      <span class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · 15 Formulas · SI Units</span>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">Physics Formula Calculator</h1>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Pick a formula, enter the values you know, and get the answer with SI units — motion, force, work, energy, density, pressure, Ohm's law and more.</p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
@@ -519,10 +512,13 @@
   </div>
 
   <!-- MAIN -->
-  <main class="max-w-3xl mx-auto px-6 py-10">
+  <main class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
+
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <!-- CALCULATOR -->
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Physics formula calculator inputs">
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Physics formula calculator inputs" id="calc-section">
 
       <div class="formula-select-wrap">
         <label for="formula-select">Choose a formula</label>
@@ -573,28 +569,38 @@
 
     </section>
 
-    <!-- RESULT -->
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Physics Formula Calculator result"></section>
 
-    <!-- AD -->
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+    <!-- Ad Slot: Physics Formula Calculator -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="5074209108"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     <!-- EDUCATIONAL CONTENT -->
     <article class="space-y-8 text-gray-700 mt-8">
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What this physics formula calculator does</h2>
-        <p class="leading-relaxed text-justify">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           This tool bundles 15 of the most common physics formulas taught in Pakistani class 9, 10 and F.Sc courses into a single calculator. Pick a formula from the dropdown, and the input panel rebuilds itself to show only the variables that formula needs — labelled with their symbols, names and SI units. Enter the values you know, press Calculate, and the tool returns the result with unit, step-by-step substitution, and a short interpretation. Every formula is solved for its standard subject: enter u, a, t and get v; enter m, a and get F; enter V, I and get R. The tool catches the domain errors that matter — zero time, zero mass, zero area, zero resistance — and explains why each is not physically meaningful.
         </p>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Formula reference</h2>
-        <p class="leading-relaxed text-justify mb-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mb-3">
           All 15 formulas use SI units throughout. Refer to this table if you want to check the exact form or the units of any variable.
         </p>
 
@@ -608,21 +614,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td class="formula-cell">v = u + at</td><td>First equation of motion</td><td>m/s = m/s + m/s² × s</td></tr>
-              <tr><td class="formula-cell">s = ut + ½at²</td><td>Second equation of motion</td><td>m = m/s × s + m/s² × s²</td></tr>
-              <tr><td class="formula-cell">v² = u² + 2as</td><td>Third equation of motion</td><td>m²/s² = m²/s² + m/s² × m</td></tr>
-              <tr><td class="formula-cell">F = ma</td><td>Newton's second law</td><td>N = kg × m/s²</td></tr>
-              <tr><td class="formula-cell">W = mg</td><td>Weight (g = 9.8 m/s²)</td><td>N = kg × m/s²</td></tr>
-              <tr><td class="formula-cell">W = Fd</td><td>Work (force along displacement)</td><td>J = N × m</td></tr>
-              <tr><td class="formula-cell">W = Fd cos θ</td><td>Work at angle θ</td><td>J = N × m × (dimensionless)</td></tr>
-              <tr><td class="formula-cell">KE = ½mv²</td><td>Kinetic energy</td><td>J = kg × m²/s²</td></tr>
-              <tr><td class="formula-cell">PE = mgh</td><td>Gravitational potential energy</td><td>J = kg × m/s² × m</td></tr>
-              <tr><td class="formula-cell">P = W / t</td><td>Power (rate of work)</td><td>W = J / s</td></tr>
-              <tr><td class="formula-cell">ρ = m / V</td><td>Density</td><td>kg/m³ = kg / m³</td></tr>
-              <tr><td class="formula-cell">P = F / A</td><td>Pressure</td><td>Pa = N / m²</td></tr>
-              <tr><td class="formula-cell">V = IR</td><td>Ohm's law</td><td>V = A × Ω</td></tr>
-              <tr><td class="formula-cell">s = d / t</td><td>Speed</td><td>m/s = m / s</td></tr>
-              <tr><td class="formula-cell">p = mv</td><td>Linear momentum</td><td>kg·m/s = kg × m/s</td></tr>
+              <tr><td class="formula-cell">\( v = u + at \)</td><td>First equation of motion</td><td>m/s = m/s + m/s² × s</td></tr>
+              <tr><td class="formula-cell">\( s = ut + \frac{1}{2}at^2 \)</td><td>Second equation of motion</td><td>m = m/s × s + m/s² × s²</td></tr>
+              <tr><td class="formula-cell">\( v^2 = u^2 + 2as \)</td><td>Third equation of motion</td><td>m²/s² = m²/s² + m/s² × m</td></tr>
+              <tr><td class="formula-cell">\( F = ma \)</td><td>Newton's second law</td><td>N = kg × m/s²</td></tr>
+              <tr><td class="formula-cell">\( W = mg \)</td><td>Weight (g = 9.8 m/s²)</td><td>N = kg × m/s²</td></tr>
+              <tr><td class="formula-cell">\( W = Fd \)</td><td>Work (force along displacement)</td><td>J = N × m</td></tr>
+              <tr><td class="formula-cell">\( W = Fd\cos\theta \)</td><td>Work at angle θ</td><td>J = N × m × (dimensionless)</td></tr>
+              <tr><td class="formula-cell">\( \text{KE} = \frac{1}{2}mv^2 \)</td><td>Kinetic energy</td><td>J = kg × m²/s²</td></tr>
+              <tr><td class="formula-cell">\( \text{PE} = mgh \)</td><td>Gravitational potential energy</td><td>J = kg × m/s² × m</td></tr>
+              <tr><td class="formula-cell">\( P = \frac{W}{t} \)</td><td>Power (rate of work)</td><td>W = J / s</td></tr>
+              <tr><td class="formula-cell">\( \rho = \frac{m}{V} \)</td><td>Density</td><td>kg/m³ = kg / m³</td></tr>
+              <tr><td class="formula-cell">\( P = \frac{F}{A} \)</td><td>Pressure</td><td>Pa = N / m²</td></tr>
+              <tr><td class="formula-cell">\( V = IR \)</td><td>Ohm's law</td><td>V = A × Ω</td></tr>
+              <tr><td class="formula-cell">\( s = \frac{d}{t} \)</td><td>Speed</td><td>m/s = m / s</td></tr>
+              <tr><td class="formula-cell">\( p = mv \)</td><td>Linear momentum</td><td>kg·m/s = kg × m/s</td></tr>
             </tbody>
           </table>
         </div>
@@ -632,69 +638,69 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 1: v = u + at (a car accelerating)</p>
+          <p class="font-semibold text-gray-900">Example 1: \( v = u + at \) (a car accelerating)</p>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
             u = 0 m/s · a = 3 m/s² · t = 8 s
           </div>
           <ol>
-            <li>v = 0 + 3 × 8 = <strong>24 m/s</strong>.</li>
+            <li>\( v = 0 + 3 \times 8 = \mathbf{24 \text{ m/s}} \).</li>
             <li>A car starting from rest with a 3 m/s² acceleration reaches 24 m/s after 8 seconds.</li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 2: F = ma (a pushed box)</p>
+          <p class="font-semibold text-gray-900">Example 2: \( F = ma \) (a pushed box)</p>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
             m = 12 kg · a = 4 m/s²
           </div>
           <ol>
-            <li>F = 12 × 4 = <strong>48 N</strong>.</li>
+            <li>\( F = 12 \times 4 = \mathbf{48 \text{ N}} \).</li>
             <li>Newton's second law: 48 newtons of net force are needed.</li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 3: KE = ½mv² (a moving cricket ball)</p>
+          <p class="font-semibold text-gray-900">Example 3: \( \text{KE} = \frac{1}{2}mv^2 \) (a moving cricket ball)</p>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
             m = 0.15 kg · v = 30 m/s
           </div>
           <ol>
-            <li>KE = ½ × 0.15 × 30² = 0.5 × 0.15 × 900 = <strong>67.5 J</strong>.</li>
+            <li>\( \text{KE} = \frac{1}{2} \times 0.15 \times 30^2 = 0.5 \times 0.15 \times 900 = \mathbf{67.5 \text{ J}} \).</li>
             <li>Note the velocity is squared — doubling v quadruples KE. This is why fast-moving objects carry disproportionate energy.</li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 4: ρ = m / V (finding the density of a metal block)</p>
+          <p class="font-semibold text-gray-900">Example 4: \( \rho = \frac{m}{V} \) (finding the density of a metal block)</p>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
             m = 540 g = 0.54 kg · V = 200 cm³ = 0.0002 m³
           </div>
           <ol>
-            <li>ρ = 0.54 / 0.0002 = <strong>2700 kg/m³</strong>.</li>
+            <li>\( \rho = \frac{0.54}{0.0002} = \mathbf{2700 \text{ kg/m}^3} \).</li>
             <li>This value is close to the density of aluminium (2700 kg/m³), so the block is likely aluminium.</li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 5: V = IR (Ohm's law)</p>
+          <p class="font-semibold text-gray-900">Example 5: \( V = IR \) (Ohm's law)</p>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
             I = 0.5 A · R = 12 Ω
           </div>
           <ol>
-            <li>V = 0.5 × 12 = <strong>6 V</strong>.</li>
+            <li>\( V = 0.5 \times 12 = \mathbf{6 \text{ V}} \).</li>
             <li>A current of 0.5 amperes through a 12-ohm resistor requires a potential difference of 6 volts.</li>
           </ol>
         </div>
 
         <div class="worked-example">
-          <p class="font-semibold text-gray-900">Example 6: s = ut + ½at² (finding displacement)</p>
+          <p class="font-semibold text-gray-900">Example 6: \( s = ut + \frac{1}{2}at^2 \) (finding displacement)</p>
           <div style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#334155;margin:0.5rem 0;">
             u = 5 m/s · a = 2 m/s² · t = 6 s
           </div>
           <ol>
-            <li>ut = 5 × 6 = 30 m.</li>
-            <li>½at² = 0.5 × 2 × 6² = 0.5 × 2 × 36 = 36 m.</li>
-            <li>s = 30 + 36 = <strong>66 m</strong>.</li>
+            <li>\( ut = 5 \times 6 = 30 \text{ m} \).</li>
+            <li>\( \frac{1}{2}at^2 = 0.5 \times 2 \times 6^2 = 0.5 \times 2 \times 36 = 36 \text{ m} \).</li>
+            <li>\( s = 30 + 36 = \mathbf{66 \text{ m}} \).</li>
             <li>The two terms show the contribution of the initial velocity (30 m) and the acceleration (36 m).</li>
           </ol>
         </div>
@@ -702,10 +708,10 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Notes on units and constants</h2>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li><strong>All formulas use SI units.</strong> Convert centimetres to metres, grams to kilograms, and minutes to seconds before entering values.</li>
           <li><strong>Gravitational acceleration (g)</strong> — the tool uses 9.8 m/s² for the weight formula. Some textbooks use 10 m/s² for convenience. Use 9.8 for accurate work and 10 for rough estimates.</li>
-          <li><strong>Angle θ</strong> in W = Fd cos θ must be in degrees. The tool converts to radians internally and returns cos θ in the step-by-step.</li>
+          <li><strong>Angle θ</strong> in \( W = Fd\cos\theta \) must be in degrees. The tool converts to radians internally and returns \( \cos\theta \) in the step-by-step.</li>
           <li><strong>Density and pressure involve volumes and areas</strong> which are often given in cm³ and cm². Convert to m³ and m² first: 1 m² = 10,000 cm², 1 m³ = 1,000,000 cm³.</li>
           <li><strong>Velocity is a vector</strong> — its direction matters. This tool computes magnitudes and assumes all motion is along a single line unless angle is an input.</li>
         </ul>
@@ -713,12 +719,12 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li><strong>Mixing units.</strong> Distance in metres but time in minutes, or mass in grams but volume in m³ — these are the most frequent errors. Convert everything to SI before entering.</li>
-          <li><strong>Forgetting to square the velocity in KE.</strong> KE = ½mv², not ½mv. A common slip in exams.</li>
-          <li><strong>Using weight instead of mass in F = ma.</strong> Weight is already a force (W = mg, in newtons). F = ma takes mass in kilograms.</li>
+          <li><strong>Forgetting to square the velocity in KE.</strong> \( \text{KE} = \frac{1}{2}mv^2 \), not \( \frac{1}{2}mv \). A common slip in exams.</li>
+          <li><strong>Using weight instead of mass in \( F = ma \).</strong> Weight is already a force (\( W = mg \), in newtons). \( F = ma \) takes mass in kilograms.</li>
           <li><strong>Treating g as 10 everywhere.</strong> Fine for rough estimates, but for exam answers use the value your textbook specifies.</li>
-          <li><strong>Wrong angle in W = Fd cos θ.</strong> The angle is between the force vector and the displacement vector, not between the force and the horizontal (unless the object moves horizontally).</li>
+          <li><strong>Wrong angle in \( W = Fd\cos\theta \).</strong> The angle is between the force vector and the displacement vector, not between the force and the horizontal (unless the object moves horizontally).</li>
           <li><strong>Resistance of zero in Ohm's law.</strong> That would imply infinite current, which is a domain error. Real circuits always have some resistance.</li>
           <li><strong>Ignoring direction in the equations of motion.</strong> If the object decelerates, use a negative value of a. The tool accepts negative numbers for velocity and acceleration.</li>
         </ul>
@@ -729,7 +735,7 @@
         <div class="space-y-3">
           <details class="faq-item">
             <summary>Which physics formulas are included?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">The tool includes 15 formulas: three equations of motion (v = u + at, s = ut + ½at², v² = u² + 2as), force (F = ma), weight (W = mg), work (W = Fd cos θ), kinetic energy (KE = ½mv²), potential energy (PE = mgh), power (P = W/t), density (ρ = m/V), pressure (P = F/A), Ohm's law (V = IR), speed (s = d/t), and momentum (p = mv).</p>
+            <p class="faq-answer">The tool includes 15 formulas: three equations of motion (\( v = u + at \), \( s = ut + \frac{1}{2}at^2 \), \( v^2 = u^2 + 2as \)), force (\( F = ma \)), weight (\( W = mg \)), work (\( W = Fd\cos\theta \)), kinetic energy (\( \text{KE} = \frac{1}{2}mv^2 \)), potential energy (\( \text{PE} = mgh \)), power (\( P = \frac{W}{t} \)), density (\( \rho = \frac{m}{V} \)), pressure (\( P = \frac{F}{A} \)), Ohm's law (\( V = IR \)), speed (\( s = \frac{d}{t} \)), and momentum (\( p = mv \)).</p>
           </details>
           <details class="faq-item">
             <summary>What is the SI unit system used?<span aria-hidden="true">▾</span></summary>
@@ -737,7 +743,7 @@
           </details>
           <details class="faq-item">
             <summary>How do I calculate acceleration from velocity and time?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Use a = (v − u) / t, where v is final velocity, u is initial velocity, and t is time. This is the rearranged form of the first equation of motion, v = u + at. Select 'v = u + at' from the dropdown and enter the three known values.</p>
+            <p class="faq-answer">Use \( a = \frac{v - u}{t} \), where v is final velocity, u is initial velocity, and t is time. This is the rearranged form of the first equation of motion, \( v = u + at \). Select "v = u + at" from the dropdown and enter the three known values.</p>
           </details>
           <details class="faq-item">
             <summary>What is the difference between work and power?<span aria-hidden="true">▾</span></summary>
@@ -768,7 +774,7 @@
 
       <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
         <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
-        <p class="text-gray-700 leading-relaxed text-justify">
+        <p class="text-gray-700 leading-relaxed prose-justify">
           Revise the theory behind these formulas with our
           <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
           <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
@@ -782,7 +788,6 @@
   </main>
 
   <!-- FOOTER -->
- <!-- FOOTER -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
   <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     
@@ -874,14 +879,13 @@
     </div>
   </a>
 
-  <div class="back-to-top" id="backToTop">↑</div>
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script src="assets/tools-common.js"></script>
   <script>
   (function () {
     'use strict';
-    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
-            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const { trackEvent, parseNum, showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'physics-formula-calculator';
 
     const formulaSelect = document.getElementById('formula-select');
@@ -891,21 +895,73 @@
     const calcBtn       = document.getElementById('calc-btn');
     const resetBtn      = document.getElementById('reset-btn');
     const resultPanel   = document.getElementById('result-panel');
-    const section       = document.querySelector('section[aria-label="Physics formula calculator inputs"]');
+    const section       = document.getElementById('calc-section');
+    const siteNav       = document.getElementById('site-nav');
+    const answerLive    = document.getElementById('answer-live');
 
-    attachCopyButton(resultPanel, CALC_NAME);
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur();
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
+    }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
+
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
 
     /* =========================================================
        Formula declarations
-       Each entry: id, label (formula), name, description,
-       solveFor (variable being computed),
-       resultSymbol, resultUnit, resultLabel,
-       inputs: array of { key, symbol, name, unit, allowNegative }
-       compute: function(v) -> number
-       steps: function(v, result) -> array of step strings
-       validate: optional function(v) -> { ok, error }
        ========================================================= */
-    const G = 9.8; // m/s²
+    const G = 9.8;
 
     const FORMULAS = {
       'v-u-at': {
@@ -1243,7 +1299,6 @@
       if (filled < def.inputs.length) { previewEl.innerHTML = `Preview: ${filled}/${def.inputs.length} inputs filled`; return; }
       if (Object.values(vals).some(x => !Number.isFinite(x))) { previewEl.innerHTML = 'Preview: enter valid numbers'; return; }
 
-      // Domain check
       if (def.validate) {
         const v = def.validate(vals);
         if (!v.ok) { previewEl.innerHTML = `Preview: ${v.error}`; return; }
@@ -1281,7 +1336,6 @@
 
       if (!ok) { trackEvent(CALC_NAME, 'invalid_input'); return; }
 
-      // Domain check (formula-specific)
       if (def.validate) {
         const check = def.validate(vals);
         if (!check.ok) {
@@ -1303,8 +1357,6 @@
       const resultR = Math.round(result * 1e6) / 1e6;
       const steps = def.steps(vals, resultR);
 
-      // Summary tiles
-      const tileCount = Math.min(4, def.inputs.length + 1);
       let tilesHtml = '';
       def.inputs.forEach((inp, i) => {
         if (i >= 3) return;
@@ -1312,71 +1364,71 @@
       });
       tilesHtml += `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${fmt(resultR)}</div><div class="cgpa-summary-label">${escapeHtml(def.resultSymbol)} (${escapeHtml(def.resultUnit)})</div></div>`;
 
-      // Context lines
-      let ctx = [];
-      ctx.push(`🔹 Formula: <strong>${escapeHtml(def.label)}</strong> — ${escapeHtml(def.name)}.`);
-      ctx.push(`🔹 Solving for: <strong>${escapeHtml(def.resultLabel)} (${escapeHtml(def.resultSymbol)})</strong>.`);
-      ctx.push(`🔹 Answer: <strong>${fmt(resultR)} ${escapeHtml(def.resultUnit)}</strong>.`);
-      if (f.id === 'w-mg' || f.id === 'pe-mgh') {
-        ctx.push(`🔹 This formula uses g = 9.8 m/s². Some textbooks use g = 10 for rough estimates — that would give a slightly different result.`);
-      }
-      if (f.id === 'w-fd-costheta') {
-        const cosT = Math.cos(vals.theta * Math.PI / 180);
-        if (vals.theta === 90) ctx.push(`🔹 At 90°, cos θ = 0, so no work is done regardless of F and d. This is why carrying a load horizontally does zero physics work against gravity.`);
-        else if (vals.theta === 0) ctx.push(`🔹 At 0°, cos θ = 1, so W = Fd — the force is fully along the displacement.`);
-        else if (cosT < 0) ctx.push(`🔹 cos θ is negative, so the work is negative — the force is acting against the displacement (e.g. friction).`);
-      }
-      if (f.id === 'v2-u2-2as') {
-        ctx.push(`🔹 This equation does not involve time. Use it when t is not given.`);
-      }
-      if (f.id === 'ke-half-mv2') {
-        ctx.push(`🔹 Because velocity is squared, doubling v quadruples KE. Halving v reduces KE to a quarter.`);
-      }
-      if (f.id === 'v-ir') {
-        ctx.push(`🔹 Ohm's law applies to ohmic conductors at constant temperature. Real resistors heat up and their resistance drifts slightly.`);
-      }
+      const answerPlain = `${def.resultSymbol} = ${fmt(resultR)} ${def.resultUnit}`;
 
       const html = `
-        <div class="result-label">${escapeHtml(def.name)}</div>
-        <div class="cgpa-big-value">${fmt(resultR)}<span class="cgpa-big-scale">${escapeHtml(def.resultUnit)}</span></div>
-        <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">${escapeHtml(def.label)}</p>
-        <div style="text-align:center;">
-          <span class="status-badge status-ok">✓ ${escapeHtml(def.resultLabel)} computed</span>
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">${escapeHtml(def.name)}</span>
+            <button type="button" class="copy-btn" data-copy="${escapeHtml(answerPlain)}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="answer-value">${fmt(resultR)}<span class="cgpa-big-scale" style="font-size:1.25rem;margin-left:.5rem;">${escapeHtml(def.resultUnit)}</span></div>
+          <p style="text-align:center;font-size:.875rem;color:#64748b;margin-top:.5rem;font-family:'JetBrains Mono',monospace;">${escapeHtml(def.label)}</p>
+          <div style="text-align:center;"><span class="status-badge status-ok">✓ ${escapeHtml(def.resultLabel)} computed</span></div>
         </div>
 
         <div class="cgpa-summary">
           ${tilesHtml}
         </div>
 
-        <div class="steps-block">
-          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
-          <ol>
-            ${steps.map(s => `<li>${s}</li>`).join('')}
-          </ol>
+        <div class="steps-block" style="margin-top:1.5rem;">
+          <details open>
+            <summary>Show / Hide step-by-step working</summary>
+            <div class="formula-label" style="margin-bottom:.5rem;margin-top:.75rem;">Calculation breakdown</div>
+            <ol>
+              ${steps.map(s => `<li>${s}</li>`).join('')}
+            </ol>
+          </details>
         </div>
 
         <div class="cgpa-context">
-          ${ctx.map(l => `<p>${l}</p>`).join('')}
+          <p>🔹 Formula: <strong>${escapeHtml(def.label)}</strong> — ${escapeHtml(def.name)}.</p>
+          <p>🔹 Solving for: <strong>${escapeHtml(def.resultLabel)} (${escapeHtml(def.resultSymbol)})</strong>.</p>
+          <p>🔹 Answer: <strong>${fmt(resultR)} ${escapeHtml(def.resultUnit)}</strong>.</p>
+          ${f.id === 'w-mg' || f.id === 'pe-mgh' ? '<p>🔹 This formula uses g = 9.8 m/s². Some textbooks use g = 10 for rough estimates — that would give a slightly different result.</p>' : ''}
+          ${f.id === 'w-fd-costheta' && vals.theta === 90 ? '<p>🔹 At 90°, cos θ = 0, so no work is done regardless of F and d. This is why carrying a load horizontally does zero physics work against gravity.</p>' : ''}
+          ${f.id === 'w-fd-costheta' && vals.theta === 0 ? '<p>🔹 At 0°, cos θ = 1, so W = Fd — the force is fully along the displacement.</p>' : ''}
+          ${f.id === 'ke-half-mv2' ? '<p>🔹 Because velocity is squared, doubling v quadruples KE. Halving v reduces KE to a quarter.</p>' : ''}
+          ${f.id === 'v-ir' ? '<p>🔹 Ohm\'s law applies to ohmic conductors at constant temperature. Real resistors heat up and their resistance drifts slightly.</p>' : ''}
         </div>
       `;
 
+      resultPanel.innerHTML = html;
       showResult(resultPanel, html);
       trackEvent(CALC_NAME, 'calculate');
+      announce(`Result: ${answerPlain}`);
+      revealResult();
     }
 
     /* ============ Wiring ============ */
-    formulaSelect.addEventListener('change', () => {
-      buildInputs();
-    });
-
+    formulaSelect.addEventListener('change', () => { buildInputs(); });
     calcBtn.addEventListener('click', calculate);
-    bindEnterKey(section, calcBtn);
+
+    // Explicit fallback for Enter key across all inputs
+    section.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+      const t = e.target;
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.tagName === 'A' || t.tagName === 'SUMMARY') return;
+      e.preventDefault();
+      calcBtn.click();
+    });
 
     resetBtn.addEventListener('click', () => {
       formulaSelect.value = '';
       buildInputs();
       clearAllErrors(section);
       hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
       trackEvent(CALC_NAME, 'reset');
     });
 
