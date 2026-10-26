@@ -105,7 +105,7 @@
   <link rel="stylesheet" href="assets/tools.css" />
 
   <style>
-    body { background: #f9fafb; color: #1f2937; }
+    body { background: #f9fafb; color: #0f172a; }
     .header-gradient {
       background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
       position: relative;
@@ -152,6 +152,41 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1.5rem;
+    }
+    .answer-box .answer-head { 
+      display: flex; align-items: center; justify-content: space-between; 
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
+    }
+    .answer-box .answer-heading { 
+      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
+      text-transform: uppercase; color: #0369a1; 
+    }
+    .answer-box .answer-value { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 2rem; font-weight: 800; color: #0b1220; 
+      line-height: 1.1; word-break: break-word; text-align: center;
+    }
+    .answer-box .answer-value .katex { font-size: 2rem; }
+    .copy-btn { 
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
+      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
+      font-weight: 700; cursor: pointer; white-space: nowrap; 
+    }
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary { 
+      cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; 
+      margin-top: .75rem; user-select: none; 
+    }
+    .answer-box details > summary:hover { text-decoration: underline; }
+
     /* Graph canvas */
     .graph-canvas-wrap {
       position: relative;
@@ -191,19 +226,6 @@
     }
 
     /* Result */
-    .dist-result-value {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2rem;
-      font-weight: 700;
-      color: #0b1220;
-      line-height: 1.2;
-      flex-wrap: wrap;
-      text-align: center;
-    }
     .dist-summary {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -276,13 +298,25 @@
     }
     .hero-centered { text-align: center; }
     .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+    }
+
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
   </style>
 </head>
 
 <body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -325,25 +359,25 @@
   </nav>
 
   <!-- HERO -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Exact Radical Form · Graph</span>
+      <span class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Exact Radical Form · Graph</span>
       
       <!-- CTR OPTIMIZATION: Exact match H1 -->
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Distance Between Two Points Calculator</h1>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">Distance Between Two Points Calculator</h1>
       
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Find the exact distance between two coordinates using the distance formula. Get step-by-step working, simplified radicals, and a visual graph.</p>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Find the exact distance between two coordinates using the distance formula. Get step-by-step working, simplified radicals, and a visual graph.</p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
@@ -355,10 +389,13 @@
   </div>
 
   <!-- MAIN -->
-  <main class="max-w-3xl mx-auto px-6 py-10">
+  <main class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
+
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <!-- CALCULATOR -->
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Distance calculator inputs">
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Distance calculator inputs" id="calc-section">
 
       <div class="point-row-label"><span class="point-row-num">1</span> Point 1 (x₁, y₁)</div>
       <div class="point-input-pair" style="margin-bottom:1rem;">
@@ -395,32 +432,27 @@
 
     </section>
 
-    <!-- RESULT -->
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Distance Calculator result"></section>
 
-<!-- Ad Slot: Distance -->
-<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
-  <p class="ad-label">Advertisement</p>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-       crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="1972654615"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
-
+    <!-- FIRST AD -->
+    <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+      <p class="ad-label">Advertisement</p>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="1972654615"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
     <!-- EDUCATIONAL CONTENT -->
     <article class="space-y-8 text-gray-700 mt-8">
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What this distance calculator does</h2>
-        <p class="leading-relaxed text-justify">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           This tool computes the straight-line distance between two points on the coordinate plane. Given the coordinates of two points, it applies the distance formula and returns the result in two forms: the exact form as a simplified radical (such as 5 or 2√13) and the decimal approximation. It draws a small graph showing the two points, the segment joining them, and the right triangle whose legs are the horizontal and vertical separations. Every step of the computation is shown: the differences, the squares, their sum, and the square root.
         </p>
       </section>
@@ -450,7 +482,7 @@
         </div>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
-        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed text-[#0f172a]">
           <li><strong>\((x_1, y_1)\)</strong> — coordinates of the first point.</li>
           <li><strong>\((x_2, y_2)\)</strong> — coordinates of the second point.</li>
           <li><strong>\(\Delta x, \Delta y\)</strong> — horizontal and vertical differences (may be negative; they get squared).</li>
@@ -502,10 +534,10 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Where the distance formula appears in Class 9 &amp; 10</h2>
-        <p class="leading-relaxed text-justify mb-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mb-3">
           The distance formula is fundamental to coordinate geometry and appears across the Punjab board syllabus:
         </p>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li><strong>Coordinate geometry</strong> — proving that three points form an isosceles, right, or equilateral triangle.</li>
           <li><strong>Circle geometry</strong> — a circle is the set of points at a fixed distance from the centre.</li>
           <li><strong>Physics</strong> — displacement and magnitude of vectors.</li>
@@ -515,7 +547,7 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li><strong>Forgetting to square the differences.</strong> The formula is \(\sqrt{\Delta x^2 + \Delta y^2}\), not \(\sqrt{\Delta x + \Delta y}\).</li>
           <li><strong>Sign errors when subtracting a negative.</strong> Subtracting \(-3\) is the same as adding 3. For example, \(5 - (-2) = 7\), not 3.</li>
           <li><strong>Taking the square root of the sum too early.</strong> Compute \(\Delta x^2\) and \(\Delta y^2\) first, add them, and take the square root of the total.</li>
@@ -555,7 +587,7 @@
 
       <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
         <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
-        <p class="text-gray-700 leading-relaxed text-justify">
+        <p class="text-gray-700 leading-relaxed prose-justify">
           The distance formula is central to coordinate geometry in Class 9 and 10. Revise with our free
           <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
           <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
@@ -658,14 +690,13 @@
     </div>
   </a>
 
-  <div class="back-to-top" id="backToTop">↑</div>
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script src="assets/tools-common.js"></script>
   <script>
   (function () {
     'use strict';
-    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
-            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const { trackEvent, parseNum, showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'distance-calculator';
 
     const x1El = document.getElementById('x1');
@@ -676,16 +707,70 @@
     const calcBtn = document.getElementById('calc-btn');
     const resetBtn = document.getElementById('reset-btn');
     const resultPanel = document.getElementById('result-panel');
-    const section = document.querySelector('section[aria-label="Distance calculator inputs"]');
+    const section = document.getElementById('calc-section');
+    const siteNav = document.getElementById('site-nav');
+    const answerLive = document.getElementById('answer-live');
 
     let lastResult = null;
 
-    attachCopyButton(resultPanel, CALC_NAME);
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function radicalHTML(radicandHTML, big) {
-      const cls = 'latex-radical' + (big ? ' big' : '');
-      return `<span class="${cls}"><span class="r-sign">√</span><span class="r-body">${radicandHTML}</span></span>`;
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur();
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
     }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
+
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
 
     function fmtNum(x, maxDecimals) {
       if (maxDecimals === undefined) maxDecimals = 8;
@@ -778,21 +863,29 @@
 
       const sumSqInt = Math.round(sumSq);
       const isPerfect = Math.abs(sumSqInt - sumSq) < 1e-9 && Math.abs(Math.sqrt(sumSqInt) - Math.round(Math.sqrt(sumSqInt))) < 1e-9;
+      
+      let exactAnswer;
       let exactHTML;
       if (isPerfect) {
-        exactHTML = `<span style="font-weight:800;">${Math.round(Math.sqrt(sumSqInt))}</span>`;
+        exactAnswer = String(Math.round(Math.sqrt(sumSqInt)));
+        exactHTML = `<span style="font-weight:800;">${exactAnswer}</span>`;
       } else if (Math.abs(sumSqInt - sumSq) < 1e-9) {
         const simp = simplifySqrt(sumSqInt);
         if (simp.outside === 1) {
-          exactHTML = radicalHTML(`${sumSqInt}`, true);
+          exactAnswer = `√${sumSqInt}`;
+          exactHTML = `<span style="font-weight:800;">√${sumSqInt}</span>`;
         } else {
-          exactHTML = `<span style="font-weight:800;">${simp.outside}</span>${radicalHTML(`${simp.inside}`, true)}`;
+          exactAnswer = `${simp.outside}√${simp.inside}`;
+          exactHTML = `<span style="font-weight:800;">${simp.outside}√${simp.inside}</span>`;
         }
       } else {
-        exactHTML = `<span style="font-weight:800;">${fmtNum(d)}</span>`;
+        exactAnswer = fmtNum(d, 10);
+        exactHTML = `<span style="font-weight:800;">${exactAnswer}</span>`;
       }
 
-      const decimalLine = !isPerfect ? `<p style="text-align:center;font-size:0.9375rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.35rem;">≈ ${fmtNum(d, 10)}</p>` : '';
+      const decimalLine = !isPerfect && Math.abs(sumSqInt - sumSq) < 1e-9 
+        ? `<p style="text-align:center;font-size:0.9375rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.35rem;">≈ ${fmtNum(d, 10)}</p>` 
+        : '';
 
       const isHorizontal = Math.abs(dy) < 1e-12;
       const isVertical = Math.abs(dx) < 1e-12;
@@ -823,9 +916,14 @@
       }
 
       const html = `
-        <div class="result-label">Distance</div>
-        <div class="dist-result-value">d = ${exactHTML}</div>
-        ${decimalLine}
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">Distance</span>
+            <button type="button" class="copy-btn" data-copy="d = ${exactAnswer}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="answer-value">d = ${exactHTML}</div>
+          ${decimalLine}
+        </div>
 
         <div class="dist-summary">
           <div class="dist-summary-unit">
@@ -863,17 +961,20 @@
           </div>
         </div>
 
-        <div class="steps-block">
-          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
-          <ol>
-            <li>Points: P₁ = (${fmtNum(x1)}, ${fmtNum(y1)}), P₂ = (${fmtNum(x2)}, ${fmtNum(y2)}).</li>
-            <li>Horizontal difference: Δx = x₂ − x₁ = ${fmtNum(x2)} − (${fmtNum(x1)}) = <strong>${fmtNum(dx)}</strong>.</li>
-            <li>Vertical difference: Δy = y₂ − y₁ = ${fmtNum(y2)} − (${fmtNum(y1)}) = <strong>${fmtNum(dy)}</strong>.</li>
-            <li>Square them: Δx² = ${fmtNum(dx2)}, Δy² = ${fmtNum(dy2)}.</li>
-            <li>Sum: Δx² + Δy² = <strong>${sumSqDisplay}</strong>.</li>
-            ${radicalSteps}
-            <li>Substitution check: d² = ${fmtNum(sumSq)} → d ≈ ${fmtNum(d, 10)}.</li>
-          </ol>
+        <div class="steps-block" style="margin-top:1.5rem;">
+          <details open>
+            <summary>Show / Hide step-by-step working</summary>
+            <div class="formula-label" style="margin-bottom:0.5rem;margin-top:0.75rem;">Calculation Breakdown</div>
+            <ol>
+              <li>Points: P₁ = (${fmtNum(x1)}, ${fmtNum(y1)}), P₂ = (${fmtNum(x2)}, ${fmtNum(y2)}).</li>
+              <li>Horizontal difference: Δx = x₂ − x₁ = ${fmtNum(x2)} − (${fmtNum(x1)}) = <strong>${fmtNum(dx)}</strong>.</li>
+              <li>Vertical difference: Δy = y₂ − y₁ = ${fmtNum(y2)} − (${fmtNum(y1)}) = <strong>${fmtNum(dy)}</strong>.</li>
+              <li>Square them: Δx² = ${fmtNum(dx2)}, Δy² = ${fmtNum(dy2)}.</li>
+              <li>Sum: Δx² + Δy² = <strong>${sumSqDisplay}</strong>.</li>
+              ${radicalSteps}
+              <li>Substitution check: d² = ${fmtNum(sumSq)} → d ≈ ${fmtNum(d, 10)}.</li>
+            </ol>
+          </details>
         </div>
 
         <div class="dist-context">
@@ -891,6 +992,8 @@
       requestAnimationFrame(() => drawGraph(x1, y1, x2, y2));
 
       trackEvent(CALC_NAME, 'calculate');
+      announce(`Result: Distance is ${fmtNum(d, 6)}`);
+      revealResult();
     }
 
     function drawGraph(x1, y1, x2, y2) {
@@ -1007,7 +1110,15 @@
     }
 
     calcBtn.addEventListener('click', calculate);
-    bindEnterKey(section, calcBtn);
+
+    // Explicit fallback for Enter key across all inputs
+    section.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+      const t = e.target;
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.tagName === 'A' || t.tagName === 'SUMMARY') return;
+      e.preventDefault();
+      calcBtn.click();
+    });
 
     resetBtn.addEventListener('click', () => {
       [x1El, y1El, x2El, y2El].forEach(el => { el.value = ''; });
@@ -1015,6 +1126,7 @@
       renderPreview();
       clearAllErrors(section);
       hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
       trackEvent(CALC_NAME, 'reset');
     });
 
