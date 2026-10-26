@@ -12,7 +12,7 @@
 
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="index, follow, max-snippet:-1, max-image-preview:large" name="robots"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
   <meta content="en" name="language"/>
   <meta content="Hira Science Academy" name="author"/>
   <title>Area &amp; Perimeter Calculator — Rectangle, Circle, Triangle &amp; More | Hira Science Academy</title>
@@ -31,6 +31,26 @@
   <meta content="@hiraacademyDSK" name="twitter:site"/>
 
   <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+
+  <!-- KaTeX for perfect math rendering in the article -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
 
   <script type="application/ld+json">
   {
@@ -99,7 +119,7 @@
   <link rel="stylesheet" href="assets/tools.css" />
 
   <style>
-    body { background: #f9fafb; color: #1f2937; }
+    body { background: #f9fafb; color: #0f172a; }
     .header-gradient {
       background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
       position: relative;
@@ -147,76 +167,40 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
-    /* LaTeX-style HTML/CSS math */
-    .latex-radical {
-      display: inline-flex;
-      align-items: stretch;
-      font-family: 'JetBrains Mono', monospace;
-      vertical-align: middle;
-      line-height: 1;
-      color: #0b1220;
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1.5rem;
     }
-    .latex-radical .r-sign {
-      display: inline-block;
-      font-size: 1.15em;
-      transform: translateY(0.02em);
-      padding-right: 0.02em;
+    .answer-box .answer-head { 
+      display: flex; align-items: center; justify-content: space-between; 
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
     }
-    .latex-radical .r-body {
-      display: inline-block;
-      border-top: 1.5px solid currentColor;
-      padding: 0.15em 0.25em 0.05em 0.25em;
-      margin-top: 0.1em;
+    .answer-box .answer-heading { 
+      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
+      text-transform: uppercase; color: #0369a1; 
     }
-    .latex-frac {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: center;
-      vertical-align: middle;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1em;
-      line-height: 1.15;
-      margin: 0 0.15em;
-      color: #0b1220;
+    .answer-box .answer-value { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 2.5rem; font-weight: 800; color: #0b1220; 
+      line-height: 1.1; word-break: break-word; text-align: center;
     }
-    .latex-frac .f-num {
-      padding: 0 0.35em 0.05em 0.35em;
-      border-bottom: 1.5px solid currentColor;
+    .answer-box .answer-value .katex { font-size: 2.5rem; }
+    .copy-btn { 
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
+      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
+      font-weight: 700; cursor: pointer; white-space: nowrap; 
     }
-    .latex-frac .f-den { padding: 0.05em 0.35em 0 0.35em; }
-    .latex-frac.big { font-size: 1.35em; }
-    .latex-frac.big .f-num { border-bottom-width: 2px; }
-    .latex-sup {
-      display: inline-block;
-      font-size: 0.72em;
-      vertical-align: super;
-      line-height: 0;
-      font-weight: 600;
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary { 
+      cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; 
+      margin-top: .75rem; user-select: none; 
     }
-    .latex-sub {
-      display: inline-block;
-      font-size: 0.72em;
-      vertical-align: sub;
-      line-height: 0;
-      font-weight: 600;
-    }
-    .math-block {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.05rem;
-      color: #0b1220;
-      background: #f8fafc;
-      padding: 1rem 1.25rem;
-      border-radius: 0.5rem;
-      border-left: 4px solid #0ea5e9;
-      margin: 0.35rem 0 0 0;
-      flex-wrap: wrap;
-      gap: 0.3em;
-      text-align: center;
-      overflow-x: auto;
-    }
+    .answer-box details > summary:hover { text-decoration: underline; }
 
     /* Shape diagram */
     .shape-diagram-wrap {
@@ -311,12 +295,12 @@
       border: 1px solid #bae6fd;
       border-radius: 0.75rem;
       padding: 1rem 1.25rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
     }
     .ap-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
     .ap-context strong { color: #0b1220; }
 
-    /* Input grid — two columns for the variable fields */
+    /* Input grid */
     .ap-input-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -344,13 +328,28 @@
     }
     .hero-centered { text-align: center; }
     .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+
+    .math-block { display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #0b1220; background: #f8fafc; padding: 1rem 1.25rem; border-radius: .5rem; border-left: 4px solid #0ea5e9; margin: .35rem 0 0 0; flex-wrap: wrap; gap: .3em; text-align: center; overflow-x: auto; }
+
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+      .answer-box .answer-value { font-size: 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
   </style>
 </head>
 
 <body class="tools-page bg-slate-50 text-slate-800 font-sans antialiased">
 
   <!-- NAV -->
-  <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
@@ -393,22 +392,22 @@
   </nav>
 
   <!-- HERO -->
-  <header class="header-gradient hero-centered text-white relative py-16 md:py-20 overflow-hidden shadow-lg">
+  <header class="header-gradient hero-centered text-white relative py-6 md:py-16 overflow-hidden shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
-      <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · 6 Shapes · Step-by-Step</span>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-4 tracking-tight drop-shadow-lg text-center">Area &amp; Perimeter Calculator</h1>
-      <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Choose a shape, enter its dimensions, and get both area and perimeter with full working and a diagram.</p>
+      <span class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · 6 Shapes · Step-by-Step</span>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">Area &amp; Perimeter Calculator</h1>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Choose a shape, enter its dimensions, and get both area and perimeter with full working and a diagram.</p>
     </div>
   </header>
 
   <!-- BREADCRUMB -->
-  <div class="max-w-3xl mx-auto px-6 -mt-6 relative z-20">
-    <div class="glass-card rounded-2xl p-5 shadow-md border border-white/50">
-      <nav aria-label="Breadcrumb" class="text-sm text-slate-600">
-        <ol class="flex items-center gap-2 flex-wrap justify-center">
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
           <li aria-hidden="true">/</li>
           <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
@@ -420,10 +419,13 @@
   </div>
 
   <!-- MAIN -->
-  <main class="max-w-3xl mx-auto px-6 py-10">
+  <main class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
+
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <!-- CALCULATOR -->
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 md:p-8" aria-label="Area and perimeter calculator inputs">
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Area and perimeter calculator inputs" id="calc-section">
 
       <label for="shape" class="calc-label">Choose a shape</label>
       <select id="shape" class="shape-select">
@@ -435,7 +437,6 @@
         <option value="parallelogram">Parallelogram</option>
       </select>
 
-      <!-- Dynamic inputs rendered here -->
       <div class="ap-input-grid" id="inputs-area"></div>
 
       <div id="live-preview" style="font-family:'JetBrains Mono',monospace;font-size:0.875rem;color:#475569;margin-top:1rem;text-align:center;padding:0.5rem 0.75rem;background:#f8fafc;border-radius:0.5rem;border:1px dashed #cbd5e1;">
@@ -449,12 +450,18 @@
 
     </section>
 
-    <!-- RESULT -->
-    <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
+    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Area and Perimeter Calculator result"></section>
 
-    <!-- AD -->
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <!-- Ad Slot — Area and Perimeter Calculator -->
+    <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+      <p class="ad-label">Advertisement</p>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="7698879159"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
       <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
@@ -463,7 +470,7 @@
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">What this area and perimeter calculator does</h2>
-        <p class="leading-relaxed text-justify">
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
           This tool computes the area and perimeter of six common two-dimensional shapes: rectangle, square, circle, triangle, trapezoid, and parallelogram. Choose a shape, enter the dimensions, and the calculator returns both measures with the exact formulas shown and the arithmetic worked out step by step. A diagram draws the shape to scale using your inputs, so you can see exactly which quantity each result refers to. The tool also reports complementary values — like the diagonal of a rectangle or the diameter of a circle — so you get the complete picture in one calculation.
         </p>
       </section>
@@ -472,71 +479,59 @@
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Formulas for each shape</h2>
 
         <div class="formula-block">
-          <div class="formula-label">Rectangle — length l, width w</div>
+          <div class="formula-label">Rectangle — length \(l\), width \(w\)</div>
           <div class="math-block">
-            <span>A = l × w</span>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>P = 2(l + w)</span>
+            \[ A = l \times w \qquad P = 2(l + w) \]
           </div>
-          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">Diagonal d = √(l² + w²).</p>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">Diagonal \(d = \sqrt{l^2 + w^2}\).</p>
         </div>
 
         <div class="formula-block">
-          <div class="formula-label">Square — side s</div>
+          <div class="formula-label">Square — side \(s\)</div>
           <div class="math-block">
-            <span>A = s²</span>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>P = 4s</span>
+            \[ A = s^2 \qquad P = 4s \]
           </div>
-          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">Diagonal d = s√2.</p>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">Diagonal \(d = s\sqrt{2}\).</p>
         </div>
 
         <div class="formula-block">
-          <div class="formula-label">Circle — radius r</div>
+          <div class="formula-label">Circle — radius \(r\)</div>
           <div class="math-block">
-            <span>A = π r²</span>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>Circumference C = 2π r</span>
+            \[ A = \pi r^2 \qquad C = 2\pi r \]
           </div>
-          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">Diameter d = 2r.</p>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">Diameter \(d = 2r\).</p>
         </div>
 
         <div class="formula-block">
-          <div class="formula-label">Triangle — base b, height h (perpendicular)</div>
+          <div class="formula-label">Triangle — base \(b\), perpendicular height \(h\)</div>
           <div class="math-block">
-            <span>A = </span>
-            <span class="latex-frac big"><span class="f-num">1</span><span class="f-den">2</span></span>
-            <span>b × h</span>
+            \[ A = \frac{1}{2}\, b \times h \]
           </div>
           <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">For perimeter, enter the other two side lengths (or use 0 to skip).</p>
         </div>
 
         <div class="formula-block">
-          <div class="formula-label">Trapezoid — parallel sides a and b, height h</div>
+          <div class="formula-label">Trapezoid — parallel sides \(a\) and \(b\), height \(h\)</div>
           <div class="math-block">
-            <span>A = </span>
-            <span class="latex-frac big"><span class="f-num">1</span><span class="f-den">2</span></span>
-            <span>(a + b) × h</span>
+            \[ A = \frac{1}{2}(a + b)\, h \]
           </div>
-          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">P = a + b + c + d, the sum of all four sides.</p>
+          <p style="margin-top:0.4rem;text-align:center;font-size:0.875rem;color:#475569;">\(P = a + b + c + d\), the sum of all four sides.</p>
         </div>
 
         <div class="formula-block">
-          <div class="formula-label">Parallelogram — base b, height h, side s</div>
+          <div class="formula-label">Parallelogram — base \(b\), height \(h\), side \(s\)</div>
           <div class="math-block">
-            <span>A = b × h</span>
-            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>P = 2(b + s)</span>
+            \[ A = b \times h \qquad P = 2(b + s) \]
           </div>
         </div>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
-        <ul class="list-disc pl-6 space-y-1 leading-relaxed">
-          <li><strong>A</strong> — area (in square units).</li>
-          <li><strong>P</strong> — perimeter (in linear units).</li>
-          <li><strong>r, d</strong> — radius and diameter of a circle.</li>
-          <li><strong>b, h</strong> — base and perpendicular height.</li>
-          <li><strong>π</strong> — pi ≈ 3.141592653589793.</li>
+        <ul class="list-disc pl-6 space-y-1 leading-relaxed text-[#0f172a]">
+          <li><strong>\(A\)</strong> — area (in square units).</li>
+          <li><strong>\(P\)</strong> — perimeter (in linear units).</li>
+          <li><strong>\(r, d\)</strong> — radius and diameter of a circle.</li>
+          <li><strong>\(b, h\)</strong> — base and perpendicular height.</li>
+          <li><strong>\(\pi\)</strong> — pi \(\approx 3.141592653589793\).</li>
         </ul>
       </section>
 
@@ -546,75 +541,75 @@
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 1: Rectangle 8 cm by 5 cm</p>
           <ol>
-            <li>Area: A = 8 × 5 = <strong>40 cm²</strong>.</li>
-            <li>Perimeter: P = 2(8 + 5) = 2 × 13 = <strong>26 cm</strong>.</li>
-            <li>Diagonal: d = √(8² + 5²) = √(64 + 25) = √89 ≈ 9.434 cm.</li>
+            <li>Area: \(A = 8 \times 5 = \mathbf{40 \text{ cm}^2}\).</li>
+            <li>Perimeter: \(P = 2(8 + 5) = 2 \times 13 = \mathbf{26 \text{ cm}}\).</li>
+            <li>Diagonal: \(d = \sqrt{8^2 + 5^2} = \sqrt{64 + 25} = \sqrt{89} \approx 9.434 \text{ cm}\).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 2: Square with side 7 m</p>
           <ol>
-            <li>Area: A = 7² = <strong>49 m²</strong>.</li>
-            <li>Perimeter: P = 4 × 7 = <strong>28 m</strong>.</li>
-            <li>Diagonal: d = 7√2 ≈ 9.899 m.</li>
+            <li>Area: \(A = 7^2 = \mathbf{49 \text{ m}^2}\).</li>
+            <li>Perimeter: \(P = 4 \times 7 = \mathbf{28 \text{ m}}\).</li>
+            <li>Diagonal: \(d = 7\sqrt{2} \approx 9.899 \text{ m}\).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 3: Circle with radius 5 cm</p>
           <ol>
-            <li>Area: A = π × 5² = 25π ≈ <strong>78.5398 cm²</strong>.</li>
-            <li>Circumference: C = 2π × 5 = 10π ≈ <strong>31.4159 cm</strong>.</li>
-            <li>Diameter: d = 10 cm.</li>
+            <li>Area: \(A = \pi \times 5^2 = 25\pi \approx \mathbf{78.5398 \text{ cm}^2}\).</li>
+            <li>Circumference: \(C = 2\pi \times 5 = 10\pi \approx \mathbf{31.4159 \text{ cm}}\).</li>
+            <li>Diameter: \(d = 10 \text{ cm}\).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 4: Triangle with base 12 m and height 5 m</p>
           <ol>
-            <li>Area: A = ½ × 12 × 5 = <strong>30 m²</strong>.</li>
-            <li>If the other two sides are 6 m and 8 m: perimeter = 12 + 6 + 8 = 26 m.</li>
+            <li>Area: \(A = \frac{1}{2} \times 12 \times 5 = \mathbf{30 \text{ m}^2}\).</li>
+            <li>If the other two sides are 6 m and 8 m: perimeter = \(12 + 6 + 8 = 26 \text{ m}\).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 5: Trapezoid with parallel sides 10 and 6, height 4</p>
           <ol>
-            <li>Area: A = ½ × (10 + 6) × 4 = ½ × 16 × 4 = <strong>32</strong>.</li>
-            <li>If legs are 5 and 5: perimeter = 10 + 6 + 5 + 5 = 26.</li>
+            <li>Area: \(A = \frac{1}{2} \times (10 + 6) \times 4 = \frac{1}{2} \times 16 \times 4 = \mathbf{32}\).</li>
+            <li>If legs are 5 and 5: perimeter = \(10 + 6 + 5 + 5 = 26\).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 6: Parallelogram base 9, height 4, side 5</p>
           <ol>
-            <li>Area: A = 9 × 4 = <strong>36</strong>.</li>
-            <li>Perimeter: P = 2(9 + 5) = <strong>28</strong>.</li>
+            <li>Area: \(A = 9 \times 4 = \mathbf{36}\).</li>
+            <li>Perimeter: \(P = 2(9 + 5) = \mathbf{28}\).</li>
           </ol>
         </div>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Area vs perimeter</h2>
-        <p class="leading-relaxed text-justify mb-3">
+        <p class="leading-relaxed prose-justify text-[#0f172a] mb-3">
           These two measures describe different aspects of a shape:
         </p>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
           <li><strong>Perimeter</strong> is the total length of the boundary — a 1-D measure in linear units (cm, m, km). Think of it as the fence you need to enclose a garden.</li>
           <li><strong>Area</strong> is the total surface covered — a 2-D measure in square units (cm², m²). Think of it as the paint you need to cover a wall.</li>
-          <li>Two shapes with the same area can have very different perimeters, and vice versa. A 1×16 rectangle has area 16 and perimeter 34; a 4×4 square has area 16 and perimeter 16.</li>
+          <li>Two shapes with the same area can have very different perimeters, and vice versa. A \(1 \times 16\) rectangle has area \(16\) and perimeter \(34\); a \(4 \times 4\) square has area \(16\) and perimeter \(16\).</li>
         </ul>
       </section>
 
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
-        <ul class="list-disc pl-6 space-y-2 leading-relaxed">
-          <li><strong>Mixing up radius and diameter.</strong> The circle formula uses the radius, not the diameter. If you're given a diameter of 10 cm, use r = 5 cm in the formula.</li>
-          <li><strong>Using slant height instead of perpendicular height for trapezoids and parallelograms.</strong> The height h is the perpendicular distance between the parallel sides, not the length of the slanted side.</li>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
+          <li><strong>Mixing up radius and diameter.</strong> The circle formula uses the radius, not the diameter. If you're given a diameter of 10 cm, use \(r = 5\) cm in the formula.</li>
+          <li><strong>Using slant height instead of perpendicular height for trapezoids and parallelograms.</strong> The height \(h\) is the perpendicular distance between the parallel sides, not the length of the slanted side.</li>
           <li><strong>Forgetting to square the units for area.</strong> Area is in cm², m², or km² — never just cm or m. Writing "40 cm" for an area is wrong; it should be "40 cm²".</li>
           <li><strong>Adding lengths in different units.</strong> If one side is in cm and another in m, convert first. Mixing units gives nonsense.</li>
-          <li><strong>Using the wrong formula for the triangle area.</strong> The triangle formula is ½ × base × height, not base × height. This is because a triangle is half a parallelogram with the same base and height.</li>
+          <li><strong>Using the wrong formula for the triangle area.</strong> The triangle formula is \(\frac{1}{2} \times b \times h\), not \(b \times h\). This is because a triangle is half a parallelogram with the same base and height.</li>
           <li><strong>Confusing perimeter and area.</strong> Perimeter is the length around the boundary; area is the space inside. They are not interchangeable.</li>
         </ul>
       </section>
@@ -628,19 +623,19 @@
           </details>
           <details class="faq-item">
             <summary>How do I find the area of a rectangle?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Multiply the length by the width: A = l × w. The perimeter is twice the sum of length and width: P = 2(l + w).</p>
+            <p class="faq-answer">Multiply the length by the width: \(A = l \times w\). The perimeter is twice the sum of length and width: \(P = 2(l + w)\).</p>
           </details>
           <details class="faq-item">
             <summary>What is the formula for the area of a circle?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Area = π × r², where r is the radius. The circumference (perimeter) is 2πr, or πd where d is the diameter. If you only know the diameter, halve it to get the radius first.</p>
+            <p class="faq-answer">Area \(= \pi \times r^2\), where \(r\) is the radius. The circumference (perimeter) is \(2\pi r\), or \(\pi d\) where \(d\) is the diameter. If you only know the diameter, halve it to get the radius first.</p>
           </details>
           <details class="faq-item">
             <summary>Why is the area of a triangle half the base times height?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Two congruent triangles together form a parallelogram with the same base and height. The parallelogram's area is base × height, so each triangle has half that area. This is why the formula is A = ½ × b × h.</p>
+            <p class="faq-answer">Two congruent triangles together form a parallelogram with the same base and height. The parallelogram's area is base × height, so each triangle has half that area. This is why the formula is \(A = \frac{1}{2} \times b \times h\).</p>
           </details>
           <details class="faq-item">
             <summary>How do I find the area of a trapezoid?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Average the two parallel sides and multiply by the height: A = ½ × (a + b) × h, where a and b are the parallel sides and h is the perpendicular distance between them. The perimeter is the sum of all four side lengths.</p>
+            <p class="faq-answer">Average the two parallel sides and multiply by the height: \(A = \frac{1}{2}(a + b)\, h\), where \(a\) and \(b\) are the parallel sides and \(h\) is the perpendicular distance between them. The perimeter is the sum of all four side lengths.</p>
           </details>
           <details class="faq-item">
             <summary>What units should I use?<span aria-hidden="true">▾</span></summary>
@@ -663,7 +658,7 @@
 
       <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
         <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
-        <p class="text-gray-700 leading-relaxed text-justify">
+        <p class="text-gray-700 leading-relaxed prose-justify">
           Area and perimeter formulas appear throughout the Class 9 and 10 mathematics syllabus, especially in the geometry chapters. Revise with our free
           <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
           <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>.
@@ -675,7 +670,6 @@
   </main>
 
   <!-- FOOTER -->
- <!-- FOOTER -->
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
   <div class="max-w-7xl mx-auto py-12 sm:py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
     
@@ -767,14 +761,13 @@
     </div>
   </a>
 
-  <div class="back-to-top" id="backToTop">↑</div>
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
   <script src="assets/tools-common.js"></script>
   <script>
   (function () {
     'use strict';
-    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
-            showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const { trackEvent, parseNum, showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'area-perimeter-calculator';
 
     const shapeEl = document.getElementById('shape');
@@ -783,18 +776,71 @@
     const calcBtn = document.getElementById('calc-btn');
     const resetBtn = document.getElementById('reset-btn');
     const resultPanel = document.getElementById('result-panel');
-    const section = document.querySelector('section[aria-label="Area and perimeter calculator inputs"]');
+    const section = document.getElementById('calc-section');
+    const siteNav = document.getElementById('site-nav');
+    const answerLive = document.getElementById('answer-live');
 
     let currentShape = 'rectangle';
     let lastResult = null;
 
-    attachCopyButton(resultPanel, CALC_NAME);
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* ============ LaTeX helpers ============ */
-    function fracHTML(numHTML, denHTML, big) {
-      const cls = 'latex-frac' + (big ? ' big' : '');
-      return `<span class="${cls}"><span class="f-num">${numHTML}</span><span class="f-den">${denHTML}</span></span>`;
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur();
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
     }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
+
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
 
     /* ============ Number formatting ============ */
     function fmtNum(x, maxDecimals) {
@@ -810,6 +856,9 @@
       s = s.replace(/0+$/, '');
       if (s.endsWith('.')) s = s.slice(0, -1);
       return s;
+    }
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     }
 
     /* ============ Per-shape field definitions ============ */
@@ -871,7 +920,6 @@
           <input type="text" inputmode="decimal" id="in-${f.id}" class="calc-input" placeholder="${f.placeholder}" autocomplete="off" data-name="${f.name}" data-optional="${f.optional ? 'true' : 'false'}" />
         </div>
       `).join('');
-      // Attach input listeners for preview
       inputsArea.querySelectorAll('input').forEach(el => el.addEventListener('input', renderPreview));
       renderPreview();
     }
@@ -903,14 +951,13 @@
       previewEl.innerHTML = `${spec.label}: ${parts.map(p => `<span style="color:#0b1220;">${p}</span>`).join(', ')}`;
     }
 
-    /* ============ Read and validate ============ */
     function readRequired() {
       const spec = SHAPES[currentShape];
       const out = {};
       let ok = true;
       spec.fields.forEach(f => {
         const el = document.getElementById('in-' + f.id);
-        const raw = vals_el(el);
+        const raw = el ? el.value.trim() : '';
         if (f.optional && raw === '') {
           out[f.id] = null;
           return;
@@ -935,7 +982,6 @@
       });
       return { ok, v: out };
     }
-    function vals_el(el) { return el ? el.value.trim() : ''; }
 
     /* ============ Main calculate ============ */
     function calculate() {
@@ -965,7 +1011,6 @@
       } else if (currentShape === 'triangle') {
         area = 0.5 * v.base * v.height;
         if (v.side2 !== null && v.side3 !== null) {
-          // Full perimeter
           if (v.side2 + v.side3 <= v.base || v.base + v.side3 <= v.side2 || v.base + v.side2 <= v.side3) {
             showError(document.getElementById('in-base'), 'The three sides do not form a valid triangle.');
             trackEvent(CALC_NAME, 'invalid_input');
@@ -973,10 +1018,6 @@
           }
           perimeter = v.base + v.side2 + v.side3;
           extraInfo.push(`All three sides given, so perimeter = b + c + d = ${fmtNum(v.base)} + ${fmtNum(v.side2)} + ${fmtNum(v.side3)} = <strong>${fmtNum(perimeter)}</strong>`);
-        } else if (v.side2 !== null) {
-          perimeter = v.base + v.side2 + v.side2; // assume isosceles if only one side given? No, don't assume.
-          perimeter = null;
-          extraInfo.push(`Only one additional side given — perimeter cannot be determined. Provide both other sides for the full perimeter, or use the Triangle Calculator.`);
         } else {
           perimeter = null;
           extraInfo.push(`Perimeter requires the other two sides. Enter them in the optional fields, or leave blank to compute area only.`);
@@ -1003,6 +1044,8 @@
       requestAnimationFrame(() => drawShape(currentShape, v, area, perimeter));
 
       trackEvent(CALC_NAME, 'calculate');
+      announce(`Result: Area ${fmtNum(area, 4)} square units${perimeter !== null ? `, Perimeter ${fmtNum(perimeter, 4)} units` : ''}`);
+      revealResult();
     }
 
     /* ============ Result HTML ============ */
@@ -1021,11 +1064,9 @@
              <div style="font-size:0.75rem;color:#94a3b8;margin-top:0.25rem;">Enter all sides to compute</div>
            </div>`;
 
-      // Build summary cards
       const summaryCards = [];
       summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${areaStr}</div><div class="ap-summary-label">Area</div></div>`);
       summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${perimStr}</div><div class="ap-summary-label">Perimeter</div></div>`);
-      // Add specific info per shape
       if (currentShape === 'circle') {
         summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(2 * v.radius)}</div><div class="ap-summary-label">Diameter</div></div>`);
         summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(v.radius * v.radius)}π</div><div class="ap-summary-label">Area (exact)</div></div>`);
@@ -1048,14 +1089,21 @@
         summaryCards.push(`<div class="ap-summary-unit"><div class="ap-summary-value">${fmtNum(v.pheight)}</div><div class="ap-summary-label">Height</div></div>`);
       }
 
+      const answerPlain = `Area = ${areaStr} square units${perimeter !== null ? `, Perimeter = ${perimStr} units` : ''}`;
+
       return `
-        <div class="result-label">${label}</div>
-        <div class="ap-dual-result">
-          <div class="ap-big-card">
-            <div class="ap-big-label">Area</div>
-            <div class="ap-big-value">${areaStr}<span class="ap-big-unit">units²</span></div>
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">${label}</span>
+            <button type="button" class="copy-btn" data-copy="${escapeHtml(answerPlain)}" aria-label="Copy answer">Copy answer</button>
           </div>
-          ${perimLine}
+          <div class="ap-dual-result">
+            <div class="ap-big-card">
+              <div class="ap-big-label">Area</div>
+              <div class="ap-big-value">${areaStr}<span class="ap-big-unit">units²</span></div>
+            </div>
+            ${perimLine}
+          </div>
         </div>
 
         <div class="ap-summary">
@@ -1066,9 +1114,12 @@
           <canvas id="shape-canvas" aria-label="Diagram of the shape"></canvas>
         </div>
 
-        <div class="steps-block">
-          <div class="formula-label" style="margin-bottom:0.5rem;">Step-by-step</div>
-          ${buildSteps(label, area, perimeter, v)}
+        <div class="steps-block" style="margin-top:1.5rem;">
+          <details open>
+            <summary>Show / Hide step-by-step working</summary>
+            <div class="formula-label" style="margin-bottom:0.5rem;margin-top:0.75rem;">Calculation Breakdown</div>
+            ${buildSteps(label, area, perimeter, v)}
+          </details>
         </div>
 
         <div class="ap-context">
@@ -1175,9 +1226,7 @@
       ctx.strokeRect(x, y, rw, rh);
 
       ctx.fillStyle = '#0b1220';
-      // Top label
       ctx.fillText(`${lLabel} = ${fmtNum(l)}`, x + rw / 2, y - 14);
-      // Left label
       ctx.save();
       ctx.translate(x - 14, y + rh / 2);
       ctx.rotate(-Math.PI / 2);
@@ -1199,7 +1248,6 @@
       ctx.lineWidth = 2.5;
       ctx.stroke();
 
-      // Draw radius
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(cx + drawR, cy);
@@ -1221,7 +1269,6 @@
       else { hh = availH; bw = hh * ratio; }
       const x0 = (W - bw) / 2;
       const y0 = (H + hh) / 2;
-      // Triangle with base bottom and apex centered at top
       const apexX = x0 + bw / 2;
       const apexY = y0 - hh;
 
@@ -1236,7 +1283,6 @@
       ctx.lineWidth = 2.5;
       ctx.stroke();
 
-      // Height line (dashed)
       ctx.setLineDash([4, 4]);
       ctx.strokeStyle = '#8b5cf6';
       ctx.lineWidth = 1.5;
@@ -1266,7 +1312,6 @@
       const x0 = (W - Math.max(aw, bw)) / 2;
       const y0 = (H + hh) / 2;
 
-      // Bottom is the longer parallel side, top the shorter, centered
       const bottomW = Math.max(aw, bw);
       const topW = Math.min(aw, bw);
       const topOffset = (bottomW - topW) / 2;
@@ -1284,10 +1329,9 @@
       ctx.stroke();
 
       ctx.fillStyle = '#0b1220';
-      ctx.fillText(`a = ${fmtNum(bottomW / scale === 0 ? 0 : (bottomW === aw ? a : b))}`, x0 + bottomW / 2, y0 + 16);
+      ctx.fillText(`a = ${fmtNum(bottomW === aw ? a : b)}`, x0 + bottomW / 2, y0 + 16);
       ctx.fillText(`b = ${fmtNum(bottomW === aw ? b : a)}`, x0 + topOffset + topW / 2, y0 - hh - 16);
 
-      // Height dashed line
       ctx.setLineDash([4, 4]);
       ctx.strokeStyle = '#8b5cf6';
       ctx.lineWidth = 1.5;
@@ -1340,7 +1384,15 @@
     });
 
     calcBtn.addEventListener('click', calculate);
-    bindEnterKey(section, calcBtn);
+
+    // Explicit fallback for Enter key across all inputs
+    section.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+      const t = e.target;
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.tagName === 'A' || t.tagName === 'SUMMARY') return;
+      e.preventDefault();
+      calcBtn.click();
+    });
 
     resetBtn.addEventListener('click', () => {
       currentShape = 'rectangle';
@@ -1349,6 +1401,7 @@
       hideResult(resultPanel);
       clearAllErrors(section);
       lastResult = null;
+      if (answerLive) answerLive.textContent = '';
       trackEvent(CALC_NAME, 'reset');
     });
 
@@ -1362,7 +1415,6 @@
       }, 200);
     });
 
-    // Mobile menu + back-to-top
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
     const io = document.getElementById('menu-icon-open');
