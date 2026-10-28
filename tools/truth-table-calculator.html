@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-9CK25HVFYZ');
+  </script>
+  <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
+
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Hira Science Academy" name="author"/>
+  <meta content="#0f172a" name="theme-color"/>
+
+  <title>Truth Table Calculator — Logic Expression Solver | Hira Science Academy</title>
+  <meta content="Free truth table calculator. Enter any Boolean logic expression with AND, OR, NOT, XOR, IMPLIES, IFF and parentheses to generate a full truth table with tautology and contradiction detection." name="description"/>
+  <meta content="truth table calculator, boolean logic calculator, tautology checker, logic expression solver, AND OR NOT XOR implication biconditional, discrete math, class 11 logic" name="keywords"/>
+  <link href="https://hiraacademy.com.pk/tools/truth-table-calculator.html" rel="canonical"/>
+
+  <meta content="website" property="og:type"/>
+  <meta content="en_PK" property="og:locale"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Truth Table Calculator — Logic Expression Solver" property="og:title"/>
+  <meta content="Generate a full truth table for any Boolean logic expression, with tautology and contradiction detection." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/truth-table-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+
+  <!-- KaTeX for perfect math rendering in the article -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+          {left: '$$', right: '$$', display: true},
+          {left: '$', right: '$', display: false},
+          {left: '\\(', right: '\\)', display: false},
+          {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError: false
+      });
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
+          { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
+          { "@type": "ListItem", "position": 3, "name": "Truth Table Calculator", "item": "https://hiraacademy.com.pk/tools/truth-table-calculator.html" }
+        ]
+      },
+      {
+        "@type": "WebApplication",
+        "name": "Truth Table Calculator",
+        "url": "https://hiraacademy.com.pk/tools/truth-table-calculator.html",
+        "description": "Generate a complete truth table for any Boolean logic expression with up to five variables. Detects tautologies, contradictions, and contingencies.",
+        "applicationCategory": "EducationalApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "isAccessibleForFree": true,
+        "inLanguage": "en",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "PKR"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Hira Science Academy",
+          "url": "https://hiraacademy.com.pk/"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is a truth table?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A truth table is a table that lists every possible combination of truth values (true or false) for the variables in a logical expression, along with the resulting value of the expression for each combination. With n variables, the table has 2^n rows. Truth tables are used to analyse Boolean logic expressions, verify logical equivalences, and determine whether an expression is a tautology, contradiction, or contingent." }
+          },
+          {
+            "@type": "Question",
+            "name": "What operators does this tool support?",
+            "acceptedAnswer": { "@type": "Answer", "text": "The tool supports NOT (~ or !), AND (∧ or & or &&), OR (∨ or | or ||), XOR (⊕ or ^), IMPLIES (→ or -> or =>), IFF / biconditional (↔ or <-> or <=>), and parentheses. You can mix symbolic and word-like operators in the same expression." }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between a tautology, contradiction, and contingent expression?",
+            "acceptedAnswer": { "@type": "Answer", "text": "A tautology is an expression that is true for every row of its truth table — for example, A ∨ ¬A. A contradiction is an expression that is false for every row — for example, A ∧ ¬A. A contingent expression is true for some rows and false for others — for example, A ∧ B. The calculator labels every expression with one of these three verdicts." }
+          },
+          {
+            "@type": "Question",
+            "name": "How are variables ordered in the table?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Variables are ordered alphabetically from left to right. The first variable alternates T/F every row, the next every two rows, and so on — the standard truth table convention that produces the canonical 2^n row ordering." }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is there a limit on variables?",
+            "acceptedAnswer": { "@type": "Answer", "text": "With n variables, the table has 2^n rows. Five variables is 32 rows, which is still readable; six variables is 64 rows and ten variables would be 1024 rows. The calculator caps the expression at five distinct variables to keep the output useful. Most textbook problems use two or three." }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use this to check logical equivalences?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Two expressions are logically equivalent if their truth tables have the same final column. Generate the table for one expression, then the other, and compare the last column. A quick alternative is to test the biconditional of the two expressions — if the result is a tautology, the expressions are equivalent." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','system-ui','sans-serif'], display: ['Montserrat','sans-serif'] },
+        colors: {
+          primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
+          secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+        }
+      }}
+    };
+  </script>
+
+  <link rel="stylesheet" href="assets/tools.css" />
+
+  <style>
+    body { background: #f9fafb; color: #0f172a; }
+    .header-gradient {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(37, 99, 235, 0.15), transparent 60%), radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08), transparent 50%);
+      pointer-events: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    nav.bg-white\/80 {
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .bg-blue-900 {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 40%, #1e1b4b 100%) !important;
+      border-top: 1px solid rgba(37, 99, 235, 0.15);
+    }
+    .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; }
+    @keyframes portalPulse {
+      0%,100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); }
+      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
+    }
+    .back-to-top {
+      position: fixed; bottom: 6rem; right: 1.5rem;
+      background: #0284c7; color: white;
+      width: 3.5rem; height: 3.5rem; border-radius: 9999px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
+      opacity: 0; visibility: hidden; transition: all 0.3s;
+      cursor: pointer; z-index: 40; font-size: 1.25rem; font-weight: 700;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
+
+    /* Answer box (primary answer first) */
+    .answer-box {
+      background: #ffffff;
+      border: 2px solid #0284c7;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 4px 16px rgba(2,132,199,0.12);
+      margin-bottom: 1.5rem;
+    }
+    .answer-box .answer-head { 
+      display: flex; align-items: center; justify-content: space-between; 
+      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
+    }
+    .answer-box .answer-heading { 
+      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
+      text-transform: uppercase; color: #0369a1; 
+    }
+    .answer-box .answer-value { 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 2.5rem; font-weight: 800; color: #0b1220; 
+      line-height: 1.1; word-break: break-word; text-align: center;
+    }
+    .answer-box .answer-value .katex { font-size: 2.5rem; }
+    .copy-btn { 
+      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
+      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
+      font-weight: 700; cursor: pointer; white-space: nowrap; 
+    }
+    .copy-btn:hover { background: #bae6fd; }
+    .answer-box details > summary { 
+      cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; 
+      margin-top: .75rem; user-select: none; 
+    }
+    .answer-box details > summary:hover { text-decoration: underline; }
+
+    /* Result */
+    .cgpa-big-value {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #0b1220;
+      line-height: 1.1;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .cgpa-big-scale {
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+    .cgpa-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .cgpa-summary { grid-template-columns: repeat(4, 1fr); } }
+    .cgpa-summary-unit {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      padding: 0.75rem 0.6rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .cgpa-summary-value {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: #0b1220;
+      line-height: 1.2;
+      word-break: break-word;
+    }
+    .cgpa-summary-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      font-weight: 600;
+    }
+    .cgpa-context {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #bae6fd;
+      border-radius: 0.75rem;
+      padding: 1rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .cgpa-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
+    .cgpa-context strong { color: #0b1220; }
+
+    /* Status badge */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      margin-top: 0.5rem;
+    }
+    .status-ok    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .status-warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+    .status-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .status-secure{ background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+
+    /* Formula expression input */
+    .expr-input {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 0.6rem;
+      font-size: 1.0625rem;
+      font-family: 'JetBrains Mono', monospace;
+      background: #ffffff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      color: #0b1220;
+    }
+    .expr-input:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
+    }
+
+    /* Operator helper pills */
+    .op-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem 0.7rem;
+      border-radius: 0.5rem;
+      border: 1.5px solid #e2e8f0;
+      background: #ffffff;
+      color: #0369a1;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .op-pill:hover { background: #f0f9ff; border-color: #7dd3fc; }
+    .op-pill:active { transform: scale(0.95); }
+    .op-pill .op-sym { font-size: 1.05em; margin-right: 0.3rem; }
+    .op-pill .op-name { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #64748b; font-weight: 600; }
+
+    /* Preset examples */
+    .preset-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.5rem;
+    }
+    .preset-btn {
+      padding: 0.4rem 0.75rem;
+      border-radius: 0.5rem;
+      border: 1.5px solid #e2e8f0;
+      background: #ffffff;
+      color: #475569;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .preset-btn:hover { background: #f0f9ff; border-color: #7dd3fc; color: #0369a1; }
+
+    /* Truth table */
+    .truth-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8125rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.6rem;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+    .truth-table th {
+      background: #f0f9ff;
+      color: #0369a1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.7rem;
+      padding: 0.55rem 0.6rem;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+      white-space: nowrap;
+    }
+    .truth-table th.final-col {
+      background: #dbeafe;
+      color: #1e40af;
+      border-left: 2px solid #3b82f6;
+      border-right: 2px solid #3b82f6;
+    }
+    .truth-table td {
+      padding: 0.45rem 0.6rem;
+      border-bottom: 1px solid #f1f5f9;
+      text-align: center;
+      color: #334155;
+      font-weight: 600;
+    }
+    .truth-table tr:last-child td { border-bottom: none; }
+    .truth-table td.val-T { color: #166534; }
+    .truth-table td.val-F { color: #991b1b; }
+    .truth-table td.final-col { border-left: 2px solid #3b82f6; border-right: 2px solid #3b82f6; }
+    .truth-table td.final-col.val-T { background: #dcfce7; }
+    .truth-table td.final-col.val-F { background: #fee2e2; }
+    .truth-table tbody tr:hover td { background: #f8fafc; }
+    .truth-table tbody tr:hover td.final-col.val-T { background: #bbf7d0; }
+    .truth-table tbody tr:hover td.final-col.val-F { background: #fecaca; }
+    .truth-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+    /* Ad containers */
+    .ad-slot { min-height: 100px; display: block; }
+    .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
+
+    /* Mobile input comfort */
+    @media (max-width:540px){
+      .calc-input{font-size:16px;min-height:48px}
+      .btn-calc{min-height:48px;flex:1 1 auto}
+      .answer-box .answer-value { font-size: 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- NAV -->
+  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center">
+        <div class="flex-shrink-0 flex items-center">
+          <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+          <a class="text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+          <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+          <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
+        </div>
+        <div class="flex items-center md:hidden">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" id="mobile-menu">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-600 bg-blue-50" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
+        <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="header-gradient text-white relative py-6 md:py-16 overflow-hidden text-center shadow-lg">
+    <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+    <div class="max-w-4xl mx-auto px-4 relative z-10">
+      <span class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Tautology Detection · Up to 5 Variables</span>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg">Truth Table Calculator</h1>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">Enter any Boolean expression with AND, OR, NOT, XOR, IMPLIES, IFF and parentheses — get the full truth table instantly.</p>
+    </div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="max-w-3xl mx-auto px-4 mt-3 relative z-20">
+    <div class="glass-card rounded-xl px-3 py-2 shadow-sm border border-white/50">
+      <nav aria-label="Breadcrumb" class="text-xs text-slate-600">
+        <ol class="flex items-center gap-1.5 flex-wrap justify-center">
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/index.html">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a class="hover:text-primary-600 font-medium" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-slate-900 font-semibold" aria-current="page">Truth Table Calculator</li>
+        </ol>
+      </nav>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
+
+    <!-- Hidden live region for announcements -->
+    <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- CALCULATOR -->
+    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Truth table calculator inputs" id="calc-section">
+
+      <div class="cgpa-group-label">
+        <span class="cgpa-group-num">1</span> Enter your logical expression
+      </div>
+
+      <label for="expr-input" class="calc-label mb-1 block">Expression (variables A–E, operators below)</label>
+      <input type="text" id="expr-input" class="expr-input" spellcheck="false"
+             placeholder="e.g. (A ∧ B) ∨ ¬C"
+             autocomplete="off" value="(A ∧ B) ∨ ¬C" />
+
+      <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.75rem;">
+        <button type="button" class="op-pill" data-op="~" title="NOT"><span class="op-sym">¬</span><span class="op-name">NOT</span></button>
+        <button type="button" class="op-pill" data-op="∧" title="AND"><span class="op-sym">∧</span><span class="op-name">AND</span></button>
+        <button type="button" class="op-pill" data-op="∨" title="OR"><span class="op-sym">∨</span><span class="op-name">OR</span></button>
+        <button type="button" class="op-pill" data-op="⊕" title="XOR"><span class="op-sym">⊕</span><span class="op-name">XOR</span></button>
+        <button type="button" class="op-pill" data-op="→" title="IMPLIES"><span class="op-sym">→</span><span class="op-name">IMPLIES</span></button>
+        <button type="button" class="op-pill" data-op="↔" title="IFF"><span class="op-sym">↔</span><span class="op-name">IFF</span></button>
+        <button type="button" class="op-pill" data-op="(" title="Open paren"><span class="op-sym">(</span></button>
+        <button type="button" class="op-pill" data-op=")" title="Close paren"><span class="op-sym">)</span></button>
+      </div>
+
+      <div class="preset-row" role="group" aria-label="Preset examples">
+        <button type="button" class="preset-btn" data-preset="(A ∧ B) ∨ ¬C">(A ∧ B) ∨ ¬C</button>
+        <button type="button" class="preset-btn" data-preset="A ∨ ¬A">A ∨ ¬A (tautology)</button>
+        <button type="button" class="preset-btn" data-preset="A ∧ ¬A">A ∧ ¬A (contradiction)</button>
+        <button type="button" class="preset-btn" data-preset="(A → B) ↔ (¬A ∨ B)">(A → B) ↔ (¬A ∨ B)</button>
+        <button type="button" class="preset-btn" data-preset="A ⊕ B ⊕ C">A ⊕ B ⊕ C (parity)</button>
+      </div>
+
+      <div class="flex flex-wrap gap-3 mt-5">
+        <button type="button" id="calc-btn" class="btn-calc btn-primary-calc">Generate Truth Table</button>
+        <button type="button" id="reset-btn" class="btn-calc btn-secondary-calc">Reset</button>
+      </div>
+
+    </section>
+
+    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Truth Table Calculator result"></section>
+
+    <!-- ============================================================ -->
+<!-- Ad Slot — Truth Table Calculator                             -->
+<!-- ============================================================ -->
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+       crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="1399360426"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
+
+    <!-- EDUCATIONAL CONTENT -->
+    <article class="space-y-8 text-gray-700 mt-8">
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this truth table calculator does</h2>
+        <p class="leading-relaxed prose-justify text-[#0f172a]">
+          This tool takes any Boolean logic expression — built from variables A through E, the operators AND, OR, NOT, XOR, IMPLIES and IFF, and parentheses — and generates its complete truth table. Every row of the table shows one of the \(2^n\) possible combinations of truth values, the value of each intermediate subexpression, and the final result of the whole expression. The calculator then classifies the expression as a tautology (true in every row), a contradiction (false in every row), or contingent (true in some rows, false in others). The final column is highlighted so you can read the result at a glance, and a summary panel shows the row counts, the parse tree size, and the number of intermediate columns.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Supported operators</h2>
+
+        <div class="overflow-x-auto">
+          <table class="truth-table" aria-label="Supported operators">
+            <thead>
+              <tr>
+                <th>Operator</th>
+                <th>Symbols</th>
+                <th>Meaning</th>
+                <th>Truth rule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>NOT</td><td>\( \neg \), \( \sim \), \( ! \)</td><td>Negation</td><td>\( T \to F \), \( F \to T \)</td></tr>
+              <tr><td>AND</td><td>\( \land \), &amp;, &amp;&amp;</td><td>Conjunction</td><td>\( T \) only if both true</td></tr>
+              <tr><td>OR</td><td>\( \lor \), |, ||</td><td>Disjunction</td><td>\( F \) only if both false</td></tr>
+              <tr><td>XOR</td><td>\( \oplus \), ^</td><td>Exclusive or</td><td>\( T \) if exactly one true</td></tr>
+              <tr><td>IMPLIES</td><td>\( \to \), -&gt;, =&gt;</td><td>Conditional</td><td>\( F \) only if \( T \to F \)</td></tr>
+              <tr><td>IFF</td><td>\( \leftrightarrow \), &lt;-&gt;, &lt;=&gt;</td><td>Biconditional</td><td>\( T \) if both match</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="leading-relaxed prose-justify text-[#0f172a] mt-3">
+          Operator precedence (highest to lowest): <strong>NOT</strong> (\( \neg \)), then <strong>AND</strong> (\( \land \)), then <strong>OR</strong> (\( \lor \)) / <strong>XOR</strong> (\( \oplus \)), then <strong>IMPLIES</strong> (\( \to \)), then <strong>IFF</strong> (\( \leftrightarrow \)). Use parentheses to override.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 1: \( (A \land B) \lor \neg C \) — contingent</p>
+          <ol>
+            <li>Three variables → \( 2^3 = 8 \) rows.</li>
+            <li>Intermediate columns: \( A \land B \), \( \neg C \), and the final \( (A \land B) \lor \neg C \).</li>
+            <li>The final column is \( T \) in some rows and \( F \) in others → <strong>contingent</strong>.</li>
+            <li>A classic three-variable logic expression that appears in Karnaugh map problems.</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 2: \( A \lor \neg A \) — tautology</p>
+          <ol>
+            <li>One variable → 2 rows.</li>
+            <li>Intermediate columns: \( \neg A \), then \( A \lor \neg A \).</li>
+            <li>The final column is \( T \) in every row → <strong>tautology</strong> (the law of excluded middle).</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 3: \( A \land \neg A \) — contradiction</p>
+          <ol>
+            <li>One variable → 2 rows.</li>
+            <li>Intermediate columns: \( \neg A \), then \( A \land \neg A \).</li>
+            <li>The final column is \( F \) in every row → <strong>contradiction</strong> (the law of non-contradiction).</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 4: \( (A \to B) \leftrightarrow (\neg A \lor B) \) — tautology</p>
+          <ol>
+            <li>Two variables → 4 rows.</li>
+            <li>This is the classic material implication equivalence. Both sides evaluate identically in every row.</li>
+            <li>The final column is \( T \) everywhere → <strong>tautology</strong>.</li>
+            <li>Shows that \( A \to B \) can be rewritten as \( \neg A \lor B \).</li>
+          </ol>
+        </div>
+
+        <div class="worked-example">
+          <p class="font-semibold text-gray-900">Example 5: \( A \oplus B \oplus C \) — parity function</p>
+          <ol>
+            <li>Three variables → 8 rows.</li>
+            <li>XOR is associative, so the result is \( T \) when an odd number of the three variables are true.</li>
+            <li>Four of the eight rows give \( T \), four give \( F \) → <strong>contingent</strong>.</li>
+            <li>This is the Boolean parity function, used in error checking and cryptography.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
+        <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
+          <li><strong>Mixing operator symbols without consistency.</strong> The calculator accepts \( \neg \) and \( \sim \) and \( ! \) for NOT, but within one expression it is clearer to pick one style. Mixed notation confuses readers even when the parser handles it.</li>
+          <li><strong>Forgetting parentheses when precedence matters.</strong> \( A \land B \lor C \) parses as \( (A \land B) \lor C \) because AND binds tighter than OR. If you mean \( A \land (B \lor C) \), write the parentheses.</li>
+          <li><strong>Assuming IMPLIES is symmetric.</strong> \( A \to B \) and \( B \to A \) are different expressions. Implication is not commutative — the table makes the asymmetry obvious.</li>
+          <li><strong>Reading IFF as "exclusive".</strong> IFF (biconditional, \( \leftrightarrow \)) means "both or neither" — it is true when \( A \) and \( B \) have the same truth value. XOR (\( \oplus \)) means "exactly one" — it is true when they differ. These are opposites.</li>
+          <li><strong>Forgetting that implication with a false premise is true.</strong> \( F \to \text{anything} \) is \( T \). This surprises students but follows directly from the truth table definition; implication only fails when the premise is true and the conclusion is false.</li>
+          <li><strong>Counting rows wrong.</strong> \( n \) variables → \( 2^n \) rows, always. Four variables is 16 rows; five is 32; six is 64. If your table doesn't have the right row count, variables are duplicated or missing.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
+        <div class="space-y-3">
+          <details class="faq-item">
+            <summary>What is a truth table?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">A truth table is a table that lists every possible combination of truth values (true or false) for the variables in a logical expression, along with the resulting value of the expression for each combination. With \( n \) variables, the table has \( 2^n \) rows. Truth tables are used to analyse Boolean logic expressions, verify logical equivalences, and determine whether an expression is a tautology, contradiction, or contingent.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What operators does this tool support?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">The tool supports NOT (\( \neg \) or \( \sim \) or \( ! \)), AND (\( \land \) or &amp; or &amp;&amp;), OR (\( \lor \) or | or ||), XOR (\( \oplus \) or ^), IMPLIES (\( \to \) or -&gt; or =&gt;), IFF / biconditional (\( \leftrightarrow \) or &lt;-&gt; or &lt;=&gt;), and parentheses. You can mix symbolic and word-like operators in the same expression.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the difference between a tautology, contradiction, and contingent expression?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">A tautology is an expression that is true for every row of its truth table — for example, \( A \lor \neg A \). A contradiction is an expression that is false for every row — for example, \( A \land \neg A \). A contingent expression is true for some rows and false for others — for example, \( A \land B \). The calculator labels every expression with one of these three verdicts.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How are variables ordered in the table?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Variables are ordered alphabetically from left to right. The first variable alternates T/F every row, the next every two rows, and so on — the standard truth table convention that produces the canonical \( 2^n \) row ordering.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Why is there a limit on variables?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">With \( n \) variables, the table has \( 2^n \) rows. Five variables is 32 rows, which is still readable; six variables is 64 rows and ten variables would be 1024 rows. The calculator caps the expression at five distinct variables to keep the output useful. Most textbook problems use two or three.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I use this to check logical equivalences?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Yes. Two expressions are logically equivalent if their truth tables have the same final column. Generate the table for one expression, then the other, and compare the last column. A quick alternative is to test the biconditional of the two expressions — if the result is a tautology, the expressions are equivalent.</p>
+          </details>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Related tools</h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <li><a href="scientific-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Scientific Calculator</a></li>
+          <li><a href="percentage-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Percentage Calculator</a></li>
+          <li><a href="ratio-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Ratio Calculator</a></li>
+          <li><a href="lcm-gcf-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ LCM &amp; GCF Calculator</a></li>
+          <li><a href="simultaneous-equations-solver.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Simultaneous Equations Solver</a></li>
+          <li><a href="quadratic-solver.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Quadratic Solver</a></li>
+        </ul>
+      </section>
+
+      <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <p class="text-gray-700 leading-relaxed prose-justify">
+          Practice logic and Boolean algebra with our
+          <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
+          <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
+          and track term progress with the free
+          <a href="https://hiraacademy.com.pk/student-portal.html" class="text-blue-700 font-semibold underline">Student Portal</a>.
+        </p>
+      </section>
+
+    </article>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+        <div class="md:col-span-1">
+          <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
+          </a>
+          <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class9">9th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/courses-details.html#class10">10th Class</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">F.Sc (Pre-Medical / Pre-Engineering)</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/tools/index.html">Tools &amp; Calculators</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Scheme</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/terms.html">Terms of Service</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/privacy-policy.html">Privacy Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/refund-policy.html">Refund Policy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
+          </ul>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
+          <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/about.html">About Hira Academy</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/mission.html">Our Mission</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 border-t border-blue-700 pt-6 space-y-2 text-center">
+        <p class="text-base text-gray-200">© 2026 Hira Science Academy. All rights reserved. | 54 Free Online Calculators</p>
+        <p class="text-sm text-gray-300">
+          Tools &amp; Calculators by <a class="text-cyan-400 hover:text-cyan-300 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Hira Science Academy, Daska
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <a aria-label="Chat with Hira Science Academy on WhatsApp" class="fixed bottom-6 left-6 z-50 group" href="https://wa.me/923007242631" rel="noopener noreferrer" target="_blank">
+    <div class="flex items-center gap-3">
+      <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
+        <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
+          <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
+        </svg>
+      </div>
+    </div>
+  </a>
+
+  <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <script src="assets/tools-common.js"></script>
+  <script>
+  (function () {
+    'use strict';
+    const { trackEvent, parseNum, showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
+    const CALC_NAME = 'truth-table-calculator';
+
+    const exprInput    = document.getElementById('expr-input');
+    const opPills      = document.querySelectorAll('.op-pill');
+    const presetBtns   = document.querySelectorAll('.preset-btn');
+    const calcBtn      = document.getElementById('calc-btn');
+    const resetBtn     = document.getElementById('reset-btn');
+    const resultPanel  = document.getElementById('result-panel');
+    const section      = document.getElementById('calc-section');
+    const siteNav      = document.getElementById('site-nav');
+    const answerLive   = document.getElementById('answer-live');
+
+    const MAX_VARS = 5;
+
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
+    const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function revealResult() {
+      const box = resultPanel.querySelector('.answer-box');
+      if (!box) return;
+      const ae = document.activeElement;
+      if (coarsePointer && ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA')) ae.blur();
+      const run = (behavior) => {
+        const vv = window.visualViewport;
+        const vh = vv ? vv.height : window.innerHeight;
+        const stickyH = (siteNav && getComputedStyle(siteNav).position === 'sticky') ? siteNav.offsetHeight : 0;
+        const topLimit = stickyH + 8;
+        const bottomLimit = vh - 80;
+        const r = box.getBoundingClientRect();
+        if (r.top >= topLimit && r.bottom <= bottomLimit) return;
+        window.scrollBy({ top: r.top - (stickyH + 12), left: 0, behavior: reduceMotion ? 'auto' : behavior });
+      };
+      requestAnimationFrame(() => {
+        run('smooth');
+        if (coarsePointer) setTimeout(() => run('auto'), 350);
+      });
+    }
+
+    function announce(text) {
+      if (!answerLive) return;
+      answerLive.textContent = '';
+      setTimeout(() => { answerLive.textContent = text; }, 60);
+    }
+
+    function copyText(text, btn) {
+      const done = () => {
+        const old = btn.textContent;
+        btn.textContent = 'Copied ✓';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = old; btn.disabled = false; }, 1400);
+      };
+      const fail = () => {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.top = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (e) {}
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fail);
+      } else { fail(); }
+    }
+
+    resultPanel.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (!btn) return;
+      copyText(btn.getAttribute('data-copy') || '', btn);
+    });
+
+    /* ==========================================================
+       TOKENIZER
+       ========================================================== */
+    function tokenize(str) {
+      let s = str;
+      s = s.replace(/\bIFF\b/gi, '↔');
+      s = s.replace(/\bIMPLIES\b/gi, '→');
+      s = s.replace(/\bXOR\b/gi, '⊕');
+      s = s.replace(/\bAND\b/gi, '∧');
+      s = s.replace(/\bOR\b/gi, '∨');
+      s = s.replace(/\bNOT\b/gi, '¬');
+      s = s.replace(/<=>/g, '↔').replace(/<->/g, '↔');
+      s = s.replace(/=>/g, '→').replace(/->/g, '→');
+      s = s.replace(/&&/g, '∧').replace(/&/g, '∧');
+      s = s.replace(/\|\|/g, '∨').replace(/\|/g, '∨');
+      s = s.replace(/\^/g, '⊕');
+      s = s.replace(/~/g, '¬').replace(/!/g, '¬');
+
+      const tokens = [];
+      let i = 0;
+      while (i < s.length) {
+        const c = s[i];
+        if (c === ' ' || c === '\t' || c === '\n' || c === '\r') { i++; continue; }
+        if ('ABCDEabcde'.indexOf(c) !== -1) {
+          tokens.push({ type: 'var', value: c.toUpperCase() });
+          i++; continue;
+        }
+        if ('¬∧∨⊕→↔'.indexOf(c) !== -1) {
+          tokens.push({ type: 'op', value: c });
+          i++; continue;
+        }
+        if (c === '(') { tokens.push({ type: 'lparen' }); i++; continue; }
+        if (c === ')') { tokens.push({ type: 'rparen' }); i++; continue; }
+        throw new Error('Unrecognised character: "' + c + '"');
+      }
+      return tokens;
+    }
+
+    /* ==========================================================
+       PARSER
+       ========================================================== */
+    function parse(tokens) {
+      let pos = 0;
+
+      function peek() { return tokens[pos]; }
+      function consume() { return tokens[pos++]; }
+
+      function parseIff() {
+        let left = parseImplies();
+        while (peek() && peek().type === 'op' && peek().value === '↔') {
+          consume();
+          const right = parseImplies();
+          left = { type: 'binary', op: '↔', left, right };
+        }
+        return left;
+      }
+      function parseImplies() {
+        const left = parseOr();
+        if (peek() && peek().type === 'op' && peek().value === '→') {
+          consume();
+          const right = parseImplies();
+          return { type: 'binary', op: '→', left, right };
+        }
+        return left;
+      }
+      function parseOr() {
+        let left = parseAnd();
+        while (peek() && peek().type === 'op' && (peek().value === '∨' || peek().value === '⊕')) {
+          const op = consume().value;
+          const right = parseAnd();
+          left = { type: 'binary', op, left, right };
+        }
+        return left;
+      }
+      function parseAnd() {
+        let left = parseUnary();
+        while (peek() && peek().type === 'op' && peek().value === '∧') {
+          consume();
+          const right = parseUnary();
+          left = { type: 'binary', op: '∧', left, right };
+        }
+        return left;
+      }
+      function parseUnary() {
+        if (peek() && peek().type === 'op' && peek().value === '¬') {
+          consume();
+          return { type: 'unary', op: '¬', arg: parseUnary() };
+        }
+        return parsePrimary();
+      }
+      function parsePrimary() {
+        const t = peek();
+        if (!t) throw new Error('Unexpected end of expression');
+        if (t.type === 'var') { consume(); return { type: 'var', name: t.value }; }
+        if (t.type === 'lparen') {
+          consume();
+          const inner = parseIff();
+          if (!peek() || peek().type !== 'rparen') throw new Error('Missing closing parenthesis');
+          consume();
+          return inner;
+        }
+        throw new Error('Unexpected token: ' + (t.value || t.type));
+      }
+
+      if (tokens.length === 0) throw new Error('Expression is empty');
+      const tree = parseIff();
+      if (pos !== tokens.length) throw new Error('Extra tokens after expression');
+      return tree;
+    }
+
+    /* ==========================================================
+       EVALUATION
+       ========================================================== */
+    function evalTree(node, env) {
+      if (node.type === 'var') return env[node.name] ? 1 : 0;
+      if (node.type === 'unary') {
+        return evalTree(node.arg, env) ? 0 : 1;
+      }
+      const L = evalTree(node.left, env);
+      const R = evalTree(node.right, env);
+      switch (node.op) {
+        case '∧': return (L && R) ? 1 : 0;
+        case '∨': return (L || R) ? 1 : 0;
+        case '⊕': return (L !== R) ? 1 : 0;
+        case '→': return (!L || R) ? 1 : 0;
+        case '↔': return (L === R) ? 1 : 0;
+      }
+      throw new Error('Unknown operator: ' + node.op);
+    }
+
+    /* ==========================================================
+       SUBEXPRESSION COLLECTION
+       ========================================================== */
+    function nodeToString(node) {
+      if (node.type === 'var') return node.name;
+      if (node.type === 'unary') return '¬' + wrapIfBinary(node.arg);
+      return wrapIfBinary(node.left) + ' ' + node.op + ' ' + wrapIfBinary(node.right);
+    }
+    function wrapIfBinary(node) {
+      if (node.type === 'var') return node.name;
+      if (node.type === 'unary') return nodeToString(node);
+      return '(' + nodeToString(node) + ')';
+    }
+
+    function collectSubexpressions(tree) {
+      const list = [];
+      const seen = new Set();
+      function walk(node) {
+        if (node.type === 'var') return;
+        if (node.type === 'unary') walk(node.arg);
+        else { walk(node.left); walk(node.right); }
+        const str = nodeToString(node);
+        if (!seen.has(str)) { seen.add(str); list.push({ expr: str, node }); }
+      }
+      walk(tree);
+      return list;
+    }
+
+    function collectVars(tree) {
+      const set = new Set();
+      function walk(node) {
+        if (node.type === 'var') set.add(node.name);
+        else if (node.type === 'unary') walk(node.arg);
+        else { walk(node.left); walk(node.right); }
+      }
+      walk(tree);
+      return Array.from(set).sort();
+    }
+
+    /* ==========================================================
+       RENDER
+       ========================================================== */
+    function calculate() {
+      clearAllErrors(section);
+      hideResult(resultPanel);
+
+      const raw = exprInput.value.trim();
+      if (raw === '') {
+        showError(exprInput, 'Enter a logical expression.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      let tokens, tree;
+      try {
+        tokens = tokenize(raw);
+        tree = parse(tokens);
+      } catch (e) {
+        showError(exprInput, e.message || 'Could not parse the expression.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      const vars = collectVars(tree);
+      if (vars.length === 0) {
+        showError(exprInput, 'Expression must contain at least one variable (A–E).');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+      if (vars.length > MAX_VARS) {
+        showError(exprInput, 'Too many variables. The calculator supports up to ' + MAX_VARS + '.');
+        trackEvent(CALC_NAME, 'invalid_input');
+        return;
+      }
+
+      const subs = collectSubexpressions(tree);
+      const rowCount = Math.pow(2, vars.length);
+
+      const rows = [];
+      for (let r = 0; r < rowCount; r++) {
+        const env = {};
+        for (let v = 0; v < vars.length; v++) {
+          const bit = (r >> (vars.length - 1 - v)) & 1;
+          env[vars[v]] = bit;
+        }
+        const varVals = vars.map(v => env[v]);
+        const subVals = subs.map(s => evalTree(s.node, env));
+        const resultVal = evalTree(tree, env);
+        rows.push({ varVals, subVals, resultVal });
+      }
+
+      const trueRows = rows.filter(r => r.resultVal === 1).length;
+      const falseRows = rowCount - trueRows;
+
+      let verdict, verdictClass, verdictArrow, verdictText;
+      if (trueRows === rowCount) {
+        verdict = 'tautology';
+        verdictClass = 'status-ok';
+        verdictArrow = '✓';
+        verdictText = 'Tautology — true in every row';
+      } else if (falseRows === rowCount) {
+        verdict = 'contradiction';
+        verdictClass = 'status-alert';
+        verdictArrow = '✕';
+        verdictText = 'Contradiction — false in every row';
+      } else {
+        verdict = 'contingent';
+        verdictClass = 'status-warn';
+        verdictArrow = '◆';
+        verdictText = 'Contingent — true in some rows, false in others';
+      }
+
+      const tile1 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${vars.length}</div><div class="cgpa-summary-label">Variables</div></div>`;
+      const tile2 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${rowCount}</div><div class="cgpa-summary-label">Rows</div></div>`;
+      const tile3 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${trueRows}</div><div class="cgpa-summary-label">True rows</div></div>`;
+      const tile4 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${falseRows}</div><div class="cgpa-summary-label">False rows</div></div>`;
+
+      let headHtml = '';
+      vars.forEach(v => { headHtml += `<th>${v}</th>`; });
+      subs.forEach(s => { headHtml += `<th>${escapeHtml(s.expr)}</th>`; });
+      headHtml += `<th class="final-col">Result</th>`;
+
+      let bodyHtml = '';
+      rows.forEach(row => {
+        let tr = '<tr>';
+        row.varVals.forEach(v => {
+          tr += `<td class="${v ? 'val-T' : 'val-F'}">${v ? 'T' : 'F'}</td>`;
+        });
+        row.subVals.forEach(v => {
+          tr += `<td class="${v ? 'val-T' : 'val-F'}">${v ? 'T' : 'F'}</td>`;
+        });
+        tr += `<td class="final-col ${row.resultVal ? 'val-T' : 'val-F'}">${row.resultVal ? 'T' : 'F'}</td>`;
+        tr += '</tr>';
+        bodyHtml += tr;
+      });
+
+      const tableHtml = `
+        <div class="truth-table-wrap" style="margin-top:1rem;">
+          <div class="formula-label" style="margin-bottom:0.5rem;">Truth table — ${rowCount} row${rowCount === 1 ? '' : 's'}</div>
+          <table class="truth-table" aria-label="Truth table for ${escapeHtml(raw)}">
+            <thead><tr>${headHtml}</tr></thead>
+            <tbody>${bodyHtml}</tbody>
+          </table>
+        </div>
+      `;
+
+      const ctx = [];
+      ctx.push(`🔹 Expression: <code>${escapeHtml(raw)}</code>.`);
+      ctx.push(`🔹 Parsed as: <code>${escapeHtml(nodeToString(tree))}</code>.`);
+      ctx.push(`🔹 Variables: <strong>${vars.join(', ')}</strong> (${vars.length} variable${vars.length === 1 ? '' : 's'}).`);
+      ctx.push(`🔹 Table size: <strong>${rowCount}</strong> rows (\(2^{${vars.length}}\)).`);
+      ctx.push(`🔹 True in <strong>${trueRows}</strong> row${trueRows === 1 ? '' : 's'}, false in <strong>${falseRows}</strong>.`);
+      ctx.push(`🔹 Verdict: <strong>${verdictText}</strong>.`);
+
+      if (verdict === 'tautology') {
+        ctx.push(`🔹 A tautology is true regardless of the truth values of its variables. Examples: \( A \lor \neg A \) (law of excluded middle), \( (A \to B) \leftrightarrow (\neg A \lor B) \) (material implication), \( (A \land B) \to A \) (simplification).`);
+      } else if (verdict === 'contradiction') {
+        ctx.push(`🔹 A contradiction is false regardless of its variables' values. Examples: \( A \land \neg A \) (law of non-contradiction), \( \neg(A \lor \neg A) \). Contradictions are the negation of tautologies.`);
+      } else {
+        ctx.push(`🔹 A contingent expression depends on the truth values of its variables. Examples: \( A \land B \), \( A \to B \), \( (A \lor B) \land \neg C \). Most real logic expressions are contingent.`);
+      }
+
+      if (subs.length > 0) {
+        ctx.push(`🔹 Intermediate columns (${subs.length}): ${subs.map(s => `<code>${escapeHtml(s.expr)}</code>`).join(', ')}.`);
+      }
+
+      const answerPlain = `${verdictText}. ${trueRows} of ${rowCount} rows true.`;
+
+      const html = `
+        <div class="answer-box">
+          <div class="answer-head">
+            <span class="answer-heading">Truth table result</span>
+            <button type="button" class="copy-btn" data-copy="${escapeHtml(answerPlain)}" aria-label="Copy answer">Copy answer</button>
+          </div>
+          <div class="cgpa-big-value" style="${verdict === 'contradiction' ? 'color:#b91c1c;' : verdict === 'tautology' ? 'color:#166534;' : ''}">${verdict.charAt(0).toUpperCase() + verdict.slice(1)}<span class="cgpa-big-scale">${trueRows}/${rowCount} true</span></div>
+          <div style="text-align:center;">
+            <span class="status-badge ${verdictClass}">${verdictArrow} ${escapeHtml(verdictText)}</span>
+          </div>
+        </div>
+
+        <div class="cgpa-summary">
+          ${tile1}${tile2}${tile3}${tile4}
+        </div>
+
+        ${tableHtml}
+
+        <div class="steps-block" style="margin-top:1.5rem;">
+          <details open>
+            <summary>How this table was built</summary>
+            <div class="formula-label" style="margin-bottom:0.5rem;margin-top:0.75rem;">Calculation Steps</div>
+            <ol>
+              <li>Tokenised the input: <code>${escapeHtml(raw)}</code>.</li>
+              <li>Parsed into a binary tree using standard precedence: \(\neg \gt \land \gt \lor,\oplus \gt \to \gt \leftrightarrow\).</li>
+              <li>Collected <strong>${vars.length}</strong> variable${vars.length === 1 ? '' : 's'} → \(2^{${vars.length}}\) = ${rowCount} rows.</li>
+              <li>Enumerated every variable assignment in canonical order (first variable alternates every row, next every 2 rows, etc.).</li>
+              <li>Evaluated each row against the tree to produce the Result column.</li>
+              <li>Classified as ${verdict}: ${trueRows} of ${rowCount} rows true.</li>
+            </ol>
+          </details>
+        </div>
+
+        <div class="cgpa-context">
+          ${ctx.map(l => `<p>${l}</p>`).join('')}
+        </div>
+      `;
+
+      resultPanel.innerHTML = html;
+      showResult(resultPanel, html);
+      trackEvent(CALC_NAME, 'calculate');
+      announce(`Result: ${verdictText}. ${trueRows} of ${rowCount} rows true.`);
+      revealResult();
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+
+    /* ==========================================================
+       WIRING
+       ========================================================== */
+    calcBtn.addEventListener('click', calculate);
+
+    // Explicit fallback for Enter key across all inputs
+    section.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+      const t = e.target;
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.tagName === 'A' || t.tagName === 'SUMMARY') return;
+      e.preventDefault();
+      calcBtn.click();
+    });
+
+    opPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const op = pill.dataset.op;
+        const start = exprInput.selectionStart ?? exprInput.value.length;
+        const end = exprInput.selectionEnd ?? exprInput.value.length;
+        const before = exprInput.value.slice(0, start);
+        const after = exprInput.value.slice(end);
+        exprInput.value = before + op + after;
+        exprInput.focus();
+        const newPos = start + op.length;
+        exprInput.setSelectionRange(newPos, newPos);
+      });
+    });
+
+    presetBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        exprInput.value = btn.dataset.preset;
+        clearAllErrors(section);
+        hideResult(resultPanel);
+        exprInput.focus();
+      });
+    });
+
+    resetBtn.addEventListener('click', () => {
+      exprInput.value = '';
+      clearAllErrors(section);
+      hideResult(resultPanel);
+      if (answerLive) answerLive.textContent = '';
+      trackEvent(CALC_NAME, 'reset');
+    });
+
+    const btn = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const io = document.getElementById('menu-icon-open');
+    const ic = document.getElementById('menu-icon-close');
+    if (btn) btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      if (io) io.classList.toggle('hidden');
+      if (ic) ic.classList.toggle('hidden');
+    });
+    const btt = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 400) btt.classList.add('show');
+      else btt.classList.remove('show');
+    });
+    btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  })();
+  </script>
+</body>
+</html>
