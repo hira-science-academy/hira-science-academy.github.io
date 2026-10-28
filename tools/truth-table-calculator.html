@@ -1,6 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+  <!-- ===== PRIMARY SEO ===== -->
+  <title>Truth Table Calculator – Free Online Boolean Logic Generator</title>
+  <meta content="Free truth table calculator &amp; generator. Enter any logic expression with AND, OR, NOT, XOR, IMPLIES, IFF and get a full table with tautology check instantly." name="description"/>
+  <meta content="truth table calculator, truth table generator, boolean logic calculator, logic expression solver, tautology checker, contradiction checker, propositional logic calculator, XOR truth table, implication truth table, biconditional, discrete math" name="keywords"/>
+  <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
+  <meta content="en" name="language"/>
+  <meta content="Muhammad Tayyab, Hira Science Academy" name="author"/>
+  <meta content="#0f172a" name="theme-color"/>
+  <link href="https://hiraacademy.com.pk/tools/truth-table-calculator.html" rel="canonical"/>
+
+  <!-- International targeting: one English page for the whole world -->
+  <link href="https://hiraacademy.com.pk/tools/truth-table-calculator.html" rel="alternate" hreflang="en"/>
+  <link href="https://hiraacademy.com.pk/tools/truth-table-calculator.html" rel="alternate" hreflang="x-default"/>
+
+  <!-- ===== OPEN GRAPH / TWITTER ===== -->
+  <meta content="website" property="og:type"/>
+  <meta content="en_US" property="og:locale"/>
+  <meta content="en_GB" property="og:locale:alternate"/>
+  <meta content="en_PK" property="og:locale:alternate"/>
+  <meta content="Hira Science Academy" property="og:site_name"/>
+  <meta content="Truth Table Calculator – Free Online Boolean Logic Generator" property="og:title"/>
+  <meta content="Generate a full truth table for any logic expression. Supports AND, OR, NOT, XOR, IMPLIES, IFF, with tautology and contradiction detection." property="og:description"/>
+  <meta content="https://hiraacademy.com.pk/tools/truth-table-calculator.html" property="og:url"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
+  <meta content="Truth table calculator showing a Boolean logic expression and its results" property="og:image:alt"/>
+  <meta content="summary_large_image" name="twitter:card"/>
+  <meta content="@hiraacademyDSK" name="twitter:site"/>
+  <meta content="Truth Table Calculator – Free Online Boolean Logic Generator" name="twitter:title"/>
+  <meta content="Enter any logic expression and get the full truth table, with tautology and contradiction detection." name="twitter:description"/>
+  <meta content="https://hiraacademy.com.pk/images/classroom.webp" name="twitter:image"/>
+
+  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
+
+  <!-- ===== PERFORMANCE: connections + fonts ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin/>
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@600;700&family=Montserrat:wght@700;800&display=swap"/>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -10,56 +54,72 @@
   </script>
   <script async crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"></script>
 
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" name="robots"/>
-  <meta content="en" name="language"/>
-  <meta content="Hira Science Academy" name="author"/>
-  <meta content="#0f172a" name="theme-color"/>
-
-  <title>Truth Table Calculator — Logic Expression Solver | Hira Science Academy</title>
-  <meta content="Free truth table calculator. Enter any Boolean logic expression with AND, OR, NOT, XOR, IMPLIES, IFF and parentheses to generate a full truth table with tautology and contradiction detection." name="description"/>
-  <meta content="truth table calculator, boolean logic calculator, tautology checker, logic expression solver, AND OR NOT XOR implication biconditional, discrete math, class 11 logic" name="keywords"/>
-  <link href="https://hiraacademy.com.pk/tools/truth-table-calculator.html" rel="canonical"/>
-
-  <meta content="website" property="og:type"/>
-  <meta content="en_PK" property="og:locale"/>
-  <meta content="Hira Science Academy" property="og:site_name"/>
-  <meta content="Truth Table Calculator — Logic Expression Solver" property="og:title"/>
-  <meta content="Generate a full truth table for any Boolean logic expression, with tautology and contradiction detection." property="og:description"/>
-  <meta content="https://hiraacademy.com.pk/tools/truth-table-calculator.html" property="og:url"/>
-  <meta content="https://hiraacademy.com.pk/images/classroom.webp" property="og:image"/>
-  <meta content="summary_large_image" name="twitter:card"/>
-  <meta content="@hiraacademyDSK" name="twitter:site"/>
-
-  <link href="https://hiraacademy.com.pk/images/favicon.ico" rel="icon" type="image/x-icon"/>
-  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin/>
-  <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossorigin/>
-
-  <!-- KaTeX for perfect math rendering in the article -->
+  <!-- KaTeX -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" crossorigin="anonymous">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
   <script>
+    window.TT_MATH_OPTS = {
+      delimiters: [
+        {left: '\\[', right: '\\]', display: true},
+        {left: '\\(', right: '\\)', display: false}
+      ],
+      throwOnError: false
+    };
     document.addEventListener("DOMContentLoaded", function() {
-      renderMathInElement(document.body, {
-        delimiters: [
-          {left: '$$', right: '$$', display: true},
-          {left: '$', right: '$', display: false},
-          {left: '\\(', right: '\\)', display: false},
-          {left: '\\[', right: '\\]', display: true}
-        ],
-        throwOnError: false
-      });
+      if (window.renderMathInElement) renderMathInElement(document.body, window.TT_MATH_OPTS);
+    });
+    window.addEventListener("load", function() {
+      if (window.renderMathInElement) renderMathInElement(document.body, window.TT_MATH_OPTS);
     });
   </script>
 
+  <!-- ===== STRUCTURED DATA ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Organization",
+        "@id": "https://hiraacademy.com.pk/#org",
+        "name": "Hira Science Academy",
+        "url": "https://hiraacademy.com.pk/",
+        "logo": "https://hiraacademy.com.pk/images/logo.webp"
+      },
+      {
+        "@type": "Person",
+        "@id": "https://hiraacademy.com.pk/about.html#muhammad-tayyab",
+        "name": "Muhammad Tayyab",
+        "jobTitle": "Subject Specialist (Mathematics & Physics)",
+        "url": "https://hiraacademy.com.pk/about.html#muhammad-tayyab",
+        "worksFor": { "@id": "https://hiraacademy.com.pk/#org" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://hiraacademy.com.pk/#website",
+        "url": "https://hiraacademy.com.pk/",
+        "name": "Hira Science Academy",
+        "publisher": { "@id": "https://hiraacademy.com.pk/#org" },
+        "inLanguage": "en"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://hiraacademy.com.pk/tools/truth-table-calculator.html#webpage",
+        "url": "https://hiraacademy.com.pk/tools/truth-table-calculator.html",
+        "name": "Truth Table Calculator – Free Online Boolean Logic Generator",
+        "description": "Free truth table calculator and generator for AND, OR, NOT, XOR, IMPLIES and IFF with tautology and contradiction detection.",
+        "isPartOf": { "@id": "https://hiraacademy.com.pk/#website" },
+        "inLanguage": "en",
+        "dateModified": "2026-10-28",
+        "author": { "@id": "https://hiraacademy.com.pk/about.html#muhammad-tayyab" },
+        "publisher": { "@id": "https://hiraacademy.com.pk/#org" },
+        "primaryImageOfPage": { "@type": "ImageObject", "url": "https://hiraacademy.com.pk/images/classroom.webp" },
+        "breadcrumb": { "@id": "https://hiraacademy.com.pk/tools/truth-table-calculator.html#breadcrumb" },
+        "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "#what-is-a-truth-table"] }
+      },
+      {
         "@type": "BreadcrumbList",
+        "@id": "https://hiraacademy.com.pk/tools/truth-table-calculator.html#breadcrumb",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://hiraacademy.com.pk/index.html" },
           { "@type": "ListItem", "position": 2, "name": "Tools & Calculators", "item": "https://hiraacademy.com.pk/tools/index.html" },
@@ -68,58 +128,53 @@
       },
       {
         "@type": "WebApplication",
+        "@id": "https://hiraacademy.com.pk/tools/truth-table-calculator.html#app",
         "name": "Truth Table Calculator",
+        "alternateName": ["Truth Table Generator", "Boolean Logic Calculator", "Tautology Checker"],
         "url": "https://hiraacademy.com.pk/tools/truth-table-calculator.html",
-        "description": "Generate a complete truth table for any Boolean logic expression with up to five variables. Detects tautologies, contradictions, and contingencies.",
+        "description": "Generate a complete truth table for any Boolean logic expression with up to five variables. Detects tautologies, contradictions, and contingencies, and shows every intermediate column.",
         "applicationCategory": "EducationalApplication",
-        "operatingSystem": "Any",
+        "applicationSubCategory": "Logic and Discrete Mathematics",
+        "operatingSystem": "Any (web browser)",
         "browserRequirements": "Requires JavaScript",
         "isAccessibleForFree": true,
         "inLanguage": "en",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "PKR"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Hira Science Academy",
-          "url": "https://hiraacademy.com.pk/"
-        }
+        "audience": { "@type": "EducationalAudience", "educationalRole": "student" },
+        "featureList": [
+          "Supports NOT, AND, OR, XOR, IMPLIES and IFF operators",
+          "Accepts symbols (¬ ∧ ∨ ⊕ → ↔), keyboard operators (~ & | ^ -> <->) or words (AND, OR, NOT)",
+          "Shows every intermediate sub-expression column",
+          "Detects tautology, contradiction or contingent expressions",
+          "Up to 5 variables (32 rows)",
+          "Free, no sign-up"
+        ],
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "author": { "@id": "https://hiraacademy.com.pk/about.html#muhammad-tayyab" },
+        "publisher": { "@id": "https://hiraacademy.com.pk/#org" }
+      },
+      {
+        "@type": "HowTo",
+        "name": "How to generate a truth table with the Truth Table Calculator",
+        "totalTime": "PT1M",
+        "step": [
+          { "@type": "HowToStep", "position": 1, "name": "Type your expression", "text": "Enter a Boolean expression using the variables A to E, for example (A ∧ B) ∨ ¬C. You can type symbols, keyboard operators like & | ~ ->, or words such as AND, OR and NOT." },
+          { "@type": "HowToStep", "position": 2, "name": "Use the operator buttons or presets", "text": "Click the operator buttons to insert ¬, ∧, ∨, ⊕, →, ↔ and parentheses, or pick one of the preset examples." },
+          { "@type": "HowToStep", "position": 3, "name": "Click Generate Truth Table", "text": "The calculator builds all 2^n rows, evaluates every sub-expression and highlights the final Result column." },
+          { "@type": "HowToStep", "position": 4, "name": "Read the verdict", "text": "The result box tells you whether the expression is a tautology, a contradiction or contingent, and how many rows are true." }
+        ]
       },
       {
         "@type": "FAQPage",
         "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is a truth table?",
-            "acceptedAnswer": { "@type": "Answer", "text": "A truth table is a table that lists every possible combination of truth values (true or false) for the variables in a logical expression, along with the resulting value of the expression for each combination. With n variables, the table has 2^n rows. Truth tables are used to analyse Boolean logic expressions, verify logical equivalences, and determine whether an expression is a tautology, contradiction, or contingent." }
-          },
-          {
-            "@type": "Question",
-            "name": "What operators does this tool support?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The tool supports NOT (~ or !), AND (∧ or & or &&), OR (∨ or | or ||), XOR (⊕ or ^), IMPLIES (→ or -> or =>), IFF / biconditional (↔ or <-> or <=>), and parentheses. You can mix symbolic and word-like operators in the same expression." }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the difference between a tautology, contradiction, and contingent expression?",
-            "acceptedAnswer": { "@type": "Answer", "text": "A tautology is an expression that is true for every row of its truth table — for example, A ∨ ¬A. A contradiction is an expression that is false for every row — for example, A ∧ ¬A. A contingent expression is true for some rows and false for others — for example, A ∧ B. The calculator labels every expression with one of these three verdicts." }
-          },
-          {
-            "@type": "Question",
-            "name": "How are variables ordered in the table?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Variables are ordered alphabetically from left to right. The first variable alternates T/F every row, the next every two rows, and so on — the standard truth table convention that produces the canonical 2^n row ordering." }
-          },
-          {
-            "@type": "Question",
-            "name": "Why is there a limit on variables?",
-            "acceptedAnswer": { "@type": "Answer", "text": "With n variables, the table has 2^n rows. Five variables is 32 rows, which is still readable; six variables is 64 rows and ten variables would be 1024 rows. The calculator caps the expression at five distinct variables to keep the output useful. Most textbook problems use two or three." }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use this to check logical equivalences?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Two expressions are logically equivalent if their truth tables have the same final column. Generate the table for one expression, then the other, and compare the last column. A quick alternative is to test the biconditional of the two expressions — if the result is a tautology, the expressions are equivalent." }
-          }
+          { "@type": "Question", "name": "What is a truth table?", "acceptedAnswer": { "@type": "Answer", "text": "A truth table lists every possible combination of truth values (true or false) for the variables in a logical expression, together with the resulting value of the expression for each combination. With n variables the table has 2^n rows. Truth tables are used to analyse Boolean logic expressions, verify logical equivalences, and determine whether an expression is a tautology, contradiction, or contingent." } },
+          { "@type": "Question", "name": "How do I make a truth table?", "acceptedAnswer": { "@type": "Answer", "text": "List the distinct variables, write all 2^n combinations of T and F in standard order, add a column for each sub-expression working from the innermost parentheses outward, and finish with a column for the whole expression. This calculator does all of those steps automatically and shows every intermediate column." } },
+          { "@type": "Question", "name": "What operators does this tool support?", "acceptedAnswer": { "@type": "Answer", "text": "NOT (¬, ~ or !), AND (∧, & or &&), OR (∨, | or ||), XOR (⊕ or ^), IMPLIES (→, -> or =>), IFF / biconditional (↔, <-> or <=>), and parentheses. You can also type the words AND, OR, NOT, XOR, IMPLIES and IFF, and mix styles in one expression." } },
+          { "@type": "Question", "name": "What is the difference between a tautology, contradiction, and contingent expression?", "acceptedAnswer": { "@type": "Answer", "text": "A tautology is true in every row, for example A ∨ ¬A. A contradiction is false in every row, for example A ∧ ¬A. A contingent expression is true in some rows and false in others, for example A ∧ B. The calculator labels every expression with one of these three verdicts." } },
+          { "@type": "Question", "name": "What is the order of precedence for logical operators?", "acceptedAnswer": { "@type": "Answer", "text": "From highest to lowest: NOT, then AND, then OR and XOR, then IMPLIES, then IFF. Use parentheses to override the default order. For example, A ∧ B ∨ C is read as (A ∧ B) ∨ C." } },
+          { "@type": "Question", "name": "How are variables ordered in the table?", "acceptedAnswer": { "@type": "Answer", "text": "Variables are ordered alphabetically from left to right. The rightmost variable alternates T/F fastest, the one before it every two rows, and so on, starting with all variables true. This is the standard convention that produces the canonical 2^n row ordering." } },
+          { "@type": "Question", "name": "Why is there a limit of five variables?", "acceptedAnswer": { "@type": "Answer", "text": "With n variables the table has 2^n rows. Five variables give 32 rows, which is still readable; six would give 64 and ten would give 1,024. The calculator caps the expression at five distinct variables (A to E) to keep the output useful. Most textbook problems use two or three." } },
+          { "@type": "Question", "name": "Can I use this to check logical equivalences?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Two expressions are logically equivalent if their truth tables have the same final column. A quicker method is to join them with the biconditional, for example (A → B) ↔ (¬A ∨ B). If the verdict is tautology, the two expressions are equivalent." } },
+          { "@type": "Question", "name": "Is the truth table calculator free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. It is completely free, needs no sign-up and runs in your browser, so the expressions you type are not sent to a server." } }
         ]
       }
     ]
@@ -189,7 +244,6 @@
     .back-to-top.show { opacity: 1; visibility: visible; }
     .back-to-top:hover { background: #0369a1; transform: translateY(-5px); }
 
-    /* Answer box (primary answer first) */
     .answer-box {
       background: #ffffff;
       border: 2px solid #0284c7;
@@ -198,209 +252,48 @@
       box-shadow: 0 4px 16px rgba(2,132,199,0.12);
       margin-bottom: 1.5rem;
     }
-    .answer-box .answer-head { 
-      display: flex; align-items: center; justify-content: space-between; 
-      gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; 
-    }
-    .answer-box .answer-heading { 
-      font-size: .85rem; font-weight: 800; letter-spacing: .08em; 
-      text-transform: uppercase; color: #0369a1; 
-    }
-    .answer-box .answer-value { 
-      font-family: 'Montserrat', sans-serif; 
-      font-size: 2.5rem; font-weight: 800; color: #0b1220; 
-      line-height: 1.1; word-break: break-word; text-align: center;
-    }
-    .answer-box .answer-value .katex { font-size: 2.5rem; }
-    .copy-btn { 
-      border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; 
-      border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; 
-      font-weight: 700; cursor: pointer; white-space: nowrap; 
-    }
+    .answer-box .answer-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: wrap; margin-bottom: .5rem; }
+    .answer-box .answer-heading { font-size: .85rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #0369a1; }
+    .answer-box .answer-value { font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; color: #0b1220; line-height: 1.1; word-break: break-word; text-align: center; }
+    .copy-btn { border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1; border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem; font-weight: 700; cursor: pointer; white-space: nowrap; }
     .copy-btn:hover { background: #bae6fd; }
-    .answer-box details > summary { 
-      cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; 
-      margin-top: .75rem; user-select: none; 
-    }
+    .answer-box details > summary { cursor: pointer; font-weight: 700; color: #0369a1; font-size: .9rem; margin-top: .75rem; user-select: none; }
     .answer-box details > summary:hover { text-decoration: underline; }
 
-    /* Result */
-    .cgpa-big-value {
-      display: flex;
-      align-items: baseline;
-      justify-content: center;
-      gap: 0.5rem;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #0b1220;
-      line-height: 1.1;
-      flex-wrap: wrap;
-      text-align: center;
-    }
-    .cgpa-big-scale {
-      font-size: 1.125rem;
-      font-weight: 500;
-      color: #64748b;
-    }
-    .cgpa-summary {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
+    .cgpa-big-value { display: flex; align-items: baseline; justify-content: center; gap: 0.5rem; font-family: 'Montserrat', sans-serif; font-size: 2.5rem; font-weight: 800; color: #0b1220; line-height: 1.1; flex-wrap: wrap; text-align: center; }
+    .cgpa-big-scale { font-size: 1.125rem; font-weight: 500; color: #64748b; }
+    .cgpa-summary { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; margin-top: 1rem; }
     @media (min-width: 640px) { .cgpa-summary { grid-template-columns: repeat(4, 1fr); } }
-    .cgpa-summary-unit {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 0.75rem;
-      padding: 0.75rem 0.6rem;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-    }
-    .cgpa-summary-value {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.0625rem;
-      font-weight: 700;
-      color: #0b1220;
-      line-height: 1.2;
-      word-break: break-word;
-    }
-    .cgpa-summary-label {
-      font-size: 0.625rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #64748b;
-      font-weight: 600;
-    }
-    .cgpa-context {
-      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
-      border: 1px solid #bae6fd;
-      border-radius: 0.75rem;
-      padding: 1rem 1.25rem;
-      margin-top: 1.5rem;
-    }
+    .cgpa-summary-unit { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 0.75rem; padding: 0.75rem 0.6rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+    .cgpa-summary-value { font-family: 'Montserrat', sans-serif; font-size: 1.0625rem; font-weight: 700; color: #0b1220; line-height: 1.2; word-break: break-word; }
+    .cgpa-summary-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.08em; color: #64748b; font-weight: 600; }
+    .cgpa-context { background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%); border: 1px solid #bae6fd; border-radius: 0.75rem; padding: 1rem 1.25rem; margin-top: 1.5rem; }
     .cgpa-context p { margin: 0.25rem 0; color: #334155; line-height: 1.6; font-size: 0.9375rem; }
     .cgpa-context strong { color: #0b1220; }
 
-    /* Status badge */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.85rem;
-      border-radius: 9999px;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      font-size: 0.8125rem;
-      margin-top: 0.5rem;
-    }
+    .status-badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.35rem 0.85rem; border-radius: 9999px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.8125rem; margin-top: 0.5rem; }
     .status-ok    { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
     .status-warn  { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
     .status-alert { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
     .status-secure{ background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
 
-    /* Formula expression input */
-    .expr-input {
-      width: 100%;
-      padding: 0.75rem 0.9rem;
-      border: 1.5px solid #cbd5e1;
-      border-radius: 0.6rem;
-      font-size: 1.0625rem;
-      font-family: 'JetBrains Mono', monospace;
-      background: #ffffff;
-      transition: border-color 0.15s, box-shadow 0.15s;
-      color: #0b1220;
-    }
-    .expr-input:focus {
-      outline: none;
-      border-color: #0ea5e9;
-      box-shadow: 0 0 0 3px rgba(14,165,233,0.15);
-    }
+    .expr-input { width: 100%; padding: 0.75rem 0.9rem; border: 1.5px solid #cbd5e1; border-radius: 0.6rem; font-size: 1.0625rem; font-family: 'JetBrains Mono', monospace; background: #ffffff; transition: border-color 0.15s, box-shadow 0.15s; color: #0b1220; }
+    .expr-input:focus { outline: none; border-color: #0ea5e9; box-shadow: 0 0 0 3px rgba(14,165,233,0.15); }
 
-    /* Operator helper pills */
-    .op-pill {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.35rem 0.7rem;
-      border-radius: 0.5rem;
-      border: 1.5px solid #e2e8f0;
-      background: #ffffff;
-      color: #0369a1;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8125rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s;
-      user-select: none;
-    }
+    .op-pill { display: inline-flex; align-items: center; justify-content: center; padding: 0.35rem 0.7rem; border-radius: 0.5rem; border: 1.5px solid #e2e8f0; background: #ffffff; color: #0369a1; font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; font-weight: 700; cursor: pointer; transition: all 0.15s; user-select: none; }
     .op-pill:hover { background: #f0f9ff; border-color: #7dd3fc; }
     .op-pill:active { transform: scale(0.95); }
     .op-pill .op-sym { font-size: 1.05em; margin-right: 0.3rem; }
     .op-pill .op-name { font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #64748b; font-weight: 600; }
 
-    /* Preset examples */
-    .preset-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.5rem;
-    }
-    .preset-btn {
-      padding: 0.4rem 0.75rem;
-      border-radius: 0.5rem;
-      border: 1.5px solid #e2e8f0;
-      background: #ffffff;
-      color: #475569;
-      font-size: 0.75rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
+    .preset-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.5rem; }
+    .preset-btn { padding: 0.4rem 0.75rem; border-radius: 0.5rem; border: 1.5px solid #e2e8f0; background: #ffffff; color: #475569; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; cursor: pointer; transition: all 0.15s; }
     .preset-btn:hover { background: #f0f9ff; border-color: #7dd3fc; color: #0369a1; }
 
-    /* Truth table */
-    .truth-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8125rem;
-      border: 1px solid #e2e8f0;
-      border-radius: 0.6rem;
-      overflow: hidden;
-      margin-top: 0.5rem;
-    }
-    .truth-table th {
-      background: #f0f9ff;
-      color: #0369a1;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-size: 0.7rem;
-      padding: 0.55rem 0.6rem;
-      text-align: center;
-      border-bottom: 1px solid #e2e8f0;
-      white-space: nowrap;
-    }
-    .truth-table th.final-col {
-      background: #dbeafe;
-      color: #1e40af;
-      border-left: 2px solid #3b82f6;
-      border-right: 2px solid #3b82f6;
-    }
-    .truth-table td {
-      padding: 0.45rem 0.6rem;
-      border-bottom: 1px solid #f1f5f9;
-      text-align: center;
-      color: #334155;
-      font-weight: 600;
-    }
+    .truth-table { width: 100%; border-collapse: separate; border-spacing: 0; font-family: 'JetBrains Mono', monospace; font-size: 0.8125rem; border: 1px solid #e2e8f0; border-radius: 0.6rem; overflow: hidden; margin-top: 0.5rem; }
+    .truth-table th { background: #f0f9ff; color: #0369a1; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.7rem; padding: 0.55rem 0.6rem; text-align: center; border-bottom: 1px solid #e2e8f0; white-space: nowrap; }
+    .truth-table th.final-col { background: #dbeafe; color: #1e40af; border-left: 2px solid #3b82f6; border-right: 2px solid #3b82f6; }
+    .truth-table td { padding: 0.45rem 0.6rem; border-bottom: 1px solid #f1f5f9; text-align: center; color: #334155; font-weight: 600; }
     .truth-table tr:last-child td { border-bottom: none; }
     .truth-table td.val-T { color: #166534; }
     .truth-table td.val-F { color: #991b1b; }
@@ -412,30 +305,40 @@
     .truth-table tbody tr:hover td.final-col.val-F { background: #fecaca; }
     .truth-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
-    /* Ad containers */
-    .ad-slot { min-height: 100px; display: block; }
+    /* Static reference tables in the article */
+    .ref-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; text-align: center; }
+    .ref-table th { background: #f0f9ff; color: #0369a1; padding: .5rem .6rem; border: 1px solid #e2e8f0; font-weight: 700; white-space: nowrap; }
+    .ref-table td { padding: .45rem .6rem; border: 1px solid #e2e8f0; color: #334155; }
+    .ref-table td.left { text-align: left; }
+
+    .toc-box { background:#fff; border:1px solid #e2e8f0; border-radius:.75rem; padding:1rem 1.25rem; }
+    .toc-box a { color:#0369a1; text-decoration:underline; }
+    .toc-box a:hover { color:#075985; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+
+    .ad-slot { min-height: 280px; display: block; }
     .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
 
-    /* Mobile input comfort */
     @media (max-width:540px){
       .calc-input{font-size:16px;min-height:48px}
       .btn-calc{min-height:48px;flex:1 1 auto}
       .answer-box .answer-value { font-size: 2rem; }
     }
-
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
   </style>
 </head>
 
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
+  <a href="#calc-section" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:text-blue-700 focus:px-4 focus:py-2 focus:rounded-lg">Skip to the calculator</a>
+
   <!-- NAV -->
-  <nav id="site-nav" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm">
+  <nav id="site-nav" aria-label="Main navigation" class="bg-white/80 backdrop-blur-md border-b border-slate-200 md:sticky md:top-0 z-50 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-20 items-center">
         <div class="flex-shrink-0 flex items-center">
           <a class="flex items-center gap-3 group transition duration-300" href="https://hiraacademy.com.pk/index.html">
-            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" src="https://hiraacademy.com.pk/images/logo.webp" decoding="async" fetchpriority="high"/>
             <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
           </a>
         </div>
@@ -450,10 +353,10 @@
           <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
         </div>
         <div class="flex items-center md:hidden">
-          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button">
+          <button class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-600 hover:bg-gray-100" id="mobile-menu-button" type="button" aria-controls="mobile-menu" aria-expanded="false">
             <span class="sr-only">Open main menu</span>
-            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
-            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="block h-6 w-6" fill="none" id="menu-icon-open" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+            <svg class="hidden h-6 w-6" fill="none" id="menu-icon-close" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
           </button>
         </div>
       </div>
@@ -479,8 +382,8 @@
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
       <span class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free Tool · Tautology Detection · Up to 5 Variables</span>
-      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg">Truth Table Calculator</h1>
-      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">Enter any Boolean expression with AND, OR, NOT, XOR, IMPLIES, IFF and parentheses — get the full truth table instantly.</p>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg">Truth Table Calculator &amp; Generator</h1>
+      <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">Free online Boolean logic solver. Enter any expression with AND, OR, NOT, XOR, IMPLIES and IFF and get the full truth table instantly.</p>
     </div>
   </header>
 
@@ -502,7 +405,6 @@
   <!-- MAIN -->
   <main class="max-w-3xl mx-auto px-4 md:px-6 py-6 md:py-10">
 
-    <!-- Hidden live region for announcements -->
     <div id="answer-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
     <!-- CALCULATOR -->
@@ -514,18 +416,18 @@
 
       <label for="expr-input" class="calc-label mb-1 block">Expression (variables A–E, operators below)</label>
       <input type="text" id="expr-input" class="expr-input" spellcheck="false"
-             placeholder="e.g. (A ∧ B) ∨ ¬C"
-             autocomplete="off" value="(A ∧ B) ∨ ¬C" />
+             placeholder="e.g. (A ∧ B) ∨ ¬C   or   (A AND B) OR NOT C"
+             autocomplete="off" autocapitalize="off" inputmode="text" value="(A ∧ B) ∨ ¬C" />
 
-      <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.75rem;">
-        <button type="button" class="op-pill" data-op="~" title="NOT"><span class="op-sym">¬</span><span class="op-name">NOT</span></button>
-        <button type="button" class="op-pill" data-op="∧" title="AND"><span class="op-sym">∧</span><span class="op-name">AND</span></button>
-        <button type="button" class="op-pill" data-op="∨" title="OR"><span class="op-sym">∨</span><span class="op-name">OR</span></button>
-        <button type="button" class="op-pill" data-op="⊕" title="XOR"><span class="op-sym">⊕</span><span class="op-name">XOR</span></button>
-        <button type="button" class="op-pill" data-op="→" title="IMPLIES"><span class="op-sym">→</span><span class="op-name">IMPLIES</span></button>
-        <button type="button" class="op-pill" data-op="↔" title="IFF"><span class="op-sym">↔</span><span class="op-name">IFF</span></button>
-        <button type="button" class="op-pill" data-op="(" title="Open paren"><span class="op-sym">(</span></button>
-        <button type="button" class="op-pill" data-op=")" title="Close paren"><span class="op-sym">)</span></button>
+      <div style="display:flex; flex-wrap:wrap; gap:0.35rem; margin-top:0.75rem;" role="group" aria-label="Operator buttons">
+        <button type="button" class="op-pill" data-op="~" title="NOT" aria-label="Insert NOT"><span class="op-sym">¬</span><span class="op-name">NOT</span></button>
+        <button type="button" class="op-pill" data-op="∧" title="AND" aria-label="Insert AND"><span class="op-sym">∧</span><span class="op-name">AND</span></button>
+        <button type="button" class="op-pill" data-op="∨" title="OR" aria-label="Insert OR"><span class="op-sym">∨</span><span class="op-name">OR</span></button>
+        <button type="button" class="op-pill" data-op="⊕" title="XOR" aria-label="Insert XOR"><span class="op-sym">⊕</span><span class="op-name">XOR</span></button>
+        <button type="button" class="op-pill" data-op="→" title="IMPLIES" aria-label="Insert IMPLIES"><span class="op-sym">→</span><span class="op-name">IMPLIES</span></button>
+        <button type="button" class="op-pill" data-op="↔" title="IFF" aria-label="Insert IFF"><span class="op-sym">↔</span><span class="op-name">IFF</span></button>
+        <button type="button" class="op-pill" data-op="(" title="Open parenthesis" aria-label="Insert open parenthesis"><span class="op-sym">(</span></button>
+        <button type="button" class="op-pill" data-op=")" title="Close parenthesis" aria-label="Insert close parenthesis"><span class="op-sym">)</span></button>
       </div>
 
       <div class="preset-row" role="group" aria-label="Preset examples">
@@ -533,6 +435,7 @@
         <button type="button" class="preset-btn" data-preset="A ∨ ¬A">A ∨ ¬A (tautology)</button>
         <button type="button" class="preset-btn" data-preset="A ∧ ¬A">A ∧ ¬A (contradiction)</button>
         <button type="button" class="preset-btn" data-preset="(A → B) ↔ (¬A ∨ B)">(A → B) ↔ (¬A ∨ B)</button>
+        <button type="button" class="preset-btn" data-preset="¬(A ∧ B) ↔ (¬A ∨ ¬B)">De Morgan</button>
         <button type="button" class="preset-btn" data-preset="A ⊕ B ⊕ C">A ⊕ B ⊕ C (parity)</button>
       </div>
 
@@ -543,49 +446,78 @@
 
     </section>
 
-    <!-- RESULT (role=region; no aria-live on panel; answer box first) -->
+    <!-- RESULT -->
     <section id="result-panel" class="result-panel mt-6" role="region" aria-label="Truth Table Calculator result"></section>
 
-    <!-- ============================================================ -->
-<!-- Ad Slot — Truth Table Calculator                             -->
-<!-- ============================================================ -->
-<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
-  <p class="ad-label">Advertisement</p>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-       crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="1399360426"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+    <noscript>
+      <p class="mt-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm">This calculator needs JavaScript. You can still read the operator tables and worked examples below.</p>
+    </noscript>
+
+    <!-- Ad Slot -->
+    <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+      <p class="ad-label">Advertisement</p>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="1399360426"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
     <!-- EDUCATIONAL CONTENT -->
     <article class="space-y-8 text-gray-700 mt-8">
 
-      <section>
-        <h2 class="text-2xl font-bold text-gray-900 mb-3">What this truth table calculator does</h2>
+      <p class="text-sm text-slate-500">
+        By <a class="text-blue-700 underline" href="https://hiraacademy.com.pk/about.html#muhammad-tayyab">Muhammad Tayyab</a> (MSc Mathematics, Subject Specialist) · Last updated: <time datetime="2026-10-28">28 October 2026</time> · Reviewed for accuracy
+      </p>
+
+      <nav class="toc-box" aria-label="Table of contents">
+        <p class="font-bold text-gray-900 mb-2">On this page</p>
+        <ol class="list-decimal pl-5 space-y-1 text-sm">
+          <li><a href="#what-is-a-truth-table">What is a truth table?</a></li>
+          <li><a href="#how-to-use">How to use this truth table generator</a></li>
+          <li><a href="#operators">Supported operators and precedence</a></li>
+          <li><a href="#basic-tables">Basic truth tables: AND, OR, NOT, XOR, IMPLIES, IFF</a></li>
+          <li><a href="#how-to-make">How to make a truth table by hand</a></li>
+          <li><a href="#types">Tautology, contradiction and contingent</a></li>
+          <li><a href="#laws">Important logical equivalences</a></li>
+          <li><a href="#examples">Worked examples</a></li>
+          <li><a href="#mistakes">Common mistakes to avoid</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ol>
+      </nav>
+
+      <section id="what-is-a-truth-table">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">What is a truth table?</h2>
         <p class="leading-relaxed prose-justify text-[#0f172a]">
-          This tool takes any Boolean logic expression — built from variables A through E, the operators AND, OR, NOT, XOR, IMPLIES and IFF, and parentheses — and generates its complete truth table. Every row of the table shows one of the \(2^n\) possible combinations of truth values, the value of each intermediate subexpression, and the final result of the whole expression. The calculator then classifies the expression as a tautology (true in every row), a contradiction (false in every row), or contingent (true in some rows, false in others). The final column is highlighted so you can read the result at a glance, and a summary panel shows the row counts, the parse tree size, and the number of intermediate columns.
+          A <strong>truth table</strong> lists every possible combination of true (T) and false (F) values for the variables in a logical expression, together with the result of the expression for each combination. With \(n\) variables the table has \(2^n\) rows. Truth tables are the standard tool in propositional logic, discrete mathematics, computer science and digital electronics for analysing Boolean expressions, proving logical equivalences and deciding whether a statement is always true, always false, or depends on its inputs.
+        </p>
+        <p class="leading-relaxed prose-justify text-[#0f172a] mt-3">
+          This free <strong>truth table calculator</strong> takes any expression built from the variables A to E, the operators NOT, AND, OR, XOR, IMPLIES and IFF, and parentheses. It shows every intermediate sub-expression column, highlights the final result, and classifies the expression as a tautology, a contradiction, or contingent. It runs entirely in your browser, so nothing you type is sent to a server.
         </p>
       </section>
 
-      <section>
-        <h2 class="text-2xl font-bold text-gray-900 mb-3">Supported operators</h2>
+      <section id="how-to-use">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">How to use this truth table generator</h2>
+        <ol class="list-decimal pl-6 space-y-2 leading-relaxed text-[#0f172a]">
+          <li><strong>Type your expression</strong> using variables A–E, for example <code>(A ∧ B) ∨ ¬C</code>. Words work too: <code>(A AND B) OR NOT C</code>.</li>
+          <li><strong>Use the operator buttons</strong> to insert ¬, ∧, ∨, ⊕, →, ↔ and parentheses, or click a preset example.</li>
+          <li><strong>Press “Generate Truth Table”</strong> (or hit Enter). The calculator builds all \(2^n\) rows.</li>
+          <li><strong>Read the verdict.</strong> The result box states whether the expression is a tautology, contradiction or contingent, and how many rows are true.</li>
+        </ol>
+        <p class="leading-relaxed text-[#0f172a] mt-3">
+          Keyboard shortcuts accepted: <code>~</code> or <code>!</code> for NOT, <code>&amp;</code> or <code>&amp;&amp;</code> for AND, <code>|</code> or <code>||</code> for OR, <code>^</code> for XOR, <code>-&gt;</code> or <code>=&gt;</code> for IMPLIES, and <code>&lt;-&gt;</code> or <code>&lt;=&gt;</code> for IFF.
+        </p>
+      </section>
+
+      <section id="operators">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Supported operators and precedence</h2>
 
         <div class="overflow-x-auto">
           <table class="truth-table" aria-label="Supported operators">
             <thead>
-              <tr>
-                <th>Operator</th>
-                <th>Symbols</th>
-                <th>Meaning</th>
-                <th>Truth rule</th>
-              </tr>
+              <tr><th>Operator</th><th>Symbols</th><th>Meaning</th><th>Truth rule</th></tr>
             </thead>
             <tbody>
               <tr><td>NOT</td><td>\( \neg \), \( \sim \), \( ! \)</td><td>Negation</td><td>\( T \to F \), \( F \to T \)</td></tr>
@@ -599,11 +531,77 @@
         </div>
 
         <p class="leading-relaxed prose-justify text-[#0f172a] mt-3">
-          Operator precedence (highest to lowest): <strong>NOT</strong> (\( \neg \)), then <strong>AND</strong> (\( \land \)), then <strong>OR</strong> (\( \lor \)) / <strong>XOR</strong> (\( \oplus \)), then <strong>IMPLIES</strong> (\( \to \)), then <strong>IFF</strong> (\( \leftrightarrow \)). Use parentheses to override.
+          <strong>Operator precedence</strong> (highest to lowest): NOT (\( \neg \)), then AND (\( \land \)), then OR (\( \lor \)) and XOR (\( \oplus \)), then IMPLIES (\( \to \)), then IFF (\( \leftrightarrow \)). Use parentheses to override. IMPLIES is right-associative, so \( A \to B \to C \) means \( A \to (B \to C) \).
         </p>
       </section>
 
-      <section>
+      <section id="basic-tables">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Basic truth tables: AND, OR, NOT, XOR, IMPLIES, IFF</h2>
+        <p class="leading-relaxed text-[#0f172a] mb-3">The table below combines the truth tables of all six operators for two variables \(A\) and \(B\).</p>
+        <div class="overflow-x-auto">
+          <table class="ref-table" aria-label="Combined truth tables of the six basic logical operators">
+            <thead>
+              <tr>
+                <th>A</th><th>B</th><th>\( \neg A \)</th><th>\( A \land B \)</th><th>\( A \lor B \)</th><th>\( A \oplus B \)</th><th>\( A \to B \)</th><th>\( A \leftrightarrow B \)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+              <tr><td>T</td><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td></tr>
+              <tr><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td></tr>
+              <tr><td>F</td><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="how-to-make">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">How to make a truth table by hand</h2>
+        <ol class="list-decimal pl-6 space-y-2 leading-relaxed text-[#0f172a]">
+          <li><strong>Count the variables</strong> \(n\). The table needs \(2^n\) rows.</li>
+          <li><strong>Fill the variable columns.</strong> The rightmost variable alternates T, F, T, F…; the one to its left alternates every 2 rows; the next every 4 rows, and so on.</li>
+          <li><strong>Add a column for each sub-expression</strong>, starting with the innermost parentheses and the NOT operators, then AND, then OR/XOR, then IMPLIES and IFF.</li>
+          <li><strong>Evaluate row by row</strong> using the operator rules above.</li>
+          <li><strong>Read the final column.</strong> All T means tautology, all F means contradiction, a mix means contingent.</li>
+        </ol>
+      </section>
+
+      <section id="types">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Tautology, contradiction and contingent expressions</h2>
+        <div class="overflow-x-auto">
+          <table class="ref-table" aria-label="Tautology versus contradiction versus contingent">
+            <thead><tr><th>Type</th><th>Final column</th><th>Example</th><th>Meaning</th></tr></thead>
+            <tbody>
+              <tr><td class="left"><strong>Tautology</strong></td><td>All T</td><td>\( A \lor \neg A \)</td><td class="left">Always true (law of excluded middle)</td></tr>
+              <tr><td class="left"><strong>Contradiction</strong></td><td>All F</td><td>\( A \land \neg A \)</td><td class="left">Always false (law of non-contradiction)</td></tr>
+              <tr><td class="left"><strong>Contingent</strong></td><td>Mix of T and F</td><td>\( A \land B \)</td><td class="left">Depends on the variables</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="laws">
+        <h2 class="text-2xl font-bold text-gray-900 mb-3">Important logical equivalences you can test</h2>
+        <p class="leading-relaxed text-[#0f172a] mb-3">Paste any of these as <code>left ↔ right</code> into the calculator. If the verdict is <em>tautology</em>, the two sides are logically equivalent.</p>
+        <div class="overflow-x-auto">
+          <table class="ref-table" aria-label="Common logical equivalences">
+            <thead><tr><th>Law</th><th>Equivalence</th></tr></thead>
+            <tbody>
+              <tr><td class="left">De Morgan (AND)</td><td>\( \neg(A \land B) \equiv \neg A \lor \neg B \)</td></tr>
+              <tr><td class="left">De Morgan (OR)</td><td>\( \neg(A \lor B) \equiv \neg A \land \neg B \)</td></tr>
+              <tr><td class="left">Material implication</td><td>\( A \to B \equiv \neg A \lor B \)</td></tr>
+              <tr><td class="left">Contrapositive</td><td>\( A \to B \equiv \neg B \to \neg A \)</td></tr>
+              <tr><td class="left">Biconditional</td><td>\( A \leftrightarrow B \equiv (A \to B) \land (B \to A) \)</td></tr>
+              <tr><td class="left">Double negation</td><td>\( \neg\neg A \equiv A \)</td></tr>
+              <tr><td class="left">Distributive</td><td>\( A \land (B \lor C) \equiv (A \land B) \lor (A \land C) \)</td></tr>
+              <tr><td class="left">Absorption</td><td>\( A \lor (A \land B) \equiv A \)</td></tr>
+              <tr><td class="left">XOR definition</td><td>\( A \oplus B \equiv (A \lor B) \land \neg(A \land B) \)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="examples">
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Worked examples</h2>
 
         <div class="worked-example">
@@ -612,7 +610,7 @@
             <li>Three variables → \( 2^3 = 8 \) rows.</li>
             <li>Intermediate columns: \( A \land B \), \( \neg C \), and the final \( (A \land B) \lor \neg C \).</li>
             <li>The final column is \( T \) in some rows and \( F \) in others → <strong>contingent</strong>.</li>
-            <li>A classic three-variable logic expression that appears in Karnaugh map problems.</li>
+            <li>A classic three-variable expression that appears in Karnaugh map problems.</li>
           </ol>
         </div>
 
@@ -638,9 +636,9 @@
           <p class="font-semibold text-gray-900">Example 4: \( (A \to B) \leftrightarrow (\neg A \lor B) \) — tautology</p>
           <ol>
             <li>Two variables → 4 rows.</li>
-            <li>This is the classic material implication equivalence. Both sides evaluate identically in every row.</li>
+            <li>This is the material implication equivalence. Both sides evaluate identically in every row.</li>
             <li>The final column is \( T \) everywhere → <strong>tautology</strong>.</li>
-            <li>Shows that \( A \to B \) can be rewritten as \( \neg A \lor B \).</li>
+            <li>It shows that \( A \to B \) can be rewritten as \( \neg A \lor B \).</li>
           </ol>
         </div>
 
@@ -655,44 +653,56 @@
         </div>
       </section>
 
-      <section>
+      <section id="mistakes">
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Common mistakes to avoid</h2>
         <ul class="list-disc pl-6 space-y-2 leading-relaxed text-[#0f172a]">
-          <li><strong>Mixing operator symbols without consistency.</strong> The calculator accepts \( \neg \) and \( \sim \) and \( ! \) for NOT, but within one expression it is clearer to pick one style. Mixed notation confuses readers even when the parser handles it.</li>
           <li><strong>Forgetting parentheses when precedence matters.</strong> \( A \land B \lor C \) parses as \( (A \land B) \lor C \) because AND binds tighter than OR. If you mean \( A \land (B \lor C) \), write the parentheses.</li>
-          <li><strong>Assuming IMPLIES is symmetric.</strong> \( A \to B \) and \( B \to A \) are different expressions. Implication is not commutative — the table makes the asymmetry obvious.</li>
-          <li><strong>Reading IFF as "exclusive".</strong> IFF (biconditional, \( \leftrightarrow \)) means "both or neither" — it is true when \( A \) and \( B \) have the same truth value. XOR (\( \oplus \)) means "exactly one" — it is true when they differ. These are opposites.</li>
-          <li><strong>Forgetting that implication with a false premise is true.</strong> \( F \to \text{anything} \) is \( T \). This surprises students but follows directly from the truth table definition; implication only fails when the premise is true and the conclusion is false.</li>
-          <li><strong>Counting rows wrong.</strong> \( n \) variables → \( 2^n \) rows, always. Four variables is 16 rows; five is 32; six is 64. If your table doesn't have the right row count, variables are duplicated or missing.</li>
+          <li><strong>Assuming IMPLIES is symmetric.</strong> \( A \to B \) and \( B \to A \) are different expressions. Implication is not commutative.</li>
+          <li><strong>Mixing up IFF and XOR.</strong> IFF (\( \leftrightarrow \)) is true when both values match; XOR (\( \oplus \)) is true when they differ. They are exact opposites.</li>
+          <li><strong>Forgetting that a false premise makes an implication true.</strong> \( F \to \text{anything} \) is \( T \). Implication fails only when the premise is true and the conclusion is false.</li>
+          <li><strong>Counting rows wrong.</strong> \( n \) variables always give \( 2^n \) rows: 4 variables = 16 rows, 5 = 32, 6 = 64.</li>
+          <li><strong>Mixing notation styles.</strong> The parser accepts \( \neg \), \( \sim \) and \( ! \) together, but one consistent style is easier for readers to follow.</li>
         </ul>
       </section>
 
-      <section>
+      <section id="faq">
         <h2 class="text-2xl font-bold text-gray-900 mb-3">FAQ</h2>
         <div class="space-y-3">
           <details class="faq-item">
             <summary>What is a truth table?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">A truth table is a table that lists every possible combination of truth values (true or false) for the variables in a logical expression, along with the resulting value of the expression for each combination. With \( n \) variables, the table has \( 2^n \) rows. Truth tables are used to analyse Boolean logic expressions, verify logical equivalences, and determine whether an expression is a tautology, contradiction, or contingent.</p>
+            <p class="faq-answer">A truth table lists every possible combination of truth values (true or false) for the variables in a logical expression, together with the resulting value of the expression for each combination. With \( n \) variables the table has \( 2^n \) rows. Truth tables are used to analyse Boolean logic expressions, verify logical equivalences, and determine whether an expression is a tautology, contradiction, or contingent.</p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I make a truth table?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">List the distinct variables, write all \( 2^n \) combinations of T and F in standard order, add a column for each sub-expression working from the innermost parentheses outward, and finish with a column for the whole expression. This calculator does all of those steps automatically and shows every intermediate column.</p>
           </details>
           <details class="faq-item">
             <summary>What operators does this tool support?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">The tool supports NOT (\( \neg \) or \( \sim \) or \( ! \)), AND (\( \land \) or &amp; or &amp;&amp;), OR (\( \lor \) or | or ||), XOR (\( \oplus \) or ^), IMPLIES (\( \to \) or -&gt; or =&gt;), IFF / biconditional (\( \leftrightarrow \) or &lt;-&gt; or &lt;=&gt;), and parentheses. You can mix symbolic and word-like operators in the same expression.</p>
+            <p class="faq-answer">NOT (\( \neg \), \( \sim \) or \( ! \)), AND (\( \land \), &amp; or &amp;&amp;), OR (\( \lor \), | or ||), XOR (\( \oplus \) or ^), IMPLIES (\( \to \), -&gt; or =&gt;), IFF / biconditional (\( \leftrightarrow \), &lt;-&gt; or &lt;=&gt;), and parentheses. You can also type the words AND, OR, NOT, XOR, IMPLIES and IFF, and mix styles in one expression.</p>
           </details>
           <details class="faq-item">
             <summary>What is the difference between a tautology, contradiction, and contingent expression?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">A tautology is an expression that is true for every row of its truth table — for example, \( A \lor \neg A \). A contradiction is an expression that is false for every row — for example, \( A \land \neg A \). A contingent expression is true for some rows and false for others — for example, \( A \land B \). The calculator labels every expression with one of these three verdicts.</p>
+            <p class="faq-answer">A tautology is true in every row, for example \( A \lor \neg A \). A contradiction is false in every row, for example \( A \land \neg A \). A contingent expression is true in some rows and false in others, for example \( A \land B \). The calculator labels every expression with one of these three verdicts.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What is the order of precedence for logical operators?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">From highest to lowest: NOT, then AND, then OR and XOR, then IMPLIES, then IFF. Use parentheses to override the default order. For example, \( A \land B \lor C \) is read as \( (A \land B) \lor C \).</p>
           </details>
           <details class="faq-item">
             <summary>How are variables ordered in the table?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Variables are ordered alphabetically from left to right. The first variable alternates T/F every row, the next every two rows, and so on — the standard truth table convention that produces the canonical \( 2^n \) row ordering.</p>
+            <p class="faq-answer">Variables are ordered alphabetically from left to right. The rightmost variable alternates T/F fastest, the one before it every two rows, and so on, starting with all variables true. This is the standard convention that produces the canonical \( 2^n \) row ordering.</p>
           </details>
           <details class="faq-item">
-            <summary>Why is there a limit on variables?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">With \( n \) variables, the table has \( 2^n \) rows. Five variables is 32 rows, which is still readable; six variables is 64 rows and ten variables would be 1024 rows. The calculator caps the expression at five distinct variables to keep the output useful. Most textbook problems use two or three.</p>
+            <summary>Why is there a limit of five variables?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">With \( n \) variables the table has \( 2^n \) rows. Five variables give 32 rows, which is still readable; six would give 64 and ten would give 1,024. The calculator caps the expression at five distinct variables (A to E) to keep the output useful. Most textbook problems use two or three.</p>
           </details>
           <details class="faq-item">
             <summary>Can I use this to check logical equivalences?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Yes. Two expressions are logically equivalent if their truth tables have the same final column. Generate the table for one expression, then the other, and compare the last column. A quick alternative is to test the biconditional of the two expressions — if the result is a tautology, the expressions are equivalent.</p>
+            <p class="faq-answer">Yes. Two expressions are logically equivalent if their truth tables have the same final column. A quicker method is to join them with the biconditional, for example \( (A \to B) \leftrightarrow (\neg A \lor B) \). If the verdict is tautology, the two expressions are equivalent.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is the truth table calculator free?<span aria-hidden="true">▾</span></summary>
+            <p class="faq-answer">Yes. It is completely free, needs no sign-up and runs in your browser, so the expressions you type are not sent to a server.</p>
           </details>
         </div>
       </section>
@@ -706,13 +716,14 @@
           <li><a href="lcm-gcf-calculator.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ LCM &amp; GCF Calculator</a></li>
           <li><a href="simultaneous-equations-solver.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Simultaneous Equations Solver</a></li>
           <li><a href="quadratic-solver.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ Quadratic Solver</a></li>
+          <li><a href="index.html" class="text-blue-600 underline hover:text-blue-800 font-medium">→ All free calculators &amp; tools</a></li>
         </ul>
       </section>
 
       <section class="bg-blue-50 rounded-xl p-5 border border-blue-100">
-        <h2 class="text-xl font-bold text-gray-900 mb-2">Related Hira Academy resources</h2>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">More from Hira Science Academy</h2>
         <p class="text-gray-700 leading-relaxed prose-justify">
-          Practice logic and Boolean algebra with our
+          Build the maths foundations behind logic and algebra with our
           <a href="https://hiraacademy.com.pk/9th-class-notes.html" class="text-blue-700 font-semibold underline">Class 9 notes</a> and
           <a href="https://hiraacademy.com.pk/10th-class-notes.html" class="text-blue-700 font-semibold underline">Class 10 notes</a>,
           and track term progress with the free
@@ -730,7 +741,7 @@
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
         <div class="md:col-span-1">
           <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group justify-center md:justify-start" href="https://hiraacademy.com.pk/index.html">
-            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
+            <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp" loading="lazy" decoding="async"/>
             <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Hira Science Academy</span>
           </a>
           <p class="mt-4 text-sm text-gray-200 leading-6 text-center md:text-left">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
@@ -784,7 +795,7 @@
     <div class="flex items-center gap-3">
       <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110">
         <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
-        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg class="relative w-8 h-8 sm:w-9 sm:h-9" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"></path>
           <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"></path>
         </svg>
@@ -794,9 +805,9 @@
 
   <button type="button" class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
 
-  <script src="assets/tools-common.js"></script>
+  <script src="assets/tools-common.js" defer></script>
   <script>
-  (function () {
+  window.addEventListener('DOMContentLoaded', function () {
     'use strict';
     const { trackEvent, parseNum, showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'truth-table-calculator';
@@ -813,9 +824,14 @@
 
     const MAX_VARS = 5;
 
-    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
     const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function renderMath(el) {
+      if (window.renderMathInElement) {
+        try { renderMathInElement(el, window.TT_MATH_OPTS); } catch (e) {}
+      }
+    }
 
     function revealResult() {
       const box = resultPanel.querySelector('.answer-box');
@@ -872,9 +888,7 @@
       copyText(btn.getAttribute('data-copy') || '', btn);
     });
 
-    /* ==========================================================
-       TOKENIZER
-       ========================================================== */
+    /* ---------- TOKENIZER ---------- */
     function tokenize(str) {
       let s = str;
       s = s.replace(/\bIFF\b/gi, '↔');
@@ -910,12 +924,9 @@
       return tokens;
     }
 
-    /* ==========================================================
-       PARSER
-       ========================================================== */
+    /* ---------- PARSER ---------- */
     function parse(tokens) {
       let pos = 0;
-
       function peek() { return tokens[pos]; }
       function consume() { return tokens[pos++]; }
 
@@ -982,14 +993,10 @@
       return tree;
     }
 
-    /* ==========================================================
-       EVALUATION
-       ========================================================== */
+    /* ---------- EVALUATION ---------- */
     function evalTree(node, env) {
       if (node.type === 'var') return env[node.name] ? 1 : 0;
-      if (node.type === 'unary') {
-        return evalTree(node.arg, env) ? 0 : 1;
-      }
+      if (node.type === 'unary') return evalTree(node.arg, env) ? 0 : 1;
       const L = evalTree(node.left, env);
       const R = evalTree(node.right, env);
       switch (node.op) {
@@ -1002,9 +1009,7 @@
       throw new Error('Unknown operator: ' + node.op);
     }
 
-    /* ==========================================================
-       SUBEXPRESSION COLLECTION
-       ========================================================== */
+    /* ---------- SUBEXPRESSIONS ---------- */
     function nodeToString(node) {
       if (node.type === 'var') return node.name;
       if (node.type === 'unary') return '¬' + wrapIfBinary(node.arg);
@@ -1015,7 +1020,6 @@
       if (node.type === 'unary') return nodeToString(node);
       return '(' + nodeToString(node) + ')';
     }
-
     function collectSubexpressions(tree) {
       const list = [];
       const seen = new Set();
@@ -1029,7 +1033,6 @@
       walk(tree);
       return list;
     }
-
     function collectVars(tree) {
       const set = new Set();
       function walk(node) {
@@ -1041,9 +1044,11 @@
       return Array.from(set).sort();
     }
 
-    /* ==========================================================
-       RENDER
-       ========================================================== */
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+
+    /* ---------- RENDER ---------- */
     function calculate() {
       clearAllErrors(section);
       hideResult(resultPanel);
@@ -1084,7 +1089,8 @@
       for (let r = 0; r < rowCount; r++) {
         const env = {};
         for (let v = 0; v < vars.length; v++) {
-          const bit = (r >> (vars.length - 1 - v)) & 1;
+          // first row = all true (standard textbook order)
+          const bit = 1 - ((r >> (vars.length - 1 - v)) & 1);
           env[vars[v]] = bit;
         }
         const varVals = vars.map(v => env[v]);
@@ -1098,26 +1104,17 @@
 
       let verdict, verdictClass, verdictArrow, verdictText;
       if (trueRows === rowCount) {
-        verdict = 'tautology';
-        verdictClass = 'status-ok';
-        verdictArrow = '✓';
+        verdict = 'tautology'; verdictClass = 'status-ok'; verdictArrow = '✓';
         verdictText = 'Tautology — true in every row';
       } else if (falseRows === rowCount) {
-        verdict = 'contradiction';
-        verdictClass = 'status-alert';
-        verdictArrow = '✕';
+        verdict = 'contradiction'; verdictClass = 'status-alert'; verdictArrow = '✕';
         verdictText = 'Contradiction — false in every row';
       } else {
-        verdict = 'contingent';
-        verdictClass = 'status-warn';
-        verdictArrow = '◆';
+        verdict = 'contingent'; verdictClass = 'status-warn'; verdictArrow = '◆';
         verdictText = 'Contingent — true in some rows, false in others';
       }
 
-      const tile1 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${vars.length}</div><div class="cgpa-summary-label">Variables</div></div>`;
-      const tile2 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${rowCount}</div><div class="cgpa-summary-label">Rows</div></div>`;
-      const tile3 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${trueRows}</div><div class="cgpa-summary-label">True rows</div></div>`;
-      const tile4 = `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${falseRows}</div><div class="cgpa-summary-label">False rows</div></div>`;
+      const tile = (val, label) => `<div class="cgpa-summary-unit"><div class="cgpa-summary-value">${val}</div><div class="cgpa-summary-label">${label}</div></div>`;
 
       let headHtml = '';
       vars.forEach(v => { headHtml += `<th>${v}</th>`; });
@@ -1127,14 +1124,9 @@
       let bodyHtml = '';
       rows.forEach(row => {
         let tr = '<tr>';
-        row.varVals.forEach(v => {
-          tr += `<td class="${v ? 'val-T' : 'val-F'}">${v ? 'T' : 'F'}</td>`;
-        });
-        row.subVals.forEach(v => {
-          tr += `<td class="${v ? 'val-T' : 'val-F'}">${v ? 'T' : 'F'}</td>`;
-        });
-        tr += `<td class="final-col ${row.resultVal ? 'val-T' : 'val-F'}">${row.resultVal ? 'T' : 'F'}</td>`;
-        tr += '</tr>';
+        row.varVals.forEach(v => { tr += `<td class="${v ? 'val-T' : 'val-F'}">${v ? 'T' : 'F'}</td>`; });
+        row.subVals.forEach(v => { tr += `<td class="${v ? 'val-T' : 'val-F'}">${v ? 'T' : 'F'}</td>`; });
+        tr += `<td class="final-col ${row.resultVal ? 'val-T' : 'val-F'}">${row.resultVal ? 'T' : 'F'}</td></tr>`;
         bodyHtml += tr;
       });
 
@@ -1145,23 +1137,22 @@
             <thead><tr>${headHtml}</tr></thead>
             <tbody>${bodyHtml}</tbody>
           </table>
-        </div>
-      `;
+        </div>`;
 
       const ctx = [];
       ctx.push(`🔹 Expression: <code>${escapeHtml(raw)}</code>.`);
       ctx.push(`🔹 Parsed as: <code>${escapeHtml(nodeToString(tree))}</code>.`);
       ctx.push(`🔹 Variables: <strong>${vars.join(', ')}</strong> (${vars.length} variable${vars.length === 1 ? '' : 's'}).`);
-      ctx.push(`🔹 Table size: <strong>${rowCount}</strong> rows (\(2^{${vars.length}}\)).`);
+      ctx.push(`🔹 Table size: <strong>${rowCount}</strong> rows (\\(2^{${vars.length}}\\)).`);
       ctx.push(`🔹 True in <strong>${trueRows}</strong> row${trueRows === 1 ? '' : 's'}, false in <strong>${falseRows}</strong>.`);
       ctx.push(`🔹 Verdict: <strong>${verdictText}</strong>.`);
 
       if (verdict === 'tautology') {
-        ctx.push(`🔹 A tautology is true regardless of the truth values of its variables. Examples: \( A \lor \neg A \) (law of excluded middle), \( (A \to B) \leftrightarrow (\neg A \lor B) \) (material implication), \( (A \land B) \to A \) (simplification).`);
+        ctx.push(`🔹 A tautology is true regardless of the truth values of its variables. Examples: \\( A \\lor \\neg A \\) (law of excluded middle), \\( (A \\to B) \\leftrightarrow (\\neg A \\lor B) \\) (material implication), \\( (A \\land B) \\to A \\) (simplification).`);
       } else if (verdict === 'contradiction') {
-        ctx.push(`🔹 A contradiction is false regardless of its variables' values. Examples: \( A \land \neg A \) (law of non-contradiction), \( \neg(A \lor \neg A) \). Contradictions are the negation of tautologies.`);
+        ctx.push(`🔹 A contradiction is false regardless of its variables' values. Examples: \\( A \\land \\neg A \\) (law of non-contradiction), \\( \\neg(A \\lor \\neg A) \\). Contradictions are the negation of tautologies.`);
       } else {
-        ctx.push(`🔹 A contingent expression depends on the truth values of its variables. Examples: \( A \land B \), \( A \to B \), \( (A \lor B) \land \neg C \). Most real logic expressions are contingent.`);
+        ctx.push(`🔹 A contingent expression depends on the truth values of its variables. Examples: \\( A \\land B \\), \\( A \\to B \\), \\( (A \\lor B) \\land \\neg C \\). Most real logic expressions are contingent.`);
       }
 
       if (subs.length > 0) {
@@ -1183,7 +1174,7 @@
         </div>
 
         <div class="cgpa-summary">
-          ${tile1}${tile2}${tile3}${tile4}
+          ${tile(vars.length, 'Variables')}${tile(rowCount, 'Rows')}${tile(trueRows, 'True rows')}${tile(falseRows, 'False rows')}
         </div>
 
         ${tableHtml}
@@ -1194,9 +1185,9 @@
             <div class="formula-label" style="margin-bottom:0.5rem;margin-top:0.75rem;">Calculation Steps</div>
             <ol>
               <li>Tokenised the input: <code>${escapeHtml(raw)}</code>.</li>
-              <li>Parsed into a binary tree using standard precedence: \(\neg \gt \land \gt \lor,\oplus \gt \to \gt \leftrightarrow\).</li>
-              <li>Collected <strong>${vars.length}</strong> variable${vars.length === 1 ? '' : 's'} → \(2^{${vars.length}}\) = ${rowCount} rows.</li>
-              <li>Enumerated every variable assignment in canonical order (first variable alternates every row, next every 2 rows, etc.).</li>
+              <li>Parsed into a binary tree using standard precedence: \\(\\neg\\) then \\(\\land\\) then \\(\\lor,\\oplus\\) then \\(\\to\\) then \\(\\leftrightarrow\\).</li>
+              <li>Collected <strong>${vars.length}</strong> variable${vars.length === 1 ? '' : 's'} → \\(2^{${vars.length}}\\) = ${rowCount} rows.</li>
+              <li>Enumerated every variable assignment in canonical order (rightmost variable alternates every row, the next every 2 rows, and so on).</li>
               <li>Evaluated each row against the tree to produce the Result column.</li>
               <li>Classified as ${verdict}: ${trueRows} of ${rowCount} rows true.</li>
             </ol>
@@ -1210,21 +1201,15 @@
 
       resultPanel.innerHTML = html;
       showResult(resultPanel, html);
+      renderMath(resultPanel);
       trackEvent(CALC_NAME, 'calculate');
       announce(`Result: ${verdictText}. ${trueRows} of ${rowCount} rows true.`);
       revealResult();
     }
 
-    function escapeHtml(s) {
-      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-    }
-
-    /* ==========================================================
-       WIRING
-       ========================================================== */
+    /* ---------- WIRING ---------- */
     calcBtn.addEventListener('click', calculate);
 
-    // Explicit fallback for Enter key across all inputs
     section.addEventListener('keydown', (e) => {
       if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
       const t = e.target;
@@ -1264,12 +1249,13 @@
       trackEvent(CALC_NAME, 'reset');
     });
 
-    const btn = document.getElementById('mobile-menu-button');
+    const mBtn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
     const io = document.getElementById('menu-icon-open');
     const ic = document.getElementById('menu-icon-close');
-    if (btn) btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+    if (mBtn) mBtn.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      mBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
       if (io) io.classList.toggle('hidden');
       if (ic) ic.classList.toggle('hidden');
     });
@@ -1277,9 +1263,9 @@
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 400) btt.classList.add('show');
       else btt.classList.remove('show');
-    });
+    }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  })();
+  });
   </script>
 </body>
 </html>
