@@ -352,6 +352,108 @@ function printPDF() {
     </div>
   </section>
 
+<!-- ===== REUSABLE SOCIAL SHARING BLOCK ===== -->
+<div class="text-center my-6 social-share-block">
+  <p class="font-semibold mb-3 text-primary-700">
+    Useful? Share with your friends.
+  </p>
+
+  <div class="flex justify-center gap-3 flex-wrap">
+    <a data-share="facebook"
+       href="https://www.facebook.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Share this page on Facebook"
+       class="bg-primary-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-primary-700 transition shadow-md focus:outline-none focus:ring-4 focus:ring-primary-300">
+      Facebook
+    </a>
+
+    <a data-share="whatsapp"
+       href="https://www.whatsapp.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Share this page on WhatsApp"
+       class="bg-green-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-green-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">
+      WhatsApp
+    </a>
+
+    <a data-share="twitter"
+       href="https://twitter.com/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Share this page on Twitter or X"
+       class="bg-sky-500 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-sky-600 transition shadow-md focus:outline-none focus:ring-4 focus:ring-sky-300">
+      Twitter / X
+    </a>
+
+    <button data-share="copy"
+       type="button"
+       aria-label="Copy this page link"
+       class="bg-gray-700 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">
+      Copy Link
+    </button>
+  </div>
+
+  <p data-share="status"
+     class="text-sm mt-3 text-gray-600"
+     role="status"
+     aria-live="polite"></p>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // Automatically identify the current page.
+  const canonical = document.querySelector('link[rel="canonical"]');
+  const shareUrl = canonical && canonical.href
+    ? canonical.href
+    : window.location.href.split("#")[0];
+
+  const shareText = document.title || "Hira Science Academy";
+
+  const block = document.querySelector(".social-share-block");
+  if (!block) return;
+
+  const facebook = block.querySelector('[data-share="facebook"]');
+  const whatsapp = block.querySelector('[data-share="whatsapp"]');
+  const twitter = block.querySelector('[data-share="twitter"]');
+  const copyButton = block.querySelector('[data-share="copy"]');
+  const status = block.querySelector('[data-share="status"]');
+
+  // Generate sharing links from the current page.
+  facebook.href =
+    "https://www.facebook.com/sharer/sharer.php?u=" +
+    encodeURIComponent(shareUrl);
+
+  whatsapp.href =
+    "https://api.whatsapp.com/send?text=" +
+    encodeURIComponent(shareText + " " + shareUrl);
+
+  twitter.href =
+    "https://twitter.com/intent/tweet?text=" +
+    encodeURIComponent(shareText) +
+    "&url=" + encodeURIComponent(shareUrl);
+
+  // Copy the current page's canonical URL.
+  copyButton.addEventListener("click", async function () {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(shareUrl);
+      } else {
+        throw new Error("Clipboard API unavailable");
+      }
+
+      status.textContent = "Page link copied successfully!";
+    } catch (error) {
+      // Fallback for browsers where clipboard access is unavailable.
+      window.prompt("Copy this page link:", shareUrl);
+    }
+  });
+})();
+</script>
+<!-- ===== END SOCIAL SHARING BLOCK ===== -->
+
   <!-- ===== DETAILED SCHEME TABLES (CORRECTED FROM BIOLOGY PDF) ===== -->
   <section class="py-16 bg-gray-50">
     <div class="max-w-6xl mx-auto px-6">
