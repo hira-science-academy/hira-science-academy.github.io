@@ -455,7 +455,35 @@
     details summary::-webkit-details-marker { display: none; }
     details summary { list-style: none; }
     .figure-img { max-width: 100%; height: auto; border-radius: 8px; border: 1px solid #e2e8f0; margin: 1rem 0; display: block; margin-left: auto; margin-right: auto; }
-  </style>
+.mcq-box {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.mcq-option {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.mcq-option:hover {
+  background: #f0fdfa;
+}
+.explanation-box {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #ecfdf5; /* Light teal */
+  border-left: 4px solid #10b981;
+  border-radius: 0 8px 8px 0;
+}
+.explanation-box.show {
+  display: block;
+}  
+</style>
 </head>
 <body class="text-gray-800">
 
@@ -988,27 +1016,95 @@
       <li><strong>Three Non-collinear Points:</strong> One and only one circle can pass through three non-collinear points.</li>
     </ul>
 
-    <h4 class="font-bold text-teal-800 mt-4">📝 Important MCQs for Practice</h4>
-    <div class="mcq-item">
-      <p>1. A perpendicular drawn from the centre of a circle to a chord always:</p>
-      <div class="mcq-options">(a) Trisects the chord &nbsp; (b) Bisects the chord &nbsp; (c) Is parallel to the chord &nbsp; (d) Equals the radius — <em>Answer: (b) Bisects the chord</em></div>
+      <!-- ======================== MCQs SECTION ======================== -->
+  <div class="content-section" id="mcqs">
+    <h2>📝 Multiple Choice Questions (Exercise 8.1 Practice)</h2>
+
+    <!-- MCQ 1 -->
+    <div class="mcq-box" id="mcq1">
+      <p class="font-semibold text-lg">1. A perpendicular drawn from the centre of a circle to a chord always:</p>
+      <div class="mt-2">
+        <label class="mcq-option" data-mcq="1" data-option="A"><input type="radio" name="mcq1" value="A" class="mr-2"> A) Trisects the chord</label>
+        <label class="mcq-option" data-mcq="1" data-option="B"><input type="radio" name="mcq1" value="B" class="mr-2"> B) Bisects the chord</label>
+        <label class="mcq-option" data-mcq="1" data-option="C"><input type="radio" name="mcq1" value="C" class="mr-2"> C) Is parallel to the chord</label>
+        <label class="mcq-option" data-mcq="1" data-option="D"><input type="radio" name="mcq1" value="D" class="mr-2"> D) Equals the radius</label>
+      </div>
+      <div class="explanation-box" id="explanation1">
+        <strong>✅ Correct Answer: (B) Bisects the chord</strong><br>
+        The line drawn from the centre of a circle perpendicular to a chord bisects the chord.
+      </div>
+      <button class="mt-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(1, 'B')">Check Answer</button>
+      <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(1)">Reset</button>
     </div>
-    <div class="mcq-item">
-      <p>2. Two chords of a circle are equidistant from the centre. If one chord is \(15\text{ cm}\), the other is:</p>
-      <div class="mcq-options">(a) \(7.5\text{ cm}\) &nbsp; (b) \(15\text{ cm}\) &nbsp; (c) \(30\text{ cm}\) &nbsp; (d) Cannot be determined — <em>Answer: (b) \(15\text{ cm}\)</em></div>
+
+    <!-- MCQ 2 -->
+    <div class="mcq-box" id="mcq2">
+      <p class="font-semibold text-lg">2. The lengths of two chords of a circle are equal. The chords are:</p>
+      <div class="mt-2">
+        <label class="mcq-option" data-mcq="2" data-option="A"><input type="radio" name="mcq2" value="A" class="mr-2"> A) Parallel to each other</label>
+        <label class="mcq-option" data-mcq="2" data-option="B"><input type="radio" name="mcq2" value="B" class="mr-2"> B) Equidistant from the centre</label>
+        <label class="mcq-option" data-mcq="2" data-option="C"><input type="radio" name="mcq2" value="C" class="mr-2"> C) Perpendicular to each other</label>
+        <label class="mcq-option" data-mcq="2" data-option="D"><input type="radio" name="mcq2" value="D" class="mr-2"> D) Passing through the centre</label>
+      </div>
+      <div class="explanation-box" id="explanation2">
+        <strong>✅ Correct Answer: (B) Equidistant from the centre</strong><br>
+        By theorem, if two chords of a circle are congruent (equal in length), they are equidistant from the centre.
+      </div>
+      <button class="mt-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(2, 'B')">Check Answer</button>
+      <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(2)">Reset</button>
     </div>
-    <div class="mcq-item">
-      <p>3. A chord of length \(24\text{ cm}\) is at a distance of \(5\text{ cm}\) from the centre. The radius of the circle is:</p>
-      <div class="mcq-options">(a) \(12\text{ cm}\) &nbsp; (b) \(13\text{ cm}\) &nbsp; (c) \(15\text{ cm}\) &nbsp; (d) \(17\text{ cm}\) — <em>Answer: (b) \(13\text{ cm}\) (since \(r = \sqrt{12^2 + 5^2}\))</em></div>
+
+    <!-- MCQ 3 -->
+    <div class="mcq-box" id="mcq3">
+      <p class="font-semibold text-lg">3. How many circles can pass through three non-collinear points?</p>
+      <div class="mt-2">
+        <label class="mcq-option" data-mcq="3" data-option="A"><input type="radio" name="mcq3" value="A" class="mr-2"> A) 0</label>
+        <label class="mcq-option" data-mcq="3" data-option="B"><input type="radio" name="mcq3" value="B" class="mr-2"> B) 1</label>
+        <label class="mcq-option" data-mcq="3" data-option="C"><input type="radio" name="mcq3" value="C" class="mr-2"> C) 2</label>
+        <label class="mcq-option" data-mcq="3" data-option="D"><input type="radio" name="mcq3" value="D" class="mr-2"> D) Infinite</label>
+      </div>
+      <div class="explanation-box" id="explanation3">
+        <strong>✅ Correct Answer: (B) 1</strong><br>
+        One and only one circle can pass through any three non-collinear points.
+      </div>
+      <button class="mt-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(3, 'B')">Check Answer</button>
+      <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(3)">Reset</button>
     </div>
-    <div class="mcq-item">
-      <p>4. How many circles can pass through three non-collinear points?</p>
-      <div class="mcq-options">(a) 0 &nbsp; (b) 1 &nbsp; (c) 2 &nbsp; (d) Infinite — <em>Answer: (b) 1</em></div>
+
+    <!-- MCQ 4 -->
+    <div class="mcq-box" id="mcq4">
+      <p class="font-semibold text-lg">4. A chord of length \(24\text{ cm}\) is at a distance of \(5\text{ cm}\) from the centre of the circle. The radius of the circle is:</p>
+      <div class="mt-2">
+        <label class="mcq-option" data-mcq="4" data-option="A"><input type="radio" name="mcq4" value="A" class="mr-2"> A) \(12\text{ cm}\)</label>
+        <label class="mcq-option" data-mcq="4" data-option="B"><input type="radio" name="mcq4" value="B" class="mr-2"> B) \(13\text{ cm}\)</label>
+        <label class="mcq-option" data-mcq="4" data-option="C"><input type="radio" name="mcq4" value="C" class="mr-2"> C) \(15\text{ cm}\)</label>
+        <label class="mcq-option" data-mcq="4" data-option="D"><input type="radio" name="mcq4" value="D" class="mr-2"> D) \(17\text{ cm}\)</label>
+      </div>
+      <div class="explanation-box" id="explanation4">
+        <strong>✅ Correct Answer: (B) \(13\text{ cm}\)</strong><br>
+        Using the Pythagorean theorem: \(r = \sqrt{(\text{Half-chord})^2 + (\text{Distance})^2} = \sqrt{12^2 + 5^2} = \sqrt{144 + 25} = \sqrt{169} = 13\text{ cm}\).
+      </div>
+      <button class="mt-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(4, 'B')">Check Answer</button>
+      <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(4)">Reset</button>
     </div>
-    <div class="mcq-item">
-      <p>5. If a chord of length \(16\text{ cm}\) is bisected by a perpendicular from the centre, the length of each half is:</p>
-      <div class="mcq-options">(a) \(16\text{ cm}\) &nbsp; (b) \(8\text{ cm}\) &nbsp; (c) \(4\text{ cm}\) &nbsp; (d) \(32\text{ cm}\) — <em>Answer: (b) \(8\text{ cm}\)</em></div>
+
+    <!-- MCQ 5 -->
+    <div class="mcq-box" id="mcq5">
+      <p class="font-semibold text-lg">5. Two chords of a circle are equidistant from the centre. If one chord is \(10\text{ cm}\) long, the length of the other chord is:</p>
+      <div class="mt-2">
+        <label class="mcq-option" data-mcq="5" data-option="A"><input type="radio" name="mcq5" value="A" class="mr-2"> A) \(5\text{ cm}\)</label>
+        <label class="mcq-option" data-mcq="5" data-option="B"><input type="radio" name="mcq5" value="B" class="mr-2"> B) \(10\text{ cm}\)</label>
+        <label class="mcq-option" data-mcq="5" data-option="C"><input type="radio" name="mcq5" value="C" class="mr-2"> C) \(20\text{ cm}\)</label>
+        <label class="mcq-option" data-mcq="5" data-option="D"><input type="radio" name="mcq5" value="D" class="mr-2"> D) Cannot be determined</label>
+      </div>
+      <div class="explanation-box" id="explanation5">
+        <strong>✅ Correct Answer: (B) \(10\text{ cm}\)</strong><br>
+        Chords equidistant from the centre of a circle are congruent (equal in length).
+      </div>
+      <button class="mt-3 bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="checkMCQ(5, 'B')">Check Answer</button>
+      <button class="mt-3 ml-2 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-1.5 px-4 rounded-full text-sm transition-all" onclick="resetMCQ(5)">Reset</button>
     </div>
+  </div>
 
     <h4 class="font-bold text-teal-800 mt-4">🏆 Board Exam Tips &amp; Strategy</h4>
     <ul class="list-disc pl-6 mt-2 space-y-1 text-gray-700">
@@ -1152,6 +1248,38 @@
       }
     });
   })();
+function checkMCQ(qNum, correctAnswer) {
+  const selected = document.querySelector(`input[name="mcq${qNum}"]:checked`);
+  const explanation = document.getElementById(`explanation${qNum}`);
+  
+  if (selected) {
+    if (selected.value === correctAnswer) {
+      selected.parentElement.style.backgroundColor = '#d1fae5'; // Green success
+      selected.parentElement.style.color = '#065f46';
+    } else {
+      selected.parentElement.style.backgroundColor = '#fee2e2'; // Red error
+      selected.parentElement.style.color = '#991b1b';
+      
+      // Highlight the correct answer
+      const correctLabel = document.querySelector(`input[name="mcq${qNum}"][value="${correctAnswer}"]`).parentElement;
+      correctLabel.style.backgroundColor = '#d1fae5';
+      correctLabel.style.color = '#065f46';
+    }
+    explanation.classList.add('show');
+  } else {
+    alert('Please select an option first.');
+  }
+}
+
+function resetMCQ(qNum) {
+  const radios = document.querySelectorAll(`input[name="mcq${qNum}"]`);
+  radios.forEach(radio => {
+    radio.checked = false;
+    radio.parentElement.style.backgroundColor = 'transparent';
+    radio.parentElement.style.color = 'inherit';
+  });
+  document.getElementById(`explanation${qNum}`).classList.remove('show');
+}
 </script>
 </body>
 </html>
