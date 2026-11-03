@@ -536,9 +536,14 @@
   async function runCompress() {
     if (!state.decoded) return;
     const p = readSettings();
-    if (!p) { downloadBtn.disabled = true; hideResult(resultPanel); return; }
-    const t = readTarget();
-    if (!t) { downloadBtn.disabled = true; hideResult(resultPanel); return; }
+    const t = p ? readTarget() : null;
+    if (!p || !t) {                                           // invalid input: cancel any search in flight
+      state.seq++;
+      setBusy(false);
+      downloadBtn.disabled = true;
+      hideResult(resultPanel);
+      return;
+    }
 
     const mySeq = ++state.seq;
     setBusy(true, t.on ? 'Finding the best fit for ' + targetLabel(t.bytes) + '…' : 'Compressing…');
