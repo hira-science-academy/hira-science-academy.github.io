@@ -449,6 +449,10 @@
     .formula-block .katex { font-size: 1.1em; }
     .katex-display { margin: 0.75rem 0; }
     .euclid-table .katex { color: #f8fafc; }
+
+    /* Ad containers */
+    .ad-slot { min-height: 280px; display: block; }
+    .ad-label { font-size: 0.625rem; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; text-align: center; margin-bottom: 0.25rem; font-weight: 600; }
   </style>
 </head>
 
@@ -504,7 +508,7 @@
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-4 relative z-10">
       <span class="hidden sm:inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 border border-yellow-300/30">Free GCF &amp; LCM Finder · Up to 10 Numbers · Step-by-Step</span>
-      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">GCF Calculator – Greatest Common Factor &amp; LCM</h1>
+      <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold mb-3 tracking-tight drop-shadow-lg text-center">GCF Calculator – Greatest Common Factor &amp; LCM</h1>
       <p class="text-base md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed text-center">Find the greatest common factor (GCF, also called HCF or GCD) and the least common multiple (LCM) of up to 10 numbers, with Euclid’s algorithm and prime factorisation steps.</p>
     </div>
   </header>
@@ -528,7 +532,7 @@
   <main class="max-w-3xl mx-auto px-4 sm:px-6 py-6 md:py-10">
 
     <!-- CALCULATOR -->
-    <section class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 md:p-8" aria-label="GCF and LCM calculator inputs">
+    <section id="calc-section" class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 sm:p-6 md:p-8" aria-label="GCF and LCM calculator inputs">
 
       <label for="numbers" class="calc-label">Enter two or more whole numbers to find their GCF and LCM (separated by commas or spaces)</label>
       <input type="text" inputmode="numeric" id="numbers" class="calc-input" placeholder="e.g. 12, 18, 24" autocomplete="off" />
@@ -560,21 +564,17 @@
       <button type="button" class="chip-btn" data-example="7, 13">7, 13</button>
     </div>
 
-   <!-- Ad Slot: LCM GCF Calculator -->
-<div class="ad-slot my-6 text-center" aria-label="Advertisement">
-  <p class="ad-label">Advertisement</p>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-       crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="9823903095"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
-</div>
+    <!-- Ad Slot: LCM GCF Calculator -->
+    <div class="ad-slot my-6 text-center" aria-label="Advertisement">
+      <p class="ad-label">Advertisement</p>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="9823903095"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
 
     <!-- EDUCATIONAL CONTENT -->
     <article class="article-content space-y-8 mt-8">
@@ -1006,7 +1006,7 @@
   <script>
   (function () {
     'use strict';
-    const { trackEvent, bindEnterKey, attachCopyButton, parseNum, gcd,
+    const { trackEvent, parseNum, gcd,
             showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'lcm-gcf-calculator';
 
@@ -1017,8 +1017,6 @@
     const section   = document.querySelector('section[aria-label="GCF and LCM calculator inputs"]');
     const siteNav   = document.getElementById('site-nav');
     const answerLive = document.getElementById('answer-live');
-
-    attachCopyButton(resultPanel, CALC_NAME);
 
     /* ---------- KaTeX rendering helper ---------- */
     function renderMathIn(el) {
@@ -1114,7 +1112,7 @@
       return { steps, gcf: x };
     }
 
-    /* ---------- Reveal result ---------- */
+    /* ---------- Reveal result (mobile-safe scroll, only on success) ---------- */
     const coarsePointer = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -1147,36 +1145,54 @@
       }, 60);
     }
 
+    function legacyCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;';
+      document.body.appendChild(ta);
+      try { ta.focus({ preventScroll: true }); } catch (e) { ta.focus(); }
+      ta.select();
+      try { ta.setSelectionRange(0, text.length); } catch (e) {}
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      return ok;
+    }
+
     function copyAnswerText(gcf, lcm) {
       const text = `GCF = ${gcf}, LCM = ${lcm}`;
+      const fallback = () => showCopied(legacyCopy(text));
       if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(() => showCopied());
+        navigator.clipboard.writeText(text).then(() => showCopied(true), fallback);
       } else {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        try { document.execCommand('copy'); showCopied(); } catch(e) {}
-        document.body.removeChild(ta);
+        fallback();
       }
     }
-    function showCopied() {
+
+    let copiedTimer;
+    function showCopied(ok) {
       const btn = resultPanel.querySelector('.copy-btn');
       if (!btn) return;
-      btn.textContent = 'Copied ✓';
-      btn.classList.add('copied');
-      setTimeout(() => {
+      btn.textContent = ok ? 'Copied ✓' : 'Copy failed';
+      btn.classList.toggle('copied', !!ok);
+      if (answerLive) {
+        answerLive.textContent = '';
+        setTimeout(() => {
+          answerLive.textContent = ok ? 'Answer copied to clipboard.' : 'Could not copy automatically. Please select the result and copy it.';
+        }, 60);
+      }
+      clearTimeout(copiedTimer);
+      copiedTimer = setTimeout(() => {
         btn.textContent = 'Copy answer';
         btn.classList.remove('copied');
-      }, 1500);
+      }, 1800);
     }
 
     /* ---------- Main calculate ---------- */
     function calculate() {
       clearAllErrors(section);
-      const { nums, bad, totalTokens, hadDuplicates } = parseIntegers(numbersEl.value);
+      const { nums, bad, hadDuplicates } = parseIntegers(numbersEl.value);
 
       if (nums.length === 0) {
         showError(numbersEl, 'Enter at least two positive whole numbers.');
@@ -1278,9 +1294,7 @@
 
       resultPanel.innerHTML = html;
       showResult(resultPanel, html);
-      // Render KaTeX inside newly inserted content
       renderMathIn(resultPanel);
-      attachCopyButton(resultPanel, CALC_NAME);
       const copyBtn = resultPanel.querySelector('.copy-btn');
       if (copyBtn) {
         copyBtn.addEventListener('click', () => copyAnswerText(G, L));
@@ -1294,7 +1308,7 @@
       return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
 
-    /* ---------- Euclid block with KaTeX ---------- */
+    /* ---------- Euclid block ---------- */
     function buildEuclidBlock(nums, G) {
       const [a, b] = nums;
       const { steps } = euclidTrace(a, b);
@@ -1320,7 +1334,7 @@
       `;
     }
 
-    /* ---------- Prime factorisation table with KaTeX ---------- */
+    /* ---------- Prime factorisation table ---------- */
     function buildPrimeTable(nums, G, L) {
       const rows = nums.map(n => {
         return `<li style="font-size:0.9375rem;">
@@ -1342,7 +1356,15 @@
 
     /* ---------- Wiring ---------- */
     calcBtn.addEventListener('click', calculate);
-    bindEnterKey(section, calcBtn);
+
+    // Enter-key fallback (covers all input fields; ToolsCommon.bindEnterKey kept optional)
+    section.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter' || e.isComposing || e.shiftKey) return;
+      const t = e.target;
+      if (t.tagName === 'TEXTAREA' || t.tagName === 'BUTTON' || t.tagName === 'A' || t.tagName === 'SUMMARY') return;
+      e.preventDefault();
+      calcBtn.click();
+    });
 
     resetBtn.addEventListener('click', () => {
       numbersEl.value = '';
@@ -1387,13 +1409,11 @@
           setTimeout(renderAll, 200);
           return;
         }
-        // Render all [data-katex] elements (inline)
         document.querySelectorAll('[data-katex]').forEach(function (el) {
           try {
             katex.render(el.getAttribute('data-katex'), el, { throwOnError: false, displayMode: false });
           } catch (e) {}
         });
-        // Render all [data-katex-display] elements (display)
         document.querySelectorAll('[data-katex-display]').forEach(function (el) {
           try {
             katex.render(el.getAttribute('data-katex-display'), el, { throwOnError: false, displayMode: true });
