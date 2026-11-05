@@ -151,6 +151,9 @@
       line-height: 1.1; word-break: break-word; text-align: center;
     }
     .answer-box .answer-value .katex { font-size: 2.5rem; }
+    .answer-box .answer-subtext {
+      text-align:center; font-size:0.9375rem; color:#64748b; font-family:'JetBrains Mono',monospace; margin-top:0.35rem;
+    }
     .copy-btn {
       border: 1px solid #0284c7; background: #e0f2fe; color: #0369a1;
       border-radius: .5rem; padding: .4rem .7rem; font-size: .75rem;
@@ -164,7 +167,6 @@
     .answer-box details > summary:hover { text-decoration: underline; }
 
     .math-block { display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono', monospace; font-size: 1rem; color: #0b1220; background: #f8fafc; padding: 1rem 1.25rem; border-radius: .5rem; border-left: 4px solid #0ea5e9; margin: .35rem 0 0 0; flex-wrap: wrap; gap: .3em; text-align: center; overflow-x: auto; }
-    .lin-result-value { display: flex; align-items: center; justify-content: center; gap: .5rem; font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: #0b1220; line-height: 1.2; flex-wrap: wrap; }
     .lin-summary { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; margin-top: 1rem; }
     @media (min-width: 640px) { .lin-summary { grid-template-columns: repeat(3, 1fr); } }
     .lin-summary-unit { background: #ffffff; border: 1px solid #e2e8f0; border-radius: .75rem; padding: .875rem .75rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: .3rem; }
@@ -180,6 +182,23 @@
     .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
     .cluster-link { color: #0369a1; font-weight: 600; text-decoration: underline; text-decoration-color: #7dd3fc; }
     .cluster-link:hover { color: #0284c7; }
+
+    /* Graph Container */
+    .graph-container {
+      margin-top: 1.5rem;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+    .graph-container canvas {
+      width: 100%;
+      height: auto;
+      max-height: 300px;
+      display: block;
+      border-radius: 0.5rem;
+    }
 
     /* Ad containers */
     .ad-slot { min-height: 100px; display: block; }
@@ -588,10 +607,6 @@
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(fail); else fail();
     });
 
-    function fracHTML(numHTML, denHTML, big) {
-      const cls = 'latex-frac' + (big ? ' big' : '');
-      return `<span class="${cls}"><span class="f-num">${numHTML}</span><span class="f-den">${denHTML}</span></span>`;
-    }
     function fmtNum(x, maxDecimals) {
       if (maxDecimals === undefined) maxDecimals = 8;
       if (!Number.isFinite(x)) return '—';
@@ -642,6 +657,81 @@
       return `${left} = ${fmtNum(c)}`;
     }
 
+    /* ---------- Graph Drawing ---------- */
+    function drawGraph(container, a, b, c) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 600; canvas.height = 300;
+      canvas.style.width = '100%'; canvas.style.height = 'auto';
+      
+      const wrapper = document.createElement('div');
+      wrapper.className = 'graph-container';
+      wrapper.innerHTML = `<h4 style="font-size:0.875rem;font-weight:700;color:#334155;margin-bottom:0.5rem;">Graph of y = ${a}x + ${b}</h4>`;
+      wrapper.appendChild(canvas);
+      container.appendChild(wrapper);
+
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width; const h = canvas.height;
+      const padding = 40; const graphW = w - 2 * padding; const graphH = h - 2 * padding;
+
+      let xMin = -10, xMax = 10;
+      if (c !== undefined && a !== 0) {
+        const sol = (c - b) / a;
+        const range = Math.max(Math.abs(sol) * 1.5, 5);
+        xMin = sol - range; xMax = sol + range;
+      }
+
+      const yAtXMin = a * xMin + b; const yAtXMax = a * xMax + b;
+      let yMin = Math.min(yAtXMin, yAtXMax); let yMax = Math.max(yAtXMin, yAtXMax);
+      const yPad = Math.max((yMax - yMin) * 0.2, 2);
+      yMin -= yPad; yMax += yPad;
+      if (yMin > 0) yMin = 0; if (yMax < 0) yMax = 0;
+
+      const toCanvasX = (x) => padding + ((x - xMin) / (xMax - xMin)) * graphW;
+      const toCanvasY = (y) => padding + graphH - ((y - yMin) / (yMax - yMin)) * graphH;
+
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
+
+      ctx.strokeStyle = '#e2e8f0'; ctx.lineWidth = 1;
+      ctx.font = '10px Inter, sans-serif'; ctx.fillStyle = '#94a3b8';
+      ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+
+      const stepX = (xMax - xMin) / 10;
+      for (let x = Math.ceil(xMin / stepX) * stepX; x <= xMax; x += stepX) {
+        const cx = toCanvasX(x);
+        ctx.beginPath(); ctx.moveTo(cx, padding); ctx.lineTo(cx, padding + graphH); ctx.stroke();
+        if (Math.abs(x) > 1e-5) ctx.fillText(x.toFixed(1), cx, padding + graphH + 4);
+      }
+      const stepY = (yMax - yMin) / 6;
+      for (let y = Math.ceil(yMin / stepY) * stepY; y <= yMax; y += stepY) {
+        const cy = toCanvasY(y);
+        ctx.beginPath(); ctx.moveTo(padding, cy); ctx.lineTo(padding + graphW, cy); ctx.stroke();
+        if (Math.abs(y) > 1e-5) ctx.fillText(y.toFixed(1), padding - 4, cy);
+      }
+
+      ctx.strokeStyle = '#94a3b8'; ctx.lineWidth = 1.5;
+      if (yMin <= 0 && yMax >= 0) { const cy0 = toCanvasY(0); ctx.beginPath(); ctx.moveTo(padding, cy0); ctx.lineTo(padding + graphW, cy0); ctx.stroke(); }
+      if (xMin <= 0 && xMax >= 0) { const cx0 = toCanvasX(0); ctx.beginPath(); ctx.moveTo(cx0, padding); ctx.lineTo(cx0, padding + graphH); ctx.stroke(); }
+
+      ctx.strokeStyle = '#0284c7'; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(toCanvasX(xMin), toCanvasY(yAtXMin)); ctx.lineTo(toCanvasX(xMax), toCanvasY(yAtXMax)); ctx.stroke();
+
+      if (a !== 0) {
+        const sol = (c - b) / a; const solY = a * sol + b;
+        const px = toCanvasX(sol); const py = toCanvasY(solY);
+        
+        ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 1.5; ctx.setLineDash([5, 5]);
+        ctx.beginPath(); ctx.moveTo(px, py); ctx.lineTo(px, toCanvasY(0)); ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.fillStyle = '#ef4444'; ctx.beginPath(); ctx.arc(px, py, 5, 0, Math.PI * 2); ctx.fill();
+        ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2; ctx.stroke();
+
+        ctx.fillStyle = '#0f172a'; ctx.font = 'bold 11px Inter, sans-serif';
+        ctx.textAlign = 'left'; ctx.textBaseline = 'bottom';
+        ctx.fillText(`(x = ${fmtNum(sol)}, y = ${fmtNum(solY)})`, px + 8, py - 8);
+      }
+    }
+
     function calculate() {
       clearAllErrors(section);
       const aStr = aEl.value.trim(), bStr = bEl.value.trim(), cStr = cEl.value.trim();
@@ -689,7 +779,7 @@
             </div>`;
           resultPanel.innerHTML = html;
           showResult(resultPanel, html);
-          if (typeof renderMathInElement === 'function') renderMathInElement(resultPanel, { delimiters: [{left:'\\(',right:'\\)',display:false}], throwOnError: false });
+          if (typeof renderMathInElement === 'function') renderMathInElement(resultPanel, { delimiters: [{left:'\(',right:'\)',display:false}], throwOnError: false });
           trackEvent(CALC_NAME, 'calculate');
           announce('Result: Infinitely many solutions.');
           revealResult();
@@ -727,7 +817,7 @@
             </div>`;
           resultPanel.innerHTML = html;
           showResult(resultPanel, html);
-          if (typeof renderMathInElement === 'function') renderMathInElement(resultPanel, { delimiters: [{left:'\\(',right:'\\)',display:false}], throwOnError: false });
+          if (typeof renderMathInElement === 'function') renderMathInElement(resultPanel, { delimiters: [{left:'\(',right:'\)',display:false}], throwOnError: false });
           trackEvent(CALC_NAME, 'calculate');
           announce('Result: No solution.');
           revealResult();
@@ -738,18 +828,46 @@
       const numerator = c - b;
       const x = numerator / a;
       const frac = decimalToFraction(x);
-      let exactHTML;
-      let exactPlain;
+      let exactLatex;
+      let copyValue;
+
       if (frac && Math.abs(frac.n) < 1e9 && frac.d < 1e9) {
-        exactHTML = frac.d === 1 ? String(frac.n) : fracHTML(frac.n, frac.d, true);
-        exactPlain = frac.d === 1 ? String(frac.n) : frac.n + '/' + frac.d;
+        if (frac.d === 1) {
+          exactLatex = String(frac.n);
+          copyValue = String(frac.n);
+        } else {
+          exactLatex = `\\frac{${frac.n}}{${frac.d}}`;
+          copyValue = `${frac.n}/${frac.d}`;
+        }
       } else {
-        exactHTML = fmtNum(x);
-        exactPlain = fmtNum(x);
+        exactLatex = fmtNum(x);
+        copyValue = fmtNum(x);
       }
+
       const isIntegerAnswer = Number.isInteger(x);
       const isSimplified = frac && frac.d !== 1;
-      const copyValue = isIntegerAnswer ? fmtNum(x) : (isSimplified ? frac.n + '/' + frac.d : fmtNum(x));
+
+      // Pre-render KaTeX strings for the steps to ensure perfect display
+      const katexA = katex.renderToString(fmtNum(a), { throwOnError: false });
+      const katexB = katex.renderToString(fmtNum(b), { throwOnError: false });
+      const katexC = katex.renderToString(fmtNum(c), { throwOnError: false });
+      const katexNum = katex.renderToString(fmtNum(numerator), { throwOnError: false });
+      const katexResult = katex.renderToString(exactLatex, { throwOnError: false });
+      
+      const step1Latex = katex.renderToString(`${renderEqText(a, b, c).replace(/[\\$]/g, '')}`, { throwOnError: false });
+      const step2Latex = katex.renderToString(`${fmtNum(a)} x = ${fmtNum(c)} - (${fmtNum(b)}) = ${fmtNum(numerator)}`, { throwOnError: false });
+      const step3Latex = katex.renderToString(`x = \\dfrac{${fmtNum(numerator)}}{${fmtNum(a)}}`, { throwOnError: false });
+      const step4Latex = katex.renderToString(`x = ${exactLatex}`, { throwOnError: false });
+
+      // Pre-render the context block math
+      const contextEq = katex.renderToString(renderEqText(a, b, c).replace(/[\\$]/g, ''), { throwOnError: false });
+      const contextCheckA = katex.renderToString(fmtNum(a), { throwOnError: false });
+      const contextCheckX = katex.renderToString(fmtNum(x), { throwOnError: false });
+      const contextCheckB = katex.renderToString(fmtNum(b), { throwOnError: false });
+      const contextCheckRes = katex.renderToString(fmtNum(a * x + b), { throwOnError: false });
+      const contextCheckC = katex.renderToString(fmtNum(c), { throwOnError: false });
+      const contextSlope = katex.renderToString(`y = mx + c`, { throwOnError: false });
+      const contextQuad = katex.renderToString(`a \\neq 0`, { throwOnError: false });
 
       const html = `
         <div class="answer-box">
@@ -757,8 +875,8 @@
             <span class="answer-heading">Solution</span>
             <button type="button" class="copy-btn" data-copy="x = ${copyValue}" aria-label="Copy solution">Copy answer</button>
           </div>
-          <div class="answer-value">\\( x = ${exactHTML} \\)</div>
-          ${!isIntegerAnswer ? `<p style="text-align:center;font-size:0.9375rem;color:#64748b;font-family:'JetBrains Mono',monospace;margin-top:0.35rem;">\\( \\approx ${fmtNum(x)} \\)</p>` : ''}
+          <div class="answer-value" id="main-answer-value"></div>
+          ${!isIntegerAnswer ? `<p class="answer-subtext" id="main-answer-subtext"></p>` : ''}
         </div>
 
         <div class="lin-summary">
@@ -772,24 +890,40 @@
             <summary>Show / Hide step-by-step</summary>
             <div class="formula-label" style="margin-top:0.75rem;margin-bottom:0.5rem;">Calculation Breakdown</div>
             <ol>
-              <li>Start with the equation: \\( ${renderEqText(a, b, c).replace(/[\\$]/g, '')} \\).</li>
-              <li>Subtract ${fmtNum(b)} from both sides: \\( ${fmtNum(a)} x = ${fmtNum(c)} - (${fmtNum(b)}) = ${fmtNum(numerator)} \\).</li>
-              <li>Divide both sides by ${fmtNum(a)}: \\( x = \\dfrac{${fmtNum(numerator)}}{${fmtNum(a)}} \\).</li>
-              <li><strong>Result: \\( x = ${isIntegerAnswer ? fmtNum(x) : (isSimplified ? frac.n + '/' + frac.d + ' = ' + fmtNum(x) : fmtNum(x))} \\)</strong></li>
+              <li>Start with the equation: ${step1Latex}.</li>
+              <li>Subtract ${katexB} from both sides: ${step2Latex}.</li>
+              <li>Divide both sides by ${katexA}: ${step3Latex}.</li>
+              <li><strong>Result: ${step4Latex}</strong></li>
             </ol>
           </details>
         </div>
 
         <div class="lin-context">
-          <p>🔹 Equation: ${renderEqText(a, b, c)}.</p>
+          <p>🔹 Equation: ${contextEq}.</p>
           <p>🔹 Solution: x = <strong>${fmtNum(x)}</strong>${isSimplified ? ` (exact: ${frac.n}/${frac.d})` : ''}.</p>
-          <p>🔹 Check: substitute x back — ${fmtNum(a)} × ${fmtNum(x)} + ${fmtNum(b)} = ${fmtNum(a * x + b)}, and ${fmtNum(a * x + b)} ${Math.abs(a * x + b - c) < 1e-9 ? '= ' : '≠ '}${fmtNum(c)} ${Math.abs(a * x + b - c) < 1e-9 ? '✓' : '⚠'}.</p>
-          <p>🔹 Related tools: the <a class="cluster-link" href="slope-calculator.html">slope calculator</a> derives \\( y = mx + c \\); the <a class="cluster-link" href="quadratic-solver.html">quadratic equation solver</a> handles the \\( a \\neq 0 \\) second-degree case.</p>
+          <p>🔹 Check: substitute x back — ${contextCheckA} × ${contextCheckX} + ${contextCheckB} = ${contextCheckRes}, and ${contextCheckRes} ${Math.abs(a * x + b - c) < 1e-9 ? '= ' : '≠ '}${contextCheckC} ${Math.abs(a * x + b - c) < 1e-9 ? '✓' : '⚠'}.</p>
+          <p>🔹 Related tools: the <a class="cluster-link" href="slope-calculator.html">slope calculator</a> derives ${contextSlope}; the <a class="cluster-link" href="quadratic-solver.html">quadratic equation solver</a> handles the ${contextQuad} second-degree case.</p>
         </div>`;
 
       resultPanel.innerHTML = html;
       showResult(resultPanel, html);
-      if (typeof renderMathInElement === 'function') renderMathInElement(resultPanel, { delimiters: [{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}], throwOnError: false });
+      
+      // Directly render KaTeX on the specific elements using the pure LaTeX string
+      if (typeof katex !== 'undefined') {
+        const ansVal = document.getElementById('main-answer-value');
+        const ansSub = document.getElementById('main-answer-subtext');
+        
+        if (ansVal) {
+          katex.render(`x = ${exactLatex}`, ansVal, { throwOnError: false, displayMode: false });
+        }
+        if (ansSub) {
+          katex.render(`\\approx ${fmtNum(x)}`, ansSub, { throwOnError: false, displayMode: false });
+        }
+      }
+      
+      // Draw graph
+      drawGraph(resultPanel, a, b, c);
+
       trackEvent(CALC_NAME, 'calculate');
       announce(`Result: x = ${copyValue}`);
       revealResult();
