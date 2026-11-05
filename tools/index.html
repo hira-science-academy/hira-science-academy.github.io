@@ -274,92 +274,112 @@
     .back-to-top.show { opacity:1; visibility:visible; }
     .back-to-top:hover { background:#075985; transform:translateY(-4px); }
 
-    /* ---------- Cards (highest priority) ---------- */
+    /* ---------- Tool cards: compact list rows on phones, tiles from 640px up ---------- */
     .tool-card {
       position:relative;
-      display:flex; flex-direction:column;
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:1rem;
-      padding:1.125rem 1.125rem 1rem;
-      height:100%;
-      text-decoration:none; color:inherit;
-      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      display:grid;
+      grid-template-columns:3rem minmax(0,1fr) 1.25rem;
+      grid-template-areas:"icon title arrow" "icon desc arrow";
+      column-gap:.875rem; row-gap:.125rem; align-items:center;
+      min-height:4.5rem; height:100%;
+      padding:.875rem 1rem;
+      background:#fff; border:1px solid var(--line); border-radius:1rem;
+      color:inherit; text-decoration:none;
       box-shadow:0 1px 2px rgba(15,23,42,.04);
+      transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease, background-color .15s ease;
+      -webkit-tap-highlight-color:rgba(14,165,233,.15);
+      touch-action:manipulation;
       overflow:visible;
     }
-    .tool-card:hover {
-      transform:translateY(-4px);
-      border-color:var(--brand-2);
-      box-shadow:0 18px 40px -18px rgba(15,23,42,.25), 0 2px 6px rgba(14,165,233,.12);
-    }
-    .tool-card:focus-visible {
-      outline:3px solid var(--brand-2);
-      outline-offset:2px;
-      border-color:var(--brand-2);
+    .tool-card:active { background:#f0f9ff; border-color:var(--brand-2); }
+    .tool-card:focus-visible { outline:3px solid var(--brand-2); outline-offset:2px; border-color:var(--brand-2); }
+    @media (hover:hover) {
+      .tool-card:hover {
+        transform:translateY(-4px); border-color:var(--brand-2);
+        box-shadow:0 18px 40px -18px rgba(15,23,42,.25), 0 2px 6px rgba(14,165,233,.12);
+      }
+      .tool-card:hover .tool-card-icon { background:linear-gradient(135deg,#e0f2fe,#bae6fd); transform:scale(1.04); }
+      .tool-card:hover::after { opacity:1; transform:translateX(2px); }
     }
 
     .tool-card-icon {
-      width:2.75rem; height:2.75rem;
+      grid-area:icon;
+      width:3rem; height:3rem; margin:0; flex-shrink:0;
       border-radius:.75rem;
       display:inline-flex; align-items:center; justify-content:center;
-      font-size:1.35rem; line-height:1;
+      font-size:1.35rem; line-height:1; font-weight:600;
       background:linear-gradient(135deg,#eff6ff,#e0f2fe);
-      color:#0b4a6f;
-      border:1px solid #dbeafe;
-      margin-bottom:.875rem;
-      flex-shrink:0;
+      color:#0b4a6f; border:1px solid #dbeafe;
       transition:background .22s ease, transform .22s ease;
     }
-    .tool-card:hover .tool-card-icon { background:linear-gradient(135deg,#e0f2fe,#bae6fd); transform:scale(1.04); }
-
     .tool-card-title {
-      font-weight:700; font-size:1rem; line-height:1.35; color:var(--ink);
-      margin:0 0 .375rem; letter-spacing:-.01em;
+      grid-area:title; align-self:end;
+      margin:0; font-weight:700; font-size:.9375rem; line-height:1.3;
+      color:var(--ink); letter-spacing:-.01em;
     }
     .tool-card-desc {
-      font-size:.875rem; color:var(--muted); line-height:1.55;
-      flex-grow:1; text-align:left; margin:0;
-      display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden;
+      grid-area:desc; align-self:start;
+      margin:0; font-size:.8125rem; line-height:1.45; color:var(--muted); text-align:left;
+      display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
     }
     .tool-card::after {
-      content:'Open →';
-      display:block; margin-top:.875rem;
-      font-size:.75rem; font-weight:700; letter-spacing:.02em;
-      color:var(--brand);
-      opacity:.7; transition:opacity .2s ease, transform .2s ease;
+      grid-area:arrow; justify-self:end; align-self:center;
+      content:'›'; font-size:1.75rem; line-height:1; color:#94a3b8;
+      transition:opacity .2s ease, transform .2s ease;
     }
-    .tool-card:hover::after { opacity:1; transform:translateX(2px); }
+
+    /* Tablet / desktop: vertical tile */
+    @media (min-width:640px) {
+      .tool-card { display:flex; flex-direction:column; align-items:stretch; min-height:0; padding:1.125rem 1.125rem 1rem; }
+      .tool-card-icon { width:2.75rem; height:2.75rem; margin-bottom:.875rem; }
+      .tool-card-title { font-size:1rem; margin-bottom:.375rem; }
+      .tool-card-desc { font-size:.875rem; line-height:1.55; flex-grow:1; -webkit-line-clamp:3; }
+      .tool-card::after {
+        content:'Open →'; margin-top:.875rem; font-size:.75rem; font-weight:700; letter-spacing:.02em;
+        color:var(--brand); opacity:.7; justify-self:auto;
+      }
+    }
 
     /* NEW badge */
     .tool-card.new-badge::before {
-      content:'NEW';
-      position:absolute; top:-.5rem; right:.75rem;
-      background:linear-gradient(135deg,#ef4444,#dc2626);
-      color:#fff; font-size:.625rem; font-weight:800;
-      letter-spacing:.06em; padding:.2rem .5rem;
-      border-radius:.375rem;
-      box-shadow:0 4px 10px -2px rgba(239,68,68,.45);
-      z-index:2;
+      content:'NEW'; position:absolute; top:-.45rem; right:.75rem; z-index:2;
+      background:linear-gradient(135deg,#ef4444,#dc2626); color:#fff;
+      font-size:.625rem; font-weight:800; letter-spacing:.06em;
+      padding:.2rem .5rem; border-radius:.375rem; box-shadow:0 4px 10px -2px rgba(239,68,68,.45);
     }
 
-    /* Popular chips */
+    /* Popular chips: one swipeable row on phones, wrapped & centred on larger screens */
+    .popular-row { display:flex; gap:.5rem; overflow-x:auto; margin:0 -1rem; padding:.25rem 1rem .5rem; scrollbar-width:none; -webkit-overflow-scrolling:touch; }
+    .popular-row::-webkit-scrollbar { display:none; }
+    @media (min-width:640px) { .popular-row { flex-wrap:wrap; justify-content:center; overflow:visible; margin:0; padding:0; gap:.75rem; } }
     .popular-chip {
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.5rem .95rem; border-radius:999px;
+      flex:0 0 auto; display:inline-flex; align-items:center; gap:.5rem;
+      min-height:2.5rem; padding:.5rem .95rem; border-radius:999px;
       background:#fff; border:1.5px solid var(--line);
       font-weight:600; font-size:.875rem; color:var(--brand);
-      text-decoration:none; white-space:nowrap;
+      text-decoration:none; white-space:nowrap; touch-action:manipulation;
       transition:border-color .2s, background .2s, transform .15s;
     }
     .popular-chip:hover { border-color:var(--brand-2); background:#f0f9ff; transform:translateY(-1px); }
 
-    /* Category pills */
+    /* Sticky category bar (swipe sideways on phones) */
+    .filter-bar {
+      position:sticky; top:5rem; z-index:30; margin-top:1.5rem;
+      background:rgba(248,250,252,.94); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .filter-scroll {
+      display:flex; gap:.5rem; max-width:80rem; margin:0 auto; padding:.6rem 1rem;
+      overflow-x:auto; scroll-snap-type:x proximity; scrollbar-width:none; -webkit-overflow-scrolling:touch;
+    }
+    .filter-scroll::-webkit-scrollbar { display:none; }
+    @media (min-width:1024px) { .filter-scroll { flex-wrap:wrap; justify-content:center; overflow:visible; } }
     .category-pill {
+      flex:0 0 auto; scroll-snap-align:center; min-height:2.5rem;
       padding:.5rem 1rem; border-radius:999px;
       font-size:.875rem; font-weight:600; cursor:pointer;
       border:1.5px solid var(--line); background:#fff; color:#334155;
-      transition:all .18s ease; white-space:nowrap;
+      transition:all .18s ease; white-space:nowrap; touch-action:manipulation;
     }
     .category-pill:hover { border-color:var(--brand-2); color:var(--brand); }
     .category-pill.is-active { background:var(--brand); color:#fff; border-color:var(--brand); box-shadow:0 4px 12px -4px rgba(2,132,199,.5); }
@@ -389,11 +409,28 @@
     .faq-item[open] summary::after { content:'–'; }
     .faq-item p { padding:0 1.25rem 1.25rem; color:#334155; line-height:1.75; text-align:left; margin:0; }
 
-    /* Prevent floating controls from overlapping key mobile content */
+    /* Floating controls + section headings on small screens */
+    .category-section { scroll-margin-top:9.5rem; }
+    .category-heading { scroll-margin-top:9.5rem; }
     @media (max-width:640px){
       .back-to-top { bottom:5.5rem; right:.9rem; width:2.9rem; height:2.9rem; }
-      .tool-card::after { margin-top:.75rem; }
+      .category-heading h2 { font-size:1.375rem; }
+      .category-heading p { font-size:.875rem; line-height:1.6; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
     }
+    .search-input::-webkit-search-cancel-button { height:1.1rem; width:1.1rem; cursor:pointer; }
+
+    /* Hide the cluster note while the user is searching/filtering */
+    body.is-filtering #coordinate-geometry { display:none; }
+
+    /* ---------- AdSense slots ----------
+       The wrapper takes no space until Google actually fills it, so blocked or
+       unfilled ads never leave an empty box. Ads are hidden while searching. */
+    .ad-slot { margin:0; padding:0; text-align:center; }
+    .ad-slot .ad-label { display:none; font-size:.6875rem; letter-spacing:.08em; text-transform:uppercase; color:#94a3b8; margin-bottom:.375rem; }
+    .ad-slot:has(ins[data-ad-status="filled"]) { margin:0 auto 3rem; max-width:970px; }
+    .ad-slot:has(ins[data-ad-status="filled"]) .ad-label { display:block; }
+    .ad-slot ins.adsbygoogle { display:block; min-width:250px; }
+    body.is-filtering .ad-slot { display:none !important; }
 
     @media (prefers-reduced-motion: reduce) {
       * { animation:none !important; transition:none !important; scroll-behavior:auto !important; }
@@ -448,7 +485,7 @@
   </nav>
 
   <!-- ===== HERO ===== -->
-  <header class="header-gradient text-white relative py-16 md:py-20 overflow-hidden text-center shadow-lg">
+  <header class="header-gradient text-white relative py-12 md:py-20 overflow-hidden text-center shadow-lg">
     <div class="absolute inset-0 pointer-events-none" style="background-image: linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px); background-size: 44px 44px;"></div>
     <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
     <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
@@ -476,7 +513,7 @@
       </nav>
       <div class="relative" role="search">
         <label for="tool-search" class="sr-only">Search calculators by name, subject, formula or task</label>
-        <input type="search" id="tool-search" class="search-input" placeholder="Search calculators, e.g. percentage, GPA, quadratic, Ohm's law" autocomplete="off" />
+        <input type="search" id="tool-search" class="search-input" placeholder="Search calculators, e.g. percentage, GPA, quadratic, Ohm's law" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" />
         <svg class="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
         </svg>
@@ -485,9 +522,9 @@
   </div>
 
   <!-- ===== POPULAR ===== -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 mt-10 text-center" aria-labelledby="popular-heading">
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 mt-8 sm:mt-10 text-center overflow-hidden" aria-labelledby="popular-heading">
     <h2 id="popular-heading" class="text-xl font-bold text-gray-900 mb-4">Most popular calculators</h2>
-    <div class="flex flex-wrap justify-center gap-3">
+    <div class="popular-row">
         <a href="scientific-calculator.html" class="popular-chip"><span aria-hidden="true">🧮</span> Scientific Calculator</a>
         <a href="percentage-calculator.html" class="popular-chip"><span aria-hidden="true">％</span> Percentage Calculator</a>
         <a href="gpa-calculator.html" class="popular-chip"><span aria-hidden="true">🎓</span> GPA Calculator</a>
@@ -498,22 +535,23 @@
     </div>
   </section>
 
-  <!-- ===== CATEGORY FILTERS ===== -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-    <div class="flex flex-wrap justify-center gap-2 mb-4" id="category-filters" role="group" aria-label="Filter calculators by category">
+  <!-- ===== CATEGORY FILTERS (sticky, swipeable on phones) ===== -->
+  <div class="filter-bar">
+    <div class="filter-scroll" id="category-filters" role="group" aria-label="Filter calculators by category">
       <button type="button" class="category-pill is-active" data-category="all" aria-pressed="true">All Tools (55)</button>
       <button type="button" class="category-pill" data-category="math" aria-pressed="false">Mathematics (11)</button>
       <button type="button" class="category-pill" data-category="algebra" aria-pressed="false">Algebra &amp; Geometry (10)</button>
       <button type="button" class="category-pill" data-category="academic" aria-pressed="false">GPA &amp; Grades (11)</button>
       <button type="button" class="category-pill" data-category="physics" aria-pressed="false">Physics (10)</button>
-      <button type="button" class="category-pill" data-category="conversions" aria-pressed="false">Converters, Statistics &amp; Media (11)</button>
+      <button type="button" class="category-pill" data-category="conversions" aria-pressed="false">Converters &amp; Stats (11)</button>
       <button type="button" class="category-pill" data-category="pakistan" aria-pressed="false">Pakistan Tools (2)</button>
     </div>
-    <p id="results-count" class="text-center text-sm text-gray-600 mb-8" aria-live="polite"></p>
   </div>
 
   <!-- ===== TOOLS GRID ===== -->
   <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+
+    <p id="results-count" class="text-center text-sm text-slate-600 py-4" aria-live="polite"></p>
 
     <!-- ===== MATHEMATICS ===== -->
     <section id="math" class="category-section mb-12" aria-labelledby="math-heading" data-section="math">
@@ -521,7 +559,7 @@
         <h2 id="math-heading" class="text-2xl md:text-3xl font-bold text-gray-900 flex items-center gap-3"><span class="text-3xl" aria-hidden="true">🧮</span> Everyday Mathematics Calculators</h2>
         <p class="text-slate-600 mt-2 max-w-3xl leading-7">Quick, accurate tools for the arithmetic you use every day: percentages, fractions, ratios, averages, powers and roots. Each one shows the working so you can check the method, not just the answer.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div class="tool-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
       <a href="scientific-calculator.html" class="tool-card" data-category="math" data-name="scientific calculator trigonometry logarithms powers roots" title="Scientific Calculator – free online">
         <div class="tool-card-icon" aria-hidden="true">🧮</div>
         <h3 class="tool-card-title">Scientific Calculator</h3>
@@ -580,6 +618,16 @@
       </div>
     </section>
 
+    <!-- ===== AD SLOT 1: replace SLOT_ID_1 with your AdSense ad-unit ID ===== -->
+    <aside class="ad-slot" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <ins class="adsbygoogle" style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="SLOT_ID_1"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </aside>
+
     <!-- ===== ALGEBRA ===== (id="algebra" is the target used by the quadratic + linear breadcrumbs) -->
     <section id="algebra" class="category-section mb-12" aria-labelledby="algebra-heading" data-section="algebra">
       <div class="category-heading mb-4">
@@ -600,7 +648,7 @@
         </ul>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div class="tool-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
       <a href="quadratic-solver.html" class="tool-card" data-category="algebra" data-name="quadratic equation solver discriminant roots real complex" title="Quadratic Equation Solver – free online with steps">
         <div class="tool-card-icon" aria-hidden="true">x²</div>
         <h3 class="tool-card-title">Quadratic Equation Solver</h3>
@@ -660,7 +708,7 @@
         <h2 id="academic-heading" class="text-2xl md:text-3xl font-bold text-gray-900 flex items-center gap-3"><span class="text-3xl" aria-hidden="true">🎓</span> GPA, Grade &amp; Academic Calculators</h2>
         <p class="text-slate-600 mt-2 max-w-3xl leading-7">Work out your GPA, CGPA, weighted grade, final exam score or attendance. The GPA tools let you set your own grading scale and credit hours, so they suit the 4.0 scale used by US colleges as well as other systems.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div class="tool-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
       <a href="gpa-calculator.html" class="tool-card" data-category="academic" data-name="gpa grade point average calculator credits scale 4.0" title="GPA Calculator – free online">
         <div class="tool-card-icon" aria-hidden="true">🎓</div>
         <h3 class="tool-card-title">GPA Calculator</h3>
@@ -719,13 +767,23 @@
       </div>
     </section>
 
+    <!-- ===== AD SLOT 2: replace SLOT_ID_2 with your AdSense ad-unit ID ===== -->
+    <aside class="ad-slot" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <ins class="adsbygoogle" style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="SLOT_ID_2"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </aside>
+
     <!-- ===== PHYSICS ===== -->
     <section id="physics" class="category-section mb-12" aria-labelledby="physics-heading" data-section="physics">
       <div class="category-heading mb-4">
         <h2 id="physics-heading" class="text-2xl md:text-3xl font-bold text-gray-900 flex items-center gap-3"><span class="text-3xl" aria-hidden="true">⚛️</span> Physics Calculators</h2>
         <p class="text-slate-600 mt-2 max-w-3xl leading-7">Formula-based physics tools for mechanics, energy, pressure, density and electricity. Each calculator uses SI units and states its formula, which makes them useful for GCSE, A-level, AP and high-school physics.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div class="tool-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
       <a href="physics-formula-calculator.html" class="tool-card" data-category="physics" data-name="physics formula calculator mechanics energy density pressure electricity" title="Physics Formula Calculator – free online">
         <div class="tool-card-icon" aria-hidden="true">⚛</div>
         <h3 class="tool-card-title">Physics Formula Calculator</h3>
@@ -785,7 +843,7 @@
         <h2 id="conversions-heading" class="text-2xl md:text-3xl font-bold text-gray-900 flex items-center gap-3"><span class="text-3xl" aria-hidden="true">🔄</span> Unit Converters, Statistics &amp; Media Tools</h2>
         <p class="text-slate-600 mt-2 max-w-3xl leading-7">Convert length, weight, temperature, area, volume and speed between metric, imperial and US customary units, summarise a data set with mean, median, mode and standard deviation, and shrink images for the web or email without uploading them.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div class="tool-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
       <a href="unit-converter.html" class="tool-card" data-category="conversions" data-name="unit converter length mass temperature area volume speed time" title="Unit Converter – free online">
         <div class="tool-card-icon" aria-hidden="true">🔄</div>
         <h3 class="tool-card-title">Unit Converter</h3>
@@ -850,7 +908,7 @@
         <h2 id="pakistan-heading" class="text-2xl md:text-3xl font-bold text-gray-900 flex items-center gap-3"><span class="text-3xl" aria-hidden="true">🇵🇰</span> Pakistan Student &amp; Mobile Tools</h2>
         <p class="text-slate-600 mt-2 max-w-3xl leading-7">Practical tools built for students and mobile users in Pakistan: resize photos for BISE registration forms and calculate mobile load tax before you subscribe to a package.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div class="tool-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5">
       <a href="picture-resizer-bise.html" class="tool-card new-badge" data-category="pakistan" data-name="picture resizer photo resize compress bise gujranwala registration form 130x130 jpg 20kb punjab board" title="Picture Resizer for BISE Forms – free online">
         <div class="tool-card-icon" aria-hidden="true">🖼️</div>
         <h3 class="tool-card-title">Picture Resizer for BISE Forms</h3>
@@ -871,6 +929,16 @@
       <p class="text-sm mt-2">Try a different keyword or clear the search field.</p>
       <button type="button" id="clear-search" class="mt-4 px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition">Clear search</button>
     </div>
+
+    <!-- ===== AD SLOT 3: replace SLOT_ID_3 with your AdSense ad-unit ID ===== -->
+    <aside class="ad-slot" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <ins class="adsbygoogle" style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="SLOT_ID_3"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </aside>
 
     <!-- ===== ABOUT ===== -->
     <article class="text-justify-content max-w-4xl mx-auto mt-16 glass-card rounded-2xl p-6 md:p-8 shadow-md border border-white/50">
@@ -927,6 +995,17 @@
           <p>The Image Compressor re-encodes a JPG, PNG or WebP file in your browser using the Canvas API. You choose the output format, quality and pixel dimensions, compare the result with the original using a slider, and download only when you are happy. The image is never uploaded to a server.</p>
         </details>
     </section>
+
+
+    <!-- ===== AD SLOT 4: replace SLOT_ID_4 with your AdSense ad-unit ID ===== -->
+    <aside class="ad-slot" aria-label="Advertisement">
+      <span class="ad-label">Advertisement</span>
+      <ins class="adsbygoogle" style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="SLOT_ID_4"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </aside>
 
   </main>
 
@@ -1040,17 +1119,25 @@
       const pills = Array.from(document.querySelectorAll('.category-pill'));
       const resultsCount = document.getElementById('results-count');
       const emptyState = document.getElementById('empty-state');
+      const mainEl = document.getElementById('main-content');
       let activeCategory = 'all';
 
+      // Pre-compute a searchable text blob for every card
+      cards.forEach(function (card) {
+        card._hay = [
+          card.dataset.name || '',
+          card.querySelector('.tool-card-title').textContent,
+          card.querySelector('.tool-card-desc').textContent
+        ].join(' ').toLowerCase();
+      });
+
       function applyFilters() {
-        const q = searchInput.value.trim().toLowerCase();
+        // Every word typed must match, so "gpa calc" or "area circle" both work
+        const terms = searchInput.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
         let visible = 0;
         cards.forEach(function (card) {
-          const name = (card.dataset.name || '').toLowerCase();
-          const title = (card.querySelector('.tool-card-title').textContent || '').toLowerCase();
-          const desc = (card.querySelector('.tool-card-desc').textContent || '').toLowerCase();
           const okCat = activeCategory === 'all' || card.dataset.category === activeCategory;
-          const okSearch = !q || name.includes(q) || title.includes(q) || desc.includes(q);
+          const okSearch = terms.every(function (t) { return card._hay.includes(t); });
           const show = okCat && okSearch;
           card.style.display = show ? '' : 'none';
           if (show) visible++;
@@ -1059,30 +1146,54 @@
           const any = Array.from(s.querySelectorAll('.tool-card')).some(function (c) { return c.style.display !== 'none'; });
           s.style.display = any ? '' : 'none';
         });
+        document.body.classList.toggle('is-filtering', terms.length > 0 || activeCategory !== 'all');
         resultsCount.textContent = visible === 1 ? '1 calculator found' : visible + ' calculators found';
         emptyState.style.display = visible === 0 ? '' : 'none';
       }
 
-      function setCategory(cat) {
+      function setCategory(cat, fromClick) {
         activeCategory = cat;
         pills.forEach(function (x) {
           const on = x.dataset.category === cat;
           x.classList.toggle('is-active', on);
           x.setAttribute('aria-pressed', String(on));
+          if (on && fromClick) x.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'smooth' });
         });
         applyFilters();
+        // If the visitor was deep in the page, bring them back to the start of the results
+        if (fromClick) {
+          const top = mainEl.getBoundingClientRect().top + window.pageYOffset - 150;
+          if (window.pageYOffset > top) window.scrollTo({ top: top, behavior: 'smooth' });
+        }
       }
 
       searchInput.addEventListener('input', applyFilters);
-      pills.forEach(function (p) { p.addEventListener('click', function () { setCategory(p.dataset.category); }); });
+      searchInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); searchInput.blur(); }   // closes the phone keyboard
+        if (e.key === 'Escape') { searchInput.value = ''; applyFilters(); }
+      });
+      pills.forEach(function (p) { p.addEventListener('click', function () { setCategory(p.dataset.category, true); }); });
 
       document.getElementById('clear-search').addEventListener('click', function () {
         searchInput.value = '';
-        setCategory('all');
+        setCategory('all', false);
         searchInput.focus();
       });
 
+      // Optional: see which calculators people open (uses your existing Google Analytics)
+      document.addEventListener('click', function (e) {
+        const card = e.target.closest ? e.target.closest('.tool-card') : null;
+        if (card && typeof gtag === 'function') {
+          gtag('event', 'select_tool', { event_category: 'tools_index', event_label: card.getAttribute('href') });
+        }
+      });
+
       applyFilters();
+
+      // AdSense: request each slot once, while all sections are visible
+      document.querySelectorAll('ins.adsbygoogle').forEach(function () {
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (err) { /* ad blocker or script not loaded */ }
+      });
     });
   </script>
 </body>
