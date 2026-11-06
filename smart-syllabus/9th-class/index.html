@@ -62,7 +62,7 @@
       }
     },
     "datePublished": "2026-10-25",
-    "dateModified": "2026-11-06",
+    "dateModified": "2026-11-07",
     "mainEntity": {
       "@type": "ItemList",
       "name": "9th Class Smart Syllabus 2027 — Subject Pages",
@@ -277,7 +277,6 @@
     .share-linkedin { background: #0A66C2; }
     .share-copy     { background: #0ea5e9; }
 
-    /* Status badges */
     .status-pending {
       display: inline-flex;
       align-items: center;
@@ -353,11 +352,76 @@
       width: 100%;
       height: auto;
     }
+
+    /* ═══ NEW: resource card styles for the three-pillar linking block ═══ */
+    .resource-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1.25rem 1.35rem;
+      border-radius: 1rem;
+      border-width: 2px;
+      border-style: solid;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      background: #fff;
+    }
+    .resource-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(0,0,0,0.10); }
+    .resource-card .rc-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .resource-card .rc-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #0f172a;
+      line-height: 1.35;
+    }
+    .resource-card .rc-desc {
+      font-size: 0.82rem;
+      color: #475569;
+      line-height: 1.5;
+    }
+    .resource-card .rc-cta {
+      margin-top: 0.25rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .rc-pairing   { background: #fff1f2; border-color: #fecdd3; }
+    .rc-pairing   .rc-tag, .rc-pairing   .rc-cta { color: #be123c; }
+    .rc-model     { background: #eff6ff; border-color: #bfdbfe; }
+    .rc-model     .rc-tag, .rc-model     .rc-cta { color: #1d4ed8; }
+    .rc-syllabus  { background: #ecfdf5; border-color: #bbf7d0; }
+    .rc-syllabus  .rc-tag, .rc-syllabus  .rc-cta { color: #166534; }
+
+    /* ═══ NEW: subject cross-link card grid ═══ */
+    .xlink-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+    .xlink-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.65rem 0.9rem;
+      border-radius: 0.6rem;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: #0f172a;
+      transition: all 0.15s ease;
+    }
+    .xlink-item:hover { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; }
+    .xlink-item span:last-child { color: #64748b; font-size: 0.75rem; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-  <!-- ===== NAVIGATION ===== -->
+  <!-- ===== NAVIGATION ═══ UPDATED: added Model Papers + Pairing Schemes ═══ -->
   <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
@@ -370,10 +434,9 @@
       <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
         <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#home">Home</a>
         <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
-        <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
-        <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#features">Features</a>
-        <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium whitespace-nowrap" href="https://hiraacademy.com.pk/index.html#tools">Tools &amp; Calculators</a>
-        <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+        <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Schemes</a>
+        <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/model-papers.html">Model Papers</a>
+        <a class="text-blue-700 font-semibold px-2 py-2 text-sm" href="https://hiraacademy.com.pk/smart-syllabus/">Smart Syllabus</a>
         <a class="text-gray-900 hover:text-blue-600 px-2 py-2 text-sm font-medium" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
         <a class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform hover:scale-105" href="https://hiraacademy.com.pk/student-portal.html"><span>🎓</span> Student Portal</a>
       </div>
@@ -390,10 +453,9 @@
     <div class="px-4 pt-2 pb-6 space-y-1">
       <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#home">Home</a>
       <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#notes">Notes</a>
-      <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#courses">Courses</a>
-      <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#features">Features</a>
-      <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 whitespace-nowrap" href="https://hiraacademy.com.pk/index.html#tools">Tools &amp; Calculators</a>
-      <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#blog-preview">Blog</a>
+      <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Schemes</a>
+      <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/model-papers.html">Model Papers</a>
+      <a class="block px-3 py-3 rounded-md text-base font-medium text-blue-700 bg-blue-50" href="https://hiraacademy.com.pk/smart-syllabus/">Smart Syllabus</a>
       <a class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50" href="https://hiraacademy.com.pk/index.html#contact">Contact</a>
       <div class="pt-4"><a class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400" href="https://hiraacademy.com.pk/student-portal.html">🎓 Student Portal</a></div>
     </div>
@@ -410,7 +472,7 @@
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-5 tracking-tight drop-shadow-lg">Smart Syllabus for 9th Class 2027 — All Subjects</h1>
       <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">PECTAA has officially notified the Grade 9 Smart Syllabus (ALP), Pairing Schemes, and Model Papers for the Academic Session 2026-27 and BISEs Annual Examination 2027. All nine subject pages are now marked <strong class="text-green-200">✅ Announced</strong>.</p>
       <div class="mt-7 flex flex-wrap justify-center gap-3 text-sm">
-        <span class="bg-white/10 border border-white/15 rounded-full px-4 py-2">Last updated: 6 November 2026</span>
+        <span class="bg-white/10 border border-white/15 rounded-full px-4 py-2">Last updated: 7 November 2026</span>
         <span class="bg-green-400/20 border border-green-300/30 rounded-full px-4 py-2 font-semibold">✅ 9 subjects announced</span>
         <span class="bg-white/10 border border-white/15 rounded-full px-4 py-2">Official PECTAA notification</span>
       </div>
@@ -432,7 +494,7 @@
     </div>
   </div>
 
-  <!-- ===== TABLE OF CONTENTS ===== -->
+  <!-- ===== TABLE OF CONTENTS ═══ UPDATED: added Study Resources ═══ -->
   <div class="max-w-5xl mx-auto px-6 mt-6 relative z-10">
     <div class="glass-card rounded-2xl p-4 md:p-5 shadow-md border border-white/50 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm md:text-base font-medium">
       <span class="text-slate-600 font-bold">📑 Jump to:</span>
@@ -441,7 +503,7 @@
       <a class="text-purple-700 hover:text-purple-900 transition" href="#subjects">📚 All Subjects</a>
       <a class="text-amber-700 hover:text-amber-900 transition" href="#brief">📌 2026 vs 2027</a>
       <a class="text-emerald-700 hover:text-emerald-900 transition" href="#what-study">✅ What to Study</a>
-      <a class="text-rose-700 hover:text-rose-900 transition" href="#pectaa">📘 PECTAA Official</a>
+      <a class="text-pink-700 hover:text-pink-900 transition" href="#study-resources">🎯 Study Resources</a>
       <a class="text-cyan-700 hover:text-cyan-900 transition" href="#faq">❓ FAQ</a>
       <a class="text-indigo-700 hover:text-indigo-900 transition" href="#cross-links">🔗 Related Pages</a>
     </div>
@@ -468,7 +530,7 @@
 
     <!-- SHORT ANSWER -->
     <div class="bg-green-50 border-l-4 border-green-500 rounded-r-xl p-5 mb-10">
-      <p class="font-bold text-green-900 mb-1 no-justify">Current status (6 November 2026) — ANNOUNCED ✅</p>
+      <p class="font-bold text-green-900 mb-1 no-justify">Current status (7 November 2026) — ANNOUNCED ✅</p>
       <p class="text-gray-800 leading-7">
         <strong>The 2027 subject-wise Smart Syllabus for Class 9 has been officially announced by PECTAA.</strong> Notification No. <strong>PECTAA/C&amp;C Unit/2026/1238</strong>, dated <strong>06.11.2026</strong>, notifies the Smart Syllabus (Accelerated Learning Programme — ALP / Deleted Topics and Exercise Questions), Pairing Schemes, and Model Papers for the <strong>Academic Session 2026-27 and BISEs Annual Examination-2027 for Grade-9</strong> across Punjab.
       </p>
@@ -483,7 +545,6 @@
 
     <figure class="my-6">
       <div class="notification-frame">
-        <!-- Upload the PECTAA notification image to this path, or replace the src with your hosted image URL -->
         <img
           src="https://hiraacademy.com.pk/images/pectaa-notification-grade9-2027.webp"
           alt="Official PECTAA notification No. PECTAA/C&C Unit/2026/1238 dated 06.11.2026 announcing the Grade-9 Smart Syllabus (ALP), Pairing Schemes, and Model Papers for Academic Session 2026-27 and BISEs Annual Examination-2027"
@@ -533,23 +594,25 @@
             <th class="border border-gray-200 p-3 text-left">#</th>
             <th class="border border-gray-200 p-3 text-left">Subject</th>
             <th class="border border-gray-200 p-3 text-left">2027 Status</th>
-            <th class="border border-gray-200 p-3 text-left">Page</th>
+            <th class="border border-gray-200 p-3 text-left">Smart Syllabus</th>
+            <th class="border border-gray-200 p-3 text-left">Pairing Scheme</th>
+            <th class="border border-gray-200 p-3 text-left">Model Paper</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td class="border border-gray-200 p-3 font-semibold">1</td><td class="border border-gray-200 p-3">Mathematics</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/mathematics.html">View →</a></td></tr>
-          <tr><td class="border border-gray-200 p-3 font-semibold">2</td><td class="border border-gray-200 p-3">Physics</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/physics.html">View →</a></td></tr>
-          <tr><td class="border border-gray-200 p-3 font-semibold">3</td><td class="border border-gray-200 p-3">Chemistry</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/chemistry.html">View →</a></td></tr>
-          <tr><td class="border border-gray-200 p-3 font-semibold">4</td><td class="border border-gray-200 p-3">Biology</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/biology.html">View →</a></td></tr>
-          <tr><td class="border border-gray-200 p-3 font-semibold">5</td><td class="border border-gray-200 p-3">English</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/english.html">View →</a></td></tr>
-          <tr><td class="border border-gray-200 p-3 font-semibold">6</td><td class="border border-gray-200 p-3">Islamiat</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/islamiat.html">View →</a></td></tr>
-          <tr><td class="border border-gray-200 p-3 font-semibold">7</td><td class="border border-gray-200 p-3">Computer Science</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/computer-science.html">View →</a></td></tr>
-          <tr><td class="border border-gray-200 p-3 font-semibold">8</td><td class="border border-gray-200 p-3">Tarjuma-tul-Quran</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/tarjuma-tul-quran.html">View →</a></td></tr>
-          <tr><td class="border border-gray-200 p-3 font-semibold">9</td><td class="border border-gray-200 p-3">Urdu</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/urdu.html">View →</a></td></tr>
+          <tr><td class="border border-gray-200 p-3 font-semibold">1</td><td class="border border-gray-200 p-3">Mathematics</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/mathematics.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-rose-700 hover:underline font-semibold" href="/class9-math-pairing-scheme.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-indigo-700 hover:underline font-semibold" href="/model-papers/9th-class/mathematics.html">View →</a></td></tr>
+          <tr><td class="border border-gray-200 p-3 font-semibold">2</td><td class="border border-gray-200 p-3">Physics</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/physics.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-rose-700 hover:underline font-semibold" href="/class9-physics-pairing-scheme.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-indigo-700 hover:underline font-semibold" href="/model-papers/9th-class/physics.html">View →</a></td></tr>
+          <tr><td class="border border-gray-200 p-3 font-semibold">3</td><td class="border border-gray-200 p-3">Chemistry</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/chemistry.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-rose-700 hover:underline font-semibold" href="/class9-chemistry-pairing-scheme.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-indigo-700 hover:underline font-semibold" href="/model-papers/9th-class/chemistry.html">View →</a></td></tr>
+          <tr><td class="border border-gray-200 p-3 font-semibold">4</td><td class="border border-gray-200 p-3">Biology</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/biology.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-rose-700 hover:underline font-semibold" href="/class9-biology-pairing-scheme.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-indigo-700 hover:underline font-semibold" href="/model-papers/9th-class/biology.html">View →</a></td></tr>
+          <tr><td class="border border-gray-200 p-3 font-semibold">5</td><td class="border border-gray-200 p-3">English</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/english.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-rose-700 hover:underline font-semibold" href="/class9-english-pairing-scheme.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-indigo-700 hover:underline font-semibold" href="/model-papers/9th-class/english.html">View →</a></td></tr>
+          <tr><td class="border border-gray-200 p-3 font-semibold">6</td><td class="border border-gray-200 p-3">Islamiat</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/islamiat.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-rose-700 hover:underline font-semibold" href="/class9-islamiat-pairing-scheme.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-indigo-700 hover:underline font-semibold" href="/model-papers/9th-class/islamiat.html">View →</a></td></tr>
+          <tr><td class="border border-gray-200 p-3 font-semibold">7</td><td class="border border-gray-200 p-3">Computer Science</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/computer-science.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-rose-700 hover:underline font-semibold" href="/class9-computer-science-pairing-scheme.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-indigo-700 hover:underline font-semibold" href="/model-papers/9th-class/computer-science.html">View →</a></td></tr>
+          <tr><td class="border border-gray-200 p-3 font-semibold">8</td><td class="border border-gray-200 p-3">Tarjuma-tul-Quran</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/tarjuma-tul-quran.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-rose-700 hover:underline font-semibold" href="/class9-tarjuma-tul-quran-pairing-scheme.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-indigo-700 hover:underline font-semibold" href="/model-papers/9th-class/tarjuma-tul-quran.html">View →</a></td></tr>
+          <tr><td class="border border-gray-200 p-3 font-semibold">9</td><td class="border border-gray-200 p-3">Urdu</td><td class="border border-gray-200 p-3"><span class="status-announced">✅ Announced</span></td><td class="border border-gray-200 p-3"><a class="text-blue-700 hover:underline font-semibold" href="/smart-syllabus/9th-class/urdu.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-rose-700 hover:underline font-semibold" href="/class9-urdu-pairing-scheme.html">View →</a></td><td class="border border-gray-200 p-3"><a class="text-indigo-700 hover:underline font-semibold" href="/model-papers/9th-class/urdu.html">View →</a></td></tr>
         </tbody>
       </table>
     </div>
-    <p class="text-sm text-gray-500 italic">Legend: ⏳ Pending = no 2027 official notification verified yet. ✅ Announced = official notification issued; details available on the subject page.</p>
+    <p class="text-sm text-gray-500 italic">Legend: ✅ Announced = official notification issued. Blue = Smart Syllabus, Rose = Pairing Scheme, Indigo = Model Paper.</p>
 
     <!-- ===== SUBJECT CARDS GRID ===== -->
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-4" id="subjects">All 9 Class 9 Subjects — 2027</h2>
@@ -677,6 +740,84 @@
       <li><strong>Bookmark this page</strong> — the status table and subject pages reflect the official 2027 notification.</li>
     </ul>
 
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <!-- ═══ NEW SECTION: Complete 2027 Study Resources for Class 9 ═══ -->
+    <!-- ═══════════════════════════════════════════════════════════════ -->
+    <section id="study-resources" aria-labelledby="study-resources-heading" class="my-12">
+      <h2 id="study-resources-heading" class="text-2xl md:text-3xl font-bold text-gray-900 mb-3">Complete 2027 Study Resources for Class 9</h2>
+      <p class="text-gray-700 leading-8 mb-6">
+        The Smart Syllabus tells you <strong>what to skip</strong>. The Pairing Scheme tells you <strong>what carries the most marks</strong>. The Model Papers let you <strong>practise under real exam conditions</strong>. Use all three together — that is the fastest route from "syllabus understood" to "exam ready".
+      </p>
+
+      <!-- Three pillar cards (semantic article within nav-like block) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+
+        <a href="https://hiraacademy.com.pk/pairing-scheme.html" class="resource-card rc-pairing" aria-label="View all 9th class pairing schemes 2027">
+          <span class="rc-tag">📋 Pairing Scheme</span>
+          <span class="rc-title">All 9 Class 9 subjects · chapter-wise weightage</span>
+          <span class="rc-desc">See exactly which chapters carry the highest marks before you revise them.</span>
+          <span class="rc-cta">View pairing schemes →</span>
+        </a>
+
+        <a href="https://hiraacademy.com.pk/model-papers/9th-class/" class="resource-card rc-model" aria-label="Download 9th class model papers 2027">
+          <span class="rc-tag">📄 Model Papers</span>
+          <span class="rc-title">All 9 subjects · free PDF download</span>
+          <span class="rc-desc">PECTAA-aligned full papers with preview, print, and download for timed practice.</span>
+          <span class="rc-cta">Download model papers →</span>
+        </a>
+
+        <a href="https://hiraacademy.com.pk/smart-syllabus/" class="resource-card rc-syllabus" aria-label="Check smart syllabus status for all subjects">
+          <span class="rc-tag">📚 Smart Syllabus</span>
+          <span class="rc-title">All 18 subjects · live status dashboard</span>
+          <span class="rc-desc">You are here. Check any subject's announcement status and deleted topics.</span>
+          <span class="rc-cta">Check status →</span>
+        </a>
+
+      </div>
+
+      <!-- Subject-wise quick links: Pairing Scheme + Model Paper per subject -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+
+        <div class="bg-white border border-rose-100 rounded-2xl p-5">
+          <h3 class="text-lg font-bold text-rose-800 mb-3">📋 Class 9 Pairing Schemes 2027</h3>
+          <ul class="xlink-list">
+            <li><a class="xlink-item" href="/class9-math-pairing-scheme.html"><span>Mathematics</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/class9-physics-pairing-scheme.html"><span>Physics</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/class9-chemistry-pairing-scheme.html"><span>Chemistry</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/class9-biology-pairing-scheme.html"><span>Biology</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/class9-english-pairing-scheme.html"><span>English</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/class9-islamiat-pairing-scheme.html"><span>Islamiat</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/class9-computer-science-pairing-scheme.html"><span>Computer Science</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/class9-tarjuma-tul-quran-pairing-scheme.html"><span>Tarjuma-tul-Quran</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/class9-urdu-pairing-scheme.html"><span>Urdu</span><span>→</span></a></li>
+          </ul>
+          <p class="mt-3 text-sm"><a class="text-rose-700 font-semibold hover:underline" href="https://hiraacademy.com.pk/pairing-scheme.html">View all pairing schemes →</a></p>
+        </div>
+
+        <div class="bg-white border border-indigo-100 rounded-2xl p-5">
+          <h3 class="text-lg font-bold text-indigo-800 mb-3">📄 Class 9 Model Papers 2027</h3>
+          <ul class="xlink-list">
+            <li><a class="xlink-item" href="/model-papers/9th-class/mathematics.html"><span>Mathematics</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/model-papers/9th-class/physics.html"><span>Physics</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/model-papers/9th-class/chemistry.html"><span>Chemistry</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/model-papers/9th-class/biology.html"><span>Biology</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/model-papers/9th-class/english.html"><span>English</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/model-papers/9th-class/islamiat.html"><span>Islamiat</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/model-papers/9th-class/computer-science.html"><span>Computer Science</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/model-papers/9th-class/tarjuma-tul-quran.html"><span>Tarjuma-tul-Quran</span><span>→</span></a></li>
+            <li><a class="xlink-item" href="/model-papers/9th-class/urdu.html"><span>Urdu</span><span>→</span></a></li>
+          </ul>
+          <p class="mt-3 text-sm"><a class="text-indigo-700 font-semibold hover:underline" href="https://hiraacademy.com.pk/model-papers/9th-class/">View all Class 9 model papers →</a></p>
+        </div>
+
+      </div>
+
+      <p class="text-sm text-gray-600 mt-6 leading-relaxed">
+        💡 <strong>Recommended workflow:</strong> Read the smart syllabus status for your subject first → check the pairing scheme to prioritise chapters → attempt the matching model paper under timed conditions → repeat one week later.
+      </p>
+    </section>
+    <!-- ═══ END NEW SECTION ═══ -->
+
     <!-- ===== PECTAA OFFICIAL ===== -->
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-4" id="pectaa">What Does PECTAA Officially Say?</h2>
     <p class="text-gray-700 leading-8">PECTAA's Curriculum &amp; Compliance page is the most reliable official reference. The Grade-9 Smart Syllabus (ALP), Pairing Schemes, and Model Papers for the Academic Session 2026-27 and BISEs Annual Examination-2027 have now been officially notified and are to be uploaded on the PECTAA website.</p>
@@ -758,9 +899,9 @@
     }
     </script>
 
-    <!-- ===== CROSS LINKS ===== -->
+    <!-- ===== CROSS LINKS ═══ UPDATED: now includes model-papers/9th-class/ ═══ -->
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-4" id="cross-links">Related Pages</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 my-6">
       <a href="/smart-syllabus/" class="block bg-blue-50 border border-blue-100 rounded-2xl p-5 hover:border-blue-400 hover:shadow-lg transition">
         <div class="font-bold text-blue-900 mb-1">Master Dashboard</div>
         <div class="text-sm text-gray-600">All 18 subjects across Class 9 and 10</div>
@@ -769,9 +910,13 @@
         <div class="font-bold text-purple-900 mb-1">Class 10 Hub</div>
         <div class="text-sm text-gray-600">All 9 subjects for 10th class</div>
       </a>
-      <a href="https://hiraacademy.com.pk/smart-syllabus-9th-class-2027-punjab.html" class="block bg-emerald-50 border border-emerald-100 rounded-2xl p-5 hover:border-emerald-400 hover:shadow-lg transition">
-        <div class="font-bold text-emerald-900 mb-1">9th Class Overview Article</div>
-        <div class="text-sm text-gray-600">Full narrative article (existing page)</div>
+      <a href="https://hiraacademy.com.pk/pairing-scheme.html" class="block bg-rose-50 border border-rose-100 rounded-2xl p-5 hover:border-rose-400 hover:shadow-lg transition">
+        <div class="font-bold text-rose-900 mb-1">Pairing Schemes 2027</div>
+        <div class="text-sm text-gray-600">All subjects, original + revised</div>
+      </a>
+      <a href="https://hiraacademy.com.pk/model-papers/9th-class/" class="block bg-indigo-50 border border-indigo-100 rounded-2xl p-5 hover:border-indigo-400 hover:shadow-lg transition">
+        <div class="font-bold text-indigo-900 mb-1">Class 9 Model Papers</div>
+        <div class="text-sm text-gray-600">All 9 subjects, 2027</div>
       </a>
     </div>
 
@@ -791,18 +936,13 @@
       </div>
     </div>
 
-    <!-- ===== E-E-A-T AUTHOR CARD ===== -->
+    <!-- ===== E-E-A-T AUTHOR CARD (unchanged) ===== -->
 <div class="mt-12 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 border border-blue-100 rounded-2xl p-6 md:p-8 shadow-sm">
-
-  <!-- Header -->
   <div class="flex items-center gap-3 mb-5">
     <span class="text-3xl">✍️</span>
     <h2 class="text-2xl md:text-3xl font-bold text-slate-900">About the Author</h2>
   </div>
-
   <div class="flex flex-col sm:flex-row gap-5 items-start">
-
-    <!-- Avatar block -->
     <div class="flex flex-col items-center sm:items-start gap-2 shrink-0">
       <div class="w-24 h-24 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex items-center justify-center font-bold text-3xl shadow-lg ring-4 ring-white">
         MT
@@ -812,81 +952,56 @@
         Verified Author
       </span>
     </div>
-
-    <!-- Author details -->
     <div class="flex-1 min-w-0">
-
       <h3 class="text-2xl font-bold text-slate-900 mb-1">
         <a href="https://hiraacademy.com.pk/about.html#muhammad-tayyab" class="hover:text-blue-700 transition-colors underline decoration-blue-300 decoration-2 underline-offset-4">
           Muhammad Tayyab
         </a>
       </h3>
-
       <p class="text-blue-800 font-semibold mb-1">MSc Mathematics · Secondary School Educator (SSE)</p>
       <p class="text-slate-600 text-sm mb-4">School Education Department, Government of the Punjab · Posted at Govt Christian High School Daska · Hira Science Academy</p>
-
-      <!-- Credentials grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
-
         <div class="flex items-start gap-2 text-sm text-slate-700">
           <span class="text-blue-600 mt-0.5">🎓</span>
           <span><strong class="text-slate-900">MSc Mathematics</strong><br/><span class="text-slate-500 text-xs">Postgraduate degree</span></span>
         </div>
-
         <div class="flex items-start gap-2 text-sm text-slate-700">
           <span class="text-blue-600 mt-0.5">🏛️</span>
           <span><strong class="text-slate-900">School Education Department</strong><br/><span class="text-slate-500 text-xs">Government of the Punjab</span></span>
         </div>
-
         <div class="flex items-start gap-2 text-sm text-slate-700">
           <span class="text-blue-600 mt-0.5">🏫</span>
           <span><strong class="text-slate-900">Govt Christian High School, Daska</strong><br/><span class="text-slate-500 text-xs">Secondary School Educator (SSE)</span></span>
         </div>
-
         <div class="flex items-start gap-2 text-sm text-slate-700">
           <span class="text-blue-600 mt-0.5">📘</span>
           <span><strong class="text-slate-900">Class 9 &amp; 10 Mathematics</strong><br/><span class="text-slate-500 text-xs">Teaching &amp; PECTAA curriculum resources</span></span>
         </div>
-
       </div>
-
-      <!-- Bio -->
       <p class="text-slate-700 leading-7 text-sm mb-4 text-justify">
         <strong>Muhammad Tayyab</strong> is an MSc Mathematics teacher and Secondary School Educator (SSE) in the School Education Department, Government of the Punjab, posted at Govt Christian High School Daska. He develops Punjab Board (PECTAA) curriculum-aligned learning resources for Class 9 and 10 students through Hira Science Academy, with a focus on clear, step-by-step mathematical reasoning and exam preparation.
       </p>
-
-      <!-- E-E-A-T links row -->
       <div class="flex flex-wrap gap-2 pt-3 border-t border-blue-100">
-
         <a href="https://hiraacademy.com.pk/about.html#muhammad-tayyab" class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 bg-white border border-blue-200 rounded-full px-3 py-1.5 hover:border-blue-500 hover:shadow transition">
           <span>👤</span> Full profile
         </a>
-
         <a href="https://hiraacademy.com.pk/contact.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 bg-white border border-blue-200 rounded-full px-3 py-1.5 hover:border-blue-500 hover:shadow transition">
           <span>📧</span> Contact
         </a>
-
         <a href="https://x.com/hiraacademyDSK" class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 bg-white border border-blue-200 rounded-full px-3 py-1.5 hover:border-blue-500 hover:shadow transition" rel="noopener noreferrer" target="_blank">
           <span>𝕏</span> Follow
         </a>
-
         <a href="https://hiraacademy.com.pk/blog.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-blue-700 bg-white border border-blue-200 rounded-full px-3 py-1.5 hover:border-blue-500 hover:shadow transition">
           <span>📚</span> Articles
         </a>
-
       </div>
-
     </div>
   </div>
-
-  <!-- Reviewer note -->
   <div class="mt-5 pt-4 border-t border-blue-100 flex items-start gap-2 text-xs text-slate-600">
     <span class="text-emerald-600 mt-0.5">✔</span>
     <p><strong class="text-slate-800">Editorial note:</strong> This page was written, fact-checked, and updated by the author named above. All official references (PECTAA notifications, BISE board links) are cited inline. Content is reviewed regularly to remain accurate for the applicable examination year.</p>
   </div>
-
 </div>
-<!-- ===== END E-E-A-T AUTHOR CARD ===== -->
 
   </article>
 
@@ -894,7 +1009,6 @@
   <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
     <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
-
         <div class="md:col-span-1 text-center md:text-left">
           <a class="flex flex-col md:flex-row items-center md:items-start gap-3 group" href="https://hiraacademy.com.pk/index.html">
             <img alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" src="https://hiraacademy.com.pk/images/logo.webp"/>
@@ -902,7 +1016,6 @@
           </a>
           <p class="mt-4 text-sm text-gray-200 leading-6">Subject specialist education by Muhammad Tayyab (MSc Mathematics) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
         </div>
-
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
           <ul class="space-y-2">
@@ -912,17 +1025,16 @@
             <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/fsc-entry-test.html">Entry Test Preparation</a></li>
           </ul>
         </div>
-
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
           <ul class="space-y-2">
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/pairing-scheme.html">Pairing Schemes 2027</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/model-papers.html">Model Papers 2027</a></li>
+            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/smart-syllabus/">Smart Syllabus 2027</a></li>
             <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/blog.html">Study Tips &amp; Blog</a></li>
-            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/career-services.html">Career Guidance</a></li>
             <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/student-portal.html">Student Portal</a></li>
-            <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/events.html">Events &amp; Workshops</a></li>
           </ul>
         </div>
-
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
           <ul class="space-y-2">
@@ -932,7 +1044,6 @@
             <li><a class="hover:text-cyan-400 transition-colors" href="https://hiraacademy.com.pk/accessibility.html">Accessibility</a></li>
           </ul>
         </div>
-
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
           <ul class="space-y-2">
@@ -942,7 +1053,6 @@
           </ul>
         </div>
       </div>
-
       <div class="mt-12 border-t border-blue-700 pt-6 space-y-2">
         <p class="text-base text-gray-200 text-center">
           © 2026 Hira Science Academy. All rights reserved. | Smart Syllabus — Class 9 All Subjects
