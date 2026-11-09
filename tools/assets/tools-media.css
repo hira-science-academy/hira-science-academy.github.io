@@ -1,0 +1,63 @@
+/* Hira Science Academy: shared styles for media/converter tool pages */
+body { background:#f9fafb; color:#0f172a; }
+.skip-link { position:absolute; left:-999px; top:0; background:#0369a1; color:#fff; padding:.75rem 1rem; z-index:100; border-radius:0 0 .5rem 0; }
+.skip-link:focus { left:0; }
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible, .dropzone:focus-visible { outline:3px solid #0ea5e9; outline-offset:2px; }
+.header-gradient { background:linear-gradient(135deg,#020617 0%,#0f172a 40%,#1e1b4b 100%) !important; position:relative; overflow:hidden; }
+.header-gradient::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 20% 30%,rgba(37,99,235,.15),transparent 60%),radial-gradient(circle at 80% 70%,rgba(99,102,241,.08),transparent 50%); pointer-events:none; }
+.glass-card { background:rgba(255,255,255,.7); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,.4); box-shadow:0 8px 32px rgba(0,0,0,.05); }
+nav.bg-white\/80 { background:rgba(255,255,255,.85) !important; backdrop-filter:blur(12px); border-bottom:1px solid #e2e8f0; }
+.bg-blue-900 { background:linear-gradient(135deg,#020617 0%,#0f172a 40%,#1e1b4b 100%) !important; border-top:1px solid rgba(37,99,235,.15); }
+.student-portal-blink { animation:portalPulse 1.8s infinite ease-in-out; }
+@keyframes portalPulse { 0%{box-shadow:0 0 0 rgba(250,204,21,.6);} 50%{box-shadow:0 0 18px rgba(250,204,21,.9);} 100%{box-shadow:0 0 0 rgba(250,204,21,.6);} }
+.back-to-top { position:fixed; bottom:6rem; right:1.5rem; background:#0284c7; color:#fff; width:3.5rem; height:3.5rem; border-radius:9999px; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 25px -5px rgba(2,132,199,.5); opacity:0; visibility:hidden; transition:all .3s; cursor:pointer; z-index:40; font-size:1.25rem; font-weight:700; border:0; }
+.back-to-top.show { opacity:1; visibility:visible; }
+.back-to-top:hover { background:#0369a1; }
+.hero-centered, .hero-centered .hero-inner { text-align:center !important; }
+.hero-centered .hero-inner { display:flex; flex-direction:column; align-items:center; }
+.hero-centered h1, .hero-centered p { text-align:center !important; margin-left:auto; margin-right:auto; }
+.hero-title { text-wrap:balance; line-height:1.15; }
+.hero-sub { text-wrap:balance; }
+.ad-slot { min-height:100px; } .ad-inline { text-align:center; clear:both; }
+.ad-label { font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:#475569; margin:0 0 .25rem; text-align:center; }
+nav[aria-label="Breadcrumb"], nav[aria-label="Breadcrumb"] a { color:#1e293b; }
+nav[aria-label="Breadcrumb"] li[aria-current="page"] { color:#020617; }
+article, article p, article li { color:#0f172a; } article h2, article h3 { color:#020617; }
+.faq-answer { color:#0f172a; }
+article section > p, article ul:not(.grid) li, article ol li, .faq-answer { text-align:justify; text-justify:inter-word; -webkit-hyphens:auto; hyphens:auto; overflow-wrap:break-word; }
+.plain-lead { background:#f0f9ff; border-left:4px solid #0ea5e9; padding:.875rem 1rem; border-radius:.5rem; color:#0c4a6e; font-size:.9375rem; line-height:1.6; }
+.hint-line { font-size:.8125rem; color:#1e293b; margin-top:.25rem; }
+.pw-bad { color:#b91c1c; font-weight:600; }
+.calc-error.is-visible { display:block; }
+.quick-row { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; margin:.75rem 0 0; }
+
+.tools-page .ic-ui p, .tools-page .ic-ui dd, .tools-page .ic-ui dt { text-align:left; hyphens:none; }
+.dropzone { border:2px dashed #38bdf8; background:#f0f9ff; border-radius:1rem; padding:1.75rem 1rem; text-align:center; cursor:pointer; transition:background .15s,border-color .15s; }
+.dropzone:hover, .dropzone.is-drag { background:#e0f2fe; border-color:#0284c7; }
+.tools-page .dropzone p { text-align:center; }
+.dz-title { font-weight:700; color:#0c4a6e; font-size:1.0625rem; } .dz-sub { font-size:.875rem; color:#1e293b; margin-top:.25rem; }
+.file-info { margin-top:1rem; padding:.75rem 1rem; background:#f8fafc; border:1px solid #e2e8f0; border-radius:.75rem; }
+.file-info .file-name-line { font-weight:700; color:#0b1220; word-break:break-all; } .file-info .file-meta-line { font-size:.875rem; color:#1e293b; }
+.ic-ui fieldset { border:0; padding:0; margin:1.25rem 0 0; min-width:0; } .ic-ui fieldset:disabled { opacity:.55; }
+.ic-ui legend { padding:0; margin-bottom:.5rem; font-family:'Montserrat',sans-serif; font-weight:800; color:#0c4a6e; }
+.settings-grid { display:grid; grid-template-columns:1fr; gap:1rem; } @media (min-width:640px){ .settings-grid { grid-template-columns:1fr 1fr; } }
+.range { width:100%; accent-color:#0284c7; min-height:32px; }
+.action-row { display:flex; flex-wrap:wrap; align-items:center; gap:.75rem; margin-top:1.25rem; }
+.btn-calc:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+.busy-text { font-size:.875rem; font-weight:600; color:#0369a1; }
+.result-panel .result-value.compact { font-size:1.25rem; }
+.stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; margin:1rem 0 0; }
+.stat { background:#fff; border:1px solid #e2e8f0; border-radius:.75rem; padding:.75rem .5rem; text-align:center; }
+.stat dt { font-size:.75rem; font-weight:600; color:#334155; }
+.stat dd { margin:.25rem 0 0; font-family:'JetBrains Mono',monospace; font-weight:700; color:#0b1220; font-size:.95rem; word-break:break-word; text-align:center; }
+.result-meta { margin-top:.75rem; font-size:.875rem; color:#1e293b; }
+.result-warning { margin-top:.75rem; padding:.75rem 1rem; background:#fef3c7; border:1px solid #fde68a; color:#78350f; border-radius:.75rem; font-size:.9rem; line-height:1.5; }
+.size-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.size-table { width:100%; min-width:30rem; border-collapse:collapse; font-size:.9rem; }
+.size-table th, .size-table td { border:1px solid #e2e8f0; padding:.5rem .75rem; text-align:left; vertical-align:top; color:#0f172a; }
+.size-table thead th { background:#f0f9ff; color:#0c4a6e; }
+
+@media (max-width:540px) {
+  .calc-input, .calc-select { font-size:16px; min-height:48px; } .btn-calc { min-height:48px; flex:1 1 auto; } .stat-grid { grid-template-columns:1fr; }
+}
+@media (prefers-reduced-motion: reduce) { .student-portal-blink { animation:none; } }
