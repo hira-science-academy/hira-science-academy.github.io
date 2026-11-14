@@ -52,7 +52,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://hiraacademy.com.pk/images/apple-touch-icon.png" />
   <link rel="manifest" href="https://hiraacademy.com.pk/images/site.webmanifest" />
 
-  <meta name="theme-color" content="#be123c" />
+  <meta name="theme-color" content="#0f172a" />
 
   <!-- Fonts & Preconnects -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -69,8 +69,8 @@
             sans: ['Poppins', 'Inter', 'sans-serif'],
           },
           colors: {
-            primary: { 50:'#fff1f2',100:'#ffe4e6',200:'#fecdd3',300:'#fda4af',400:'#fb7185',500:'#f43f5e',600:'#e11d48',700:'#be123c',800:'#9f1239',900:'#881337' },
-            secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+            primary: { 50:'#f8fafc',100:'#f1f5f9',200:'#e2e8f0',300:'#cbd5e1',400:'#94a3b8',500:'#64748b',600:'#475569',700:'#334155',800:'#1e293b',900:'#0f172a',950:'#020617' },
+            secondary: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81',950:'#1e1b4b' }
           }
         }
       }
@@ -78,37 +78,65 @@
   </script>
 
   <style>
-    :root { --primary: #be123c; }
-    body { font-family: 'Inter', 'Poppins', sans-serif; background: #f9fafb; }
+    :root { --primary: #312e81; --deep: #020617; }
+    body { font-family: 'Inter', 'Poppins', sans-serif; background: #f8fafc; }
     html { scroll-behavior: smooth; }
-    .header-gradient { background: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%); }
-    .pattern-bg { background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.08) 2%, transparent 2%), radial-gradient(circle at 75px 75px, rgba(255,255,255,0.08) 2%, transparent 2%); background-size: 100px 100px; }
+
+    /* ==== DARKER, PROFESSIONAL HEADER ==== */
+    .header-gradient {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 45%, #312e81 100%);
+      position: relative;
+    }
+    .header-gradient::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #6366f1 0%, #a5b4fc 50%, #6366f1 100%);
+    }
+
+    .pattern-bg { background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.06) 2%, transparent 2%), radial-gradient(circle at 75px 75px, rgba(255,255,255,0.06) 2%, transparent 2%); background-size: 100px 100px; }
+    
     .student-portal-blink { animation: portalPulse 1.8s infinite ease-in-out; position: relative; }
     @keyframes portalPulse { 0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); } 50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); } 100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); } }
     .student-portal-blink::after { content: ''; position: absolute; top: -6px; right: -6px; width: 10px; height: 10px; background: #22c55e; border-radius: 50%; animation: portalPulse 1.8s infinite; }
-    .back-to-top { position: fixed; bottom: 6rem; right: 1.5rem; background: #be123c; color: white; width: 3.5rem; height: 3.5rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px -5px rgba(190,18,60,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; cursor: pointer; z-index: 40; }
+    
+    .back-to-top { position: fixed; bottom: 6rem; right: 1.5rem; background: #1e1b4b; color: white; width: 3.5rem; height: 3.5rem; border-radius: 9999px; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 25px -5px rgba(30,27,75,0.6); opacity: 0; visibility: hidden; transition: all 0.3s; cursor: pointer; z-index: 40; }
     .back-to-top.show { opacity: 1; visibility: visible; }
-    .back-to-top:hover { background: #9f1239; transform: translateY(-5px); }
+    .back-to-top:hover { background: #020617; transform: translateY(-5px); }
+    
     .reading-progress-container { position: fixed; top: 80px; left: 0; width: 100%; height: 4px; background: #e2e8f0; z-index: 1001; }
-    .reading-progress-bar { width: 0%; height: 100%; background: #4c1d95; transition: width 0.1s ease-out; }
+    .reading-progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, #020617, #312e81, #6366f1); transition: width 0.1s ease-out; }
     @media (max-width: 768px) { .reading-progress-container { top: 64px; } }
-    .btn-view { background: #4c1d95; color: white; padding: 0.5rem 0.9rem; border-radius: 8px; font-weight: 500; font-size: 0.8rem; transition: all 0.3s; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 5px rgba(76,29,149,0.2); text-decoration: none; }
-    .btn-view:hover { background: #6d28d9; transform: translateY(-2px); color: white; }
+    
+    .btn-view { background: #1e1b4b; color: white; padding: 0.5rem 0.9rem; border-radius: 8px; font-weight: 500; font-size: 0.8rem; transition: all 0.3s; display: inline-flex; align-items: center; gap: 5px; box-shadow: 0 2px 5px rgba(30,27,75,0.2); text-decoration: none; }
+    .btn-view:hover { background: #312e81; transform: translateY(-2px); color: white; }
+    
     iframe { border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    
     .subject-table { border-collapse: collapse; width: 100%; }
-    .subject-table th { background: #ede9fe; font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid #4c1d95; }
+    .subject-table th { background: #f1f5f9; font-weight: 600; text-align: left; padding: 12px 16px; border-bottom: 2px solid #312e81; color: #0f172a; }
     .subject-table td { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
-    .subject-table tr:hover { background: #f5f3ff; }
+    .subject-table tr:hover { background: #f8fafc; }
+    
     details summary::-webkit-details-marker { display: none; }
     details summary { list-style: none; }
+    
     .faq-item { background: #fff; border-radius: 12px; border: 1px solid #f1f5f9; transition: all 0.2s; }
-    .faq-item:hover { border-color: #c4b5fd; }
+    .faq-item:hover { border-color: #c7d2fe; }
     .faq-question { cursor: pointer; padding: 1.25rem 1.5rem; font-weight: 600; color: #1e293b; display: flex; justify-content: space-between; align-items: center; }
-    .faq-question:hover { color: #4c1d95; }
+    .faq-question:hover { color: #312e81; }
     .faq-answer { padding: 0 1.5rem 1.25rem 1.5rem; color: #475569; line-height: 1.7; display: none; }
     .faq-answer.open { display: block; }
     .faq-icon { transition: transform 0.3s; }
     .faq-icon.open { transform: rotate(180deg); }
+
+    /* ==== DARKER, PROFESSIONAL FOOTER ==== */
+    .footer-dark {
+      background: linear-gradient(135deg, #020617 0%, #0f172a 50%, #1e1b4b 100%);
+    }
+    .footer-link { color: #cbd5e1; transition: color 0.2s; }
+    .footer-link:hover { color: #818cf8; }
   </style>
 
   <!-- JSON-LD Schema -->
@@ -150,31 +178,6 @@
         "publisher": { "@id": "https://hiraacademy.com.pk/#organization" },
         "datePublished": "2026-07-31",
         "dateModified": "2026-07-31"
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "What is the paper pattern for Class 10 English 2027 under the new syllabus?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The 2027 Class 10 English paper is 75 marks: 19 marks objective (MCQs) and 56 marks subjective. The scheme follows the new 2027 syllabus with SLO-based assessment." }
-          },
-          {
-            "@type": "Question",
-            "name": "How are MCQs distributed in 10th English 2027?",
-            "acceptedAnswer": { "@type": "Answer", "text": "MCQs: 5 marks for correct forms of verbs, 4 marks for spellings, 5 marks for meanings of underlined words, 5 marks for grammar options." }
-          },
-          {
-            "@type": "Question",
-            "name": "Is this pairing scheme valid for all Punjab Boards?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes, this scheme is based on the new 2027 curriculum followed by all 9 BISE Punjab boards: Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, and Sahiwal." }
-          },
-          {
-            "@type": "Question",
-            "name": "Who prepared this pairing scheme?",
-            "acceptedAnswer": { "@type": "Answer", "text": "This scheme is prepared by Muhammad Tayyab (MSc Mathematics), Subject Specialist at Govt Christian High School Daska, with over 10 years of experience in board exam analysis." }
-          }
-        ]
       }
     ]
   }
@@ -194,84 +197,71 @@
       <div class="flex-shrink-0 flex items-center">
         <a href="index.html" class="flex items-center gap-3 group transition duration-300" aria-label="Hira Science Academy - Home">
           <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" width="40" height="40" loading="eager">
-          <!-- Two-tone: indigo → rose -->
-          <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary-700 to-secondary-600 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
+          <!-- Two-tone: dark slate → indigo -->
+          <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary-900 to-secondary-800 bg-clip-text text-transparent group-hover:scale-105 transition">Hira Science Academy</span>
         </a>
       </div>
       <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
-        <a href="index.html#home" class="nav-link text-gray-900 hover:text-primary-700 px-2 py-2 text-sm font-medium transition">Home</a>
-        <a href="index.html#notes" class="nav-link text-gray-900 hover:text-primary-700 px-2 py-2 text-sm font-medium transition">Notes</a>
-        <a href="index.html#courses" class="nav-link text-gray-900 hover:text-primary-700 px-2 py-2 text-sm font-medium transition">Courses</a>
-        <a href="index.html#features" class="nav-link text-gray-900 hover:text-primary-700 px-2 py-2 text-sm font-medium transition">Features</a>
-        <a href="index.html#tools" class="nav-link text-gray-900 hover:text-primary-700 px-2 py-2 text-sm font-medium transition whitespace-nowrap">Tools &amp; Calculators</a>
-        <a href="index.html#blog-preview" class="nav-link text-gray-900 hover:text-primary-700 px-2 py-2 text-sm font-medium transition">Blog</a>
-        <a href="index.html#contact" class="nav-link text-gray-900 hover:text-primary-700 px-2 py-2 text-sm font-medium transition">Contact</a>
-        <a href="student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-secondary-500 hover:bg-secondary-600 text-white px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform-gpu hover:scale-105"><span aria-hidden="true">🎓</span> Student Portal</a>
+        <a href="index.html#home" class="nav-link text-gray-900 hover:text-primary-900 px-2 py-2 text-sm font-medium transition">Home</a>
+        <a href="index.html#notes" class="nav-link text-gray-900 hover:text-primary-900 px-2 py-2 text-sm font-medium transition">Notes</a>
+        <a href="index.html#courses" class="nav-link text-gray-900 hover:text-primary-900 px-2 py-2 text-sm font-medium transition">Courses</a>
+        <a href="index.html#features" class="nav-link text-gray-900 hover:text-primary-900 px-2 py-2 text-sm font-medium transition">Features</a>
+        <a href="index.html#tools" class="nav-link text-gray-900 hover:text-primary-900 px-2 py-2 text-sm font-medium transition whitespace-nowrap">Tools &amp; Calculators</a>
+        <a href="index.html#blog-preview" class="nav-link text-gray-900 hover:text-primary-900 px-2 py-2 text-sm font-medium transition">Blog</a>
+        <a href="index.html#contact" class="nav-link text-gray-900 hover:text-primary-900 px-2 py-2 text-sm font-medium transition">Contact</a>
+        <a href="student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-secondary-700 hover:bg-secondary-800 text-white px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition transform-gpu hover:scale-105"><span aria-hidden="true">🎓</span> Student Portal</a>
       </div>
       <div class="flex items-center md:hidden">
-        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500" aria-label="Toggle main menu">
+        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500" aria-label="Toggle main menu">
           <span class="sr-only">Open main menu</span>
           <svg class="block h-6 w-6" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-          <svg class="hidden h-6 w-6" id="menu-icon-close" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
       </div>
     </div>
   </div>
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl" role="menu">
     <div class="px-4 pt-2 pb-6 space-y-1">
-      <a href="index.html#home" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-gray-50 transition" role="menuitem">Home</a>
-      <a href="index.html#notes" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-gray-50 transition" role="menuitem">Notes</a>
-      <a href="index.html#courses" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-gray-50 transition" role="menuitem">Courses</a>
-      <a href="index.html#features" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-gray-50 transition" role="menuitem">Features</a>
-      <a href="index.html#tools" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-gray-50 transition whitespace-nowrap" role="menuitem">Tools &amp; Calculators</a>
-      <a href="index.html#blog-preview" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-gray-50 transition" role="menuitem">Blog</a>
-      <a href="index.html#contact" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-700 hover:bg-gray-50 transition" role="menuitem">Contact</a>
-      <div class="pt-4"><a href="student-portal.html" class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-white bg-secondary-500 transform-gpu hover:scale-105 transition" role="menuitem"><span aria-hidden="true">🎓</span> Student Portal</a></div>
+      <a href="index.html#home" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 transition" role="menuitem">Home</a>
+      <a href="index.html#notes" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 transition" role="menuitem">Notes</a>
+      <a href="index.html#courses" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 transition" role="menuitem">Courses</a>
+      <a href="index.html#features" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 transition" role="menuitem">Features</a>
+      <a href="index.html#tools" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 transition whitespace-nowrap" role="menuitem">Tools &amp; Calculators</a>
+      <a href="index.html#blog-preview" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 transition" role="menuitem">Blog</a>
+      <a href="index.html#contact" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-900 hover:bg-gray-50 transition" role="menuitem">Contact</a>
+      <div class="pt-4"><a href="student-portal.html" class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-white bg-secondary-700 transform-gpu hover:scale-105 transition" role="menuitem"><span aria-hidden="true">🎓</span> Student Portal</a></div>
     </div>
   </div>
 </nav>
 
-  <!-- ===== HERO SECTION ===== -->
-  <!-- ⭐ LCP Optimized Header Section with original styles and mathematical grid -->
-<header class="header-gradient text-white relative py-20 md:py-28 overflow-hidden text-center shadow-lg">
-  <!-- Clean Grid Pattern Overlay -->
+  <!-- ===== HERO SECTION (DARKER PROFESSIONAL) ===== -->
+<header class="header-gradient text-white relative py-20 md:py-28 overflow-hidden text-center shadow-xl">
   <div class="absolute inset-0 pointer-events-none" 
-       style="
-         background-image: 
-           linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-           linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-         background-size: 40px 40px;
-       ">
+       style="background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 40px 40px;">
   </div>
-  <div class="absolute inset-0 pointer-events-none pattern-bg opacity-10"></div>
+  <div class="absolute inset-0 pointer-events-none pattern-bg opacity-20"></div>
 
   <div class="max-w-5xl mx-auto px-6 relative z-10">
-    <!-- Original Badge Style Preserved -->
-    <div class="inline-block bg-yellow-400 text-gray-900 font-bold px-5 py-2 rounded-full text-sm mb-6 shadow-lg animate-pulse">
+    <div class="inline-block bg-indigo-500 text-white font-bold px-5 py-2 rounded-full text-sm mb-6 shadow-lg animate-pulse">
       📢 2027 BOARD EXAMS – PAIRING SCHEME (NEW SYLLABUS)
     </div>
 
-    <!-- ✅ VISIBLE H1 for SEO -->
     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 tracking-tight">
       Class 10 English Pairing Scheme 2027<br>
-      <span class="bg-gradient-to-r from-yellow-300 to-yellow-500 bg-clip-text text-transparent">Punjab Board | New Syllabus</span>
+      <span class="bg-gradient-to-r from-indigo-300 to-indigo-500 bg-clip-text text-transparent">Punjab Board | New Syllabus</span>
     </h1>
 
-    <!-- Original Text Colors and Styles Preserved Exactly -->
-    <p class="text-xl text-indigo-100 max-w-3xl mx-auto mb-8 leading-relaxed">
-      Chapter-wise marks distribution, MCQs, short &amp; long questions for <strong>10th Class English</strong> (2027 Exams) based on the new syllabus. Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist.
+    <p class="text-xl text-slate-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+      Chapter-wise marks distribution, MCQs, short &amp; long questions for <strong>10th Class English</strong> (2027 Exams) based on the new ALP syllabus. Prepared by <strong>Muhammad Tayyab</strong>, Subject Specialist.
     </p>
 
-    <!-- Badges layout -->
     <div class="flex flex-wrap justify-center gap-4 text-sm font-medium">
-      <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">📖 75 Marks Total</span>
-      <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">✅ 19 MCQs</span>
-      <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">📝 10 Short Qs</span>
-      <span class="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">📄 46 Long/Subjective</span>
+      <span class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">📖 75 Marks Total</span>
+      <span class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">✅ 19 MCQs</span>
+      <span class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">📝 10 Short Qs</span>
+      <span class="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/10">📄 46 Subjective</span>
     </div>
   </div>
 
-  <!-- Section divider blending into the content below -->
   <svg class="absolute bottom-0 left-0 w-full text-gray-50" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
     <path fill="currentColor" d="M0,32 C240,60 480,0 720,16 C960,32 1200,60 1440,24 L1440,60 L0,60 Z"></path>
   </svg>
@@ -279,38 +269,30 @@
 
   <!-- ===== ALL BISE BOARDS TRUST ===== -->
   <div class="max-w-7xl mx-auto px-6 py-8 -mt-4">
-    <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-5 text-center shadow-sm">
-      <p class="text-lg font-medium text-indigo-800 flex flex-wrap items-center justify-center gap-2">
+    <div class="bg-indigo-50/80 border border-indigo-100 rounded-2xl p-5 text-center shadow-sm">
+      <p class="text-lg font-medium text-indigo-950 flex flex-wrap items-center justify-center gap-2">
         <span>✅ Valid for all <strong>9 BISE Punjab boards</strong> (2027 Exams):</span>
-        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Lahore</span>
-        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Gujranwala</span>
-        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Multan</span>
-        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Rawalpindi</span>
-        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Faisalabad</span>
-        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Sargodha</span>
-        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">DG Khan</span>
-        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Bahawalpur</span>
-        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm">Sahiwal</span>
+        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm text-gray-700">Lahore</span>
+        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm text-gray-700">Gujranwala</span>
+        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm text-gray-700">Multan</span>
+        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm text-gray-700">Rawalpindi</span>
+        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm text-gray-700">Faisalabad</span>
+        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm text-gray-700">Sargodha</span>
+        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm text-gray-700">DG Khan</span>
+        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm text-gray-700">Bahawalpur</span>
+        <span class="text-sm bg-white px-3 py-1 rounded-full shadow-sm text-gray-700">Sahiwal</span>
       </p>
     </div>
   </div>
-<!-- ============================================================ -->
-<!-- Ad Slot — 10 English Pairing Scheme 2027                     -->
-<!-- ============================================================ -->
+
+<!-- Ad Slot -->
 <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
-  <p class="ad-label">Advertisement</p>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
-       crossorigin="anonymous"></script>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="5573518503"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>
-       (adsbygoogle = window.adsbygoogle || []).push({});
-  </script>
+  <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">Advertisement</p>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="5573518503" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
 </div>
+
   <!-- ===== PDF VIEWER SECTION ===== -->
   <section class="py-12 bg-white">
     <div class="max-w-5xl mx-auto px-6">
@@ -320,10 +302,10 @@
         <a href="https://drive.google.com/uc?export=download&id=1hsFMvgiZNLBRhkkkQuf39HQRZatnDjMh" class="btn-view text-base px-6 py-3">
           ⬇️ Download Scheme PDF
         </a>
-        <button onclick="printPDF()" class="btn-view text-base px-6 py-3 bg-gray-700 hover:bg-gray-800">
+        <button onclick="printPDF()" class="btn-view text-base px-6 py-3 bg-gray-800 hover:bg-gray-900">
           🖨️ Print Scheme
         </button>
-        <a href="https://drive.google.com/file/d/1hsFMvgiZNLBRhkkkQuf39HQRZatnDjMh/view?usp=sharing" target="_blank" class="btn-view text-base px-6 py-3 bg-purple-600 hover:bg-purple-700">
+        <a href="https://drive.google.com/file/d/1hsFMvgiZNLBRhkkkQuf39HQRZatnDjMh/view?usp=sharing" target="_blank" class="btn-view text-base px-6 py-3 bg-indigo-700 hover:bg-indigo-800">
           ⛶ Open Fullscreen
         </a>
       </div>
@@ -345,122 +327,44 @@
     </div>
   </section>
 
-<!-- ===== HIRA ACADEMY SOCIAL SHARING BLOCK ===== -->
+<!-- ===== SOCIAL SHARING BLOCK ===== -->
 <div class="text-center my-6 social-share-block">
-  <p class="font-semibold mb-3 text-primary-700">
+  <p class="font-semibold mb-3 text-primary-900">
     Found this helpful? Share it with others.
   </p>
 
   <div class="flex justify-center gap-3 flex-wrap">
-
-    <!-- Facebook -->
-    <a data-share="facebook"
-       href="https://www.facebook.com/"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Share this page on Facebook"
-       style="background-color:#1877F2 !important; color:#FFFFFF !important;"
-       class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition shadow-md focus:outline-none focus:ring-4 focus:ring-blue-300">
-      Facebook
-    </a>
-
-    <!-- WhatsApp -->
-    <a data-share="whatsapp"
-       href="https://api.whatsapp.com/"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Share this page on WhatsApp"
-       style="background-color:#25D366 !important; color:#FFFFFF !important;"
-       class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">
-      WhatsApp
-    </a>
-
-    <!-- Twitter / X -->
-    <a data-share="twitter"
-       href="https://twitter.com/"
-       target="_blank"
-       rel="noopener noreferrer"
-       aria-label="Share this page on X"
-       style="background-color:#0F172A !important; color:#FFFFFF !important;"
-       class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">
-      Twitter / X
-    </a>
-
-    <!-- Copy Link -->
-    <button data-share="copy"
-       type="button"
-       aria-label="Copy this page link"
-       style="background-color:#374151 !important; color:#FFFFFF !important;"
-       class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">
-      Copy Link
-    </button>
-
+    <a data-share="facebook" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Share this page on Facebook" style="background-color:#1877F2 !important; color:#FFFFFF !important;" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition shadow-md focus:outline-none focus:ring-4 focus:ring-blue-300">Facebook</a>
+    <a data-share="whatsapp" href="https://api.whatsapp.com/" target="_blank" rel="noopener noreferrer" aria-label="Share this page on WhatsApp" style="background-color:#25D366 !important; color:#FFFFFF !important;" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition shadow-md focus:outline-none focus:ring-4 focus:ring-green-300">WhatsApp</a>
+    <a data-share="twitter" href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Share this page on X" style="background-color:#0F172A !important; color:#FFFFFF !important;" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">Twitter / X</a>
+    <button data-share="copy" type="button" aria-label="Copy this page link" style="background-color:#374151 !important; color:#FFFFFF !important;" class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg font-semibold hover:opacity-90 transition shadow-md focus:outline-none focus:ring-4 focus:ring-gray-400">Copy Link</button>
   </div>
-
-  <p data-share="status"
-     class="text-sm mt-3 text-gray-600"
-     role="status"
-     aria-live="polite"></p>
+  <p data-share="status" class="text-sm mt-3 text-gray-600" role="status" aria-live="polite"></p>
 </div>
 
 <script>
 (function () {
   "use strict";
-
-  // Locate this sharing block.
   document.querySelectorAll(".social-share-block").forEach(function (block) {
-
-    // Use the canonical URL when available.
     const canonical = document.querySelector('link[rel="canonical"]');
-
-    const shareUrl = canonical && canonical.href
-      ? canonical.href
-      : window.location.href.split("#")[0];
-
-    // Use the current page title automatically.
+    const shareUrl = canonical && canonical.href ? canonical.href : window.location.href.split("#")[0];
     const shareText = document.title || "Hira Science Academy";
-
     const facebook = block.querySelector('[data-share="facebook"]');
     const whatsapp = block.querySelector('[data-share="whatsapp"]');
     const twitter = block.querySelector('[data-share="twitter"]');
     const copyButton = block.querySelector('[data-share="copy"]');
     const status = block.querySelector('[data-share="status"]');
-
-    // Generate correct sharing URLs for this page.
-    if (facebook) {
-      facebook.href =
-        "https://www.facebook.com/sharer/sharer.php?u=" +
-        encodeURIComponent(shareUrl);
-    }
-
-    if (whatsapp) {
-      whatsapp.href =
-        "https://api.whatsapp.com/send?text=" +
-        encodeURIComponent(shareText + " " + shareUrl);
-    }
-
-    if (twitter) {
-      twitter.href =
-        "https://twitter.com/intent/tweet?text=" +
-        encodeURIComponent(shareText) +
-        "&url=" + encodeURIComponent(shareUrl);
-    }
-
-    // Copy the current page link.
+    if (facebook) facebook.href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl);
+    if (whatsapp) whatsapp.href = "https://api.whatsapp.com/send?text=" + encodeURIComponent(shareText + " " + shareUrl);
+    if (twitter) twitter.href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText) + "&url=" + encodeURIComponent(shareUrl);
     if (copyButton) {
       copyButton.addEventListener("click", async function () {
         try {
           if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(shareUrl);
-          } else {
-            throw new Error("Clipboard API unavailable");
-          }
-
-          if (status) {
-            status.textContent = "Page link copied successfully!";
-          }
+          } else { throw new Error("Clipboard API unavailable"); }
+          if (status) status.textContent = "Page link copied successfully!";
         } catch (error) {
-          // Fallback for browsers that block clipboard access.
           window.prompt("Copy this page link:", shareUrl);
         }
       });
@@ -468,45 +372,62 @@
   });
 })();
 </script>
-<!-- ===== END SOCIAL SHARING BLOCK ===== -->
 
-  <!-- ===== DETAILED SCHEME TABLES (UPDATED FROM WORD DOC) ===== -->
+  <!-- ===== DETAILED SCHEME TABLES (UPDATED FROM PDF) ===== -->
   <section class="py-16 bg-gray-50">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">📊 Class 10 English – Chapter-wise Breakdown (2027 Syllabus)</h2>
-      <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">Detailed distribution of MCQs, short questions, and long questions for 10th English 2027 based on the new curriculum.</p>
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">📊 Class 10 English – Paper Breakdown (2027 Syllabus)</h2>
+      <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">Detailed distribution of MCQs, short questions, and subjective questions for 10th English 2027 based on the ALP curriculum.</p>
 
       <!-- Total Marks Summary -->
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center">
-          <span class="text-3xl font-bold text-indigo-700">75</span>
+          <span class="text-3xl font-bold text-primary-900">75</span>
           <p class="text-sm text-gray-600">Total Marks</p>
         </div>
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center">
-          <span class="text-3xl font-bold text-indigo-700">19</span>
-          <p class="text-sm text-gray-600">MCQs (Objective)</p>
+          <span class="text-3xl font-bold text-primary-900">19</span>
+          <p class="text-sm text-gray-600">Objective (MCQs)</p>
         </div>
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center">
-          <span class="text-3xl font-bold text-indigo-700">10</span>
+          <span class="text-3xl font-bold text-primary-900">10</span>
           <p class="text-sm text-gray-600">Short Questions</p>
         </div>
         <div class="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 text-center">
-          <span class="text-3xl font-bold text-indigo-700">46</span>
+          <span class="text-3xl font-bold text-primary-900">46</span>
           <p class="text-sm text-gray-600">Subjective / Long</p>
         </div>
       </div>
 
       <!-- MCQs Table -->
       <div class="bg-white rounded-2xl shadow-md overflow-hidden mb-8 border border-gray-100">
-        <h3 class="text-xl font-bold text-indigo-700 p-5 border-b bg-indigo-50/50">📝 MCQs Distribution (19 Marks)</h3>
+        <h3 class="text-xl font-bold text-primary-900 p-5 border-b bg-slate-50">📝 Objective Type – MCQs (19 Marks)</h3>
         <div class="overflow-x-auto">
           <table class="subject-table">
-            <thead><tr><th>Part</th><th>Description</th><th>Marks</th></tr></thead>
+            <thead><tr><th>Part</th><th>Description / Syllabus</th><th>Marks</th></tr></thead>
             <tbody>
-              <tr><td>(a)</td><td>Correct forms of verbs</td><td>5</td></tr>
-              <tr><td>(b)</td><td>Correct spellings (Unit 1–5 + Review-I: 2 marks, Unit 6–10 + Review-II: 2 marks)</td><td>4</td></tr>
-              <tr><td>(c)</td><td>Correct meanings of underlined words (Unit 1–5: 2 marks, Unit 6–10: 3 marks)</td><td>5</td></tr>
-              <tr><td>(d)</td><td>Grammar options (Textbook English-10 + Grammar & Composition)</td><td>5</td></tr>
+              <tr>
+                <td class="font-semibold">(a)</td>
+                <td>Choose the correct forms of the verbs (English Grammar and Composition 9-10)</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">(b)</td>
+                <td>Choose the words with correct spellings.<br>
+                <span class="text-sm text-gray-500">Units 1, 2, 3, 5 + Review-I = 2 marks<br>Units 6, 8, 9 + Review-II = 2 marks</span></td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">(c)</td>
+                <td>Choose the correct meanings of the underlined words.<br>
+                <span class="text-sm text-gray-500">Units 1, 2, 3, 5 + Review-I = 2 marks<br>Units 6, 8, 9 + Review-II = 3 marks</span></td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">(d)</td>
+                <td>Choose the correct option according to grammar (Textbook + Grammar & Composition)</td>
+                <td>5</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -514,14 +435,18 @@
 
       <!-- Short Questions -->
       <div class="bg-white rounded-2xl shadow-md overflow-hidden mb-8 border border-gray-100">
-        <h3 class="text-xl font-bold text-indigo-700 p-5 border-b bg-indigo-50/50">📝 Short Questions (10 Marks)</h3>
+        <h3 class="text-xl font-bold text-primary-900 p-5 border-b bg-slate-50">📝 Subjective Type – Short Questions (10 Marks)</h3>
         <div class="overflow-x-auto">
           <table class="subject-table">
-            <thead><tr><th>Question</th><th>Units</th><th>Attempt</th><th>Marks</th></tr></thead>
+            <thead><tr><th>Question</th><th>Units Covered</th><th>Attempt</th><th>Marks</th></tr></thead>
             <tbody>
-              <tr><td>Q.2 (i–iv)</td><td>Unit 1–5 + Review-I</td><td>Any 5 out of 8 total</td><td>10</td></tr>
-              <tr><td>Q.2 (v–viii)</td><td>Unit 6–10 + Review-II</td><td>Any 5 out of 8 total</td><td>10</td></tr>
-              <tr><td colspan="3" class="font-bold text-indigo-700">Total Short Q Marks</td><td>10 (after selection)</td></tr>
+              <tr>
+                <td>Q.2</td>
+                <td>Write short answers to any <strong>five</strong> out of the eight questions.<br>
+                <span class="text-sm text-gray-500">Units 1, 2, 3, 5 + Review-I = 4 questions<br>Units 6, 8, 9 + Review-II = 4 questions</span></td>
+                <td>5 of 8</td>
+                <td>2 × 5 = 10</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -529,59 +454,45 @@
 
       <!-- Subjective / Essay Type (46 Marks) -->
       <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-gray-100">
-        <h3 class="text-xl font-bold text-indigo-700 p-5 border-b bg-indigo-50/50">📝 Subjective / Essay Type (46 Marks)</h3>
+        <h3 class="text-xl font-bold text-primary-900 p-5 border-b bg-slate-50">📝 Subjective Type – Detailed Questions (46 Marks)</h3>
         <div class="overflow-x-auto">
           <table class="subject-table">
             <thead><tr><th>Question</th><th>Description / Choice Breakdown</th><th>Marks</th></tr></thead>
             <tbody>
-              <tr><td>Q.3</td><td>Translate 1 out of 2 paragraphs into Urdu OR rewrite into simple English. Para 1: Units 1, 3, 4, 5; Para 2: Units 6, 8, 10</td><td>8</td></tr>
-              <tr><td>Q.4</td><td>Write down summary of the poem OR explain the stanza with reference to context.</td><td>5</td></tr>
-              <tr><td>Q.5</td><td>Write an Essay (150–200 words) on 1 out of 3 topics OR Write a Paragraph (100–150 words) on 1 out of 3 topics.</td><td>15</td></tr>
-              <tr><td>Q.6</td><td>Change any 5 out of 8 sentences into indirect form (Direct / Indirect Speech).</td><td>5</td></tr>
-              <tr><td>Q.7</td><td>Use any 5 out of 8 pairs of words in your own sentences.</td><td>5</td></tr>
-              <tr><td>Q.8</td><td>Translate paragraph from Urdu into English. (OR for English Medium Candidates: Write a paragraph of 10 sentences on a given topic).</td><td>8</td></tr>
+              <tr>
+                <td class="font-semibold">Q.3</td>
+                <td>Translate any <strong>one</strong> out of the two paragraphs into Urdu / Re-write into simple English.<br>
+                <span class="text-sm text-gray-500">Unit 1, 2, 3, 5 + Review-I = 1 paragraph<br>Units 6, 8, 9 + Review-II = 1 paragraph</span></td>
+                <td>8 × 1 = 8</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Q.4</td>
+                <td>Write down the summary of the poem <strong>OR</strong> Explain the stanza with reference to the context.<br><span class="text-sm text-gray-500">(Unit 7 Time Poem is excluded)</span></td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Q.5</td>
+                <td>Write an essay of 150–200 words on any <strong>one</strong> out of three topics <strong>OR</strong> Write a paragraph of 100–150 words on any <strong>one</strong> out of three topics.</td>
+                <td>15 × 1 = 15</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Q.6</td>
+                <td>Change any <strong>five</strong> out of eight sentences into indirect forms (Direct / Indirect Speech).</td>
+                <td>1 × 5 = 5</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Q.7</td>
+                <td>Use any <strong>five</strong> out of the eight pairs of words in your own sentences.</td>
+                <td>1 × 5 = 5</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Q.8</td>
+                <td>Translate the paragraph from Urdu into English. <strong>OR</strong> (For English Medium) Write a paragraph of ten (10) sentences on the given topic.</td>
+                <td>8</td>
+              </tr>
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CHAPTER-WISE DETAILS (from the provided table) ===== -->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center text-gray-900 mb-4">📚 Chapter-wise Syllabus – Class 10 English 2027</h2>
-      <p class="text-center text-gray-600 mb-10 max-w-3xl mx-auto">Complete chapter details with themes, skills, and page numbers based on the new 2027 curriculum.</p>
-      
-      <div class="overflow-x-auto shadow-lg rounded-xl border border-gray-200">
-        <table class="subject-table w-full text-sm">
-          <thead>
-            <tr>
-              <th class="text-left p-3 bg-indigo-50 font-bold border-b-2 border-indigo-600">Unit</th>
-              <th class="text-left p-3 bg-indigo-50 font-bold border-b-2 border-indigo-600">Unit Title</th>
-              <th class="text-left p-3 bg-indigo-50 font-bold border-b-2 border-indigo-600">Theme / Sub-theme</th>
-              <th class="text-left p-3 bg-indigo-50 font-bold border-b-2 border-indigo-600">Reading & Critical Thinking</th>
-              <th class="text-left p-3 bg-indigo-50 font-bold border-b-2 border-indigo-600">Vocabulary & Grammar</th>
-              <th class="text-left p-3 bg-indigo-50 font-bold border-b-2 border-indigo-600">Oral Comm</th>
-              <th class="text-left p-3 bg-indigo-50 font-bold border-b-2 border-indigo-600">Writing Skills</th>
-              <th class="text-left p-3 bg-indigo-50 font-bold border-b-2 border-indigo-600">Page</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>1</td><td class="font-medium">Hazrat Muhammad's (ﷺ) Social Reforms for the Rights of Women, Orphans and Slaves</td><td>Ethics & Values</td><td>Comprehension, Pronunciation, Figurative Language</td><td>Meanings, Context Clues, Idioms</td><td>Arguments & Opinions</td><td>Editing, Hyphens, -ough Words, Paragraph Writing</td><td>1</td></tr>
-            <tr><td>2</td><td class="font-medium">My Beloved Pakistan (Poem)</td><td>Patriotism / National Pride</td><td>Comprehension, MCQs, Join Paragraphs</td><td>Word Family, Inferred Meanings</td><td>Presentation on SDGs</td><td>Dialogue Writing, Proofreading</td><td>16</td></tr>
-            <tr><td>3</td><td class="font-medium">Digital Globalisation Transforming the English Language</td><td>Impact of Digital Globalisation</td><td>Comprehension, MCQs, Objective Summaries</td><td>Adjectival/Prepositional Phrases, Connotative/Denotative</td><td>Partner Interview</td><td>Paragraph Writing, Mechanics</td><td>26</td></tr>
-            <tr><td>4</td><td class="font-medium">The Earth: Act Now for Tomorrow</td><td>SDG / Climate Action</td><td>Comprehension, MCQs, Prior Knowledge</td><td>Figures of Speech</td><td>Dialogue</td><td>Sequencing Events</td><td>38</td></tr>
-            <tr><td>5</td><td class="font-medium">The Happy Prince</td><td>Innovation, Creativity, Success</td><td>Comprehension, Cause/Effect, Skimming/Scanning</td><td>Precise Understanding, Compound Prepositions</td><td>Rhetorical Question, Group Discussion</td><td>Narrative Conclusion, Coherent Writing</td><td>48</td></tr>
-            <tr><td>—</td><td class="font-medium">Review 1</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>61</td></tr>
-            <tr><td>6</td><td class="font-medium">Drug Abuse</td><td>Prevention of Drugs</td><td>Comprehension, MCQs, Critique Plot</td><td>Conjunctions, Transitional Devices</td><td>Conversation on SDGs, Role-Play</td><td>Informative/Explanatory Texts</td><td>63</td></tr>
-            <tr><td>7</td><td class="font-medium">Time (Poem)</td><td>Soft Skills / Time Management</td><td>Comprehension, MCQs, Summary Skills</td><td>Capitalization, Punctuation, Spelling</td><td>Speaking Fluently</td><td>Transitions, Syntax, Formal Style</td><td>72</td></tr>
-            <tr><td>8</td><td class="font-medium">Pollution-Free Pakistan with Greenery All Around</td><td>Nature / Environment Matters</td><td>Comprehension, MCQs, Analytical Response</td><td>Punctuation, Capitalization, Tenses</td><td>Collaborative Discussions</td><td>Analysis of Topics</td><td>80</td></tr>
-            <tr><td>9</td><td class="font-medium">The Road Not Taken (Poem)</td><td>Literature & Poetry / Bravery</td><td>Comprehension, MCQs, Reference to Context, Inferences</td><td>Sentence Patterns, Complex Sentences</td><td>Asking & Answering Questions</td><td>Book Review, Precis, Paraphrasing</td><td>91</td></tr>
-            <tr><td>10</td><td class="font-medium">The Three Questions</td><td>Literature & Poetry / Spiritualism</td><td>Comprehension, MCQs, Analyzing Readings</td><td>Direct and Indirect Narration</td><td>Discussion, Presentation</td><td>Free Writing, Proofreading</td><td>103</td></tr>
-            <tr><td>—</td><td class="font-medium">Review 2</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>114</td></tr>
-          </tbody>
-        </table>
       </div>
     </div>
   </section>
@@ -609,121 +520,37 @@
         <span class="inline-block mt-2 text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">View Scheme →</span>
       </a>
 
-      <!-- Class 9 – Chemistry -->
-      <a href="class9-chemistry-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-red-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-red-100 text-red-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🧪</span><h3 class="text-base font-bold text-gray-900">Class 9 – Chemistry</h3></div>
-        <p class="text-sm text-gray-600">60 Marks | 12 MCQs | 30 Short | 18 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full">View Scheme →</span>
+      <!-- Class 9 – General Science -->
+      <a href="https://hiraacademy.com.pk/class9-general-science-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-sky-600 border-y border-r border-gray-100">
+        <div class="flex items-center gap-3 mb-3"><span class="bg-sky-100 text-sky-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🔬</span><h3 class="text-base font-bold text-gray-900">Class 9 – General Science</h3></div>
+        <p class="text-sm text-gray-600">50 Marks | 12 MCQs | 24 Short | 14 Long</p>
+        <span class="inline-block mt-2 text-xs font-semibold text-sky-600 bg-sky-50 px-3 py-1 rounded-full">View Scheme →</span>
       </a>
 
-      <!-- Class 9 – Biology -->
-      <a href="class9-biology-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-emerald-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-emerald-100 text-emerald-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🧬</span><h3 class="text-base font-bold text-gray-900">Class 9 – Biology</h3></div>
-        <p class="text-sm text-gray-600">60 Marks | 12 MCQs | 30 Short | 18 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 9 – Islamiat -->
-      <a href="class9-islamiat-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-yellow-500 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-yellow-100 text-yellow-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">☪️</span><h3 class="text-base font-bold text-gray-900">Class 9 – Islamiat</h3></div>
-        <p class="text-sm text-gray-600">100 Marks | Objective + Subjective</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-yellow-600 bg-yellow-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 9 – English (NEW) -->
-      <a href="class9-english-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-indigo-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-indigo-100 text-indigo-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">📖</span><h3 class="text-base font-bold text-gray-900">Class 9 – English</h3></div>
-        <p class="text-sm text-gray-600">75 Marks | 19 MCQs | 10 Short | 46 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 9 – Computer Science (NEW) -->
-      <a href="class9-computer-science-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-cyan-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">💻</span><h3 class="text-base font-bold text-gray-900">Class 9 – Computer Science</h3></div>
-        <p class="text-sm text-gray-600">50 Marks | 10 MCQs | 24 Short | 16 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-cyan-600 bg-cyan-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 9 – Tarjuma-tul-Quran (NEW) -->
-      <a href="class9-tarjuma-tul-quran-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-teal-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🕌</span><h3 class="text-base font-bold text-gray-900">Class 9 – Tarjuma-tul-Quran</h3></div>
-        <p class="text-sm text-gray-600">50 Marks | 10 MCQs | 25 Short | 10 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-teal-600 bg-teal-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 9 – Urdu (NEW) -->
-      <a href="class9-urdu-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-emerald-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-emerald-100 text-emerald-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">📖</span><h3 class="text-base font-bold text-gray-900">Class 9 – Urdu (اُردو)</h3></div>
-        <p class="text-sm text-gray-600">75 Marks | 15 MCQs | 60 Subjective</p>
+      <!-- Class 10 – General Science -->
+      <a href="https://hiraacademy.com.pk/class10-general-science-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-emerald-600 border-y border-r border-gray-100">
+        <div class="flex items-center gap-3 mb-3"><span class="bg-emerald-100 text-emerald-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🔬</span><h3 class="text-base font-bold text-gray-900">Class 10 – General Science</h3></div>
+        <p class="text-sm text-gray-600">50 Marks | 12 MCQs | 24 Short | 14 Long</p>
         <span class="inline-block mt-2 text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">View Scheme →</span>
       </a>
 
       <!-- Class 10 – Mathematics -->
-      <a href="class10-math-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-rose-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-rose-100 text-rose-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">📐</span><h3 class="text-base font-bold text-gray-900">Class 10 – Mathematics</h3></div>
+      <a href="class10-math-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-red-700 border-y border-r border-gray-100">
+        <div class="flex items-center gap-3 mb-3"><span class="bg-red-100 text-red-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">📐</span><h3 class="text-base font-bold text-gray-900">Class 10 – Mathematics</h3></div>
         <p class="text-sm text-gray-600">75 Marks | 15 MCQs | 36 Short | 24 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-rose-600 bg-rose-50 px-3 py-1 rounded-full">View Scheme →</span>
+        <span class="inline-block mt-2 text-xs font-semibold text-red-700 bg-red-50 px-3 py-1 rounded-full">View Scheme →</span>
       </a>
 
-      <!-- Class 10 – Physics -->
-      <a href="class10-physics-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-blue-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-blue-100 text-blue-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">⚛️</span><h3 class="text-base font-bold text-gray-900">Class 10 – Physics</h3></div>
-        <p class="text-sm text-gray-600">60 Marks | 12 MCQs | 30 Short | 18 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-blue-600 bg-blue-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 10 – Chemistry -->
-      <a href="class10-chemistry-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-red-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-red-100 text-red-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🧪</span><h3 class="text-base font-bold text-gray-900">Class 10 – Chemistry</h3></div>
-        <p class="text-sm text-gray-600">60 Marks | 12 MCQs | 30 Short | 18 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 10 – Biology -->
-      <a href="class10-biology-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-emerald-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-emerald-100 text-emerald-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🧬</span><h3 class="text-base font-bold text-gray-900">Class 10 – Biology</h3></div>
-        <p class="text-sm text-gray-600">60 Marks | 12 MCQs | 30 Short | 18 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 10 – Pakistan Studies -->
-      <a href="class10-pakstudies-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-amber-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-amber-100 text-amber-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🇵🇰</span><h3 class="text-base font-bold text-gray-900">Class 10 – Pakistan Studies</h3></div>
-        <p class="text-sm text-gray-600">100 Marks | 20 MCQs | 50 Short | 30 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-amber-600 bg-amber-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 10 – English -->
-      <a href="class10-english-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-indigo-600 border-y border-r border-gray-100">
+      <!-- Class 10 – English (current) -->
+      <a href="class10-english-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-indigo-700 border-y border-r border-gray-100 ring-2 ring-indigo-200">
         <div class="flex items-center gap-3 mb-3"><span class="bg-indigo-100 text-indigo-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">📖</span><h3 class="text-base font-bold text-gray-900">Class 10 – English</h3></div>
-        <p class="text-sm text-gray-600">75 Marks | 19 MCQs | 10 Short | 46 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 10 – Urdu -->
-      <a href="class10-urdu-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-emerald-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-emerald-100 text-emerald-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">📖</span><h3 class="text-base font-bold text-gray-900">Class 10 – Urdu (اُردو)</h3></div>
-        <p class="text-sm text-gray-600">75 Marks | 15 MCQs | 60 Subjective</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 10 – Computer Science (NEW) -->
-      <a href="class10-computer-science-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-cyan-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-cyan-100 text-cyan-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">💻</span><h3 class="text-base font-bold text-gray-900">Class 10 – Computer Science</h3></div>
-        <p class="text-sm text-gray-600">50 Marks | 10 MCQs | 24 Short | 16 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-cyan-600 bg-cyan-50 px-3 py-1 rounded-full">View Scheme →</span>
-      </a>
-
-      <!-- Class 10 – Tarjuma-tul-Quran (NEW) -->
-      <a href="class10-tarjuma-tul-quran-pairing-scheme.html" class="bg-white rounded-2xl shadow-md hover:shadow-xl p-6 transition-all duration-300 border-l-4 border-l-teal-600 border-y border-r border-gray-100">
-        <div class="flex items-center gap-3 mb-3"><span class="bg-teal-100 text-teal-700 w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0">🕌</span><h3 class="text-base font-bold text-gray-900">Class 10 – Tarjuma-tul-Quran</h3></div>
-        <p class="text-sm text-gray-600">50 Marks | 10 MCQs | 25 Short | 10 Long</p>
-        <span class="inline-block mt-2 text-xs font-semibold text-teal-600 bg-teal-50 px-3 py-1 rounded-full">View Scheme →</span>
+        <p class="text-sm text-gray-600">75 Marks | 19 MCQs | 10 Short | 46 Subjective</p>
+        <span class="inline-block mt-2 text-xs font-semibold text-indigo-700 bg-indigo-50 px-3 py-1 rounded-full">You are here →</span>
       </a>
 
     </div>
     <div class="text-center mt-10">
-      <a href="pairing-scheme.html" class="inline-flex items-center gap-2 bg-rose-600 hover:bg-rose-700 text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all text-sm group">
+      <a href="pairing-scheme.html" class="inline-flex items-center gap-2 bg-primary-900 hover:bg-[#020617] text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-all text-sm group">
         📋 View All Pairing Schemes (Master Page)
         <span class="transition-transform group-hover:translate-x-1">→</span>
       </a>
@@ -736,15 +563,15 @@
   <div class="max-w-5xl mx-auto px-6">
     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">📘 How to Prepare for 10th English Board Exam 2027 – Smart Strategies</h2>
     <div class="text-gray-700 leading-relaxed space-y-5 text-justify">
-      <p>The <strong>Class 10 English Pairing Scheme 2027</strong> is your ultimate roadmap to scoring high marks in the Punjab Board examinations. Designed around the <strong>new 2027 syllabus</strong>, this scheme tells you exactly which chapters to prioritize and how marks are distributed across MCQs, short questions, and long questions. By following this scheme, you can adopt the <strong>80/20 principle</strong>—focus 80% of your study time on the 20% of chapters that carry the highest weightage.</p>
+      <p>The <strong>Class 10 English Pairing Scheme 2027</strong> is your ultimate roadmap to scoring high marks in the Punjab Board examinations. Designed around the <strong>new ALP 2027 syllabus</strong>, this scheme tells you exactly which chapters to prioritize and how marks are distributed across MCQs, short questions, and subjective questions.</p>
 
-      <p>Start by analyzing the <strong>MCQs distribution</strong>. There are 19 marks of MCQs covering correct forms of verbs, spellings, meanings of underlined words, and grammar options. Practice these thoroughly from all units. For <strong>short questions</strong>, Q.2 has 8 options (i–viii) and you need to attempt any 5. This means you can skip the toughest ones and still score full marks. Focus on mastering the most frequently tested concepts from each chapter group.</p>
+      <p>Start by analyzing the <strong>MCQs distribution</strong>. There are 19 marks of MCQs covering correct forms of verbs, spellings, meanings of underlined words, and grammar options. Practice these thoroughly from all units, especially focusing on the specific grammar and vocabulary sections mentioned in the scheme. For <strong>short questions</strong>, Q.2 has 8 options and you need to attempt any 5. This means you can skip the toughest ones and still score full marks.</p>
 
-      <p><strong>Long questions</strong> are where you can make the biggest difference. Q.3 (translation), Q.4 (summary/stanza), Q.5 (essay/paragraph), Q.6 (indirect speech), Q.7 (pairs of words), and Q.8 (translation/writing) cover a wide range of skills. Pay special attention to the optional choices in Q.3 and Q.5—you can choose the ones you are most confident in. Practice writing essays, paragraphs, and translations regularly.</p>
+      <p><strong>Subjective questions</strong> are where you can make the biggest difference. Q.3 (translation), Q.4 (summary/stanza), Q.5 (essay/paragraph), Q.6 (indirect speech), Q.7 (pairs of words), and Q.8 (translation/writing) cover a wide range of skills. Pay special attention to the optional choices in Q.3 and Q.5—you can choose the ones you are most confident in. Practice writing essays, paragraphs, and translations regularly.</p>
 
-      <p><strong>Time management</strong> is critical. In the exam, allocate 20 minutes for objective (MCQs) and 2 hours 10 minutes for subjective. Practice solving past papers under timed conditions to build speed and accuracy. Also, focus on <strong>SLO-based questions</strong>—these test your conceptual understanding rather than rote memorization. Use the pairing scheme to identify which SLOs are tested from each chapter.</p>
+      <p><strong>Time management</strong> is critical. In the exam, allocate 20 minutes for objective (MCQs) and 2 hours 10 minutes for subjective. Practice solving past papers under timed conditions to build speed and accuracy. Also, focus on <strong>SLO-based questions</strong>—these test your conceptual understanding rather than rote memorization.</p>
 
-      <p><strong>Common mistakes to avoid:</strong> Don't ignore grammar and vocabulary exercises—they carry significant marks. Don't leave any question blank; attempt everything to earn partial marks. Ensure your handwriting is legible and your answers are well-structured.</p>
+      <p><strong>Common mistakes to avoid:</strong> Don't ignore grammar and vocabulary exercises—they carry significant marks. Don't leave any question blank; attempt everything to earn partial marks. Ensure your handwriting is legible and your answers are well-structured. Remember that <strong>Unit 7 (Time Poem) is excluded</strong> from the Q.4 summary/stanza options.</p>
 
       <p>This pairing scheme has been prepared according to the <strong>PECTAA 2027 curriculum</strong>, which is uniformly followed by all 9 BISE Punjab boards (Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, and Sahiwal). By using this scheme, students can improve their preparation and perform better in the exams. Download the PDF, print it out, and keep it with you throughout your preparation journey.</p>
 
@@ -763,7 +590,7 @@
             <span>What is the paper pattern for Class 10 English 2027 under the new syllabus?</span>
             <span class="faq-icon">▼</span>
           </div>
-          <div class="faq-answer open">The 2027 Class 10 English paper is 75 marks: 19 marks objective (MCQs) and 56 marks subjective. The scheme is based on the new 2027 syllabus with SLO-based assessment.</div>
+          <div class="faq-answer open">The 2027 Class 10 English paper is 75 marks: <strong>19 marks objective (MCQs)</strong> and <strong>56 marks subjective</strong>. The scheme is based on the new 2027 ALP syllabus with SLO-based assessment.</div>
         </div>
         <div class="faq-item">
           <div class="faq-question" onclick="toggleFAQ(this)">
@@ -799,170 +626,123 @@
 
   <!-- ===== INTERNAL LINKING SECTION ===== -->
   <section class="max-w-7xl mx-auto px-6 py-16">
-    <details class="bg-gradient-to-br from-indigo-50 via-white to-purple-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
-      <summary class="text-2xl md:text-3xl font-bold text-indigo-800 cursor-pointer hover:text-indigo-600 list-none flex items-center justify-center gap-3 text-center">
+    <details class="bg-gradient-to-br from-slate-50 via-white to-indigo-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
+      <summary class="text-2xl md:text-3xl font-bold text-primary-900 cursor-pointer hover:text-primary-700 list-none flex items-center justify-center gap-3 text-center">
         <span class="text-3xl">📚</span> Explore Complete Learning Resources (Class 9, 10 &amp; More)
       </summary>
       <div class="mt-8">
-        <h2 class="text-2xl font-bold text-center text-indigo-800 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
+        <h2 class="text-2xl font-bold text-center text-primary-900 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
         <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <h3 class="text-xl font-bold text-rose-700 mb-6 flex items-center"><span class="bg-rose-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
+            <h3 class="text-xl font-bold text-primary-800 mb-6 flex items-center"><span class="bg-slate-100 p-3 rounded-xl text-2xl mr-3">📘</span> Class 9 Resources</h3>
             <ul class="space-y-4 text-sm">
-              <li><a href="Mathematics-9th.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-              <li><a href="Physics-9th.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-              <li><a href="Chemistry-9th.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-              <li><a href="Biology-9th.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
-              <li><a href="Islamiat-9th.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li>
+              <li><a href="Mathematics-9th.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
+              <li><a href="Physics-9th.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
+              <li><a href="Chemistry-9th.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
+              <li><a href="Biology-9th.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
+              <li><a href="Islamiat-9th.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">📿</span>Islamiat Notes</a></li>
             </ul>
           </article>
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <h3 class="text-xl font-bold text-rose-700 mb-6 flex items-center"><span class="bg-pink-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
+            <h3 class="text-xl font-bold text-primary-800 mb-6 flex items-center"><span class="bg-indigo-100 p-3 rounded-xl text-2xl mr-3">📗</span> Class 10 Resources</h3>
             <ul class="space-y-4 text-sm">
-              <li><a href="Mathematics-10th-New-2026.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-              <li><a href="Physics-10th-New-2026.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-              <li><a href="Chemistry-10th.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-              <li><a href="Biology-10th.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
-              <li><a href="PakistanStudies-10th.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li>
+              <li><a href="Mathematics-10th-New-2026.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
+              <li><a href="Physics-10th-New-2026.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">⚛️</span>Physics Notes</a></li>
+              <li><a href="Chemistry-10th.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
+              <li><a href="Biology-10th.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">🧬</span>Biology Notes</a></li>
+              <li><a href="PakistanStudies-10th.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li>
             </ul>
           </article>
           <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
-            <h3 class="text-xl font-bold text-rose-700 mb-6 flex items-center"><span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
+            <h3 class="text-xl font-bold text-primary-800 mb-6 flex items-center"><span class="bg-yellow-100 p-3 rounded-xl text-2xl mr-3">⭐</span> Special Resources</h3>
             <ul class="space-y-4 text-sm">
-              <li><a href="fsc-entry-test.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li>
-              <li><a href="physics-numericals.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li>
-              <li><a href="math-mistakes.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li>
-              <li><a href="physics-formulas.html" class="hover:text-rose-600 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li>
-              <li><a href="blog.html" class="text-rose-600 font-semibold hover:text-rose-700 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li>
+              <li><a href="fsc-entry-test.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li>
+              <li><a href="physics-numericals.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">📊</span>Physics Numericals</a></li>
+              <li><a href="math-mistakes.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li>
+              <li><a href="physics-formulas.html" class="hover:text-primary-700 transition inline-flex items-center"><span class="mr-2">📝</span>Physics Formulas</a></li>
+              <li><a href="blog.html" class="text-primary-700 font-semibold hover:text-primary-900 inline-flex items-center mt-2"><span class="mr-2">📚</span>Study Blog</a></li>
             </ul>
           </article>
         </div>
         <div class="mt-10 text-center">
-          <a href="/" class="inline-flex items-center bg-rose-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-rose-700 hover:shadow-xl transition-all"><span class="mr-3">🏠</span>Return to Homepage</a>
+          <a href="/" class="inline-flex items-center bg-primary-900 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-[#020617] hover:shadow-xl transition-all"><span class="mr-3">🏠</span>Return to Homepage</a>
         </div>
       </div>
     </details>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="bg-indigo-900 text-gray-100 shadow-xl relative z-10">
-    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
+  <!-- ===== DARKER, PROFESSIONAL FOOTER ===== -->
+  <footer class="footer-dark text-gray-100 shadow-xl relative z-10">
+    <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
         <div class="md:col-span-1 text-center md:text-left">
           <a href="/" class="flex flex-col md:flex-row items-center md:items-start gap-3 group">
-            <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition" />
-            <span class="text-xl font-bold bg-gradient-to-r from-cyan-300 to-teal-400 bg-clip-text text-transparent">Hira Science Academy</span>
+            <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/10 group-hover:scale-105 transition" />
+            <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 to-slate-400 bg-clip-text text-transparent">Hira Science Academy</span>
           </a>
-          <p class="mt-4 text-sm text-gray-200">Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
+          <p class="mt-4 text-sm text-slate-300">Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry).</p>
         </div>
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
           <ul class="space-y-2">
-            <li><a href="courses-details.html#class9" class="footer-link hover:text-indigo-300 transition">9th Class</a></li>
-            <li><a href="courses-details.html#class10" class="footer-link hover:text-indigo-300 transition">10th Class</a></li>
-            <li><a href="fsc-entry-test.html" class="footer-link hover:text-indigo-300 transition">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
-            <li><a href="fsc-entry-test.html" class="footer-link hover:text-indigo-300 transition">Entry Test Preparation</a></li>
+            <li><a href="courses-details.html#class9" class="footer-link">9th Class</a></li>
+            <li><a href="courses-details.html#class10" class="footer-link">10th Class</a></li>
+            <li><a href="fsc-entry-test.html" class="footer-link">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+            <li><a href="fsc-entry-test.html" class="footer-link">Entry Test Preparation</a></li>
           </ul>
         </div>
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
           <ul class="space-y-2">
-            <li><a href="blog.html" class="footer-link hover:text-indigo-300 transition">Study Tips &amp; Blog</a></li>
-            <li><a href="career-services.html" class="footer-link hover:text-indigo-300 transition">Career Guidance</a></li>
-            <li><a href="student-portal.html" class="footer-link hover:text-indigo-300 transition">Student Portal</a></li>
-            <li><a href="alumni-network.html" class="footer-link hover:text-indigo-300 transition">Alumni Network</a></li>
-            <li><a href="events.html" class="footer-link hover:text-indigo-300 transition">Events &amp; Workshops</a></li>
+            <li><a href="blog.html" class="footer-link">Study Tips &amp; Blog</a></li>
+            <li><a href="career-services.html" class="footer-link">Career Guidance</a></li>
+            <li><a href="student-portal.html" class="footer-link">Student Portal</a></li>
+            <li><a href="alumni-network.html" class="footer-link">Alumni Network</a></li>
+            <li><a href="events.html" class="footer-link">Events &amp; Workshops</a></li>
           </ul>
         </div>
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
           <ul class="space-y-2">
-            <li><a href="terms.html" class="footer-link hover:text-indigo-300 transition">Terms of Service</a></li>
-            <li><a href="privacy-policy.html" class="footer-link hover:text-indigo-300 transition">Privacy Policy</a></li>
-            <li><a href="refund-policy.html" class="footer-link hover:text-indigo-300 transition">Refund Policy</a></li>
-            <li><a href="accessibility.html" class="footer-link hover:text-indigo-300 transition">Accessibility</a></li>
+            <li><a href="terms.html" class="footer-link">Terms of Service</a></li>
+            <li><a href="privacy-policy.html" class="footer-link">Privacy Policy</a></li>
+            <li><a href="refund-policy.html" class="footer-link">Refund Policy</a></li>
+            <li><a href="accessibility.html" class="footer-link">Accessibility</a></li>
           </ul>
         </div>
         <div class="text-center md:text-left">
           <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
           <ul class="space-y-2">
-            <li><a href="about.html" class="footer-link hover:text-indigo-300 transition">About Hira Academy</a></li>
-            <li><a href="mission.html" class="footer-link hover:text-indigo-300 transition">Our Mission</a></li>
-            <li><a href="contact.html" class="footer-link hover:text-indigo-300 transition">Contact Us</a></li>
+            <li><a href="about.html" class="footer-link">About Hira Academy</a></li>
+            <li><a href="mission.html" class="footer-link">Our Mission</a></li>
+            <li><a href="contact.html" class="footer-link">Contact Us</a></li>
           </ul>
         </div>
       </div>
-      <div class="mt-12 border-t border-indigo-800 pt-6">
-        <p class="text-base text-gray-200 text-center">&copy; 2026-2027 Hira Science Academy. All rights reserved. Serving students of all 9 BISE Punjab boards: Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, and Sahiwal.</p>
-        <p class="text-sm text-gray-300 text-center mt-2">Class 10 English Pairing Scheme 2027 | New Syllabus | Prepared by Muhammad Tayyab</p>
+      <div class="mt-12 border-t border-slate-800 pt-6">
+        <p class="text-base text-slate-400 text-center">&copy; 2026-2027 Hira Science Academy. All rights reserved. Serving students of all 9 BISE Punjab boards: Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, and Sahiwal.</p>
+        <p class="text-sm text-slate-500 text-center mt-2">Class 10 English Pairing Scheme 2027 | New Syllabus | Prepared by Muhammad Tayyab</p>
       </div>
     </div>
   </footer>
 
   <!-- WHATSAPP FLOATING -->
-  <!-- Modern WhatsApp Floating Button -->
-
 <a href="https://wa.me/923007242631?text=Assalam-o-Alaikum%2C%20I%20want%20information%20about%20admission%20at%20Hira%20Science%20Academy."
-target="_blank"
-rel="noopener noreferrer"
-aria-label="Chat with Hira Science Academy on WhatsApp"
+target="_blank" rel="noopener noreferrer" aria-label="Chat with Hira Science Academy on WhatsApp"
 class="fixed bottom-6 left-6 z-50 group">
-
-```
-<div class="flex items-center gap-3">
-
-    <!-- WhatsApp Button -->
-    <div class="relative flex items-center justify-center
-                w-14 h-14 sm:w-16 sm:h-16
-                rounded-full
-                bg-[#25D366]
-                text-white
-                shadow-lg
-                shadow-green-900/25
-                transition-all duration-300
-                group-hover:scale-110
-                group-hover:shadow-xl
-                group-focus-visible:ring-4
-                group-focus-visible:ring-green-400/50">
-
-        <!-- Soft notification ring -->
-        <span class="absolute inset-0 rounded-full
-                     border-2 border-green-300/60
-                     animate-ping opacity-30"></span>
-
-        <!-- WhatsApp Icon -->
-        <svg xmlns="http://www.w3.org/2000/svg"
-             viewBox="0 0 24 24"
-             fill="currentColor"
-             class="relative w-8 h-8 sm:w-9 sm:h-9">
-            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-            <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"/>
-        </svg>
+  <div class="flex items-center gap-3">
+    <div class="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-lg shadow-green-900/25 transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl">
+      <span class="absolute inset-0 rounded-full border-2 border-green-300/60 animate-ping opacity-30"></span>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="relative w-8 h-8 sm:w-9 sm:h-9">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12.004 2C6.48 2 2 6.477 2 12c0 1.766.46 3.424 1.267 4.862L2 22l5.274-1.383A9.96 9.96 0 0 0 12.004 22C17.526 22 22 17.523 22 12S17.526 2 12.004 2zm0 18.003a8.003 8.003 0 0 1-4.083-1.117l-.293-.174-3.131.821.835-3.053-.191-.313A8.002 8.002 0 1 1 12.004 20.003z"/>
+      </svg>
     </div>
-
-    <!-- Desktop Label -->
-    <span class="hidden sm:block
-                 bg-white text-gray-700
-                 px-4 py-2
-                 rounded-full
-                 text-sm font-semibold
-                 shadow-md
-                 opacity-0 translate-x-2
-                 group-hover:opacity-100
-                 group-hover:translate-x-0
-                 transition-all duration-300
-                 whitespace-nowrap">
-        Chat with us
-    </span>
-
-</div>
-
-<span class="sr-only">Chat with Hira Science Academy on WhatsApp</span>
-```
-
+    <span class="hidden sm:block bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-semibold shadow-md opacity-0 translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 whitespace-nowrap">Chat with us</span>
+  </div>
+  <span class="sr-only">Chat with Hira Science Academy on WhatsApp</span>
 </a>
-
 
   <!-- BACK TO TOP -->
   <div class="back-to-top" id="backToTop">↑</div>
