@@ -10,8 +10,10 @@
     gtag('config', 'G-9CK25HVFYZ');
   </script>
 
-  <!-- ✅ Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js?client=ca-pub-4029002473204443" crossorigin="anonymous"></script>
+  <!-- Google AdSense Auto Ads -->
+<script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443"
+    crossorigin="anonymous"></script>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -60,8 +62,13 @@
   <link rel="icon" type="image/png" sizes="512x512" href="https://hiraacademy.com.pk/images/android-chrome-512x512.png" />
   <link rel="manifest" href="https://hiraacademy.com.pk/images/site.webmanifest" />
 
-  <meta name="theme-color" content="#0d6efd" />
-  <meta name="msapplication-TileColor" content="#0d6efd" />
+  <meta name="theme-color" content="#1E3A8A" />
+  <meta name="msapplication-TileColor" content="#1E3A8A" />
+
+  <!-- Preconnect & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;600;700&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -71,11 +78,12 @@
         extend: {
           fontFamily: {
             sans: ['Poppins', 'Inter', 'sans-serif'],
-            display: ['Montserrat', 'sans-serif']
+            urdu: ['Noto Nastaliq Urdu', 'serif'],
           },
           colors: {
-            primary: { 50:'#f0f9ff',100:'#e0f2fe',200:'#bae6fd',300:'#7dd3fc',400:'#38bdf8',500:'#0ea5e9',600:'#0284c7',700:'#0369a1',800:'#075985',900:'#0c4a6e' },
-            secondary: { 50:'#f5f3ff',100:'#ede9fe',200:'#ddd6fe',300:'#c4b5fd',400:'#a78bfa',500:'#8b5cf6',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95' }
+            primary: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e3a8a',900:'#1e3a8a' },
+            secondary: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#312e81',900:'#312e81' },
+            gold: { 50:'#fffbeb',100:'#fef3c7',200:'#fde68a',300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706',700:'#b45309',800:'#92400e',900:'#78350f' }
           }
         }
       }
@@ -83,57 +91,129 @@
   </script>
 
   <style>
+    :root {
+      --primary-blue: #1E3A8A;
+      --secondary-indigo: #312E81;
+      --accent-gold: #F59E0B;
+    }
+    * { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', 'Inter', 'sans-serif';
+      background-color: #F8FAFC;
+      color: #0F172A;
+    }
+    .urdu-text { font-family: 'Noto Nastaliq Urdu', serif; line-height: 2; direction: rtl; }
     section { scroll-margin-top: 120px; padding-top: 40px; }
-    .nav-link.active { color: #0ea5e9 !important; font-weight: 600; position: relative; }
-    .nav-link.active::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 100%; height: 3px; background: linear-gradient(to right, #0ea5e9, #8b5cf6); border-radius: 3px; }
+    .nav-link { transition: color 0.3s ease; position: relative; }
+    .nav-link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: #F59E0B; transition: 0.3s; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link.active { color: #2563eb !important; font-weight: 600; }
+    .nav-link.active::after { width: 100%; background: linear-gradient(to right, #1E3A8A, #F59E0B); }
+
     #mobile-menu { transition: all 0.3s ease-in-out; max-height: 0; overflow: hidden; }
-    #mobile-menu:not(.hidden) { max-height: 500px; }
-    html { scroll-behavior: smooth; }
-    
+    #mobile-menu:not(.hidden) { max-height: 700px; }
+
+    /* Hero gradient like notes page */
+    .header-gradient {
+      background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 45%, #312E81 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .header-gradient::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(30,58,138,0.4), transparent 60%),
+                  radial-gradient(circle at 80% 70%, rgba(49,46,129,0.3), transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Buttons */
+    .btn-view {
+      background: linear-gradient(135deg, #1E3A8A, #312E81) !important;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 4px 12px rgba(30,58,138,0.15);
+      text-decoration: none;
+      border: none;
+    }
+    .btn-view:hover { background: linear-gradient(135deg, #1E3A8A, #F59E0B) !important; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,58,138,0.25); color: white; }
+
+    .hub-button {
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(30,58,138,0.15);
+      background: linear-gradient(135deg, #1E3A8A, #312E81) !important;
+      border: 1px solid rgba(30,58,138,0.2);
+      color: white !important;
+      border-radius: 12px;
+    }
+    .hub-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(30,58,138,0.2);
+      background: linear-gradient(135deg, #1E3A8A, #F59E0B) !important;
+      color: white !important;
+    }
+
+    .back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem; width: 3rem; height: 3rem;
+      background: #1E3A8A; color: white; border-radius: 50%; cursor: pointer;
+      opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 40;
+      display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(30,58,138,0.3); border: none;
+    }
+    .back-to-top.show { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: #F59E0B; transform: scale(1.08); box-shadow: 0 6px 20px rgba(245,158,11,0.3); }
+
+    .student-portal-blink {
+      animation: portalPulse 1.8s infinite ease-in-out;
+      background: #F59E0B; color: #0F172A; border-radius: 999px;
+    }
+    @keyframes portalPulse {
+      0% { box-shadow: 0 0 0px rgba(245,158,11,0.5); }
+      50% { box-shadow: 0 0 18px rgba(245,158,11,0.7); }
+      100% { box-shadow: 0 0 0px rgba(245,158,11,0.5); }
+    }
+
+    .pattern-bg {
+      background-image: linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .chapter-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+      border: 1px solid #E2E8F0;
+    }
+    .chapter-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(30,58,138,0.08); border-color: #1E3A8A; }
+
+    .resource-hub-card {
+      background: white; border-radius: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      border: 1px solid #E2E8F0; padding: 1.25rem; transition: all 0.3s;
+    }
+    .resource-hub-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(30,58,138,0.08); border-color: #1E3A8A; }
+
+    ::selection { background: #1E3A8A; color: white; }
+    ::-webkit-scrollbar { width: 10px; background: #E2E8F0; }
+    ::-webkit-scrollbar-thumb { background: #1E3A8A; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #F59E0B; }
+
     .chapter-tab {
       transition: all 0.2s ease;
     }
     .chapter-tab.active {
-      background: linear-gradient(135deg, #0284c7, #0ea5e9);
+      background: linear-gradient(135deg, #1E3A8A, #312E81);
       color: white;
       border-color: transparent;
-    }
-    
-    .back-to-top {
-      position: fixed; bottom: 6rem; right: 1.5rem; background: #0284c7; color: white;
-      width: 3.5rem; height: 3.5rem; border-radius: 9999px; display: flex; align-items: center;
-      justify-content: center; box-shadow: 0 10px 25px -5px rgba(2,132,199,0.5);
-      opacity: 0; visibility: hidden; transition: all 0.3s; cursor: pointer; z-index: 40;
-    }
-    .back-to-top.show { opacity: 1; visibility: visible; }
-    
-    .student-portal-blink {
-      animation: portalPulse 1.8s infinite ease-in-out;
-      position: relative;
-    }
-    
-    @keyframes portalPulse {
-      0% { box-shadow: 0 0 0px rgba(250,204,21,0.6); transform: scale(1); }
-      50% { box-shadow: 0 0 18px rgba(250,204,21,0.9); }
-      100% { box-shadow: 0 0 0px rgba(250,204,21,0.6); transform: scale(1); }
-    }
-    
-    .student-portal-blink::after {
-      content: '';
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      width: 10px;
-      height: 10px;
-      background: #22c55e;
-      border-radius: 50%;
-      animation: portalPulse 1.8s infinite;
-    }
-    
-    .pattern-bg {
-      background-image: radial-gradient(circle at 25px 25px, rgba(255,255,255,0.1) 2%, transparent 2%),
-                        radial-gradient(circle at 75px 75px, rgba(255,255,255,0.1) 2%, transparent 2%);
-      background-size: 100px 100px;
     }
   </style>
 
@@ -156,32 +236,32 @@
   }
   </script>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-white min-h-screen">
+<body class="min-h-screen">
 
-<!-- ========== NAVIGATION (from index page) ========== -->
-<nav class="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
+<!-- ========== NAVIGATION (consistent with notes page) ========== -->
+<nav class="bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-sm">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between h-20 items-center">
       <div class="flex-shrink-0 flex items-center">
         <a href="../index.html" class="flex items-center gap-3 group transition duration-300">
           <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy Logo" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-          <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">Hira Science Academy</span>
+          <span class="text-xl md:text-2xl font-bold bg-gradient-to-r from-blue-800 to-indigo-800 bg-clip-text text-transparent group-hover:scale-105 transition duration-300">Hira Science Academy</span>
         </a>
       </div>
 
       <div class="hidden md:flex items-center md:ml-auto md:space-x-3 lg:space-x-5">
-        <a href="../index.html#home" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium transition-colors">Home</a>
-        <a href="../index.html#notes" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium transition-colors">Notes</a>
-        <a href="../index.html#courses" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium transition-colors">Courses</a>
-        <a href="../index.html#features" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium transition-colors">Features</a>
-        <a href="../index.html#tools" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium transition-colors whitespace-nowrap">Tools &amp; Calculators</a>
-        <a href="../index.html#blog-preview" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium transition-colors">Blog</a>
-        <a href="../index.html#contact" class="nav-link text-gray-900 hover:text-primary-600 px-2 py-2 text-sm font-medium transition-colors">Contact</a>
+        <a href="../index.html" class="nav-link text-gray-900 hover:text-blue-800 px-2 py-2 text-sm font-medium transition-colors">Home</a>
+        <a href="../index.html#notes" class="nav-link text-gray-900 hover:text-blue-800 px-2 py-2 text-sm font-medium transition-colors">Notes</a>
+        <a href="../index.html#courses" class="nav-link text-gray-900 hover:text-blue-800 px-2 py-2 text-sm font-medium transition-colors">Courses</a>
+        <a href="../index.html#features" class="nav-link text-gray-900 hover:text-blue-800 px-2 py-2 text-sm font-medium transition-colors">Features</a>
+        <a href="../index.html#tools" class="nav-link text-gray-900 hover:text-blue-800 px-2 py-2 text-sm font-medium transition-colors whitespace-nowrap">Tools &amp; Calculators</a>
+        <a href="../index.html#blog-preview" class="nav-link text-gray-900 hover:text-blue-800 px-2 py-2 text-sm font-medium transition-colors">Blog</a>
+        <a href="../index.html#contact" class="nav-link text-gray-900 hover:text-blue-800 px-2 py-2 text-sm font-medium transition-colors">Contact</a>
         <a href="../student-portal.html" class="student-portal-blink ml-2 flex items-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-3 py-2 rounded-full text-xs lg:text-sm font-bold shadow-md transition-all transform hover:scale-105 whitespace-nowrap"><span>🎓</span> Student Portal</a>
       </div>
 
       <div class="flex items-center md:hidden">
-        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500">
+        <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-blue-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
           <span class="sr-only">Open main menu</span>
           <svg class="block h-6 w-6" id="menu-icon-open" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
           <svg class="hidden h-6 w-6" id="menu-icon-close" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
@@ -192,13 +272,13 @@
 
   <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 shadow-xl">
     <div class="px-4 pt-2 pb-6 space-y-1">
-      <a href="../index.html#home" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">Home</a>
-      <a href="../index.html#notes" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">Notes</a>
-      <a href="../index.html#courses" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">Courses</a>
-      <a href="../index.html#features" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">Features</a>
-      <a href="../index.html#tools" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50 whitespace-nowrap">Tools &amp; Calculators</a>
-      <a href="../index.html#blog-preview" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">Blog</a>
-      <a href="../index.html#contact" class="nav-link block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-gray-50">Contact</a>
+      <a href="../index.html" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-gray-50">Home</a>
+      <a href="../index.html#notes" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-gray-50">Notes</a>
+      <a href="../index.html#courses" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-gray-50">Courses</a>
+      <a href="../index.html#features" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-gray-50">Features</a>
+      <a href="../index.html#tools" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-gray-50 whitespace-nowrap">Tools &amp; Calculators</a>
+      <a href="../index.html#blog-preview" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-gray-50">Blog</a>
+      <a href="../index.html#contact" class="block px-3 py-3 rounded-md text-base font-medium text-gray-700 hover:text-blue-700 hover:bg-gray-50">Contact</a>
       <div class="pt-4">
         <a href="../student-portal.html" class="flex items-center justify-center gap-2 w-full px-3 py-4 rounded-xl text-base font-bold text-gray-900 bg-yellow-400">🎓 Student Portal</a>
       </div>
@@ -207,40 +287,45 @@
 </nav>
 
 <!-- ========== HERO SECTION ========== -->
-<section class="relative bg-gradient-to-r from-primary-700 via-secondary-700 to-primary-800 text-white py-20 overflow-hidden">
-  <div class="absolute inset-0 opacity-10 pattern-bg"></div>
-  <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
-    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4">9th Class Mathematics Textbook</h1>
-    <p class="text-xl text-primary-100 mb-2">PECTAA 2025 Syllabus | Punjab Board</p>
-    <p class="text-lg text-primary-200">📚 All 13 Chapters – Free Online Access & PDF Downloads</p>
+<header class="header-gradient text-white relative py-20 md:py-24 overflow-hidden text-center shadow-lg">
+  <div class="absolute top-0 left-0 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+  <div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-500/15 rounded-full blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none"></div>
+  <div class="absolute inset-0 pointer-events-none pattern-bg"></div>
+  <div class="max-w-5xl mx-auto px-6 relative z-10">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 tracking-tight bg-gradient-to-r from-white via-slate-100 to-gold-200 bg-clip-text text-transparent">
+      9th Class Mathematics Textbook
+    </h1>
+    <p class="text-xl text-gold-300 mb-2 font-medium">PECTAA 2025 Syllabus | Punjab Board</p>
+    <p class="text-lg text-blue-200/90">📚 All 13 Chapters – Free Online Access &amp; PDF Downloads</p>
+  
   </div>
-</section>
+</header>
 
 <!-- ========== MAIN CONTENT ========== -->
-<main class="max-w-6xl mx-auto px-4 py-8">
+<main class="max-w-6xl mx-auto px-4 py-10">
 
   <!-- Chapter 1 Title and Description (justified text) -->
-  <div class="text-center mb-6" id="chapterTitle">
-    <p class="text-primary-600 font-semibold text-lg">📘 Chapter 1: Real Numbers</p>
-    <p class="mt-4 text-gray-600 max-w-3xl mx-auto text-justify">
-      Learn and understand the <strong>complete Chapter 1 – Real Numbers</strong> from the <strong>Class 9 Mathematics textbook</strong> with clear explanations, definitions, and examples. This chapter covers rational and irrational numbers, their decimal representations, surds, radicals, and properties of real numbers according to the <strong>Punjab PECTAA 2025 syllabus</strong>. The study of real numbers forms the foundation of mathematics, dealing with different types of numbers, their properties, and how they relate to each other. Understanding the classification and properties of real numbers is essential for solving mathematical problems and building more advanced mathematical concepts.
+  <div class="text-center mb-8" id="chapterTitle">
+    <p class="text-blue-800 font-semibold text-lg">📘 Chapter 1: Real Numbers</p>
+    <p class="mt-4 text-gray-700 max-w-3xl mx-auto text-justify leading-relaxed">
+      Learn and understand the <strong class="text-blue-800">complete Chapter 1 – Real Numbers</strong> from the <strong class="text-blue-800">Class 9 Mathematics textbook</strong> with clear explanations, definitions, and examples. This chapter covers rational and irrational numbers, their decimal representations, surds, radicals, and properties of real numbers according to the <strong class="text-blue-800">Punjab PECTAA 2025 syllabus</strong>. The study of real numbers forms the foundation of mathematics, dealing with different types of numbers, their properties, and how they relate to each other. Understanding the classification and properties of real numbers is essential for solving mathematical problems and building more advanced mathematical concepts.
     </p>
   </div>
 
   <!-- Embedded PDF Viewer (Chapter 1 loaded by default) -->
   <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
-    <div class="bg-gray-100 px-6 py-4 border-b border-gray-200 flex flex-wrap items-center justify-between">
+    <div class="bg-slate-50 px-6 py-4 border-b border-gray-200 flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center gap-2">
-        <span class="bg-green-500 w-3 h-3 rounded-full"></span>
-        <span class="bg-yellow-400 w-3 h-3 rounded-full"></span>
+        <span class="bg-blue-800 w-3 h-3 rounded-full"></span>
+        <span class="bg-gold-500 w-3 h-3 rounded-full"></span>
         <span class="bg-red-500 w-3 h-3 rounded-full"></span>
         <span class="ml-3 text-gray-700 font-medium" id="currentChapterLabel">📁 Chapter 1: Real Numbers</span>
       </div>
       <div class="flex gap-2">
-        <button onclick="downloadCurrentChapter()" id="downloadChapterBtn" class="text-sm bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition flex items-center gap-1">
+        <button onclick="downloadCurrentChapter()" id="downloadChapterBtn" class="text-sm bg-blue-800 hover:bg-blue-900 text-white px-4 py-2 rounded-lg transition flex items-center gap-1">
           ⬇ Download This Chapter
         </button>
-        <button onclick="openInDrive()" id="openDriveBtn" class="text-sm bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-lg transition">
+        <button onclick="openInDrive()" id="openDriveBtn" class="text-sm bg-gold-500 hover:bg-gold-600 text-slate-900 font-semibold px-4 py-2 rounded-lg transition">
           Open in Google Drive ↗
         </button>
       </div>
@@ -258,55 +343,55 @@
   </div>
 
   <!-- Quick Links - All Chapters -->
-  <div class="text-center mt-8">
-    <p class="font-semibold mb-3 text-primary-600 text-lg">📚 Quick Chapter Links:</p>
+  <div class="text-center mt-10">
+    <p class="font-semibold mb-3 text-blue-800 text-lg">📚 Quick Chapter Links:</p>
     <div class="flex flex-wrap justify-center gap-2">
-      <button onclick="loadChapter(1, 'Real Numbers', '1JEG91wuhvXKLknbpA9SlBmXsmSUcCbF6')" class="px-3 py-2 bg-primary-600 text-white rounded-lg shadow hover:bg-primary-700 transition-all duration-300 text-sm font-medium" id="ch1-btn">Chapter 1</button>
-      <button onclick="loadChapter(2, 'Logarithms', '1lXPlXIL4e2l-bYu7cmFInTdwqBqYe1pC')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch2-btn">Chapter 2</button>
-      <button onclick="loadChapter(3, 'Sets and Functions', '18jOlmexgj1P-6VhhWWoqZfMq7CazmPXA')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch3-btn">Chapter 3</button>
-      <button onclick="loadChapter(4, 'Factorization', '1d0tV2CBNoFimwEmJtSfKeg39DJ4oR3hM')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch4-btn">Chapter 4</button>
-      <button onclick="loadChapter(5, 'Linear Equations', '1UjSBxb5Ag1x0zjMENlYrNyssIuwxnQw9')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch5-btn">Chapter 5</button>
-      <button onclick="loadChapter(6, 'Trigonometry', '1JWSMyAwuwNVY7U87-ZktMl1HzzXJD857')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch6-btn">Chapter 6</button>
-      <button onclick="loadChapter(7, 'Coordinate Geometry', '1CEalf1692ThjDj3ORyJyph62Y-uGzCAV')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch7-btn">Chapter 7</button>
-      <button onclick="loadChapter(8, 'Logic', '1sSerR9-rRdg475bz0k-dOlWJYh2dhOHc')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch8-btn">Chapter 8</button>
-      <button onclick="loadChapter(9, 'Similar Figures', '1sdEjRpPQTRgQd-J3QJVLIc5PXA7mvhD-')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch9-btn">Chapter 9</button>
-      <button onclick="loadChapter(10, 'Graphs of Functions', '14iTIjdxaFwWq1XyM8vfG5s0d0f29AzPx')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch10-btn">Chapter 10</button>
-      <button onclick="loadChapter(11, 'Loci and Construction', '1Gc5dB7FOKsCW5xIX5V3manXIXfChvjX8')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch11-btn">Chapter 11</button>
-      <button onclick="loadChapter(12, 'Information Handling', '1M46db19n01DL-j_dwEY3OxLRCP3lEWOl')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch12-btn">Chapter 12</button>
-      <button onclick="loadChapter(13, 'Probability', '1OQOZuprYTAp_bYkogrPv-YFPLVLHa93A')" class="px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium" id="ch13-btn">Chapter 13</button>
+      <button onclick="loadChapter(1, 'Real Numbers', '1JEG91wuhvXKLknbpA9SlBmXsmSUcCbF6')" class="px-3 py-2 bg-blue-800 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch1-btn">Chapter 1</button>
+      <button onclick="loadChapter(2, 'Logarithms', '1lXPlXIL4e2l-bYu7cmFInTdwqBqYe1pC')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch2-btn">Chapter 2</button>
+      <button onclick="loadChapter(3, 'Sets and Functions', '18jOlmexgj1P-6VhhWWoqZfMq7CazmPXA')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch3-btn">Chapter 3</button>
+      <button onclick="loadChapter(4, 'Factorization', '1d0tV2CBNoFimwEmJtSfKeg39DJ4oR3hM')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch4-btn">Chapter 4</button>
+      <button onclick="loadChapter(5, 'Linear Equations', '1UjSBxb5Ag1x0zjMENlYrNyssIuwxnQw9')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch5-btn">Chapter 5</button>
+      <button onclick="loadChapter(6, 'Trigonometry', '1JWSMyAwuwNVY7U87-ZktMl1HzzXJD857')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch6-btn">Chapter 6</button>
+      <button onclick="loadChapter(7, 'Coordinate Geometry', '1CEalf1692ThjDj3ORyJyph62Y-uGzCAV')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch7-btn">Chapter 7</button>
+      <button onclick="loadChapter(8, 'Logic', '1sSerR9-rRdg475bz0k-dOlWJYh2dhOHc')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch8-btn">Chapter 8</button>
+      <button onclick="loadChapter(9, 'Similar Figures', '1sdEjRpPQTRgQd-J3QJVLIc5PXA7mvhD-')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch9-btn">Chapter 9</button>
+      <button onclick="loadChapter(10, 'Graphs of Functions', '14iTIjdxaFwWq1XyM8vfG5s0d0f29AzPx')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch10-btn">Chapter 10</button>
+      <button onclick="loadChapter(11, 'Loci and Construction', '1Gc5dB7FOKsCW5xIX5V3manXIXfChvjX8')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch11-btn">Chapter 11</button>
+      <button onclick="loadChapter(12, 'Information Handling', '1M46db19n01DL-j_dwEY3OxLRCP3lEWOl')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch12-btn">Chapter 12</button>
+      <button onclick="loadChapter(13, 'Probability', '1OQOZuprYTAp_bYkogrPv-YFPLVLHa93A')" class="px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium" id="ch13-btn">Chapter 13</button>
     </div>
   </div>
 
   <!-- Resource Links -->
   <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
-    <a href="https://drive.google.com/file/d/1wsKkWGu8vFO1co2U-bJ0GpDm_5o39DVg/view?usp=sharing" target="_blank" class="bg-blue-50 hover:bg-blue-100 p-4 rounded-xl text-center transition border border-blue-200">
-      <span class="text-2xl block">📚</span>
-      <span class="font-semibold">Complete Textbook</span>
+    <a href="https://drive.google.com/file/d/1wsKkWGu8vFO1co2U-bJ0GpDm_5o39DVg/view?usp=sharing" target="_blank" class="resource-hub-card text-center">
+      <span class="text-3xl block mb-1">📚</span>
+      <span class="font-semibold text-blue-800 block">Complete Textbook</span>
       <span class="text-xs text-gray-500 block">All 13 chapters combined</span>
     </a>
-    <a href="https://drive.google.com/file/d/170ABtht8yKyRB_oiHQ0HNGXa0pyFKT1M/view?usp=sharing" target="_blank" class="bg-green-50 hover:bg-green-100 p-4 rounded-xl text-center transition border border-green-200">
-      <span class="text-2xl block">✅</span>
-      <span class="font-semibold">Solved Answers</span>
+    <a href="https://drive.google.com/file/d/170ABtht8yKyRB_oiHQ0HNGXa0pyFKT1M/view?usp=sharing" target="_blank" class="resource-hub-card text-center">
+      <span class="text-3xl block mb-1">✅</span>
+      <span class="font-semibold text-blue-800 block">Solved Answers</span>
       <span class="text-xs text-gray-500 block">All exercises solutions</span>
     </a>
-    <a href="https://drive.google.com/file/d/1qA8RyjJU_rDLOKxdxPianvYAtMKHMhFQ/view?usp=sharing" target="_blank" class="bg-yellow-50 hover:bg-yellow-100 p-4 rounded-xl text-center transition border border-yellow-200">
-      <span class="text-2xl block">📊</span>
-      <span class="font-semibold">Log & Antilog Tables</span>
+    <a href="https://drive.google.com/file/d/1qA8RyjJU_rDLOKxdxPianvYAtMKHMhFQ/view?usp=sharing" target="_blank" class="resource-hub-card text-center">
+      <span class="text-3xl block mb-1">📊</span>
+      <span class="font-semibold text-blue-800 block">Log &amp; Antilog Tables</span>
       <span class="text-xs text-gray-500 block">For quick calculations</span>
     </a>
   </div>
 
   <!-- Download Section -->
-  <div class="mt-8 flex flex-wrap items-center justify-between bg-blue-50 p-6 rounded-2xl border border-blue-200">
+  <div class="mt-8 flex flex-wrap items-center justify-between bg-blue-50 p-6 rounded-2xl border border-blue-200 gap-4">
     <div>
       <h2 class="text-xl font-bold text-blue-800">📥 Download 9th Class Math Textbook</h2>
       <p class="text-blue-700 mt-1">Complete book or individual chapters. Free for all students.</p>
     </div>
     <div class="flex gap-3 mt-4 sm:mt-0 flex-wrap">
-      <a href="https://drive.google.com/uc?export=download&id=1wsKkWGu8vFO1co2U-bJ0GpDm_5o39DVg" class="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition flex items-center gap-2" onclick="return confirm('Full textbook download (109MB). Continue?')">
+      <a href="https://drive.google.com/uc?export=download&id=1wsKkWGu8vFO1co2U-bJ0GpDm_5o39DVg" class="bg-blue-800 hover:bg-blue-900 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition flex items-center gap-2" onclick="return confirm('Full textbook download (109MB). Continue?')">
         ⬇ Full Book (109MB)
       </a>
-      <a href="../Mathematics-9th.html" class="bg-white border border-primary-500 text-primary-700 hover:bg-primary-50 font-semibold px-6 py-3 rounded-xl shadow-sm transition">
+      <a href="../Mathematics-9th.html" class="bg-white border border-blue-500 text-blue-700 hover:bg-blue-50 font-semibold px-6 py-3 rounded-xl shadow-sm transition">
         📝 Chapter-wise Notes
       </a>
     </div>
@@ -314,78 +399,79 @@
 
   <!-- All Chapters Download Links -->
   <div class="mt-6 bg-white rounded-2xl shadow-md p-6 border border-gray-200">
-    <h3 class="text-lg font-bold text-gray-800 mb-4 flex items-center gap-2">
+    <h3 class="text-lg font-bold text-blue-800 mb-4 flex items-center gap-2">
       <span>📚</span> Download Individual Chapters
     </h3>
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
-      <a href="https://drive.google.com/uc?export=download&id=1JEG91wuhvXKLknbpA9SlBmXsmSUcCbF6" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1JEG91wuhvXKLknbpA9SlBmXsmSUcCbF6" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📘</span>
-        <span class="text-sm font-medium">Chapter 1</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 1</span>
         <span class="text-xs text-gray-500 block">Real Numbers</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1lXPlXIL4e2l-bYu7cmFInTdwqBqYe1pC" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1lXPlXIL4e2l-bYu7cmFInTdwqBqYe1pC" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📗</span>
-        <span class="text-sm font-medium">Chapter 2</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 2</span>
         <span class="text-xs text-gray-500 block">Logarithms</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=18jOlmexgj1P-6VhhWWoqZfMq7CazmPXA" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=18jOlmexgj1P-6VhhWWoqZfMq7CazmPXA" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📙</span>
-        <span class="text-sm font-medium">Chapter 3</span>
-        <span class="text-xs text-gray-500 block">Sets & Functions</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 3</span>
+        <span class="text-xs text-gray-500 block">Sets &amp; Functions</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1d0tV2CBNoFimwEmJtSfKeg39DJ4oR3hM" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1d0tV2CBNoFimwEmJtSfKeg39DJ4oR3hM" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📕</span>
-        <span class="text-sm font-medium">Chapter 4</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 4</span>
         <span class="text-xs text-gray-500 block">Factorization</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1UjSBxb5Ag1x0zjMENlYrNyssIuwxnQw9" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1UjSBxb5Ag1x0zjMENlYrNyssIuwxnQw9" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📓</span>
-        <span class="text-sm font-medium">Chapter 5</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 5</span>
         <span class="text-xs text-gray-500 block">Linear Equations</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1JWSMyAwuwNVY7U87-ZktMl1HzzXJD857" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1JWSMyAwuwNVY7U87-ZktMl1HzzXJD857" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📔</span>
-        <span class="text-sm font-medium">Chapter 6</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 6</span>
         <span class="text-xs text-gray-500 block">Trigonometry</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1CEalf1692ThjDj3ORyJyph62Y-uGzCAV" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1CEalf1692ThjDj3ORyJyph62Y-uGzCAV" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📒</span>
-        <span class="text-sm font-medium">Chapter 7</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 7</span>
         <span class="text-xs text-gray-500 block">Coordinate Geometry</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1sSerR9-rRdg475bz0k-dOlWJYh2dhOHc" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1sSerR9-rRdg475bz0k-dOlWJYh2dhOHc" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📚</span>
-        <span class="text-sm font-medium">Chapter 8</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 8</span>
         <span class="text-xs text-gray-500 block">Logic</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1sdEjRpPQTRgQd-J3QJVLIc5PXA7mvhD-" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1sdEjRpPQTRgQd-J3QJVLIc5PXA7mvhD-" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📖</span>
-        <span class="text-sm font-medium">Chapter 9</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 9</span>
         <span class="text-xs text-gray-500 block">Similar Figures</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=14iTIjdxaFwWq1XyM8vfG5s0d0f29AzPx" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=14iTIjdxaFwWq1XyM8vfG5s0d0f29AzPx" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📘</span>
-        <span class="text-sm font-medium">Chapter 10</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 10</span>
         <span class="text-xs text-gray-500 block">Graphs of Functions</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1Gc5dB7FOKsCW5xIX5V3manXIXfChvjX8" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1Gc5dB7FOKsCW5xIX5V3manXIXfChvjX8" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📗</span>
-        <span class="text-sm font-medium">Chapter 11</span>
-        <span class="text-xs text-gray-500 block">Loci & Construction</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 11</span>
+        <span class="text-xs text-gray-500 block">Loci &amp; Construction</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1M46db19n01DL-j_dwEY3OxLRCP3lEWOl" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1M46db19n01DL-j_dwEY3OxLRCP3lEWOl" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">📙</span>
-        <span class="text-sm font-medium">Chapter 12</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 12</span>
         <span class="text-xs text-gray-500 block">Info Handling</span>
       </a>
-      <a href="https://drive.google.com/uc?export=download&id=1OQOZuprYTAp_bYkogrPv-YFPLVLHa93A" class="text-center p-2 bg-gray-50 rounded-lg hover:bg-primary-50 transition border border-gray-200" download>
+      <a href="https://drive.google.com/uc?export=download&id=1OQOZuprYTAp_bYkogrPv-YFPLVLHa93A" class="text-center p-2 bg-slate-50 rounded-lg hover:bg-blue-50 transition border border-gray-200" download>
         <span class="text-xl block">🎲</span>
-        <span class="text-sm font-medium">Chapter 13</span>
+        <span class="text-sm font-medium text-blue-800">Chapter 13</span>
         <span class="text-xs text-gray-500 block">Probability</span>
       </a>
     </div>
   </div>
 </main>
+
 <!-- ========== OTHER TEXTBOOKS REFERENCE SECTION ========== -->
 <section class="max-w-7xl mx-auto px-6 py-10">
   <div class="bg-blue-50 rounded-2xl p-6 border border-blue-200">
@@ -393,9 +479,9 @@
       <span>📚</span> Complete Set of 9th Class Textbooks (PECTAA 2025)
     </h2>
     <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-3">
-      <a href="Mathematics-9th-Textbook.html" class="bg-white p-3 rounded-xl text-center shadow-sm hover:shadow-md transition border-2 border-primary-200">
+      <a href="Mathematics-9th-Textbook.html" class="bg-white p-3 rounded-xl text-center shadow-sm hover:shadow-md transition border-2 border-blue-300">
         <span class="text-3xl block mb-1">📘</span>
-        <span class="font-semibold text-primary-700 text-sm">Mathematics</span>
+        <span class="font-semibold text-blue-800 text-sm">Mathematics</span>
         <span class="text-xs text-gray-500 block">Full Textbook</span>
       </a>
       <a href="Physics-9th-Textbook.html" class="bg-white p-3 rounded-xl text-center shadow-sm hover:shadow-md transition border border-gray-200 hover:border-blue-300">
@@ -422,211 +508,149 @@
     <p class="text-sm text-gray-600 mt-4 text-center">Click any subject to access the full textbook. Other subjects being uploaded soon.</p>
   </div>
 </section>
-<section class="max-w-7xl mx-auto px-6 py-14">
-  <div class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl shadow-xl p-10 border border-gray-200">
-    <h2 class="text-3xl font-bold text-center text-primary-700 mb-6">Explore Learning Resources Across All Grades</h2>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto text-lg">From structured grade notes to exam preparation material, find everything you need.</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Class 9 Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl transition">
-        <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-blue-100 p-3 rounded-xl mr-3">📘</span> Class 9 Resources</h3>
-        <nav>
-          <ul class="space-y-4">
-            <li><a href="../Mathematics-9th.html" class="hover:text-primary-600 inline-flex items-center"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-            <li><a href="../Physics-9th.html"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-            <li><a href="../Chemistry-9th.html"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-            <li><a href="../Biology-9th.html"><span class="mr-2">🧬</span>Biology Notes</a></li>
-            <li><a href="../Islamiat-9th.html"><span class="mr-2">📿</span>Islamiat Notes</a></li>
-            <li><a href="../smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-primary-600 font-semibold"><span class="mr-2">📋</span>Smart Reduced Syllabus</a></li>
+
+<!-- ========== INTERNAL LINKING SECTION ========== -->
+<section class="max-w-7xl mx-auto px-6 pb-14">
+  <details class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 rounded-3xl shadow-xl p-6 border border-gray-200 transition-all">
+    <summary class="text-2xl md:text-3xl font-bold text-blue-800 cursor-pointer hover:text-blue-700 list-none flex items-center justify-center gap-3 text-center">
+      <span class="text-3xl" aria-hidden="true">📚</span> Explore Complete Learning Resources (Class 9, 10 &amp; More)
+    </summary>
+    <div class="mt-8">
+      <h2 class="text-2xl font-bold text-center text-blue-800 mb-3 tracking-wide">Explore Learning Resources Across All Grades</h2>
+      <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">From structured grade notes to exam preparation material, find everything you need to progress academically—all organized for your ease.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-blue-100 p-3 rounded-xl text-2xl mr-3" aria-hidden="true">📘</span> Class 9 Resources</h3>
+          <nav aria-label="Class 9 Resources">
+            <ul class="space-y-4 text-sm">
+              <li><a href="https://hiraacademy.com.pk/Mathematics-9th.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">🔢</span>Mathematics Notes</a></li>
+              <li><a href="https://hiraacademy.com.pk/Physics-9th.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">⚛️</span>Physics Notes</a></li>
+              <li><a href="https://hiraacademy.com.pk/Chemistry-9th.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">🧪</span>Chemistry Notes</a></li>
+              <li><a href="https://hiraacademy.com.pk/Biology-9th.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">🧬</span>Biology Notes</a></li>
+              <li><a href="https://hiraacademy.com.pk/Islamiat-9th.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">📿</span>Islamiat Notes</a></li>
+              <li><a href="https://hiraacademy.com.pk/smart-reduced-syllabus-grade9-mathematics-2026.html" class="text-blue-700 font-semibold hover:text-blue-800 inline-flex items-center mt-2"><span class="mr-2" aria-hidden="true">📋</span>Smart Reduced Syllabus</a></li>
+            </ul>
+          </nav>
+        </article>
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-indigo-100 p-3 rounded-xl text-2xl mr-3" aria-hidden="true">📗</span> Class 10 Resources</h3>
+          <nav aria-label="Class 10 Resources">
+            <ul class="space-y-4 text-sm">
+              <li><a href="https://hiraacademy.com.pk/class-10-maths-notes.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">🔢</span>Mathematics Notes (2026)</a></li>
+              <li><a href="https://hiraacademy.com.pk/Physics-10th-New-2026.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">⚛️</span>Physics Notes (2026)</a></li>
+              <li><a href="https://hiraacademy.com.pk/Chemistry-10th.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">🧪</span>Chemistry Notes (2026)</a></li>
+              <li><a href="https://hiraacademy.com.pk/Biology-10th.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">🧬</span>Biology Notes (2026)</a></li>
+              <li><a href="https://hiraacademy.com.pk/PakistanStudies-10th.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">🇵🇰</span>Pakistan Studies (2026)</a></li>
+            </ul>
+          </nav>
+        </article>
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-amber-100 p-3 rounded-xl text-2xl mr-3" aria-hidden="true">⭐</span> Special Resources</h3>
+          <ul class="space-y-4 text-sm">
+            <li><a href="https://hiraacademy.com.pk/physics-numericals.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">📊</span>Physics Numericals</a></li>
+            <li><a href="https://hiraacademy.com.pk/math-mistakes.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">⚠️</span>Common Math Mistakes</a></li>
+            <li><a href="https://hiraacademy.com.pk/physics-formulas.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">📝</span>Physics Formulas</a></li>
+            <li><a href="https://hiraacademy.com.pk/pairing-scheme.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">📋</span>Pairing Scheme</a></li>
+            <li><a href="https://hiraacademy.com.pk/blog.html" class="text-blue-700 font-semibold hover:text-blue-800 inline-flex items-center mt-2"><span class="mr-2" aria-hidden="true">📚</span>Study Blog</a></li>
           </ul>
-        </nav>
-      </article>
-
-      <!-- Class 10 Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl">
-        <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-indigo-100 p-3 rounded-xl mr-3">📗</span> Class 10 Resources</h3>
-        <ul class="space-y-4">
-          <li><a href="../Mathematics-10th.html"><span class="mr-2">🔢</span>Mathematics Notes</a></li>
-          <li><a href="../Physics-10th.html"><span class="mr-2">⚛️</span>Physics Notes</a></li>
-          <li><a href="../Chemistry-10th.html"><span class="mr-2">🧪</span>Chemistry Notes</a></li>
-          <li><a href="../Biology-10th.html"><span class="mr-2">🧬</span>Biology Notes</a></li>
-          <li><a href="../PakistanStudies-10th.html"><span class="mr-2">🇵🇰</span>Pakistan Studies</a></li>
-        </ul>
-      </article>
-
-      <!-- Mathematics Exercises (Quick Access) -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl">
-        <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-emerald-100 p-3 rounded-xl mr-3">📐</span> Math Solved Exercises</h3>
-        <div class="grid grid-cols-2 gap-3">
-          <a href="../notes/math9/Chapter1_Exercise1.1.html" class="text-sm bg-gray-50 p-2 rounded-lg text-center hover:bg-primary-50 hover:text-primary-600 transition">📘 Ex 1.1</a>
-          <a href="../notes/math9/Chapter1_Exercise1.2.html" class="text-sm bg-gray-50 p-2 rounded-lg text-center hover:bg-primary-50 hover:text-primary-600 transition">📘 Ex 1.2</a>
-          <a href="../notes/math9/Chapter2_Exercise2.1.html" class="text-sm bg-gray-50 p-2 rounded-lg text-center hover:bg-primary-50 hover:text-primary-600 transition">📗 Ex 2.1</a>
-          <a href="../notes/math9/Chapter2_Exercise2.2.html" class="text-sm bg-gray-50 p-2 rounded-lg text-center hover:bg-primary-50 hover:text-primary-600 transition">📗 Ex 2.2</a>
-          <a href="../notes/math9/Chapter3_Exercise3.1.html" class="text-sm bg-gray-50 p-2 rounded-lg text-center hover:bg-primary-50 hover:text-primary-600 transition">📙 Ex 3.1</a>
-          <a href="../notes/math9/Chapter3_Exercise3.2.html" class="text-sm bg-gray-50 p-2 rounded-lg text-center hover:bg-primary-50 hover:text-primary-600 transition">📙 Ex 3.2</a>
-          <a href="../notes/math9/Chapter4_Exercise4.1.html" class="text-sm bg-gray-50 p-2 rounded-lg text-center hover:bg-primary-50 hover:text-primary-600 transition">📕 Ex 4.1</a>
-          <a href="../notes/math9/Chapter4_Exercise4.2.html" class="text-sm bg-gray-50 p-2 rounded-lg text-center hover:bg-primary-50 hover:text-primary-600 transition">📕 Ex 4.2</a>
-        </div>
-        <div class="mt-3 text-center">
-          <a href="../Mathematics-9th.html" class="text-xs text-primary-600 font-medium hover:underline">📖 View All 13 Chapters →</a>
-        </div>
-      </article>
-
-      <!-- Special Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl">
-        <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-amber-100 p-3 rounded-xl mr-3">⭐</span> Special Resources</h3>
-        <ul class="space-y-4">
-          <li><a href="../fsc-entry-test.html"><span class="mr-2">🎯</span>FSC Entry Test Prep</a></li>
-          <li><a href="../physics-numericals.html"><span class="mr-2">📊</span>Physics Numericals</a></li>
-          <li><a href="../math-mistakes.html"><span class="mr-2">⚠️</span>Common Math Mistakes</a></li>
-          <li><a href="../physics-formulas.html"><span class="mr-2">📝</span>Physics Formulas</a></li>
-          <li><a href="../blog.html" class="text-primary-600 font-semibold"><span class="mr-2">📚</span>Study Blog</a></li>
-        </ul>
-      </article>
-
-      <!-- Quick Links -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl">
-        <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-violet-100 p-3 rounded-xl mr-3">🔗</span> Quick Links</h3>
-        <ul class="space-y-4">
-          <li><a href="../courses-details.html"><span class="mr-2">🎓</span>Courses Overview</a></li>
-          <li><a href="../contact.html"><span class="mr-2">📞</span>Contact Us</a></li>
-          <li><a href="../about.html"><span class="mr-2">ℹ️</span>About Us</a></li>
-          <li><a href="../career-services.html"><span class="mr-2">💼</span>Career Services</a></li>
-          <li><a href="../student-portal.html" class="text-primary-600 font-semibold"><span class="mr-2">🚪</span>Student Portal</a></li>
-        </ul>
-      </article>
-
-      <!-- Definitions & Key Resources -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl">
-        <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-cyan-100 p-3 rounded-xl mr-3">📖</span> Definitions & Key Resources</h3>
-        <ul class="space-y-4">
-          <li><a href="../Math-9th-Definitions.html"><span class="mr-2">📘</span>Math 9 Definitions</a></li>
-          <li><a href="../Physics-9th-Definitions.html"><span class="mr-2">⚛️</span>Physics 9 Definitions</a></li>
-          <li><a href="../grade9-math-pairing-scheme-2026.html"><span class="mr-2">📋</span>Math Pairing Scheme</a></li>
-          <li><a href="../grade9-physics-pairing-scheme-2026.html"><span class="mr-2">📋</span>Physics Pairing Scheme</a></li>
-          <li><a href="../grade9-mathematics-model-paper-2026.html" class="text-primary-600 font-semibold"><span class="mr-2">📄</span>Model Paper 2026</a></li>
-        </ul>
-      </article>
-
-      <!-- Support & Policies -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl">
-        <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl mr-3">🛡️</span> Support & Policies</h3>
-        <ul class="space-y-4">
-          <li><a href="../terms.html"><span class="mr-2">📜</span>Terms of Service</a></li>
-          <li><a href="../privacy-policy.html"><span class="mr-2">🔒</span>Privacy Policy</a></li>
-          <li><a href="../refund-policy.html"><span class="mr-2">💳</span>Refund Policy</a></li>
-          <li><a href="../accessibility.html"><span class="mr-2">♿</span>Accessibility</a></li>
-          <li><a href="../mission.html" class="text-primary-600 font-semibold"><span class="mr-2">🎯</span>Our Mission</a></li>
-        </ul>
-      </article>
-
-      <!-- MCQs & Review Exercises -->
-      <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl">
-        <h3 class="text-xl font-bold text-primary-600 mb-6 flex items-center"><span class="bg-orange-100 p-3 rounded-xl mr-3">📝</span> MCQs & Review</h3>
-        <ul class="space-y-3">
-          <li><a href="../notes/math9/Chapter1_MCQs.html" class="flex items-center gap-2"><span class="text-primary-600">✓</span>Chapter 1 MCQs</a></li>
-          <li><a href="../notes/math9/Chapter2_MCQs.html" class="flex items-center gap-2"><span class="text-primary-600">✓</span>Chapter 2 MCQs</a></li>
-          <li><a href="../notes/math9/Chapter3_MCQs.html" class="flex items-center gap-2"><span class="text-primary-600">✓</span>Chapter 3 MCQs</a></li>
-          <li><a href="../notes/math9/Chapter1_ReviewExercise.html" class="flex items-center gap-2"><span class="text-primary-600">🔄</span>Review Exercise 1</a></li>
-          <li><a href="../notes/math9/Chapter2_ReviewExercise.html" class="flex items-center gap-2"><span class="text-primary-600">🔄</span>Review Exercise 2</a></li>
-          <li><a href="../Mathematics-9th-MCQs.html" class="text-primary-600 font-semibold flex items-center gap-2"><span class="text-lg">🚀</span>Full Practice Test →</a></li>
-        </ul>
-      </article>
+        </article>
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-violet-100 p-3 rounded-xl text-2xl mr-3" aria-hidden="true">🔗</span> Quick Links</h3>
+          <ul class="space-y-4 text-sm">
+            <li><a href="https://hiraacademy.com.pk/courses-details.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">🎓</span>Courses Overview</a></li>
+            <li><a href="https://hiraacademy.com.pk/contact.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">📞</span>Contact Us</a></li>
+            <li><a href="https://hiraacademy.com.pk/about.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">ℹ️</span>About Us</a></li>
+            <li><a href="https://hiraacademy.com.pk/student-portal.html" class="text-blue-700 font-semibold hover:text-blue-800 inline-flex items-center mt-2"><span class="mr-2" aria-hidden="true">🚪</span>Student Portal</a></li>
+          </ul>
+        </article>
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-cyan-100 p-3 rounded-xl text-2xl mr-3" aria-hidden="true">📖</span> Definitions &amp; Key Resources</h3>
+          <ul class="space-y-4 text-sm">
+            <li><a href="https://hiraacademy.com.pk/Math-9th-Definitions.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">📘</span>Math 9 Definitions</a></li>
+            <li><a href="https://hiraacademy.com.pk/Physics-9th-Definitions.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">⚛️</span>Physics 9 Definitions</a></li>
+            <li><a href="https://hiraacademy.com.pk/grade9-math-pairing-scheme-2026.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">📋</span>Math Pairing Scheme</a></li>
+            <li><a href="https://hiraacademy.com.pk/grade9-physics-pairing-scheme-2026.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">📋</span>Physics Pairing Scheme</a></li>
+            <li><a href="https://hiraacademy.com.pk/grade9-mathematics-model-paper-2026.html" class="text-blue-700 font-semibold hover:text-blue-800 inline-flex items-center mt-2"><span class="mr-2" aria-hidden="true">📄</span>Model Paper 2026</a></li>
+          </ul>
+        </article>
+        <article class="bg-white rounded-2xl shadow-md p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-500">
+          <h3 class="text-xl font-bold text-blue-700 mb-6 flex items-center"><span class="bg-red-100 p-3 rounded-xl text-2xl mr-3" aria-hidden="true">🛡️</span> Support &amp; Policies</h3>
+          <ul class="space-y-4 text-sm">
+            <li><a href="https://hiraacademy.com.pk/terms.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">📜</span>Terms of Service</a></li>
+            <li><a href="https://hiraacademy.com.pk/privacy-policy.html" class="hover:text-blue-700 transition inline-flex items-center"><span class="mr-2" aria-hidden="true">🔒</span>Privacy Policy</a></li>
+            <li><a href="https://hiraacademy.com.pk/about.html" class="text-blue-700 font-semibold hover:text-blue-800 inline-flex items-center mt-2"><span class="mr-2" aria-hidden="true">🎯</span>About &amp; Contact Ownership</a></li>
+          </ul>
+        </article>
+      </div>
+      <div class="mt-10 text-center">
+        <a href="https://hiraacademy.com.pk/" class="inline-flex items-center bg-blue-800 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-blue-900 hover:shadow-xl transition-all"><span class="mr-3" aria-hidden="true">🏠</span>Return to Homepage</a>
+      </div>
     </div>
-    <div class="mt-12 text-center">
-      <a href="../index.html" class="inline-flex items-center bg-primary-600 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-primary-700 transition hover:-translate-y-1">
-        <span class="mr-3">🏠</span>Return to Homepage
-      </a>
-    </div>
-  </div>
+  </details>
 </section>
 
-<!-- ========== FOOTER (from index page) ========== -->
-<footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 -mt-6">
+<!-- ========== FOOTER ========== -->
+<footer class="bg-[#020617] text-gray-100 shadow-xl relative z-10">
   <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 rounded-t-3xl">
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
-
-      <!-- Logo & Description -->
-      <div class="md:col-span-1 text-center md:text-left">
-        <a href="../index.html" class="flex flex-col md:flex-row items-center md:items-start gap-3 group transition duration-300">
-          <img src="https://hiraacademy.com.pk/images/logo.webp" alt="Hira Science Academy" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20 group-hover:scale-105 transition duration-300" />
-          <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mt-2 md:mt-0">
-            Hira Science Academy
-          </span>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-8 text-center md:text-left">
+      <div class="flex flex-col items-center md:items-start">
+        <a href="../index.html" class="flex flex-col md:flex-row items-center md:items-start gap-3">
+          <img src="https://hiraacademy.com.pk/images/logo.webp" class="h-10 w-auto rounded-xl shadow-2xl ring-4 ring-white/20" alt="Hira Science Academy Logo">
+          <span class="text-xl font-bold bg-gradient-to-r from-blue-300 to-indigo-300 bg-clip-text text-transparent">Hira Science Academy</span>
         </a>
-        <p class="mt-4 text-sm text-gray-200">
-          Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry) – serving students of all 10 BISE Punjab boards.
-        </p>
-
-        <!-- Social Media Links -->
+        <p class="mt-4 text-sm text-gray-300 max-w-sm mx-auto md:mx-0">Subject specialist education by Muhammad Tayyab (MSc Math) and Mirza Abid Shabbir Mughal (M.Phil Chemistry) – serving students of all 9 BISE Punjab boards.</p>
         <div class="mt-4 flex justify-center md:justify-start space-x-6 text-gray-200">
           <a href="https://web.facebook.com/HiraScienceAcademy.Daska" target="_blank" aria-label="Facebook" class="hover:text-blue-400 transition-colors">
-            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-              <path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.1v-2.88h2.1V9.41c0-2.07 1.23-3.22 3.11-3.22.9 0 1.84.16 1.84.16v2.03h-1.04c-1.03 0-1.35.64-1.35 1.3v1.57h2.3l-.37 2.88h-1.93v6.99A10 10 0 0 0 22 12z" />
-            </svg>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.1v-2.88h2.1V9.41c0-2.07 1.23-3.22 3.11-3.22.9 0 1.84.16 1.84.16v2.03h-1.04c-1.03 0-1.35.64-1.35 1.3v1.57h2.3l-.37 2.88h-1.93v6.99A10 10 0 0 0 22 12z" /></svg>
           </a>
           <a href="https://www.instagram.com/hira.scienceacademy/" target="_blank" aria-label="Instagram" class="hover:text-pink-400 transition-colors">
-            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
-              <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.25 1.13 1.13 0 0 1 0-2.25Z" />
-            </svg>
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm5.25-.88a1.13 1.13 0 1 1 0 2.25 1.13 1.13 0 0 1 0-2.25Z" /></svg>
           </a>
           <a href="https://wa.me/923007242631" target="_blank" aria-label="WhatsApp" class="hover:text-green-400 transition-colors">
-            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 32 32">
-              <path d="M16 2.4c-7.51 0-13.6 6.09-13.6 13.6 0 2.39.63 4.71 1.83 6.76L2 30l7.45-2.31c1.92 1.05 4.09 1.61 6.3 1.61h.01c7.51 0 13.6-6.09 13.6-13.6S23.51 2.4 16 2.4zm0 24.6c-1.89 0-3.75-.5-5.39-1.46l-.39-.23-4.42 1.37 1.43-4.29-.26-.41a11.17 11.17 0 01-1.73-6.01c0-6.2 5.04-11.24 11.24-11.24S27.24 9.8 27.24 16 22.2 27 16 27zm6.13-8.67c-.34-.17-2.01-.99-2.32-1.1-.31-.11-.54-.17-.76.17-.22.34-.88 1.1-1.08 1.32-.2.22-.4.25-.74.08-.34-.17-1.44-.53-2.75-1.69-1.02-.91-1.71-2.02-1.91-2.36-.2-.34-.02-.52.15-.69.16-.16.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.08-.17-.76-1.84-1.04-2.53-.27-.64-.54-.55-.76-.56l-.65-.01c-.23 0-.6.08-.91.4-.31.31-1.19 1.16-1.19 2.83s1.22 3.29 1.39 3.51c.17.22 2.39 3.65 5.8 5.12.81.35 1.44.56 1.93.71.81.26 1.54.22 2.12.14.65-.1 2.01-.82 2.3-1.61.28-.79.28-1.46.2-1.61-.08-.14-.31-.23-.65-.4z"/>
-            </svg>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 32 32"><path d="M16 2.4c-7.51 0-13.6 6.09-13.6 13.6 0 2.39.63 4.71 1.83 6.76L2 30l7.45-2.31c1.92 1.05 4.09 1.61 6.3 1.61h.01c7.51 0 13.6-6.09 13.6-13.6S23.51 2.4 16 2.4zm0 24.6c-1.89 0-3.75-.5-5.39-1.46l-.39-.23-4.42 1.37 1.43-4.29-.26-.41a11.17 11.17 0 01-1.73-6.01c0-6.2 5.04-11.24 11.24-11.24S27.24 9.8 27.24 16 22.2 27 16 27zm6.13-8.67c-.34-.17-2.01-.99-2.32-1.1-.31-.11-.54-.17-.76.17-.22.34-.88 1.1-1.08 1.32-.2.22-.4.25-.74.08-.34-.17-1.44-.53-2.75-1.69-1.02-.91-1.71-2.02-1.91-2.36-.2-.34-.02-.52.15-.69.16-.16.34-.4.51-.6.17-.2.23-.34.34-.57.11-.23.06-.43-.03-.6-.08-.17-.76-1.84-1.04-2.53-.27-.64-.54-.55-.76-.56l-.65-.01c-.23 0-.6.08-.91.4-.31.31-1.19 1.16-1.19 2.83s1.22 3.29 1.39 3.51c.17.22 2.39 3.65 5.8 5.12.81.35 1.44.56 1.93.71.81.26 1.54.22 2.12.14.65-.1 2.01-.82 2.3-1.61.28-.79.28-1.46.2-1.61-.08-.14-.31-.23-.65-.4z"/></svg>
           </a>
         </div>
       </div>
-
-      <!-- Programs -->
-      <div class="text-center md:text-left">
+      <div>
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Programs</h3>
         <ul class="space-y-2">
-          <li><a href="../courses-details.html#class9" class="hover:text-cyan-400 transition-colors">9th Class</a></li>
-          <li><a href="../courses-details.html#class10" class="hover:text-cyan-400 transition-colors">10th Class</a></li>
-          <li><a href="../fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
-          <li><a href="../fsc-entry-test.html" class="hover:text-cyan-400 transition-colors">Entry Test Preparation</a></li>
+          <li><a href="../courses-details.html#class9" class="hover:text-gold-400 transition">9th Class</a></li>
+          <li><a href="../courses-details.html#class10" class="hover:text-gold-400 transition">10th Class</a></li>
+          <li><a href="../fsc-entry-test.html" class="hover:text-gold-400 transition">F.Sc (Pre-Medical/Pre-Engineering)</a></li>
+          <li><a href="../fsc-entry-test.html" class="hover:text-gold-400 transition">Entry Test Preparation</a></li>
         </ul>
       </div>
-
-      <!-- Resources -->
-      <div class="text-center md:text-left">
+      <div>
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Resources</h3>
         <ul class="space-y-2">
-          <li><a href="../blog.html" class="hover:text-cyan-400 transition-colors">Study Tips & Blog</a></li>
-          <li><a href="../career-services.html" class="hover:text-cyan-400 transition-colors">Career Guidance</a></li>
-          <li><a href="../student-portal.html" class="hover:text-cyan-400 transition-colors">Student Portal</a></li>
-          <li><a href="../alumni-network.html" class="hover:text-cyan-400 transition-colors">Alumni Network</a></li>
-          <li><a href="../events.html" class="hover:text-cyan-400 transition-colors">Events & Workshops</a></li>
+          <li><a href="../blog.html" class="hover:text-gold-400 transition">Study Tips &amp; Blog</a></li>
+          <li><a href="../career-services.html" class="hover:text-gold-400 transition">Career Guidance</a></li>
+          <li><a href="../student-portal.html" class="hover:text-gold-400 transition">Student Portal</a></li>
+          <li><a href="../alumni-network.html" class="hover:text-gold-400 transition">Alumni Network</a></li>
+          <li><a href="../events.html" class="hover:text-gold-400 transition">Events &amp; Workshops</a></li>
         </ul>
       </div>
-
-      <!-- Legal -->
-      <div class="text-center md:text-left">
+      <div>
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">Legal</h3>
         <ul class="space-y-2">
-          <li><a href="../terms.html" class="hover:text-cyan-400 transition-colors">Terms of Service</a></li>
-          <li><a href="../privacy-policy.html" class="hover:text-cyan-400 transition-colors">Privacy Policy</a></li>
-          <li><a href="../refund-policy.html" class="hover:text-cyan-400 transition-colors">Refund Policy</a></li>
-          <li><a href="../accessibility.html" class="hover:text-cyan-400 transition-colors">Accessibility</a></li>
+          <li><a href="../terms.html" class="hover:text-gold-400 transition">Terms of Service</a></li>
+          <li><a href="../privacy-policy.html" class="hover:text-gold-400 transition">Privacy Policy</a></li>
+          <li><a href="../refund-policy.html" class="hover:text-gold-400 transition">Refund Policy</a></li>
+          <li><a href="../accessibility.html" class="hover:text-gold-400 transition">Accessibility</a></li>
         </ul>
       </div>
-
-      <!-- About -->
-      <div class="text-center md:text-left">
+      <div>
         <h3 class="text-sm font-semibold tracking-wider uppercase mb-4 text-white">About</h3>
         <ul class="space-y-2">
-          <li><a href="../about.html" class="hover:text-cyan-400 transition-colors">About Hira Academy</a></li>
-          <li><a href="../mission.html" class="hover:text-cyan-400 transition-colors">Our Mission</a></li>
-          <li><a href="../contact.html" class="hover:text-cyan-400 transition-colors">Contact Us</a></li>
+          <li><a href="../about.html" class="hover:text-gold-400 transition">About Hira Academy</a></li>
+          <li><a href="../mission.html" class="hover:text-gold-400 transition">Our Mission</a></li>
+          <li><a href="../contact.html" class="hover:text-gold-400 transition">Contact Us</a></li>
         </ul>
       </div>
     </div>
-
-    <div class="mt-12 border-t border-blue-700 pt-6">
-      <p class="text-base text-gray-200 text-center">
-        &copy; 2025 Hira Science Academy. All rights reserved. Serving students of all 10 BISE Punjab boards: Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, Sahiwal, Federal.
-      </p>
+    <div class="mt-12 border-t border-blue-800/50 pt-6 text-center">
+      <p class="text-base text-gray-200">&copy; 2026 Hira Science Academy. All rights reserved. | Serving all 9 BISE Punjab boards: Lahore, Gujranwala, Multan, Rawalpindi, Faisalabad, Sargodha, DG Khan, Bahawalpur, Sahiwal.</p>
+      <p class="text-sm text-gray-300 mt-2">✍️ Prepared by <strong class="text-gold-400">Hira Science Academy</strong> | Class 9 Mathematics Textbook (PECTAA 2026 Syllabus)</p>
     </div>
   </div>
 </footer>
@@ -644,11 +668,7 @@
 </a>
 
 <!-- Back to Top Button -->
-<button id="backToTop" class="fixed bottom-6 right-6 bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg transition-all opacity-0 invisible">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
-  </svg>
-</button>
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
 <!-- JavaScript -->
 <script>
@@ -658,19 +678,19 @@ let currentChapterNum = 1;
 
 // Chapter descriptions for SEO with justified text
 const chapterDescriptions = {
-  1: "Learn and understand the <strong>complete Chapter 1 – Real Numbers</strong> from the <strong>Class 9 Mathematics textbook</strong> with clear explanations, definitions, and examples. This chapter covers rational and irrational numbers, their decimal representations, surds, radicals, and properties of real numbers according to the <strong>Punjab PECTAA 2025 syllabus</strong>. The study of real numbers forms the foundation of mathematics, dealing with different types of numbers, their properties, and how they relate to each other. Understanding the classification and properties of real numbers is essential for solving mathematical problems and building more advanced mathematical concepts.",
-  2: "Learn and understand <strong>Chapter 2 – Logarithms</strong> from the <strong>Class 9 Mathematics textbook</strong>. This unit introduces scientific notation, the definition of logarithms, and the relationship between logarithmic and exponential forms. It explains characteristic and mantissa, and covers laws of logarithms with practical applications including measuring sound intensity in decibels, earthquake magnitude on the Richter scale, and solving exponential equations in real-world contexts.",
-  3: "Learn and understand <strong>Chapter 3 – Sets and Functions</strong> from the <strong>Class 9 Mathematics textbook</strong>. This chapter covers set theory, Venn diagrams, union, intersection, complement, domain, range, and different types of functions. Students learn about empty set, finite and infinite sets, subsets, power sets, Cartesian products, and different types of functions including injective, surjective, and bijective functions with practical examples.",
-  4: "Learn and understand <strong>Chapter 4 – Factorization</strong> from the <strong>Class 9 Mathematics textbook</strong>. This unit focuses on simplifying algebraic expressions, factorizing trinomials and polynomials, and performing long division. Students learn factorization techniques including taking common factors, difference of squares, sum/difference of cubes, and factorization of quadratic trinomials.",
-  5: "Learn and understand <strong>Chapter 5 – Linear Equations</strong> from the <strong>Class 9 Mathematics textbook</strong>. This unit covers solving equations of the form ax+b=0, solution sets on a real line, and solving linear inequalities. Students learn to solve systems of linear equations using substitution and elimination methods, graph linear inequalities, and solve real-world word problems.",
-  6: "Learn and understand <strong>Chapter 6 – Trigonometry</strong> from the <strong>Class 9 Mathematics textbook</strong>. This unit covers angles, trigonometric ratios, values for special angles, and applications involving angles of elevation and depression. Students learn the fundamental trigonometric identities, solving right triangles, and applications in surveying, navigation, and engineering.",
-  7: "Learn and understand <strong>Chapter 7 – Coordinate Geometry</strong> from the <strong>Class 9 Mathematics textbook</strong>. This chapter introduces the Cartesian coordinate system, distance formula, midpoint formula, and slope of a straight line. Students learn to find equations of lines in various forms and solve geometric problems using coordinate methods.",
-  8: "Learn and understand <strong>Chapter 8 – Logic</strong> from the <strong>Class 9 Mathematics textbook</strong>. This chapter covers statements, truth tables, logical connectives, and logical equivalence. Students learn to analyze compound statements, construct truth tables for complex propositions, and understand tautologies and contradictions.",
-  9: "Learn and understand <strong>Chapter 9 – Similar Figures</strong> from the <strong>Class 9 Mathematics textbook</strong>. This chapter covers similarity criteria for triangles, ratio of corresponding sides, and properties of similar figures. Students learn to calculate ratios of areas and volumes of similar solids with applications in map reading and scale models.",
-  10: "Learn and understand <strong>Chapter 10 – Graphs of Functions</strong> from the <strong>Class 9 Mathematics textbook</strong>. This unit focuses on plotting linear, quadratic, cubic, and exponential functions with asymptotes. Students learn to sketch graphs using key features and understand transformations of functions.",
-  11: "Learn and understand <strong>Chapter 11 – Loci and Construction</strong> from the <strong>Class 9 Mathematics textbook</strong>. This practical geometry unit covers construction of triangles, angle bisectors, perpendicular bisectors, and loci as sets of points satisfying given conditions with applications in engineering design.",
-  12: "Learn and understand <strong>Chapter 12 – Information Handling</strong> from the <strong>Class 9 Mathematics textbook</strong>. This unit covers mean, median, mode, frequency tables, and graphical representations including bar charts, histograms, frequency polygons, and pie charts with applications in market research and data analysis.",
-  13: "Learn and understand <strong>Chapter 13 – Probability</strong> from the <strong>Class 9 Mathematics textbook</strong>. This chapter introduces probability formula, sample spaces, complement rule, and expected frequency. Applications include weather forecasting, games of chance, insurance risk assessment, and decision-making under uncertainty."
+  1: "Learn and understand the <strong class='text-blue-800'>complete Chapter 1 – Real Numbers</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong> with clear explanations, definitions, and examples. This chapter covers rational and irrational numbers, their decimal representations, surds, radicals, and properties of real numbers according to the <strong class='text-blue-800'>Punjab PECTAA 2025 syllabus</strong>. The study of real numbers forms the foundation of mathematics, dealing with different types of numbers, their properties, and how they relate to each other. Understanding the classification and properties of real numbers is essential for solving mathematical problems and building more advanced mathematical concepts.",
+  2: "Learn and understand <strong class='text-blue-800'>Chapter 2 – Logarithms</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This unit introduces scientific notation, the definition of logarithms, and the relationship between logarithmic and exponential forms. It explains characteristic and mantissa, and covers laws of logarithms with practical applications including measuring sound intensity in decibels, earthquake magnitude on the Richter scale, and solving exponential equations in real-world contexts.",
+  3: "Learn and understand <strong class='text-blue-800'>Chapter 3 – Sets and Functions</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This chapter covers set theory, Venn diagrams, union, intersection, complement, domain, range, and different types of functions. Students learn about empty set, finite and infinite sets, subsets, power sets, Cartesian products, and different types of functions including injective, surjective, and bijective functions with practical examples.",
+  4: "Learn and understand <strong class='text-blue-800'>Chapter 4 – Factorization</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This unit focuses on simplifying algebraic expressions, factorizing trinomials and polynomials, and performing long division. Students learn factorization techniques including taking common factors, difference of squares, sum/difference of cubes, and factorization of quadratic trinomials.",
+  5: "Learn and understand <strong class='text-blue-800'>Chapter 5 – Linear Equations</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This unit covers solving equations of the form ax+b=0, solution sets on a real line, and solving linear inequalities. Students learn to solve systems of linear equations using substitution and elimination methods, graph linear inequalities, and solve real-world word problems.",
+  6: "Learn and understand <strong class='text-blue-800'>Chapter 6 – Trigonometry</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This unit covers angles, trigonometric ratios, values for special angles, and applications involving angles of elevation and depression. Students learn the fundamental trigonometric identities, solving right triangles, and applications in surveying, navigation, and engineering.",
+  7: "Learn and understand <strong class='text-blue-800'>Chapter 7 – Coordinate Geometry</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This chapter introduces the Cartesian coordinate system, distance formula, midpoint formula, and slope of a straight line. Students learn to find equations of lines in various forms and solve geometric problems using coordinate methods.",
+  8: "Learn and understand <strong class='text-blue-800'>Chapter 8 – Logic</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This chapter covers statements, truth tables, logical connectives, and logical equivalence. Students learn to analyze compound statements, construct truth tables for complex propositions, and understand tautologies and contradictions.",
+  9: "Learn and understand <strong class='text-blue-800'>Chapter 9 – Similar Figures</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This chapter covers similarity criteria for triangles, ratio of corresponding sides, and properties of similar figures. Students learn to calculate ratios of areas and volumes of similar solids with applications in map reading and scale models.",
+  10: "Learn and understand <strong class='text-blue-800'>Chapter 10 – Graphs of Functions</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This unit focuses on plotting linear, quadratic, cubic, and exponential functions with asymptotes. Students learn to sketch graphs using key features and understand transformations of functions.",
+  11: "Learn and understand <strong class='text-blue-800'>Chapter 11 – Loci and Construction</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This practical geometry unit covers construction of triangles, angle bisectors, perpendicular bisectors, and loci as sets of points satisfying given conditions with applications in engineering design.",
+  12: "Learn and understand <strong class='text-blue-800'>Chapter 12 – Information Handling</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This unit covers mean, median, mode, frequency tables, and graphical representations including bar charts, histograms, frequency polygons, and pie charts with applications in market research and data analysis.",
+  13: "Learn and understand <strong class='text-blue-800'>Chapter 13 – Probability</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong>. This chapter introduces probability formula, sample spaces, complement rule, and expected frequency. Applications include weather forecasting, games of chance, insurance risk assessment, and decision-making under uncertainty."
 };
 
 function loadChapter(chapterNum, chapterName, fileId) {
@@ -683,17 +703,17 @@ function loadChapter(chapterNum, chapterName, fileId) {
     const btn = document.getElementById(`ch${i}-btn`);
     if (btn) {
       if (i === chapterNum) {
-        btn.className = "px-3 py-2 bg-primary-600 text-white rounded-lg shadow hover:bg-primary-700 transition-all duration-300 text-sm font-medium";
+        btn.className = "px-3 py-2 bg-blue-800 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium";
       } else {
-        btn.className = "px-3 py-2 bg-gray-600 text-white rounded-lg shadow hover:bg-primary-600 transition-all duration-300 text-sm font-medium";
+        btn.className = "px-3 py-2 bg-blue-700 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium";
       }
     }
   }
   
   // Update title and description with justified text
   document.getElementById('chapterTitle').innerHTML = `
-    <p class="text-primary-600 font-semibold text-lg">📘 Chapter ${chapterNum}: ${chapterName}</p>
-    <p class="mt-4 text-gray-600 max-w-3xl mx-auto text-justify">${chapterDescriptions[chapterNum] || `Learn and understand <strong>Chapter ${chapterNum} – ${chapterName}</strong> from the <strong>Class 9 Mathematics textbook</strong> according to the <strong>Punjab PECTAA 2025 syllabus</strong>.`}</p>
+    <p class="text-blue-800 font-semibold text-lg">📘 Chapter ${chapterNum}: ${chapterName}</p>
+    <p class="mt-4 text-gray-700 max-w-3xl mx-auto text-justify leading-relaxed">${chapterDescriptions[chapterNum] || `Learn and understand <strong class='text-blue-800'>Chapter ${chapterNum} – ${chapterName}</strong> from the <strong class='text-blue-800'>Class 9 Mathematics textbook</strong> according to the <strong class='text-blue-800'>Punjab PECTAA 2025 syllabus</strong>.`}</p>
   `;
   
   // Update label
@@ -729,12 +749,13 @@ document.getElementById('mobile-menu-button')?.addEventListener('click', functio
 // Back to top
 const btt = document.getElementById('backToTop');
 window.addEventListener('scroll', () => {
-  window.pageYOffset > 300 ? btt.classList.add('show') : btt.classList.remove('show');
+  if (window.pageYOffset > 300) btt.classList.add('show');
+  else btt.classList.remove('show');
 });
 btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 // Chapter 1 is loaded by default - mark button as active
-document.getElementById('ch1-btn').className = "px-3 py-2 bg-primary-600 text-white rounded-lg shadow hover:bg-primary-700 transition-all duration-300 text-sm font-medium";
+document.getElementById('ch1-btn').className = "px-3 py-2 bg-blue-800 text-white rounded-lg shadow hover:bg-gold-500 hover:text-slate-900 transition-all duration-300 text-sm font-medium";
 </script>
 </body>
 </html>
