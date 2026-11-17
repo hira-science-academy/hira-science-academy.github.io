@@ -321,3 +321,98 @@ mjx-container[display="true"] { display: block; margin: 1rem auto; text-align: c
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* ============================================================
+   Compact header, two-column calculator layout, readability
+   (added for the layout redesign)
+   ============================================================ */
+
+/* ---- 1. Compact header (desktop and mobile) ---- */
+header.header-gradient { padding-top: .75rem !important; padding-bottom: .75rem !important; }
+@media (min-width: 768px) { header.header-gradient { padding-top: 1.25rem !important; padding-bottom: 1.25rem !important; } }
+header.header-gradient .hero-badge,
+header.header-gradient span.rounded-full { display: none !important; }
+header.header-gradient h1 { font-size: 1.5rem !important; line-height: 1.2 !important; margin: 0 0 .25rem !important; }
+header.header-gradient p { font-size: .9rem !important; line-height: 1.45 !important; margin-top: 0 !important; margin-bottom: 0 !important; max-width: 44rem; }
+@media (min-width: 768px) {
+  header.header-gradient h1 { font-size: 1.875rem !important; }
+  header.header-gradient p { font-size: 1rem !important; }
+}
+/* the breadcrumb card no longer needs to overlap a tall header */
+header.header-gradient + div { margin-top: .75rem !important; }
+
+/* ---- 2. Desktop layout: inputs | result (equal size) | narrow sticky ad column ---- */
+.calc-wide { max-width: 80rem !important; }
+.calc-narrow { max-width: 48rem; margin-left: auto; margin-right: auto; }
+.calc-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.25rem; align-items: stretch; }
+.calc-main, .calc-side, .calc-ad { min-width: 0; }
+.calc-side .result-panel { margin-top: 0 !important; }
+.calc-ad .ad-slot {
+  margin: 0 !important; min-height: 250px; padding: .5rem; text-align: center;
+  background: #ffffff; border: 1px dashed #cbd5e1; border-radius: 1rem;
+}
+.calc-ad .ad-slot ins.adsbygoogle { min-height: 200px; }
+.result-empty {
+  display: none; background: #ffffff; border: 2px dashed #7dd3fc; border-radius: 1rem;
+  padding: 2rem 1.5rem; text-align: center; color: #0f172a; font-size: 1rem; line-height: 1.6;
+}
+.result-empty p { margin: .25rem 0; text-align: center !important; }
+
+/* Phones and tablets: one column, order = inputs, result, ad */
+
+@media (min-width: 1024px) {
+  /* two equal columns (inputs, result) */
+  .calc-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; }
+  .calc-layout.has-ad { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 190px; }
+  .result-empty { display: block; }
+  .result-panel.is-visible ~ .result-empty { display: none; }
+  /* the input card stretches to the same height as the result column */
+  .calc-main { display: flex; flex-direction: column; gap: 1.25rem; }
+  .calc-main > section:first-child { flex: 1 1 auto; }
+  /* a long result scrolls inside its own box so it is never much taller than the inputs */
+  .calc-side .result-panel.is-visible { max-height: min(44rem, 85vh); overflow-y: auto; overscroll-behavior: contain; }
+  /* narrow ad column: always in view while the calculator is used */
+  .calc-layout.has-ad .calc-ad { position: sticky; top: 1rem; align-self: start; }
+  .calc-ad .ad-slot { min-height: 620px; }
+  .calc-ad .ad-slot ins.adsbygoogle { min-height: 560px; }
+  /* columns are narrower here, so stack the field pairs and use two summary tiles per row */
+  .calc-main .fin-grid, .calc-main [class*="grid-cols-2"], .calc-main .grid-2 { grid-template-columns: 1fr !important; }
+  .calc-side .fin-summary, .calc-side .pyth-summary, .calc-side .stat-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (min-width: 1280px) {
+  .calc-layout.has-ad { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 300px; }
+  .calc-main .fin-grid { grid-template-columns: 1fr 1fr !important; }
+  .calc-main .fin-grid .full { grid-column: 1 / -1; }
+  .calc-side .fin-summary { grid-template-columns: repeat(3, 1fr) !important; }
+}
+
+/* ---- 3. Typography and readability ---- */
+.tools-page { font-size: 1rem; line-height: 1.65; color: #0f172a; }
+.tools-page .calc-label { font-size: .95rem; font-weight: 700; color: #0f172a; line-height: 1.4; margin-bottom: .4rem; }
+.tools-page .calc-input, .tools-page .calc-select { font-size: 1.0625rem; color: #0b1220; }
+.tools-page .calc-input::placeholder { color: #64748b; opacity: 1; }
+.tools-page .hint-line, .tools-page .opt-tag { font-size: .875rem; line-height: 1.5; color: #334155; }
+.tools-page .calc-error { font-size: .875rem; color: #b91c1c; }
+.tools-page .answer-value { font-size: 2.5rem; color: #0b1220; }
+.tools-page .answer-title, .tools-page .answer-heading { color: #0c4a6e; }
+.tools-page .answer-sub { font-size: 1rem; color: #0f172a; line-height: 1.5; }
+.tools-page .fin-unit-value, .tools-page .pyth-summary-value { font-size: 1.125rem; color: #0b1220; }
+.tools-page .fin-unit-label, .tools-page .pyth-summary-label, .tools-page .stat dt { font-size: .8125rem; color: #1e293b; }
+.tools-page .result-panel .result-label { font-size: .8125rem; color: #0c4a6e; }
+.tools-page .result-panel .result-value { color: #0b1220; }
+.tools-page .result-panel .result-unit { color: #475569; }
+.tools-page .fin-context p, .tools-page .pyth-context p, .tools-page .steps-block li { font-size: 1rem; line-height: 1.7; color: #0f172a; }
+.tools-page .fin-table, .tools-page .ref-table, .tools-page .size-table { font-size: .95rem; }
+.tools-page .tool-card-desc { color: #475569; font-size: .9375rem; }
+.tools-page .empty-state { color: #475569; }
+.tools-page .ad-label { color: #475569; font-size: .7rem; }
+/* left-aligned body text: justified text makes uneven word gaps that are harder to read */
+.tools-page article :is(p, li, dd, dt):not(.text-center),
+.tools-page .faq-answer, .tools-page .worked-example li,
+.tools-page .prose-justify, .tools-page .plain-lead {
+  text-align: left !important; hyphens: none !important; -webkit-hyphens: none !important;
+  line-height: 1.75; font-size: 1.0625rem; color: #0f172a;
+}
+.tools-page article .hint-line, .tools-page article .text-sm { font-size: .9375rem; }
+.tools-page article h2 { line-height: 1.3; }
+@media (max-width: 540px) { .tools-page .answer-value { font-size: 2rem; } }

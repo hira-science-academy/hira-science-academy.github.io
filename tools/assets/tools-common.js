@@ -258,3 +258,85 @@ function showResult(panel, html) {
     convertUnit, convertTemperature, CONVERSIONS, safeEval
   };
 })();
+
+/* ============================================================
+   Two-column calculator layout (desktop): inputs on the left,
+   result and the ad on the right. Below 1024px the grid is a
+   single column, so phones keep the stacked order:
+   inputs, result, ad.
+   Elements are moved, not copied, so every id and event listener
+   on the page keeps working. The styling lives in tools.css.
+   ============================================================ */
+(function () {
+  function buildCalcLayout() {
+    var result = document.getElementById('result-panel');
+    if (!result || result.closest('.calc-layout')) return;
+    var main = result.parentElement;
+    if (!main || main.tagName !== 'MAIN') return;
+    // Upload and converter tools (dropzone) keep their single-column layout.
+    if (document.getElementById('dropzone') || document.querySelector('.dropzone')) return;
+
+    // The inputs are the nearest <section> before the result panel.
+    var inputs = result.previousElementSibling;
+    while (inputs && inputs.tagName !== 'SECTION') inputs = inputs.previousElementSibling;
+    if (!inputs) return;
+
+    // Anything between the inputs and the result panel stays with the inputs.
+    var between = [];
+    for (var p = inputs.nextElementSibling; p && p !== result; p = p.nextElementSibling) between.push(p);
+
+    // Everything after the result panel, up to the first ad or the article.
+    function isAd(el) { return el.classList.contains('ad-slot') || !!el.querySelector('ins.adsbygoogle'); }
+    var follow = [], ad = null;
+    for (var n = result.nextElementSibling; n && n.tagName !== 'ARTICLE'; n = n.nextElementSibling) {
+      if (isAd(n)) { ad = n; break; }
+      follow.push(n);
+    }
+
+    var layout = document.createElement('div');
+    layout.className = 'calc-layout';
+    var mainCol = document.createElement('div');
+    mainCol.className = 'calc-main';
+    var side = document.createElement('div');
+    side.className = 'calc-side';
+    layout.appendChild(mainCol);
+    layout.appendChild(side);
+    main.insertBefore(layout, inputs);
+
+    mainCol.appendChild(inputs);
+    between.forEach(function (el) { mainCol.appendChild(el); });
+
+    side.appendChild(result);
+    var empty = document.createElement('div');
+    empty.className = 'result-empty';
+    empty.setAttribute('aria-hidden', 'true');
+    empty.innerHTML = '<p><strong>Your result appears here.</strong></p><p>Fill in the fields and press the calculate button.</p>';
+    side.appendChild(empty);
+
+    follow.forEach(function (el) {
+      // The screen-reader live region goes with the result; examples and notes go with the inputs.
+      (el.id === 'answer-live' ? side : mainCol).appendChild(el);
+    });
+
+    // The first ad gets its own narrow third column that stays in view while the person scrolls.
+    if (ad) {
+      var adCol = document.createElement('div');
+      adCol.className = 'calc-ad';
+      adCol.appendChild(ad);
+      layout.appendChild(adCol);
+      layout.classList.add('has-ad');
+    }
+
+    // Wider page frame; keep the long article at a readable line length.
+    main.classList.add('calc-wide');
+    var article = main.querySelector(':scope > article');
+    if (article) article.classList.add('calc-narrow');
+    var header = document.querySelector('header');
+    var crumb = header && header.nextElementSibling;
+    if (crumb && crumb.querySelector('nav[aria-label="Breadcrumb"]')) crumb.classList.add('calc-wide');
+  }
+
+  function run() { try { buildCalcLayout(); } catch (e) { /* layout is an enhancement; never break the calculator */ } }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+})();
