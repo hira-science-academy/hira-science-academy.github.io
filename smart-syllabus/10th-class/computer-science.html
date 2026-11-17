@@ -736,6 +736,27 @@ body{background:#eef1f8 !important}
     .article-body #reduced-topics ~ .overflow-x-auto td:nth-child(2){min-width:130px}
     html{scroll-padding-top:90px}
   </style>
+
+  <style id="site-unified">
+    /* ═══ UNIFIED SUBJECT CARD (same on hub + every subject page) ═══ */
+    .subject-grid-link .sg-body{display:flex;flex-direction:column;gap:.15rem;min-width:0;flex:1}
+    .subject-grid-link .sg-name{font-weight:700;color:inherit;line-height:1.3}
+    .subject-grid-link .sg-meta{font-size:.75rem;font-weight:500;color:#64748b;line-height:1.3}
+    .subject-grid-link .sg-body .status-announced{align-self:flex-start;margin-top:.25rem}
+    .subject-grid-link .sg-arrow{margin-left:auto;padding-left:.5rem;font-size:.8rem;font-weight:700;color:#1e3a8a;white-space:nowrap}
+    .subject-grid-link.current .sg-arrow{color:#64748b;font-weight:600}
+    .subject-grid-link{text-decoration:none}
+    /* Smart Syllabus resource card theme (hub) — purple */
+    .src-syllabus{border-color:#ddd6fe;background:linear-gradient(160deg,#f5f3ff 0%,#ffffff 60%)}
+    .src-syllabus::before{background:linear-gradient(90deg,#8b5cf6,#6d28d9)}
+    .src-syllabus::after{background:#8b5cf6}
+    .src-syllabus .src-icon-wrap{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff}
+    .src-syllabus .src-tag{background:#ede9fe;color:#5b21b6}
+    .src-syllabus .src-cta{background:linear-gradient(135deg,#7c3aed,#5b21b6);box-shadow:0 8px 18px rgba(124,58,237,.3)}
+    .src-syllabus:hover{border-color:#8b5cf6}
+    /* Continue-studying block */
+    .continue-label{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin:1.25rem 0 .5rem}
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
@@ -1120,52 +1141,33 @@ body{background:#eef1f8 !important}
     <p class="text-gray-700 leading-8">Click any subject to view its dedicated Smart Syllabus 2027 status page.</p>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 my-6">
-      <a href="/smart-syllabus/10th-class/mathematics.html" class="subject-grid-link">
-        <span class="sg-icon bg-blue-100 text-blue-700">📐</span>
-        <span>Mathematics</span>
-      </a>
-
-      <a href="/smart-syllabus/10th-class/physics.html" class="subject-grid-link">
-        <span class="sg-icon bg-cyan-100 text-cyan-700">⚛️</span>
-        <span>Physics</span>
-      </a>
-
-      <a href="/smart-syllabus/10th-class/chemistry.html" class="subject-grid-link">
-        <span class="sg-icon bg-rose-100 text-rose-700">🧪</span>
-        <span>Chemistry</span>
-      </a>
-
-      <a href="/smart-syllabus/10th-class/biology.html" class="subject-grid-link">
-        <span class="sg-icon bg-emerald-100 text-emerald-700">🧬</span>
-        <span>Biology</span>
-      </a>
-
-      <a href="/smart-syllabus/10th-class/english.html" class="subject-grid-link">
-        <span class="sg-icon bg-indigo-100 text-indigo-700">📖</span>
-        <span>English</span>
-      </a>
-
-      <a href="/smart-syllabus/10th-class/pakistan-studies.html" class="subject-grid-link">
-        <span class="sg-icon bg-amber-100 text-amber-700">🇵🇰</span>
-        <span>Pakistan Studies</span>
-      </a>
-
-      <a href="/smart-syllabus/10th-class/urdu.html" class="subject-grid-link">
-        <span class="sg-icon bg-teal-100 text-teal-700">📜</span>
-        <span>Urdu</span>
-      </a>
-
-      <!-- Computer Science — CURRENT PAGE -->
-      <span class="subject-grid-link current" aria-current="page">
-        <span class="sg-icon bg-slate-200 text-slate-700">💻</span>
-        <span>Computer Science</span>
-      </span>
-
-      <a href="/smart-syllabus/10th-class/tarjuma-tul-quran.html" class="subject-grid-link">
-        <span class="sg-icon bg-green-100 text-green-700">🕌</span>
-        <span>Tarjuma-tul-Quran</span>
-      </a>
+      <a href="/smart-syllabus/10th-class/mathematics.html" class="subject-grid-link"><span class="sg-icon bg-blue-100 text-blue-700">📐</span><span class="sg-body"><span class="sg-name">Mathematics</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
+      <a href="/smart-syllabus/10th-class/physics.html" class="subject-grid-link"><span class="sg-icon bg-cyan-100 text-cyan-700">⚛️</span><span class="sg-body"><span class="sg-name">Physics</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
+      <a href="/smart-syllabus/10th-class/chemistry.html" class="subject-grid-link"><span class="sg-icon bg-rose-100 text-rose-700">🧪</span><span class="sg-body"><span class="sg-name">Chemistry</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
+      <a href="/smart-syllabus/10th-class/chemistry-tech.html" class="subject-grid-link"><span class="sg-icon bg-amber-100 text-amber-700">⚗️</span><span class="sg-body"><span class="sg-name">Chemistry (Tech)</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
+      <a href="/smart-syllabus/10th-class/biology.html" class="subject-grid-link"><span class="sg-icon bg-emerald-100 text-emerald-700">🧬</span><span class="sg-body"><span class="sg-name">Biology</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
+      <a href="/smart-syllabus/10th-class/general-science.html" class="subject-grid-link"><span class="sg-icon bg-lime-100 text-lime-700">🔬</span><span class="sg-body"><span class="sg-name">General Science</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
+      <a href="/smart-syllabus/10th-class/english.html" class="subject-grid-link"><span class="sg-icon bg-indigo-100 text-indigo-700">📖</span><span class="sg-body"><span class="sg-name">English</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
+      <a href="/smart-syllabus/10th-class/pakistan-studies.html" class="subject-grid-link"><span class="sg-icon bg-amber-100 text-amber-700">🇵🇰</span><span class="sg-body"><span class="sg-name">Pakistan Studies</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
+      <a href="/smart-syllabus/10th-class/urdu.html" class="subject-grid-link"><span class="sg-icon bg-teal-100 text-teal-700">📜</span><span class="sg-body"><span class="sg-name">Urdu</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
+      <span class="subject-grid-link current" aria-current="page"><span class="sg-icon bg-slate-200 text-slate-700">💻</span><span class="sg-body"><span class="sg-name">Computer Science</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">You are here</span></span>
+      <a href="/smart-syllabus/10th-class/tarjuma-tul-quran.html" class="subject-grid-link"><span class="sg-icon bg-green-100 text-green-700">🕌</span><span class="sg-body"><span class="sg-name">Tarjuma-tul-Quran</span><span class="sg-meta">Class 10 · 2027</span></span><span class="sg-arrow">View →</span></a>
     </div>
+
+    <!-- ===== CONTINUE STUDYING (internal links) ===== -->
+    <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-4" id="continue">➡️ Continue Studying</h2>
+    <p class="text-gray-700 leading-8">Move to the neighbouring Class 10 subject, or jump to closely related subjects to plan your 2027 preparation.</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6">
+      <a href="/smart-syllabus/10th-class/urdu.html" class="subject-grid-link"><span class="sg-icon bg-teal-100 text-teal-700">📜</span><span class="sg-body"><span class="sg-name">Urdu</span><span class="sg-meta">← Previous subject</span></span><span class="sg-arrow">View →</span></a>
+      <a href="/smart-syllabus/10th-class/tarjuma-tul-quran.html" class="subject-grid-link"><span class="sg-icon bg-green-100 text-green-700">🕌</span><span class="sg-body"><span class="sg-name">Tarjuma-tul-Quran</span><span class="sg-meta">Next subject →</span></span><span class="sg-arrow">View →</span></a>
+    </div>
+    <p class="continue-label no-justify">Related subjects</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mb-6">
+        <a href="/smart-syllabus/10th-class/mathematics.html" class="subject-grid-link"><span class="sg-icon bg-blue-100 text-blue-700">📐</span><span class="sg-body"><span class="sg-name">Mathematics</span><span class="sg-meta">Related subject</span></span><span class="sg-arrow">View →</span></a>
+        <a href="/smart-syllabus/10th-class/physics.html" class="subject-grid-link"><span class="sg-icon bg-cyan-100 text-cyan-700">⚛️</span><span class="sg-body"><span class="sg-name">Physics</span><span class="sg-meta">Related subject</span></span><span class="sg-arrow">View →</span></a>
+        <a href="/smart-syllabus/10th-class/english.html" class="subject-grid-link"><span class="sg-icon bg-indigo-100 text-indigo-700">📖</span><span class="sg-body"><span class="sg-name">English</span><span class="sg-meta">Related subject</span></span><span class="sg-arrow">View →</span></a>
+    </div>
+    <p class="text-gray-700 leading-7 text-sm no-justify">📋 <strong>Pairing schemes:</strong> <a href="https://hiraacademy.com.pk/class10-computer-science-pairing-scheme.html" class="font-semibold">Computer Science</a> · <a href="https://hiraacademy.com.pk/class10-math-pairing-scheme.html" class="font-semibold">Mathematics</a> · <a href="https://hiraacademy.com.pk/class10-physics-pairing-scheme.html" class="font-semibold">Physics</a> · <a href="https://hiraacademy.com.pk/class10-english-pairing-scheme.html" class="font-semibold">English</a> · <a href="https://hiraacademy.com.pk/pairing-scheme.html#class-10-pairing" class="font-semibold">All Class 10 pairing schemes →</a></p>
 
     <!-- ===== RELATED PAGES ===== -->
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-4" id="related">🔗 Related Pages</h2>
@@ -1176,7 +1178,7 @@ body{background:#eef1f8 !important}
       </a>
       <a href="/smart-syllabus/10th-class/" class="block bg-purple-50 border border-purple-100 rounded-2xl p-5 hover:border-purple-400 hover:shadow-lg transition">
         <div class="font-bold text-purple-900 mb-1">Class 10 Hub</div>
-        <div class="text-sm text-gray-600">All 9 subjects for Class 10</div>
+        <div class="text-sm text-gray-600">All 11 subjects for Class 10</div>
       </a>
       <a href="/smart-syllabus/9th-class/" class="block bg-emerald-50 border border-emerald-100 rounded-2xl p-5 hover:border-emerald-400 hover:shadow-lg transition">
         <div class="font-bold text-emerald-900 mb-1">Class 9 Hub</div>
@@ -1185,6 +1187,10 @@ body{background:#eef1f8 !important}
       <a href="https://hiraacademy.com.pk/pairing-scheme.html" class="block bg-rose-50 border border-rose-100 rounded-2xl p-5 hover:border-rose-400 hover:shadow-lg transition">
         <div class="font-bold text-rose-900 mb-1">Pairing Schemes 2027</div>
         <div class="text-sm text-gray-600">All subjects · Class 9 &amp; 10</div>
+      </a>
+      <a href="https://hiraacademy.com.pk/model-papers/10th-class/" class="block bg-indigo-50 border border-indigo-100 rounded-2xl p-5 hover:border-indigo-400 hover:shadow-lg transition">
+        <div class="font-bold text-indigo-900 mb-1">Class 10 Model Papers</div>
+        <div class="text-sm text-gray-600">All 11 subjects, 2027</div>
       </a>
     </div>
 

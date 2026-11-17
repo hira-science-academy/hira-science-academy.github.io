@@ -586,8 +586,347 @@ body{background:#eef1f8 !important}
 @media (max-width:420px){.article-body{margin-left:.35rem !important;margin-right:.35rem !important;padding:1.35rem .9rem 1.6rem !important}}
 @media (min-width:1280px){.article-body{padding:3.5rem 3.75rem 3.75rem !important}}
   </style>
+
+  <style id="site-unified">
+    /* ═══ Shared component styles (same as subject pages) ═══ */
+    .pdf-container {
+      width: 100%; position: relative;
+      border-radius: 1rem; overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      border: 1px solid #e2e8f0;
+      background: #f8fafc;
+      height: 900px; min-height: 70vh;
+    }
+    .pdf-container iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; border: none;
+    }
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, #0284c7, #6d28d9);
+      color: #ffffff !important;
+      padding: 0.9rem 1.75rem; border-radius: 9999px;
+      font-weight: 700; font-size: 1rem;
+      box-shadow: 0 8px 25px rgba(2,132,199,0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+    }
+    .download-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(2,132,199,0.45); }
+    .faq-item {
+      background: #ffffff; border: 1px solid #e2e8f0;
+      border-left: 5px solid #0ea5e9; border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -2px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%; display: flex; justify-content: space-between; align-items: center;
+      gap: 12px; padding: 16px 20px;
+      background: #ffffff; border: none;
+      font-weight: 600; color: #0c4a6e; font-size: 1rem;
+      text-align: left; cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .faq-question:hover { background: #f0f9ff; }
+    .faq-question:focus-visible { outline: 3px solid #0ea5e9; outline-offset: 2px; }
+    .faq-icon { font-size: 1.25rem; font-weight: 700; color: #0284c7; transition: transform 0.2s ease; flex-shrink: 0; }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+    .faq-answer { padding: 0 20px 18px 20px; color: #334155; line-height: 1.7; text-align: justify; font-size: 0.95rem; }
+    .faq-answer[hidden] { display: none; }
+    .reading-progress-container { position: fixed; top: 80px; left: 0; width: 100%; height: 4px; background: #e0f2fe; z-index: 1001; }
+    .reading-progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, #0ea5e9, #6d28d9); transition: width 0.1s ease-out; }
+    @media (max-width: 768px) { .reading-progress-container { top: 64px; } }
+    .subject-grid-link {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 1rem;
+      border-radius: 0.75rem;
+      border: 1px solid #e2e8f0;
+      background: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #0f172a;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .subject-grid-link:hover {
+      border-color: #0ea5e9;
+      box-shadow: 0 6px 16px rgba(2,132,199,0.12);
+      transform: translateY(-2px);
+      color: #0369a1;
+    }
+    .subject-grid-link .sg-icon {
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      background: #f0f9ff;
+    }
+    .subject-grid-link.current {
+      background: #eff6ff;
+      border-color: #0284c7;
+      border-width: 2px;
+      color: #0c4a6e;
+      cursor: default;
+      box-shadow: 0 6px 16px rgba(2,132,199,0.15);
+    }
+    .subject-grid-link.current:hover {
+      transform: none;
+      box-shadow: 0 6px 16px rgba(2,132,199,0.15);
+    }
+    .study-resource-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      padding: 1.75rem 1.6rem 1.6rem;
+      border-radius: 1.5rem;
+      border: 2px solid transparent;
+      text-decoration: none;
+      overflow: hidden;
+      background: #ffffff;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      isolation: isolate;
+    }
+    .study-resource-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 6px;
+      z-index: 1;
+    }
+    .study-resource-card::after {
+      content: '';
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      top: -70px;
+      right: -70px;
+      opacity: 0.18;
+      z-index: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+    .study-resource-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+    .study-resource-card:hover::after {
+      transform: scale(1.15);
+      opacity: 0.28;
+    }
+    .study-resource-card .src-icon-wrap {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3.75rem;
+      height: 3.75rem;
+      border-radius: 1rem;
+      font-size: 1.9rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+    }
+    .study-resource-card .src-tag {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.7rem;
+      border-radius: 9999px;
+      width: fit-content;
+    }
+    .study-resource-card .src-title {
+      position: relative;
+      z-index: 2;
+      font-weight: 800;
+      font-size: 1.15rem;
+      line-height: 1.35;
+      color: #0f172a;
+    }
+    .study-resource-card .src-desc {
+      position: relative;
+      z-index: 2;
+      font-size: 0.88rem;
+      color: #475569;
+      line-height: 1.55;
+    }
+    .study-resource-card .src-bullets {
+      position: relative;
+      z-index: 2;
+      list-style: none;
+      padding: 0;
+      margin: 0.15rem 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.82rem;
+      color: #334155;
+    }
+    .study-resource-card .src-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.45rem;
+      line-height: 1.4;
+    }
+    .study-resource-card .src-bullets li .src-check {
+      flex-shrink: 0;
+      font-weight: 800;
+      font-size: 0.9rem;
+      line-height: 1.35;
+    }
+    .study-resource-card .src-cta {
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      color: #ffffff !important;
+      text-decoration: none;
+      transition: filter 0.2s ease, transform 0.2s ease;
+    }
+    .study-resource-card:hover .src-cta {
+      filter: brightness(1.08);
+    }
+    .study-resource-card .src-cta .arrow {
+      transition: transform 0.25s ease;
+    }
+    .study-resource-card:hover .src-cta .arrow {
+      transform: translateX(4px);
+    }
+    .src-pairing {
+      border-color: #fecdd3;
+      background: linear-gradient(160deg, #fff1f2 0%, #ffffff 60%);
+    }
+    .src-pairing::before { background: linear-gradient(90deg, #f43f5e, #be123c); }
+    .src-pairing::after { background: #f43f5e; }
+    .src-pairing .src-icon-wrap {
+      background: linear-gradient(135deg, #f43f5e, #be123c);
+      color: #ffffff;
+    }
+    .src-pairing .src-tag {
+      background: #ffe4e6;
+      color: #9f1239;
+    }
+    .src-pairing .src-cta {
+      background: linear-gradient(135deg, #e11d48, #9f1239);
+      box-shadow: 0 8px 18px rgba(225,29,72,0.3);
+    }
+    .src-pairing:hover { border-color: #f43f5e; }
+    .src-pairing .src-bullets li .src-check { color: #e11d48; }
+    .src-model {
+      border-color: #bfdbfe;
+      background: linear-gradient(160deg, #eff6ff 0%, #ffffff 60%);
+    }
+    .src-model::before { background: linear-gradient(90deg, #3b82f6, #1d4ed8); }
+    .src-model::after { background: #3b82f6; }
+    .src-model .src-icon-wrap {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: #ffffff;
+    }
+    .src-model .src-tag {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .src-model .src-cta {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      box-shadow: 0 8px 18px rgba(37,99,235,0.3);
+    }
+    .src-model:hover { border-color: #3b82f6; }
+    .src-model .src-bullets li .src-check { color: #2563eb; }
+    .workflow-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 1rem 1.25rem;
+      border-radius: 1rem;
+      background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+      border: 1px solid #c7d2fe;
+      font-size: 0.85rem;
+      color: #1e293b;
+    }
+    .workflow-strip .wf-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 600;
+      padding: 0.3rem 0.7rem;
+      border-radius: 9999px;
+      background: #ffffff;
+      border: 1px solid #c7d2fe;
+      white-space: nowrap;
+    }
+    .workflow-strip .wf-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #0284c7, #6d28d9);
+      color: #ffffff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .workflow-strip .wf-arrow {
+      color: #7c3aed;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    @media (max-width: 640px) {
+      .workflow-strip { flex-direction: column; align-items: flex-start; }
+      .workflow-strip .wf-arrow { transform: rotate(90deg); }
+    }
+    .study-resource-card .src-cta span {
+    color: #ffffff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+    /* ═══ UNIFIED SUBJECT CARD (same on hub + every subject page) ═══ */
+    .subject-grid-link .sg-body{display:flex;flex-direction:column;gap:.15rem;min-width:0;flex:1}
+    .subject-grid-link .sg-name{font-weight:700;color:inherit;line-height:1.3}
+    .subject-grid-link .sg-meta{font-size:.75rem;font-weight:500;color:#64748b;line-height:1.3}
+    .subject-grid-link .sg-body .status-announced{align-self:flex-start;margin-top:.25rem}
+    .subject-grid-link .sg-arrow{margin-left:auto;padding-left:.5rem;font-size:.8rem;font-weight:700;color:#1e3a8a;white-space:nowrap}
+    .subject-grid-link.current .sg-arrow{color:#64748b;font-weight:600}
+    .subject-grid-link{text-decoration:none}
+    /* Smart Syllabus resource card theme (hub) — purple */
+    .src-syllabus{border-color:#ddd6fe;background:linear-gradient(160deg,#f5f3ff 0%,#ffffff 60%)}
+    .src-syllabus::before{background:linear-gradient(90deg,#8b5cf6,#6d28d9)}
+    .src-syllabus::after{background:#8b5cf6}
+    .src-syllabus .src-icon-wrap{background:linear-gradient(135deg,#8b5cf6,#6d28d9);color:#fff}
+    .src-syllabus .src-tag{background:#ede9fe;color:#5b21b6}
+    .src-syllabus .src-cta{background:linear-gradient(135deg,#7c3aed,#5b21b6);box-shadow:0 8px 18px rgba(124,58,237,.3)}
+    .src-syllabus:hover{border-color:#8b5cf6}
+    /* Continue-studying block */
+    .continue-label{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin:1.25rem 0 .5rem}
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-container">
+    <div class="reading-progress-bar" id="readingProgressBar"></div>
+  </div>
+
 
   <!-- ===== NAVIGATION ═══ UPDATED: added Pairing Schemes + Model Papers ═══ -->
   <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
@@ -638,7 +977,7 @@ body{background:#eef1f8 !important}
     <div class="max-w-5xl mx-auto px-4 relative z-10">
       <span class="inline-block bg-yellow-400/20 text-yellow-100 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-5 border border-yellow-300/30">Class 10 (Matric) · All Subjects · Punjab Boards · 2027</span>
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-5 tracking-tight drop-shadow-lg">Smart Syllabus for 10th Class 2027 — All Subjects</h1>
-      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">Subject-by-subject status of the Class 10 Smart Syllabus 2027: Mathematics, Physics, Chemistry, Chemistry (Tech), Biology, General Science, English, Pakistan Studies, Urdu, Computer Science, and Tarjuma-tul-Quran. 2026 followed the old syllabus; 2027 has a new syllabus.</p>
+      <p class="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">Subject-by-subject status of the Class 10 Smart Syllabus 2027: <a href="/smart-syllabus/10th-class/mathematics.html" class="font-semibold">Mathematics</a>, <a href="/smart-syllabus/10th-class/physics.html" class="font-semibold">Physics</a>, <a href="/smart-syllabus/10th-class/chemistry.html" class="font-semibold">Chemistry</a>, <a href="/smart-syllabus/10th-class/chemistry-tech.html" class="font-semibold">Chemistry (Tech)</a>, <a href="/smart-syllabus/10th-class/biology.html" class="font-semibold">Biology</a>, <a href="/smart-syllabus/10th-class/general-science.html" class="font-semibold">General Science</a>, <a href="/smart-syllabus/10th-class/english.html" class="font-semibold">English</a>, <a href="/smart-syllabus/10th-class/pakistan-studies.html" class="font-semibold">Pakistan Studies</a>, <a href="/smart-syllabus/10th-class/urdu.html" class="font-semibold">Urdu</a>, <a href="/smart-syllabus/10th-class/computer-science.html" class="font-semibold">Computer Science</a>, and <a href="/smart-syllabus/10th-class/tarjuma-tul-quran.html" class="font-semibold">Tarjuma-tul-Quran</a>. 2026 followed the old syllabus; 2027 has a new syllabus.</p>
       <div class="mt-7 flex flex-wrap justify-center gap-3 text-sm">
         <span class="bg-white/10 border border-white/15 rounded-full px-4 py-2">Last updated: 14 November 2026</span>
         <span class="bg-white/10 border border-white/15 rounded-full px-4 py-2">11 subjects tracked</span>
@@ -693,6 +1032,17 @@ body{background:#eef1f8 !important}
     </div>
   </div>
 
+  <!-- ===== BREADCRUMB ===== -->
+  <div class="max-w-5xl mx-auto px-6 pt-6 text-sm text-gray-500">
+    <nav class="flex flex-wrap items-center gap-1" aria-label="Breadcrumb">
+      <a href="https://hiraacademy.com.pk/" class="hover:text-primary-700 transition">Home</a>
+      <span class="mx-1">›</span>
+      <a href="/smart-syllabus/" class="hover:text-primary-700 transition">Smart Syllabus</a>
+      <span class="mx-1">›</span>
+      <span class="text-gray-700 font-medium">10th Class</span>
+    </nav>
+  </div>
+
   <!-- ===== ARTICLE ===== -->
   <article class="article-body text-justify-content max-w-5xl mx-auto px-6 py-12 bg-white shadow-sm mt-8 rounded-2xl mb-16">
 
@@ -703,7 +1053,7 @@ body{background:#eef1f8 !important}
         <strong>Class 10 is different from Class 9.</strong> In the <strong>2026 board exams, 10th class students followed the old (full) syllabus</strong> — no smart syllabus was issued for 10th class in 2026. For the <strong>2027 exams, a new 10th class syllabus</strong> has been introduced, and students should prepare from that new syllabus.
       </p>
       <p class="text-gray-800 leading-7 mt-3">
-        The <strong>Accelerated Learning Program (ALP) smart syllabus has now been announced for ALL subjects</strong> <span class="status-announced">✅ Announced</span> — including Mathematics, Physics, Chemistry, Chemistry (Tech), Biology, General Science, English, Pakistan Studies, Urdu, Computer Science, and Tarjuma-tul-Quran. Open any subject page for the reduced topics, excluded questions and the official PDF. <strong>Pairing schemes and model papers are also available</strong> for all 11 subjects — see the columns below.
+        The <strong>Accelerated Learning Program (ALP) smart syllabus has now been announced for ALL subjects</strong> <span class="status-announced">✅ Announced</span> — including <a href="/smart-syllabus/10th-class/mathematics.html" class="font-semibold">Mathematics</a>, <a href="/smart-syllabus/10th-class/physics.html" class="font-semibold">Physics</a>, <a href="/smart-syllabus/10th-class/chemistry.html" class="font-semibold">Chemistry</a>, <a href="/smart-syllabus/10th-class/chemistry-tech.html" class="font-semibold">Chemistry (Tech)</a>, <a href="/smart-syllabus/10th-class/biology.html" class="font-semibold">Biology</a>, <a href="/smart-syllabus/10th-class/general-science.html" class="font-semibold">General Science</a>, <a href="/smart-syllabus/10th-class/english.html" class="font-semibold">English</a>, <a href="/smart-syllabus/10th-class/pakistan-studies.html" class="font-semibold">Pakistan Studies</a>, <a href="/smart-syllabus/10th-class/urdu.html" class="font-semibold">Urdu</a>, <a href="/smart-syllabus/10th-class/computer-science.html" class="font-semibold">Computer Science</a>, and <a href="/smart-syllabus/10th-class/tarjuma-tul-quran.html" class="font-semibold">Tarjuma-tul-Quran</a>. Open any subject page for the reduced topics, excluded questions and the official PDF. <strong>Pairing schemes and model papers are also available</strong> for all 11 subjects — see the columns below.
       </p>
     </div>
 
@@ -761,104 +1111,27 @@ body{background:#eef1f8 !important}
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-6">
 
-      <a href="/smart-syllabus/10th-class/mathematics.html" class="subject-card">
-        <div class="subject-title">Mathematics</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/mathematics.html" class="subject-grid-link"><span class="sg-icon bg-blue-100 text-blue-700">📐</span><span class="sg-body"><span class="sg-name">Mathematics</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/physics.html" class="subject-card">
-        <div class="subject-title">Physics</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/physics.html" class="subject-grid-link"><span class="sg-icon bg-cyan-100 text-cyan-700">⚛️</span><span class="sg-body"><span class="sg-name">Physics</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/chemistry.html" class="subject-card">
-        <div class="subject-title">Chemistry</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/chemistry.html" class="subject-grid-link"><span class="sg-icon bg-rose-100 text-rose-700">🧪</span><span class="sg-body"><span class="sg-name">Chemistry</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/chemistry-tech.html" class="subject-card">
-        <div class="subject-title">Chemistry (Tech)</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/chemistry-tech.html" class="subject-grid-link"><span class="sg-icon bg-amber-100 text-amber-700">⚗️</span><span class="sg-body"><span class="sg-name">Chemistry (Tech)</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/biology.html" class="subject-card">
-        <div class="subject-title">Biology</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/biology.html" class="subject-grid-link"><span class="sg-icon bg-emerald-100 text-emerald-700">🧬</span><span class="sg-body"><span class="sg-name">Biology</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/general-science.html" class="subject-card">
-        <div class="subject-title">General Science</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/general-science.html" class="subject-grid-link"><span class="sg-icon bg-lime-100 text-lime-700">🔬</span><span class="sg-body"><span class="sg-name">General Science</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/english.html" class="subject-card">
-        <div class="subject-title">English</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/english.html" class="subject-grid-link"><span class="sg-icon bg-indigo-100 text-indigo-700">📖</span><span class="sg-body"><span class="sg-name">English</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/pakistan-studies.html" class="subject-card">
-        <div class="subject-title">Pakistan Studies</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/pakistan-studies.html" class="subject-grid-link"><span class="sg-icon bg-amber-100 text-amber-700">🇵🇰</span><span class="sg-body"><span class="sg-name">Pakistan Studies</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/urdu.html" class="subject-card">
-        <div class="subject-title">Urdu</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/urdu.html" class="subject-grid-link"><span class="sg-icon bg-teal-100 text-teal-700">📜</span><span class="sg-body"><span class="sg-name">Urdu</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/computer-science.html" class="subject-card">
-        <div class="subject-title">Computer Science</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/computer-science.html" class="subject-grid-link"><span class="sg-icon bg-slate-200 text-slate-700">💻</span><span class="sg-body"><span class="sg-name">Computer Science</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
-      <a href="/smart-syllabus/10th-class/tarjuma-tul-quran.html" class="subject-card">
-        <div class="subject-title">Tarjuma-tul-Quran</div>
-        <div class="subject-meta">Class 10 · 2027</div>
-        <div class="flex items-center justify-between mt-1">
-          <span class="status-announced">✅ Announced</span>
-          <span class="subject-arrow">View →</span>
-        </div>
-      </a>
+      <a href="/smart-syllabus/10th-class/tarjuma-tul-quran.html" class="subject-grid-link"><span class="sg-icon bg-green-100 text-green-700">🕌</span><span class="sg-body"><span class="sg-name">Tarjuma-tul-Quran</span><span class="sg-meta">Class 10 · 2027</span><span class="status-announced">✅ Announced</span></span><span class="sg-arrow">View →</span></a>
 
     </div>
 
@@ -913,25 +1186,34 @@ body{background:#eef1f8 !important}
       <!-- Three pillar cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 my-6">
 
-        <a href="https://hiraacademy.com.pk/pairing-scheme.html" class="resource-card rc-pairing" aria-label="View all 10th class pairing schemes 2027">
-          <span class="rc-tag">📋 Pairing Scheme</span>
-          <span class="rc-title">All 10 Class 10 subjects · chapter-wise weightage</span>
-          <span class="rc-desc">See exactly which chapters carry the highest marks before you revise them.</span>
-          <span class="rc-cta">View pairing schemes →</span>
+        <a href="https://hiraacademy.com.pk/pairing-scheme.html#class-10-pairing" class="study-resource-card src-pairing" aria-label="View all 10th class pairing schemes 2027">
+          <div class="flex items-center justify-between gap-3">
+            <div class="src-icon-wrap" aria-hidden="true">📋</div>
+            <span class="src-tag">Pairing Scheme</span>
+          </div>
+          <h3 class="src-title">All 10 Class 10 subjects · chapter-wise weightage</h3>
+          <p class="src-desc">See exactly which chapters carry the highest marks before you revise them.</p>
+          <span class="src-cta"><span>View pairing schemes</span><span class="arrow" aria-hidden="true">→</span></span>
         </a>
 
-        <a href="https://hiraacademy.com.pk/model-papers/10th-class/" class="resource-card rc-model" aria-label="Download 10th class model papers 2027">
-          <span class="rc-tag">📄 Model Papers</span>
-          <span class="rc-title">All 10 subjects · free PDF download</span>
-          <span class="rc-desc">PECTAA-aligned full papers with preview, print, and download for timed practice.</span>
-          <span class="rc-cta">Download model papers →</span>
+        <a href="https://hiraacademy.com.pk/model-papers/10th-class/" class="study-resource-card src-model" aria-label="Download 10th class model papers 2027">
+          <div class="flex items-center justify-between gap-3">
+            <div class="src-icon-wrap" aria-hidden="true">📄</div>
+            <span class="src-tag">Model Papers</span>
+          </div>
+          <h3 class="src-title">All 10 subjects · free PDF download</h3>
+          <p class="src-desc">PECTAA-aligned full papers with preview, print, and download for timed practice.</p>
+          <span class="src-cta"><span>Download model papers</span><span class="arrow" aria-hidden="true">→</span></span>
         </a>
 
-        <a href="https://hiraacademy.com.pk/smart-syllabus/" class="resource-card rc-syllabus" aria-label="Check smart syllabus status for all subjects">
-          <span class="rc-tag">📚 Smart Syllabus</span>
-          <span class="rc-title">All 18 subjects · live status dashboard</span>
-          <span class="rc-desc">You are here. Check any subject's announcement status and deleted topics.</span>
-          <span class="rc-cta">Check status →</span>
+        <a href="https://hiraacademy.com.pk/smart-syllabus/" class="study-resource-card src-syllabus" aria-label="Check smart syllabus status for all subjects">
+          <div class="flex items-center justify-between gap-3">
+            <div class="src-icon-wrap" aria-hidden="true">📚</div>
+            <span class="src-tag">Smart Syllabus</span>
+          </div>
+          <h3 class="src-title">All 18 subjects · live status dashboard</h3>
+          <p class="src-desc">You are here. Check any subject's announcement status and deleted topics.</p>
+          <span class="src-cta"><span>Check status</span><span class="arrow" aria-hidden="true">→</span></span>
         </a>
 
       </div>
@@ -954,7 +1236,7 @@ body{background:#eef1f8 !important}
             <li><a class="xlink-item" href="https://hiraacademy.com.pk/class10-computer-science-pairing-scheme.html"><span>Computer Science</span><span>→</span></a></li>
             <li><a class="xlink-item" href="https://hiraacademy.com.pk/class10-tarjuma-tul-quran-pairing-scheme.html"><span>Tarjuma-tul-Quran</span><span>→</span></a></li>
           </ul>
-          <p class="mt-3 text-sm"><a class="text-rose-700 font-semibold hover:underline" href="https://hiraacademy.com.pk/pairing-scheme.html">View all pairing schemes →</a></p>
+          <p class="mt-3 text-sm"><a class="text-rose-700 font-semibold hover:underline" href="https://hiraacademy.com.pk/pairing-scheme.html#class-10-pairing">View all pairing schemes →</a></p>
         </div>
 
         <div class="bg-white border border-indigo-100 rounded-2xl p-5">
@@ -1007,31 +1289,61 @@ body{background:#eef1f8 !important}
 
     <!-- ===== FAQ ===== -->
     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-12 mb-4" id="faq">Frequently Asked Questions — 10th Class 2027</h2>
-    <div class="space-y-4 my-6">
-      <details class="bg-gray-50 border border-gray-200 rounded-xl p-4" open>
-        <summary class="font-bold text-gray-900 cursor-pointer">Has the Smart Syllabus for 10th Class 2027 been announced?</summary>
-        <p class="text-gray-700 leading-7 mt-3">Yes. As of 14 November 2026, the Accelerated Learning Program (ALP) smart syllabus has been <strong>announced for all 11 subjects</strong> — Mathematics, Physics, Chemistry, Chemistry (Tech), Biology, General Science, English, Pakistan Studies, Urdu, Computer Science, and Tarjuma-tul-Quran. See the individual subject pages for reduced topics, excluded questions and practicals. <strong>Pairing schemes and model papers are also available</strong> for all subjects.</p>
-      </details>
-      <details class="bg-gray-50 border border-gray-200 rounded-xl p-4">
-        <summary class="font-bold text-gray-900 cursor-pointer">Are 10th class pairing schemes and model papers available?</summary>
-        <p class="text-gray-700 leading-7 mt-3">Yes. Pairing schemes and model papers for all 11 Class 10 subjects are available now. Use the "Pairing Scheme" and "Model Paper" columns in the status table above, or the Study Resources section.</p>
-      </details>
-      <details class="bg-gray-50 border border-gray-200 rounded-xl p-4">
-        <summary class="font-bold text-gray-900 cursor-pointer">What was the 10th class syllabus for the 2026 exams?</summary>
-        <p class="text-gray-700 leading-7 mt-3">The 2026 board exams followed the <strong>old (full) syllabus</strong>. No 10th class smart syllabus was issued for 2026.</p>
-      </details>
-      <details class="bg-gray-50 border border-gray-200 rounded-xl p-4">
-        <summary class="font-bold text-gray-900 cursor-pointer">Does the 2026 syllabus carry over to 2027?</summary>
-        <p class="text-gray-700 leading-7 mt-3">No. 2026 was the old syllabus, and 2027 is governed by the <strong>new syllabus</strong>. There is no question of a "2026 smart syllabus" carrying over, because no smart syllabus was issued for 10th class in 2026.</p>
-      </details>
-      <details class="bg-gray-50 border border-gray-200 rounded-xl p-4">
-        <summary class="font-bold text-gray-900 cursor-pointer">Should I stop studying chapters that were deleted in 9th class?</summary>
-        <p class="text-gray-700 leading-7 mt-3">Do not carry over assumptions from 9th class. The 10th class 2027 syllabus and its ALP smart syllabus are the reference points. Prepare according to the 10th class reduction as officially notified.</p>
-      </details>
-      <details class="bg-gray-50 border border-gray-200 rounded-xl p-4">
-        <summary class="font-bold text-gray-900 cursor-pointer">Where can I download the official PDF?</summary>
-        <p class="text-gray-700 leading-7 mt-3">Only from PECTAA's official Curriculum &amp; Compliance page (and adopted by your BISE board). Each subject page above links to the official source. We do not host unofficial copies.</p>
-      </details>
+    <div class="space-y-3 my-6">
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="true" aria-controls="faq1">
+          <span>Has the Smart Syllabus for 10th Class 2027 been announced?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq1">
+          <p>Yes. As of 14 November 2026, the Accelerated Learning Program (ALP) smart syllabus has been <strong>announced for all 11 subjects</strong> — <a href="/smart-syllabus/10th-class/mathematics.html" class="font-semibold">Mathematics</a>, <a href="/smart-syllabus/10th-class/physics.html" class="font-semibold">Physics</a>, <a href="/smart-syllabus/10th-class/chemistry.html" class="font-semibold">Chemistry</a>, <a href="/smart-syllabus/10th-class/chemistry-tech.html" class="font-semibold">Chemistry (Tech)</a>, <a href="/smart-syllabus/10th-class/biology.html" class="font-semibold">Biology</a>, <a href="/smart-syllabus/10th-class/general-science.html" class="font-semibold">General Science</a>, <a href="/smart-syllabus/10th-class/english.html" class="font-semibold">English</a>, <a href="/smart-syllabus/10th-class/pakistan-studies.html" class="font-semibold">Pakistan Studies</a>, <a href="/smart-syllabus/10th-class/urdu.html" class="font-semibold">Urdu</a>, <a href="/smart-syllabus/10th-class/computer-science.html" class="font-semibold">Computer Science</a>, and <a href="/smart-syllabus/10th-class/tarjuma-tul-quran.html" class="font-semibold">Tarjuma-tul-Quran</a>. See the individual subject pages for reduced topics, excluded questions and practicals. <strong>Pairing schemes and model papers are also available</strong> for all subjects.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2">
+          <span>Are 10th class pairing schemes and model papers available?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq2" hidden>
+          <p>Yes. Pairing schemes and model papers for all 11 Class 10 subjects are available now. Use the "Pairing Scheme" and "Model Paper" columns in the status table above, or the Study Resources section.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3">
+          <span>What was the 10th class syllabus for the 2026 exams?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq3" hidden>
+          <p>The 2026 board exams followed the <strong>old (full) syllabus</strong>. No 10th class smart syllabus was issued for 2026.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq4">
+          <span>Does the 2026 syllabus carry over to 2027?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq4" hidden>
+          <p>No. 2026 was the old syllabus, and 2027 is governed by the <strong>new syllabus</strong>. There is no question of a "2026 smart syllabus" carrying over, because no smart syllabus was issued for 10th class in 2026.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq5">
+          <span>Should I stop studying chapters that were deleted in 9th class?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq5" hidden>
+          <p>Do not carry over assumptions from 9th class. The 10th class 2027 syllabus and its ALP smart syllabus are the reference points. Prepare according to the 10th class reduction as officially notified.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq6">
+          <span>Where can I download the official PDF?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="faq-answer" id="faq6" hidden>
+          <p>Only from PECTAA's official Curriculum &amp; Compliance page (and adopted by your BISE board). Each subject page above links to the official source. We do not host unofficial copies.</p>
+        </div>
+      </div>
     </div>
 
     <!-- FAQ Schema -->
@@ -1043,7 +1355,7 @@ body{background:#eef1f8 !important}
         {
           "@type": "Question",
           "name": "Has the Smart Syllabus for 10th Class 2027 been announced?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. As of 14 November 2026, the Accelerated Learning Program (ALP) smart syllabus has been announced for all 11 subjects — Mathematics, Physics, Chemistry, Chemistry (Tech), Biology, General Science, English, Pakistan Studies, Urdu, Computer Science, and Tarjuma-tul-Quran. Pairing schemes and model papers are also available for all subjects." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. As of 14 November 2026, the Accelerated Learning Program (ALP) smart syllabus has been announced for all 11 subjects — <a href="/smart-syllabus/10th-class/mathematics.html" class="font-semibold">Mathematics</a>, <a href="/smart-syllabus/10th-class/physics.html" class="font-semibold">Physics</a>, <a href="/smart-syllabus/10th-class/chemistry.html" class="font-semibold">Chemistry</a>, <a href="/smart-syllabus/10th-class/chemistry-tech.html" class="font-semibold">Chemistry (Tech)</a>, <a href="/smart-syllabus/10th-class/biology.html" class="font-semibold">Biology</a>, <a href="/smart-syllabus/10th-class/general-science.html" class="font-semibold">General Science</a>, <a href="/smart-syllabus/10th-class/english.html" class="font-semibold">English</a>, <a href="/smart-syllabus/10th-class/pakistan-studies.html" class="font-semibold">Pakistan Studies</a>, <a href="/smart-syllabus/10th-class/urdu.html" class="font-semibold">Urdu</a>, <a href="/smart-syllabus/10th-class/computer-science.html" class="font-semibold">Computer Science</a>, and <a href="/smart-syllabus/10th-class/tarjuma-tul-quran.html" class="font-semibold">Tarjuma-tul-Quran</a>. Pairing schemes and model papers are also available for all subjects." }
         },
         {
           "@type": "Question",
@@ -1368,5 +1680,23 @@ body{background:#eef1f8 !important}
     });
   </script>
 <script src="/assets/js/ads-injector.js" defer></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var bar = document.getElementById('readingProgressBar');
+      function upd() {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        if (bar) bar.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + '%';
+      }
+      window.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+      document.querySelectorAll('.faq-question').forEach(function (q) {
+        q.addEventListener('click', function () {
+          var ex = this.getAttribute('aria-expanded') === 'true';
+          var a = document.getElementById(this.getAttribute('aria-controls'));
+          this.setAttribute('aria-expanded', String(!ex));
+          if (a) a.hidden = ex;
+        });
+      });
+    });
+  </script>
 </body>
 </html>
