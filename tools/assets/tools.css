@@ -416,3 +416,51 @@ header.header-gradient + div { margin-top: .75rem !important; }
 .tools-page article .hint-line, .tools-page article .text-sm { font-size: .9375rem; }
 .tools-page article h2 { line-height: 1.3; }
 @media (max-width: 540px) { .tools-page .answer-value { font-size: 2rem; } }
+
+/* ============================================================
+   4. Compact first screen on desktop: slim nav, slim header,
+   no breadcrumb strip, tighter cards, so inputs and result fit together
+   ============================================================ */
+/* breadcrumb: plain small text, no strip or card behind it (all screen sizes) */
+header.header-gradient + div { margin-top: .25rem !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; }
+header.header-gradient + div .glass-card {
+  background: transparent !important; border: 0 !important; box-shadow: none !important;
+  backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+  padding: .25rem 0 !important; border-radius: 0 !important;
+}
+header.header-gradient + div nav[aria-label="Breadcrumb"] { font-size: .75rem !important; line-height: 1.3 !important; }
+header.header-gradient + div nav[aria-label="Breadcrumb"] ol { gap: .35rem !important; }
+
+@media (min-width: 1024px) {
+  /* slimmer, non-sticky top menu */
+  nav[aria-label="Main navigation"] { position: static !important; }
+  nav[aria-label="Main navigation"] .h-20 { height: 3.5rem !important; }
+  /* slim header: one-line title and subtitle where they fit */
+  header.header-gradient { padding-top: .5rem !important; padding-bottom: .5rem !important; }
+  header.header-gradient h1 { font-size: 1.5rem !important; margin-bottom: .15rem !important; }
+  header.header-gradient p { font-size: .9rem !important; max-width: none !important; }
+  /* calculator area starts right under the breadcrumb */
+  main.calc-wide { padding-top: .5rem !important; padding-bottom: 1.5rem !important; }
+  .calc-layout { gap: 1rem; }
+  .calc-layout.has-ad { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 160px; }
+  /* tighter cards */
+  .calc-main > section:first-child { padding: 1rem 1.1rem !important; }
+  .calc-main > section:not(:first-child) { padding: .75rem 1rem !important; margin-top: 0 !important; }
+  .calc-side .result-panel { padding: .9rem 1rem !important; }
+  .calc-side .result-panel.is-visible { max-height: calc(100vh - 8.5rem); }
+  .calc-side .answer-box { padding: .75rem !important; margin-bottom: .75rem !important; }
+  .tools-page .calc-side .answer-value { font-size: 2rem; }
+  .calc-side .fin-summary, .calc-side .pyth-summary { margin-top: .6rem; gap: .5rem; }
+  .calc-side .fin-context, .calc-side .pyth-context, .calc-side .steps-block, .calc-side .steps-details { margin-top: .6rem !important; }
+  .tools-page .calc-main .calc-input, .tools-page .calc-main .calc-select { padding: .55rem .85rem; }
+  .tools-page .calc-main .hint-line { margin-top: .15rem; }
+  .calc-main .fin-grid { gap: .6rem; }
+  .result-empty { padding: 1.25rem 1rem; }
+  /* ad column keeps the screen's height */
+  .calc-ad .ad-slot { min-height: min(600px, calc(100vh - 6rem)); }
+  .calc-ad .ad-slot ins.adsbygoogle { min-height: 0; }
+  .calc-layout.has-ad .calc-ad { top: .75rem; }
+}
+@media (min-width: 1280px) {
+  .calc-layout.has-ad { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 300px; }
+}
