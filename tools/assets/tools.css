@@ -464,3 +464,83 @@ header.header-gradient + div nav[aria-label="Breadcrumb"] ol { gap: .35rem !impo
 @media (min-width: 1280px) {
   .calc-layout.has-ad { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 300px; }
 }
+
+/* ============================================================
+   5. Comfortable colours: darker text, softer page background,
+   clearer cards (inputs = sky accent, result = indigo accent)
+   ============================================================ */
+.tools-page { background-color: #eaf0f7; color: #0b1220;
+  background-image: linear-gradient(rgba(30, 64, 120, .045) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 64, 120, .045) 1px, transparent 1px); }
+
+/* text: darker and easier on the eyes */
+.tools-page article, .tools-page article p, .tools-page article li, .tools-page article dd, .tools-page article dt,
+.tools-page .faq-answer, .tools-page .worked-example li, .tools-page .steps-block li { color: #0b1220 !important; }
+.tools-page article h2, .tools-page article h3, .tools-page article summary, .tools-page .faq-item summary { color: #020617 !important; }
+.tools-page .hint-line, .tools-page .opt-tag, .tools-page .quick-label, .tools-page .answer-sub,
+.tools-page .fin-unit-label, .tools-page .pyth-summary-label, .tools-page .result-meta { color: #1e293b !important; }
+.tools-page .text-slate-500, .tools-page .text-slate-600, .tools-page .text-gray-500, .tools-page .text-gray-600 { color: #334155 !important; }
+.tools-page .text-slate-700, .tools-page .text-gray-700, .tools-page .text-slate-800 { color: #0f172a !important; }
+.tools-page .calc-label { color: #0b1220 !important; }
+.tools-page .calc-input, .tools-page .calc-select { color: #020617 !important; border-color: #b6c6da; background: #ffffff; }
+.tools-page .calc-input::placeholder { color: #475569 !important; }
+.tools-page .calc-input:focus, .tools-page .calc-select:focus { border-color: #0284c7; box-shadow: 0 0 0 3px rgba(2, 132, 199, .2); }
+.tools-page nav[aria-label="Breadcrumb"], .tools-page nav[aria-label="Breadcrumb"] a, .tools-page nav[aria-label="Breadcrumb"] li { color: #0f172a !important; }
+
+/* cards */
+.tools-page .calc-main > section:first-child, .tools-page #tool-card, .tools-page #calc-section {
+  background: #ffffff; border: 1px solid #c9d6e6; border-top: 4px solid #0ea5e9; border-radius: 1rem;
+  box-shadow: 0 8px 22px -10px rgba(15, 23, 42, .25);
+}
+.tools-page .calc-main > section:not(:first-child) {
+  background: #f6faff; border: 1px solid #c9d6e6; border-radius: 1rem; box-shadow: none;
+}
+.tools-page .result-panel {
+  background: linear-gradient(165deg, #ffffff 0%, #eef5ff 60%, #e6edfb 100%);
+  border: 1px solid #b9cbe6; border-top: 4px solid #6366f1; border-radius: 1rem;
+  box-shadow: 0 8px 22px -10px rgba(49, 46, 129, .3);
+}
+.tools-page .result-empty { background: #f6faff; border: 2px dashed #93b4dc; color: #0f172a; }
+.tools-page .answer-box { background: #ffffff; border: 2px solid #0369a1; box-shadow: 0 6px 18px -8px rgba(3, 105, 161, .4); }
+.tools-page .fin-unit, .tools-page .pyth-summary-unit, .tools-page .stat { background: #ffffff; border: 1px solid #c9d6e6; box-shadow: 0 1px 2px rgba(15, 23, 42, .06); }
+.tools-page .fin-context, .tools-page .pyth-context { background: #f1f7ff; border: 1px solid #b9cbe6; border-left: 4px solid #6366f1; }
+.tools-page .steps-details, .tools-page .steps-block, .tools-page .worked-example, .tools-page .faq-item { background: #ffffff; border-color: #c9d6e6; }
+.tools-page .quick-chip { background: #eef6ff; border: 1.5px solid #9fc2ea; color: #0c4a6e; }
+.tools-page .quick-chip:hover { background: #dbeafe; border-color: #0284c7; }
+.tools-page .mode-toggle { background: #eef3fa; border-color: #b6c6da; }
+.tools-page .btn-secondary-calc { background: #ffffff; color: #0b1220; border: 1.5px solid #9fb3cc; }
+.tools-page .calc-ad .ad-slot, .tools-page .ad-slot { border-color: #b6c6da; }
+.tools-page .calc-ad .ad-slot { background: #f6f9fd; }
+.tools-page .notice { color: #422006; background: #fff7d6; border-color: #f0d36a; }
+.tools-page .plain-lead { background: #e8f3ff; color: #0a2f4f; border-left-color: #0284c7; }
+
+/* converter-style rows: never let a value box collapse to a sliver in a narrow column */
+.tools-page .calc-main input.calc-input { min-width: 4.5rem; }
+.tools-page .calc-main select.calc-select { min-width: 0; text-overflow: ellipsis; }
+
+/* ============================================================
+   6. Unit converter: layout inside the narrower input column,
+   and the result tiles that had no styles
+   ============================================================ */
+/* From / swap / To stack vertically inside the input column so the value box is never squeezed */
+.calc-main .convert-row { grid-template-columns: minmax(0, 1fr) !important; gap: .4rem; }
+.calc-main .convert-row .cr-swap { justify-content: flex-start; }
+.calc-main .convert-row .cr-swap button { width: 2.25rem; height: 2.25rem; transform: rotate(90deg); }
+.calc-main .convert-row .cr-swap button:hover { transform: rotate(270deg); }
+.tools-page .value-unit input { font-size: 1.05rem; color: #020617; padding: .55rem .8rem; border-color: #b6c6da; background: #fff; }
+.tools-page .value-unit select { font-size: .9rem; color: #020617; border-color: #b6c6da; background: #eef3fa; max-width: 48%; }
+.tools-page .value-unit output { font-size: 1.05rem; color: #020617; background: #f1f8ff; }
+.tools-page .category-card { color: #0b1220; border-color: #b6c6da; background: #fff; }
+.tools-page .category-card:hover { background: #eef6ff; border-color: #0284c7; }
+.tools-page .conv-group-label { color: #0b1220; font-weight: 700; font-size: 1rem; }
+.tools-page #live-preview { color: #1e293b !important; background: #f1f7ff !important; border-color: #9fb3cc !important; }
+
+/* result tiles (same look as the finance calculators) */
+.conv-big-scale { font-size: .5em; font-weight: 700; margin-left: .35rem; color: #0c4a6e; }
+.conv-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem; margin-top: .75rem; }
+.conv-summary-unit { background: #fff; border: 1px solid #c9d6e6; border-radius: .75rem; padding: .6rem .5rem; text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: .2rem; box-shadow: 0 1px 2px rgba(15, 23, 42, .06); }
+.conv-summary-value { font-family: 'Montserrat', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0b1220; line-height: 1.25; word-break: break-word; }
+.conv-summary-label { font-size: .8125rem; font-weight: 600; color: #1e293b; }
+.conv-context { background: #f1f7ff; border: 1px solid #b9cbe6; border-left: 4px solid #6366f1; border-radius: .75rem; padding: .75rem 1rem; margin-top: .75rem; }
+.conv-context p { margin: .25rem 0; color: #0b1220; line-height: 1.6; font-size: .95rem; text-align: left; }
+.conv-context:empty { display: none; }
