@@ -418,6 +418,29 @@
       color: #64748b;
       margin-top: 0.35rem;
     }
+
+    /* Copy answer button (matches quadratic-solver.html) */
+    .copy-answer-btn {
+      min-height: 44px;
+      padding: 0.5rem 1rem;
+      border-radius: 0.625rem;
+      border: 1.5px solid #0284c7;
+      background: #fff;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .copy-answer-btn:hover { background: #f0f9ff; }
+    .copy-answer-btn.copied { background: #ecfdf5; border-color: #047857; color: #047857; }
+    .result-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
   </style>
 </head>
 
@@ -780,18 +803,13 @@
       <!-- Motion diagram -->
       <div class="motion-diagram" aria-hidden="true">
         <svg class="motion-svg" viewBox="0 0 340 90" width="340" height="90" xmlns="http://www.w3.org/2000/svg">
-          <!-- ground line -->
           <line x1="10" y1="60" x2="330" y2="60" stroke="#cbd5e1" stroke-width="1.5" />
-          <!-- start marker -->
           <circle cx="30" cy="60" r="5" fill="#0ea5e9" />
           <text x="30" y="80" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#64748b">u</text>
-          <!-- end marker -->
           <circle cx="310" cy="60" r="5" fill="#dc2626" />
           <text x="310" y="80" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#64748b">v</text>
-          <!-- a arrow above -->
           <line x1="90" y1="25" x2="150" y2="25" stroke="#0369a1" stroke-width="2.5" marker-end="url(#arrowA2)" />
           <text x="120" y="17" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#0369a1" font-weight="700">a</text>
-          <!-- t bracket below -->
           <line x1="30" y1="68" x2="310" y2="68" stroke="#94a3b8" stroke-width="1" />
           <line x1="30" y1="65" x2="30" y2="71" stroke="#94a3b8" stroke-width="1" />
           <line x1="310" y1="65" x2="310" y2="71" stroke="#94a3b8" stroke-width="1" />
@@ -819,11 +837,18 @@
     <!-- RESULT -->
     <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
 
-    <!-- AD -->
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
+  <div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="8381189831"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
 
     <!-- EDUCATIONAL CONTENT -->
     <article class="space-y-8 text-gray-700 mt-8">
@@ -1152,7 +1177,7 @@
   <script>
   (function () {
     'use strict';
-    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+    const { trackEvent, bindEnterKey, parseNum,
             showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'acceleration-calculator';
 
@@ -1214,8 +1239,6 @@
     const resultPanel = document.getElementById('result-panel');
     const section = document.querySelector('section[aria-label="Acceleration calculator inputs"]');
 
-    attachCopyButton(resultPanel, CALC_NAME);
-
     let mode = 'basic';
     let basicSolve = 'a';
     let eqTab = 'vuat';
@@ -1245,6 +1268,9 @@
     function escapeHtml(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     }
+    function escapeAttr(s) {
+      return escapeHtml(s);
+    }
     function gMultiple(a) {
       if (!Number.isFinite(a)) return '—';
       return (Math.abs(a) / 9.8).toFixed(2);
@@ -1259,6 +1285,68 @@
       if (x < 50) return 'violent (rocket / sports impact)';
       if (x < 500) return 'extreme (injury-level forces)';
       return 'extreme (ballistic / artillery range)';
+    }
+
+    /* ---------- Mobile result reveal (same pattern as quadratic-solver) ---------- */
+    function revealResult() {
+      if (document.activeElement && document.activeElement.blur) {
+        document.activeElement.blur();
+      }
+      setTimeout(function () {
+        if (!resultPanel) return;
+        var rect = resultPanel.getBoundingClientRect();
+        var viewHeight = window.innerHeight || document.documentElement.clientHeight;
+        if (rect.bottom > viewHeight || rect.top < 0) {
+          resultPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    }
+
+    /* ---------- Copy answer button: delegated listener on resultPanel ----------
+       Survives innerHTML replacement after each calculation and falls back to
+       execCommand('copy') when the async Clipboard API is unavailable. */
+    resultPanel.addEventListener('click', function (e) {
+      const btn = e.target.closest ? e.target.closest('.copy-answer-btn') : null;
+      if (!btn) return;
+      const text = btn.getAttribute('data-copy') || '';
+      const done = function () {
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('copied');
+        trackEvent(CALC_NAME, 'copy_answer');
+        setTimeout(function () {
+          btn.textContent = 'Copy answer';
+          btn.classList.remove('copied');
+        }, 1800);
+      };
+      const fallback = function () {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '0';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (err) { /* ignore */ }
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
+      }
+    });
+
+    /* ============ Show-result helper: adds Copy button + reveals on mobile ============ */
+    function showCalcResult(html, copyText) {
+      resultPanel.innerHTML = `
+        <div class="result-head">
+          <div style="flex:1 1 auto;min-width:0;">${html}</div>
+          <button type="button" class="copy-answer-btn" data-copy="${escapeAttr(copyText)}" title="Copy the result to the clipboard">Copy answer</button>
+        </div>
+      `;
+      showResult(resultPanel, resultPanel.innerHTML);
+      revealResult();
     }
 
     /* ============ Top-level mode switch ============ */
@@ -1440,7 +1528,7 @@
       else if (a < 0) { statusClass = 'status-warn'; arrow = '◆'; text = 'Negative — decelerating'; }
       else if (Math.abs(a) > 50) { statusClass = 'status-warn'; arrow = '⚠'; text = 'Very high acceleration'; }
 
-      const html = `
+      const bodyHtml = `
         <div class="result-label">Acceleration (a = (v − u) / t)</div>
         <div class="cgpa-big-value" style="${a < 0 ? 'color:#b45309;' : ''}">${fmtNum(ar, 4)}<span class="cgpa-big-scale">m/s²</span></div>
         <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${fmtNum(a, 6)} m/s² &nbsp;·&nbsp; ${gMultiple(a)} × g</p>
@@ -1485,7 +1573,7 @@
           ${a > 0 ? '<p>🔹 Positive acceleration — the body is speeding up in the positive direction.</p>' : ''}
         </div>
       `;
-      showResult(resultPanel, html);
+      showCalcResult(bodyHtml, `Acceleration a = ${fmtNum(ar, 4)} m/s² (${gMultiple(a)} × g)`);
       trackEvent(CALC_NAME, 'calculate');
     }
 
@@ -1508,7 +1596,7 @@
       const otherUnit = vOutUnit.value === 'ms' ? 'km/h' : 'm/s';
       const otherVal = vFromMps(vMs, vOutUnit.value === 'ms' ? 'kmh' : 'ms');
 
-      const html = `
+      const bodyHtml = `
         <div class="result-label">Final velocity (v = u + at)</div>
         <div class="cgpa-big-value">${fmtNum(round3(shown), 4)}<span class="cgpa-big-scale">${shownUnit}</span></div>
         <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Equivalent: ${fmtNum(round3(otherVal), 4)} ${otherUnit}</p>
@@ -1552,7 +1640,7 @@
           ${a < 0 ? '<p>◆ Negative acceleration — the body is slowing down, so v is less than u.</p>' : ''}
         </div>
       `;
-      showResult(resultPanel, html);
+      showCalcResult(bodyHtml, `Final velocity v = ${fmtNum(round3(shown), 4)} ${shownUnit}`);
       trackEvent(CALC_NAME, 'calculate');
     }
 
@@ -1583,7 +1671,7 @@
       let statusClass = 'status-ok', arrow = '✓', text = 'Time computed';
       if (tS < 0) { statusClass = 'status-alert'; arrow = '⚠'; text = 'Negative time — check signs of u, v, a'; }
 
-      const html = `
+      const bodyHtml = `
         <div class="result-label">Time (t = (v − u) / a)</div>
         <div class="cgpa-big-value" style="${tS < 0 ? 'color:#b91c1c;' : ''}">${fmtNum(round3(shown), 4)}<span class="cgpa-big-scale">${outUnitLabel}</span></div>
         <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">≈ ${pretty}</p>
@@ -1627,7 +1715,7 @@
           ${tS === 0 ? '<p>🔹 Zero time means v = u. The velocities are equal, so no time is needed to change velocity.</p>' : ''}
         </div>
       `;
-      showResult(resultPanel, html);
+      showCalcResult(bodyHtml, `Time t = ${fmtNum(round3(shown), 4)} ${outUnitLabel} (≈ ${pretty})`);
       trackEvent(CALC_NAME, 'calculate');
     }
 
@@ -1647,7 +1735,7 @@
       const shown = vFromMps(vMs, eq1Out.value);
       const shownUnit = eq1Out.value === 'ms' ? 'm/s' : 'km/h';
 
-      const html = `
+      const bodyHtml = `
         <div class="result-label">Final velocity (v = u + at)</div>
         <div class="cgpa-big-value">${fmtNum(round3(shown), 4)}<span class="cgpa-big-scale">${shownUnit}</span></div>
         <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${fmtNum(vMs, 6)} m/s</p>
@@ -1677,7 +1765,7 @@
           <p>🔹 First equation of motion — valid for constant acceleration.</p>
         </div>
       `;
-      showResult(resultPanel, html);
+      showCalcResult(bodyHtml, `Final velocity v = ${fmtNum(round3(shown), 4)} ${shownUnit}`);
       trackEvent(CALC_NAME, 'calculate');
     }
 
@@ -1699,7 +1787,7 @@
       const shown = dFromM(sM, eq2Out.value);
       const shownUnit = eq2Out.value;
 
-      const html = `
+      const bodyHtml = `
         <div class="result-label">Displacement (s = ut + ½at²)</div>
         <div class="cgpa-big-value">${fmtNum(round3(shown), 4)}<span class="cgpa-big-scale">${shownUnit}</span></div>
         <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${fmtNum(sM, 6)} m</p>
@@ -1731,7 +1819,7 @@
           <p>🔹 Second equation of motion — valid for constant acceleration.</p>
         </div>
       `;
-      showResult(resultPanel, html);
+      showCalcResult(bodyHtml, `Displacement s = ${fmtNum(round3(shown), 4)} ${shownUnit}`);
       trackEvent(CALC_NAME, 'calculate');
     }
 
@@ -1759,7 +1847,7 @@
       const shown = vFromMps(vMs, eq3Out.value);
       const shownUnit = eq3Out.value === 'ms' ? 'm/s' : 'km/h';
 
-      const html = `
+      const bodyHtml = `
         <div class="result-label">Final velocity (v² = u² + 2as)</div>
         <div class="cgpa-big-value">${fmtNum(round3(shown), 4)}<span class="cgpa-big-scale">${shownUnit}</span></div>
         <p style="text-align:center;font-size:0.875rem;color:#64748b;margin-top:0.5rem;font-family:'JetBrains Mono',monospace;">Full precision: ${fmtNum(vMs, 6)} m/s</p>
@@ -1788,11 +1876,11 @@
 
         <div class="cgpa-context">
           <p>🔹 Final velocity: <strong>${fmtNum(round3(shown), 4)} ${shownUnit}</strong>.</p>
-          <p>🔹 Third equation of motion — the only one that does not involve time. Use it when t is unknown.</p>
-          ${twoAs < 0 ? '<p>🔹 Note: 2as is negative, meaning the body is decelerating over the given displacement. The final speed is less than the initial speed.</p>' : ''}
+          <p>🔹 Third equation of motion — valid for constant acceleration; no time is needed.</p>
+          ${a < 0 ? '<p>◆ Negative acceleration — this is deceleration; v is less than u.</p>' : ''}
         </div>
       `;
-      showResult(resultPanel, html);
+      showCalcResult(bodyHtml, `Final velocity v = ${fmtNum(round3(shown), 4)} ${shownUnit}`);
       trackEvent(CALC_NAME, 'calculate');
     }
 
@@ -1803,55 +1891,13 @@
     resetBtn.addEventListener('click', () => {
       [aU, aV, aT, vU, vA, vT, tU, tV, tA,
        eq1U, eq1A, eq1T, eq2U, eq2A, eq2T, eq3U, eq3A, eq3S].forEach(el => { if (el) el.value = ''; });
-      // reset units
-      [aUUnit, aVUnit].forEach(el => { if (el) el.value = 'ms'; });
-      [aTUnit, vTUnit].forEach(el => { if (el) el.value = 's'; });
-      if (vUUnit) vUUnit.value = 'ms';
-      if (vOutUnit) vOutUnit.value = 'ms';
-      [tUUnit, tVUnit].forEach(el => { if (el) el.value = 'ms'; });
-      if (tOutUnit) tOutUnit.value = 's';
-      [eq1UUnit, eq2UUnit, eq3UUnit].forEach(el => { if (el) el.value = 'ms'; });
-      [eq1TUnit, eq2TUnit].forEach(el => { if (el) el.value = 's'; });
-      if (eq1Out) eq1Out.value = 'ms';
-      if (eq2Out) eq2Out.value = 'm';
-      if (eq3SUnit) eq3SUnit.value = 'm';
-      if (eq3Out) eq3Out.value = 'ms';
-
-      mode = 'basic';
-      basicSolve = 'a';
-      eqTab = 'vuat';
-
-      modeBtns.forEach(b => {
-        const on = b.dataset.mode === 'basic';
-        b.classList.toggle('is-active', on);
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-      solveBtns.forEach(b => {
-        const on = b.dataset.solve === 'a';
-        b.classList.toggle('is-active', on);
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-      eqBtns.forEach(b => {
-        const on = b.dataset.eq === 'vuat';
-        b.classList.toggle('is-active', on);
-        b.setAttribute('aria-pressed', on ? 'true' : 'false');
-      });
-      panelBasic.classList.remove('hidden');
-      panelMotion.classList.add('hidden');
-      basicPanelA.classList.remove('hidden');
-      basicPanelV.classList.add('hidden');
-      basicPanelT.classList.add('hidden');
-      eqPanelVuat.classList.remove('hidden');
-      eqPanelSut.classList.add('hidden');
-      eqPanelV2.classList.add('hidden');
-
-      previewEl.innerHTML = 'Preview: enter initial and final velocity and time';
       clearAllErrors(section);
       hideResult(resultPanel);
+      renderPreview();
       trackEvent(CALC_NAME, 'reset');
     });
 
-    // Mobile menu + back-to-top
+    /* Mobile menu + back-to-top */
     const btn = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
     const io = document.getElementById('menu-icon-open');
@@ -1865,7 +1911,7 @@
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 400) btt.classList.add('show');
       else btt.classList.remove('show');
-    });
+    }, { passive: true });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   })();
   </script>

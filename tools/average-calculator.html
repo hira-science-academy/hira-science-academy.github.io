@@ -98,6 +98,10 @@
 
   <link rel="stylesheet" href="assets/tools.css" />
 
+  <!-- KaTeX CSS and JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8" crossorigin="anonymous"></script>
+
   <style>
     body { background: #f9fafb; color: #1f2937; }
     .header-gradient {
@@ -231,6 +235,28 @@
     }
     .hero-centered { text-align: center; }
     .hero-centered h1, .hero-centered p { text-align: center; margin-left: auto; margin-right: auto; }
+
+    /* Copy answer button styling (matches quadratic-solver.html) */
+    .copy-answer-btn {
+      min-height: 44px;
+      padding: 0.5rem 1rem;
+      border-radius: 0.625rem;
+      border: 1.5px solid #0284c7;
+      background: #fff;
+      color: #0369a1;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .copy-answer-btn:hover { background: #f0f9ff; }
+    .copy-answer-btn.copied { background: #ecfdf5; border-color: #047857; color: #047857; }
+    .result-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+
+    /* KaTeX inline and display adjustments */
+    .katex { font-size: 1em; }
+    .katex-display { margin: 0.5em 0; }
+    .katex-display > .katex { font-size: 1.1em; }
   </style>
 </head>
 
@@ -330,12 +356,18 @@
     <!-- RESULT -->
     <section id="result-panel" class="result-panel" aria-live="polite" role="status"></section>
 
-    <!-- AD -->
-    <div class="my-8 text-center no-print">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-    </div>
-
+<div class="ad-slot my-6 text-center no-print" aria-label="Advertisement">
+  <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4029002473204443"
+       data-ad-slot="3108681859"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>
+       (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+</div>
     <!-- EDUCATIONAL CONTENT -->
     <article class="space-y-8 text-gray-700 mt-8">
 
@@ -354,7 +386,7 @@
         <div class="formula-block">
           <div class="formula-label">Mean (average)</div>
           <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
-            Mean = (x₁ + x₂ + x₃ + … + xₙ) ÷ n
+            \[ \text{Mean} = \frac{x_1 + x_2 + x_3 + \ldots + x_n}{n} \]
           </div>
         </div>
         <p class="leading-relaxed text-justify mb-3">
@@ -363,16 +395,16 @@
         <div class="formula-block">
           <div class="formula-label">Sigma notation</div>
           <div style="font-family:'JetBrains Mono',monospace;color:#0b1220;font-size:1rem;">
-            x̄ = (Σ xᵢ) / n &nbsp;&nbsp; for i = 1 to n
+            \[ \bar{x} = \frac{\sum_{i=1}^{n} x_i}{n} \]
           </div>
         </div>
 
         <h3 class="text-lg font-bold text-gray-900 mt-5 mb-2">Variable definitions</h3>
         <ul class="list-disc pl-6 space-y-1 leading-relaxed">
-          <li><strong>x₁, x₂, …, xₙ</strong> — the individual values in your list.</li>
-          <li><strong>n</strong> — the number of values in the list.</li>
-          <li><strong>Σxᵢ</strong> — the sum of all the values.</li>
-          <li><strong>x̄</strong> — the mean (read "x-bar").</li>
+          <li>\( x_1, x_2, \ldots, x_n \) — the individual values in your list.</li>
+          <li>\( n \) — the number of values in the list.</li>
+          <li>\( \sum x_i \) — the sum of all the values.</li>
+          <li>\( \bar{x} \) — the mean (read "x-bar").</li>
         </ul>
       </section>
 
@@ -382,27 +414,27 @@
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 1: Marks in five subjects — 45, 62, 78, 55, 88</p>
           <ol>
-            <li>Sum: 45 + 62 + 78 + 55 + 88 = 328.</li>
-            <li>Count: n = 5.</li>
-            <li>Mean: 328 ÷ 5 = <strong>65.6</strong>.</li>
+            <li>Sum: \( 45 + 62 + 78 + 55 + 88 = 328 \).</li>
+            <li>Count: \( n = 5 \).</li>
+            <li>Mean: \( 328 \div 5 = \mathbf{65.6} \).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 2: Daily temperature readings — 28.5, 30.2, 27.8, 31.0, 29.4</p>
           <ol>
-            <li>Sum: 28.5 + 30.2 + 27.8 + 31.0 + 29.4 = 146.9.</li>
-            <li>Count: n = 5.</li>
-            <li>Mean: 146.9 ÷ 5 = <strong>29.38 °C</strong>.</li>
+            <li>Sum: \( 28.5 + 30.2 + 27.8 + 31.0 + 29.4 = 146.9 \).</li>
+            <li>Count: \( n = 5 \).</li>
+            <li>Mean: \( 146.9 \div 5 = \mathbf{29.38 \text{ °C}} \).</li>
           </ol>
         </div>
 
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 3: Negative values — 5, −3, 8, −10, 6</p>
           <ol>
-            <li>Sum: 5 + (−3) + 8 + (−10) + 6 = 6.</li>
-            <li>Count: n = 5.</li>
-            <li>Mean: 6 ÷ 5 = <strong>1.2</strong>.</li>
+            <li>Sum: \( 5 + (-3) + 8 + (-10) + 6 = 6 \).</li>
+            <li>Count: \( n = 5 \).</li>
+            <li>Mean: \( 6 \div 5 = \mathbf{1.2} \).</li>
           </ol>
           <p class="text-sm text-gray-600 mt-2">The presence of negative numbers does not change the formula, only the arithmetic of the sum.</p>
         </div>
@@ -410,9 +442,9 @@
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 4: A single number — 42</p>
           <ol>
-            <li>Sum: 42.</li>
-            <li>Count: n = 1.</li>
-            <li>Mean: 42 ÷ 1 = <strong>42</strong>.</li>
+            <li>Sum: \( 42 \).</li>
+            <li>Count: \( n = 1 \).</li>
+            <li>Mean: \( 42 \div 1 = \mathbf{42} \).</li>
           </ol>
           <p class="text-sm text-gray-600 mt-2">The average of a single value is that value itself.</p>
         </div>
@@ -420,9 +452,9 @@
         <div class="worked-example">
           <p class="font-semibold text-gray-900">Example 5: Adding a new value to an existing list</p>
           <ol>
-            <li>Suppose four tests gave 70, 80, 75, 85. Mean = 310 ÷ 4 = 77.5.</li>
-            <li>A fifth test scores 90. New sum = 310 + 90 = 400, new count = 5.</li>
-            <li>New mean = 400 ÷ 5 = <strong>80</strong>.</li>
+            <li>Suppose four tests gave 70, 80, 75, 85. Mean \( = 310 \div 4 = 77.5 \).</li>
+            <li>A fifth test scores 90. New sum \( = 310 + 90 = 400 \), new count \( = 5 \).</li>
+            <li>New mean \( = 400 \div 5 = \mathbf{80} \).</li>
             <li>Adding a score above the current mean pulls the mean up; adding one below pulls it down.</li>
           </ol>
         </div>
@@ -459,7 +491,7 @@
         <div class="space-y-3">
           <details class="faq-item">
             <summary>How do I calculate the average of a list of numbers?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Add all the numbers together to get the sum, then divide the sum by how many numbers there are. For example, the average of 4, 7, 9, and 12 is (4 + 7 + 9 + 12) ÷ 4 = 32 ÷ 4 = 8.</p>
+            <p class="faq-answer">Add all the numbers together to get the sum, then divide the sum by how many numbers there are. For example, the average of 4, 7, 9, and 12 is \( (4 + 7 + 9 + 12) \div 4 = 32 \div 4 = 8 \).</p>
           </details>
           <details class="faq-item">
             <summary>What is the difference between mean, median, and mode?<span aria-hidden="true">▾</span></summary>
@@ -467,7 +499,7 @@
           </details>
           <details class="faq-item">
             <summary>Can the average of whole numbers be a decimal?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Yes. The average of 3, 4, and 6 is 13 ÷ 3 = 4.333..., a repeating decimal. Averaging does not preserve integer-ness; the result can be any real number.</p>
+            <p class="faq-answer">Yes. The average of 3, 4, and 6 is \( 13 \div 3 = 4.333\ldots \), a repeating decimal. Averaging does not preserve integer-ness; the result can be any real number.</p>
           </details>
           <details class="faq-item">
             <summary>What is a weighted average?<span aria-hidden="true">▾</span></summary>
@@ -479,7 +511,7 @@
           </details>
           <details class="faq-item">
             <summary>Can the average be negative?<span aria-hidden="true">▾</span></summary>
-            <p class="faq-answer">Yes. If the sum of the numbers is negative, the average is negative. For example, the average of -3, 5, and -8 is (-3 + 5 + -8) ÷ 3 = -6 ÷ 3 = -2.</p>
+            <p class="faq-answer">Yes. If the sum of the numbers is negative, the average is negative. For example, the average of -3, 5, and -8 is \( (-3 + 5 + -8) \div 3 = -6 \div 3 = -2 \).</p>
           </details>
         </div>
       </section>
@@ -605,10 +637,14 @@
   <div class="back-to-top" id="backToTop">↑</div>
 
   <script src="assets/tools-common.js"></script>
+
+  <!-- KaTeX auto-render for static content (educational article, FAQ) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body, { delimiters: [{left: '\\\\[', right: '\\\\]', display: true}, {left: '\\\\(', right: '\\\\)', display: false}], throwOnError: false });"></script>
+
   <script>
   (function () {
     'use strict';
-    const { trackEvent, bindEnterKey, attachCopyButton, parseNum,
+    const { trackEvent, bindEnterKey, parseNum,
             showError, clearAllErrors, showResult, hideResult } = ToolsCommon;
     const CALC_NAME = 'average-calculator';
 
@@ -618,8 +654,6 @@
     const resultPanel = document.getElementById('result-panel');
     const section   = document.querySelector('section[aria-label="Average calculator inputs"]');
     const preview   = document.getElementById('live-preview');
-
-    attachCopyButton(resultPanel, CALC_NAME);
 
     /* ---------- Parse the input string ---------- */
     function parseList(str) {
@@ -665,6 +699,27 @@
     function escapeHtml(s) {
       return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     }
+    function escapeAttr(s) {
+      return escapeHtml(s).replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    }
+
+    /* ---------- Mobile result reveal ---------- */
+    function revealResult() {
+      // Blur active input to dismiss mobile keyboard
+      if (document.activeElement && document.activeElement.blur) {
+        document.activeElement.blur();
+      }
+      // Wait a tick for layout to settle after keyboard dismiss
+      setTimeout(function () {
+        if (!resultPanel) return;
+        var rect = resultPanel.getBoundingClientRect();
+        var viewHeight = window.innerHeight || document.documentElement.clientHeight;
+        // If the panel is not fully visible (bottom below viewport or top above)
+        if (rect.bottom > viewHeight || rect.top < 0) {
+          resultPanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 100);
+    }
 
     /* ---------- Main calculation ---------- */
     function calculate() {
@@ -701,9 +756,17 @@
         ? `<p style="color:#dc2626;">⚠️ Ignored ${bad.length} invalid token${bad.length === 1 ? '' : 's'}: ${bad.map(escapeHtml).join(', ')}.</p>`
         : '';
 
+      // Plain-text answer used for the copy button
+      const copyText = 'Average (mean) = ' + meanStr + ' (sum = ' + sumStr + ', n = ' + n + ')';
+
       const html = `
-        <div class="result-label">Average (Mean)</div>
-        <div class="avg-result-value">${meanStr}</div>
+        <div class="result-head">
+          <div>
+            <div class="result-label">Average (Mean)</div>
+            <div class="avg-result-value">${meanStr}</div>
+          </div>
+          <button type="button" class="copy-answer-btn" data-copy="${escapeAttr(copyText)}" title="Copy the average and sum to the clipboard">Copy answer</button>
+        </div>
         <div class="avg-summary">
           <div class="avg-summary-unit">
             <div class="avg-summary-value">${sumStr}</div>
@@ -742,6 +805,9 @@
       resultPanel.innerHTML = html;
       showResult(resultPanel, html);
       trackEvent(CALC_NAME, 'calculate');
+
+      // Reveal result on mobile
+      revealResult();
     }
 
     function fmtLong(n) {
@@ -752,6 +818,41 @@
       if (s.endsWith('.')) s = s.slice(0, -1);
       return s;
     }
+
+    /* ---------- Copy button: delegated listener on resultPanel ----------
+       Survives innerHTML replacement after each calculation and works
+       with both the async Clipboard API and a legacy execCommand fallback. */
+    resultPanel.addEventListener('click', function (e) {
+      const btn = e.target.closest ? e.target.closest('.copy-answer-btn') : null;
+      if (!btn) return;
+      const text = btn.getAttribute('data-copy') || '';
+      const done = function () {
+        btn.textContent = 'Copied ✓';
+        btn.classList.add('copied');
+        trackEvent(CALC_NAME, 'copy_answer');
+        setTimeout(function () {
+          btn.textContent = 'Copy answer';
+          btn.classList.remove('copied');
+        }, 1800);
+      };
+      const fallback = function () {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.setAttribute('readonly', '');
+        ta.style.position = 'fixed';
+        ta.style.top = '0';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); done(); } catch (err) { /* ignore */ }
+        document.body.removeChild(ta);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
+      }
+    });
 
     /* ---------- Wiring ---------- */
     calcBtn.addEventListener('click', calculate);
@@ -782,6 +883,21 @@
       else btt.classList.remove('show');
     });
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Re-render KaTeX for any dynamically injected math (safety net for result panel)
+    if (typeof renderMathInElement === 'function') {
+      // Observe result panel for changes and re-render KaTeX if needed
+      const observer = new MutationObserver(function () {
+        renderMathInElement(resultPanel, {
+          delimiters: [
+            {left: '\\[', right: '\\]', display: true},
+            {left: '\\(', right: '\\)', display: false}
+          ],
+          throwOnError: false
+        });
+      });
+      observer.observe(resultPanel, { childList: true, subtree: true });
+    }
   })();
   </script>
 </body>
