@@ -121,6 +121,7 @@
         "name": "Muhammad Tayyab",
         "jobTitle": "Subject Specialist - Mathematics",
         "qualifications": "MSc Mathematics",
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "GC University Lahore" },
         "worksFor": { "@id": "https://hiraacademy.com.pk/#organization" },
         "description": "MSc Mathematics; teaches Class 9 and 10 Mathematics and creates the site's Mathematics resources."
       },
@@ -132,6 +133,19 @@
         "qualifications": "M.Phil Chemistry",
         "worksFor": { "@id": "https://hiraacademy.com.pk/#organization" },
         "description": "M.Phil Chemistry; teaches Chemistry and Biology and contributes to the site's Chemistry and Biology resources."
+      },
+      {
+        "@type": "Person",
+        "@id": "https://hiraacademy.com.pk/#faculty3",
+        "name": "Waqar Sharif",
+        "jobTitle": "Secondary School Teacher (SST) - English",
+        "qualifications": "M.A English",
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of the Punjab" },
+        "worksFor": [
+          { "@id": "https://hiraacademy.com.pk/#organization" },
+          { "@type": "School", "name": "Government Christian High School Daska" }
+        ],
+        "description": "M.A English from Punjab University; Secondary School Teacher with 15 years of teaching experience and English teacher at Hira Science Academy."
       }
     ]
   }
@@ -232,7 +246,7 @@
   .author-tab[aria-selected="true"] { background: #0284c7; color: #fff; box-shadow: 0 10px 20px -8px rgba(2,132,199,.6); }
   .author-panel { animation: fadeUp .4s ease; }
   @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-  #faculty, #muhammad-tayyab, #mirza-abid { scroll-margin-top: 7rem; }
+  #faculty, #muhammad-tayyab, #mirza-abid, #waqar-sharif { scroll-margin-top: 7rem; }
 </style>
 
 <!-- ===== HERO ===== -->
@@ -329,9 +343,10 @@
     </div>
 
     <!-- Switcher -->
-    <div class="flex justify-center gap-3 mb-8" role="tablist" aria-label="Choose faculty member">
+    <div class="flex flex-wrap justify-center gap-3 mb-8" role="tablist" aria-label="Choose faculty member">
       <button type="button" role="tab" id="tab-muhammad-tayyab" data-author="muhammad-tayyab" aria-selected="true" class="author-tab bg-white text-gray-700 border border-gray-200 px-5 py-3 rounded-full text-sm font-semibold">Muhammad Tayyab</button>
       <button type="button" role="tab" id="tab-mirza-abid" data-author="mirza-abid" aria-selected="false" class="author-tab bg-white text-gray-700 border border-gray-200 px-5 py-3 rounded-full text-sm font-semibold">Mirza Abid Shabbir Mughal</button>
+      <button type="button" role="tab" id="tab-waqar-sharif" data-author="waqar-sharif" aria-selected="false" class="author-tab bg-white text-gray-700 border border-gray-200 px-5 py-3 rounded-full text-sm font-semibold">Waqar Sharif</button>
     </div>
 
     <!-- Muhammad Tayyab -->
@@ -344,6 +359,7 @@
           <span class="mt-5 inline-block bg-blue-100 text-blue-700 text-xs font-bold px-3 py-1 rounded-full">Mathematics Teacher &amp; Founder</span>
           <h3 class="mt-3 text-2xl font-bold text-gray-900">Muhammad Tayyab</h3>
           <p class="text-sm font-semibold text-blue-600">MSc Mathematics</p>
+          <p class="text-xs text-gray-500">GC University Lahore</p>
           <p class="mt-2 text-sm text-gray-600">13 years teaching · Govt Christian High School, Daska</p>
         </div>
         <div class="md:col-span-3 p-8">
@@ -389,6 +405,31 @@
           <div class="mt-6 flex flex-wrap gap-3">
             <a href="Chemistry-9th.html" class="bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2 rounded-xl text-sm font-semibold">Chemistry Notes</a>
             <a href="Biology-9th.html" class="bg-gray-100 hover:bg-gray-200 text-gray-800 px-5 py-2 rounded-xl text-sm font-semibold">Biology Notes</a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Waqar Sharif -->
+    <article id="waqar-sharif" class="author-panel hidden bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden" role="tabpanel" aria-labelledby="tab-waqar-sharif">
+      <div class="grid md:grid-cols-5">
+        <div class="md:col-span-2 bg-gradient-to-br from-amber-50 to-white p-8 flex flex-col items-center justify-center text-center">
+          <div class="w-48 h-48 bg-white rounded-2xl border border-gray-200 shadow overflow-hidden">
+            <img src="images/waqar-profile.jpg" alt="Waqar Sharif, M.A English" class="w-full h-full object-contain" loading="lazy">
+          </div>
+          <span class="mt-5 inline-block bg-amber-100 text-amber-700 text-xs font-bold px-3 py-1 rounded-full">English Teacher</span>
+          <h3 class="mt-3 text-2xl font-bold text-gray-900">Waqar Sharif</h3>
+          <p class="text-sm font-semibold text-amber-600">M.A English</p>
+          <p class="text-xs text-gray-500">Punjab University</p>
+          <p class="mt-2 text-sm text-gray-600">15 years teaching · Govt Christian High School, Daska</p>
+        </div>
+        <div class="md:col-span-3 p-8">
+          <p class="text-gray-700 leading-7 text-justify">Waqar Sharif serves as a Secondary School Teacher (SST) at Government Christian High School Daska and teaches English at Hira Science Academy. He holds an M.A English from Punjab University.</p>
+          <p class="mt-4 text-gray-700 leading-7 text-justify">With 15 years of teaching experience, he helps Class 9 and 10 students build strong English skills for classroom and board-exam preparation.</p>
+          <h4 class="mt-6 text-sm font-bold text-gray-800 mb-3">Teaching Areas</h4>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-amber-50 text-amber-700 text-xs font-semibold px-3 py-2 rounded-lg">English</span>
+            <span class="bg-amber-50 text-amber-700 text-xs font-semibold px-3 py-2 rounded-lg">Class 9 &amp; 10</span>
           </div>
         </div>
       </div>
@@ -468,7 +509,7 @@
 <!-- ===== SINGLE-AUTHOR SWITCHER SCRIPT ===== -->
 <script>
 (function () {
-  var ids = ['muhammad-tayyab', 'mirza-abid'];
+  var ids = ['muhammad-tayyab', 'mirza-abid', 'waqar-sharif'];
   function show(id, scroll) {
     if (ids.indexOf(id) === -1) return;
     ids.forEach(function (a) {
