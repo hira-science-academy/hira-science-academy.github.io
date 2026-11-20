@@ -1,239 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Under Construction | Hira Science Academy</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] },
-          colors: {
-            brand: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              500: '#14b8a6',
-              600: '#0d9488',
-              700: '#0f766e',
-              800: '#115e59',
-            }
-          }
-        }
-      }
-    };
-  </script>
-  
-  <style>
-    :root {
-      --primary: #0f766e;
-      --secondary: #0891b2;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    body {
-      background-color: #0f766e;
-      background-image: 
-        radial-gradient(at 0% 0%, hsla(174,72%,39%,1) 0, transparent 50%), 
-        radial-gradient(at 50% 0%, hsla(187,92%,42%,1) 0, transparent 50%), 
-        radial-gradient(at 100% 0%, hsla(192,81%,37%,1) 0, transparent 50%);
-      background-attachment: fixed;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
+<!-- ✅ Keep out of Google index but allow crawlers to follow internal links -->
+<meta name="robots" content="noindex, follow">
 
-    .glass-card {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    }
+<!-- ✅ Canonical to homepage prevents "Duplicate, Google chose different canonical" + soft-404 flags -->
+<link rel="canonical" href="https://hiraacademy.com.pk/">
 
-    .hero-gradient {
-      background: linear-gradient(135deg, #0f766e 0%, #0d9488 100%);
-    }
+<title>Under Construction | Hira Science Academy</title>
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-15px) rotate(2deg); }
-    }
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9CK25HVFYZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-9CK25HVFYZ');
+</script>
 
-    .animate-float { animation: float 5s ease-in-out infinite; }
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4029002473204443" crossorigin="anonymous"></script>
 
-    .gear-rotate { animation: spin 10s linear infinite; }
-    .gear-rotate-rev { animation: spin 8s linear infinite reverse; }
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
 
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .progress-circle {
-      transition: stroke-dashoffset 0.3s ease;
-      transform: rotate(-90deg);
-      transform-origin: 50% 50%;
-    }
-
-    .particle {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 1;
-    }
-  </style>
+<style>
+body{
+  font-family:'Plus Jakarta Sans',sans-serif;
+  background: radial-gradient(circle at 20% 20%, #0d9488, #022c22);
+  min-height:100vh;
+  overflow:hidden;
+  margin:0;
+}
+.card-wrap{
+  padding:2px;
+  border-radius:30px;
+  background:linear-gradient(270deg,#14b8a6,#06b6d4,#14b8a6);
+  background-size:400% 400%;
+  animation:gradientMove 6s ease infinite;
+}
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+.glass{
+  background:rgba(255,255,255,0.9);
+  backdrop-filter:blur(20px);
+  border-radius:28px;
+}
+.loader{
+  width:90px;
+  height:90px;
+  border-radius:50%;
+  border:6px solid #e5e7eb;
+  border-top:6px solid #14b8a6;
+  animation:spin 1s linear infinite;
+}
+@keyframes spin{ to{transform:rotate(360deg);} }
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-12px);}
+}
+.float{animation:float 4s ease-in-out infinite;}
+.btn{ transition:all .3s ease; }
+.btn:hover{ transform:translateY(-4px) scale(1.03); }
+.particle{
+  position:absolute;
+  background:white;
+  border-radius:50%;
+  opacity:.2;
+}
+</style>
 </head>
-<body class="font-sans flex items-center justify-center p-6 relative">
 
-  <div id="particle-container"></div>
+<body class="flex items-center justify-center relative">
 
-  <div class="glass-card max-w-xl w-full rounded-[2.5rem] overflow-hidden relative z-10 transition-all duration-500 hover:shadow-brand-700/20">
-    
-    <div class="hero-gradient px-8 py-10 text-center relative overflow-hidden">
-      <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
-      <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-teal-400/20 rounded-full blur-xl"></div>
-      
-      <div class="relative z-10">
-        <div class="inline-flex items-center justify-center w-20 h-20 bg-white/10 backdrop-blur-md rounded-2xl mb-6 animate-float border border-white/20">
-          <i class="fas fa-microscope text-white text-4xl"></i>
-        </div>
-        <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2 tracking-tight">Under Construction</h1>
-        <p class="text-teal-50 font-medium opacity-90">Building the future of Science Education</p>
-      </div>
-    </div>
+<div id="particles"></div>
 
-    <div class="px-8 py-10 text-center">
-      
-      <div class="mb-8">
-        <span class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 px-4 py-1.5 rounded-full text-sm font-bold border border-brand-100 uppercase tracking-wider">
-          <i class="fas fa-layer-group"></i>
-          <span id="pageFileName">Resource Page</span>
-        </span>
-      </div>
+<div class="card-wrap max-w-xl w-full" style="margin:16px;">
+<div class="glass p-8 text-center">
 
-      <div class="flex justify-center mb-8 relative">
-        <div class="relative w-24 h-24 flex items-center justify-center">
-            <i class="fas fa-atom text-6xl text-brand-600 animate-pulse"></i>
-            <i class="fas fa-cog text-3xl text-brand-400 absolute -top-1 -right-1 gear-rotate"></i>
-            <i class="fas fa-cog text-xl text-cyan-500 absolute bottom-0 -left-1 gear-rotate-rev"></i>
-        </div>
-      </div>
+<div class="w-20 h-20 mx-auto mb-4 flex items-center justify-center rounded-2xl bg-teal-500/20 float">
+<i class="fas fa-microscope text-3xl text-teal-600"></i>
+</div>
 
-      <div class="space-y-3 mb-8">
-        <p class="text-gray-600 text-lg leading-relaxed">
-          This module is being meticulously prepared by<br>
-          <span class="text-brand-700 font-bold text-xl">Muhammad Tayyab</span>
-        </p>
-        <div class="flex flex-col items-center text-gray-500 text-sm italic">
-            <span>Subject Specialist: Mathematics & Physics</span>
-            <span>Govt Christian High School Daska</span>
-        </div>
-      </div>
+<h1 class="text-4xl font-extrabold text-gray-800">Under Construction 🚧</h1>
+<p class="text-gray-500 mt-2">We are crafting something amazing</p>
 
-      <div class="flex flex-col items-center gap-4 py-6 bg-brand-50/50 rounded-3xl border border-brand-100/50 mb-8">
-        <div class="relative w-20 h-20">
-          <svg class="w-full h-full" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="#e2e8f0" stroke-width="6"/>
-            <circle id="progressCircle" cx="50" cy="50" r="45" fill="none" stroke="#0d9488" stroke-width="6" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="0" class="progress-circle"/>
-          </svg>
-          <div class="absolute inset-0 flex items-center justify-center font-bold text-2xl text-brand-700" id="countdown">10</div>
-        </div>
-        <p class="text-brand-800 font-semibold text-sm">Redirecting to Homepage soon...</p>
-      </div>
+<div class="mt-4 text-sm font-semibold text-teal-600" id="pageName">Under Construction</div>
+<div class="mt-1 text-xs text-gray-500" id="chapterName"></div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <a href="https://hiraacademy.com.pk/" class="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-6 py-4 rounded-2xl font-bold transition-all transform hover:-translate-y-1 shadow-lg shadow-brand-600/30">
-          <i class="fas fa-house-chimney"></i> Home
-        </a>
-        <button onclick="stayHere()" id="stayBtn" class="flex items-center justify-center gap-2 bg-white border-2 border-brand-200 text-brand-700 hover:bg-brand-50 px-6 py-4 rounded-2xl font-bold transition-all">
-          <i class="fas fa-stopwatch"></i> Stay Here
-        </button>
-      </div>
-    </div>
+<p class="mt-4 text-gray-700 font-semibold">Muhammad Tayyab</p>
+<p class="text-sm text-gray-500">Math &amp; Physics Specialist</p>
 
-    <div class="bg-gray-50/80 px-8 py-6 border-t border-gray-100 text-center">
-      <div class="flex justify-center gap-6 mb-4">
-        <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors text-xl"><i class="fab fa-facebook"></i></a>
-        <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors text-xl"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors text-xl"><i class="fab fa-whatsapp"></i></a>
-      </div>
-      <p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">
-        &copy; 2026 Hira Science Academy • Quality Education
-      </p>
-    </div>
+<div class="flex justify-center mt-6">
+  <div class="loader"></div>
+</div>
+
+<div class="mt-4">
+  <div class="w-full bg-gray-200 rounded-full h-2">
+    <div id="bar" class="bg-teal-500 h-2 rounded-full" style="width:0%"></div>
   </div>
+  <p class="text-sm text-gray-600 mt-1">
+    <span id="percent">0</span>% • Redirecting to chapter hub in <span id="time">10</span>s
+  </p>
+</div>
 
-  <script>
-    // URL File Name Logic
-    const pagePath = window.location.pathname;
-    const rawName = pagePath.split('/').pop().replace('.html', '').replace(/-/g, ' ');
-    document.getElementById('pageFileName').textContent = rawName || 'Under Construction';
+<div class="grid grid-cols-2 gap-4 mt-6">
+  <a href="../" class="btn bg-teal-600 text-white py-3 rounded-xl font-bold text-center">
+    ← Chapter Hub
+  </a>
+  <button onclick="stopRedirect()" id="stayBtn"
+    class="btn border-2 border-teal-300 text-teal-700 py-3 rounded-xl font-bold">
+    Stay Here
+  </button>
+</div>
 
-    // Countdown Logic
-    let timeLeft = 10;
-    const totalTime = 10;
-    const countdownEl = document.getElementById('countdown');
-    const circleEl = document.getElementById('progressCircle');
-    const circumference = 2 * Math.PI * 45;
+<div class="mt-5 pt-4 border-t border-gray-200 text-xs text-gray-500 flex flex-wrap justify-center gap-4">
+  <a href="https://hiraacademy.com.pk/" class="hover:text-teal-600 transition">🏠 Site Home</a>
+  <a href="../" class="hover:text-teal-600 transition">📂 Chapter Hub</a>
+</div>
 
-    const timer = setInterval(() => {
-      timeLeft--;
-      if(timeLeft >= 0) {
-        countdownEl.textContent = timeLeft;
-        const offset = circumference - (timeLeft / totalTime) * circumference;
-        circleEl.style.strokeDashoffset = offset;
+</div>
+</div>
+
+<script>
+/* ============== PAGE NAME ============== */
+try {
+  var path = window.location.pathname;
+  var filename = path.split('/').pop().replace('.html','');
+  var prettyName = filename
+    ? filename.replace(/[-_]/g,' ').replace(/\b\w/g, function(c){ return c.toUpperCase(); })
+    : "Under Construction";
+  var pageEl = document.getElementById('pageName');
+  if (pageEl) pageEl.innerText = prettyName;
+} catch(e) {}
+
+/* ============== CHAPTER LABEL ============== */
+try {
+  var parts = window.location.pathname.split('/').filter(Boolean);
+  var chapterFolder = parts.length >= 2 ? parts[parts.length - 2] : '';
+  var chapterPretty = chapterFolder
+    .replace(/^unit-/i, 'Chapter ')
+    .replace(/^chapter-/i, 'Chapter ')
+    .replace(/[-_]/g,' ')
+    .replace(/\b\w/g, function(c){ return c.toUpperCase(); });
+  var chapEl = document.getElementById('chapterName');
+  if (chapEl && chapterPretty) chapEl.innerText = '📂 ' + chapterPretty;
+} catch(e) {}
+
+/* ============== PROGRESS + REDIRECT ============== */
+var time = 10;
+var percent = 0;
+var interval = setInterval(function(){
+  time--;
+  percent += 10;
+  var tEl = document.getElementById('time');
+  var pEl = document.getElementById('percent');
+  var bEl = document.getElementById('bar');
+  if (tEl) tEl.innerText = time;
+  if (pEl) pEl.innerText = percent;
+  if (bEl) bEl.style.width = percent + "%";
+  if (time <= 0) {
+    clearInterval(interval);
+    window.location.href = "../";
+  }
+}, 1000);
+
+/* ============== PAUSE ============== */
+function stopRedirect(){
+  clearInterval(interval);
+  var tEl = document.getElementById('time');
+  var pEl = document.getElementById('percent');
+  var sEl = document.getElementById('stayBtn');
+  if (tEl) tEl.innerText = "∞";
+  if (pEl) pEl.innerText = "Paused";
+  if (sEl) sEl.innerText = "Paused ✔";
+}
+
+/* ============== PARTICLES ============== */
+try {
+  var container = document.getElementById('particles');
+  if (container) {
+    for (var i = 0; i < 30; i++){
+      var p = document.createElement('div');
+      p.className = 'particle';
+      var size = Math.random() * 5 + 2;
+      p.style.width = size + "px";
+      p.style.height = size + "px";
+      p.style.left = Math.random() * 100 + "vw";
+      p.style.top = Math.random() * 100 + "vh";
+      container.appendChild(p);
+      if (p.animate) {
+        p.animate(
+          [ {transform:'translateY(0)'}, {transform:'translateY(-120px)'} ],
+          { duration: 3000 + Math.random() * 3000, iterations: Infinity }
+        );
       }
-      
-      if(timeLeft <= 0) {
-        clearInterval(timer);
-        window.location.href = 'https://hiraacademy.com.pk/';
-      }
-    }, 1000);
-
-    function stayHere() {
-      clearInterval(timer);
-      countdownEl.textContent = '∞';
-      circleEl.style.stroke = '#14b8a6';
-      const btn = document.getElementById('stayBtn');
-      btn.innerHTML = '<i class="fas fa-check"></i> Timer Paused';
-      btn.classList.add('bg-teal-50', 'border-teal-300');
     }
+  }
+} catch(e) {}
+</script>
 
-    // Particle Background
-    function initParticles() {
-      const container = document.getElementById('particle-container');
-      for (let i = 0; i < 20; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        const size = Math.random() * 4 + 2;
-        p.style.width = `${size}px`;
-        p.style.height = `${size}px`;
-        p.style.left = `${Math.random() * 100}vw`;
-        p.style.top = `${Math.random() * 100}vh`;
-        p.style.opacity = Math.random();
-        container.appendChild(p);
-        
-        animateParticle(p);
-      }
-    }
-
-    function animateParticle(p) {
-      const duration = Math.random() * 3000 + 3000;
-      p.animate([
-        { transform: 'translateY(0) translateX(0)', opacity: p.style.opacity },
-        { transform: `translateY(-100px) translateX(${Math.random() * 50}px)`, opacity: 0 }
-      ], { duration, iterations: Infinity });
-    }
-
-    initParticles();
-  </script>
 </body>
 </html>
