@@ -278,6 +278,21 @@
     /* 💰 AdSense: collapse the wrapper (and its reserved space) when no ad is returned */
     .ad-slot:has(ins.adsbygoogle[data-ad-status="unfilled"]) { display: none; }
 
+    /* 💰 Ad units: readable "Advertisement" label on every ad; mid-page unit (slot 5054227490) has no forced size */
+    .homepage-mid-ad { max-width: 100%; min-height: 90px; margin: 0 0 4rem; text-align: center; }
+    .ad-slot .ad-label { margin: 0 0 4px; font-size: 11px; line-height: 1.2; letter-spacing: 0.1em; text-transform: uppercase; color: #6b7280; }
+
+    /* 🔍 Pagefind search dialog */
+    .site-search { position: fixed; inset: 0; z-index: 100; display: none; align-items: flex-start; justify-content: center; padding: 56px 12px 12px; background: rgba(15, 23, 42, 0.6); }
+    .site-search.is-open { display: flex; }
+    .site-search-panel { width: 100%; max-width: 680px; max-height: calc(100vh - 72px); display: flex; flex-direction: column; background: #fff; border-radius: 16px; box-shadow: 0 24px 60px -12px rgba(15, 23, 42, 0.5); overflow: hidden; }
+    .site-search-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #e5e7eb; }
+    .site-search-head h2 { margin: 0; font-size: 15px; font-weight: 700; color: #1e3a8a; }
+    .site-search-close { border: 1px solid #d1d5db; border-radius: 8px; background: #f9fafb; color: #374151; font-size: 13px; padding: 6px 12px; cursor: pointer; }
+    #pf-search { padding: 14px 16px 18px; overflow-y: auto; --pagefind-ui-scale: 1; --pagefind-ui-primary: #1d4ed8; --pagefind-ui-text: #111827; --pagefind-ui-background: #ffffff; --pagefind-ui-border: #d1d5db; --pagefind-ui-tag: #eff6ff; --pagefind-ui-border-width: 1px; --pagefind-ui-border-radius: 10px; --pagefind-ui-font: inherit; }
+    .site-search-msg { padding: 16px; text-align: center; color: #b91c1c; font-size: 14px; }
+    body.site-search-lock { overflow: hidden; }
+
     /* Reduced-motion overrides MUST come last so they win over the rules above */
     @media (prefers-reduced-motion: reduce) {
       .js .reveal { opacity: 1; transform: none; transition: none; }
@@ -515,6 +530,15 @@
           Taught by <strong class="text-white">MSc Mathematics</strong> and <strong class="text-white">M.Phil Chemistry</strong> educators, our resources include complete notes, past papers, chapter-wise MCQs, and personalized learning plans — plus free online calculators and educational tools for homework and everyday calculations.
         </p>
 
+        <!-- 🔍 Site search (Pagefind): hero-style glass field; opens the search dialog, files load only when opened -->
+        <button type="button" id="site-search-open" data-pagefind-ignore
+                class="group flex items-center gap-3 w-full max-w-md h-14 mb-4 px-5 rounded-xl bg-white/10 hover:bg-white/20 border-2 border-white/40 backdrop-blur-sm text-left text-blue-50/90 font-semibold shadow-premium hover:-translate-y-0.5 transition-all focus:outline-none focus:ring-4 focus:ring-amber-300/60"
+                aria-haspopup="dialog" aria-label="Search all notes, tools and guides on this website">
+          <svg class="h-5 w-5 flex-none text-amber-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" /></svg>
+          <span class="flex-1 truncate">Search notes, tools &amp; guides…</span>
+          <kbd class="hidden md:inline-block text-xs text-white/80 border border-white/40 rounded px-2 py-0.5" aria-hidden="true">/</kbd>
+        </button>
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-md">
           <a href="#notes"
              class="btn-shine h-14 flex items-center justify-center gap-2 bg-white text-primary-700 hover:bg-gray-100 px-6 rounded-xl font-semibold shadow-premium hover:-translate-y-0.5 transition-all text-center">
@@ -566,7 +590,7 @@
 
 <!-- 💰 Ad Unit 1: Below Hero Section -->
 <div class="ad-slot container mx-auto px-6 my-8 text-center min-h-[90px]" aria-label="Advertisement">
-  <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Advertisement</p>
+  <p class="ad-label">Advertisement</p>
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4029002473204443"
@@ -641,6 +665,18 @@
           </div>
         </div>
       </a>
+    </div>
+
+    <!-- 💰 Ad Unit 2 (slot 5054227490): moved up to the natural break between the Class 9/10 hub cards and the subject shortcuts -->
+    <div class="ad-slot homepage-mid-ad" aria-label="Advertisement">
+      <p class="ad-label">Advertisement</p>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-4029002473204443"
+           data-ad-slot="5054227490"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <div class="mb-4 flex items-center gap-3 reveal">
@@ -801,17 +837,6 @@
 }
 </script>
 
-<!-- 💰 Ad Unit 2: Between Class Notes and Courses -->
-<div class="ad-slot container mx-auto px-6 my-8 text-center min-h-[90px]" aria-label="Advertisement">
-  <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Advertisement</p>
-  <ins class="adsbygoogle"
-       style="display:block"
-       data-ad-client="ca-pub-4029002473204443"
-       data-ad-slot="5054227490"
-       data-ad-format="auto"
-       data-full-width-responsive="true"></ins>
-  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-</div>
 <!-- Courses Section -->
 <section id="courses" class="py-20 bg-gradient-to-b from-gray-50 to-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1053,7 +1078,7 @@
 
 <!-- 💰 Ad Unit 3: Between Tools & Calculators and Blog -->
 <div class="ad-slot container mx-auto px-6 my-8 text-center min-h-[90px]" aria-label="Advertisement">
-  <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Advertisement</p>
+  <p class="ad-label">Advertisement</p>
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4029002473204443"
@@ -1733,7 +1758,7 @@
 
 <!-- 💰 Ad Unit 4: Above Footer (after FAQ) -->
 <div class="ad-slot container mx-auto px-6 my-8 text-center min-h-[90px]" aria-label="Advertisement">
-  <p class="text-[10px] uppercase tracking-widest text-gray-400 mb-1">Advertisement</p>
+  <p class="ad-label">Advertisement</p>
   <ins class="adsbygoogle"
        style="display:block"
        data-ad-client="ca-pub-4029002473204443"
@@ -2026,5 +2051,76 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 <script src="/assets/js/ads-injector.js" defer></script>
+<!-- 🔍 Pagefind site search dialog (files in /pagefind/ are created by the build step) -->
+<div id="site-search" class="site-search" role="dialog" aria-modal="true" aria-labelledby="site-search-title" data-pagefind-ignore hidden>
+  <div class="site-search-panel">
+    <div class="site-search-head">
+      <h2 id="site-search-title">Search Hira Science Academy</h2>
+      <button type="button" class="site-search-close" id="site-search-close">Close (Esc)</button>
+    </div>
+    <div id="pf-search"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var box = document.getElementById('site-search');
+  var mount = document.getElementById('pf-search');
+  var openBtn = document.getElementById('site-search-open');
+  var closeBtn = document.getElementById('site-search-close');
+  if (!box || !mount || !openBtn) return;
+  var started = false, lastOpener = null;
+
+  function fail() {
+    started = false;
+    mount.innerHTML = '<p class="site-search-msg">Search could not be loaded. Please try again later.</p>';
+  }
+
+  function start() {
+    if (started) return;
+    started = true;
+    var css = document.createElement('link');
+    css.rel = 'stylesheet'; css.href = '/pagefind/pagefind-ui.css';
+    document.head.appendChild(css);
+    var js = document.createElement('script');
+    js.src = '/pagefind/pagefind-ui.js';
+    js.onload = function () {
+      try {
+        mount.innerHTML = '';
+        new PagefindUI({
+          element: '#pf-search', showImages: false, showSubResults: true, resetStyles: false,
+          autofocus: true, pageSize: 8, excerptLength: 20,
+          translations: { placeholder: 'Search notes, tools & guides…' }
+        });
+      } catch (e) { fail(); }
+    };
+    js.onerror = fail;
+    document.head.appendChild(js);
+  }
+
+  function open(opener) {
+    lastOpener = opener || document.activeElement;
+    box.hidden = false; box.classList.add('is-open'); document.body.classList.add('site-search-lock');
+    start();
+    setTimeout(function () { var i = mount.querySelector('input'); if (i) i.focus(); }, 50);
+  }
+  function close() {
+    box.classList.remove('is-open'); box.hidden = true; document.body.classList.remove('site-search-lock');
+    if (lastOpener && lastOpener.focus) lastOpener.focus();
+  }
+
+  openBtn.addEventListener('click', function () { open(openBtn); });
+  closeBtn.addEventListener('click', close);
+  box.addEventListener('click', function (e) { if (e.target === box) close(); });
+  document.addEventListener('keydown', function (e) {
+    var t = e.target || {}, typing = /INPUT|TEXTAREA|SELECT/.test(t.tagName || '') || t.isContentEditable;
+    if (e.key === 'Escape' && box.classList.contains('is-open')) { close(); }
+    else if (!box.classList.contains('is-open') && ((e.key === '/' && !typing && !e.ctrlKey && !e.metaKey) || ((e.ctrlKey || e.metaKey) && String(e.key).toLowerCase() === 'k'))) {
+      e.preventDefault(); open(document.activeElement);
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
