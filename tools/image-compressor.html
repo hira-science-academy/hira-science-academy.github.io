@@ -74,6 +74,8 @@
     };
   </script>
   <link rel="stylesheet" href="assets/tools.css" />
+  <link rel="stylesheet" href="assets/tools-media.css" />
+  <link rel="stylesheet" href="assets/pdf-tools.css" />
 
   <style>
     /* ---- Page chrome (identical to the other calculator pages) ---- */
@@ -154,7 +156,6 @@
     .cmp-divider { position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; background: #0284c7; pointer-events: none; }
     .cmp-tag { position: absolute; top: .5rem; padding: .2rem .6rem; border-radius: 999px; background: rgba(15,23,42,.85); color: #fff; font-size: .75rem; font-weight: 700; pointer-events: none; }
     .cmp-tag.left { left: .5rem; } .cmp-tag.right { right: .5rem; }
-    /* Target file size (added) */
     .quick-chip[aria-pressed="true"] { background: #0284c7; border-color: #0284c7; color: #fff; }
     .quick-chip[aria-pressed="true"]:hover { background: #0369a1; }
     #custom-target { margin-top: .75rem; }
@@ -170,6 +171,26 @@
       .btn-calc { min-height: 48px; flex: 1 1 auto; }
       .stat-grid { grid-template-columns: 1fr; }
     }
+
+    /* ---- Side-rail ad placement (identical to pdf-merger.html) ---- */
+    .pdf-main { position: relative; max-width: 48rem; margin-left: auto; margin-right: auto; }
+    .pdf-side, .ad-desk { display: none; }
+    .pdf-rail-narrow, .pdf-rail-wide { display: none; }
+    @media (min-width: 1024px) { .ad-desk { display: block; } .ad-mob { display: none; } }
+    @media (min-width: 1200px) {
+      .pdf-side { display: block; position: absolute; top: 0; bottom: 0; width: 160px; }
+      .pdf-side-right { left: 100%; margin-left: 1.5rem; }
+      .pdf-side-left { right: 100%; margin-right: 1.5rem; }
+      .pdf-side-inner { position: sticky; top: 1rem; min-height: 250px; }
+      .pdf-rail-narrow { display: block; }
+    }
+    @media (min-width: 1440px) {
+      .pdf-side { width: 300px; }
+      .pdf-rail-narrow { display: none; }
+      .pdf-rail-wide { display: block; }
+    }
+    .pdf-ad ins[data-ad-status="unfilled"], .pdf-side ins[data-ad-status="unfilled"] { display: none !important; }
+    .pdf-ad:has(ins[data-ad-status="unfilled"]) { display: none; }
   </style>
 </head>
 
@@ -243,7 +264,7 @@
     </div>
   </div>
 
-  <main id="main-content" class="max-w-3xl mx-auto px-3 sm:px-6 py-5 md:py-10">
+  <main id="main-content" class="pdf-main px-3 sm:px-6 py-5 md:py-10">
 
     <section id="tool-card" class="ic-ui bg-white rounded-2xl border border-slate-200 shadow-sm p-4 md:p-8" aria-label="Image compressor">
       <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-describedby="dz-help">
@@ -585,6 +606,63 @@
       </section>
     </article>
 
+    <aside class="pdf-side pdf-side-right no-print" aria-label="Advertisement">
+      <div class="pdf-side-inner">
+        <div class="pdf-rail-narrow">
+          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4029002473204443"
+               data-ad-slot="3919178560"
+               data-ad-format="vertical"
+               data-full-width-responsive="false"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+        <div class="pdf-rail-wide">
+          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4029002473204443"
+               data-ad-slot="3919178560"
+               data-ad-format="vertical"
+               data-full-width-responsive="false"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </div>
+    </aside>
+
+    <aside class="pdf-side pdf-side-left no-print" aria-label="Advertisement">
+      <div class="pdf-side-inner">
+        <div class="pdf-rail-narrow">
+          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4029002473204443"
+               data-ad-slot="3847026375"
+               data-ad-format="vertical"
+               data-full-width-responsive="false"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+        <div class="pdf-rail-wide">
+          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4029002473204443"
+               data-ad-slot="3847026375"
+               data-ad-format="vertical"
+               data-full-width-responsive="false"></ins>
+          <script>
+               (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </div>
+    </aside>
   </main>
 
 <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
