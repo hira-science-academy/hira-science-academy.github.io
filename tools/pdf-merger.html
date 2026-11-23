@@ -264,10 +264,20 @@
   <style>
     .pdf-main { position: relative; max-width: 48rem; margin-left: auto; margin-right: auto; }
     .pdf-main--wide { max-width: 64rem; }
-    .pdf-side { display: none; }
-    @media (min-width: 1440px) {
-      .pdf-side { display: block; position: absolute; top: 0; bottom: 0; left: 100%; width: 300px; margin-left: 1.5rem; }
+    .pdf-side, .ad-desk { display: none; }
+    .pdf-rail-narrow, .pdf-rail-wide { display: none; }
+    @media (min-width: 1024px) { .ad-desk { display: block; } .ad-mob { display: none; } }
+    @media (min-width: 1200px) {
+      .pdf-side { display: block; position: absolute; top: 0; bottom: 0; width: 160px; }
+      .pdf-side-right { left: 100%; margin-left: 1.5rem; }
+      .pdf-side-left { right: 100%; margin-right: 1.5rem; }
       .pdf-side-inner { position: sticky; top: 1rem; min-height: 250px; }
+      .pdf-rail-narrow { display: block; }
+    }
+    @media (min-width: 1440px) {
+      .pdf-side { width: 300px; }
+      .pdf-rail-narrow { display: none; }
+      .pdf-rail-wide { display: block; }
     }
     .pdf-ad ins[data-ad-status="unfilled"], .pdf-side ins[data-ad-status="unfilled"] { display: none !important; }
     .pdf-ad:has(ins[data-ad-status="unfilled"]) { display: none; }
@@ -345,7 +355,7 @@
 
   <main id="main-content" class="pdf-main  px-3 sm:px-6 py-5 md:py-8">
 
-    <div class="pdf-ad ad-slot no-print" aria-label="Advertisement">
+    <div class="pdf-ad ad-slot no-print ad-desk" aria-label="Advertisement">
   <p class="ad-label">Advertisement</p>
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="4219014748" data-ad-format="auto" data-full-width-responsive="true"></ins>
 </div>
@@ -440,7 +450,7 @@
       <p class="plain-lead"><strong>Private by design:</strong> your files are read and combined by your own browser and are never uploaded. There is no watermark, no sign-up and no daily limit. PDF pages are copied across without being re-rendered, so text and vector graphics keep their quality.</p>
     </section>
 
-    <div class="pdf-ad ad-slot no-print" aria-label="Advertisement">
+    <div class="pdf-ad ad-slot no-print " aria-label="Advertisement">
   <p class="ad-label">Advertisement</p>
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="3394832329" data-ad-format="auto" data-full-width-responsive="true"></ins>
 </div>
@@ -477,7 +487,7 @@
         <p class="leading-relaxed">Phone photos often carry a hidden rotation flag instead of being stored upright. The merger reads that flag and straightens the picture, which means such a photo is re-encoded once at high quality. Other JPG files are placed into the PDF without any re-compression.</p>
       </section>
 
-      <div class="pdf-ad ad-slot no-print" aria-label="Advertisement">
+      <div class="pdf-ad ad-slot no-print " aria-label="Advertisement">
   <p class="ad-label">Advertisement</p>
   <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="4219014748" data-ad-format="auto" data-full-width-responsive="true"></ins>
 </div>
@@ -571,6 +581,11 @@
         </div>
       </section>
 
+      <div class="pdf-ad ad-slot no-print " aria-label="Advertisement">
+  <p class="ad-label">Advertisement</p>
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="3394832329" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</div>
+
       <section>
         <h2 class="text-2xl font-bold text-gray-900 mb-3">Related PDF and file tools</h2>
         <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -584,10 +599,20 @@
         <p class="mt-3 text-sm text-slate-600"><a href="https://hiraacademy.com.pk/tools/" class="text-blue-600 underline hover:text-blue-800 font-medium">Browse all Tools &amp; Calculators</a> on Hira Science Academy.</p>
       </section>
     </article>
-    <aside class="pdf-side no-print" aria-label="Advertisement">
+    <aside class="pdf-side pdf-side-right no-print" aria-label="Advertisement">
       <div class="pdf-side-inner">
-        <p class="ad-label">Advertisement</p>
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="3394832329" data-ad-format="vertical" data-full-width-responsive="false"></ins>
+        <div class="pdf-rail-narrow"><p class="ad-label">Advertisement</p>
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="3394832329" data-ad-format="vertical" data-full-width-responsive="false"></ins></div>
+        <div class="pdf-rail-wide"><p class="ad-label">Advertisement</p>
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="3394832329" data-ad-format="vertical" data-full-width-responsive="false"></ins></div>
+      </div>
+    </aside>
+    <aside class="pdf-side pdf-side-left no-print" aria-label="Advertisement">
+      <div class="pdf-side-inner">
+        <div class="pdf-rail-narrow"><p class="ad-label">Advertisement</p>
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="4219014748" data-ad-format="vertical" data-full-width-responsive="false"></ins></div>
+        <div class="pdf-rail-wide"><p class="ad-label">Advertisement</p>
+          <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4029002473204443" data-ad-slot="4219014748" data-ad-format="vertical" data-full-width-responsive="false"></ins></div>
       </div>
     </aside>
   </main>
