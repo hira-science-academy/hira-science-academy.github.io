@@ -694,8 +694,9 @@
       padding: 0 16px;
       box-sizing: border-box;
       display: grid;
-      grid-template-columns: 150px minmax(0, 896px) 150px;
-      gap: 16px;
+      grid-template-columns: 150px minmax(0, 840px) 150px;
+      gap: 32px;
+      justify-content: center;
       /* stretch (not start): rail columns must span the full article height,
          otherwise the sticky child has no room to travel while scrolling */
       align-items: stretch;
@@ -727,7 +728,8 @@
       height: 600px;
     }
     @media (min-width: 1260px) {
-      .desktop-ad-layout { grid-template-columns: 150px minmax(0, 896px) 150px; }
+      .desktop-ad-layout { grid-template-columns: 150px minmax(0, 840px) 150px; }
+      .desktop-ad-layout > main { max-width: 840px; width: 100%; margin-left: auto; margin-right: auto; }
       .desktop-ad-rail { display: block; }
     }
     @media (max-width: 1259.98px) {
