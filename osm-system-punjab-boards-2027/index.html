@@ -696,12 +696,16 @@
       display: grid;
       grid-template-columns: 150px minmax(0, 896px) 150px;
       gap: 16px;
-      align-items: start;
+      /* stretch (not start): rail columns must span the full article height,
+         otherwise the sticky child has no room to travel while scrolling */
+      align-items: stretch;
     }
-    .desktop-ad-rail { display: none; min-width: 0; }
+    .desktop-ad-rail { display: none; min-width: 0; align-self: stretch; }
     .desktop-ad-rail-inner {
+      position: -webkit-sticky;
       position: sticky;
-      top: 120px;
+      top: 90px;
+      margin: 0 auto;
       width: 150px;
       min-height: 600px;
       text-align: center;
@@ -728,7 +732,7 @@
     }
     @media (max-width: 1259.98px) {
       .desktop-ad-layout { display: block; padding: 0; }
-      .desktop-ad-rail { display: none !important; }
+      .desktop-ad-rail, .desktop-ad-rail * { display: none !important; }
     }
 
   </style>
@@ -886,8 +890,8 @@
   <aside class="desktop-ad-rail" aria-label="Left sidebar advertisement">
     <div class="desktop-ad-rail-inner">
       <span class="rail-ad-label">Advertisement</span>
-      <ins class="adsbygoogle" style="display:inline-block;width:150px;height:600px" data-ad-client="ca-pub-4029002473204443" data-ad-slot="8947486456"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      <ins class="adsbygoogle" style="display:inline-block;width:150px;height:600px" data-ad-client="ca-pub-4029002473204443" data-ad-slot="1713962259"></ins>
+      <script>if (window.matchMedia('(min-width:1260px)').matches) { (adsbygoogle = window.adsbygoogle || []).push({}); }</script>
     </div>
   </aside>
 <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 min-h-screen">
@@ -1619,8 +1623,8 @@
   <aside class="desktop-ad-rail" aria-label="Right sidebar advertisement">
     <div class="desktop-ad-rail-inner">
       <span class="rail-ad-label">Advertisement</span>
-      <ins class="adsbygoogle" style="display:inline-block;width:150px;height:600px" data-ad-client="ca-pub-4029002473204443" data-ad-slot="8929893322"></ins>
-      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      <ins class="adsbygoogle" style="display:inline-block;width:150px;height:600px" data-ad-client="ca-pub-4029002473204443" data-ad-slot="1188309102"></ins>
+      <script>if (window.matchMedia('(min-width:1260px)').matches) { (adsbygoogle = window.adsbygoogle || []).push({}); }</script>
     </div>
   </aside>
 </div>
