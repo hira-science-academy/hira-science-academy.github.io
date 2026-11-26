@@ -260,14 +260,27 @@ function showResult(panel, html) {
 })();
 
 /* ============================================================
-   Two-column calculator layout (desktop): inputs on the left,
-   result and the ad on the right. Below 1024px the grid is a
-   single column, so phones keep the stacked order:
-   inputs, result, ad.
-   Elements are moved, not copied, so every id and event listener
-   on the page keeps working. The styling lives in tools.css.
+   Page layout for every tool page (runs once, after the page is parsed)
+
+   1. Calculators: inputs on the left, result on the right (desktop).
+   2. Ad rails, same pattern as the notes pages:
+        - right rail (300px): one ad, then a sticky ad that stays in view
+          for the whole page (calculators from 1280px, other tools from 1100px)
+        - left rail (160px): one sticky ad on screens 1600px and wider
+      Below those widths the ad slots stay inline, as written in the page.
+   3. Ads are requested only when they are visible and near the screen, so
+      hidden rails (or the inline copies hidden on wide screens) never load.
+
+   Elements are moved, not copied, so every id and event listener keeps
+   working. The styling lives in tools.css.
+
+   Page requirement: do NOT call adsbygoogle.push() inline inside the ad
+   slots. This script requests every ad once, at the right moment.
    ============================================================ */
 (function () {
+  var CLIENT_FALLBACK = 'ca-pub-4029002473204443';
+
+  /* ---------- 1. Two-column calculator layout ---------- */
   function buildCalcLayout() {
     var result = document.getElementById('result-panel');
     if (!result || result.closest('.calc-layout')) return;
@@ -286,10 +299,10 @@ function showResult(panel, html) {
     for (var p = inputs.nextElementSibling; p && p !== result; p = p.nextElementSibling) between.push(p);
 
     // Everything after the result panel, up to the first ad or the article.
-    function isAd(el) { return el.classList.contains('ad-slot') || !!el.querySelector('ins.adsbygoogle'); }
-    var follow = [], ad = null;
+    function isAd(el) { return el.classList.contains('ad-slot') || !!el.querySelector('ins.adsbygoogle, ins.adslazy'); }
+    var follow = [];
     for (var n = result.nextElementSibling; n && n.tagName !== 'ARTICLE'; n = n.nextElementSibling) {
-      if (isAd(n)) { ad = n; break; }
+      if (isAd(n)) break;
       follow.push(n);
     }
 
@@ -318,15 +331,6 @@ function showResult(panel, html) {
       (el.id === 'answer-live' ? side : mainCol).appendChild(el);
     });
 
-    // The first ad gets its own narrow third column that stays in view while the person scrolls.
-    if (ad) {
-      var adCol = document.createElement('div');
-      adCol.className = 'calc-ad';
-      adCol.appendChild(ad);
-      layout.appendChild(adCol);
-      layout.classList.add('has-ad');
-    }
-
     // Wider page frame; keep the long article at a readable line length.
     main.classList.add('calc-wide');
     var article = main.querySelector(':scope > article');
@@ -336,7 +340,127 @@ function showResult(panel, html) {
     if (crumb && crumb.querySelector('nav[aria-label="Breadcrumb"]')) crumb.classList.add('calc-wide');
   }
 
-  function run() { try { buildCalcLayout(); } catch (e) { /* layout is an enhancement; never break the calculator */ } }
+  /* ---------- 2. Ad rails ---------- */
+  function railAd(client, slotId, format) {
+    var box = document.createElement('div');
+    box.className = 'trail-ad';
+    var label = document.createElement('p');
+    label.className = 'ad-label';
+    label.textContent = 'Advertisement';
+    var ins = document.createElement('ins');
+    ins.className = 'adslazy';
+    ins.style.display = 'block';
+    ins.setAttribute('data-ad-client', client);
+    ins.setAttribute('data-ad-slot', slotId);
+    ins.setAttribute('data-ad-format', format);
+    ins.setAttribute('data-full-width-responsive', 'false');
+    box.appendChild(label);
+    box.appendChild(ins);
+    return box;
+  }
+
+  function buildRails() {
+    var main = document.querySelector('main');
+    if (!main || (main.parentElement && main.parentElement.classList.contains('tools-shell'))) return;
+
+    // Ad slots written in the page, and the real ad-unit ids they use.
+    var slots = Array.prototype.filter.call(main.querySelectorAll('.ad-slot'), function (el) {
+      return !!el.querySelector('ins.adsbygoogle, ins.adslazy');
+    });
+    var ids = [];
+    var client = '';
+    slots.forEach(function (s) {
+      var ins = s.querySelector('ins');
+      var id = ins.getAttribute('data-ad-slot') || '';
+      client = client || ins.getAttribute('data-ad-client') || '';
+      if (/^\d{6,}$/.test(id) && ids.indexOf(id) === -1) ids.push(id);   // skips "auto" and SLOT_ID placeholders
+    });
+    if (!ids.length) return;                                              // no valid ad unit: no rails
+    client = client || CLIENT_FALLBACK;
+
+    var shell = document.createElement('div');
+    shell.className = 'tools-shell' + (main.classList.contains('calc-wide') ? ' is-calc' : '');
+
+    var left = document.createElement('aside');
+    left.className = 'trail trail-left';
+    left.setAttribute('aria-label', 'Advertisement');
+    var leftSticky = document.createElement('div');
+    leftSticky.className = 'trail-sticky';
+    leftSticky.appendChild(railAd(client, ids[0], 'vertical'));
+    left.appendChild(leftSticky);
+
+    var right = document.createElement('aside');
+    right.className = 'trail trail-right';
+    right.setAttribute('aria-label', 'Advertisement');
+    right.appendChild(railAd(client, ids[0], 'auto'));
+    var rightSticky = document.createElement('div');
+    rightSticky.className = 'trail-sticky';
+    rightSticky.appendChild(railAd(client, ids[1] || ids[0], 'vertical'));
+    right.appendChild(rightSticky);
+
+    // The inline copies are hidden by CSS whenever the rails are showing.
+    slots.forEach(function (s) { s.classList.add('rail-src'); });
+
+    // Where the rail sticks: below a sticky menu, otherwise near the top of the screen.
+    var nav = document.getElementById('site-nav') || document.querySelector('nav[aria-label="Main navigation"]');
+    var navSticky = nav && window.getComputedStyle(nav).position === 'sticky';
+    shell.style.setProperty('--trail-top', ((navSticky ? nav.offsetHeight : 0) + 16) + 'px');
+
+    main.parentNode.insertBefore(shell, main);
+    shell.appendChild(left);
+    shell.appendChild(main);
+    shell.appendChild(right);
+  }
+
+  /* ---------- 3. Lazy ad requests ---------- */
+  var observer = null;
+
+  function requestAd(el) {
+    if (el.getAttribute('data-done') || !el.offsetWidth) return;        // hidden rails are never requested
+    el.setAttribute('data-done', '1');
+    el.className = 'adsbygoogle';
+    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) { /* blocked or not loaded */ }
+  }
+
+  function scanAds() {
+    var list = document.querySelectorAll('ins.adslazy:not([data-done])');
+    for (var i = 0; i < list.length; i++) {
+      var el = list[i];
+      if (!el.offsetWidth || el.getAttribute('data-watch')) continue;
+      el.setAttribute('data-watch', '1');
+      if (observer) observer.observe(el); else requestAd(el);
+    }
+  }
+
+  function startAds() {
+    // Ads written in the page become lazy ones, unless Google already handled them.
+    var own = document.querySelectorAll('ins.adsbygoogle');
+    for (var i = 0; i < own.length; i++) {
+      if (!own[i].getAttribute('data-adsbygoogle-status')) own[i].className = 'adslazy';
+    }
+    window.adsbygoogle = window.adsbygoogle || [];
+    // If a page still has inline push() calls waiting for Google's script, drop them: this script
+    // now requests each ad itself, once, in its final position.
+    var queue = window.adsbygoogle;
+    if (Object.prototype.toString.call(queue) === '[object Array]' && !queue.loaded && queue.length) queue.length = 0;
+    if ('IntersectionObserver' in window) {
+      observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { observer.unobserve(e.target); requestAd(e.target); }
+        });
+      }, { rootMargin: '350px 0px' });
+    }
+    scanAds();
+    // A rail that becomes visible after a resize is picked up here.
+    var t;
+    window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(scanAds, 250); });
+  }
+
+  function run() {
+    try { buildCalcLayout(); } catch (e) { /* the layout is an enhancement; never break the calculator */ }
+    try { buildRails(); } catch (e) { /* same for the rails */ }
+    try { startAds(); } catch (e) { /* and the ads */ }
+  }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
   else run();
 })();
