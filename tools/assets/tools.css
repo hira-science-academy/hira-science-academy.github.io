@@ -544,35 +544,3 @@ header.header-gradient + div nav[aria-label="Breadcrumb"] ol { gap: .35rem !impo
 .conv-context { background: #f1f7ff; border: 1px solid #b9cbe6; border-left: 4px solid #6366f1; border-radius: .75rem; padding: .75rem 1rem; margin-top: .75rem; }
 .conv-context p { margin: .25rem 0; color: #0b1220; line-height: 1.6; font-size: .95rem; text-align: left; }
 .conv-context:empty { display: none; }
-
-
-/* ============================================================
-   6. Ad rails (built by tools-common.js): same pattern as the notes pages.
-   Right rail: one ad + a sticky ad. Left rail: one sticky ad (1600px and up).
-   Calculators need more room, so their right rail starts at 1280px.
-   ============================================================ */
-.tools-shell { --trail-w: 300px; --trail-gap: 28px; --main-max: 48rem; display: grid; grid-template-columns: minmax(0, 1fr); justify-content: center; gap: var(--trail-gap); }
-.tools-shell.is-calc { --main-max: 72rem; }
-.trail { display: none; min-width: 0; }
-.trail-sticky { position: sticky; top: var(--trail-top, 1rem); }
-.trail-ad { margin: 0 0 20px; text-align: center; }
-.trail-ad .ad-label { margin: 0 0 4px; font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: #475569; text-align: center; }
-.trail-ad ins { display: block; min-height: 250px; }
-.trail-sticky .trail-ad { margin-bottom: 0; }
-.trail-ad:has(ins[data-ad-status="unfilled"]), .ad-slot:has(ins[data-ad-status="unfilled"]) { display: none; }
-.ad-slot ins.adslazy { display: block; }
-@media (min-width: 1100px) {
-  .tools-shell:not(.is-calc) { grid-template-columns: minmax(0, var(--main-max)) var(--trail-w); padding: 0 1rem; }
-  .tools-shell:not(.is-calc) .trail-right { display: block; }
-  .tools-shell:not(.is-calc) .rail-src { display: none !important; }
-}
-@media (min-width: 1280px) {
-  .tools-shell.is-calc { grid-template-columns: minmax(0, var(--main-max)) var(--trail-w); padding: 0 1rem; }
-  .tools-shell.is-calc .trail-right { display: block; }
-  .tools-shell.is-calc .rail-src { display: none !important; }
-}
-@media (min-width: 1600px) {
-  .tools-shell.tools-shell { grid-template-columns: 160px minmax(0, var(--main-max)) var(--trail-w); }
-  .tools-shell .trail-left { display: block; }
-}
-@media print { .trail { display: none !important; } }
