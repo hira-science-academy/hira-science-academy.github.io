@@ -388,6 +388,25 @@
     .article-body .announced-banner .text-emerald-900{color:#14633a !important}
     html{scroll-padding-top:90px}
   </style>
+
+<style>
+  /* ===== MAIN COLUMN + STICKY RIGHT AD RAIL (desktop >=1280px) ===== */
+  .ps-layout { max-width: 1500px; margin: 0 auto; padding: 1.5rem 1rem 0; }
+  .ps-main { min-width: 0; }
+  .ps-rail { display: none; }
+  @media (min-width: 640px) { .ps-layout { padding-left: 1.5rem; padding-right: 1.5rem; } }
+  @media (min-width: 1280px) {
+    .ps-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 2rem; padding-left: 2rem; padding-right: 2rem; }
+    .ps-rail { display: block; padding-bottom: 1.5rem; }
+  }
+  @media print { .ps-rail { display: none !important; } .ps-layout { display: block; padding: 0; } }
+  .ps-main > section.bg-white, .ps-main > section.bg-gray-50 { border-radius: 16px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid #e5e7eb; }
+  .ps-rail-sticky { position: sticky; top: 96px; /* clears 80px nav + 4px progress bar */ }
+  .ps-rail-label { font-size: .65rem; color: #9ca3af; text-transform: uppercase; letter-spacing: .1em; text-align: center; margin-bottom: 4px; }
+  .ps-rail-box { width: 300px; margin: 0 auto; background: #f1f5f9; border-radius: 8px; overflow: hidden; }
+  /* back-to-top moved to the left so it never covers the rail ad */
+  .back-to-top { left: 1.5rem !important; right: auto !important; bottom: 7.5rem !important; }
+</style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
@@ -481,7 +500,11 @@
     </nav>
   </div>
 
-  <!-- ===== ARTICLE ===== -->
+  <!-- ===== MAIN CONTENT + RIGHT AD RAIL ===== -->
+<div class="ps-layout">
+<main class="ps-main">
+
+<!-- ===== ARTICLE ===== -->
   <article class="article-body text-justify-content max-w-4xl mx-auto px-6 py-12 bg-white shadow-sm mt-4 rounded-2xl mb-16 border border-gray-100">
 
     <!-- STATUS BANNER -->
@@ -869,6 +892,27 @@
     <!-- ===== END E-E-A-T AUTHOR CARD ===== -->
 
   </article>
+</main>
+
+<!-- ===== RIGHT SIDE RAIL AD (sticky, desktop only, never overlapped) ===== -->
+<aside class="ps-rail no-print" aria-label="Advertisement">
+  <div class="ps-rail-sticky">
+    <p class="ps-rail-label">Advertisement</p>
+    <div class="ps-rail-box">
+      <ins id="railAd" class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-4029002473204443" data-ad-slot="9537354213"></ins>
+    </div>
+    <script>
+      (function () {
+        var ins = document.getElementById('railAd');
+        if (!ins || !window.matchMedia('(min-width:1280px)').matches) return; // rail is hidden below 1280px
+        if (window.innerHeight < 740) { ins.style.height = '250px'; }       // short screens: keep the whole ad in view
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+      })();
+    </script>
+  </div>
+</aside>
+</div>
+
 
   <!-- ===== FOOTER ===== -->
   <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
