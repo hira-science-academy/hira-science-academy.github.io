@@ -909,26 +909,11 @@ body{background:#eef1f8 !important}
 .article-body a.pdf-btn-secondary{background:#fff;border-color:#a5b4fc;color:#3730a3 !important;box-shadow:0 4px 12px rgba(15,42,68,.08)}
 .article-body a.pdf-btn-secondary:hover{background:#eef2ff;border-color:#4338ca}
 @media(max-width:640px){.pdf-actions{flex-direction:column}.article-body a.pdf-btn{flex:none;width:100%;max-width:none}}
-/* ===== desktop side-rail ads ===== */
-.pdf-layout{position:relative;display:flow-root}
-.pdf-side{display:none}
-/* Single right-hand rail, sticky while scrolling; sits just outside the 56rem (896px) article column.
-   Uses exact AdSense sizes (160x600 / 300x600) so the slot always has a size it can fill. */
-@media (min-width:1340px){
-  .pdf-side{display:block;position:absolute;top:0;bottom:0;width:160px;pointer-events:none;z-index:5}
-  .pdf-side-right{left:calc(50% + 460px)}
-  .pdf-side-inner{position:sticky;top:96px;pointer-events:auto}
-  .pdf-rail-narrow{display:block;width:160px}
-  .pdf-rail-wide{display:none}
-}
-@media (min-width:1440px){
-  .pdf-side{width:300px}
-  .pdf-rail-narrow{display:none}
-  .pdf-rail-wide{display:block;width:300px}
-}
-@media (max-width:1339px){.pdf-side{display:none !important}}
-.pdf-side [class^="pdf-rail"]:has(ins.adsbygoogle[data-ad-status="unfilled"]) .ad-label{display:none}
-@media print{.pdf-side{display:none !important}}
+/* ===== right ad rail (sticky, desktop only) ===== */
+.rail-sticky { position: sticky; top: 96px; /* clears 80px nav + 4px progress bar */ }
+.rail-sticky .ad-label { font-size: 0.65rem; color: #9ca3af; text-transform: uppercase; letter-spacing: .1em; text-align: center; margin-bottom: 4px; }
+.rail-ad-box { width: 300px; margin: 0 auto; background: #f1f5f9; border-radius: 8px; overflow: hidden; }
+@media print{.rail-aside{display:none !important}}
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
@@ -1039,27 +1024,9 @@ body{background:#eef1f8 !important}
   </script>
 </div>
   <!-- ===== ARTICLE ===== -->
-  <div class="pdf-layout">
-    <aside class="pdf-side pdf-side-right no-print" aria-label="Advertisement">
-      <div class="pdf-side-inner">
-        <div class="pdf-rail-narrow">
-          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:160px;height:600px"
-               data-ad-client="ca-pub-4029002473204443"
-               data-ad-slot="2774325699"
-></ins>
-        </div>
-        <div class="pdf-rail-wide">
-          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:300px;height:600px"
-               data-ad-client="ca-pub-4029002473204443"
-               data-ad-slot="2774325699"
-></ins>
-        </div>
-      </div>
-    </aside>
+  <!-- ===== MAIN CONTENT + RIGHT AD RAIL ===== -->
+  <div class="max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-8 xl:grid xl:grid-cols-[minmax(0,1fr)_320px] xl:gap-8">
+  <main class="min-w-0">
 
   <article class="article-body text-justify-content max-w-4xl mx-auto px-6 py-12 bg-white shadow-sm mt-8 rounded-2xl mb-16">
 
@@ -1576,7 +1543,26 @@ body{background:#eef1f8 !important}
 </div>
 
   </article>
-  </div><!-- /.pdf-layout -->
+  </main>
+
+  <!-- ===== RIGHT SIDE RAIL AD (sticky, desktop only, never overlapped) ===== -->
+  <aside class="rail-aside hidden xl:block pt-0 pb-6 no-print" aria-label="Advertisement">
+    <div class="rail-sticky">
+      <p class="ad-label">Advertisement</p>
+      <div class="rail-ad-box">
+        <ins id="railAd" class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-4029002473204443" data-ad-slot="9537354213"></ins>
+      </div>
+      <script>
+        (function () {
+          var ins = document.getElementById('railAd');
+          if (!ins || !window.matchMedia('(min-width:1280px)').matches) return; // rail is hidden below xl
+          if (window.innerHeight < 740) { ins.style.height = '250px'; }       // short screens: keep the whole ad in view
+          try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+        })();
+      </script>
+    </div>
+  </aside>
+  </div><!-- /main + rail grid -->
 
   <!-- ===== FOOTER ===== -->
   <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
@@ -1721,11 +1707,5 @@ body{background:#eef1f8 !important}
     });
   </script>
 <script src="/assets/js/ads-injector.js" defer></script>
-<script>
-/* Side-rail ads: push only the rail variant that is actually visible (avoids availableWidth=0 errors; hidden below 1340px) */
-(function(){function go(){document.querySelectorAll('.pdf-side .pdf-rail-narrow,.pdf-side .pdf-rail-wide').forEach(function(r){if(r.offsetParent===null)return;var i=r.querySelector('ins.adsbygoogle');if(!i||i.getAttribute('data-adsbygoogle-status')||i.getAttribute('data-rail-pushed'))return;i.setAttribute('data-rail-pushed','1');try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});}
-if(document.readyState==='complete')go();else window.addEventListener('load',go);
-var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(go,400);});})();
-</script>
 </body>
 </html>
