@@ -923,30 +923,13 @@ body{background:#eef1f8 !important}
 .pdf-embed-wrap{position:relative;width:100%;height:780px;border:1px solid #e2e8f0;border-radius:1rem;overflow:hidden;background:#f1f5f9;box-shadow:0 8px 26px rgba(15,42,68,.10)}
 .pdf-embed-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 @media(max-width:640px){.pdf-embed-wrap{height:560px}}
-.pdf-layout{position:relative;display:flow-root}
-.pdf-side{display:none}
-/* Rails sit just outside the 56rem (896px) article column; hidden on tablets/phones */
-@media (min-width:1280px){
-  .pdf-side{display:block;position:absolute;top:0;bottom:0;width:160px;pointer-events:none;z-index:5}
-  .pdf-side-left{right:calc(50% + 460px)}
-  .pdf-side-right{left:calc(50% + 460px)}
-  .pdf-side-inner{position:sticky;top:96px;pointer-events:auto}
-  .pdf-rail-narrow{display:block;width:160px}
-  .pdf-rail-wide{display:none}
-}
-@media (min-width:1560px){
-  .pdf-side{width:300px}
-  .pdf-rail-narrow{display:none}
-  .pdf-rail-wide{display:block;width:300px}
-}
-@media (max-width:1279px){.pdf-side{display:none !important}}
 /* ===== Clear "Advertisement" label ===== */
 .ad-label{display:flex;align-items:center;gap:.6rem;margin:0 0 .45rem;font-size:.7rem;font-weight:700;letter-spacing:.14em;line-height:1;text-transform:uppercase;white-space:nowrap;color:#475569}
 .ad-label::before,.ad-label::after{content:"";flex:1;height:1px;background:#cbd5e1}
 .ad-slot{max-width:56rem;margin-left:auto;margin-right:auto}
 body>.ad-slot{padding-left:1.5rem;padding-right:1.5rem}
-.ad-slot:has(ins.adsbygoogle[data-ad-status="unfilled"]) .ad-label,
-.pdf-side [class^="pdf-rail"]:has(ins.adsbygoogle[data-ad-status="unfilled"]) .ad-label{display:none}
+.ad-slot:has(ins.adsbygoogle[data-ad-status="unfilled"]) .ad-label{display:none}
+.rail-sticky:has(ins.adsbygoogle[data-ad-status="unfilled"]) .ad-label{display:none}
 /* ===== PDF action buttons (equal size, centred) ===== */
 .pdf-actions{display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:.75rem;margin:1.1rem 0 .6rem}
 .article-body a.pdf-btn{flex:1 1 230px;max-width:320px;min-height:3.1rem;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.7rem 1.25rem;border:2px solid transparent;border-radius:.9rem;font-size:.95rem;font-weight:700;line-height:1.2;text-align:center;text-decoration:none !important;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
@@ -956,7 +939,11 @@ body>.ad-slot{padding-left:1.5rem;padding-right:1.5rem}
 .article-body a.pdf-btn-secondary{background:#fff;border-color:#a5b4fc;color:#3730a3 !important;box-shadow:0 4px 12px rgba(15,42,68,.08)}
 .article-body a.pdf-btn-secondary:hover{background:#eef2ff;border-color:#4338ca}
 @media(max-width:640px){.pdf-actions{flex-direction:column}.article-body a.pdf-btn{flex:none;width:100%;max-width:none}}
-@media print{.pdf-side{display:none !important}}
+/* ===== right ad rail (sticky, desktop only) ===== */
+.rail-sticky { position: sticky; top: 96px; /* clears 80px nav + 4px progress bar */ }
+.rail-sticky .ad-label { font-size: 0.65rem; color: #9ca3af; text-transform: uppercase; letter-spacing: .1em; text-align: center; margin-bottom: 4px; }
+.rail-ad-box { width: 300px; margin: 0 auto; background: #f1f5f9; border-radius: 8px; overflow: hidden; }
+@media print{.rail-aside{display:none !important}}
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
@@ -1084,52 +1071,9 @@ body>.ad-slot{padding-left:1.5rem;padding-right:1.5rem}
   </div>
 
   <!-- ===== ARTICLE ===== -->
-  <div class="pdf-layout">
-    <aside class="pdf-side pdf-side-right no-print" aria-label="Advertisement">
-      <div class="pdf-side-inner">
-        <div class="pdf-rail-narrow">
-          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-4029002473204443"
-               data-ad-slot="2774325699"
-               data-ad-format="vertical"
-               data-full-width-responsive="false"></ins>
-        </div>
-        <div class="pdf-rail-wide">
-          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-4029002473204443"
-               data-ad-slot="2774325699"
-               data-ad-format="vertical"
-               data-full-width-responsive="false"></ins>
-        </div>
-      </div>
-    </aside>
-
-    <aside class="pdf-side pdf-side-left no-print" aria-label="Advertisement">
-      <div class="pdf-side-inner">
-        <div class="pdf-rail-narrow">
-          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-4029002473204443"
-               data-ad-slot="5400489032"
-               data-ad-format="vertical"
-               data-full-width-responsive="false"></ins>
-        </div>
-        <div class="pdf-rail-wide">
-          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-4029002473204443"
-               data-ad-slot="5400489032"
-               data-ad-format="vertical"
-               data-full-width-responsive="false"></ins>
-        </div>
-      </div>
-    </aside>
+  <!-- ===== MAIN CONTENT + RIGHT AD RAIL ===== -->
+  <div class="max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-8 xl:grid xl:grid-cols-[minmax(0,1fr)_320px] xl:gap-8">
+  <main class="min-w-0">
 
   <article class="article-body text-justify-content max-w-4xl mx-auto px-6 py-12 bg-white shadow-sm mt-8 rounded-2xl mb-16">
 
@@ -1651,7 +1595,26 @@ body>.ad-slot{padding-left:1.5rem;padding-right:1.5rem}
 <!-- ===== END E-E-A-T AUTHOR CARD ===== -->
 
   </article>
-  </div><!-- /.pdf-layout -->
+  </main>
+
+  <!-- ===== RIGHT SIDE RAIL AD (sticky, desktop only, never overlapped) ===== -->
+  <aside class="rail-aside hidden xl:block pt-0 pb-6 no-print" aria-label="Advertisement">
+    <div class="rail-sticky">
+      <p class="ad-label">Advertisement</p>
+      <div class="rail-ad-box">
+        <ins id="railAd" class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-4029002473204443" data-ad-slot="2774325699"></ins>
+      </div>
+      <script>
+        (function () {
+          var ins = document.getElementById('railAd');
+          if (!ins || !window.matchMedia('(min-width:1280px)').matches) return; // rail is hidden below xl
+          if (window.innerHeight < 740) { ins.style.height = '250px'; }       // short screens: keep the whole ad in view
+          try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+        })();
+      </script>
+    </div>
+  </aside>
+  </div><!-- /main + rail grid -->
 
   <!-- ===== FOOTER ===== -->
   <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
@@ -1833,11 +1796,5 @@ body>.ad-slot{padding-left:1.5rem;padding-right:1.5rem}
       });
     });
   </script>
-<script>
-/* Side-rail ads: push only the rail variant that is actually visible (avoids availableWidth=0 errors; hidden below 1400px) */
-(function(){function go(){document.querySelectorAll('.pdf-side .pdf-rail-narrow,.pdf-side .pdf-rail-wide').forEach(function(r){if(r.offsetParent===null)return;var i=r.querySelector('ins.adsbygoogle');if(!i||i.getAttribute('data-adsbygoogle-status')||i.getAttribute('data-rail-pushed'))return;i.setAttribute('data-rail-pushed','1');try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});}
-if(document.readyState==='complete')go();else window.addEventListener('load',go);
-var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(go,400);});})();
-</script>
 </body>
 </html>

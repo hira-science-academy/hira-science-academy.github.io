@@ -755,7 +755,12 @@ body{background:#eef1f8 !important}
     .src-syllabus:hover{border-color:#8b5cf6}
     /* Continue-studying block */
     .continue-label{font-size:.8rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#64748b;margin:1.25rem 0 .5rem}
-  </style>
+  /* ===== right ad rail (sticky, desktop only) ===== */
+.rail-sticky { position: sticky; top: 96px; /* clears 80px nav + 4px progress bar */ }
+.rail-sticky .ad-label { font-size: 0.65rem; color: #9ca3af; text-transform: uppercase; letter-spacing: .1em; text-align: center; margin-bottom: 4px; }
+.rail-ad-box { width: 300px; margin: 0 auto; background: #f1f5f9; border-radius: 8px; overflow: hidden; }
+@media print{.rail-aside{display:none !important}}
+</style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
@@ -850,6 +855,9 @@ body{background:#eef1f8 !important}
   </div>
 
   <!-- ===== ARTICLE ===== -->
+  <!-- ===== MAIN CONTENT + RIGHT AD RAIL ===== -->
+  <div class="max-w-[1500px] mx-auto px-4 sm:px-6 xl:px-8 xl:grid xl:grid-cols-[minmax(0,1fr)_320px] xl:gap-8">
+  <main class="min-w-0">
   <article class="article-body text-justify-content max-w-4xl mx-auto px-6 py-12 bg-white shadow-sm mt-4 rounded-2xl mb-16 border border-gray-100">
 
     <!-- STATUS BANNER -->
@@ -1281,6 +1289,26 @@ body{background:#eef1f8 !important}
     <!-- ===== END E-E-A-T AUTHOR CARD ===== -->
 
   </article>
+  </main>
+
+  <!-- ===== RIGHT SIDE RAIL AD (sticky, desktop only, never overlapped) ===== -->
+  <aside class="rail-aside hidden xl:block pt-0 pb-6 no-print" aria-label="Advertisement">
+    <div class="rail-sticky">
+      <p class="ad-label">Advertisement</p>
+      <div class="rail-ad-box">
+        <ins id="railAd" class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-4029002473204443" data-ad-slot="9537354213"></ins>
+      </div>
+      <script>
+        (function () {
+          var ins = document.getElementById('railAd');
+          if (!ins || !window.matchMedia('(min-width:1280px)').matches) return; // rail is hidden below xl
+          if (window.innerHeight < 740) { ins.style.height = '250px'; }       // short screens: keep the whole ad in view
+          try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+        })();
+      </script>
+    </div>
+  </aside>
+  </div><!-- /main + rail grid -->
 
   <!-- ===== FOOTER ===== -->
   <footer class="bg-blue-900 text-gray-100 shadow-xl relative z-10 mt-12">
