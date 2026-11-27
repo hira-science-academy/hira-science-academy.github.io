@@ -991,6 +991,26 @@ body>.ad-slot{padding-left:1.5rem;padding-right:1.5rem}
 @media(max-width:700px){.pdf-two{grid-template-columns:1fr}}
 .pdf-two .pdf-actions{flex-direction:column;margin:.8rem 0 0}
 .pdf-two .pdf-actions a.pdf-btn{flex:none;width:100%;max-width:none}
+/* ===== single sticky right rail (wider as the viewport allows) ===== */
+.pdf-side-left{display:none !important}
+.pdf-rail-mid{display:none}
+@media (min-width:1280px){
+  .pdf-side{width:170px}
+  .pdf-side-right{left:calc(50% + 460px)}
+  .pdf-rail-narrow{display:block;width:170px}
+  .pdf-rail-mid,.pdf-rail-wide{display:none}
+}
+@media (min-width:1440px){
+  .pdf-side{width:250px}
+  .pdf-rail-narrow,.pdf-rail-wide{display:none}
+  .pdf-rail-mid{display:block;width:250px}
+}
+@media (min-width:1620px){
+  .pdf-side{width:336px}
+  .pdf-rail-narrow,.pdf-rail-mid{display:none}
+  .pdf-rail-wide{display:block;width:336px}
+}
+@media (max-width:1279px){.pdf-side{display:none !important}}
 </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
@@ -1113,6 +1133,15 @@ body>.ad-slot{padding-left:1.5rem;padding-right:1.5rem}
                data-ad-format="vertical"
                data-full-width-responsive="false"></ins>
         </div>
+        <div class="pdf-rail-mid">
+          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-4029002473204443"
+               data-ad-slot="2774325699"
+               data-ad-format="vertical"
+               data-full-width-responsive="false"></ins>
+        </div>
         <div class="pdf-rail-wide">
           <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
           <ins class="adsbygoogle"
@@ -1124,31 +1153,6 @@ body>.ad-slot{padding-left:1.5rem;padding-right:1.5rem}
         </div>
       </div>
     </aside>
-
-    <aside class="pdf-side pdf-side-left no-print" aria-label="Advertisement">
-      <div class="pdf-side-inner">
-        <div class="pdf-rail-narrow">
-          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-4029002473204443"
-               data-ad-slot="5400489032"
-               data-ad-format="vertical"
-               data-full-width-responsive="false"></ins>
-        </div>
-        <div class="pdf-rail-wide">
-          <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-4029002473204443"
-               data-ad-slot="5400489032"
-               data-ad-format="vertical"
-               data-full-width-responsive="false"></ins>
-        </div>
-      </div>
-    </aside>
-
-  
 
   <article class="article-body text-justify-content max-w-4xl mx-auto px-6 py-12 bg-white shadow-sm mt-8 rounded-2xl mb-16">
     <!-- STATUS BANNER -->
@@ -1928,7 +1932,7 @@ body>.ad-slot{padding-left:1.5rem;padding-right:1.5rem}
 <script src="/assets/js/ads-injector.js" defer></script>
 <script>
 /* Side-rail ads: push only the rail variant that is actually visible (desktop >=1280px); rails stay sticky while scrolling */
-(function(){function go(){document.querySelectorAll('.pdf-side .pdf-rail-narrow,.pdf-side .pdf-rail-wide').forEach(function(r){if(r.offsetParent===null)return;var i=r.querySelector('ins.adsbygoogle');if(!i||i.getAttribute('data-adsbygoogle-status')||i.getAttribute('data-rail-pushed'))return;i.setAttribute('data-rail-pushed','1');try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});}
+(function(){function go(){document.querySelectorAll('.pdf-side .pdf-rail-narrow,.pdf-side .pdf-rail-mid,.pdf-side .pdf-rail-wide').forEach(function(r){if(r.offsetParent===null)return;var i=r.querySelector('ins.adsbygoogle');if(!i||i.getAttribute('data-adsbygoogle-status')||i.getAttribute('data-rail-pushed'))return;i.setAttribute('data-rail-pushed','1');try{(window.adsbygoogle=window.adsbygoogle||[]).push({});}catch(e){}});}
 if(document.readyState==='complete')go();else window.addEventListener('load',go);
 var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(go,400);});})();
 </script>
