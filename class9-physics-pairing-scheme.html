@@ -302,6 +302,24 @@
     ]
   }
   </script>
+
+<style>
+  /* ===== MAIN COLUMN + STICKY RIGHT AD RAIL (desktop >=1280px) ===== */
+  .ps-layout { max-width: 1500px; margin: 0 auto; padding: 1.5rem 1rem 0; }
+  .ps-main { min-width: 0; }
+  .ps-rail { display: none; }
+  @media (min-width: 640px) { .ps-layout { padding-left: 1.5rem; padding-right: 1.5rem; } }
+  @media (min-width: 1280px) {
+    .ps-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 2rem; padding-left: 2rem; padding-right: 2rem; }
+    .ps-rail { display: block; padding-bottom: 1.5rem; }
+  }
+  .ps-main > section.bg-white, .ps-main > section.bg-gray-50 { border-radius: 16px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid #e5e7eb; }
+  .ps-rail-sticky { position: sticky; top: 96px; /* clears 80px nav + 4px progress bar */ }
+  .ps-rail-label { font-size: .65rem; color: #9ca3af; text-transform: uppercase; letter-spacing: .1em; text-align: center; margin-bottom: 4px; }
+  .ps-rail-box { width: 300px; margin: 0 auto; background: #f1f5f9; border-radius: 8px; overflow: hidden; }
+  /* back-to-top moved to the left (above WhatsApp) so it never covers the rail ad */
+  .back-to-top { left: 1.5rem !important; right: auto !important; bottom: 7.5rem !important; }
+</style>
 </head>
 <body class="text-gray-800">
 
@@ -434,7 +452,11 @@
        PDF VIEWER — LIGHT SECTION (body unchanged)
        New Drive ID · Buttons moved BELOW iframe
        ═══════════════════════════════════════════════════════════════ -->
-  <section class="py-12 bg-white">
+  <!-- ===== MAIN CONTENT + RIGHT AD RAIL ===== -->
+<div class="ps-layout">
+<main class="ps-main">
+
+<section class="py-12 bg-white">
     <div class="max-w-5xl mx-auto px-6">
       <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-4">📄 Class 9 Physics Pairing Scheme 2027 – Official PDF</h2>
       <p class="text-center text-gray-600 mb-6">View the complete scheme below. Download, print, or open fullscreen using the buttons at the bottom.</p>
@@ -872,7 +894,28 @@
     </details>
   </section>
 
-  <!-- ===== FOOTER (NAVY — no pink/red) ===== -->
+  </main>
+
+<!-- ===== RIGHT SIDE RAIL AD (sticky, desktop only, never overlapped) ===== -->
+<aside class="ps-rail" aria-label="Advertisement">
+  <div class="ps-rail-sticky">
+    <p class="ps-rail-label">Advertisement</p>
+    <div class="ps-rail-box">
+      <ins id="railAd" class="adsbygoogle" style="display:inline-block;width:300px;height:600px" data-ad-client="ca-pub-4029002473204443" data-ad-slot="9537354213"></ins>
+    </div>
+    <script>
+      (function () {
+        var ins = document.getElementById('railAd');
+        if (!ins || !window.matchMedia('(min-width:1280px)').matches) return; // rail is hidden below 1280px
+        if (window.innerHeight < 740) { ins.style.height = '250px'; }       // short screens: keep the whole ad in view
+        try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch (e) {}
+      })();
+    </script>
+  </div>
+</aside>
+</div>
+
+<!-- ===== FOOTER (NAVY — no pink/red) ===== -->
   <footer class="ps-footer shadow-xl relative z-10">
     <div class="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-5 gap-8">
