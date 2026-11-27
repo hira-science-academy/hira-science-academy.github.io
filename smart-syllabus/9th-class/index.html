@@ -912,18 +912,19 @@ body{background:#eef1f8 !important}
 /* ===== desktop side-rail ads ===== */
 .pdf-layout{position:relative;display:flow-root}
 .pdf-side{display:none}
-/* Single right-hand rail, sticky while scrolling; sits just outside the 56rem (896px) article column */
+/* Single right-hand rail, sticky while scrolling; sits just outside the 56rem (896px) article column.
+   Uses exact AdSense sizes (160x600 / 300x600) so the slot always has a size it can fill. */
 @media (min-width:1340px){
-  .pdf-side{display:block;position:absolute;top:0;bottom:0;width:200px;pointer-events:none;z-index:5}
+  .pdf-side{display:block;position:absolute;top:0;bottom:0;width:160px;pointer-events:none;z-index:5}
   .pdf-side-right{left:calc(50% + 460px)}
   .pdf-side-inner{position:sticky;top:96px;pointer-events:auto}
-  .pdf-rail-narrow{display:block;width:200px}
+  .pdf-rail-narrow{display:block;width:160px}
   .pdf-rail-wide{display:none}
 }
-@media (min-width:1500px){
-  .pdf-side{width:336px}
+@media (min-width:1440px){
+  .pdf-side{width:300px}
   .pdf-rail-narrow{display:none}
-  .pdf-rail-wide{display:block;width:336px}
+  .pdf-rail-wide{display:block;width:300px}
 }
 @media (max-width:1339px){.pdf-side{display:none !important}}
 .pdf-side [class^="pdf-rail"]:has(ins.adsbygoogle[data-ad-status="unfilled"]) .ad-label{display:none}
@@ -1044,20 +1045,18 @@ body{background:#eef1f8 !important}
         <div class="pdf-rail-narrow">
           <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
           <ins class="adsbygoogle"
-               style="display:block"
+               style="display:inline-block;width:160px;height:600px"
                data-ad-client="ca-pub-4029002473204443"
                data-ad-slot="2774325699"
-               data-ad-format="vertical"
-               data-full-width-responsive="false"></ins>
+></ins>
         </div>
         <div class="pdf-rail-wide">
           <p class="ad-label text-center w-full" style="text-align: center;">Advertisement</p>
           <ins class="adsbygoogle"
-               style="display:block"
+               style="display:inline-block;width:300px;height:600px"
                data-ad-client="ca-pub-4029002473204443"
                data-ad-slot="2774325699"
-               data-ad-format="vertical"
-               data-full-width-responsive="false"></ins>
+></ins>
         </div>
       </div>
     </aside>
